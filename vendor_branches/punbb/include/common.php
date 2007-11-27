@@ -37,8 +37,7 @@ if (!defined('PUN_ROOT'))
 require PUN_ROOT.'include/functions.php';
 
 // Reverse the effect of register_globals
-if (@ini_get('register_globals'))
-	unregister_globals();
+unregister_globals();
 
 
 @include PUN_ROOT.'config.php';

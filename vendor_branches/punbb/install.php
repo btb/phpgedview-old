@@ -24,7 +24,7 @@
 
 
 // The PunBB version this script installs
-$punbb_version = '1.2.12';
+$punbb_version = '1.2.16';
 
 
 define('PUN_ROOT', './');
@@ -757,7 +757,7 @@ else
 					poster_id INT(10) UNSIGNED NOT NULL DEFAULT 1,
 					poster_ip VARCHAR(15),
 					poster_email VARCHAR(50),
-					message TEXT NOT NULL DEFAULT '',
+					message TEXT,
 					hide_smilies TINYINT(1) NOT NULL DEFAULT 0,
 					posted INT(10) UNSIGNED NOT NULL DEFAULT 0,
 					edited INT(10) UNSIGNED,
@@ -774,7 +774,7 @@ else
 					poster_id INT NOT NULL DEFAULT 1,
 					poster_ip VARCHAR(15),
 					poster_email VARCHAR(50),
-					message TEXT NOT NULL DEFAULT '',
+					message TEXT,
 					hide_smilies SMALLINT NOT NULL DEFAULT 0,
 					posted INT NOT NULL DEFAULT 0,
 					edited INT,
@@ -791,7 +791,7 @@ else
 					poster_id INTEGER NOT NULL DEFAULT 1,
 					poster_ip VARCHAR(15),
 					poster_email VARCHAR(50),
-					message TEXT NOT NULL DEFAULT '',
+					message TEXT,
 					hide_smilies INTEGER NOT NULL DEFAULT 0,
 					posted INTEGER NOT NULL DEFAULT 0,
 					edited INTEGER,
@@ -852,7 +852,7 @@ else
 					forum_id INT(10) UNSIGNED NOT NULL DEFAULT 0,
 					reported_by INT(10) UNSIGNED NOT NULL DEFAULT 0,
 					created INT(10) UNSIGNED NOT NULL DEFAULT 0,
-					message TEXT NOT NULL DEFAULT '',
+					message TEXT,
 					zapped INT(10) UNSIGNED,
 					zapped_by INT(10) UNSIGNED,
 					PRIMARY KEY (id)
@@ -867,7 +867,7 @@ else
 					forum_id INT NOT NULL DEFAULT 0,
 					reported_by INT NOT NULL DEFAULT 0,
 					created INT NOT NULL DEFAULT 0,
-					message TEXT NOT NULL DEFAULT '',
+					message TEXT,
 					zapped INT,
 					zapped_by INT,
 					PRIMARY KEY (id)
@@ -882,7 +882,7 @@ else
 					forum_id INTEGER NOT NULL DEFAULT 0,
 					reported_by INTEGER NOT NULL DEFAULT 0,
 					created INTEGER NOT NULL DEFAULT 0,
-					message TEXT NOT NULL DEFAULT '',
+					message TEXT,
 					zapped INTEGER,
 					zapped_by INTEGER,
 					PRIMARY KEY (id)
@@ -901,7 +901,7 @@ else
 			$sql = 'CREATE TABLE '.$db_prefix."search_cache (
 					id INT(10) UNSIGNED NOT NULL DEFAULT 0,
 					ident VARCHAR(200) NOT NULL DEFAULT '',
-					search_data TEXT NOT NULL DEFAULT '',
+					search_data TEXT,
 					PRIMARY KEY (id)
 					) TYPE=MyISAM;";
 			break;
@@ -910,7 +910,7 @@ else
 			$sql = 'CREATE TABLE '.$db_prefix."search_cache (
 					id INT NOT NULL DEFAULT 0,
 					ident VARCHAR(200) NOT NULL DEFAULT '',
-					search_data TEXT NOT NULL DEFAULT '',
+					search_data TEXT,
 					PRIMARY KEY (id)
 					)";
 			break;
@@ -919,7 +919,7 @@ else
 			$sql = 'CREATE TABLE '.$db_prefix."search_cache (
 					id INTEGER NOT NULL DEFAULT 0,
 					ident VARCHAR(200) NOT NULL DEFAULT '',
-					search_data TEXT NOT NULL DEFAULT '',
+					search_data TEXT,
 					PRIMARY KEY (id)
 					)";
 			break;
@@ -1234,6 +1234,7 @@ else
 		case 'mysql':
 		case 'mysqli':
 			// We use MySQL's ALTER TABLE ... ADD INDEX syntax instead of CREATE INDEX to avoid problems with users lacking the INDEX privilege
+			$queries[] = 'ALTER TABLE '.$db_prefix.'online ADD UNIQUE INDEX '.$db_prefix.'online_user_id_ident_idx(user_id,ident)';
 			$queries[] = 'ALTER TABLE '.$db_prefix.'online ADD INDEX '.$db_prefix.'online_user_id_idx(user_id)';
 			$queries[] = 'ALTER TABLE '.$db_prefix.'posts ADD INDEX '.$db_prefix.'posts_topic_id_idx(topic_id)';
 			$queries[] = 'ALTER TABLE '.$db_prefix.'posts ADD INDEX '.$db_prefix.'posts_multi_idx(poster_id, topic_id)';
