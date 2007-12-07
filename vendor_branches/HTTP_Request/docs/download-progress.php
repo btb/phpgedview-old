@@ -9,7 +9,7 @@
  *
  * @category    HTTP
  * @package     HTTP_Request
- * @version     CVS: $Id: download-progress.php,v 1.3 2007/05/18 19:20:12 avb Exp $
+ * @version     CVS: $Id: download-progress.php,v 1.4 2007/10/26 13:45:56 avb Exp $
  * @ignore
  */
 
@@ -106,6 +106,10 @@ class HTTP_Request_DownloadListener extends HTTP_Request_Listener
 
             case 'gotBody':
                 fclose($this->_fp);
+                break;
+
+            case 'connect':
+            case 'disconnect':
                 break;
 
             default:
