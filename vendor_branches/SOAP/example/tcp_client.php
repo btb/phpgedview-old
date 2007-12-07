@@ -16,29 +16,27 @@
 // | Authors: Shane Hanna <iordy_at_iordy_dot_com>                        |
 // +----------------------------------------------------------------------+
 //
-// $Id: tcp_client.php,v 1.3 2005/03/10 23:16:40 yunosh Exp $
+// $Id: tcp_client.php,v 1.5 2007/01/22 11:33:27 yunosh Exp $
 //
 
 require_once('SOAP/Client.php');
 
-# client
+// client
 $soapclient = new SOAP_Client("tcp://127.0.0.1:82");
 
-# namespace
-$options = array('namespace' => 'urn:SOAP_Example_Server', 'trace' => 1);
+// namespace
+$options = array('namespace' => 'urn:SOAP_Example_Server', 'trace' => true);
 
-# one
+// one
 $params = array("string" => "this is string 1");
 $ret1 = $soapclient->call("echoString", $params, $options);
-# echo "WIRE: \n".$soapclient->__get_wire();
+// echo "WIRE: \n".$soapclient->getWire();
 print_r($ret1);
 echo "<br />\n";
 
-# two
+// two
 $params = array("string" => "this is string 2");
 $ret2 = $soapclient->call("echoString", $params, $options);
-# echo "WIRE: \n".$soapclient->__get_wire();
+// echo "WIRE: \n".$soapclient->getWire();
 print_r($ret2);
 echo "<br />\n";
-
-?>

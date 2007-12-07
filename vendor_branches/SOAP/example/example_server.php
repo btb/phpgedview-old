@@ -16,7 +16,7 @@
 // | Authors: Shane Caraveo <Shane@Caraveo.com>                           |
 // +----------------------------------------------------------------------+
 //
-// $Id: example_server.php,v 1.5 2005/03/10 23:16:40 yunosh Exp $
+// $Id: example_server.php,v 1.6 2007/01/22 11:51:45 yunosh Exp $
 //
 
 // first, include the SOAP/Server class
@@ -124,7 +124,6 @@ class SOAP_Example_Server {
     function echoStruct($inputStruct)
     {
         return $inputStruct->__to_soap('outputStruct');
-	#return new SOAP_Value('outputStruct','{http://soapinterop.org/xsd}SOAPStruct',$inputStruct);
     }
     
     /**
