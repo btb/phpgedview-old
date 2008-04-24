@@ -84,7 +84,7 @@ if (isset($_POST['form_sent']) && $action == 'in')
 
 else if ($action == 'out')
 {
-	if ($pun_user['is_guest'] || !isset($_GET['id']) || $_GET['id'] != $pun_user['id'])
+	if ($pun_user['is_guest'] || !isset($_GET['id']) || $_GET['id'] != $pun_user['id'] || !isset($_GET['csrf_token']) || $_GET['csrf_token'] != sha1($pun_user['id'].sha1(get_remote_address())))
 	{
 		header('Location: index.php');
 		exit;
@@ -97,7 +97,7 @@ else if ($action == 'out')
 	if (isset($pun_user['logged']))
 		$db->query('UPDATE '.$db->prefix.'users SET last_visit='.$pun_user['logged'].' WHERE id='.$pun_user['id']) or error('Unable to update user visit data', __FILE__, __LINE__, $db->error());
 
-	pun_setcookie(1, random_pass(8), time() + 31536000);
+	pun_setcookie(1, md5(uniqid(rand(), true)), time() + 31536000);
 
 	redirect('index.php', $lang_login['Logout redirect']);
 }
