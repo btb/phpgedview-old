@@ -1,4 +1,5 @@
 <?php 
+namespace PhpGedcom;
 /**
  * This interface represents a GEDCOM record of type Individual
  * It is a convenience interface that simplifies some of the standard
@@ -21,49 +22,89 @@
  * copy of the license with this code, you may find a copy online
  * at http://www.opensource.org/licenses/lgpl-license.php
  * 
- * @author jfinlay
+ * @author John Finlay
  *
  */
 
-if (!defined('PGC_PHPGEDCOM')) {
+ if (!defined('PGC_PHPGEDCOM')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
+ 
+class Individual extends Record {
+	protected $famc = null;
+	protected $fams = null;
+	protected $birth = null;
+	protected $death = null;
+	protected $spouse = null;
+	protected $gender = null;
+	
+	public function __construct() {
+		parent::__construct();
+	}
 
-interface Individual extends Record {
-	/**
-	 * Get this individuals primary Name assertions
-	 * Provides convenience in printing out an individual's primary name
-	 * @return
-	 */
-	public function getName();
-	/**
-	 * Get a list of all the Families where this person was a spouse
-	 * in that family
-	 * @return
-	 */
-	public function getSpouseFamilies();
-	/**
-	 * get a list of all of the Families where this person was a child
-	 * @return
-	 */
-	public function getChildFamilies();
+	public function getNameString() {
+		$text = "Unkown";
+		if ($this->name!=null) $text = $this->name->getFullName();
+		return $text;
+	}
 	
-	/**
-	 * get the person's current spouse
-	 * @return
-	 */
-	public function getCurrentSpouse();
-	/**
-	 * get the person's primary (first) birth event
-	 * @return
-	 */
-	public function getBirthEvent();
-	/**
-	 * get the person's primary (first) death event
-	 * @return
-	 */
-	public function getDeathEvent();
-	
-	public function getGenderEvent();
+	public function getName() {
+		if ($this->name==null) $this->name = $this->getSingleAssertionByType("NAME");
+		return $name;
+	}
+
+	public function getChildFamilies() {
+		if ($this->famc==null) {
+			$this->famc = array();
+			foreach($this->getAssertionsByType("FAMC") as $fam) {
+				$this->famc[] = $fam->getReferenceRecord();
+			}
+		}
+	    return $this->famc;
+    }
+
+	public function getSpouseFamilies() {
+		if ($this->fams==null) {
+			$this->fams = array();
+			foreach($this->getAssertionsByType("FAMS") as $fam) {
+				$this->fams[] = $fam->getReferenceRecord();
+			}
+		}
+	    return $this->fams;
+    }
+
+	public function getBirthEvent() {
+	    if ($this->birth==null) {
+	    	$this->birth = $this->getSingleAssertionByType("BIRT");
+	    }
+	    return $this->birth;
+    }
+
+	public function getCurrentSpouse() {
+	    if ($this->spouse==null) {
+	    	foreach($this->getSpouseFamilies() as $fam) {
+	    		//-- make sure not divorced
+	    		if ($fam->getSingleAssertionByType("DIV")==null) {
+	    			$this->spouse = $fam->getSpouse($this);
+	    		}
+	    	}
+	    }
+	    return $this->spouse;
+    }
+
+	public function getDeathEvent() {
+		if ($this->death==null) {
+			$this->death = $this->getSingleAssertionByType("DEAT");
+	    }
+	    return $this->death;
+    }
+
+	public function getGenderEvent() {
+	    if ($this->gender==null) 
+	    {
+	    	$this->gender = $this->getSingleAssertionByType("SEX");
+	    }
+	    return $this->gender;
+    }
 }

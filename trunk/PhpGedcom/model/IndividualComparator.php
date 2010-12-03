@@ -1,4 +1,5 @@
 <?php 
+namespace PhpGedcom;
 /**
  * Compare 2 individuals to see how closely they match to each other
  * 

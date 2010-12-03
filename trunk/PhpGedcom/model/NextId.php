@@ -1,4 +1,5 @@
 <?php 
+namespace PhpGedcom;
 /**
  * Base interface for obtaining the next id
  *
@@ -27,22 +28,44 @@ if (!defined('PGC_PHPGEDCOM')) {
 	exit;
 }
 
-interface NextId {
+class NextId {
 
-	public function getId();
+	protected $id;
+	protected $type;
+	protected $nextid;
+	protected $gedFile;
+	
+	public function getId() {
+		return $this->id;
+	}
 
-	public function setId($id);
+	public function setId($id) {
+		$this->id = $id;
+	}
 
-	public function getType();
+	public function getType() {
+		return $this->type;
+	}
 
-	public function setType($type);
+	public function setType($type) {
+		$this->type = $type;
+	}
 
-	public function getNextid();
+	public function getNextid() {
+		return $this->nextid;
+	}
 
-	public function setNextid($nextid);
+	public function setNextid($nextid) {
+		$this->nextid = $nextid;
+	}
 
-	public function getGedFile();
+	public function getGedFile() {
+		return $this->gedFile;
+	}
 
-	public function setGedFile($gedFile);
-
+	public function setGedFile($gedFile) {
+		$this->gedFile = $gedFile;
+	}
+	
+	
 }

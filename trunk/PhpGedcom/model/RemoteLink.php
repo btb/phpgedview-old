@@ -1,4 +1,5 @@
 <?php 
+namespace PhpGedcom;
 /**
  * An Assertion which represents that the parent record
  * is linked to another record in another data source.
@@ -28,23 +29,26 @@ if (!defined('PGC_PHPGEDCOM')) {
 	exit;
 }
 
-interface RemoteLink extends Assertion {
+class RemoteLink extends Assertion {
 
-	/**
-	 * The remote id of the parent record
-	 * @return
-	 */
-	public function getRemoteId();
+	protected $dataSourceId;
+	protected $remoteId;
 
-	public function setRemoteId($remoteId);
+	public function getRemoteId() {
+		return $this->remoteId;
+	}
 
-	/**
-	 * The id of the data source where this record can also be found
-	 * @return
-	 */
-	public function getDataSourceId();
+	public function setRemoteId($remoteId) {
+		$this->remoteId = $remoteId;
+	}
 
-	public function setDataSourceId($dataSourceId);
+	public function getDataSourceId() {
+		return $this->dataSourceId;
+	}
 
+	public function setDataSourceId($dataSourceId) {
+		$this->dataSourceId = $dataSourceId;
+	}
+	
+	
 }
-?>
