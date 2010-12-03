@@ -1,4 +1,6 @@
 <?php
+namespace PhpGedcom;
+
 // define use of the library
 define('PGC_PHPGEDCOM', '');
 
@@ -23,6 +25,7 @@ require_once 'model/Record.php';
 require_once 'model/DataSource.php';
 require_once 'model/Event.php';
 require_once 'model/Family.php';
+require_once 'model/FileGedcom.php';
 require_once 'model/Gedcom.php';
 require_once 'model/GedcomDate.php';
 require_once 'model/Individual.php';
@@ -31,17 +34,6 @@ require_once 'model/Name.php';
 require_once 'model/NextId.php';
 require_once 'model/RelationshipLabeler.php';
 require_once 'model/RemoteLink.php';
-
-require_once 'model/file/FileAssertion.php';
-require_once 'model/file/FileAssertionLink.php';
-require_once 'model/file/FileEvent.php';
-require_once 'model/file/FileFamily.php';
-require_once 'model/file/FileGedcom.php';
-require_once 'model/file/FileIndividual.php';
-require_once 'model/file/FileName.php';
-require_once 'model/file/FileNextId.php';
-require_once 'model/file/FileRecord.php';
-require_once 'model/file/FileRemoteLink.php';
 
 require_once 'parse/GedcomListener.php';
 require_once 'parse/ParseGedcom.php';

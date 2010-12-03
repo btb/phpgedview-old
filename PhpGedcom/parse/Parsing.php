@@ -1,4 +1,5 @@
 <?php 
+namespace PhpGedcom;
 /**
  * GEDCOM Parsing Utility class
  * 
@@ -30,7 +31,7 @@ if (!defined('PGC_PHPGEDCOM')) {
 class Parsing {
 
 	private $classTypes;
-	private $dateClass = "GedcomDate";
+	private $dateClass = "PhpGedcom\\GedcomDate";
 
 	public function getClassTypes() {
 		return classTypes;
@@ -122,7 +123,7 @@ class Parsing {
 		if ($this->classTypes!=null && isset($this->classTypes["AssertionLink"]))
 			$al = new $this->classTypes["AssertionLink"]();
 		else
-			$al = new FileAssertionLink();
+			$al = new AssertionLink();
 
 		$ct = preg_match("/1 ([^\\s]+) @([^@]+)@/", $lineOfText[0], $matches);
 		if ($ct>0) {
@@ -150,7 +151,7 @@ class Parsing {
 			if ($this->classTypes!=null && isset($this->classTypes["Name"]))
 				$name = new $this->classTypes["Name"]();
 			else
-				$name = new FileName();
+				$name = new Name();
 		$name->setGivnName(null);
 		$name->setSurName(null);
 		$name->setType("NAME");
@@ -209,9 +210,9 @@ class Parsing {
 	public function getEvent(&$e) {
 		$newEvent = null;
 			if ($this->classTypes!=null && isset($this->classTypes["Event"]))
-				$newEvent = new $this->lassTypes["Event"]();
+				$newEvent = new $this->classTypes["Event"]();
 			else
-				$newEvent = new FileEvent();
+				$newEvent = new Event();
 		
 		foreach ($e as $s) {
 			// pattern to capture type and detail
@@ -243,7 +244,7 @@ class Parsing {
 			if ($this->classTypes!=null && isset($this->classTypes["RemoteLink"]))
 				$link = new $this->classTypes["RemoteLink"]();
 			else
-				$link = new FileRemoteLink();
+				$link = new RemoteLink();
 		$rfn = $lines[0];
 		$value = substr($rfn, 6);
 		$parts = preg_split("/:/", $value);
@@ -277,9 +278,9 @@ class Parsing {
 					$currentRecord = new $this->classTypes[$recordType]();
 			}
 		if ($currentRecord==null) {
-			if ($type=="INDI") $currentRecord = new FileIndividual();
-			else if ($type=="FAM") $currentRecord = new FileFamily();
-			else $currentRecord = new FileRecord();
+			if ($type=="INDI") $currentRecord = new Individual();
+			else if ($type=="FAM") $currentRecord = new Family();
+			else $currentRecord = new Record();
 		}
 		$currentRecord->setType($type);
 		$currentRecord->setFile($gedcomFile);

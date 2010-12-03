@@ -1,4 +1,5 @@
 <?php 
+namespace PhpGedcom;
 /**
  * Name Interface
  * Represents the Name structure in GEDCOM.
@@ -28,21 +29,58 @@ if (!defined('PGC_PHPGEDCOM')) {
 	exit;
 }
 
-interface Name extends Assertion {
+class Name extends Assertion {
+	
+	protected $givnName;
+	protected $surName;
 
-	public function getGivnName();
+	public function getGivnName() {
+		return $this->givnName;
+	}
 
-	public function setGivnName($givnName);
+	public function setGivnName($givnName) {
+		$this->givnName = $givnName;
+	}
 
-	public function getSurName();
+	public function getSurName() {
+		return $this->surName;
+	}
 
-	public function setSurName($surName);
+	public function setSurName($surName) {
+		$this->surName = $surName;
+	}
 
-	public function getSortableName();
+	public function equals($n) {
+		if (parent::equals($n)) {
+			if (strcasecmp($this->getGivnName(),$n.getGivnName())==0) {
+				if (strcasecmp($this->getSurName(),$n.getSurName())==0) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 
-	public function getFullName();
+	public function getSortableName() {
+		return $this->surName.", ".$this->givnName;
+	}
 
-	public function getSortableNameWithDetails();
+	public function getFullName(){
+		return $this->givnName . " " . $this->surName;
+	}
 
+	public function getSortableNameWithDetails() {
+		$name = $this->getSortableName();
+		$indi = $this->getParentRecord();
+		$birt = $indi->getBirthEvent();
+		$deat = $indi->getDeathEvent();
+		if ($birt!=null || $deat!=null) {
+			$name .= " (";
+			if ($birt!=null && $birt->getDate()!=null) $name.=$birt->getDate()->getOriginalDate();
+			$name .="-";
+			if ($deat!=null && $deat->getDate()!=null) $name.=$deat->getDate()->getOriginalDate();
+			$name .=")";
+		}
+		return $name;
+	}
 }
-?>

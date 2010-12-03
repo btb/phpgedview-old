@@ -1,4 +1,5 @@
 <?php 
+namespace PhpGedcom;
 /**
  * A base GEDCOM record
  *
@@ -27,7 +28,7 @@ if (!defined('PGC_PHPGEDCOM')) {
 	exit;
 }
 
-require_once 'file/FileEvent.php';
+require_once 'Event.php';
 
 class RelationshipLabeler {
 	private $record;
@@ -44,7 +45,7 @@ class RelationshipLabeler {
 	public function getUpLabel() {
 		if ($this->record==null || $this->type==null) return "Unknown";
 		if ($this->gender==null) {
-			$this->gender = new FileEvent();
+			$this->gender = new Event();
 			$this->gender->setDetail("U");
 		}
 		if ($this->type=="HUSB") {
@@ -65,7 +66,7 @@ class RelationshipLabeler {
 	public function getDownLabel() {
 		if ($this->record==null || $this->type==null) return "Unknown";
 		if ($this->gender==null) {
-			$this->gender = new FileEvent();
+			$this->gender = new Event();
 			$this->gender->setDetail("U");
 		}
 		if ($this->type=="HUSB") {

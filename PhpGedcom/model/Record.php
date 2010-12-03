@@ -1,4 +1,5 @@
 <?php 
+namespace PhpGedcom;
 /**
  * A base GEDCOM record
  *
@@ -27,82 +28,139 @@ if (!defined('PGC_PHPGEDCOM')) {
 	exit;
 }
 
-interface Record {
+class Record {
+	protected $file;
+	protected $gedcomId = "";
+	protected $type = "";
+	protected $listString= null;
+	protected $assertions;
+	protected $name;
 
-	/**
-	 * returns the raw GEDCOM record for this person
-	 * @return
-	 */
-	public function getGedcomRecord();
+	function __construct() {
+		$this->assertions = array();
+	}
 
-	/**
-	 * return a list of assertions that match the given GEDCOM type
-	 * @param type
-	 * @return
-	 */
-	public function getAssertionsByType($type);
+	public function getGedcomRecord() {
+		$sb = "";
+		if ($this->type!="HEAD") $sb.="0 @".$this->gedcomId."@ ".$this->type."\r\n";
+		else $sb.="0 ".$this->type."\r\n";
+		$this->getAssertions();
+		foreach($this->assertions as $a) {
+			$sb.=$a->getGedcom();
+		}
+		return $sb;
+	}
+	
+	public function getAssertionsByType($type) {
+		$assertionList = array();
+		foreach($this->getAssertions() as $a){
+			if ($a->getType()==$type){
+				$assertionList[] = $a;
+			}
+				
+		}
+		return $assertionList;
+		
+	}
 
-	/**
-	 * return a single assertion that matches the given GEDCOM type
-	 * @param type
-	 * @return
-	 */
-	public function getSingleAssertionByType($type);
+	public function getSingleAssertionByType($type) {
+		$li=$this->getAssertionsByType($type);
+		if(count($li)== 0) return null;
+		return $li[0];
+		
+	}
+	
+	public function getType() {
+		return $this->type;
+	}
 
-	/**
-	 * The GEDCOM type of this record, INDI or FAM for example
-	 * @return
-	 */
-	public function getType();
+	public function setType($type) {
+		$this->type = $type;
+	}
 
-	public function setType($type);
+	public function getGedcomId() {
+		return $this->gedcomId;
+	}
 
-	public function getGedcomId();
+	public function setGedcomId($gedcomId) {
+		$this->gedcomId = $gedcomId;
+	}
 
-	public function setGedcomId($gedcomId);
+	public function getFile() {
+		return $this->file;
+	}
 
-	/**
-	 * Get the GEDCOM file that this record belongs to
-	 * @return
-	 */
-	public function getFile();
+	public function setFile($file) {
+		$this->file = $file;
+	}
 
-	public function setFile($file);
+	public function getAssertions() {
+		return $this->assertions;
+	}
 
-	/**
-	 * get a list of all leve 1 assertions
-	 * @return
-	 */
-	public function getAssertions();
+	public function setAssertions($assertions) {
+		$this->assertions = $assertions;
+	}
 
-	public function setAssertions($assertions);
-
-	public function addAssertion($a);
-
-	public function removeAssertion($a);
-
-	/**
-	 * Get the remote id for this record given the remote data source id
-	 * @param sourceId	the gedcom id of this datasource
-	 * @return	the remote id of the person
-	 */
-	public function getRemoteId($sourceId);
-
-	/**
-	 * a convenience property for showing the details of a record in a list
-	 * @return
-	 */
-	public function getListString();
-
-	public function setListString($listString);
+	public function addAssertion($a) {
+		$this->assertions[]=$a;
+	}
+	
+	public function removeAssertion($a) {
+		$tmp = array();
+		foreach($this->assertions as $a1) {
+			if (!$a->equals($a1)) $tmp[] = $a1;
+		}
+		$this->assertions = $tmp;
+	}
+	
+	public function compareTo($o) {
+		$name = $this->getSingleAssertionByType("NAME");
+		$nam2 = $o->getSingleAssertionByType("NAME");
+		if ($name==null && $nam2==null) return 0;
+		if ($name==null) return -1;
+		if ($nam2==null) return 1;
+		return strcmp($name->getSortableName(),$nam2->getSortableName());
+	}
+	
+	public function equals($o) {
+		if ($o instanceof Record) {
+			if ($o->getFile()!=$this->getFile()) return false;
+			if ($o->getGedcomId()==$this->getGedcomId()) return true;
+		}
+		return false;
+	}
 	
 	/**
-	 * A convenience property for showing the name of a record
-	 * Will return the primary NAME of an INDI
-	 * Will return the primary NAME of the HUSB + the primary NAME of the WIFE
-	 * Will return the TITL of most other Record types (SOUR, OBJE, REPO)
-	 * @return
+	 * get the remote id of this record given the gedcom id of the datasource
 	 */
-	public function getNameString();
+	public function getRemoteId($sourceId) {
+		$links = getAssertionsByType("RFN");
+		if ($links==null || count($links)==0) return null;
+		foreach($links as $rl) {
+			if ($rl->getDataSourceId()==$sourceId) return $rl->getRemoteId();
+		}
+		return null;
+	}
+	
+	public function getListString() {
+		return $this->listString;
+	}
 
+	public function setListString($listString) {
+		$this->listString= $listString;
+	}
+
+	public function getNameString() {
+	    if ($this->name==null) {
+	    	$titl = $this->getSingleAssertionByType("TITL");
+	    	if ($titl!=null) $this->name = $titl->getDetail();
+	    	else {
+	    		$titl = $this->getSingleAssertionByType("FILE");
+	    		$this->name = $titl->getValue("TITL");
+	    	}
+	    	if ($this->name==null) $this->name = $this->getType().":".$this->getGedcomId();
+	    }
+	    return $this->name;
+    }
 }

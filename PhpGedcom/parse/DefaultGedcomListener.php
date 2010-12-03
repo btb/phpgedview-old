@@ -1,4 +1,5 @@
 <?php 
+namespace PhpGedcom;
 /**
  * A default implementation of the GedcomListener which simply
  * keeps a list of all of the records that it is notified of

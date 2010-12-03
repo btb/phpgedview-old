@@ -1,4 +1,5 @@
 <?php 
+namespace PhpGedcom;
 /**
  * This interface is used to represent a Family record
  * This provides a convenience interface to simplify many of the things we normally do with
@@ -29,31 +30,65 @@ if (!defined('PGC_PHPGEDCOM')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
-
+ 
 require_once 'Record.php';
 
-interface Family extends Record {
-	/**
-	 * Get the spouse of the given person
-	 * @param p
-	 * @return null if there is no spouse
-	 * @throws GedcomDataException when the given individual is not a spouse of this family
-	 */
-	public function getSpouse($p);
-	/**
-	 * Get the Husband of the family
-	 * @return null if no husband exists
-	 */
-	public function getHusband();
-	/**
-	 * Get the Wife of the family
-	 * @return null if no wife exists
-	 */
-	public function getWife();
-	/**
-	 * Get a list of all of the Children in the family
-	 * @return array
-	 */
-	public function getChildren();
+class Family extends Record {
+	private $husband;
+	private $wife;
+	private $children;
+	
+	public function getSpouse($p) {
+		$spouse = null;
+		$husb = $this->getHusband();
+		$wife = $this->getWife();
+		//-- make sure that the person is a spouse in this family
+		if (($husb!=null && $husb->getGedcomId()!=$p->getGedcomId()) 
+				&& ($wife!=null && $wife.getGedcomId()!=$p->getGedcomId())) {
+			throw new Exception("Individual ".$p->getGedcomId()." is not a spouse in this family");
+		}
+		
+		if ($husb!=null && $p->getGedcomId()!=$husb->getGedcomId()) $spouse = $husb;
+		else if ($wife!=null && $p->getGedcomId()!=$wife->getGedcomId()) $spouse = $wife;
+		return $spouse;
+	}
+	
+	public function getHusband() {
+		if ($this->husband==null) {
+			$husb =  $this->getSingleAssertionByType("HUSB");
+			if ($husb!=null) $this->husband = $husb->getReferenceRecord();
+		}
+		return $this->husband;
+	}
+	
+	public function getWife() {
+		if ($this->wife==null) {
+			$wife =  $this->getSingleAssertionByType("WIFE");
+			if ($wife!=null) $this->wife = $wife->getReferenceRecord();
+		}
+		return $this->wife;
+	}
+	
+	public function getChildren() {
+		if ($this->children==null) {
+			$chil = $this->getAssertionsByType("CHIL");
+			$this->children = array();
+			foreach($chil as $link) {
+				$child = $link->getReferenceRecord();
+				$this->children[] = $child;
+			}
+		}
+		return $this->children;
+	}
+
+	public function getNameString() {
+		$name = "";
+		$h = $this->getHusband();
+		$w = $this->getWife();
+		if($h==null) $name = "Unknown + ";
+		else $name = $h->getNameString()." + ";
+		if ($w==null) $name .= "Unknown";
+		else $name .= $w->getNameString();
+		return $name;
+	}
 }
-?>

@@ -1,8 +1,7 @@
-<?php
+<?php 
+namespace PhpGedcom;
 /**
- * AssertionLink Interface
- * An AssertionLink represents all of the level 1 cross-linking
- * references in GEDCOM data such as FAMC, FAMS, CHIL, ASSO, etc.
+ * A base GEDCOM record
  *
  * PhpGedcom Library - Ported from JavaGedcom Library
  * Copyright (C) 2010	John Finlay
@@ -29,32 +28,28 @@ if (!defined('PGC_PHPGEDCOM')) {
 	exit;
 }
 
-require_once 'Assertion.php';
+class AssertionLink extends Assertion {
+	
+	private $referenceId;
 
-interface AssertionLink extends Assertion {
+	public function getReferenceId() {
+		return $this->referenceId;
+	}
 
-	/**
-	 * Returns the GEDCOM ID of the referenced item
-	 * For example the line <code>1 FAMS @F1@</code>
-	 * This method would return "F1"
-	 * @return string
-	 */
-	function getReferenceId();
-
-	/**
-	 * Set the referenced ID
-	 * @param referenceId
-	 */
-	function setReferenceId($referenceId);
-
-	/**
-	 * A convenience method for retrieving the Referenced record
-	 * that this link points to.
-	 * For example the line <code>1 FAMS @F1@</code>
-	 * This method would return the FAM record for "F1"
-	 * @return Record
-	 */
-	function getReferenceRecord();
-
+	public function setReferenceId($referenceId) {
+		$this->referenceId = $referenceId;
+	}
+	
+	public function equals($args0) {
+		if (parent::equals($args0)) {
+			if (strcasecmp($this->getReferenceId(),$args0->getReferenceId())==0) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public function getReferenceRecord() {
+		return $this->getParentRecord()->getFile()->getRecordById($this->getReferenceId());
+	}
 }
-?>

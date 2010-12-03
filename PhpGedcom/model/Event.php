@@ -1,8 +1,7 @@
 <?php 
+namespace PhpGedcom;
 /**
- * Event Interface
- * An Event represents all of the level 1 Facts or Events
- * in GEDCOM data such as BIRT, DEAT, OCCU, etc.
+ * Represents an Event assersion
  *
  * PhpGedcom Library - Ported from JavaGedcom Library
  * Copyright (C) 2010	John Finlay
@@ -28,22 +27,54 @@ if (!defined('PGC_PHPGEDCOM')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
-
+ 
 require_once 'Assertion.php';
 
-interface Event extends Assertion {
+class Event extends Assertion {
+	private $date;
+	private $place;
+	private $detail;
 
-	public function getDate();
+	public function getDate() {
+		return $this->date;
+	}
 
-	public function setDate($date);
+	public function setDate($date) {
+		$this->date = $date;
+	}
 
-	public function getPlace();
+	public function getPlace() {
+		return $this->place;
+	}
 
-	public function setPlace($place);
+	public function setPlace($place) {
+		$this->place = $place;
+	}
 
-	public function getDetail();
+	public function getDetail() {
+		return $this->detail;
+	}
 
-	public function setDetail($detail);
+	public function setDetail($detail) {
+		$this->detail = $detail;
+	}
+
+	public function equals($args0) {
+		if ($args0 == null)
+			return false;
+		if (parent::equals($args0)) {
+			if (($this->getDate() == null && $arg0->getDate() == null)
+					|| GedcomDate::Compare($this->getDate(), $arg0->getDate())==0) {
+				if (($this->getPlace() == null && $arg0->getPlace() == null)
+						|| (strcasecmp($this->getPlace(), $arg0->getPlace())==0)) {
+					if (($this->getDetail() == null && $arg0->getDetail() == null)
+							|| (strcasecmp($this->getDetail(), $arg0->getDetail())==0)) {
+						return true;
+					}
+				}
+			}
+		}
+		return false;
+	}
 
 }
-?>

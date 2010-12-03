@@ -1,4 +1,5 @@
 <?php
+namespace PhpGedcom;
 /**
  * Loads a gedcom file
  *
@@ -107,14 +108,14 @@ class ParseGedcom {
 								switch ($llevel) {
 									case 0:
 										$currentRecord = $this->parsing->processRecord($gedcomFile, $lastRecord);
-									print "New record created ".$currentRecord->getGedcomId()."  :  Memory used: ".(memory_get_usage()/1000)."\n";
+//									print "New record created ".$currentRecord->getGedcomId()."  :  Memory used: ".(memory_get_usage()/1000)."\n";
 										$assertions = $this->generateAssertionsFromRecord($currentRecord, $lastRecord);
 										$currentRecord->setAssertions($assertions);
 										// -- keep track of the highest GEDCOM ids so that
 										// we know what id to use when adding new records
 										$l = substr($ltag, 1);
 										if (!isset($nextids[$currentRecord->getType()])) {
-											$next = new FileNextId();
+											$next = new NextId();
 											$next->setGedFile($gedcomFile);
 											$next->setType($currentRecord->getType());
 											$next->setNextid($l);
@@ -168,7 +169,7 @@ class ParseGedcom {
 							// we know what id to use when adding new records
 							$l = substr($ltag, 1);
 							if (!isset($nextids[$currentRecord->getType()])) {
-								$next = new FileNextId();
+								$next = new NextId();
 								$next->setGedFile($gedcomFile);
 								$next->setType($currentRecord->getType());
 								$next->setNextid($l);

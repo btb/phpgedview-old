@@ -1,4 +1,5 @@
 <?php
+namespace PhpGedcom;
 $oldtime = time();
 require_once '../PhpGedCom.php';
 
@@ -37,13 +38,11 @@ if ($r) {
 		}
 		//-- names
 		else if ($a instanceof Name) {
-			print($a->getType() . ": "
-			. $a->getFullName()."\n");
+			print($a->getType() . ": ". $a->getFullName()."\n");
 		}
 		//-- Assertion Links
 		else if ($a instanceof AssertionLink) {
-			print($a->getType() . ": "
-			. $a->getReferenceId()."\n");
+			print($a->getType() . ": ". $a->getReferenceId()."\n");
 		}
 	}
 
@@ -55,4 +54,4 @@ unset($r);
 unset($gedcom);
 unset($loader);
 print "Memory used: ".memory_get_usage()."\n";
-var_dump($GLOBALS);
+

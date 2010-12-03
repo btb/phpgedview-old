@@ -1,4 +1,5 @@
 <?php 
+namespace PhpGedcom;
 /**
  * Defines the interface for a GedcomListener
  * A GedcomListener will receive notfications when different types of gedcom

@@ -1,4 +1,5 @@
 <?php
+namespace PhpGedcom;
 /**
  * Represents a gedcom file
  * 
@@ -106,7 +107,7 @@ class FileGedcom extends DataSource implements Gedcom {
 	}
 
 	public function addRemoteLinkAssertion($record, $id) {
-		$link = new FileRemoteLink();
+		$link = new RemoteLink();
 		$link->setDataSourceId($this->getRecord()->getGedcomId());
 		$link->setGedcom("1 RFN "
 						. $this->getRecord()->getGedcomId()
@@ -116,7 +117,7 @@ class FileGedcom extends DataSource implements Gedcom {
 		$link->setType("RFN");
 		$record->addAssertion($link);
 		// -- add REFN assertion
-		$refn = new FileEvent();
+		$refn = new Event();
 		$refn->setDetail($id);
 		$refn->setType("REFN");
 		$refn->setGedcom("1 REFN " . $id . "\r\n2 TYPE GEDCOM\r\n");

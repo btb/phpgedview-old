@@ -1,4 +1,5 @@
 <?php 
+namespace PhpGedcom;
 /**
  * Represents a collection of GEDCOM data.  That collection
  * may come from a variety of sources such as a file, a 
