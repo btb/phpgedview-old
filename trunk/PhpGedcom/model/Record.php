@@ -1,5 +1,5 @@
 <?php 
-namespace PhpGedcom;
+namespace PhpGedcom\model;
 /**
  * A base GEDCOM record
  *
@@ -35,11 +35,17 @@ class Record {
 	protected $listString= null;
 	protected $assertions;
 	protected $name;
+	protected $assertionTypes;
 
 	function __construct() {
 		$this->assertions = array();
+		$this->assertionTypes = array();
 	}
 
+	/**
+	 * Return the GEDCOM string representation of this record
+	 * Builds the string from the assertion records
+	 */
 	public function getGedcomRecord() {
 		$sb = "";
 		if ($this->type!="HEAD") $sb.="0 @".$this->gedcomId."@ ".$this->type."\r\n";
@@ -51,23 +57,33 @@ class Record {
 		return $sb;
 	}
 	
+	/**
+	 * Get an array of assertions with the given type
+	 * @param string $type
+	 * @return array
+	 */
 	public function getAssertionsByType($type) {
+		if (isset($this->assertionTypes[$type])) return $this->assertionTypes[$type];
 		$assertionList = array();
 		foreach($this->getAssertions() as $a){
 			if ($a->getType()==$type){
 				$assertionList[] = $a;
 			}
-				
 		}
+		$this->assertionTypes[$type] = $assertionList;
 		return $assertionList;
 		
 	}
 
+	/**
+	 * Get the first assertion matching the given type
+	 * @param string $type
+	 * @return Assertion
+	 */
 	public function getSingleAssertionByType($type) {
-		$li=$this->getAssertionsByType($type);
-		if(count($li)== 0) return null;
-		return $li[0];
-		
+		$l = $this->getAssertionsByType($type);
+		if (count($l)==0) return null;
+		return current($l);
 	}
 	
 	public function getType() {
@@ -90,7 +106,7 @@ class Record {
 		return $this->file;
 	}
 
-	public function setFile($file) {
+	public function setFile(Gedcom $file) {
 		$this->file = $file;
 	}
 
@@ -98,23 +114,28 @@ class Record {
 		return $this->assertions;
 	}
 
-	public function setAssertions($assertions) {
+	public function setAssertions(array $assertions) {
 		$this->assertions = $assertions;
+		$this->assertionTypes = array();
 	}
 
-	public function addAssertion($a) {
+	public function addAssertion(Assertion $a) {
 		$this->assertions[]=$a;
+		if (isset($this->assertionTypes[$a->getType()])) {
+			$this->assertionTypes[$a->getType()][] = $a;
+		}
 	}
 	
-	public function removeAssertion($a) {
+	public function removeAssertion(Assertion $a) {
 		$tmp = array();
 		foreach($this->assertions as $a1) {
 			if (!$a->equals($a1)) $tmp[] = $a1;
 		}
 		$this->assertions = $tmp;
+		if (isset($this->assertionTypes[$a->getType()])) unset($this->assertionTypes[$a->getType()]);
 	}
 	
-	public function compareTo($o) {
+	public function compareTo(Record $o) {
 		$name = $this->getSingleAssertionByType("NAME");
 		$nam2 = $o->getSingleAssertionByType("NAME");
 		if ($name==null && $nam2==null) return 0;

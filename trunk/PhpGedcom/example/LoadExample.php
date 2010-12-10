@@ -9,7 +9,7 @@ print "Memory used: ".memory_get_usage()."\n";
 $loader = new ParseGedcom();
 $filename = "C:\\Users\\jfinlay\\Workspace\\test.ged";
 //-- listen for all level 0 records
-$listener = new DefaultGedcomListener();
+$listener = new DefaultRecordListener();
 $listener->setLevel(0);
 $listener->setTag("*");
 $loader->addListener($listener);

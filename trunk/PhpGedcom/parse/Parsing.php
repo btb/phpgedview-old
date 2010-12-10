@@ -28,10 +28,17 @@ if (!defined('PGC_PHPGEDCOM')) {
 	exit;
 }
 
+use PhpGedcom\model\Record;
+use PhpGedcom\model\Individual;
+use PhpGedcom\model\Family;
+use PhpGedcom\model\Event;
+use PhpGedcom\model\Name;
+use PhpGedcom\model\AssertionLink;
+
 class Parsing {
 
 	private $classTypes;
-	private $dateClass = "PhpGedcom\\GedcomDate";
+	private $dateClass = "PhpGedcom\\model\\GedcomDate";
 
 	public function getClassTypes() {
 		return classTypes;

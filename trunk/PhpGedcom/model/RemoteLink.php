@@ -1,5 +1,5 @@
 <?php 
-namespace PhpGedcom;
+namespace PhpGedcom\model;
 /**
  * An Assertion which represents that the parent record
  * is linked to another record in another data source.

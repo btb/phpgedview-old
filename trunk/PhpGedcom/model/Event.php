@@ -1,5 +1,5 @@
 <?php 
-namespace PhpGedcom;
+namespace PhpGedcom\model;
 /**
  * Represents an Event assersion
  *
@@ -39,7 +39,7 @@ class Event extends Assertion {
 		return $this->date;
 	}
 
-	public function setDate($date) {
+	public function setDate(GedcomDate $date) {
 		$this->date = $date;
 	}
 

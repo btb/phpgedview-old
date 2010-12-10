@@ -28,6 +28,12 @@ if (!defined('PGC_PHPGEDCOM')) {
 	exit;
 }
 
+use PhpGedcom\model\FileGedcom;
+use PhpGedcom\model\Individual;
+use PhpGedcom\model\Family;
+use PhpGedcom\model\Event;
+use PhpGedcom\model\NextId;
+
 class ParseGedcom {
 	private $listeners = array();
 	private $parsing;

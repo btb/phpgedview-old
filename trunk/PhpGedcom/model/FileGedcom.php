@@ -1,5 +1,5 @@
 <?php
-namespace PhpGedcom;
+namespace PhpGedcom\model;
 /**
  * Represents a gedcom file
  * 
@@ -40,7 +40,7 @@ class FileGedcom extends DataSource implements Gedcom {
 		return $this->records;
 	}
 
-	public function setRecords($records) {
+	public function setRecords(array $records) {
 		$this->records = $records;
 	}
 
@@ -80,25 +80,26 @@ class FileGedcom extends DataSource implements Gedcom {
 		return $this->nextids;
 	}
 
-	public function setNextids($nextids) {
+	public function setNextids(array $nextids) {
 		$this->nextids = $nextids;
 	}
 	
+	/**
+	 * (non-PHPdoc)
+	 * @see PhpGedcom\model.Gedcom::getRecordById()
+	 */
 	public function getRecordById($id) {
-		foreach($this->records as $r) {
-			if ($r->getGedcomId()==$id) return $r;
-		}
+		if (isset($this->records[$id])) return $this->records[$id];
 		return null;
 	}
 	
 	/**
-	 * Add a new record to this file
-	 * 
-	 * @param r
+	 * (non-PHPdoc)
+	 * @see PhpGedcom\model.Gedcom::addRecord()
 	 */
-	public function addRecord($r) {
+	public function addRecord(Record $r) {
 		$r->setFile($this);
-		$this->records[] = $r;
+		$this->records[$r->getGedcomId()] = $r;
 		return $r->getGedcomId();
 	}
 	
@@ -106,6 +107,10 @@ class FileGedcom extends DataSource implements Gedcom {
 		$this->setAuthenticated(true);
 	}
 
+	/**
+	 * (non-PHPdoc)
+	 * @see PhpGedcom\model.DataSource::addRemoteLinkAssertion()
+	 */
 	public function addRemoteLinkAssertion($record, $id) {
 		$link = new RemoteLink();
 		$link->setDataSourceId($this->getRecord()->getGedcomId());
@@ -125,7 +130,11 @@ class FileGedcom extends DataSource implements Gedcom {
 		$record->addAssertion($refn);
 	}
 
-	public function deleteRecord($record) {
+	/**
+	 * (non-PHPdoc)
+	 * @see PhpGedcom\model.DataSource::deleteRecord()
+	 */
+	public function deleteRecord(Record $record) {
 		$temp = array();
 		foreach($this->records as $r) {
 			if ($r->getGedcomId()!=$record->getGedcomId()) $temp[] = $r;
@@ -156,6 +165,10 @@ class FileGedcom extends DataSource implements Gedcom {
 		throw new Exception("not implemented");
 	}
 
+	/**
+	 * (non-PHPdoc)
+	 * @see PhpGedcom\model.Gedcom::updateRecord()
+	 */
 	public function updateRecord($record) {
 		$toremove = array();
 		foreach($record->getAssertions() as $a) {

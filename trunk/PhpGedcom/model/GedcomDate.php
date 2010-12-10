@@ -1,5 +1,5 @@
 <?php
-namespace PhpGedcom;
+namespace PhpGedcom\model;
 /**
  * Classes for Gedcom Date/Calendar functionality.
  *

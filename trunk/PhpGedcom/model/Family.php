@@ -1,5 +1,5 @@
 <?php 
-namespace PhpGedcom;
+namespace PhpGedcom\model;
 /**
  * This interface is used to represent a Family record
  * This provides a convenience interface to simplify many of the things we normally do with
@@ -30,15 +30,22 @@ if (!defined('PGC_PHPGEDCOM')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
- 
-require_once 'Record.php';
+
+use PhpGedcom\model\Record;
+use PhpGedcom\model\Individual; 
 
 class Family extends Record {
 	private $husband;
 	private $wife;
 	private $children;
 	
-	public function getSpouse($p) {
+	/**
+	 * Get the spouse from this family using the given individual
+	 * @param Individual $p
+	 * @throws Exception
+	 * @return Individual
+	 */
+	public function getSpouse(Individual $p) {
 		$spouse = null;
 		$husb = $this->getHusband();
 		$wife = $this->getWife();
@@ -53,6 +60,10 @@ class Family extends Record {
 		return $spouse;
 	}
 	
+	/**
+	 * Get the Individual referenced by the HUSB tag
+	 * @return Individual
+	 */
 	public function getHusband() {
 		if ($this->husband==null) {
 			$husb =  $this->getSingleAssertionByType("HUSB");
@@ -61,6 +72,10 @@ class Family extends Record {
 		return $this->husband;
 	}
 	
+	/**
+	 * Get the Individual referenced by the WIFE tag
+	 * @return Individual
+	 */
 	public function getWife() {
 		if ($this->wife==null) {
 			$wife =  $this->getSingleAssertionByType("WIFE");
@@ -69,6 +84,10 @@ class Family extends Record {
 		return $this->wife;
 	}
 	
+	/**
+	 * Get an array of Individual objects representing the children
+	 * @return array
+	 */
 	public function getChildren() {
 		if ($this->children==null) {
 			$chil = $this->getAssertionsByType("CHIL");
@@ -81,6 +100,10 @@ class Family extends Record {
 		return $this->children;
 	}
 
+	/**
+	 * (non-PHPdoc)
+	 * @see PhpGedcom\model.Record::getNameString()
+	 */
 	public function getNameString() {
 		$name = "";
 		$h = $this->getHusband();
