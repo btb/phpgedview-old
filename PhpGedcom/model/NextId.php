@@ -1,5 +1,5 @@
 <?php 
-namespace PhpGedcom;
+namespace PhpGedcom\model;
 /**
  * Base interface for obtaining the next id
  *
@@ -63,7 +63,7 @@ class NextId {
 		return $this->gedFile;
 	}
 
-	public function setGedFile($gedFile) {
+	public function setGedFile(Gedcom $gedFile) {
 		$this->gedFile = $gedFile;
 	}
 	

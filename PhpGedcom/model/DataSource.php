@@ -1,5 +1,5 @@
 <?php 
-namespace PhpGedcom;
+namespace PhpGedcom\model;
 /**
  * Abstract data source
  * A DataSource represents a the place where the GEDCOM data came from.

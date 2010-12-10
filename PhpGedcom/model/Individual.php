@@ -1,5 +1,5 @@
 <?php 
-namespace PhpGedcom;
+namespace PhpGedcom\model;
 /**
  * This interface represents a GEDCOM record of type Individual
  * It is a convenience interface that simplifies some of the standard
@@ -54,6 +54,10 @@ class Individual extends Record {
 		return $name;
 	}
 
+	/**
+	 * Get an array of the child Families
+	 * @return array
+	 */
 	public function getChildFamilies() {
 		if ($this->famc==null) {
 			$this->famc = array();

@@ -1,5 +1,5 @@
 <?php 
-namespace PhpGedcom;
+namespace PhpGedcom\model;
 /**
  * Represents a collection of GEDCOM data.  That collection
  * may come from a variety of sources such as a file, a 
@@ -56,7 +56,7 @@ interface Gedcom {
 	 * Set the entire collection of records
 	 * @param records
 	 */
-	public function setRecords($records);
+	public function setRecords(array $records);
 
 	/**
 	 * Retrieve an ID which uniquely identifies this GEDCOM
@@ -109,7 +109,7 @@ interface Gedcom {
 	 * Update the nextids with a new map
 	 * @param nextids
 	 */
-	public function setNextids($nextids);
+	public function setNextids(array $nextids);
 
 	/**
 	 * Retrieve a level 0 record by its GEDCOM XREF ID.
@@ -117,7 +117,7 @@ interface Gedcom {
 	 * the Gedcom data.  This includes being unique across
 	 * level 0 data types.
 	 * @param id
-	 * @return
+	 * @return Record
 	 */
 	public function getRecordById($id);
 		
@@ -127,13 +127,13 @@ interface Gedcom {
 	 * @param record
 	 * @return	A string or status code defined by the implementing system, some systems may return a new ID for the record
 	 */
-	public function updateRecord($record);
+	public function updateRecord(Record $record);
 	
 	/**
 	 * Add a new Record to the Gedcom.
-	 * @param r
+	 * @param Record r
 	 * @return	the ID of the new Record that was just added
 	 */
-	public function addRecord($r);
+	public function addRecord(Record $r);
 }
 ?>

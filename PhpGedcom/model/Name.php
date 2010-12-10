@@ -1,5 +1,5 @@
 <?php 
-namespace PhpGedcom;
+namespace PhpGedcom\model;
 /**
  * Name Interface
  * Represents the Name structure in GEDCOM.

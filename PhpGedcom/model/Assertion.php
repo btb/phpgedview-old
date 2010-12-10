@@ -1,5 +1,5 @@
 <?php 
-namespace PhpGedcom;
+namespace PhpGedcom\model;
 /**
  * A base GEDCOM record
  *
@@ -81,24 +81,7 @@ abstract class Assertion {
 	}
 	
 	public function compareTo($args0) {
-		if ($this instanceof Name){
-			if ($args0 instanceof Name){
-				return strcmp($this->getType(),$args0->getType());
-			} else{
-				return -1;
-			}
-		} else if ($this instanceof Event){
-			if ($args0 instanceof Event){
-				$num = strcmp($this->getType(), $args0->getType());
-				if ($num != 0){
-					return $num;
-				} else {
-					return strcmp($this->getGedcom(), $args0->getGedcom());
-				}
-			} else {
-				return -1;
-			}
-		} else {
+		if ($args0 instanceof Assertion) {
 			$num = strcmp($this->getType(), $args0->getType());
 			if ($num != 0){
 				return $num;
@@ -106,13 +89,14 @@ abstract class Assertion {
 				return strcmp($this->getGedcom(), $args0->getGedcom());
 			}
 		}
+		return 1;
 	}
 
 	public function getParentRecord() {
 		return $this->parentRecord;
 	}
 
-	public function setParentRecord($parentReccord) {
+	public function setParentRecord(Record $parentReccord) {
 		$this->parentRecord = $parentReccord;
 	}
 
@@ -124,6 +108,11 @@ abstract class Assertion {
 		$this->changeCode = $changeCode;
 	}
 	
+	/**
+	 * get the GEDCOM value of a particular tag
+	 * @param string $tag
+	 * @return string
+	 */
 	public function getValue($tag) {
 		if ($this->values==null) {
 			$this->values = array();

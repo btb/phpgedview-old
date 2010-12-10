@@ -37,5 +37,5 @@ require_once 'model/RemoteLink.php';
 
 require_once 'parse/GedcomListener.php';
 require_once 'parse/ParseGedcom.php';
-require_once 'parse/DefaultGedcomListener.php';
+require_once 'parse/DefaultRecordListener.php';
 require_once 'parse/Parsing.php';
