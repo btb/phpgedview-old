@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PGVReport access="PRIV_NONE" icon="source">
+<!-- $Id$ -->
 	<PGVRTitle><PGVRvar var="pgv_lang[fact_sources_report]" /></PGVRTitle>
 	<PGVRDescription>Prints a list of individuals and families with a specific source for facts</PGVRDescription>
 
