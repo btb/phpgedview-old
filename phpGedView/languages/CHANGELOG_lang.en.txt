@@ -43,6 +43,9 @@ VERSION 4.2.4
 
 ?$pgv_lang["whatever"]								dd Monthname, year		Change	codes and comments
 ----------------------------------------------------------------------------------------
+-$pgv_lang["show_basic"]							26 Dec 2010				D
++$pgv_lang["ahnentafel_cremated_m"]					26 Dec 2010				A
++$pgv_lang["ahnentafel_cremated_f"]					26 Dec 2010				A
 -$pgv_lang["accesskeys"]                            8 Nov 2010				D
 -$pgv_lang["accesskey_skip_to_content"]             8 Nov 2010				D
 -$pgv_lang["accesskey_search"]                      8 Nov 2010				D
