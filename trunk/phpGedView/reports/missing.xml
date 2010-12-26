@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PGVReport access="PRIV_NONE" icon="indis">
+<!-- $Id$ -->
 	<PGVRTitle><PGVRvar var="pgv_lang[missing_facts_report]" /></PGVRTitle>
 	<PGVRDescription>Prints a list of individuals who has missing information</PGVRDescription>
 	<PGVRInput name="pid" type="text" default="" lookup="INDI"><PGVRvar var="pgv_lang[enter_pid]" /></PGVRInput>
