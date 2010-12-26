@@ -5,7 +5,7 @@
  * used by the SAX parser to generate HTML reports from the XML report file.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -1315,12 +1315,13 @@ class PGVRFootnoteHTML extends PGVRFootnote {
 	* @param PGVReportBaseHTML &$html
 	*/
 	function renderFootnote(&$html) {
-		
+
 		if ($html->getCurrentStyle() != $this->styleName) {
 			$html->setCurrentStyle($this->styleName);
 		}
 
 		$temptext = str_replace("#PAGENUM#", $html->PageNo(), $this->text);
+		$temptext = str_replace(array('«', '»'), array('<u>', '</u>'), $temptext);		// underline «title» part of Source item
 		echo "\n<div><a name=\"footnote", $this->num, "\"></a>";
 		$html->write($this->num. ". ". $temptext);
 		echo "</div>";
@@ -1352,7 +1353,7 @@ class PGVRFootnoteHTML extends PGVRFootnote {
 	/**
 	* Get the width of text
 	* Breaks up a text into lines if needed
-	* 
+	*
 	* @param PGVReportBaseHTML &$html
 	* @return array
 	*/

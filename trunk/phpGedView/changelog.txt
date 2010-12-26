@@ -9,6 +9,12 @@
 =====================================================================
 
 Version 4.2.4
+ - Fixed: [ 3121290 ] Reports: Source list damaged (canajun2eh)
+ - Fixed: [ 3119940 ] Reports: "Place" text not needed in front of places (canajun2eh)
+ - Fixed: [ 3119928 ] Reports: Cremation is not reported (canajun2eh)
+ - Fixed: [ 3119921 ] Reports: Missing pronoun in Descendancy report (canajun2eh)
+ - Fixed: [ 3119915 ] Reports: Incorrect Source footnote format (canajun2eh)
+ - Fixed: [ 3119907 ] Reports: Not showing Level 2 SOUR sub-records on NAME record (canajun2eh)
  - Fixed: Incorrect URL when using Geonames search in Autocomplete of place names (canajun2eh)
  - Deleted: Keyboard Shortcuts feature (canajun2eh)
  - Changed: New rules for finding highlighted object on charts, Indi, and Family pages (canajun2eh)

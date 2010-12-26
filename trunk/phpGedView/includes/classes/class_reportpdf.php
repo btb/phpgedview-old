@@ -1292,6 +1292,7 @@ class PGVRFootnotePDF extends PGVRFootnote {
 			$pdf->setCurrentStyle($this->styleName);
 		}
 		$temptext = str_replace("#PAGENUM#", $pdf->PageNo(), $this->text);
+		$temptext = str_replace(array('«', '»'), array('<u>', '</u>'), $temptext);		// underline «title» part of Source item
 		// Set the link to this y/page position
 		$pdf->SetLink($this->addlink, -1, -1);
 		// Print first the source number

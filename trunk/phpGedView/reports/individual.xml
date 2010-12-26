@@ -6,9 +6,9 @@
 	<PGVRInput name="pid" lookup="INDI" type="text" default=""><PGVRvar var="pgv_lang[enter_pid]" /></PGVRInput>
 	<PGVRInput name="sources" type="checkbox" default="1"><PGVRvar var="pgv_lang[show_sources]" /></PGVRInput>
 	<PGVRInput name="notes" type="checkbox" default="1"><PGVRvar var="pgv_lang[show_notes]" /></PGVRInput>
-	<PGVRInput name="photos" type="select" default="highlighted" options="none,all,highlighted"><PGVRvar var="pgv_lang[show_photos]"/></PGVRInput>
+	<PGVRInput name="photos" type="select" default="highlighted" options="none,all,highlighted"><PGVRvar var="pgv_lang[show_photos]" /></PGVRInput>
 	<PGVRInput name="pageSize" type="select" default="A4" options="letter,A3,A4,legal"><PGVRvar var="pgv_lang[page_size]" /></PGVRInput>
-	<PGVRInput name="fonts" type="select" default="dejavusans" options="arialunicid0,dejavusans,helvetica"><PGVRvar var="pgv_lang[font]"/></PGVRInput>
+	<PGVRInput name="fonts" type="select" default="dejavusans" options="arialunicid0,dejavusans,helvetica"><PGVRvar var="pgv_lang[font]" /></PGVRInput>
 
 	<!-- Header -->
 	<PGVRStyle name="header" font="$fonts" size="18" />
@@ -21,7 +21,7 @@
 	<!-- Links to sources - required style name by the generator -->
 	<PGVRStyle name="footnotenum" font="$fonts" size="6" />
 	<!-- Date text -->
-	<PGVRStyle name="date" font="$fonts" size="8"/>
+	<PGVRStyle name="date" font="$fonts" size="8" />
 	<PGVRStyle name="label1" font="$fonts" size="9" />
 	<PGVRStyle name="name" font="$fonts" size="10" />
 	<PGVRStyle name="name1" font="$fonts" size="14" />
@@ -29,7 +29,7 @@
 
 	<PGVRSetVar name="ignore" value="CHAN,NAME,SEX,SOUR,NOTE,OBJE,FAMC,FAMS,TITL,CHIL,HUSB,WIFE,_UID,_PGV_OBJS" />
 	<!-- Section title background color -->
-	<PGVRSetVar name="stbgcolor" value="#AAAAAA"/>
+	<PGVRSetVar name="stbgcolor" value="#AAAAAA" />
 	<!-- set the default widths -->
 	<PGVRSetVar name="width" value="433" />
 	<PGVRSetVar name="width1" value="418" />
@@ -38,9 +38,9 @@
 	<PGVRSetVar name="pwidth" value="436" />
 	<!-- change the widths for no pictures -->
 	<PGVRif condition="$photos=='none'">
-		<PGVRSetVar name="width" value="0"/>
-		<PGVRSetVar name="width1" value="0"/>
-		<PGVRSetVar name="width2" value="0"/>
+		<PGVRSetVar name="width" value="0" />
+		<PGVRSetVar name="width1" value="0" />
+		<PGVRSetVar name="width2" value="0" />
 	</PGVRif>
 	<!-- New Page for Sources controller if SOUR exist -->
 	<PGVRSetVar name="source_exist" value="0" />
@@ -53,7 +53,7 @@
 		<PGVRBody>
 			<!-- set the gedcom context for this individual -->
 			<PGVRGedcom id="$pid">
-				<PGVRCell newline="1" style="name1"><PGVRGetPersonName id=""/></PGVRCell>
+				<PGVRCell newline="1" style="name1"><PGVRGetPersonName id="" /></PGVRCell>
 				<!-- show the persons images -->
 				<PGVRif condition="$photos=='all'">
 					<!-- This is an image not a text, so don't use text padding
@@ -62,13 +62,13 @@
 					and "trick" the X-position back to the margin with a newline -->
 					<PGVRTextBox left="$pwidth" newline="1" pagecheck="0" padding="0" reseth="1" width="80">
 						<PGVRRepeatTag tag="OBJE">
-							<PGVRImage file="@FILE" width="80" ln="N"/>
+							<PGVRImage file="@FILE" width="80" ln="N" />
 						</PGVRRepeatTag>
 					</PGVRTextBox>
 				</PGVRif>
 				<!-- show the person's Highlighted Image -->
 				<PGVRif condition="$photos=='highlighted'">
-					<PGVRHighlightedImage left="$pwidth" width="80"/>
+					<PGVRHighlightedImage left="$pwidth" width="80" />
 				</PGVRif>
 
 				<!-- print the person's facts -->
@@ -76,19 +76,34 @@
 					<PGVRText style="label1"><PGVRvar var="pgv_lang[personal_facts]" /></PGVRText>
 				</PGVRTextBox>
 				
-				<!-- print level 1 sources -->
 				<PGVRTextBox border="1" width="$width" height="16" newline="1">
-					<PGVRText style="name"><PGVRGetPersonName id=""/> </PGVRText>
+					<PGVRText style="name"><PGVRGetPersonName id="" /> </PGVRText>
 					<PGVRif condition="$sources==1">
+						<!-- print level 1 sources -->
 						<PGVRRepeatTag tag="SOUR">
 							<PGVRFootnote>
 								<PGVRGedcom id="@SOUR">
-									<PGVRGedcomValue tag="TITL" />
+									<PGVRif condition="@AUTH!=''"><PGVRGedcomValue tag="AUTH" />, </PGVRif>
+									«<PGVRGedcomValue tag="TITL" />»
+									<PGVRif condition="@PUBL!=''"> (<PGVRGedcomValue tag="PUBL" />)</PGVRif>
 								</PGVRGedcom>
-								<PGVRif condition="@PAGE!=''">: </PGVRif>
-								<PGVRGedcomValue tag="SOUR:PAGE"/> <PGVRGedcomValue tag="SOUR:DATA:TEXT"/>	
+								<PGVRif condition="@PAGE!=''">: <PGVRGedcomValue tag="SOUR:PAGE" /></PGVRif>
+								 <PGVRGedcomValue tag="SOUR:DATA:TEXT" />	
 							</PGVRFootnote>
-							<PGVRSetVar name="source_exist" value="1"/>
+							<PGVRSetVar name="source_exist" value="1" />
+						</PGVRRepeatTag>
+						<!-- print level 2 sources attached to NAME -->
+						<PGVRRepeatTag tag="NAME:SOUR">
+							<PGVRFootnote>
+								<PGVRGedcom id="@SOUR">
+									<PGVRif condition="@AUTH!=''"><PGVRGedcomValue tag="AUTH" />, </PGVRif>
+									«<PGVRGedcomValue tag="TITL" />»
+									<PGVRif condition="@PUBL!=''"> (<PGVRGedcomValue tag="PUBL" />)</PGVRif>
+								</PGVRGedcom>
+								<PGVRif condition="@PAGE!=''">: <PGVRGedcomValue tag="SOUR:PAGE" /></PGVRif>
+								 <PGVRGedcomValue tag="SOUR:DATA:TEXT" />	
+							</PGVRFootnote>
+							<PGVRSetVar name="source_exist" value="1" />
 						</PGVRRepeatTag>
 					</PGVRif>
 				</PGVRTextBox>
@@ -96,17 +111,19 @@
 					<PGVRTextBox border="1" width="$dwidth" height="16">
 						<PGVRText style="pagenum"><PGVRvar var="factarray[@fact]" />  </PGVRText>
 						<PGVRText style="text"><PGVRGedcomValue tag="@fact:DATE" /> </PGVRText>
-						<!-- look for fact level 2 sources -->
 						<PGVRif condition="$sources==1">
 							<PGVRRepeatTag tag="@fact:SOUR">
+							<!-- print fact level 2 sources -->
 								<PGVRFootnote>
 									<PGVRGedcom id="@SOUR">
-										<PGVRGedcomValue tag="TITL" />
+										<PGVRif condition="@AUTH!=''"><PGVRGedcomValue tag="AUTH" />, </PGVRif>
+										«<PGVRGedcomValue tag="TITL" />»
+										<PGVRif condition="@PUBL!=''"> (<PGVRGedcomValue tag="PUBL" />)</PGVRif>
 									</PGVRGedcom>
-									<PGVRif condition="@PAGE!=''">: </PGVRif>
-									<PGVRGedcomValue tag="SOUR:PAGE"/> <PGVRGedcomValue tag="SOUR:DATA:TEXT"/>	
+									<PGVRif condition="@PAGE!=''">: <PGVRGedcomValue tag="SOUR:PAGE" /></PGVRif>
+									 <PGVRGedcomValue tag="SOUR:DATA:TEXT" />	
 								</PGVRFootnote>
-								<PGVRSetVar name="source_exist" value="1"/>
+								<PGVRSetVar name="source_exist" value="1" />
 							</PGVRRepeatTag>
 						</PGVRif>
 					</PGVRTextBox>
@@ -132,9 +149,6 @@
 					<!-- facts without descriptions -->
 					<PGVRif condition="@desc==''">
 						<PGVRTextBox border="1" width="$width2" height="16" newline="1">
-							<PGVRif condition="@PLAC!=''">
-								<PGVRText style="pagenum"><PGVRvar var="factarray[PLAC]" />   </PGVRText>
-							</PGVRif>
 							<PGVRText style="text">
 								<PGVRGedcomValue tag="@fact:PLAC" /> <PGVRGedcomValue tag="@fact:TEMP" />
 							</PGVRText>
@@ -153,19 +167,19 @@
 
 				<!-- print any level 1 notes -->
 				<PGVRif condition="($notes==1) and (@NOTE!='')">
-					<PGVRTextBox width="15" height="16" newline="1" padding="0"/>
+					<PGVRTextBox width="15" height="16" newline="1" padding="0" />
 					<PGVRTextBox border="1" width="$width" height="16" newline="1" bgcolor="$stbgcolor">
 						<PGVRText style="label1"><PGVRvar var="pgv_lang[notes]" /></PGVRText>
 					</PGVRTextBox>
 					<PGVRRepeatTag tag="NOTE">
 						<PGVRTextBox border="1" width="$width" height="16" newline="1">
-							<PGVRText style="pagenum"><PGVRGedcomValue tag="NOTE" /><br/></PGVRText>
+							<PGVRText style="pagenum"><PGVRGedcomValue tag="NOTE" /><br /></PGVRText>
 						</PGVRTextBox>
 					</PGVRRepeatTag>
 				</PGVRif>
 
 				<!-- print family with parents and siblings -->
-				<PGVRTextBox width="15" height="16" newline="1" padding="0"/>
+				<PGVRTextBox width="15" height="16" newline="1" padding="0" />
 				<PGVRTextBox border="1" width="$width" height="16" newline="1" bgcolor="$stbgcolor">
 					<PGVRText style="label1"><PGVRvar var="pgv_lang[as_child]" /></PGVRText>
 				</PGVRTextBox>
@@ -180,12 +194,14 @@
 									<PGVRRepeatTag tag="SOUR">
 										<PGVRFootnote>
 											<PGVRGedcom id="@SOUR">
-												<PGVRGedcomValue tag="TITL" />
+												<PGVRif condition="@AUTH!=''"><PGVRGedcomValue tag="AUTH" />, </PGVRif>
+												«<PGVRGedcomValue tag="TITL" />»
+												<PGVRif condition="@AUTH!=''">»</PGVRif>
 											</PGVRGedcom>
-											<PGVRif condition="@PAGE!=''">: </PGVRif>
-											<PGVRGedcomValue tag="SOUR:PAGE"/> <PGVRGedcomValue tag="SOUR:DATA:TEXT"/>	
+											<PGVRif condition="@PAGE!=''">: <PGVRGedcomValue tag="SOUR:PAGE" /></PGVRif>
+											 <PGVRGedcomValue tag="SOUR:DATA:TEXT" />	
 										</PGVRFootnote>
-										<PGVRSetVar name="source_exist" value="1"/>
+										<PGVRSetVar name="source_exist" value="1" />
 									</PGVRRepeatTag>
 								</PGVRif>
 								<PGVRText style="text"> (<PGVRvar var="factarray[BIRT]" />: <PGVRGedcomValue tag="BIRT:DATE" /> <PGVRGedcomValue tag="BIRT:PLAC" /> - <PGVRvar var="factarray[DEAT]" />: <PGVRGedcomValue tag="DEAT:DATE" /> <PGVRGedcomValue tag="DEAT:PLAC" />)</PGVRText>
@@ -200,12 +216,14 @@
 									<PGVRRepeatTag tag="SOUR">
 										<PGVRFootnote>
 											<PGVRGedcom id="@SOUR">
-												<PGVRGedcomValue tag="TITL" />
+												<PGVRif condition="@AUTH!=''"><PGVRGedcomValue tag="AUTH" />, </PGVRif>
+												«<PGVRGedcomValue tag="TITL" />»
+												<PGVRif condition="@PUBL!=''"> (<PGVRGedcomValue tag="PUBL" />)</PGVRif>
 											</PGVRGedcom>
-											<PGVRif condition="@PAGE!=''">: </PGVRif>
-											<PGVRGedcomValue tag="SOUR:PAGE"/> <PGVRGedcomValue tag="SOUR:DATA:TEXT"/>	
+											<PGVRif condition="@PAGE!=''">: <PGVRGedcomValue tag="SOUR:PAGE" /></PGVRif>
+											 <PGVRGedcomValue tag="SOUR:DATA:TEXT" />	
 										</PGVRFootnote>
-										<PGVRSetVar name="source_exist" value="1"/>
+										<PGVRSetVar name="source_exist" value="1" />
 									</PGVRRepeatTag>
 								</PGVRif>
 								<PGVRText style="text"> (<PGVRvar var="factarray[BIRT]" />: <PGVRGedcomValue tag="BIRT:DATE" /> <PGVRGedcomValue tag="BIRT:PLAC" /> - <PGVRvar var="factarray[DEAT]" />: <PGVRGedcomValue tag="DEAT:DATE" /> <PGVRGedcomValue tag="DEAT:PLAC" />)</PGVRText>
@@ -226,19 +244,21 @@
 									</PGVRif>
 									<!-- Unknown gender -->
 									<PGVRif condition="(@SEX=='U') or (@SEX=='')">
-										<PGVRText style="label1"><PGVRvar var="factarray[SEX]"/> <PGVRvar var="pgv_lang[stat_unknown]"/>  </PGVRText>
+										<PGVRText style="label1"><PGVRvar var="factarray[SEX]" /> <PGVRvar var="pgv_lang[stat_unknown]" />  </PGVRText>
 									</PGVRif>
 									<PGVRText style="name"> <PGVRGetPersonName id="" /> </PGVRText>
 									<PGVRif condition="$sources==1">
 										<PGVRRepeatTag tag="SOUR">
 											<PGVRFootnote>
 												<PGVRGedcom id="@SOUR">
-													<PGVRGedcomValue tag="TITL" />
+													<PGVRif condition="@AUTH!=''"><PGVRGedcomValue tag="AUTH" />, </PGVRif>
+													«<PGVRGedcomValue tag="TITL" />»
+													<PGVRif condition="@AUTH!=''">»</PGVRif>
 												</PGVRGedcom>
-												<PGVRif condition="@PAGE!=''">: </PGVRif>
-												<PGVRGedcomValue tag="SOUR:PAGE"/> <PGVRGedcomValue tag="SOUR:DATA:TEXT"/>	
+												<PGVRif condition="@PAGE!=''">: <PGVRGedcomValue tag="SOUR:PAGE" /></PGVRif>
+												 <PGVRGedcomValue tag="SOUR:DATA:TEXT" />	
 											</PGVRFootnote>
-											<PGVRSetVar name="source_exist" value="1"/>
+											<PGVRSetVar name="source_exist" value="1" />
 										</PGVRRepeatTag>
 									</PGVRif>
 									<PGVRText style="text"> (<PGVRvar var="factarray[BIRT]" />: <PGVRGedcomValue tag="BIRT:DATE" /> <PGVRGedcomValue tag="BIRT:PLAC" /> - <PGVRvar var="factarray[DEAT]" />: <PGVRGedcomValue tag="DEAT:DATE" /> <PGVRGedcomValue tag="DEAT:PLAC" />)</PGVRText>
@@ -254,7 +274,7 @@
 					<PGVRGedcom id="@FAMS">
 						<!-- print wife if person is husband -->
 						<PGVRif condition="$pid==@HUSB">
-							<PGVRTextBox width="15" height="16" newline="1" padding="0"/>
+							<PGVRTextBox width="15" height="16" newline="1" padding="0" />
 							<PGVRTextBox border="1" width="$width" height="16" newline="1" bgcolor="$stbgcolor">
 								<PGVRText style="label1"><PGVRvar var="pgv_lang[family_with]" /> <PGVRvar var="pgv_lang[wife]" /></PGVRText>
 							</PGVRTextBox>
@@ -262,7 +282,7 @@
 						</PGVRif>
 						<!-- print husband if person is wife -->
 						<PGVRif condition="$pid==@WIFE">
-							<PGVRTextBox width="15" height="16" newline="1" padding="0"/>
+							<PGVRTextBox width="15" height="16" newline="1" padding="0" />
 							<PGVRTextBox border="1" width="$width" height="16" newline="1" bgcolor="$stbgcolor">
 								<PGVRText style="label1"><PGVRvar var="pgv_lang[family_with]" /> <PGVRvar var="pgv_lang[husband]" /></PGVRText>
 							</PGVRTextBox>
@@ -283,12 +303,14 @@
 									<PGVRRepeatTag tag="SOUR">
 										<PGVRFootnote>
 											<PGVRGedcom id="@SOUR">
-												<PGVRGedcomValue tag="TITL" />
+												<PGVRif condition="@AUTH!=''"><PGVRGedcomValue tag="AUTH" />, </PGVRif>
+												«<PGVRGedcomValue tag="TITL" />»
+												<PGVRif condition="@PUBL!=''"> (<PGVRGedcomValue tag="PUBL" />)</PGVRif>
 											</PGVRGedcom>
-											<PGVRif condition="@PAGE!=''">: </PGVRif>
-											<PGVRGedcomValue tag="SOUR:PAGE"/> <PGVRGedcomValue tag="SOUR:DATA:TEXT"/>	
+											<PGVRif condition="@PAGE!=''">: <PGVRGedcomValue tag="SOUR:PAGE" /></PGVRif>
+											 <PGVRGedcomValue tag="SOUR:DATA:TEXT" />	
 										</PGVRFootnote>
-										<PGVRSetVar name="source_exist" value="1"/>
+										<PGVRSetVar name="source_exist" value="1" />
 									</PGVRRepeatTag>
 								</PGVRif>
 								<PGVRText style="text"> (<PGVRvar var="factarray[BIRT]" />: <PGVRGedcomValue tag="BIRT:DATE" /> <PGVRGedcomValue tag="BIRT:PLAC" /> - <PGVRvar var="factarray[DEAT]" />: <PGVRGedcomValue tag="DEAT:DATE" /> <PGVRGedcomValue tag="DEAT:PLAC" />)</PGVRText>
@@ -309,19 +331,21 @@
 									</PGVRif>
 									<!-- Unknown gender -->
 									<PGVRif condition="(@SEX=='U') or (@SEX=='')">
-										<PGVRText style="label1"><PGVRvar var="factarray[SEX]"/> <PGVRvar var="pgv_lang[stat_unknown]"/>  </PGVRText>
+										<PGVRText style="label1"><PGVRvar var="factarray[SEX]" /> <PGVRvar var="pgv_lang[stat_unknown]" />  </PGVRText>
 									</PGVRif>
 									<PGVRText style="name"> <PGVRGetPersonName id="" /> </PGVRText>
 									<PGVRif condition="$sources==1">
 										<PGVRRepeatTag tag="SOUR">
 											<PGVRFootnote>
 												<PGVRGedcom id="@SOUR">
-													<PGVRGedcomValue tag="TITL" />
+													<PGVRif condition="@AUTH!=''"><PGVRGedcomValue tag="AUTH" />, </PGVRif>
+													«<PGVRGedcomValue tag="TITL" />»
+													<PGVRif condition="@PUBL!=''"> (<PGVRGedcomValue tag="PUBL" />)</PGVRif>
 												</PGVRGedcom>
-												<PGVRif condition="@PAGE!=''">: </PGVRif>
-												<PGVRGedcomValue tag="SOUR:PAGE"/> <PGVRGedcomValue tag="SOUR:DATA:TEXT"/>	
+												<PGVRif condition="@PAGE!=''">: <PGVRGedcomValue tag="SOUR:PAGE" /></PGVRif>
+												 <PGVRGedcomValue tag="SOUR:DATA:TEXT" />	
 											</PGVRFootnote>
-											<PGVRSetVar name="source_exist" value="1"/>
+											<PGVRSetVar name="source_exist" value="1" />
 										</PGVRRepeatTag>
 									</PGVRif>
 									<PGVRText style="text"> (<PGVRvar var="factarray[BIRT]" />: <PGVRGedcomValue tag="BIRT:DATE" /> <PGVRGedcomValue tag="BIRT:PLAC" /> - <PGVRvar var="factarray[DEAT]" />: <PGVRGedcomValue tag="DEAT:DATE" /> <PGVRGedcomValue tag="DEAT:PLAC" />)</PGVRText>
@@ -333,8 +357,9 @@
 				</PGVRRepeatTag>
 			</PGVRGedcom>
 
-			<!-- print the sources -->
-			<PGVRif condition="($sources==1) and ($source_exist==1)">
+			<!-- if the sources were on, print the source citations as footnotes -->
+			<PGVRif condition="$source_exist==1">
+				<PGVRNewPage />
 				<PGVRTextBox width="$width" newline="1">
 					<PGVRText style="name1"><PGVRvar var="pgv_lang[sources]" /><br /><br /></PGVRText>
 					<PGVRFootnoteTexts />
