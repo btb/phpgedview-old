@@ -136,12 +136,12 @@ $worms = array(
 $quitReason = "";
 
 // check for attempt to redirect
-if (preg_match("/=.*:\/\//i", rawurldecode($_SERVER["REQUEST_URI"]))) {
+if (preg_match("~=.*://~", rawurldecode($_SERVER["REQUEST_URI"]))) {
 	$quitReason = "Embedded URL detected";
 }
 
 // check for attempt to escape from the PGV directory
-if (preg_match("~\.\./~", rawurldecode($_SERVER["REQUEST_URI"]))) {
+if (preg_match("~\.\.(/|\\\)~", rawurldecode($_SERVER["REQUEST_URI"]))) {
 	$quitReason = "Attempt escape from PGV directory";
 }
 
