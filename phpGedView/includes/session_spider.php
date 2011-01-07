@@ -3,7 +3,7 @@
  * Startup and session logic for handling Bots and Spiders
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2008 to 2010  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2008 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -138,6 +138,11 @@ $quitReason = "";
 // check for attempt to redirect
 if (preg_match("/=.*:\/\//i", rawurldecode($_SERVER["REQUEST_URI"]))) {
 	$quitReason = "Embedded URL detected";
+}
+
+// check for attempt to escape from the PGV directory
+if (preg_match("~\.\./~", rawurldecode($_SERVER["REQUEST_URI"]))) {
+	$quitReason = "Attempt escape from PGV directory";
 }
 
 // check for worms and bad bots
