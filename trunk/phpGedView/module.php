@@ -3,7 +3,7 @@
  * Module system for adding features to phpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -35,22 +35,32 @@ define('PGV_MOD_OO', 2);
 // Module system version 2, enhanced security and better output control
 define('PGV_MOD_V2', 3);
 
-if(!isset($_REQUEST['mod']))
+// Sanitize all input
+$mod		= safe_REQUEST($_REQUEST, 'mod',		PGV_REGEX_MODNAME, '');
+$name		= safe_REQUEST($_REQUEST, 'name',		PGV_REGEX_MODNAME, '');
+$pgvaction	= safe_REQUEST($_REQUEST, 'pgvaction',	PGV_REGEX_MODNAME, '');
+$class		= safe_REQUEST($_REQUEST, 'class',		PGV_REGEX_MODNAME, '');
+$method		= safe_REQUEST($_REQUEST, 'method',		PGV_REGEX_MODNAME, '');
+if (empty($mod))		unset($mod);
+if (empty($name))		unset($name);
+if (empty($pgvaction))	unset($pgvaction);
+if (empty($class))		unset($class);
+if (empty($method))		unset($method);
+
+if(!isset($mod))
 {
 	// PGV_MOD_NUKE
-	if (isset ($_REQUEST['name']))
-	{
-		$_REQUEST['mod'] = $_REQUEST['name'];
-	}
+	if (isset($name)) $mod = $name;
+	else $mod = 'index';
 }
-if(file_exists('modules/'.$_REQUEST['mod'].'.php'))
+if(file_exists('modules/'.$mod.'.php'))
 {
-	$modinfo = parse_ini_file('modules/'.$_REQUEST['mod'].'.php', true);
+	$modinfo = parse_ini_file('modules/'.$mod.'.php', true);
 }
 // v2 modules
-elseif(file_exists("modules/{$_REQUEST['mod']}/pgv_version.php"))
+elseif(file_exists("modules/{$mod}/pgv_version.php"))
 {
-	$modinfo = parse_ini_file("modules/{$_REQUEST['mod']}/pgv_version.php", true);
+	$modinfo = parse_ini_file("modules/{$mod}/pgv_version.php", true);
 }
 else
 {
@@ -62,34 +72,34 @@ switch($modinfo['Module']['type'])
 {
 	case PGV_MOD_SIMPLE:
 	{
-		if (!isset ($_REQUEST['pgvaction']))
+		if (!isset ($pgvaction))
 		{
-			$_REQUEST['pgvaction'] = 'index';
+			$pgvaction = 'index';
 		}
-		if (!file_exists(PGV_ROOT.'modules/'.$_REQUEST['mod'].'/'.$_REQUEST['pgvaction'].'.php'))
+		if (!file_exists(PGV_ROOT.'modules/'.$mod.'/'.$pgvaction.'.php'))
 		{
-			$_REQUEST['pgvaction'] = 'index';
+			$pgvaction = 'index';
 		}
-		require_once PGV_ROOT.'modules/'.$_REQUEST['mod'].'/'.$_REQUEST['pgvaction'].'.php';
+		require_once PGV_ROOT.'modules/'.$mod.'/'.$pgvaction.'.php';
 		break;
 	}
 	case PGV_MOD_OO:
 	{
-		if (!isset ($_REQUEST['method']))
+		if (!isset ($method))
 		{
-			$_REQUEST['method'] = 'main';
+			$method = 'main';
 		}
-		if (!isset ($_REQUEST['class']))
+		if (!isset ($class))
 		{
-			$_REQUEST['class'] = $_REQUEST['mod'];
+			$class = $mod;
 		}
-		require_once PGV_ROOT.'modules/'.$_REQUEST['mod'].'/'.$_REQUEST['class'].'.php';
-		$mod = new $_REQUEST['class']();
-		if (!method_exists($mod, $_REQUEST['method']))
+		require_once PGV_ROOT.'modules/'.$mod.'/'.$class.'.php';
+		$mod = new $class();
+		if (!method_exists($mod, $method))
 		{
-			$_REQUEST['method'] = 'main';
+			$method = 'main';
 		}
-		$out = $mod->$_REQUEST['method']();
+		$out = $mod->$method();
 		if (is_string($out))
 		{
 			print $out;
@@ -113,22 +123,30 @@ switch($modinfo['Module']['type'])
  *	2. Test if class file actually exists.
  *	3. Ignore any filename that starts with an underscore.
  */
-		if(isset($_REQUEST['class'])){$_REQUEST['class'] = basename($_REQUEST['class'], '.php');}
+		if(isset($class)){$class = basename($class, '.php');}
 		if(
-			!isset($_REQUEST['class']) ||
-			!file_exists("modules/{$_REQUEST['mod']}/{$_REQUEST['class']}.php") ||
-			$_REQUEST['class'][0] == '_'
-		){$_REQUEST['class'] = $_REQUEST['mod'];}
+			!isset($class) ||
+			!file_exists("modules/{$mod}/{$class}.php") ||
+			$class[0] == '_'
+		){$class = $mod;}
 /*
  * Load Language
  *	1. Load english language if exists.
  *	2. Load current language if exists.
  */
-		if (file_exists(PGV_ROOT.'modules/'.$_REQUEST['mod'].'/pgvlang/lang_'.$modinfo['Module']['default_language'].'.php')) {
-			require_once PGV_ROOT.'modules/'.$_REQUEST['mod'].'/pgvlang/lang_'.$modinfo['Module']['default_language'].'.php';
+		if (file_exists(PGV_ROOT.'modules/'.$mod.'/languages/lang.en.php')) {
+			require_once PGV_ROOT.'modules/'.$mod.'/languages/lang.en.php';
 		}
-		if ($LANGUAGE != $modinfo['Module']['default_language'] && file_exists('./modules/'.$_REQUEST['mod'].'/pgvlang/lang_'.$LANGUAGE.'.php')) {
-			require_once PGV_ROOT.'modules/'.$_REQUEST['mod'].'/pgvlang/lang_'.$LANGUAGE.'.php';
+		if (file_exists(PGV_ROOT.'modules/'.$mod.'/languages/extra.en.php')) {
+			require_once PGV_ROOT.'modules/'.$mod.'/languages/extra.en.php';
+		}
+		if ($LANGUAGE != 'en') {
+			if (file_exists(PGV_ROOT.'/modules/'.$mod.'/languages/lang.'.$LANGUAGE.'.php')) {
+				require_once PGV_ROOT.'modules/'.$mod.'/languages/lang.'.$LANGUAGE.'.php';
+			}
+			if (file_exists(PGV_ROOT.'/modules/'.$mod.'/languages/extra.'.$LANGUAGE.'.php')) {
+				require_once PGV_ROOT.'modules/'.$mod.'/languages/extra.'.$LANGUAGE.'.php';
+			}
 		}
 
 /*
@@ -137,8 +155,8 @@ switch($modinfo['Module']['type'])
  *	2. Create a module object.
  *	3. Initialize the module if needed.
  */
-		require_once PGV_ROOT.'modules/'.$_REQUEST['mod'].'/'.$_REQUEST['class'].'.php';
-		$mod = new $_REQUEST['class']();
+		require_once PGV_ROOT.'modules/'.$mod.'/'.$class.'.php';
+		$mod = new $class();
 		if(method_exists($mod, 'init')){$mod->init();}
 /*
  * Method Security
@@ -146,16 +164,16 @@ switch($modinfo['Module']['type'])
  *	2. Ignore any method that starts with an underscore.
  */
 		if(
-			!isset($_REQUEST['method']) ||
-			!method_exists($mod, $_REQUEST['method']) ||
-			$_REQUEST['method'][0] == '_'
-		){$_REQUEST['method'] = 'main';}
+			!isset($method) ||
+			!method_exists($mod, $method) ||
+			$method[0] == '_'
+		){$method = 'main';}
 /*
  * Execute Method
  *	1. Execute the requested method.
  *	2. Act upon the result of the method call.
  */
-		$results = $mod->$_REQUEST['method']();
+		$results = $mod->$method();
 		switch($results[0])
 		{
 /*
