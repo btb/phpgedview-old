@@ -3,7 +3,7 @@
  * Minimal theme
  *
  * PhpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -86,7 +86,7 @@ $PGV_IMAGES["addmedia"]["button"] = "buttons/addmedia.gif";
 $PGV_IMAGES["addsource"]["button"] = "buttons/addsource.gif";
 $PGV_IMAGES["addnote"]["button"] = "buttons/addnote.gif";
 // $PGV_IMAGES["calendar"]["button"] = "buttons/calendar.gif";
-// $PGV_IMAGES["family"]["button"] = "buttons/family.gif";
+$PGV_IMAGES["family"]["button"] = "buttons/family.gif";
 // $PGV_IMAGES["indi"]["button"] = "buttons/indi.gif";
 $PGV_IMAGES["keyboard"]["button"] = "buttons/keyboard.gif";
 $PGV_IMAGES["media"]["button"] = "buttons/media.gif";
