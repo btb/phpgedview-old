@@ -3,7 +3,7 @@
  * Spanish language file for PhpGedView
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -1473,6 +1473,8 @@ $pgv_lang["ahnentafel_married_f"]	= "se casó con";			// female
 $pgv_lang["ahnentafel_married_post"]= "&nbsp;";
 $pgv_lang["ahnentafel_died_m"]		= "falleció";				// male
 $pgv_lang["ahnentafel_died_f"]		= "falleció";				// female
+$pgv_lang["ahnentafel_cremated_m"]	= "fue incinerado";		// male
+$pgv_lang["ahnentafel_cremated_f"]	= "fue incinerada";		// female
 $pgv_lang["ahnentafel_buried_m"]	= "recibió sepultura";			// male
 $pgv_lang["ahnentafel_buried_f"]	= "recibió sepultura";			// female
 $pgv_lang["ahnentafel_place"]		= " en ";				// place name follows this
@@ -1500,7 +1502,6 @@ $pgv_lang["of"] 					= "de";
 $pgv_lang["enter_famid"]			= "Introducir ID de la familia";
 $pgv_lang["show_sources"]			= "¿Mostrar fuentes?";
 $pgv_lang["show_notes"] 			= "¿Mostrar notas?";
-$pgv_lang["show_basic"] 			= "¿Mostrar siempre eventos básicos aunque no haya datos?";
 $pgv_lang["show_photos"]			= "¿Mostrar fotos?";
 $pgv_lang["relatives_report_ext"]	= "Informe expandido de parientes";
 $pgv_lang["with"]					= "con";
