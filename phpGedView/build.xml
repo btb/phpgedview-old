@@ -114,6 +114,9 @@
 	<defaultexcludes add="**/*.cache/**" />
 	<defaultexcludes add="**/*.settings" />
 	<defaultexcludes add="**/*.settings/**" />
+	<defaultexcludes add="**/*.externalToolBuilders" />
+	<defaultexcludes add="**/*.externalToolBuilders/**" />
+	<defaultexcludes add="**/*.buildpath" />
 	<defaultexcludes echo="false" add="**/*.project" />
 
 	<target name="package-all">
