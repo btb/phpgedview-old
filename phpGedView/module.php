@@ -53,6 +53,12 @@ if(!isset($mod))
 	if (isset($name)) $mod = $name;
 	else $mod = 'index';
 }
+
+if (strpos($mod, '..')!==false || (isset($pgvaction) && strpos($pgvaction, '..')!==false)) {
+	header('Location: index.php');
+	print ' ';
+	exit;
+}
 if(file_exists('modules/'.$mod.'.php'))
 {
 	$modinfo = parse_ini_file('modules/'.$mod.'.php', true);

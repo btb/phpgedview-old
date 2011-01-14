@@ -32,8 +32,8 @@ if (!defined('PGV_SCRIPT_NAME')) {
 
 // Identify ourself
 define('PGV_PHPGEDVIEW',      'PhpGedView');
-define('PGV_VERSION',         '4.3.0');
-define('PGV_VERSION_RELEASE', 'svn'); // 'svn', 'beta', 'rc1', '', etc.
+define('PGV_VERSION',         '4.2.4');
+define('PGV_VERSION_RELEASE', 'stable'); // 'svn', 'beta', 'rc1', '', etc.
 define('PGV_VERSION_TEXT',    trim(PGV_VERSION.' '.PGV_VERSION_RELEASE));
 define('PGV_PHPGEDVIEW_URL',  'http://www.phpgedview.net');
 define('PGV_PHPGEDVIEW_WIKI', 'http://wiki.phpgedview.net');
@@ -314,6 +314,8 @@ set_error_handler('pgv_error_handler');
 // Connect to the database
 require PGV_ROOT.'includes/functions/functions_db.php';
 require PGV_ROOT.'includes/classes/class_pgv_db.php';
+//-- don't try to connect to the DB if not configured
+if ($CONFIGURED) {
 try {
 	// remove escape codes before using PW
 	$DBPASS=str_replace(array("\\\\", "\\\"", "\\\$"), array("\\", "\"", "\$"), $DBPASS);
@@ -327,6 +329,7 @@ try {
 	}
 } catch (PDOException $ex) {
 	// Can't connect to the DB?  We'll get redirected to install.php later.....
+}
 }
 
 // The authentication interface includes logging - which may be to the database

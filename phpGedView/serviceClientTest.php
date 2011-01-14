@@ -8,7 +8,7 @@ ob_start();
 require_once './SOAP/Client.php';
 
 //-- put your URL here
-$url = 'http://localhost/pgv-svn/genservice.php?wsdl';
+$url = 'http://localhost/pgv/genservice.php?wsdl';
 print "Getting WSDL<br />";
 
 if (!class_exists('SoapClient')) {
@@ -56,8 +56,10 @@ print "After getGedcomRecord<br />";
 //$ids = $soap->checkUpdates($result->SID, "01 JAN 2006");
 //print_r($ids);
 //
-//$s = $soap->search($result->item->SID, 'week', '0','100');
-//echo print_r($s,true);
+print "Before Search";
+$s = $soap->search($result->SID, 'NAME=father surname', '0','100');
+var_dump($s);
+print "After search";
 //
 //$res = $soap->getPersonById($result->SID, "I1");
 //print_r($res);
