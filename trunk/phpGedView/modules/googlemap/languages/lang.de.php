@@ -3,7 +3,7 @@
  * German Language file for PhpGedView.
  *
  * PhpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2008  PGV Development Team. All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team. All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -37,19 +37,19 @@ $pgv_lang["gm_disabled"]            = "Kartendarstellung deaktiviert";
 
 $pgv_lang["gm_redraw_map"]          = "Karte neu zeichnen";
 $pgv_lang["gm_map"]                 = "Karte";
-$pgv_lang["gm_physical"]            = "Terrain";
+$pgv_lang["gm_physical"]            = "Gelände";
 $pgv_lang["gm_satellite"]           = "Satellit";
 $pgv_lang["gm_hybrid"]              = "Kombination";
 
 // Configuration texts
 $pgv_lang["gm_manage"]              = "Kartendarstellung anpassen";
-$pgv_lang["configure_googlemap"]    = "Googlemap Konfiguration";
+$pgv_lang["configure_googlemap"]    = "GoogleMaps konfigurieren";
 $pgv_lang["gm_admin_error"]         = "Nur für Verwalter";
 $pgv_lang["gm_db_error"]            = "Tabelle 'placelocation' in Datenbank nicht vorhanden";
 $pgv_lang["gm_table_created"]       = "Tabelle 'placelocation' neu angelegt";
-$pgv_lang["googlemap_enable"]       = "Kartendarstellung aktivieren";
-$pgv_lang["googlemapkey"]           = "Googlemap API Schlüssel";
-$pgv_lang["gm_map_type"]            = "Standard Kartentyp";
+$pgv_lang["googlemap_enable"]       = "GoogleMaps aktivieren";
+$pgv_lang["googlemapkey"]           = "GoogleMaps API Schlüssel";
+$pgv_lang["gm_map_type"]            = "Standarddarstellung";
 $pgv_lang["gm_map_size"]            = "Größe der Karte (in Pixel)";
 $pgv_lang["gm_map_size_x"]          = "Breite";
 $pgv_lang["gm_map_size_y"]          = "Höhe";
@@ -57,7 +57,7 @@ $pgv_lang["gm_map_zoom"]            = "Zoomfaktor der Karte";
 $pgv_lang["gm_digits"]              = "Nachkommastellen";
 $pgv_lang["gm_min"]                 = "Min.";
 $pgv_lang["gm_max"]                 = "Max.";
-$pgv_lang["gm_default_level0"]      = "Standardwert der höchsten Stufen";
+$pgv_lang["gm_default_level0"]      = "Standardwert der höchsten Stufe";
 $pgv_lang["gm_nof_levels"]          = "Anzahl der Stufen";
 $pgv_lang["gm_config_per_level"]    = "Konfiguration pro Stufe";
 $pgv_lang["gm_name_prefix"]         = "Präfix";
@@ -73,17 +73,23 @@ $pgv_lang["gm_pp_pr_po_n_b"]        = "Präfix, Suffix, normal, beide";
 $pgv_lang["gm_pp_po_pr_n_b"]        = "Suffix, Präfix, normal, beide";
 $pgv_lang["googlemap_coord"]        = "Koordinaten auf der Karte anzeigen";
 
-$pgv_lang["gm_place_hierarchy"]  	= "Googlemap bei den Orte-Listen verwenden";
-$pgv_lang["gm_ph_marker_type"]		= "Art des Orte Markierers in der Orteliste";
+// Place hierarchy
+$pgv_lang["gm_place_hierarchy"]  	= "GoogleMaps im Ortsverzeichnis verwenden";
+$pgv_lang["gm_ph_map_size"]		    = "Größe der Karte im Ortsverzeichnis (in Pixel)";
+$pgv_lang["gm_ph_marker_type"]		= "Art des Ortemarkierers im Ortsverzeichnis";
 $pgv_lang["gm_standard_marker"]		= "Standard";
 $pgv_lang["gm_no_coord"]			= "Dieser Ort ist ohne Koordinaten";
-$pgv_lang["gm_ph_placenames"]		= "Kurze Ortenamen anzeigen?";
+$pgv_lang["gm_ph_placenames"]		= "Kurze Ortsbezeichner anzeigen?";
+$pgv_lang["gm_ph_count"]			= "Anzahl der Personen und Familien anzeigen";
 $pgv_lang["gm_ph_wheel"]			= "Mausrad zum Zoomen verwenden?";
+$pgv_lang["gm_ph_controls"]			= "Einstellungswerkzeuge ausblenden";
 
-// Texts used on the Places location page / chw 2008-09-12s
+
+// Texts used on the Places location page
 $pgv_lang["edit_place_locations"]   = "Geografische Ortskoordinaten bearbeiten";
+$pgv_lang["pl_no_places_found"]		= "Keine Ortseinträge vorgefunden";
 $pgv_lang["pl_zoom_factor"]         = "Zoomfaktor";
-$pgv_lang["pl_place_icon"]          = "Icon";
+$pgv_lang["pl_place_icon"]          = "Ikone";
 $pgv_lang["pl_edit"]                = "Geografische Ortsdaten bearbeiten";
 $pgv_lang["pl_add_place"]           = "Ort hinzufügen";
 $pgv_lang["pl_import_gedcom"]       = "Aus aktueller GEDCOM-Datei importieren";
@@ -95,8 +101,8 @@ $pgv_lang["pl_north_short"]         = "N";
 $pgv_lang["pl_south_short"]         = "S";
 $pgv_lang["pl_east_short"]          = "O";
 $pgv_lang["pl_west_short"]          = "W";
-$pgv_lang["pl_places_localfile"]	= "Server-Datei mit Ortsdaten (CSV)";
-$pgv_lang["pl_places_filename"]     = "Datei mit Ortsdaten (CSV)";
+$pgv_lang["pl_places_localfile"]	= "Serverdatei mit den Ortsdaten (CSV)";
+$pgv_lang["pl_places_filename"]     = "Datei mit den Ortsdaten (CSV)";
 $pgv_lang["pl_clean_db"]            = "Alle Ortsdaten vor dem Import löschen?";
 $pgv_lang["pl_update_only"]         = "Nur die vorhandenen Orte aktualisieren?";
 $pgv_lang["pl_overwrite_data"]      = "Überschreiben der Ortsdaten mit den Daten aus der Datei?";
@@ -106,19 +112,23 @@ $pgv_lang["pl_precision"]           = "Genauigkeit";
 $pgv_lang["pl_country"]             = "Staat";
 $pgv_lang["pl_state"]               = "Bundesland";
 $pgv_lang["pl_city"]                = "Kreis / kreisfreie Stadt";
+$pgv_lang["pl_place"]				= "Ort";
 $pgv_lang["pl_neighborhood"]        = "Stadt / Ortsteil";
 $pgv_lang["pl_house"]               = "Haus";
 $pgv_lang["pl_max"]                 = "Max";
 $pgv_lang["pl_delete"]              = "Geografischen Ort entfernen";
+$pgv_lang["pl_search_level"]		= "Nur auf dieser Stufe suchen";
+$pgv_lang["pl_search_all"]			= "Auf allen Stufen suchen";
+$pgv_lang["pl_unknown"]				= "Unbekannt";
 
 $pgv_lang["pl_flag"]                = "Flagge";
 $pgv_lang["flags_edit"]             = "Flagge auswählen";
 $pgv_lang["pl_change_flag"]         = "Flagge ändern";
 $pgv_lang["pl_remove_flag"]         = "Flagge entfernen";
-
+$pgv_lang["pl_no_flags"]			= "Das Verzeichnis <b>places/flags</b> existiert nicht.<br /><br />Für das Anzeigen von Flaggen, kopieren Sie das Verzeichnis <b>images/flags</b> ins Verzeichnis <b>places</b> oder laden Sie die Flaggen aus der PGV-Vollversion herunter.";
 $pgv_lang["pl_remove_location"]     = "Diese Ortsdaten entfernen?";
-$pgv_lang["pl_delete_error"]        = "Ortsdaten wurden nicht entfernt! Es sind noch weitere, abhängige Ortsdaten vorhanden.";
-$pgv_lang["list_inactive"]        	= "Liste auch mit inaktiven Orten";
+$pgv_lang["pl_delete_error"]        = "Ortsdaten konnten nicht entfernt werden, weil noch weitere, von ihnen abhängige Ortsdaten vorhanden sind.";
+$pgv_lang["list_inactive"]        	= "Liste auch mit nicht verknüpften Orten";
 
 
 $pgv_lang["edit_place_locations"]   = "Geografische Orsteinträge bearbeiten";
@@ -151,25 +161,52 @@ $pgv_lang["pl_house"]               = "Haus";
 $pgv_lang["pl_max"]                 = "Max";
 $pgv_lang["pl_delete"]              = "Geografischen Ortseintrag entfernen";
 
-//Placecheck specific text - 2008-09-09 / chw
+//Placecheck specific text
 $pgv_lang["placecheck"]				= "Ortseinträge prüfen";
-$pgv_lang["placecheck_text"]		= "Hier werden alle Orte der ausgewählten GEDCOM Datei angezeigt. Normalerweise sind Orte, welche in der GEDCOM Datei und der GoogleMap Tabelle voll definiert sind, nicht angezeigt!";
-$pgv_lang["placecheck_top"]			= "Orte auf der höchsten Stufe";
-$pgv_lang["placecheck_one"]			= "Orte auf Stufe 1";
-$pgv_lang["placecheck_select1"]		= "Auswahl der höchsten Stufe...";
-$pgv_lang["placecheck_select2"]		= "Auswahl der nächsten Stufe...";
-$pgv_lang["placecheck_key"]			= "Bedeutung der verwendeten Farben";
-$pgv_lang["placecheck_key1"]		= "Dieser Ort und seine Koordinaten existieren <b>nicht</b> in der GoogleMap Tabelle";
-$pgv_lang["placecheck_key2"]		= "Dieser Ort existiert zwar in der GoogleMap Tabelle, hat aber <b>keine</b> Koordinaten";
-$pgv_lang["placecheck_key3"]		= "Diese Stufe der Orte ist in Ihrer GEDCOM Datei nicht definiert. Sie sollten die <br/>GoogleMap Orte als \"unbekannt\" mit den Koordinaten ihrer übergeordneten Stufe versehen, bevor Sie weitere Orte zur nächsten Stufe hinzufügen";
-$pgv_lang["placecheck_key4"]		= "Diese Stufe der Orte ist in Ihrer GEDCOM Datei zwar nicht definiert, existiert aber als 'unbekannt' in der GoogleMap Ortetabelle mit Koordinaten. <br />Sie müssen nichts unternehmen, bevor die fehlende Stufe eingetragen wird";
-$pgv_lang["placecheck_head"]		= "Orteverzeichnis für die GEDCOM Datei";
-$pgv_lang["placecheck_gedheader"]	= "GEDCOM Datei Ortsdaten<br/>(2 PLAC tag)";
-$pgv_lang["placecheck_gm_header"]	= "GoogleMap Orte Tabellendaten";
+$pgv_lang["placecheck_text"]		= "Hier werden alle Orte aus der gewählten GEDCOM Datei angezeigt. Die Orte, die sowohl in den GooleMaps-Tabellen als auch in dieser GEDCOM Datei definiert sind, nicht angezeigt.";
+$pgv_lang["placecheck_top"]			= "Orte der obersten Stufe";
+$pgv_lang["placecheck_one"]			= "Orte auf Stufe Eins";
+$pgv_lang["placecheck_select1"]		= "Oberste Stufe bestimmen...";
+$pgv_lang["placecheck_select2"]		= "Nächste Stufe auswählen...";
+$pgv_lang["placecheck_key"]			= "Bedeutung der unterschiedlichen Farben";
+$pgv_lang["placecheck_key1"]		= "Weder der Ort noch seine Koordinaten existieren in der GoogleMaps Tabelle definiert.";
+$pgv_lang["placecheck_key2"]		= "Für diesen Ort fehlen noch die Koordinaten in der GoogleMaps Tabelle.";
+$pgv_lang["placecheck_key3"]		= "Für diese Hierarchiestufe fehlt der Ortsname in der GEDCOM Datei. Sie sollten diesen GoogleMaps Ort als &quot;unbekannt&quot; mit den Koordinaten ihrer übergeordneten Stufe versehen, bevor Sie weitere Orte zur nächsten Stufe hinzufügen";
+$pgv_lang["placecheck_key4"]		= "Diese Hierarchiestufe ist zwar in Ihrer GEDCOM Datei nicht definiert, sie existiert aber als 'unbekannt' in der GoogleMaps Tabelle mit Koordinaten vorhanden.<br />Sie müssen nichts unternehmen, bevor die fehlende Stufe eingetragen wird";
+$pgv_lang["placecheck_head"]		= "Ortsverzeichnis für eine GEDCOM Datei";
+$pgv_lang["placecheck_gedheader"]	= "GEDCOM Datei mit Ortsdaten<br />(2 PLAC tag)";
+$pgv_lang["placecheck_gm_header"]	= "GoogleMaps Tabellendaten";
 $pgv_lang["placecheck_unique"]		= "Insgesamt eindeutige Orte";
 $pgv_lang["placecheck_zoom"]        = "Zoom=";
 $pgv_lang["placecheck_options"]     = "Ortseinträge überprüfen - Optionen für die Liste";
 $pgv_lang["placecheck_filter_text"] = "Filteroptionen der Liste";
-$pgv_lang["placecheck_match"] 		= "Vollständig definierte Orte auch mit anzeigen: ";
+$pgv_lang["placecheck_match"] 		= "Vollständig definierte Orte auch anzeigen: ";
+$pgv_lang["placecheck_lati"] 		= "Breitengrad";
+$pgv_lang["placecheck_long"] 		= "Längengrad";
+
+// Pedigree map
+$pgv_lang["pedigree_map"]				= "Vorfahrenkarte";
+$pgv_lang["pm_grandparent"] 			= "Großeltern";
+$pgv_lang["pm_grandmother"] 			= "Großmutter";
+$pgv_lang["pm_grandfather"] 			= "Großvater";
+$pgv_lang["pm_gt"]						= "Gt";
+$pgv_lang["pm_zoom_in"]					= "Hineinzoomen";
+$pgv_lang["pm_zoom_out"]				= "Herauszoomen";
+$pgv_lang["zoom_in_here"]				= "Hier hineinzoomen";
+$pgv_lang["zoom_out_here"]				= "Hier herauszoomen";
+$pgv_lang["centre_map"]					= "Hier neu zentrieren";
+$pgv_lang["pm_individual_displayed"]	= "Person gefunden von insgesamt möglichen ";
+$pgv_lang["pm_2individuals_displayed"]	= "Personen gefunden von insgesamt möglichen ";	// For Polish 2,3,4 or 22,23,24 or 32,33,34 etc.
+$pgv_lang["pm_individuals_displayed"]	= "Personen gefunden von insgesamt möglichen";
+$pgv_lang["pm_individual_private"]		= "Person unterliegt dem Datenschutz.";
+$pgv_lang["pm_individuals_private"]		= "Personen unterliegen dem Datenschutz.";
+$pgv_lang["pm_missing_birth"]			= "Person ohne Koordinaten für den Geburtsort:";
+$pgv_lang["pm_2missing_births"]			= "Personen ohne Koordinaten für den Geburtsort:";	// For Polish 2,3,4 or 22,23,24 or 32,33,34 etc.
+$pgv_lang["pm_missing_births"]			= "Personen ohne Koordinaten für den Geburtsort:";
+$pgv_lang["pm_missings"]				= "Keine Vorfahren in der Datenbank vorhanden.";
+$pgv_lang["pm_from"]					= "Vorfahren bei";
+$pgv_lang["pm_for"]						= "für";
+$pgv_lang["pm_gens"]					= "Generationen.";
+$pgv_lang["pm_root"]					= "Proband";
 
 ?>
