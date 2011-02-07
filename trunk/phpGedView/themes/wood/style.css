@@ -5,7 +5,7 @@
  * To learn more about CSS visit http: //www.w3.org/TR/REC-CSS2/
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -396,14 +396,16 @@ a:hover .nameZoom {
 
 .pedigree_image_portrait, .pedigree_image_landscape {
 	float: left;
-	height: 50px;
+	max-height: 50px;
+	max-width: 100px;
 	border: solid black 1px;
 	margin-right: 3px;
 }
 
 .pedigree_image_portrait_rtl, .pedigree_image_landscape_rtl {
 	float: right;
-	height: 50px;
+	max-height: 50px;
+	max-width: 100px;
 	border: solid black 1px;
 	margin-left: 3px;
 }

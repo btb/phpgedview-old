@@ -8,6 +8,9 @@
 	# $Id$
 =====================================================================
 
+Version 4.3.0
+ - Fixed: [ 3171242 ] pedigree_image_xxx styles (canajun2eh)
+
 Version 4.2.4
  - Fixed: [ 3121290 ] Reports: Source list damaged (canajun2eh)
  - Fixed: [ 3119940 ] Reports: "Place" text not needed in front of places (canajun2eh)
