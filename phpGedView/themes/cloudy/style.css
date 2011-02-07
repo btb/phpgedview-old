@@ -5,7 +5,7 @@
  * To learn more about CSS visit http: //www.w3.org/TR/REC-CSS2/
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -186,7 +186,6 @@ ul {
 	padding: 0px;
 	margin: 0px;
 	height: 25px;
-	max-height: 25px;
 	line-height: 25px;
 	vertical-align: top;
 	width: 100%;
@@ -205,7 +204,6 @@ ul {
 	background-repeat: repeat-x;
 	font: bold 13px tahoma, arial, helvetica, sans-serif;
 	height: 24px;
-	max-height: 24px;
 	line-height: 25px;
 	margin: 0;
 }
@@ -220,7 +218,6 @@ ul {
 
 .blockhc {
 	height: 25px;
-	max-height: 25px;
 	padding-right: 15px;
 	padding-left: 5px;
 	overflow: hidden;
@@ -276,7 +273,6 @@ ul {
 }
 
 #facts, #relatives {
-	max-width: 100%;
 	width: 100%;
 }
 
@@ -524,7 +520,6 @@ th {
 }
 
 .tab_page {
-	max-width: 100%;
 	width: 100%;
 }
 
@@ -755,14 +750,16 @@ th {
 
 .pedigree_image_portrait, .pedigree_image_landscape {
 	float: left;
-	height: 50px;
+	max-height: 50px;
+	max-width: 100px;
 	border: solid black 1px;
 	margin-right: 3px;
 }
 
 .pedigree_image_portrait_rtl, .pedigree_image_landscape_rtl {
 	float: right;
-	height: 50px;
+	max-height: 50px;
+	max-width: 100px;
 	border: solid black 1px;
 	margin-left: 3px;
 }
@@ -1187,11 +1184,6 @@ th {
 	font-family: tahoma, arial, helvetica, sans-serif;
 }
 
-.barra {
-	color: black;
-	font: normal 12px tahoma, arial, helvetica, sans-serif;
-}
-
 .blanco {
 	color: white;
 	font: bold 12px tahoma, arial, helvetica, sans-serif;
@@ -1537,41 +1529,40 @@ a.showit:hover span {
 	z-index: 100;
 }
 
-	#map_type
-	{
-		margin: 0;
-		padding: 0;
-		font-family: Arial;
-		font-size: 10px;
-		list-style: none;
-	}
-	#map_type li
-	{
-		display: block;
-		width: 70px;
-		text-align: center;
-		padding: 2px;
-		border: 1px solid black;
-		cursor: pointer;
-		float: left;
-		margin-left: 2px;
-	}
-	#map_type li.non_active
-	{
-		background: white;
-		color: black;
-		font-weight: normal;
-	}
-	#map_type li.active
-	{
-		background: gray;
-		color: white;
-		font-weight: bold;
-	}
-	#map_type li:hover
-	{
-		background: #ddd;
-	}
+#map_type {
+	margin: 0;
+	padding: 0;
+	font-family: Arial;
+	font-size: 10px;
+	list-style: none;
+}
+
+#map_type li {
+	display: block;
+	width: 70px;
+	text-align: center;
+	padding: 2px;
+	border: 1px solid black;
+	cursor: pointer;
+	float: left;
+	margin-left: 2px;
+}
+
+#map_type li.non_active {
+	background: white;
+	color: black;
+	font-weight: normal;
+}
+
+#map_type li.active {
+	background: gray;
+	color: white;
+	font-weight: bold;
+}
+
+#map_type li:hover {
+	background: #ddd;
+}
 
 /* Tag Cloud styles*/
 .tag_cloud_table {
