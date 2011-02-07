@@ -6,7 +6,7 @@
 * to use an SQL database as its datastore.
 *
 * phpGedView: Genealogy Viewer
-* Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+* Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -906,37 +906,16 @@ function fetch_other_record($xref, $ged_id) {
 	return $statement->execute(array($xref, $ged_id))->fetchOneRow(PDO::FETCH_ASSOC);
 }
 function fetch_gedcom_record($xref, $ged_id) {
-	// We don't know the type of the record, so use the prefix to suggest the likely type.
-	global $GEDCOM_ID_PREFIX, $FAM_ID_PREFIX, $SOURCE_ID_PREFIX, $MEDIA_ID_PREFIX;
-
-	if       (strpos($xref, $GEDCOM_ID_PREFIX)===0) {
-		$row=fetch_person_record($xref, $ged_id);
-	} elseif (strpos($xref, $FAM_ID_PREFIX   )===0) {
-		$row=fetch_family_record($xref, $ged_id);
-	} elseif (strpos($xref, $SOURCE_ID_PREFIX)===0) {
-		$row=fetch_source_record($xref, $ged_id);
-	} elseif (strpos($xref, $MEDIA_ID_PREFIX )===0) {
-		$row=fetch_media_record ($xref, $ged_id);
-	} else {
-		$row=fetch_other_record ($xref, $ged_id);
-	}
-
-	if ($row) {
-		// If we found it, good
+	if ($row=fetch_person_record($xref, $ged_id)) {
+		return $row;
+	} elseif ($row=fetch_family_record($xref, $ged_id)) {
+		return $row;
+	} elseif ($row=fetch_source_record($xref, $ged_id)) {
+		return $row;
+	} elseif ($row=fetch_media_record($xref, $ged_id)) {
 		return $row;
 	} else {
-		// Otherwise, try the other types
-		if       (strpos($xref, $GEDCOM_ID_PREFIX)!==0 && $row=fetch_person_record($xref, $ged_id)) {
-			return $row;
-		} elseif (strpos($xref, $FAM_ID_PREFIX   )!==0 && $row=fetch_family_record($xref, $ged_id)) {
-			return $row;
-		} elseif (strpos($xref, $SOURCE_ID_PREFIX)!==0 && $row=fetch_source_record($xref, $ged_id)) {
-			return $row;
-		} elseif (strpos($xref, $MEDIA_ID_PREFIX )!==0 && $row=fetch_media_record ($xref, $ged_id)) {
-			return $row;
-		} else {
-			return fetch_other_record($xref, $ged_id);
-		}
+		return fetch_other_record($xref, $ged_id);
 	}
 }
 

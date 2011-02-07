@@ -9,6 +9,7 @@
 =====================================================================
 
 Version 4.3.0
+ - Fixed: [ 3174421 ] Error functions_DB.php in fetch_gedcom_record (pathan)
  - Fixed: [ 3171242 ] pedigree_image_xxx styles (canajun2eh)
 
 Version 4.2.4
