@@ -9,6 +9,7 @@
 =====================================================================
 
 Version 4.3.0
+ - Fixed: [ 3177042 ] Manage Media, Add link errors when entering ID directly (canajun2eh)
  - Fixed: [ 3174421 ] Error functions_DB.php in fetch_gedcom_record (pathan)
  - Fixed: [ 3171242 ] pedigree_image_xxx styles (canajun2eh)
 
