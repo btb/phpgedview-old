@@ -3,7 +3,7 @@
  * Popup window that will allow a user to search for a media
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -199,6 +199,13 @@ function set_perms($path) {
 // global var used by recursive functions
 $starttime = time();
 
+// Set initial session-wide defaults for Sort sequence, Thumbnail option, and Filter text
+if (!isset($_SESSION['MMsortby'])) {
+	$_SESSION['MMsortby'] = 'title';
+	$_SESSION['MMshowthumb'] = '1';
+	$_SESSION['MMfilter'] = '';
+}
+
 // TODO Determine source and validation requirements for these variables
 $filename=decrypt(safe_REQUEST($_REQUEST, 'filename'));
 $directory=safe_REQUEST($_REQUEST, 'directory', PGV_REGEX_NOSCRIPT, $MEDIA_DIRECTORY);
@@ -207,22 +214,27 @@ $movefile=safe_REQUEST($_REQUEST, 'movefile');
 $action=safe_REQUEST($_REQUEST, 'action', PGV_REGEX_ALPHA, 'filter');
 $subclick=safe_REQUEST($_REQUEST, 'subclick', PGV_REGEX_ALPHA, 'none');
 $media=safe_REQUEST($_REQUEST, 'media');
-$filter=safe_REQUEST($_REQUEST, 'filter', PGV_REGEX_NOSCRIPT);
-$sortby=safe_REQUEST($_REQUEST, 'sortby', 'file', 'title');
 $level=safe_REQUEST($_REQUEST, 'level', PGV_REGEX_INTEGER, 0);
 $start=safe_REQUEST($_REQUEST, 'start', PGV_REGEX_INTEGER, 0);
 $max=safe_REQUEST($_REQUEST, 'max', PGV_REGEX_INTEGER, 20);
-
-$showthumb=safe_REQUEST($_REQUEST, 'showthumb');
-
 $all=safe_REQUEST($_REQUEST, 'all', 'yes', 'no');
 
 if (isset($_REQUEST['xref'])) $xref = $_REQUEST['xref'];
 
-if (count($_POST) == 0) $showthumb = true;
-
-$thumbget = "";
-if ($showthumb) $thumbget = "&showthumb=true";
+// If the user has overridden the defaults or changed the previous specifications for
+// Sort sequence, Thumbnail option, or Filter text save the new values for future use
+if (isset($_POST['sortby'])) {
+	$sortby = safe_POST('sortby', 'file', 'title');
+	$_SESSION['MMsortby'] = $sortby;
+} else $sortby = $_SESSION['MMsortby'];
+if (isset($_POST['showthumb'])) {
+	$showthumb = safe_POST('showthumb', '1', '0');
+	$_SESSION['MMshowthumb'] = $showthumb;
+} else $showthumb = $_SESSION['MMshowthumb'];
+if (isset($_POST['filter'])) {
+	$filter = safe_POST('filter', PGV_REGEX_NOSCRIPT);
+	$_SESSION['MMfilter'] = $filter;
+} else $filter = $_SESSION['MMfilter'];
 
 //-- prevent script from accessing an area outside of the media directory
 //-- and keep level consistency
@@ -292,7 +304,7 @@ function checkpath(folder) {
 }
 
 function showchanges() {
-	window.location = '<?php echo PGV_SCRIPT_NAME."?show_changes=yes&directory=".$directory."&level=".$level."&filter=".$filter."&subclick=".$subclick; ?>';
+	window.location = '<?php echo PGV_SCRIPT_NAME."?show_changes=yes&directory=".$directory."&level=".$level."&subclick=".$subclick; ?>';
 }
 
 //-->
@@ -308,7 +320,7 @@ if (check_media_structure()) {
 		print $pgv_lang["no_upload"];
 		print "</b></span><br />";
 	} else {
-		show_mediaUpload_form('media.php', $showthumb);		// We have the green light to upload media, print the form
+		show_mediaUpload_form('media.php');		// We have the green light to upload media, print the form
 	}
 	print "</div><br />";
 
@@ -777,7 +789,8 @@ if (check_media_structure()) {
 
 ?>
 
-<form name="managemedia" method="post" onsubmit="return checknames(this);" action="media.php">
+<form name="managemedia" id="managemedia" method="post" onsubmit="return checknames(this);" action="media.php">
+	<input type="hidden" name="showthumb" value="<?php print $showthumb; ?>" />
 	<input type="hidden" name="thumbdir" value="<?php print $thumbdir; ?>" />
 	<input type="hidden" name="level" value="<?php print $level; ?>" />
 	<input type="hidden" name="all" value="true" />
@@ -800,7 +813,19 @@ if (check_media_structure()) {
 	<td class="descriptionbox wrap width25" <?php print $legendAlign;?>><?php print_help_link("upload_media_help", "qm", "upload_media"); print $pgv_lang["upload_media"]; ?></td>
 	<td class="optionbox wrap"><?php print "<a href=\"#\" onclick=\"expand_layer('uploadmedia');\">".$pgv_lang["upload_media"]."</a>"; ?></td></tr>
 
-	<!-- // NOTE: Row 2 left: Filter options -->
+	<!-- // NOTE: Row 2 left: Show thumbnails -->
+	<tr><td class="descriptionbox wrap width25" <?php print $legendAlign;?>><?php print_help_link("show_thumb_help", "qm", "show_thumbnail"); ?><?php print $pgv_lang["show_thumbnail"]; ?></td>
+	<td class="optionbox wrap">
+		<input type="checkbox" value="<?php
+		if ($showthumb) echo "1\" checked=\"checked\" onclick=\"document.managemedia.showthumb.value='0';";
+		else echo "0\" onclick=\"document.managemedia.showthumb.value='1';";?>"/>
+	</td>
+
+	<!-- // NOTE: Row 2 right: Add media -->
+	<td class="descriptionbox wrap width25" <?php print $legendAlign;?>><?php print_help_link("add_media_help", "qm"); ?><?php print $pgv_lang["add_media_lbl"]; ?></td>
+	<td class="optionbox wrap"><a href="javascript: <?php echo $pgv_lang["add_media_lbl"]; ?>" onclick="window.open('addmedia.php?action=showmediaform&linktoid=new', '_blank', 'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1'); return false;"> <?php echo $pgv_lang["add_media"]; ?></a></td></tr>
+
+	<!-- // NOTE: Row 3 left: Filter options -->
 	<tr><td class="descriptionbox wrap width25" <?php print $legendAlign;?>><?php print_help_link("simple_filter_help", "qm", "filter"); print $pgv_lang["filter"];?></td>
 	<td class="optionbox wrap">
 		<?php
@@ -823,20 +848,11 @@ if (check_media_structure()) {
 		?>
 		<input type="text" name="filter" value="<?php if($filter) print $filter;?>" /><br /><input type="submit" name="search" value="<?php print $pgv_lang["filter"];?>" onclick="this.form.subclick.value=this.name" />&nbsp;&nbsp;&nbsp;<input type="submit" name="all" value="<?php print $pgv_lang["display_all"]; ?>" onclick="this.form.subclick.value=this.name" /></td>
 
-	<!-- // NOTE: Row 2 right: Add media -->
-	<td class="descriptionbox wrap width25" <?php print $legendAlign;?>><?php print_help_link("add_media_help", "qm"); ?><?php print $pgv_lang["add_media_lbl"]; ?></td>
-	<td class="optionbox wrap"><a href="javascript: <?php echo $pgv_lang["add_media_lbl"]; ?>" onclick="window.open('addmedia.php?action=showmediaform&linktoid=new', '_blank', 'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1'); return false;"> <?php echo $pgv_lang["add_media"]; ?></a></td></tr>
-
-	<!-- // NOTE: Row 3 left: Show thumbnails -->
-	<tr><td class="descriptionbox wrap width25" <?php print $legendAlign;?>><?php print_help_link("show_thumb_help", "qm", "show_thumbnail"); ?><?php print $pgv_lang["show_thumbnail"]; ?></td>
-	<td class="optionbox wrap"><input type="checkbox" name="showthumb" value="true" <?php if ($showthumb) print "checked=\"checked\""; ?> onclick="submit();" /></td>
-
 	<!-- // NOTE: Row 3 right: Generate missing thumbnails -->
 	<?php
 		$tempURL = "media.php?";
-		if (!empty($filter)) $tempURL .= "filter={$filter}&";
 		if (!empty($subclick)) $tempURL .= "subclick={$subclick}&";
-		$tempURL .= "action=thumbnail&sortby={$sortby}&all=yes&level={$level}&directory={$directory}".$thumbget;
+		$tempURL .= "action=thumbnail&all=yes&level={$level}&directory={$directory}";
 		?>
 	<td class="descriptionbox wrap width25" <?php print $legendAlign;?>><?php print_help_link("gen_missing_thumbs_help", "qm"); ?><?php print $pgv_lang["gen_missing_thumbs_lbl"]; ?></td>
 	<td class="optionbox wrap"><a href="<?php print encode_url($tempURL);?>"><?php print $pgv_lang["gen_missing_thumbs"];?></a></td></tr>
@@ -864,13 +880,13 @@ if (check_media_structure()) {
 		$pdir = '';
 		for($i=0; $i<count($levels)-2; $i++) $pdir.=$levels[$i].'/';
 		if ($pdir != '') {
-			$uplink = "<a href=\"".encode_url("media.php?directory={$pdir}&sortby={$sortby}&level=".($level-1).$thumbget)."\">";
+			$uplink = "<a href=\"".encode_url("media.php?directory={$pdir}&level=".($level-1))."\">";
 			if ($TEXT_DIRECTION=="rtl") $uplink .= getLRM();
 			$uplink .= $pdir;
 			if ($TEXT_DIRECTION=="rtl") $uplink .= getLRM();
 			$uplink .= "</a>\n";
 
-			$uplink2 = "<a href=\"".encode_url("media.php?directory={$pdir}&sortby={$sortby}&level=".($level-1).$thumbget)."\"><img class=\"icon\" src=\"".$PGV_IMAGE_DIR."/";
+			$uplink2 = "<a href=\"".encode_url("media.php?directory={$pdir}&level=".($level-1))."\"><img class=\"icon\" src=\"".$PGV_IMAGE_DIR."/";
 			$uplink2 .= $PGV_IMAGES["larrow"]["other"];
 			$uplink2 .= "\" alt=\"\" /></a>\n";
 		}
@@ -891,8 +907,6 @@ if (check_media_structure()) {
 				print "<input type=\"hidden\" name=\"level\" value=\"".($level)."\" />";
 				print "<input type=\"hidden\" name=\"dir\" value=\"".$directory."\" />";
 				print "<input type=\"hidden\" name=\"action\" value=\"\" />";
-				print "<input type=\"hidden\" name=\"showthumb\" value=\"{$showthumb}\" />";
-				print "<input type=\"hidden\" name=\"sortby\" value=\"{$sortby}\" />";
 			if ($USE_MEDIA_FIREWALL) {
 				print "<input type=\"submit\" value=\"".$pgv_lang["move_standard"]."\" onclick=\"this.form.action.value='movedirstandard';\" />";
 				print_help_link("move_mediadirs_help", "qm", "move_mediadirs");
@@ -932,8 +946,6 @@ if (check_media_structure()) {
 						print "<input type=\"hidden\" name=\"level\" value=\"".($level)."\" />";
 						print "<input type=\"hidden\" name=\"dir\" value=\"".$dir."\" />";
 						print "<input type=\"hidden\" name=\"action\" value=\"\" />";
-						print "<input type=\"hidden\" name=\"showthumb\" value=\"{$showthumb}\" />";
-						print "<input type=\"hidden\" name=\"sortby\" value=\"{$sortby}\" />";
 						print "<input type=\"image\" src=\"".$PGV_IMAGE_DIR."/".$PGV_IMAGES["remove"]["other"]."\" alt=\"".$pgv_lang['delete']."\" onclick=\"this.form.action.value='deletedir';return confirm('".$pgv_lang["confirm_folder_delete"]."');\" />";
 						if ($USE_MEDIA_FIREWALL) {
 							print "<br /><input type=\"submit\" value=\"".$pgv_lang["move_standard"]."\" onclick=\"this.form.level.value=(this.form.level.value*1)+1;this.form.action.value='movedirstandard';\" />";
@@ -943,7 +955,7 @@ if (check_media_structure()) {
 						print "</form>";
 					print "</td>";
 					print "<td class=\"descriptionbox $TEXT_DIRECTION\">";
-						print "<a href=\"".encode_url("media.php?directory={$directory}{$dir}/&sortby={$sortby}&level=".($level+1).$thumbget)."\">";
+						print "<a href=\"".encode_url("media.php?directory={$directory}{$dir}/&level=".($level+1))."\">";
 						if ($TEXT_DIRECTION=="rtl") print getRLM();
 						print $dir;
 						if ($TEXT_DIRECTION=="rtl") print getRLM();
@@ -1031,24 +1043,21 @@ if (check_media_structure()) {
 							}
 							if (!$isExternal && $objectCount<2) {
 								$tempURL = "media.php?";
-								if (!empty($filter)) $tempURL.= "filter={$filter}&";
-								$tempURL .= "action=deletefile&showthumb={$showthumb}&sortby={$sortby}&filter={$filter}&subclick={$subclick}&filename=".encrypt($media['FILE'])."&directory={$directory}&level={$level}&xref={$media['XREF']}&gedfile={$media['GEDFILE']}";
+								$tempURL .= "action=deletefile&subclick={$subclick}&filename=".encrypt($media['FILE'])."&directory={$directory}&level={$level}&xref={$media['XREF']}&gedfile={$media['GEDFILE']}";
 								print "<a href=\"".encode_url($tempURL)."\" onclick=\"return confirm('".$pgv_lang["confirm_delete_file"]."');\">".$pgv_lang["delete_file"]."</a><br />";
 							}
 
 							// Remove Object
 							if (!empty($media["XREF"])) {
 								$tempURL = "media.php?";
-								if (!empty($filter)) $tempURL .= "filter={$filter}&";
-								$tempURL .= "action=removeobject&showthumb={$showthumb}&sortby={$sortby}&filter={$filter}&subclick={$subclick}&filename=".encrypt($media['FILE'])."&directory={$directory}&level={$level}&xref={$media['XREF']}&gedfile={$media['GEDFILE']}";
+								$tempURL .= "action=removeobject&subclick={$subclick}&filename=".encrypt($media['FILE'])."&directory={$directory}&level={$level}&xref={$media['XREF']}&gedfile={$media['GEDFILE']}";
 								print "<a href=\"".encode_url($tempURL)."\" onclick=\"return confirm('".$pgv_lang["confirm_remove_object"]."');\">".$pgv_lang["remove_object"]."</a><br />";
 							}
 
 							// Remove links
 							if ($media["LINKED"]) {
 								$tempURL = "media.php?";
-								if (!empty($filter)) $tempURL .= "filter={$filter}&";
-								$tempURL .= "action=removelinks&showthumb={$showthumb}&sortby={$sortby}&filter={$filter}&subclick={$subclick}&filename=".encrypt($media['FILE'])."&directory={$directory}&level={$level}&xref={$media['XREF']}&gedfile={$media['GEDFILE']}";
+								$tempURL .= "action=removelinks&subclick={$subclick}&filename=".encrypt($media['FILE'])."&directory={$directory}&level={$level}&xref={$media['XREF']}&gedfile={$media['GEDFILE']}";
 							//	print "<a href=\"".encode_url($tempURL)."\" onclick=\"return confirm('".$pgv_lang["confirm_remove_links"]."');\">".$pgv_lang["remove_links"]."</a><br />";
 							}
 
@@ -1064,7 +1073,7 @@ if (check_media_structure()) {
 								$tempURL = "media.php?";
 								if ($media["EXISTS"] == 2) $tempURL .= "action=moveprotected";
 								if ($media["EXISTS"] == 3) $tempURL .= "action=movestandard";
-								$tempURL .= "&showthumb={$showthumb}&sortby={$sortby}&filename=".encrypt($media['FILE'])."&directory={$directory}&level={$level}&xref={$media['XREF']}&gedfile=".$media["GEDFILE"];
+								$tempURL .= "&filename=".encrypt($media['FILE'])."&directory={$directory}&level={$level}&xref={$media['XREF']}&gedfile=".$media["GEDFILE"];
 								print "<a href=\"".encode_url($tempURL)."\">".$pgv_lang["moveto_".$media["EXISTS"]]."</a><br />";
 							}
 
@@ -1074,8 +1083,7 @@ if (check_media_structure()) {
 								if ($ct>0) $ext = strtolower(trim($match[1]));
 								if ($ext=="jpg" || $ext=="jpeg" || $ext=="gif" || $ext=="png") {
 									$tempURL = "media.php?";
-									if (!empty($filter)) $tempURL .= "filter={$filter}&";
-									$tempURL .= "action=thumbnail&all=no&sortby={$sortby}&level={$level}&directory={$directory}&filename=".encrypt($media["FILE"]).$thumbget;
+									$tempURL .= "action=thumbnail&all=no&level={$level}&directory={$directory}&filename=".encrypt($media["FILE"]);
 									print "<a href=\"".encode_url($tempURL)."\">".$pgv_lang["gen_thumb"]."</a>";
 								}
 							}
