@@ -4,7 +4,7 @@
 * Various functions used by the media DB interface
 *
 * phpGedView: Genealogy Viewer
-* Copyright (C) 2002 to 2009 PGV Development Team.  All rights reserved.
+* Copyright (C) 2002 to 2011 PGV Development Team.  All rights reserved.
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -987,9 +987,8 @@ function process_uploadMedia_form() {
 /**
 * print a form for uploading media files
 * @param string $URL  the URL the input form is to execute when the "Submit" button is pressed
-* @param bool   $showthumb the setting of the "show thumbnail" option (required by media.php)
 */
-function show_mediaUpload_form($URL='media.php', $showthumb=false) {
+function show_mediaUpload_form($URL='media.php') {
 	global $AUTO_GENERATE_THUMBS, $MEDIA_DIRECTORY_LEVELS, $MEDIA_DIRECTORY;
 	global $pgv_lang, $TEXT_DIRECTION;
 
@@ -1014,7 +1013,6 @@ function show_mediaUpload_form($URL='media.php', $showthumb=false) {
 	// Print the form
 	echo '<form name="uploadmedia" enctype="multipart/form-data" method="post" action="', encode_url($URL), '">';
 	echo '<input type="hidden" name="action" value="upload" />';
-	echo '<input type="hidden" name="showthumb" value="', $showthumb, '" />';
 	echo '<table class="list_table ', $TEXT_DIRECTION, ' width100">';
 	echo '<tr><td class="topbottombar" colspan="2">';
 		echo $pgv_lang["upload_media"], '<br />', $pgv_lang["max_upload_size"], $filesize;
