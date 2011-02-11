@@ -3,7 +3,7 @@
  * Norwegian texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -384,7 +384,7 @@ $pgv_lang["weekly"]						= "Ukentlig";
 $pgv_lang["welcome_new"]			= "Velkommen til din nye nettsted med PhpGedView.";
 $pgv_lang["yearly"]						= "Årlig";
 $pgv_lang["admin_OK_subject"]					= "Godkjenning av konto hos #SERVER_NAME#";
-$pgv_lang["admin_OK_message"]					= "Administratoren ved PhpGedView-nettstedet  #SERVER_NAME# har godkjent din søknad om en konto.  Du kan nå logge inn ved å gå til følgende lenke:\r\n\r\n#SERVER_NAME#\r\n";
+$pgv_lang["admin_OK_message"]					= "Administratoren ved PhpGedView-nettstedet  #SERVER_NAME# har godkjent din søknad om en konto.\r\n\r\nDu kan nå logge inn ved å gå til følgende lenke: #SERVER_NAME#";
 
 $pgv_lang["batch_update"]="Utfør batch-oppdateringer/endringer i din GEDCOM";
 

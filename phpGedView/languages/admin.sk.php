@@ -3,7 +3,7 @@
  * Slovak Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2008  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -287,7 +287,7 @@ $pgv_lang["weekly"]			= "Týždenne";
 $pgv_lang["welcome_new"]		= "Vitajte na vašich nových PhpGedView web stránkách.";
 $pgv_lang["yearly"]			= "Ročne";
 $pgv_lang["admin_OK_subject"]		= "Schválenie účtu pre #SERVER_NAME#";
-$pgv_lang["admin_OK_message"]		= "Administrátor stránky PhpGedView #SERVER_NAME# schválil vašu žiadosť o zriadenie účtu. Možete sa teraz prihlásiť pomocou linku:\r\n\r\n#SERVER_NAME#\r\n";
+$pgv_lang["admin_OK_message"]		= "Administrátor stránky PhpGedView #SERVER_NAME# schválil vašu žiadosť o zriadenie účtu.\r\n\r\nMožete sa teraz prihlásiť pomocou linku: #SERVER_NAME#";
 $pgv_lang["gedcheck"]     		= "GEDCOM kontrolor";
 $pgv_lang["gedcheck_text"]		= "Tento modul kontroluje formát súboru GEDCOM podľa <a href=\"http://phpgedview.sourceforge.net/ged551-5.pdf\">5.5.1 GEDCOM Specification</a>. Tiež kontroluje obvyklé chyby vo vašich údajoch. Note that there are lots of versions, extensions and variations on the specification so you should not be concerned with any issues other than those flagged as \"Critical\". The explanation for all the line-by-line errors can be found in the specification, so please check there before asking for help.";
 $pgv_lang["level"]        		= "Úroveň";

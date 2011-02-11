@@ -3,7 +3,7 @@
  * Spanish language file for PhpGedView
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -429,7 +429,7 @@ $pgv_lang["weekly"]								= "Semanalmente";
 $pgv_lang["welcome_new"]						= "Bienvenido a su nuevo sitio PhpGedView.";
 $pgv_lang["yearly"]								= "Anualmente";
 $pgv_lang["admin_OK_subject"]					= "Aprobación de la cuenta en #SERVER_NAME#";
-$pgv_lang["admin_OK_message"]					= "El administrador del sitio PhpGedView #SERVER_NAME# ha aprobado su solicitud de cuenta.  Ya puede entrar de forma identificada accediendo al siguiente vínculo:\r\n\r\n#SERVER_NAME#\r\n";
+$pgv_lang["admin_OK_message"]					= "El administrador del sitio PhpGedView #SERVER_NAME# ha aprobado su solicitud de cuenta.\r\n\r\nYa puede entrar de forma identificada accediendo al siguiente vínculo: #SERVER_NAME#";
 
 $pgv_lang["batch_update"]="Realizar cambios en bloque a su GEDCOM";
 

@@ -3,7 +3,7 @@
  * Catalan texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -296,7 +296,7 @@ $pgv_lang["weekly"]					= "Setmanalment";
 $pgv_lang["welcome_new"]			= "Benvingut al vostre lloc web PhpGedView.";
 $pgv_lang["yearly"]					= "Anualment";
 $pgv_lang["admin_OK_subject"]					= "Autorització de registre a #SERVER_NAME#|";
-$pgv_lang["admin_OK_message"]					= "L'Administrador del lloc PhpGedView #SERVER_NAME# ha autoritzat la vostra comanda de disposar-hi de compte. Ara podeu accedir-hi pel següent enllaç:\r\n\r\n#SERVER_NAME#\r\n";
+$pgv_lang["admin_OK_message"]					= "L'Administrador del lloc PhpGedView #SERVER_NAME# ha autoritzat la vostra comanda de disposar-hi de compte.\r\n\r\nAra podeu accedir-hi pel següent enllaç: #SERVER_NAME#";
 
 // Text for the Gedcom Checker
 $pgv_lang["gedcheck"]     			= "Comprovador Gedcom";

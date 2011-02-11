@@ -3,7 +3,7 @@
  * Hebrew texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -431,7 +431,7 @@ $pgv_lang["weekly"]			= "שבועי";
 $pgv_lang["welcome_new"]		= "ברוך הבא לאתר האינטרנט החדש PhpGedView שלך.";
 $pgv_lang["yearly"]			= "שנתי";
 $pgv_lang["admin_OK_subject"]	= "אישור משתמש על #SERVER_NAME#";
-$pgv_lang["admin_OK_message"]	= "המנהלן של אתר PhpGedView #SERVER_NAME# אישר את הבקשה שלך לקוד משתמש. תוכל עכשיו להשתמש באתר ע\"י הקישור הבא: \r\n\r\n<a href=\"#SERVER_NAME#\">#SERVER_NAME#</a>\r\n";
+$pgv_lang["admin_OK_message"]	= "המנהלן של אתר PhpGedView #SERVER_NAME# אישר את הבקשה שלך לקוד משתמש.\r\n\r\nתוכל עכשיו להשתמש באתר ע\"י הקישור הבא: <a href=\"#SERVER_NAME#\">#SERVER_NAME#</a>";
 
 $pgv_lang["batch_update"]		= "בצע עדכונים/עריכה באצוה (batch) על קובץ ה-GEDCOM שלך";
 

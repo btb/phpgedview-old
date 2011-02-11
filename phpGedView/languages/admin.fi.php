@@ -3,7 +3,7 @@
  * Finnish texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -288,7 +288,7 @@ $pgv_lang["visitor"]			= "Vierailija";
 $pgv_lang["warn_users"]		= "Käyttäjät, joilla varoitus";
 $pgv_lang["weekly"]			= "Viikoittain";
 $pgv_lang["welcome_new"]		= "Tervetuloa sinun uudelle PhpGedView internet sivustolle.";
-$pgv_lang["admin_OK_message"]	= "PhpGedView sivuston #SERVER_NAME# ylläpitäjä on hyväksynyt anomuksesi tunnukselle. Voit kirjautua sivustolle käyttäen seuraavaa linkkiä:\r\n\r\n#SERVER_NAME#\r\n";
+$pgv_lang["admin_OK_message"]	= "PhpGedView sivuston #SERVER_NAME# ylläpitäjä on hyväksynyt anomuksesi tunnukselle.\r\n\r\nVoit kirjautua sivustolle käyttäen seuraavaa linkkiä:#SERVER_NAME#";
 $pgv_lang["yearly"]			= "Vuosittain";
 $pgv_lang["admin_OK_subject"]	= "Tunnus anomus #SERVER_NAME#";
 
