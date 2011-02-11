@@ -3,7 +3,7 @@
  * Slovenian texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -429,7 +429,7 @@ $pgv_lang["weekly"]							= "Tedensko";
 $pgv_lang["welcome_new"]						= "Dobrodošli na vašo novo PhpGedView spletno stran.";
 $pgv_lang["yearly"]							= "Letno";
 $pgv_lang["admin_OK_subject"]						= "Odobritev uporabniškega računa na #SERVER_NAME#";
-$pgv_lang["admin_OK_message"]						= "Upravitelj rodovnika na spletni strani #SERVER_NAME# je odobril vaš zahtevek za uporabniški račun. Sedaj se lahko prijavite tako da sledite naslednji povezavi:\r\n\r\n#SERVER_NAME#\r\n";
+$pgv_lang["admin_OK_message"]						= "Upravitelj rodovnika na spletni strani #SERVER_NAME# je odobril vaš zahtevek za uporabniški račun.\r\n\r\nSedaj se lahko prijavite tako da sledite naslednji povezavi: #SERVER_NAME#";
 
 $pgv_lang["batch_update"]						= "Izdelaj skupke popravkov/ureditev vašega GEDCOM-a";
 

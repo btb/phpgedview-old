@@ -3,7 +3,7 @@
  * French Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -372,7 +372,7 @@ $pgv_lang["weekly"]                     = "Hebdo";
 $pgv_lang["welcome_new"]                = "Bienvenue sur votre site PhpGedView. L'affichage de cette page signifie que PhpGedView a été correctement installé sur votre serveur. Vous pouvez lancer la configuration.<br />";
 $pgv_lang["yearly"]                     = "Annuel";
 $pgv_lang["admin_OK_subject"]           = "Approbation (validation) du compte sur #SERVER_NAME#";
-$pgv_lang["admin_OK_message"]           = "L'administrateur du site PhpGedView #SERVER_NAME# a approuvé la création de votre compte utilisateur. Vous pouvez maintenant vous connecter en utilisant le lien suivant :\r\n\r\n#SERVER_NAME#\r\n";
+$pgv_lang["admin_OK_message"]           = "L'administrateur du site PhpGedView #SERVER_NAME# a approuvé la création de votre compte utilisateur.\r\n\r\nVous pouvez maintenant vous connecter en utilisant le lien suivant : #SERVER_NAME#";
 $pgv_lang["batch_update"]               = "Effectuer des mises à jour/modifications de votre GEDCOM par batch";
 // Text for the Gedcom Checker
 $pgv_lang["gedcheck"]                   = "Vérificateur GEDCOM";

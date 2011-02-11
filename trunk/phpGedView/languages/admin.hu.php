@@ -3,7 +3,7 @@
  * Hungarian texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -247,7 +247,7 @@ $pgv_lang["critical"]     				= "Kritikus";
 $pgv_lang["level"]        				= "Szint";                   // Szint";
 $pgv_lang["gedcheck_text"]				= "Ez a modul a GEDCOM fájl formátumát ellenőrzi le, hogy megfelel-e a következő specifikációnak: <a href=\"http://phpgedview.sourceforge.net/ged551-5.pdf\">5.5.1 GEDCOM Specification</a>. További szokványos hibát is leellenőriz. Érdemes megjegyezni, hogy mivel sok variációjú verzió, kiterjesztés és variáció létezik, ezért ami nem \"Kritikus\" besorolású, azzal nem biztos hogy foglalkoznia kell. A specifikációban megtalálható a sorról sorra történő magyarázat, ezek tanulmányozása után kérjen csak segítséget.";
 $pgv_lang["gedcheck"]     				= "Gedcom ellenőrző";
-$pgv_lang["admin_OK_message"]				= "A #SERVER_NAME# PhpGedView oldal adminisztrátora elfogadta a felhasználói jelentkezését. A következő hivatkozásra kattintva jelentkezhet be:\r\n\r\n#SERVER_NAME#\r\n";
+$pgv_lang["admin_OK_message"]				= "A #SERVER_NAME# PhpGedView oldal adminisztrátora elfogadta a felhasználói jelentkezését.\r\n\r\nA következő hivatkozásra kattintva jelentkezhet be: #SERVER_NAME#";
 $pgv_lang["admin_OK_subject"]				= "Felhasználó elfogadása itt: #SERVER_NAME#";
 $pgv_lang["yearly"]					= "Éves";
 $pgv_lang["welcome_new"] 		= "Üdvözöljük az Ön új PhpGedView honlapján.";

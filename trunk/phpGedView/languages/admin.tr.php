@@ -3,7 +3,7 @@
  * Turkish Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -371,7 +371,7 @@ $pgv_lang["weekly"]								= "Haftalık";
 $pgv_lang["welcome_new"]			= "Yeni PhpGedView websitesine hoş geldiniz.";
 $pgv_lang["yearly"]								= "Yıllık";
 $pgv_lang["admin_OK_subject"]					= "#SERVER_NAME# hesabı onayla";
-$pgv_lang["admin_OK_message"]					= "PhpGedView site #SERVER_NAME# daki yönetici üyelik hesabınızı onayladı. Şimdi aşağıdaki linki tıklayıp PhpGedView sitesine bağlanıp giriş yapabilirsiniz: \r\n\r\n#SERVER_NAME#\r\n";
+$pgv_lang["admin_OK_message"]					= "PhpGedView site #SERVER_NAME# daki yönetici üyelik hesabınızı onayladı.\r\n\r\nŞimdi aşağıdaki linki tıklayıp PhpGedView sitesine bağlanıp giriş yapabilirsiniz: #SERVER_NAME#";
 
 $pgv_lang["batch_update"]="GEDCOM kümeyi güncelleme/düzenleme yönetimi";
 

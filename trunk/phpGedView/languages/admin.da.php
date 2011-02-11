@@ -3,7 +3,7 @@
  * Danish texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2008  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -298,7 +298,7 @@ $pgv_lang["weekly"]								= "Ugentlig";
 $pgv_lang["welcome_new"]						= "Velkommen til din nye PhpGedView hjemmeside.";
 $pgv_lang["yearly"]								= "Årlig";
 $pgv_lang["admin_OK_subject"]					= "Godkendelse af konto på #SERVER_NAME#";
-$pgv_lang["admin_OK_message"]					= "Administratoren af hjemmesiden #SERVER_NAME# har godkendt din ansøgning om en konto. Du kan nu logge på ved at bruge følgende genvej:\r\n\r\n#SERVER_NAME#\r\n";
+$pgv_lang["admin_OK_message"]					= "Administratoren af hjemmesiden #SERVER_NAME# har godkendt din ansøgning om en konto.\r\n\r\nDu kan nu logge på ved at bruge følgende genvej: #SERVER_NAME#";
 
 // Text for the Gedcom Checker
 $pgv_lang["gedcheck"]     = "Gedcom kontrol";
