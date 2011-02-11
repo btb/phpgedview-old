@@ -225,7 +225,7 @@ if (!empty($_SERVER['SCRIPT_NAME'])) {
 if (!empty($SERVER_URL) && $SERVER_URL != PGV_SERVER_NAME.PGV_SCRIPT_PATH) {
 	header('Location: '.$SERVER_URL);
 	exit;
-}
+} else $SERVER_URL = PGV_SERVER_NAME.PGV_SCRIPT_PATH;	// some scripts still need this
 
 // Microsoft IIS servers don't set REQUEST_URI, so generate it for them.
 if (!isset($_SERVER['REQUEST_URI']))  {
