@@ -6,7 +6,7 @@
  * routines and sorting functions.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -3606,7 +3606,7 @@ function encrypt($string, $key='') {
 		if ($newOrd > 255) $newOrd -= 256;		// Make sure we stay within the 8-bit code table
 		$result .= chr($newOrd);
 	}
-	$result = '*'.strtr(base64_encode($result), '+/=', '-_#');		// Avoid characters that mess up URLs
+	$result = '*'.strtr(base64_encode($result), '+/=', '-_!');		// Avoid characters that mess up URLs
 
 	return $result;
 }
@@ -3621,7 +3621,7 @@ function decrypt($string, $key='') {
 	if (empty($key)) $key = session_id();
 
 	if (substr($string, 0, 1)!='*') return $string;		// Input is not a valid encrypted string
-	$string = base64_decode(strtr(substr($string, 1), '-_#', '+/='));
+	$string = base64_decode(strtr(substr($string, 1), '-_!', '+/='));
 
 	$result = '';
 	for($i=0; $i<strlen($string); $i++) {

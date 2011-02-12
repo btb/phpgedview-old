@@ -7,7 +7,7 @@
  * file.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -86,6 +86,8 @@ if (!isset ($import_existing)) $import_existing = false;
 if (!isset($utf8convert)) $utf8convert = "no";
 if (isset($_REQUEST['keepmedia']) && $_REQUEST['keepmedia']=='yes') $keepmedia=true;
 else $keepmedia = false;
+
+$path = decrypt($path);		// path needed to be encrypted to get past hack detection
 
 // NOTE: GEDCOM was uploaded
 if ($check == "upload") {

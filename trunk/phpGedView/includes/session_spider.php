@@ -144,7 +144,7 @@ if (preg_match("~=.*://~", rawurldecode($_SERVER["REQUEST_URI"]))) {
 }
 
 // check for attempt to escape from the PGV directory
-if (preg_match("~\.\.(/|\\\)\.\.(/|\\\)\.\.(/|\\\)~", rawurldecode($_SERVER["REQUEST_URI"]))) {
+if (preg_match("~\.\.(/|\\\)~", rawurldecode($_SERVER["REQUEST_URI"]))) {
 	$quitReason = "Attempt escape from PGV directory";
 }
 
