@@ -3,7 +3,7 @@
  * UI for online updating of the GEDCOM config file.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -87,7 +87,7 @@ function GetGEDFromZIP($zipfile, $extract=true) {
 
 loadLangFile("pgv_confighelp, pgv_help");
 
-if (isset($_REQUEST['path'])) $path = $_REQUEST['path'];
+if (isset($_REQUEST['path'])) $path = decrypt($_REQUEST['path']);
 if (isset($_REQUEST['oldged'])) $oldged = $_REQUEST['oldged'];
 if (isset($_REQUEST['GEDFILENAME'])) $GEDFILENAME = $_REQUEST['GEDFILENAME'];
 if (isset($_REQUEST['GEDCOMPATH'])) $GEDCOMPATH = $_REQUEST['GEDCOMPATH'];
@@ -607,7 +607,7 @@ if ($action=="update") {
 			$bakfile = "";
 		}
 		if ($source !== "") {
-			header("Location: ".encode_url("uploadgedcom.php?action=$source&check=$check&step=2&GEDFILENAME={$GEDFILENAME}&path={$path}&verify=verify_gedcom&bakfile={$bakfile}", false));
+			header("Location: ".encode_url("uploadgedcom.php?action=$source&check=$check&step=2&GEDFILENAME={$GEDFILENAME}&path=".encrypt($path)."&verify=verify_gedcom&bakfile={$bakfile}", false));
 		} else {
 			header("Location: editgedcoms.php");
 		}
@@ -615,7 +615,7 @@ if ($action=="update") {
 	}
 }
 else if ($action=="replace") {
-	header("Location: ".encode_url("uploadgedcom.php?action=upload_form&GEDFILENAME={$GEDFILENAME}&path={$path}&verify=validate_form", false));
+	header("Location: ".encode_url("uploadgedcom.php?action=upload_form&GEDFILENAME={$GEDFILENAME}&path=".encrypt($path)."&verify=validate_form", false));
 }
 
 //-- output starts here

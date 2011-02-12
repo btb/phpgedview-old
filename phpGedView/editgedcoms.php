@@ -3,7 +3,7 @@
  * UI for online updating of the config file.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -156,7 +156,7 @@ foreach ($all_gedcoms as $ged_id=>$ged_name) {
 		if ($TEXT_DIRECTION=="rtl") print getRLM() . "(".$ged_id.")" . getRLM();
 		else print getLRM() . "(".$ged_id.")" . getLRM();
 		if ($DEFAULT_GEDCOM==$ged_name) print "</span>";
-		print "&nbsp;&nbsp;<a href=\"".encode_url("editconfig_gedcom.php?source=replace_form&path=".get_gedcom_setting($ged_id, 'path'))."&oldged=".get_gedcom_setting($ged_id, 'gedcom')."\">".$pgv_lang['upload_replacement']."</a>\n";
+		print "&nbsp;&nbsp;<a href=\"".encode_url("editconfig_gedcom.php?source=replace_form&path=".encrypt(get_gedcom_setting($ged_id, 'path')))."&oldged=".get_gedcom_setting($ged_id, 'gedcom')."\">".$pgv_lang['upload_replacement']."</a>\n";
 		print "</td>";
 		print "</tr>";
 
