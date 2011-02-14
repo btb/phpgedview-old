@@ -3,7 +3,7 @@
  * Installation and Configuration
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2008 to 2009  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2008 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -112,7 +112,7 @@ header("Content-Type: text/html; charset=$CHARACTER_SET");
 </head>
 <body id="body" dir="<?php print $TEXT_DIRECTION; ?>">
 <br />
-<table class="list_table person_boxNN width70" style="background-color: none;" cellspacing="0" cellpadding="5">
+<table class="list_table person_boxNN width80" style="background-color: none;" cellspacing="0" cellpadding="5">
 <?php
 
 //-- don't allow configuration if the DB is down but the site is configured
@@ -406,14 +406,14 @@ $errormsg = "";
 			if ($step==$i) $class="optionbox";
 			?>
 			<tr>
-				<td class="<?php print $class; ?> imenu">
+				<td class="<?php print $class; ?> imenu wrap width25">
 				<a href="install.php?step=<?php print $i; ?>"><?php print $i.". ".$pgv_lang["install_step_".$i]; ?></a>
 				</td>
 			</tr>
 			<?php } ?>
 			<?php if (!empty($_SESSION['install_modified'])) { ?>
 			<tr>
-				<td class="descriptionbox wrap width30"><br />
+				<td class="descriptionbox wrap width25"><br />
 				<span class="warning"><?php print $pgv_lang["config_not_saved"] ?></span>
 				</td>
 			</tr>
@@ -424,6 +424,19 @@ $errormsg = "";
 		<h3 class="center"><?php print $title; ?></h3>
 		<form name="configform" action="install.php" method="post" onsubmit="return checkForm(this);">
 		<input type="hidden" name="step" value="<?php print $step ?>" />
+		<?php {?>
+			<div style="float: right; display: none" id="next_display">
+			<input type="submit" id="next_button" name="next" value="<?php print $pgv_lang['next'] ?>" />
+			<script type="text/javascript">
+			</script>
+			</div>
+		<?php } ?>
+		<?php if ($step>1) {?>
+			<div style="float: left;">
+			<input type="submit" name="prev" value="<?php print $pgv_lang['prev'] ?>" />
+			</div>
+		<?php } ?>
+		<br /><br />
 		<?php
 			if (count($errors)>0) {
 				foreach($errors as $error)
@@ -464,6 +477,7 @@ $errormsg = "";
 				case 8:
 					require_once PGV_ROOT.'blocks/getting_started.php';
 					getting_started_block(false,"",0,0);
+					$success = false;		// this will hide the "next" button
 					break;
 				default:	// case 1
 					$success = checkEnvironment();
@@ -471,21 +485,13 @@ $errormsg = "";
 			}
 
 			?>
-		<br/><br />
-		<?php if ($step<$total_steps && $success) {?>
-			<div style="float: right;">
-			<input type="submit" id="next_button" name="next" value="<?php print $pgv_lang['next'] ?>" />
+		<?php if ($success) {?>
 			<script type="text/javascript">
 			<!--
+				document.getElementById("next_display").style.display = 'inline';
 				document.getElementById("next_button").focus();
 			//-->
 			</script>
-			</div>
-		<?php } ?>
-		<?php if ($step>1) {?>
-			<div style="float: left;">
-			<input type="submit" name="prev" value="<?php print $pgv_lang['prev'] ?>" />
-			</div>
 		<?php } ?>
 		</form>
 		</td>
