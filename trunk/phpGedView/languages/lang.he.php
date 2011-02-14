@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Hebrew Language Help-file
  *
