@@ -3,7 +3,7 @@
  * PopUp Window to provide editing features.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -147,8 +147,8 @@ function warnuser(cbox) {
 					print "<li class=\"facts_value\" name=\"$entry\" style=\"margin-bottom:2px;\" id=\"lock_$entry\" >";
 					print "<img src=\"./images/RESN_confidential.gif\" alt=\"\" />&nbsp;&nbsp;";
 					print "<span class=\"name2\">".$entry."</span>";
-					print "&nbsp;&nbsp;{$pgv_lang["associated_files"]}<i>&nbsp;&nbsp;".str_replace($path, "", get_gedcom_setting($ged_id, 'privacy'));
-					print "&nbsp;&nbsp;".str_replace($path, "", get_gedcom_setting($ged_id, 'config'))."</i>";
+					print "&nbsp;&nbsp;{$pgv_lang["associated_files"]}<i>&nbsp;&nbsp;".str_replace($path, "", get_privacy_file($ged_id));
+					print "&nbsp;&nbsp;".str_replace($path, "", get_config_file($ged_id))."</i>";
 				}
 				else if (in_array($entry, $locked_by_context)) {
 					print "<li class=\"facts_value\" name=\"$entry\" style=\"margin-bottom:2px;\" id=\"lock_$entry\" >";
