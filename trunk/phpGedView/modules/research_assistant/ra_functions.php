@@ -4,7 +4,7 @@
  * phpGedView Research Assistant Tool - Functions File.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -1268,7 +1268,7 @@ class ra_functions {
 					PGV_DB::prepare("SELECT * FROM {$TBLPREFIX}tasks WHERE t_id=?")
 					->execute(array($row->it_t_id))
 					->fetchOneRow();
-				
+
 				if ($task) {
 					$date=timestamp_to_gedcom_date($task->t_startdate);
 					$out .= '<tr><td class="list_label"><a href="module.php?mod=research_assistant&amp;action=viewtask&amp;taskid='.$task->t_id.'">'.$pgv_lang['details'].'</a></td><td class="list_label">'.PrintReady($task->t_title).'</td><td class="list_label">'.$this->checkComplete($row).'</td><td class="list_label">'.$date->Display(false).'</td></tr>';
@@ -1482,7 +1482,7 @@ class ra_functions {
 												$out .= "<input type=\"checkbox\" name=\"missingName[]\" value=\"".htmlentities($sVal["description"])."\" />";
 												$out .= "<td class=\"optionbox\">".$sVal["description"];
 
-												foreach($tempDates as $tKey=>$tVal)
+/*												foreach($tempDates as $tKey=>$tVal)
 												{
 
 													if(empty($greatest))
@@ -1491,7 +1491,7 @@ class ra_functions {
 														$tempGreatest = get_gedcom_value("DATE",2,$tVal[1]);
 														print($tempGreatest);
 													}
-												}
+												} */
 
 												$out .= "</td></tr>";
 										}
@@ -1512,7 +1512,7 @@ class ra_functions {
 														$out .= "<tr ><td width=\"20\" class=\"optionbox\">";
 														$out .= "<input type=\"checkbox\" name=\"missingName[]\" value=\"".htmlentities($eventVal["description"])."\" />";
 														$out .= "<td class=\"optionbox\">".$eventVal["description"];
-													foreach($tempDates as $tKey=>$tVal)
+/*													foreach($tempDates as $tKey=>$tVal)
 													{
 
 														if(empty($greatest))
@@ -1520,7 +1520,7 @@ class ra_functions {
 															$tempGreatest = get_gedcom_value("DATE",2,$tVal[1]);
 															print($tempGreatest);
 														}
-													}
+													} */
 														$out .= "</td></tr>";
 													}
 
