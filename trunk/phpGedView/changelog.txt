@@ -9,6 +9,7 @@
 =====================================================================
 
 Version 4.3.0
+ - Fixed: [ 3202881 ] Not able to accept changes (canajun2eh)
  - Fixed: [ 3197154 ] PDO/Postgresql: error in branches list (canajun2eh)
  - Deleted: wordsearch module (canajun2eh)
  - Fixed: [ 3187504 ] Fatal error in Research Assistant (canajun2eh)

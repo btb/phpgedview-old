@@ -4,7 +4,7 @@
 * Import specific functions
 *
 * phpGedView: Genealogy Viewer
-* Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+* Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -1380,7 +1380,7 @@ function accept_changes($cid) {
 
 		if ($change["type"] != "delete") {
 			//-- synchronize the gedcom record with any user account
-			$username = get_user_from_gedcom_xref($GEDCOM, $gid);
+			$username = get_user_from_gedcom_xref($ged_id, $gid);
 			if ($username && get_user_setting($username, 'sync_gedcom')=='Y') {
 				$firstname = get_gedcom_value("GIVN", 2, $gedrec);
 				$lastname = get_gedcom_value("SURN", 2, $gedrec);
