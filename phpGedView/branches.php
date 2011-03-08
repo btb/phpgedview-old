@@ -3,7 +3,7 @@
 * List branches by surname
 *
 * phpGedView: Genealogy Viewer
-* Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+* Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -140,7 +140,7 @@ function print_fams($person, $famid=null) {
 	}
 	$current = $person->getSexImage().
 		"<a target=\"_blank\" class=\"{$class}\" title=\"".$person->getXref()."\" href=\"{$person->getLinkUrl()}\">".PrintReady($person_name)."</a> ".
-		$person->getBirthDeathYears()." {$sosa}"; 
+		$person->getBirthDeathYears()." {$sosa}";
 	if ($famid && $person->getChildFamilyPedigree($famid)) {
 		$current = "<span class='red'>".$pgv_lang[$person->getChildFamilyPedigree($famid)]."</span> ".$current;
 	}
@@ -207,7 +207,7 @@ function load_ancestors_array($xref, $sosa=1) {
 function indis_array($surn, $soundex_std, $soundex_dm) {
 	global $TBLPREFIX;
 	$sql=
-		"SELECT DISTINCT n_id".
+		"SELECT DISTINCT n_id, n_sort".
 		" FROM {$TBLPREFIX}name".
 		" WHERE n_file=?".
 		" AND n_type!=?".

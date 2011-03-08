@@ -9,6 +9,7 @@
 =====================================================================
 
 Version 4.3.0
+ - Fixed: [ 3197154 ] PDO/Postgresql: error in branches list (canajun2eh)
  - Deleted: wordsearch module (canajun2eh)
  - Fixed: [ 3187504 ] Fatal error in Research Assistant (canajun2eh)
  - Changed: Relocate "Prev" and "Next" buttons in Install wizard (canajun2eh)
