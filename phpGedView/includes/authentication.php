@@ -10,7 +10,7 @@
  * Other possible options are to use LDAP for authentication.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -231,7 +231,7 @@ function userCanAccept($user_id=PGV_USER_ID, $ged_id=PGV_GED_ID) {
 }
 
 /**
- * Should user's changed automatically be accepted
+ * Should user's changes automatically be accepted
  */
 function userAutoAccept($user_id=PGV_USER_ID) {
 	if ($user_id) {
@@ -689,9 +689,9 @@ function getBlocks($username) {
 			if (!isset($row->b_config))
 				$row->b_config="";
 			if ($row->b_location=="main")
-				$blocks["main"][$row->b_order] = array($row->b_name, @unserialize($row->b_config));
+				$blocks["main"][$row->b_order] = array("id"=>$row->b_id, $row->b_name, @unserialize($row->b_config));
 			if ($row->b_location=="right")
-				$blocks["right"][$row->b_order] = array($row->b_name, @unserialize($row->b_config));
+				$blocks["right"][$row->b_order] = array("id"=>$row->b_id, $row->b_name, @unserialize($row->b_config));
 		}
 	} else {
 		if (get_user_id($username)) {
@@ -705,9 +705,9 @@ function getBlocks($username) {
 				if (!isset($row->b_config))
 					$row->b_config="";
 				if ($row->b_location=="main")
-					$blocks["main"][$row->b_order] = array($row->b_name, @unserialize($row->b_config));
+					$blocks["main"][$row->b_order] = array("id"=>$row->b_id, $row->b_name, @unserialize($row->b_config));
 				if ($row->b_location=="right")
-					$blocks["right"][$row->b_order] = array($row->b_name, @unserialize($row->b_config));
+					$blocks["right"][$row->b_order] = array("id"=>$row->b_id, $row->b_name, @unserialize($row->b_config));
 			}
 		}
 	}
