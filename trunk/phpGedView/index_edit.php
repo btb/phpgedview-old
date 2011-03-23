@@ -4,7 +4,7 @@
  * to keep bookmarks, see a list of upcoming events, etc.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -231,47 +231,93 @@ if ($action=="updateconfig") {
 	print $pgv_lang["config_update_ok"]."<br />\n";
 	if (isset($_POST["nextaction"])) $action = $_POST["nextaction"];
 	if ($ctype!="user") $_SESSION['clearcache'] = true;
+	?><script language="JavaScript" type="text/javascript">parentrefresh();</script><?php
 }
 
+
 if ($action=="update") {
-	$newublocks["main"] = array();
-	if (is_array($main)) {
-		foreach($main as $indexval => $b) {
-			$config = "";
-			$index = "";
-			reset($ublocks["main"]);
-			foreach($ublocks["main"] as $index=>$block) {
-				if ($block[0]==$b) {
-					$config = $block[1];
-					break;
-				}
+	if (0==count($main)) {  // for page to load need at least one block in main
+		?><script language="JavaScript" type="text/javascript">alert("At least one block needed on left side.  To have one column, move all blocks to the left.");window.close();</script><?php
+		exit;
+	}
+
+	$existingids=array();
+
+	$idrows=PGV_DB::prepare("SELECT b_id FROM {$TBLPREFIX}blocks WHERE b_username=? and b_location=?")->execute(array($name,'main'))->fetchAll();
+
+	$existingids['main']=array();
+	// todo: use idrows directly?
+	foreach($idrows as $row) {
+		$existingids['main'][] = $row->b_id;
+	}
+
+	$idrows=PGV_DB::prepare("SELECT b_id FROM {$TBLPREFIX}blocks WHERE b_username=? and b_location=?")->execute(array($name,'right'))->fetchAll();
+
+	$existingids['right']=array();
+	foreach($idrows as $row) {
+		$existingids['right'][] = $row->b_id;
+	}
+
+
+	foreach(array('main','right') as $column) {
+		$columnarr=$$column;  // either $main or $right
+		$othercolumn=($column=='main')?'right':'main'; // other main or right
+		$othercolumnarr=($column=='main')?$right:$main; // other $main or $right
+
+
+		// Delete removed blocks and update moved blocks
+
+		// this is to set order of all moved blocks in both columns
+		foreach($existingids[$othercolumn] as $b_id) {
+			if (!in_array($b_id, $othercolumnarr) && in_array($b_id, $columnarr)) {
+				//$position = array_keys($othercolumnarr,$b_id);
+				PGV_DB::prepare("UPDATE {$TBLPREFIX}blocks SET b_location=? WHERE b_id=?")->execute(array($column, $b_id));
 			}
-			if ($index!="") unset($ublocks["main"][$index]);
-			$newublocks["main"][] = array($b, $config);
+		}
+
+		foreach($existingids[$column] as $b_id) {
+			if (!in_array($b_id, $columnarr) && in_array($b_id, $othercolumnarr)) {
+				//$position = array_keys($othercolumnarr,$b_id);
+				PGV_DB::prepare("UPDATE {$TBLPREFIX}blocks SET b_location=? WHERE b_id=?")->execute(array($othercolumn, $b_id));
+			}
+			if (!in_array($b_id, $columnarr) && !in_array($b_id, $othercolumnarr)) {
+				PGV_DB::prepare("DELETE FROM {$TBLPREFIX}blocks WHERE b_id=?")->execute(array($b_id));
+			}
+		}
+
+		//add and update blocks
+		foreach($columnarr as $indexval => $b) {
+			if (is_numeric($b)) { //existing block
+				PGV_DB::prepare("UPDATE {$TBLPREFIX}blocks SET b_order=? WHERE b_id=?")->execute(array($indexval, $b));
+			} else { //new block
+				PGV_DB::prepare("INSERT INTO {$TBLPREFIX}blocks (b_id, b_username, b_location, b_order, b_name, b_config) VALUES (?, ?, ?, ?, ?, ?)")->execute(array(get_next_id("blocks", "b_id"), $name, $column, $indexval, $b, serialize($ublocks[$column][$b][1])));
+			}
 		}
 	}
 
-	$newublocks["right"] = array();
-	if (is_array($right)) {
-		foreach($right as $indexval => $b) {
-			$config = "";
-			$index = "";
-			reset($ublocks["right"]);
-			foreach($ublocks["right"] as $index=>$block) {
-				if ($block[0]==$b) {
-					$config = $block[1];
-					break;
-				}
-			}
-			if ($index!="") unset($ublocks["right"][$index]);
-			$newublocks["right"][] = array($b, $config);
+
+	if ($setdefault) {  //copy this user's setting to defaultuser
+		// todo:it would simplify the code considerably to let MySQL handle setting new b_id values
+
+		PGV_DB::prepare("DELETE FROM {$TBLPREFIX}blocks WHERE b_username=?")->execute(array("defaultuser"));
+
+		unset($existingids);
+		$idrows=PGV_DB::prepare("SELECT b_id FROM {$TBLPREFIX}blocks WHERE b_username=?")->execute(array($name))->fetchAll();
+
+		foreach($idrows as $row) {
+			$existingids[] = $row->b_id;
+		}
+
+		foreach($existingids as $b_id) {
+			$idblock=PGV_DB::prepare("SELECT * FROM {$TBLPREFIX}blocks WHERE b_id=?")->execute(array($b_id))->fetchAll();
+			PGV_DB::prepare("INSERT INTO {$TBLPREFIX}blocks (b_id, b_username, b_location, b_order, b_name, b_config) VALUES (?, ?, ?, ?, ?, ?)")->execute(array(get_next_id("blocks", "b_id"), "defaultuser", $idblock[0]->b_location, $idblock[0]->b_order, $idblock[0]->b_name, $idblock[0]->b_config));
 		}
 	}
-	$ublocks = $newublocks;
-	setBlocks($name, $ublocks, $setdefault);
+
 	if (isset($_POST["nextaction"])) $action = $_POST["nextaction"];
 	?><script language="JavaScript" type="text/javascript">parentrefresh();</script><?php
 }
+
 
 if ($action=="clearcache") {
 	clearCache();
@@ -431,8 +477,10 @@ else {
 	function show_description(list_name) {
 		list_select = document.getElementById(list_name);
 		instruct = document.getElementById('instructions');
-		if (list_select && instruct) {
+		if (list_select && instruct && list_name=='available_select') {
 			instruct.innerHTML = block_descr[list_select.options[list_select.selectedIndex].value];
+		} else { //don't display description for configured blocks
+			instruct.innerHTML = '';
 		}
 		list1 = document.getElementById('main_select');
 		list2 = document.getElementById('available_select');
@@ -500,8 +548,9 @@ else {
 	print "<td class=\"optionbox\" dir=\"".$TEXT_DIRECTION."\">\n";
 		print "<select multiple=\"multiple\" id=\"main_select\" name=\"main[]\" size=\"10\" onchange=\"show_description('main_select');\">\n";
 		foreach($ublocks["main"] as $indexval => $block) {
+			$ident = array_key_exists("id",$block)?$block["id"]:$block[0];
 			if (function_exists($block[0])) {
-				print "<option value=\"$block[0]\">".$PGV_BLOCKS[$block[0]]["name"]."</option>\n";
+				print "<option value=\"".$ident."\">".$PGV_BLOCKS[$block[0]]["name"]."</option>\n";
 			}
 		}
 		print "</select>\n";
@@ -540,8 +589,9 @@ else {
 	print "<td class=\"optionbox\" dir=\"".$TEXT_DIRECTION."\">";
 		print "<select multiple=\"multiple\" id=\"right_select\" name=\"right[]\" size=\"10\" onchange=\"show_description('right_select');\">\n";
 		foreach($ublocks["right"] as $indexval => $block) {
+			$ident = array_key_exists("id",$block)?$block["id"]:$block[0];
 			if (function_exists($block[0])) {
-				print "<option value=\"$block[0]\">".$PGV_BLOCKS[$block[0]]["name"]."</option>\n";
+				print "<option value=\"".$ident."\">".$PGV_BLOCKS[$block[0]]["name"]."</option>\n";
 			}
 		}
 		print "</select>\n";
@@ -555,10 +605,7 @@ else {
 		print_help_link("block_move_up_help", "qm");
 	print "</td>";
 	print "</tr>";
-	// NOTE: Row 3 columns 1-7: Summary description of currently selected block
-	print "<tr><td class=\"descriptionbox wrap\" colspan=\"7\" dir=\"".$TEXT_DIRECTION."\"><div id=\"instructions\">";
-	print $pgv_lang["index_edit_advice"];
-	print "</div></td></tr>";
+
 	print "<tr><td class=\"topbottombar\" colspan=\"7\">";
 
 	if (PGV_USER_IS_ADMIN && $ctype=='user') {
@@ -582,8 +629,14 @@ else {
 		print_help_link("clear_cache_help", "qm");
 		print "<input type =\"button\" value=\"".$pgv_lang["clear_cache"]."\" onclick=\"window.location='index_edit.php?ctype=$ctype&amp;action=clearcache&amp;name=".str_replace("'", "\'", $name)."';\" />";
 	}
-	print "</td></tr></table>";
-	print "</form>\n";
+	print "</td></tr>";
+
+	// NOTE: Row 3 columns 1-7: Summary description of currently selected block
+	print "<tr><td class=\"descriptionbox wrap\" colspan=\"7\" dir=\"".$TEXT_DIRECTION."\"><div id=\"instructions\">";
+	print $pgv_lang["index_edit_advice"];
+	print "</div></td></tr>";
+
+	print "</table></form>\n";
 
 	// end of 1st tab
 	print "</div>\n";
