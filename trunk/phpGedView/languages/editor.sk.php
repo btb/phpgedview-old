@@ -3,7 +3,7 @@
  * Slovak Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2008  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -146,7 +146,6 @@ $pgv_lang["file_partial"]		= "Súbor bol nahraný iba čiastočne, prosím skús
 $pgv_lang["file_success"]		= "Súbor bol úspešne nahraný";
 $pgv_lang["file_too_big"]		= "Nahraný súbor presiahol povolenú veľkosť";
 $pgv_lang["folder"]		 	= "Adresár na serveri";
-$pgv_lang["gedcom_editing_disabled"]	= "Upravovanie tohoto GEDCOMu bolo zakázané administrátorom systému.";
 $pgv_lang["gedcomid"]			= "ID osoby";
 $pgv_lang["gedrec_deleted"]		= "Záznam bol úspešne zmazaný.";
 $pgv_lang["gen_thumb"]			= "Vytvor náhľad";
@@ -196,8 +195,6 @@ $pgv_lang["no_upload"]			= "Nie je povolené načítať súbory médií, pretož
 $pgv_lang["paste_id_into_field"]	= "Vložte toto ID zdroja do políčok, z ktorých sa chcete odvolávať na tento zdroj.";
 $pgv_lang["paste_rid_into_field"]	= "Vložte toto ID prameňa do políčok, z ktorých sa chcete odvolávať na tento prameň.";
 $pgv_lang["photo_replace"] 		= "Chcete prepísať starú fotku touto novou?";
-$pgv_lang["privacy_not_granted"]	= "Nemáte prístup k";
-$pgv_lang["privacy_prevented_editing"]	= "Nastavenie utajenia vám neumožňuje upravovať tento záznam.";
 $pgv_lang["record_marked_deleted"]	= "Tento záznam je označený na zmazanie, po schválení administrátorom.";
 $pgv_lang["replace_with"]		= "Prepísať s";
 $pgv_lang["show_changes"]		= "Tento záznam bol aktualizovaný. Kliknite sem pre zobrazenie zmien.";

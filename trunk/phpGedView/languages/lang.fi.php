@@ -3,7 +3,7 @@
  * Finnish Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2010  PGV Development Team
+ * Copyright (C) 2002 to 2011  PGV Development Team
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -1014,6 +1014,9 @@ $pgv_lang["edit_name"]		= "Muokkaa nimeä";
 $pgv_lang["delete_name"]		= "Pyyhi nimi";
 $pgv_lang["select_date"]		= "Valitse päivämäärä";
 $pgv_lang["user_cannot_edit"]	= "Tämä käyttäjätunnus ei voi muokata tätä GEDCOM-tiedostoa.";
+$pgv_lang["gedcom_editing_disabled"]= "Järjestelmävalvoja on estänyt tämän GEDCOM-tiedoston muokkauksen.";
+$pgv_lang["privacy_not_granted"]	= "Sinulla ei ole pääsyoikeutta";
+$pgv_lang["privacy_prevented_editing"]= "Yksityisyysasetukset estävät tämän tietueen muokkauksen.";
 $pgv_lang["ged_noshow"]		= "Ylläpito on poistanut tämän sivun käytöstä.";
 $pgv_lang["bdm"]			= "Syntymät, kuolemat, avioliitot";
 

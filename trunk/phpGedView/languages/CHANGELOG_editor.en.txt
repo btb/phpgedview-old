@@ -41,6 +41,16 @@ The above list of codes may be amended as new situations arise.
 For massive changes, the variable names should be listed in the order in which they
 occur in the respective language files.
 
+
+VERSION 4.3.0
+
+?$pgv_lang["whatever"]								dd Monthname, year		Change	codes and comments
+----------------------------------------------------------------------------------------
+-$pgv_lang["gedcom_editing_disabled"] 				02 Apr 2011				M moved to lang.en.php
+-$pgv_lang["privacy_not_granted"]     				02 Apr 2011				M moved to lang.en.php
+-$pgv_lang["privacy_prevented_editing"]				02 Apr 2011				M moved to lang.en.php
+
+
 VERSION 4.2.4
 
 ?$pgv_lang["whatever"]								dd Monthname, year		Change	codes and comments

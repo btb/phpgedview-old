@@ -3,7 +3,7 @@
  * Indonesian texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -164,7 +164,6 @@ $pgv_lang["file_cant_write"]				= "PHP gagal menulis ke kandar";
 $pgv_lang["file_bad_extension"]				= "PHP mencegah berkas berdasarkan ekstensi";
 $pgv_lang["file_unkown_err"]				= "Kode kesalahan unggah berkas tidak diketahui #pgv_lang[global_num1]#. Silakan laporkan hal ini sebagai bug.";
 $pgv_lang["folder"]		 			= "Folder di server";
-$pgv_lang["gedcom_editing_disabled"]			= "Penyuntingan GEDCOM ini telah dinonaktifkan oleh administrator.";
 $pgv_lang["gedcomid"]					= "ID rekaman GEDCOM INDI";
 $pgv_lang["gedrec_deleted"] 				= "Rekaman GEDCOM berhasil dihapus.";
 $pgv_lang["gen_thumb"]					= "Ciptakan thumbnail";
@@ -215,8 +214,6 @@ $pgv_lang["no_upload"]					= "Pengunggahan berkas media tidak diperbolehkan kare
 $pgv_lang["paste_id_into_field"]			= "Tempel ID beriktu ke field suntingan Anda untuk merujuk rekaman yang baru diciptakan ";
 $pgv_lang["paste_rid_into_field"]			= "Tempel ID Repositori berikut ke field suntingan Anda untuk merujuk Repositori ini ";
 $pgv_lang["photo_replace"]				= "Apakah Anda ingin mengganti foto lama dengan foto ini?";
-$pgv_lang["privacy_not_granted"]			= "Anda tidak mempunyai akses ke";
-$pgv_lang["privacy_prevented_editing"]			= "Setelan privasi mencegah Anda menyunting rekaman ini.";
 $pgv_lang["record_marked_deleted"]			= "Rekaman ini telah ditandai untuk penghapusan atas persetujuan admin.";
 $pgv_lang["replace_with"]				= "Ganti dengan";
 $pgv_lang["show_changes"]				= "Rekaman ini telah dimutakhirkan. Klik di sini untuk memperlihatkan perubahan.";

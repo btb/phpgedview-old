@@ -3,7 +3,7 @@
  * Greek texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2008  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -67,7 +67,6 @@ $pgv_lang["file_missing"]						= "No file was received. Upload again.";
 $pgv_lang["file_partial"]						= "File was only partially uploaded, please try again";
 $pgv_lang["file_success"]						= "Η Αποστολή Αρχείου ολοκληρώθηκε με επιτυχία";
 $pgv_lang["file_too_big"]						= "Uploaded file exceeds the allowed size";
-$pgv_lang["gedcom_editing_disabled"]			= "Editing this GEDCOM has been disabled by the system administrator.";
 $pgv_lang["gedcomid"]							= "GEDCOM INDI record ID";
 $pgv_lang["gedrec_deleted"]						= "GEDCOM record succesfully deleted.";
 $pgv_lang["hide_changes"]						= "Επιλέξτε εδώ για απόκρυψη αλλαγών.";
@@ -78,8 +77,6 @@ $pgv_lang["new_source_created"]					= "New source created successfully.";
 $pgv_lang["no_changes"]							= "There are currently no changes that need to be reviewed.";
 $pgv_lang["no_temple"]							= "No Temple - Living Ordinance";
 $pgv_lang["paste_id_into_field"]				= "Paste the following source ID into your editing fields to reference this source ";
-$pgv_lang["privacy_not_granted"]				= "You have no access to";
-$pgv_lang["privacy_prevented_editing"]			= "The privacy settings prevent you from editing this record.";
 $pgv_lang["show_changes"]						= "This record has been updated.  Click here to show changes.";
 $pgv_lang["thumbnail"]							= "Thumbnail";
 $pgv_lang["undo"]								= "Undo";

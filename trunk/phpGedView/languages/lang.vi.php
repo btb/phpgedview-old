@@ -3,7 +3,7 @@
  * Vietnamese Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -433,6 +433,9 @@ $pgv_lang["edit_name"]				= "Sửa Tên";
 $pgv_lang["delete_name"]			= "Xoá Tên";
 $pgv_lang["select_date"]			= "Chọn một ngày";
 $pgv_lang["user_cannot_edit"]		= "Thành viên với tên này không có quyền sửa GEDCOM này.<br />";
+$pgv_lang["gedcom_editing_disabled"]	= "Quản lý cho phép sửa đổi gì trong GEDCOM này.";
+$pgv_lang["privacy_not_granted"]	= "Không có quyền đổi đặc quyền cho";
+$pgv_lang["privacy_prevented_editing"]	= "Theo mực kín đáo, bạn không có quyền sửa chửa ký lục này.";
 $pgv_lang["ged_noshow"]				= "Trang này lấy đã bỏ ngang bên bởi quản lý của site";
 $pgv_lang["bdm"]					= "Sinh, Tử, Kết Hôn";
 $pgv_lang["on_this_day"]			= "Trong Ngày Này, trong Quá Khứ Của Bạn...";

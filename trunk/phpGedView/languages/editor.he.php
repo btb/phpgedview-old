@@ -3,7 +3,7 @@
  * Hebrew texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2009  PGV Development Team
+ * Copyright (C) 2002 to 2011  PGV Development Team
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -174,7 +174,6 @@ $pgv_lang["file_cant_write"]            	= "PHP נכשל בכתיבה לדיסק
 $pgv_lang["file_bad_extension"]         	= "PHP חסם קובץ לפי סיומת";
 $pgv_lang["file_unkown_err"]            	= "קוד שגיאה #pgv_lang[global_num1]# בטעינת קובץ לא ידוע. נא דווח על כך כשגיאה.";
 $pgv_lang["folder"]		 	= "תיקייה על השרת";
-$pgv_lang["gedcom_editing_disabled"] = "אפשרות העריכה של ה-GEDCOM נפסלה ע\"י מנהלן המערכת.";
 $pgv_lang["gedrec_deleted"]		= "רשומת ה-GEDCOM נמחקה בהצלחה.";
 $pgv_lang["gen_thumb"]		= "צור תמונה מזערית";
 $pgv_lang["gen_missing_thumbs"]	= "צור תמונות מזעריות חסרות";
@@ -225,8 +224,6 @@ $pgv_lang["no_temple"]		= "אין הסמכה חיה של המקדש";
 $pgv_lang["no_upload"]		= "העלאת קובצי מדיה אינה מותרת משום שפריטי מולטי-מדיה נפסלו או משום שלא ניתן לכתוב בתיקיית המדיה.";
 $pgv_lang["paste_id_into_field"]	= "הדבק את קוד הזיהוי הבא לשדות העריכה כדי שניתן יהיה להתייחס לרשומה החדשה שנוצרה";
 $pgv_lang["paste_rid_into_field"]	= "הדבק את זיהוי המאגר הבא לשדות העריכה כדי להתייחס למאגר זה ";
-$pgv_lang["privacy_not_granted"]	= "אין לך גישה ל-";
-$pgv_lang["privacy_prevented_editing"] = "הגדרות הפרטיות מונעות ממך לערוך את הרשומה.";
 $pgv_lang["record_marked_deleted"]	= "הרשומה הזאת סומנה למחיקה לאחר אישור המנהלן.";
 $pgv_lang["replace_with"]		= "החלף ב-";
 $pgv_lang["show_changes"]		= "הרשומה עודכנה. הקש כדי לראות את השינויים.";

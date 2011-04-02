@@ -3,7 +3,7 @@
  * Lithuanian texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2008  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -99,7 +99,6 @@ $pgv_lang["file_missing"]			= "Negauta failo. Siųskite iš naujo.";
 $pgv_lang["file_partial"]			= "Nusiųsta tik failo dalis, bandykite iš naujo";
 $pgv_lang["file_success"]			= "Failas sėkmingai nusiųstas";
 $pgv_lang["file_too_big"]			= "Siunčiamas failas viršijo maksimalų leistiną dydį";
-$pgv_lang["gedcom_editing_disabled"]	= "Šio GEDCOM (giminės medžio) taisymas yra administratoriaus uždraustas.";
 $pgv_lang["gen_thumb"]				= "Sugeneruoti mažą paveiksliuką.";
 $pgv_lang["gender_search"]			= "Lytis:";
 $pgv_lang["generate_thumbnail"]		= "Sugeneruoti mažą paveiksliuką automatiškai iš";
@@ -124,7 +123,6 @@ $pgv_lang["new_source_created"] 	= "Naujas šaltinis sukurtas sėkmingai.";
 $pgv_lang["no_changes"] 			= "Šiuo metu nėra pakeitimų, kuriuos reikia peržiūrėti.";
 $pgv_lang["no_upload"]				= "Media failų užkrovimas negalimas nes multi-media įrašai yra uždrausti arba media direktorija nėra įrašoma.";
 $pgv_lang["photo_replace"] = "Ar norite pakeisti senesnę nuotrauką į naują?";
-$pgv_lang["privacy_not_granted"]	= "Jūs neturite priėjimo prie";
 $pgv_lang["thumb_genned"]			= "Mažas paveiksliukas automatiškai sugeneruotas.";
 $pgv_lang["thumbgen_error"]			= "Negalima sugeneruoti mažo paveiksliuko iš ";
 $pgv_lang["thumbnail"]				= "Mažas paveikslas";

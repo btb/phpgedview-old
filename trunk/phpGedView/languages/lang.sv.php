@@ -3,7 +3,7 @@
  * Swedish Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2010  PGV Development Team
+ * Copyright (C) 2002 to 2011  PGV Development Team
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -587,6 +587,9 @@ $pgv_lang["edit_name"]			= "Ändra namn";
 $pgv_lang["delete_name"]		= "Radera namn";
 $pgv_lang["select_date"]		= "Välj ett datum";
 $pgv_lang["user_cannot_edit"]	= "Detta användarnamn kan inte redigera denna GEDCOM-fil.";
+$pgv_lang["gedcom_editing_disabled"]	= "Redigering av denna GEDCOM har stängta av av administratören.";
+$pgv_lang["privacy_not_granted"]	= "Du har inte access till";
+$pgv_lang["privacy_prevented_editing"]	= "Integritetsinställningarna hindrar dig från att redigera denna post.";
 $pgv_lang["ged_noshow"]			= "Denna sida har spärrats av sajtadminstratören.";
 $pgv_lang["bdm"]				= "Födda, döda, vigda";
 $pgv_lang["delete_person"]		= "Radera denna person";

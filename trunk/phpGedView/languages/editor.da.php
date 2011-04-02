@@ -3,7 +3,7 @@
  * Danish texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2008  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -154,7 +154,6 @@ $pgv_lang["file_bad_extension"]		= "PHP blokkerede filen på efternavnet";
 $pgv_lang["file_cant_write"]		= "PHP kunne ikke skrive til disken";
 $pgv_lang["file_no_temp_dir"]		= "Manglende midlertidig PHP mappe";
 $pgv_lang["folder"]		 			= "Mappe på server";
-$pgv_lang["gedcom_editing_disabled"]	= "Muligheden for at ændre denne slægtsdatabase (GEDCOM) er blevet deaktiveret af system-administratoren.";
 $pgv_lang["gedrec_deleted"]		= "GEDCOM-post er nu slettet.";
 $pgv_lang["gen_thumb"]				= "Opret miniaturebilleder";
 $pgv_lang["gender_search"]			= "Køn: ";
@@ -201,8 +200,6 @@ $pgv_lang["no_temple"]			= "Ingen Tempel-Living tilordning";
 $pgv_lang["no_upload"]		= "Det er ikke tilladt at uploade mediefiler fordi der er blokeret for multimedie objekter eller fordi der ikke kan skrives til mediefilernes mappe.";
 $pgv_lang["paste_id_into_field"]= "Indsæt følgende kilde-ID i ændringsfeltet som en reference til denne kilde ";
 $pgv_lang["paste_rid_into_field"]	= "Indsæt følgende ID for opbevaringsstedet i det aktuelle felt for at kunne referere til det: ";
-$pgv_lang["privacy_not_granted"]	= "Du har ikke adgang til";
-$pgv_lang["privacy_prevented_editing"]	= "Af hensyn til beskyttelse af privatlivet, kan du ikke ændre oplysningerne.";
 $pgv_lang["record_marked_deleted"]		= "Denne post er afmærket til at blive slettet efter admin har godkendt det.";
 $pgv_lang["replace_with"]			= "Erstat med";
 $pgv_lang["show_changes"]		= "Denne post er blevet opdateret. Klik her for at se ændringerne.";

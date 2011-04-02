@@ -3,7 +3,7 @@
  * Croatian Language file for PhpGedView.
  *
  * PhpGedView: Genealogy Viewer
- * Copyright (C) 2010  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2010 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -172,7 +172,6 @@ $pgv_lang["deathplace_search"]		= "Mjesto smrti: ";
 ##$pgv_lang["file_bad_extension"]		= "PHP blocked file by extension";
 ##$pgv_lang["file_unkown_err"]		= "Unknown file upload error code #pgv_lang[global_num1]#. Please report this as a bug.";
 ##$pgv_lang["folder"]		 			= "Folder on server";
-##$pgv_lang["gedcom_editing_disabled"]	= "Editing this GEDCOM has been disabled by the administrator.";
 ##$pgv_lang["gedrec_deleted"] 		= "GEDCOM record successfully deleted.";
 ##$pgv_lang["gen_thumb"]				= "Create thumbnail";
 ##$pgv_lang["gen_missing_thumbs"]		= "Create missing thumbnails";
@@ -223,8 +222,6 @@ $pgv_lang["link_as_husband"]		= "Dodaj ovu osobu kao supruga već upisanoj porod
 ##$pgv_lang["no_upload"]				= "Uploading media files is not allowed because multi-media items have been disabled or because the media directory is not writable.";
 ##$pgv_lang["paste_id_into_field"]	= "Paste the following ID into your editing fields to reference the newly created record ";
 ##$pgv_lang["paste_rid_into_field"]	= "Paste the following Repository ID into your editing fields to reference this Repository ";
-##$pgv_lang["privacy_not_granted"]	= "You have no access to";
-##$pgv_lang["privacy_prevented_editing"]	= "Privacy settings prevent you from editing this record.";
 ##$pgv_lang["record_marked_deleted"]		= "This record has been marked for deletion upon admin approval.";
 $pgv_lang["replace_with"]			= "Zamijeni sa";
 ##$pgv_lang["show_changes"]			= "This record has been updated.  Click here to show changes.";

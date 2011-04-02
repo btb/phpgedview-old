@@ -3,7 +3,7 @@
  * Norwegian texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -1134,6 +1134,9 @@ $pgv_lang["edit_name"]			= "Rediger navn";
 $pgv_lang["delete_name"]		= "Slett navn";
 $pgv_lang["select_date"]		= "Velg en dato";
 $pgv_lang["user_cannot_edit"]		= "Dette brukernavnet har ikke rettigheter til å endre denne slektsbase.";
+$pgv_lang["gedcom_editing_disabled"]	= "Muligheten til å gjøre endringer i denne slektsbase er blitt deaktivert av system-administratoren.";
+$pgv_lang["privacy_not_granted"]	= "Du har ikke tilgang til";
+$pgv_lang["privacy_prevented_editing"]	= "På grunn av hensyn til personvern, kan du ikke endre opplysningene.";
 $pgv_lang["ged_noshow"]			= "Denne siden er deaktivert av administratoren til nettstedet.";
 
 //-- calendar.php messages

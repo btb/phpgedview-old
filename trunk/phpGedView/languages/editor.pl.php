@@ -3,7 +3,7 @@
  * Polish texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -162,7 +162,6 @@ $pgv_lang["file_cant_write"]			= "PHP nie może zapisać na dysku";
 $pgv_lang["file_bad_extension"]			= "PHP zablokowało plik przez rozszerzenie";
 $pgv_lang["file_unkown_err"]			= "Nieznany błąd podczas wgrywania pliku #pgv_lang[global_num1]#. Zgłoś raport o tym błędzie.";
 $pgv_lang["folder"]						= "Katalog na serwerze";
-$pgv_lang["gedcom_editing_disabled"]	= "Edycja tego pliku GEDCOM została zablokowana przez administratora";
 $pgv_lang["gedrec_deleted"]				= "Wpis w pliku GEDCOM został usunięty.";
 $pgv_lang["gen_missing_thumbs"]			= "Utwórz brakujące miniaturki";
 $pgv_lang["gen_missing_thumbs_lbl"]		= "Brakujące miniaturki";
@@ -213,8 +212,6 @@ $pgv_lang["no_temple"]					= "Brak świątyni - Living Ordinance";
 $pgv_lang["no_upload"]					= "Nie można wgrać pliku multimedialnego ponieważ wgrywanie multimediów zostało zablokowane lub katalog multimediów jest chroniony przed zapisem.";
 $pgv_lang["paste_id_into_field"]		= "Wklej poniższy identyfikator w pola edycji aby odwołać się do nowo utworzonego wpisu.";
 $pgv_lang["paste_rid_into_field"]		= "Wklej poniższy identyfikator w pole edycji aby odwołać się do tego repozytorium.";
-$pgv_lang["privacy_not_granted"]		= "Brak dostępu do ";
-$pgv_lang["privacy_prevented_editing"]	= "Ustawienia poufności uniemożliwiają edycję tego wpisu.";
 $pgv_lang["record_marked_deleted"]		= "Ten wpis został zaznaczony do usunięcia po zatwierdzeniu przez administratora.";
 $pgv_lang["replace_with"]				= "Zamień na";
 $pgv_lang["show_changes"]				= "Wpis został zaktualizowany. Kliknij tutaj aby zobaczyć zmiany.";

@@ -3,7 +3,7 @@
  * Hungarian texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -681,8 +681,11 @@ $pgv_lang["edit_name"]						= "Név szerkesztése";
 $pgv_lang["delete_name"]					= "Név törlése";
 $pgv_lang["select_date"]                			= "Dátumválasztás";
 $pgv_lang["user_cannot_edit"]           			= "Ez a felhasználó nem szerkesztheti ezt a GEDCOM-állományt.";
-$pgv_lang["bdm"]						= "Születések, Halálozások, Házasságok";
+$pgv_lang["gedcom_editing_disabled"]    = "A rendszer adminisztrátora nem engedélyezi ennek a GEDCOM-nak a szerkesztését.";
+$pgv_lang["privacy_not_granted"]        = "Önnek ehhez nincs jogosultsága: ";
+$pgv_lang["privacy_prevented_editing"]  = "A diszkréciós beállítások alapján Ön nem szerkesztheti ezt a rekordot.";
 $pgv_lang["ged_noshow"]						= "Ezt az oldalt az internetcím adminisztrátora lekapcsolta.";
+$pgv_lang["bdm"]						= "Születések, Halálozások, Házasságok";
 
 //-- calendar.php messages
 $pgv_lang["on_this_day"]					= "Ezen a napon az Ön múltjában...";

@@ -3,7 +3,7 @@
  * Portugese Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2008  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -139,7 +139,6 @@ $pgv_lang["file_partial"]="Arquivo foi enviado parcialmente, por favor tente nov
 $pgv_lang["file_success"]="Arquivo enviado com sucesso";
 $pgv_lang["file_too_big"]="O arquivo a ser enviado excede o tamanho permitido";
 $pgv_lang["folder"]="Pasta no Servidor";
-$pgv_lang["gedcom_editing_disabled"]="Edição deste GEDCOM foi desabilitada pelo administrador do sistema.";
 $pgv_lang["gedcomid"]="Minha Identificação na Árvore Genealógica";
 $pgv_lang["gedrec_deleted"]="Registro GEDCOM excluido com sucesso.";
 $pgv_lang["gen_thumb"]="Criar Miniatura";
@@ -188,8 +187,6 @@ $pgv_lang["no_upload"]="O envio de Mídia não é permitido porque esta opção 
 $pgv_lang["paste_id_into_field"]="Paste the following source ID into your editing fields to reference this source ";
 $pgv_lang["paste_rid_into_field"]="Para referenciar esta Reposição, Cole a ID da Reposição nos campos de edição ";
 $pgv_lang["photo_replace"]="Substituir foto anterior por esta?";
-$pgv_lang["privacy_not_granted"]="Você não tem acesso para";
-$pgv_lang["privacy_prevented_editing"]="As configurações de privacidade impedem você de alterar esse registro.";
 $pgv_lang["record_marked_deleted"]="Este registro foi marcado para ser excluido após a aprovação do Administrador.";
 $pgv_lang["replace_with"]= "Substituir por";
 $pgv_lang["show_changes"]="Este registro foi atualizado. Clique aqui para exibir as alterações.";

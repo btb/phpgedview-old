@@ -3,7 +3,7 @@
  * Czech texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2008  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -68,7 +68,6 @@ $pgv_lang["file_missing"]		= "Žádný soubor dodán. Nahrajte jej znovu";
 $pgv_lang["file_partial"]		= "Soubor byl nahrán jen částečně, prosím zkuste to znovu";
 $pgv_lang["file_success"]		= "Soubor byl úspěšně nahrán";
 $pgv_lang["file_too_big"]		= "Nahraný soubor přesáhl povolenou velikost";
-$pgv_lang["gedcom_editing_disabled"]	= "Upravování tohoto GEDCOMu bylo zakázáno administrátorem systému.";
 $pgv_lang["gedcomid"]			= "ID osoby";
 $pgv_lang["gedrec_deleted"]		= "Záznam byl úspěšně smazán.";
 $pgv_lang["hide_changes"]		= "Chcete-li skrýt změny, klikněte sem.";
@@ -79,8 +78,6 @@ $pgv_lang["new_source_created"]	= "Nový pramen byl vytvořen.";
 $pgv_lang["no_changes"]			= "Zatím nebyly provedeny žádné změny, které by se měly přezkoumat.";
 $pgv_lang["no_temple"]			= "No Temple - Living Ordinance";
 $pgv_lang["paste_id_into_field"]= "Vložte toto ID pramene do poliček, z nichž se chcete odvolávat na tento pramen.";
-$pgv_lang["privacy_not_granted"]	= "Nemáte přístup k";
-$pgv_lang["privacy_prevented_editing"]	= "Nastavení privátnosti vám neumožňuje upravovat tento záznam.";
 $pgv_lang["show_changes"]		= "Tento záznam byl aktualizován. Klikněte sem pro zobrazení změn.";
 $pgv_lang["thumbnail"]			= "Zmenšenina";
 $pgv_lang["undo"]			= "Zpět";

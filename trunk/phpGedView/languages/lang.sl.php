@@ -3,7 +3,7 @@
  * Slovenian texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -1172,6 +1172,7 @@ $pgv_lang["edit_name"]				= "Popravi ime";
 $pgv_lang["delete_name"]			= "Izbriši ime";
 $pgv_lang["select_date"]			= "Izberi datum";
 $pgv_lang["user_cannot_edit"]			= "Ta uporabnik ne morete urejati GEDCOM-a.";
+$pgv_lang["gedcom_editing_disabled"]		= "Urejenje tega zapisa GEDCOM je izključil upravitelj.";
 $pgv_lang["ged_noshow"]				= "Dostop do te strani je onemogočil upravitelj.";
 
 //-- calendar.php messages

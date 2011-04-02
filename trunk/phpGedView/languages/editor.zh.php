@@ -3,7 +3,7 @@
  * Chinese texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2008  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -117,7 +117,6 @@ $pgv_lang["file_partial"]		= "文件部份地只被上裝了, 請嘗試再";
 $pgv_lang["file_success"]		= "文件成功地被上裝";
 $pgv_lang["file_too_big"]		= "被上裝的文件超出允許的大小";
 $pgv_lang["folder"]		 			= "服务器上的文件夹";
-$pgv_lang["gedcom_editing_disabled"]	= "这个家谱文件被管理员禁止更改";
 $pgv_lang["gedcomid"]			= "GEDCOM 記錄身份證";
 $pgv_lang["gedrec_deleted"]		= "GEDCOM 記錄被刪除";
 $pgv_lang["gen_thumb"]				= "创建指图";

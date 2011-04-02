@@ -3,7 +3,7 @@
  * Slovenian texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2009  PGV Development Team
+ * Copyright (C) 2002 to 2011  PGV Development Team
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -173,7 +173,6 @@ $pgv_lang["file_cant_write"]			= "PHP ne more pisati na disk";
 $pgv_lang["file_bad_extension"]			= "PHP je zvrnil datoteko po končnici";
 $pgv_lang["file_unkown_err"]			= "Neznana napaka nalaganja datoteke s kodo #pgv_lang[global_num1]#. Prosim, sporočite to kot napako.";
 $pgv_lang["folder"]		 		= "Imenik na strežniku";
-$pgv_lang["gedcom_editing_disabled"]		= "Urejenje tega zapisa GEDCOM je izključil upravitelj.";
 $pgv_lang["gedrec_deleted"] 			= "Zapis GEDCOM je bil uspešno izbrisan.";
 $pgv_lang["gen_thumb"]				= "Izdelaj sličico";
 $pgv_lang["gen_missing_thumbs"]			= "Izdelaj manjkajoče sličice";
@@ -225,7 +224,7 @@ $pgv_lang["no_upload"]				= "Nalaganje fotografij ni dovoljeno, ker so bile mult
 $pgv_lang["paste_id_into_field"]		= "Prilepite naslednji ID v polja za urejane za referenco novo izdelanega zapisa ";
 $pgv_lang["paste_rid_into_field"]		= "Prilepite naslendji ID skladišča v polja za urejane za referenco novo izdelanega skladišča ";
 $pgv_lang["privacy_not_granted"]		= "Nimate dostopa do";
-$pgv_lang["privacy_prevented_editing"]		= "Nastavitve zasebnosti vam preprečujejo urejanje tega zapisa.";
+$pgv_lang["privacy_prevented_editing"]	= "Nastavitve zasebnosti vam preprečujejo urejanje tega zapisa.";
 $pgv_lang["record_marked_deleted"]		= "Ta zapis je bil označen za izbris in čaka upraviteljevo odobritev.";
 $pgv_lang["replace_with"]			= "Zamenjaj z";
 $pgv_lang["show_changes"]			= "Ta zapis je bil popravljen.  Klikni tukaj za prikaz sprememb.";

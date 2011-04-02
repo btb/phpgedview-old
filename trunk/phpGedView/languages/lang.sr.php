@@ -3,7 +3,7 @@
  * Serbian Language file for PhpGedView.
  *
  * PhpGedView: Genealogy Viewer
- * Copyright (C) 2009 to 2010  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2009 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -1134,6 +1134,9 @@ $pgv_lang["edit_name"]				= "Edituj ime";
 $pgv_lang["delete_name"]			= "Obriši ime ";
 $pgv_lang["select_date"]			= "Izaberi datum";
 ##$pgv_lang["user_cannot_edit"]		= "This user name cannot edit this GEDCOM.";
+##$pgv_lang["gedcom_editing_disabled"]	= "Editing this GEDCOM has been disabled by the administrator.";
+##$pgv_lang["privacy_not_granted"]		= "You have no access to";
+##$pgv_lang["privacy_prevented_editing"]	= "Privacy settings prevent you from editing this record.";
 ##$pgv_lang["ged_noshow"]				= "This page has been disabled by the site administrator.";
 
 //-- calendar.php messages

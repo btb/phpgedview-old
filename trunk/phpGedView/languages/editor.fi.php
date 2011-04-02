@@ -3,7 +3,7 @@
  * Finnish texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2009  PGV Development Team
+ * Copyright (C) 2002 to 2011  PGV Development Team
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -162,7 +162,6 @@ $pgv_lang["file_cant_write"]		= "PHP ei voinut kirjoittaa levylle";
 $pgv_lang["file_bad_extension"]	= "PHP estetty tiedostopäätteen perusteella";
 $pgv_lang["file_unkown_err"]		= "Tuntematon tiedoston latauksen virhekoodi #pgv_lang[global_num1]#. Raportoi tämä ohjelmistovirheenä.";
 $pgv_lang["folder"]		 	= "Tiedostokansio palvelimella";
-$pgv_lang["gedcom_editing_disabled"]= "Järjestelmävalvoja on estänyt tämän GEDCOM-tiedoston muokkauksen.";
 $pgv_lang["gedrec_deleted"]		= "GEDCOM-tietue poistettu.";
 $pgv_lang["gen_thumb"]		= "Luo pienoiskuva";
 $pgv_lang["gender_search"]		= "Sukupuoli: ";
@@ -209,8 +208,6 @@ $pgv_lang["no_temple"]		= "Ei temppeliä - elävä";
 $pgv_lang["no_upload"]		= "Mediatiedostojen lähetys palvelimelle ei ole sallittu, koska multimediakohteet eivät ole sallittuja tai koska mediakansioon ei voi kirjoittaa.";
 $pgv_lang["paste_id_into_field"]	= "Liitä seuraava ID muokkauskenttiisi viitataksesi tähän uuteen lähteeseen.";
 $pgv_lang["paste_rid_into_field"]	= "Liitä seuraava tietovaraston ID muokattaviin kenttiisi viittaukseksi tähän tietovarastoon.";
-$pgv_lang["privacy_not_granted"]	= "Sinulla ei ole pääsyoikeutta";
-$pgv_lang["privacy_prevented_editing"]= "Yksityisyysasetukset estävät tämän tietueen muokkauksen.";
 $pgv_lang["record_marked_deleted"]	= "Tämä tietue on merkitty ylläpitäjän hyväksymisen jälkeen poistettavaksi.";
 $pgv_lang["replace_with"]		= "Korvaa tällä:";
 $pgv_lang["show_changes"]		= "Tämä tietue on muuttunut. Klikkaa, jos haluat nähdä muutokset.";
