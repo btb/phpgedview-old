@@ -3,7 +3,7 @@
  * Hebrew Language Help-file
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2010  PGV Development Team
+ * Copyright (C) 2002 to 2011  PGV Development Team
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -555,8 +555,8 @@ $pgv_lang["indi_downloaded_from"]	= "האדם הורד מהאתר:";
 $pgv_lang["family_downloaded_from"]	= "המשפחה הורדה מהאתר:";
 $pgv_lang["source_downloaded_from"]	= "המקור הורד מהאתר:";
 $pgv_lang["enter_person_generations"] 	= "מספר דורות:";
-$pgv_lang["convertPath"]			= "המר נתיב המדיה ל-"; 
-$pgv_lang["convertSlashes"]			= "המר את המפרידים של תיקיית המדיה ל-"; 
+$pgv_lang["convertPath"]			= "המר נתיב המדיה ל-";
+$pgv_lang["convertSlashes"]			= "המר את המפרידים של תיקיית המדיה ל-";
 $pgv_lang["forwardSlashes"]			= "לוכסן קדמי : /";
 $pgv_lang["backSlashes"]			= "לוכסן אחורי : \\";
 
@@ -620,7 +620,7 @@ $pgv_lang["search_tagfoff"]		= "ללא פילטר";
 $pgv_lang["associate"]		= "שותף";
 $pgv_lang["search_record"]		= "רשומה שלמה";
 $pgv_lang["search_to"]		= "עד";
- 
+
 //-- SOURCELIST FILE MESSAGES
 $pgv_lang["titles_found"]		= "כותרות";
 $pgv_lang["find_source"]		= "מצא מקור";
@@ -873,7 +873,7 @@ $pgv_lang["relationship_chart"]	= "קירבה משפחתית";
 $pgv_lang["person1"]			= "אדם א'";
 $pgv_lang["person2"]			= "אדם ב'";
 $pgv_lang["no_link_found"]		= "לא נמצא קשר בין שני האנשים.";
-$pgv_lang["no_other_link_found"]	= "לא נמצא קשר אחר בין שני האנשים."; 
+$pgv_lang["no_other_link_found"]	= "לא נמצא קשר אחר בין שני האנשים.";
 $pgv_lang["sibling"]			= "אח/ות";
 $pgv_lang["follow_spouse"]		= "בדוק קירבה באמצעות נישואין";
 $pgv_lang["timeout_error"]		= "החיפוש ארך יותר מידי זמן.";
@@ -1167,6 +1167,9 @@ $pgv_lang["edit_name"]		= "ערוך שם";
 $pgv_lang["delete_name"]		= "מחק שם";
 $pgv_lang["select_date"]		= "בחר תאריך";
 $pgv_lang["user_cannot_edit"]	= "המשתמש לא יכול לערוך את הקובץ ה-GEDCOM הזה.";
+$pgv_lang["gedcom_editing_disabled"] = "אפשרות העריכה של ה-GEDCOM נפסלה ע\"י מנהלן המערכת.";
+$pgv_lang["privacy_not_granted"]	= "אין לך גישה ל-";
+$pgv_lang["privacy_prevented_editing"] = "הגדרות הפרטיות מונעות ממך לערוך את הרשומה.";
 $pgv_lang["ged_noshow"]		= "הדף הזה נחסם ע\"י מנהלן האתר.";
 
 //-- calendar.php messages
@@ -1739,7 +1742,7 @@ $pgv_lang["statreset"]			= "ברירת מחדל";
 $pgv_lang["statsubmit"]		= "הצג תרשים";
 $pgv_lang["stat_largest_families"] 	= "המשפחות הגדולות";
 
-$pgv_lang["stat_own_charts"]		= "תרשימים אישיים"; 
+$pgv_lang["stat_own_charts"]		= "תרשימים אישיים";
 $pgv_lang["statnliving"]		= "סה\"כ חיים";
 $pgv_lang["statndead"]		= "סה\"כ מתים";
 $pgv_lang["stat_births"]		= "סה\"כ לידות";

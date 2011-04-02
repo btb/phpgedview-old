@@ -3,7 +3,7 @@
  * Catalan texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -1010,6 +1010,9 @@ $pgv_lang["edit_name"]			= "Edita el Nom";
 $pgv_lang["delete_name"]		= "Elimina nom";
 $pgv_lang["select_date"]		= "Seleccioneu una data";
 $pgv_lang["user_cannot_edit"]		= "Aquest usuari no té permís per editar aquest GEDCOM.";
+$pgv_lang["gedcom_editing_disabled"]	= "L'edició d'aquest GEDCOM ha sigut inhabilitada per l'administrador.";
+$pgv_lang["privacy_not_granted"]	= "No teniu accés a";
+$pgv_lang["privacy_prevented_editing"]	= "Els paràmetres de privadesa no us permeten editar aquest registre.";
 $pgv_lang["ged_noshow"]			= "Aquesta pàgina ha estat desactivada per l'administrador del lloc.";
 
 

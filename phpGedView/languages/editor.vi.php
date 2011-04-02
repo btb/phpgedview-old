@@ -3,7 +3,7 @@
  * Vietnamese texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2008  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -90,7 +90,6 @@ $pgv_lang["file_partial"]			= "Tập tin chỉ gửi lên nửa chừng, xin là
 $pgv_lang["file_success"]			= "Tập tin gửi lên tốt đẹp";
 $pgv_lang["file_too_big"]			= "Tập tin đã gửi lên quá hạn chế lượng";
 $pgv_lang["folder"]		 			= "Cặp";
-$pgv_lang["gedcom_editing_disabled"]	= "Quản lý cho phép sửa đổi gì trong GEDCOM này.";
 $pgv_lang["gedcomid"]				= "Nhận Diện của cá nhân trong GEDCOM";
 $pgv_lang["gedrec_deleted"] 		= "Xoá bỏ ký lục GEDCOM này đã thành công.";
 $pgv_lang["gen_thumb"]				= "Tạo ra bức chân dung nhỏ";
@@ -114,8 +113,6 @@ $pgv_lang["no_upload"]				= "Không được quyền gửi lên tập tin môi t
 $pgv_lang["paste_id_into_field"]	= "Dán Nhận Diện Nguồn này vào vùng biên soạn đặng chỉ tới Nguồn này";
 $pgv_lang["paste_rid_into_field"]	= "Dán Nhận Diện Nơi Tàng Trữ này vào vùng biên soạn đặng chỉ tới Nơi Tàng Trữ này";
 $pgv_lang["photo_replace"] = "Có muốn đổi hình cũ với cái này không?";
-$pgv_lang["privacy_not_granted"]	= "Không có quyền đổi đặc quyền cho";
-$pgv_lang["privacy_prevented_editing"]	= "Theo mực kín đáo, bạn không có quyền sửa chửa ký lục này.";
 $pgv_lang["show_changes"]			= "Ký lục này đã cập nhật. Nhấn vào đây để xem.";
 $pgv_lang["thumb_genned"]			= "Bức chân dung nhỏ đã được tự động tạo ra.";
 $pgv_lang["thumbgen_error"]			= "Không tạo ra được bức chân dung nhỏ cho";

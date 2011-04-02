@@ -3,7 +3,7 @@
  * Catalan texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -142,7 +142,6 @@ $pgv_lang["file_partial"]			= "Fitxer parcialment carregat. Torneu-hi";
 $pgv_lang["file_success"]			= "S'ha carregat correctament el fitxer";
 $pgv_lang["file_too_big"]			= "El fitxer carregat excedeix el volum permès";
 $pgv_lang["folder"]		 			= "Carpeta al servidor";
-$pgv_lang["gedcom_editing_disabled"]	= "L'edició d'aquest GEDCOM ha sigut inhabilitada per l'administrador.";
 $pgv_lang["gedrec_deleted"] 		= "Registre GEDCOM eliminat correctament.";
 $pgv_lang["gen_thumb"]				= "Crea miniatura";
 $pgv_lang["gender_search"]			= "Sexe: ";
@@ -189,8 +188,6 @@ $pgv_lang["no_temple"]				= "Sense Temple -' Living Ordinance'";
 $pgv_lang["no_upload"]				= "La càrrega de fitxers multimèdia no és permesa degut a que les entrades multimèdia estan desactivades o el directori multimèdia és de només lectura.";
 $pgv_lang["paste_id_into_field"]	= "Pels camps d'edició, vinculeu aquest ID acabat de crear ";
 $pgv_lang["paste_rid_into_field"]	= "Pels camps d'edició, vinculeu aquest ID acabat de crear ";
-$pgv_lang["privacy_not_granted"]	= "No teniu accés a";
-$pgv_lang["privacy_prevented_editing"]	= "Els paràmetres de privadesa no us permeten editar aquest registre.";
 $pgv_lang["record_marked_deleted"]	= "Aquest registre ha estat senyalat per a eliminar, pendent de l'autorització de l'administrador.";
 $pgv_lang["replace_with"]			= "Canvia-ho per";
 $pgv_lang["show_changes"]			= "Aquest registre ha estat modificat. Polseu aquí per veure els canvis.";

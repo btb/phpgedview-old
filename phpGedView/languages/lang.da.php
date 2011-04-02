@@ -3,7 +3,7 @@
  * Danish Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -726,7 +726,7 @@ $pgv_lang["utf8_to_ansi"]			= "Ønsker du at konvertere fra UTF-8 til ANSI (ISO-
 $pgv_lang["media_linked"]			= "Dette medieobjekt refererer til følgende:";
 $pgv_lang["media_not_linked"]		= "Dette medieobjekt refererer ikke til noget.";
 //-- Relationship chart messages
-$pgv_lang["view_fam_nav_details"]	= "Se Detaljer af ..."; 
+$pgv_lang["view_fam_nav_details"]	= "Se Detaljer af ...";
 $pgv_lang["relationship_great"]		= "Fint";
 $pgv_lang["relationship_chart"]	= "Slægtskabsdiagram";
 $pgv_lang["person1"]			= "1. person";
@@ -1012,6 +1012,9 @@ $pgv_lang["edit_name"]			= "Ret navn";
 $pgv_lang["delete_name"]		= "Slet navn";
 $pgv_lang["select_date"]		= "Vælg en dato";
 $pgv_lang["user_cannot_edit"]		= "Denne bruger har ikke rettigheder til at ændre i slægtsdatabasen.";
+$pgv_lang["gedcom_editing_disabled"]	= "Muligheden for at ændre denne slægtsdatabase (GEDCOM) er blevet deaktiveret af system-administratoren.";
+$pgv_lang["privacy_not_granted"]	= "Du har ikke adgang til";
+$pgv_lang["privacy_prevented_editing"]	= "Af hensyn til beskyttelse af privatlivet, kan du ikke ændre oplysningerne.";
 $pgv_lang["ged_noshow"]				= "Denne side er slået fra af hjemmesidens administrator.";
 //-- calendar.php messages
 $pgv_lang["bdm"]					= "Fødsler, Dødsfald, Vielser";

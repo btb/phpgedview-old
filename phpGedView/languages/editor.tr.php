@@ -3,7 +3,7 @@
  * Turkish Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -139,7 +139,6 @@ $pgv_lang["file_partial"]		= "Dosya tamamen yollanamadı. Lütfen tekrar deneyin
 $pgv_lang["file_success"]		= "Dosya başarı ile yollandı.";
 $pgv_lang["file_too_big"]		= "Yollanılan dosya izin verilen büyüklüğü geçiyor.";
 $pgv_lang["folder"]		 			= "Serverdeki klasör";
-$pgv_lang["gedcom_editing_disabled"]	= "Bu GEDCOM veritabanının düzenlenmesi sistem yöneticisi tarafından engellenmiştir.";
 $pgv_lang["gedrec_deleted"] 		= "GEDCOM kayıtı başarı ile silindi.";
 $pgv_lang["gen_thumb"]				= "Tırnak önizleme oluştur";
 $pgv_lang["gender_search"]			= "Cinsiyet: ";
@@ -182,8 +181,6 @@ $pgv_lang["new_repo_created"]		= "Yeni saklama yeri oluşturuldu";
 $pgv_lang["new_source_created"] 	= "Yeni kaynak başarı ile eklenmiştir.";
 $pgv_lang["no_changes"]			= "Aktüel olarak yapılmış hiç bir değişiklik yoktur.";
 $pgv_lang["no_known_servers"]		= "Bilinen Sunucular değil<br />Hiç bir sonuç bulunamıyor";
-$pgv_lang["privacy_prevented_editing"]	= "Mahremiyet ayarları bu kayıtı düzenlemenizi engellemektedir.";
-$pgv_lang["record_marked_deleted"]		= "Bu kayıt yönetici onayı üzerine silmek için işaretlendi.";
 $pgv_lang["replace_with"]			= "İle değiştir";
 $pgv_lang["show_changes"]		= "Bu kayıt güncelleştirilmiştir. Buraya tıklayıp değişiklikleri gözden geçirin.";
 $pgv_lang["thumb_genned"]			= "Tırnak önizleme #thumbnail# otomatikman üretildi.";

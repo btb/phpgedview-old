@@ -3,7 +3,7 @@
  * Dutch texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -1167,6 +1167,9 @@ $pgv_lang["edit_name"]					= "Wijzig naam";
 $pgv_lang["delete_name"]				= "Verwijder naam";
 $pgv_lang["select_date"]			= "Selecteer een datum";
 $pgv_lang["user_cannot_edit"]		= "Gebruiker kan deze genealogie niet aanpassen.";
+$pgv_lang["gedcom_editing_disabled"]	= "De beheerder staat het wijzigen van deze genealogie niet toe.";
+$pgv_lang["privacy_not_granted"]		= "U heeft geen toegang tot";
+$pgv_lang["privacy_prevented_editing"]	= "Volgens de privacy-instellingen heeft u geen rechten om deze gegevens te wijzigen.";
 $pgv_lang["ged_noshow"]					= "Deze functie is door de beheerder uitgeschakeld.";
 
 //-- calendar.php messages

@@ -3,7 +3,7 @@
  * Hungarian texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2008  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -115,7 +115,6 @@ $pgv_lang["file_partial"]		= "Az állomány csak részben töltődött fel, kér
 $pgv_lang["file_success"]		= "Az állomány feltöltése sikeresen befejeződött";
 $pgv_lang["file_too_big"]		= "A feltölteni kívánt állomány elérte a maximális méretet";
 $pgv_lang["folder"]		 			= "Mappa a szerveren";
-$pgv_lang["gedcom_editing_disabled"]    = "A rendszer adminisztrátora nem engedélyezi ennek a GEDCOM-nak a szerkesztését.";
 $pgv_lang["gedrec_deleted"]		= "A GEDCOM-bejegyzést sikeresen töröltük";
 $pgv_lang["gen_thumb"]				= "Előnézet készítés";
 $pgv_lang["gender_search"]			= "Neme: ";
@@ -153,8 +152,6 @@ $pgv_lang["no_changes"]                 = "Jelenleg nincs olyan változás, mely
 $pgv_lang["no_upload"]				= "Média állományok feltöltése nem megengedett mert multi-média elemek használata nem megengedett vagy mert a média mappa nem irható.";
 $pgv_lang["paste_id_into_field"]	= "Illessze be a következő azonosítót a szerkesztett mezőkbe, hogy hivatkozhasson erre a forrásra.";
 $pgv_lang["paste_rid_into_field"]	= "Ragassza be ennek a Szervezet azonosítószámát az ön szerkesztési mezőjébe, hogy ez a Szervezet legyen a referencia";
-$pgv_lang["privacy_not_granted"]        = "Önnek ehhez nincs jogosultsága: ";
-$pgv_lang["privacy_prevented_editing"]  = "A diszkréciós beállítások alapján Ön nem szerkesztheti ezt a rekordot.";
 $pgv_lang["show_changes"]		= "A rekordot módosították. A változások megtekintéséhez kattintson ide.";
 $pgv_lang["thumb_genned"]			= "Előnézet #thumbnail# automatikusan generálva.";
 $pgv_lang["thumbgen_error"]			= "Előnézet #thumbnail# nem lehetett automatikusan generálni.";

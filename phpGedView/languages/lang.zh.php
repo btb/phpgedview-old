@@ -3,7 +3,7 @@
  * Chinese Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2008  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -391,7 +391,7 @@ $pgv_lang["int"]			= "解释";
 $pgv_lang["to"] 			= "到达";
 $pgv_lang["cir"]			= "大約";
 $pgv_lang["apx"]			= "大約";
- 
+
 //-- chinese numbers
 $pgv_lang["0"]			= "零";
 $pgv_lang["1"]			= "一";
@@ -790,7 +790,7 @@ $pgv_lang["nephew's wife"] = "外甥媳婦";
 $pgv_lang["niece"] = "姪女";
 $pgv_lang["show_path"]				= "显示连接路线";
 $pgv_lang["niece's husband"]	= "姪女婿";
-//--Grandchildren's Generation from detail 
+//--Grandchildren's Generation from detail
 $pgv_lang["son's son"]	= "孙子";
 $pgv_lang["son's son's wife"]	= "孙媳婦";
 $pgv_lang["son's daughter"]	= "孙女";
@@ -1085,4 +1085,5 @@ $pgv_lang["genealogy"]					= "家谱";
 $pgv_lang["activate"]					= "启动";
 $pgv_lang["deactivate"]					= "关闭";
 $pgv_lang["play"]					= "播放";
+$pgv_lang["gedcom_editing_disabled"]	= "这个家谱文件被管理员禁止更改";
 ?>

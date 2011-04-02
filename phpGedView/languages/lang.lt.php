@@ -3,7 +3,7 @@
  * Lithuanian Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -362,6 +362,8 @@ $pgv_lang["add"]					= "Pridėti";
 $pgv_lang["delete_person"]			= "Ištrinti šį asmenį";
 $pgv_lang["bdm"]					= "Gimimai, Mirtys, Santuokos";
 $pgv_lang["user_cannot_edit"]		= "Šis naudotojas negali koreguoti šio GEDCOM (giminės medžio).";
+$pgv_lang["gedcom_editing_disabled"]	= "Šio GEDCOM (giminės medžio) taisymas yra administratoriaus uždraustas.";
+$pgv_lang["privacy_not_granted"]	= "Jūs neturite priėjimo prie";
 $pgv_lang["select_date"]			= "Pasirinkite datą";
 $pgv_lang["saturday"]				= "Šeštadienis";
 $pgv_lang["friday"] 				= "Penktadienis";

@@ -3,7 +3,7 @@
  * French Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2009  PGV Development Team. All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team. All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -163,7 +163,6 @@ $pgv_lang["file_cant_write"]            = "PHP n'a pas pu écrire sur le disque"
 $pgv_lang["file_bad_extension"]         = "PHP a bloqué le fichier à cause de son extension";
 $pgv_lang["file_unkown_err"]            = "Erreur de téléchargement de fichier inconnu (code #pgv_lang[global_num1]#). Rapportez cette information comme un bug.";
 $pgv_lang["folder"]                     = "Répertoire";
-$pgv_lang["gedcom_editing_disabled"]    = "La modification de ce fichier GEDCOM a été interdite par l'administrateur.";
 $pgv_lang["gedrec_deleted"]             = "Enregistrement GEDCOM supprimé avec succès.";
 $pgv_lang["gen_thumb"]                  = "Créer les vignettes";
 $pgv_lang["gen_missing_thumbs"]         = "Créer les vignettes manquantes";
@@ -214,8 +213,6 @@ $pgv_lang["no_temple"]                  = "Temple absent (SDJ)";
 $pgv_lang["no_upload"]                  = "Opération non autorisée ou répertoire non accessible en écriture.";
 $pgv_lang["paste_id_into_field"]        = "Cliquez ici pour sélectionner cette source ";
 $pgv_lang["paste_rid_into_field"]       = "Cliquez ici pour sélectionner ce dépôt d'archives ";
-$pgv_lang["privacy_not_granted"]        = "Impossible de modifier les droits pour";
-$pgv_lang["privacy_prevented_editing"]  = "Droits insuffisants pour modifier cet enregistrement.";
 $pgv_lang["record_marked_deleted"]      = "Une demande de suppression de cet enregistrement a été faite, en attente de validation par l'administrateur.";
 $pgv_lang["replace_with"]               = "Remplacer par";
 $pgv_lang["show_changes"]               = "<span class='warning'>Fiche modifiée</span>&nbsp;&nbsp;Afficher les modifications.";

@@ -3,7 +3,7 @@
  * Spanish language file for PhpGedView
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -175,7 +175,6 @@ $pgv_lang["file_cant_write"]		= "PHP no pudo escribir en disco";
 $pgv_lang["file_bad_extension"]		= "PHP bloqueó el archivo por su extensión";
 $pgv_lang["file_unkown_err"]		= "Al subir el archivo se produjo en error desconocido con código #pgv_lang[global_num1]#. Por favor, repórtelo como error de programación.";
 $pgv_lang["folder"]		 			= "Carpeta en el servidor";
-$pgv_lang["gedcom_editing_disabled"]	= "El administrador ha deshabilitado las modificaciones a este GEDCOM.";
 $pgv_lang["gedrec_deleted"] 		= "Registro GEDCOM correctamente eliminado.";
 $pgv_lang["gen_thumb"]				= "Generar miniatura";
 $pgv_lang["gen_missing_thumbs"]		= "Generar miniaturas ausentes";
@@ -226,8 +225,6 @@ $pgv_lang["no_temple"]				= "Ningún templo - Ordenanza realizada en vida";
 $pgv_lang["no_upload"]				= "No se permite la subida de archivos audiovisuales porque ha sido desactivada o porque no existen permisos de escritura en el directorio.";
 $pgv_lang["paste_id_into_field"]	= "Pegar el siguiente ID de fuente en los campos de edición para hacer referencia a esta fuente";
 $pgv_lang["paste_rid_into_field"]	= "Pegue el siguiente ID de repositorio en sus campos de edición para hacer referencia a este repositorio.";
-$pgv_lang["privacy_not_granted"]	= "No tiene acceso a";
-$pgv_lang["privacy_prevented_editing"]	= "La configuración de privacidad le impide editar este registro.";
 $pgv_lang["record_marked_deleted"]		= "Este registro ha sido marcado para borrar si lo aprueba el administrador.";
 $pgv_lang["replace_with"]			= "Reemplazar por";
 $pgv_lang["show_changes"]			= "Este registro ha sido actualizado.  Haga clic aquí para ver los cambios.";

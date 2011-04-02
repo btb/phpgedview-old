@@ -3,7 +3,7 @@
  * Romanian texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2010  PGV Development Team
+ * Copyright (C) 2002 to 2011  PGV Development Team
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -1040,7 +1040,7 @@ $pgv_lang["changes_exist"]			= "Acest GEDCOM a suferit modificări.";
 $pgv_lang["find_place"] 			= "Găsiţi loc";
 $pgv_lang["close_window"]			= "Închide fereastra";
 $pgv_lang["close_window_without_refresh"] = "Închide fereastra fără reîncărcare";
-$pgv_lang["place_contains"] 		= "Locul conţine:"; 
+$pgv_lang["place_contains"] 		= "Locul conţine:";
 $pgv_lang["add"]					= "Adaugă";
 $pgv_lang["custom_event"]			= "Eveniment personalizat";
 $pgv_lang["delete_person"]			= "Şterge acest individ";
@@ -1055,6 +1055,9 @@ $pgv_lang["edit_name"]				= "Editează numele";
 $pgv_lang["delete_name"]			= "Şterge numele";
 $pgv_lang["select_date"]			= "Selectaţi o dată";
 $pgv_lang["user_cannot_edit"]		= "Acest utilizator nu poate edita acest GEDCOM.";
+$pgv_lang["gedcom_editing_disabled"]	= "Editarea acestui GEDCOM a fost dezactivată de către administrator.";
+$pgv_lang["privacy_not_granted"]	= "Nu aveţi acces la";
+$pgv_lang["privacy_prevented_editing"]	= "Setările de confidenţialitate vă împiedică să modificaţi această înregistrare.";
 $pgv_lang["ged_noshow"]				= "Această pagină a fost dezactivată de administratorul siteului.";
 
 //-- calendar.php messages

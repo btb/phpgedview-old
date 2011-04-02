@@ -3,7 +3,7 @@
  * Greek Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -446,6 +446,9 @@ $pgv_lang["edit_name"]							= "Επεξεργασία ονόματος";
 $pgv_lang["delete_name"]						= "Διαγραφή ονόματος";
 $pgv_lang["select_date"]						= "Επιλογή ημερομηνίας";
 $pgv_lang["user_cannot_edit"]					= "Αυτό το όνομα χρήστη δεν μπορεί να επεξεργαστεί αυτό το GEDCOM.";
+$pgv_lang["gedcom_editing_disabled"]			= "Editing this GEDCOM has been disabled by the system administrator.";
+$pgv_lang["privacy_not_granted"]				= "You have no access to";
+$pgv_lang["privacy_prevented_editing"]			= "The privacy settings prevent you from editing this record.";
 //-- calendar.php messages
 $pgv_lang["on_this_day"]						= "Σαν σήμερα, στην ιστορία μας...";
 $pgv_lang["in_this_month"]						= "Στο μήνα αυτό, στην ιστορία μας...";

@@ -3,7 +3,7 @@
  * Dutch texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -174,7 +174,6 @@ $pgv_lang["file_cant_write"]			= "PHP kan niet naar de schijf schrijven";
 $pgv_lang["file_bad_extension"]			= "PHP blokkeert bestand door foute extensie";
 $pgv_lang["file_unkown_err"]			= "Obekende bestands upload foutcode #pgv_lang[global_num1]#. Rapporteer dit a.u.b. als een bug.";
 $pgv_lang["folder"]		 				= "Map";
-$pgv_lang["gedcom_editing_disabled"]	= "De beheerder staat het wijzigen van deze genealogie niet toe.";
 $pgv_lang["gedrec_deleted"]				= "GEDCOM-record verwijderd.";
 $pgv_lang["gen_thumb"]					= "Genereren miniweergave";
 $pgv_lang["gen_missing_thumbs"]			= "Maak missende miniweergaves";
@@ -225,8 +224,6 @@ $pgv_lang["no_temple"]					= "Geen Temple - Living Ordinance";
 $pgv_lang["no_upload"]					= "Het uploaden van multimediabestanden is niet toegestaan omdat gebruik van multimedia is uitgeschakeld, of omdat u in de multimediamap geen schrijfrechten heeft.";
 $pgv_lang["paste_id_into_field"]		= "Plak dit bron-ID in de invoervelden voor verwijzing naar deze bron ";
 $pgv_lang["paste_rid_into_field"]		= "Plak het ID van de bewaarplaats in uw invoerpagina om de verwijzing naar de bewaarplaats over te nemen ";
-$pgv_lang["privacy_not_granted"]		= "U heeft geen toegang tot";
-$pgv_lang["privacy_prevented_editing"]	= "Volgens de privacy-instellingen heeft u geen rechten om deze gegevens te wijzigen.";
 $pgv_lang["record_marked_deleted"]		= "Dit record wordt verwijderd na goedkeuring door de beheerder.";
 $pgv_lang["replace_with"]				= "Vervang door";
 $pgv_lang["show_changes"]				= "Deze kaart is gewijzigd. Klik hier om de wijzigingen te tonen.";

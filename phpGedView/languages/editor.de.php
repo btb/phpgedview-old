@@ -3,7 +3,7 @@
  * German texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -174,7 +174,6 @@ $pgv_lang["file_cant_write"]		= "Das PHP-System konnte nicht auf der Festplatte 
 $pgv_lang["file_bad_extension"]		= "Das PHP-System erteilte keine Erlaubnis, Ihre Datei mit diesem Namen zu schreiben";
 $pgv_lang["file_unkown_err"]		= "Unbekanntes Fehler-Code: #pgv_lang[global_num1]#. Bitte melden Sie diesen Fehler.";
 $pgv_lang["folder"]		 			= "Server Verzeichnis";
-$pgv_lang["gedcom_editing_disabled"] = "Änderungen dieser Datei sind gesperrt.";
 $pgv_lang["gedrec_deleted"]			= "Datensatz erfolgreich gelöscht.";
 $pgv_lang["gen_thumb"]				= "Miniaturbild erzeugen";
 $pgv_lang["gen_missing_thumbs"]		= "Fehlende Miniaturbilder erzeugen";
@@ -225,8 +224,6 @@ $pgv_lang["no_temple"]				= "Kein Tempel - Ordinanz zu Lebzeiten";
 $pgv_lang["no_upload"]				= "Multimedia Dateien können nicht hochgeladen werden, weil Multimedia Objekte deaktiviert sind oder weil für das Medien Verzeichnis keine Schreibrechte bestehen.";
 $pgv_lang["paste_id_into_field"]	= "Fügen Sie diese ID Nummer in das jeweilige Eingabefeld ein, um auf diesen neu erstandenen Datensatz zu verweisen: ";
 $pgv_lang["paste_rid_into_field"]	= "Fügen Sie die folgende ID ein, um auf dieses Archiv zu verweisen ";
-$pgv_lang["privacy_not_granted"]	= "Sie haben keinen Zugriff auf";
-$pgv_lang["privacy_prevented_editing"] = "Die Datenschutz Einstellungen verhindern, dass Sie diesen Datensatz bearbeiten können.";
 $pgv_lang["record_marked_deleted"]	= "Dieser Datensatz wird gelöscht, nachdem der Verwalter es genehmigt hat.";
 $pgv_lang["replace_with"]			= "Ersetzen mit ...";
 $pgv_lang["show_changes"]			= "Dieser Eintrag wurde geändert. Hier klicken, um die Änderungen zu sehen.";

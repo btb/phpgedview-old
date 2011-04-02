@@ -3,7 +3,7 @@
  * Italian texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -202,7 +202,6 @@ $pgv_lang["file_no_temp_dir"]		= "Cartella temporanea PHP non trovata.";
 $pgv_lang["file_cant_write"]		= "PHP non è riuscito a scrivere sul disco";
 $pgv_lang["file_bad_extension"]		= "File bloccato per estensione";
 $pgv_lang["file_unkown_err"]		= "Codice di errore di caricamento file sconosciuto #pgv_lang[global_num1]#. Per favore, riferiscilo come errore di programmazione.";
-$pgv_lang["gedcom_editing_disabled"]	= "Le modifiche a questo GEDCOM sono state disabilitate dall'Amministratore.";
 $pgv_lang["gen_thumb"]				= "Crea anteprima";
 $pgv_lang["gen_missing_thumbs"]		= "Crea anteprime non trovate";
 $pgv_lang["gen_missing_thumbs_lbl"]	= "Anteprime non trovate";
@@ -243,8 +242,6 @@ $pgv_lang["no_changes"] 			= "";
 $pgv_lang["no_upload"]				= "Il caricamento di file multimediali non è permesso perché gli oggetti multimediali sono stati disabilitati o perché la cartella dei media non è scrivibile.";
 $pgv_lang["paste_id_into_field"]	= "Incolla il seguente ID nei campi di modifica per far riferimento a file appena creato ";
 $pgv_lang["paste_rid_into_field"]	= "Incolla il seguente ID di deposito nei tuoi campi di modifica per far riferimento a questo deposito";
-$pgv_lang["privacy_not_granted"]	= "Non hai accesso a";
-$pgv_lang["privacy_prevented_editing"]	= "Le impostazioni privacy ti impediscono di modificare questo record.";
 $pgv_lang["record_marked_deleted"]		= "Questo record è stato marcato per essere eliminato su approvazione dell'amministratore.";
 $pgv_lang["thumbgen_error"]			= "Anteprima #thumbnail# non può essere generata automaticamente.";
 $pgv_lang["thumbnail"]				= "Anteprima da caricare";

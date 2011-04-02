@@ -3,7 +3,7 @@
  * Slovak Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -661,9 +661,12 @@ $pgv_lang["delete_name"]		= "Zmazať meno";
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 $pgv_lang["select_date"]		= "Vybrať dátum";
 $pgv_lang["user_cannot_edit"]		= "Tento uživateľ nemôže upravovať tento GEDCOM.";
+$pgv_lang["gedcom_editing_disabled"]	= "Upravovanie tohoto GEDCOMu bolo zakázané administrátorom systému.";
+$pgv_lang["privacy_not_granted"]	= "Nemáte prístup k";
+$pgv_lang["privacy_prevented_editing"]	= "Nastavenie utajenia vám neumožňuje upravovať tento záznam.";
 $pgv_lang["ged_noshow"]			= "Táto stránka bola zakázaná administrátorom stránky.";
-$pgv_lang["bdm"]			= "Narodenia, úmrtia, sobáše";
 //-- calendar.php messages
+$pgv_lang["bdm"]			= "Narodenia, úmrtia, sobáše";
 $pgv_lang["on_this_day"]		= "Tohoto dňa vo vašej histórii...";
 $pgv_lang["in_this_month"]		= "V tomto mesiaci vo vašej histórii...";
 $pgv_lang["in_this_year"]		= "Tohoto roku vo vašej histórii...";

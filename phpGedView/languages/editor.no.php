@@ -3,7 +3,7 @@
  * Norwegian texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -165,7 +165,6 @@ $pgv_lang["file_cant_write"]		= "PHP mislyktes med å skrive til disk";
 $pgv_lang["file_bad_extension"]		= "PHP blokkerte filen med utvidelsen";
 $pgv_lang["file_unkown_err"]		= "Ukjent filopplastingsfeilkode #pgv_lang[global_num1]#. Vennligst rapporter dette som en bug.";
 $pgv_lang["folder"]		 		= "Mappe";
-$pgv_lang["gedcom_editing_disabled"]	= "Muligheten til å gjøre endringer i denne slektsbase er blitt deaktivert av system-administratoren.";
 $pgv_lang["gedcomid"]				= "Bruker ID<br />i slektsbasen";
 $pgv_lang["gedrec_deleted"]		= "Oppføringen i slektsfilen er nå slettet.";
 $pgv_lang["gen_thumb"]			= "Lag miniatyrbilde(r)";
@@ -216,8 +215,6 @@ $pgv_lang["no_upload"]			= "Klarte ikke å laste opp (upload) mediafiler fordi m
 $pgv_lang["paste_id_into_field"]= "Legg inn følgende kilde-ID inn i endringsfeltet som en referanse til denne kilden ";
 $pgv_lang["paste_rid_into_field"]	= "Lim inn følgende ID for oppbevaringsstedet til aktuelle koblings-feltet for ulike kilder: ";
 $pgv_lang["photo_replace"] 			= "Ønsker du å erstatte et eldre bilde med dette?";
-$pgv_lang["privacy_not_granted"]	= "Du har ikke tilgang til";
-$pgv_lang["privacy_prevented_editing"]	= "På grunn av hensyn til personvern, kan du ikke endre opplysningene.";
 $pgv_lang["record_marked_deleted"]		= "Denne oppføringen er merket for sletting og venter på godkjenning av admin.";
 $pgv_lang["replace_with"]			= "Erstatt med";
 $pgv_lang["show_changes"]		= "Denne oppføringen er blitt oppdatert. Klikk her for å se endring(ene).";

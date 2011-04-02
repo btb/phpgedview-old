@@ -3,7 +3,7 @@
  * Romanian texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2005  PGV Development Team
+ * Copyright (C) 2002 to 2011  PGV Development Team
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -151,7 +151,6 @@ $pgv_lang["file_partial"]			= "Fişierul a fost uploadat doar parţial, vă rug�
 $pgv_lang["file_success"]			= "Fişierul a fost uploadat cu succes";
 $pgv_lang["file_too_big"]			= "Fişierul uploadat depăşeşte limita permisă";
 $pgv_lang["folder"]		 			= "Directorul de pe server";
-$pgv_lang["gedcom_editing_disabled"]	= "Editarea acestui GEDCOM a fost dezactivată de către administrator.";
 $pgv_lang["gedcomid"]				= "ID-ul înregistrării INDI GEDCOM";
 $pgv_lang["gedrec_deleted"] 		= "Înregistrarea GEDCOM a fost ştearsă cu succes.";
 $pgv_lang["gen_thumb"]				= "Crează thumbnail";
@@ -201,8 +200,6 @@ $pgv_lang["no_upload"]				= "Uploadarea fişierelor media nu este permisă deoar
 $pgv_lang["paste_id_into_field"]	= "Lipiţi următorul ID în câmpurile dumneavoastră de editare pentru a referi înregistrarea proaspăt creată ";
 $pgv_lang["paste_rid_into_field"]	= "Lipiţi următorul ID de depozit în campurile dumneavoastră de editare pentru a referi acest depozit ";
 $pgv_lang["photo_replace"] 			= "Doriţi să înlocuiţi o fotografie mai veche cu aceasta ?";
-$pgv_lang["privacy_not_granted"]	= "Nu aveţi acces la";
-$pgv_lang["privacy_prevented_editing"]	= "Setările de confidenţialitate vă împiedică să modificaţi această înregistrare.";
 $pgv_lang["record_marked_deleted"]		= "Această înregistrare a fost marcata pentru ştergere după aprobarea administratorului.";
 $pgv_lang["replace_with"]			= "Înlocuieşte cu";
 $pgv_lang["show_changes"]			= "Această înregistrare a fost actualizată.  Daţi click aici pentru a arăta schimbările.";

@@ -3,7 +3,7 @@
  * Italian Language file
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -1169,6 +1169,9 @@ $pgv_lang["edit_name"]				= "Modifica il nome";
 $pgv_lang["delete_name"]			= "Cancella il nome";
 $pgv_lang["select_date"]			= "Seleziona una data";
 $pgv_lang["user_cannot_edit"]		= "Questo utente non può modificare questo file di famiglia";
+$pgv_lang["gedcom_editing_disabled"]	= "Le modifiche a questo GEDCOM sono state disabilitate dall'Amministratore.";
+$pgv_lang["privacy_not_granted"]	= "Non hai accesso a";
+$pgv_lang["privacy_prevented_editing"]	= "Le impostazioni privacy ti impediscono di modificare questo record.";
 $pgv_lang["ged_noshow"]				= "Questa pagina è stata disabilitata dall'amministratore del sito";
 
 //-- calendar.php messages

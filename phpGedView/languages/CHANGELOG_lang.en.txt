@@ -39,6 +39,16 @@ Additional codes, to help Translators, follow the date as follows:
 
 The above list of codes may be amended as new situations arise.
 
+
+VERSION 4.3.0
+
+?$pgv_lang["whatever"]								dd Monthname, year		Change	codes and comments
+----------------------------------------------------------------------------------------
++$pgv_lang["gedcom_editing_disabled"] 				02 Apr 2011				M moved from editor.en.php
++$pgv_lang["privacy_not_granted"]     				02 Apr 2011				M moved from editor.en.php
++$pgv_lang["privacy_prevented_editing"]				02 Apr 2011				M moved from editor.en.php
+
+
 VERSION 4.2.4
 
 ?$pgv_lang["whatever"]								dd Monthname, year		Change	codes and comments
@@ -106,7 +116,7 @@ VERSION 4.2.3
 *$pgv_lang["stat_birth_places"]						27 Nov 2009				C
 *$pgv_lang["stat_marriage_places"]					27 Nov 2009				C
 *$pgv_lang["stat_death_places"]						27 Nov 2009				C
-*$pgv_lang["stat_countries"]						27 Nov 2009				C	
+*$pgv_lang["stat_countries"]						27 Nov 2009				C
 *$pgv_lang["stat_first_event"]						27 Nov 2009				C
 *$pgv_lang["stat_last_event"]						27 Nov 2009				C
 *$pgv_lang["statnsurnames"]							27 Nov 2009				C

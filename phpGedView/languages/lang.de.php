@@ -1169,6 +1169,9 @@ $pgv_lang["edit_name"]					= "Namen bearbeiten";
 $pgv_lang["delete_name"]				= "Namen löschen";
 $pgv_lang["select_date"]				= "Datum auswählen";
 $pgv_lang["user_cannot_edit"]			= "Dieser Benutzer kann diese GEDCOM Datei nicht ändern.";
+$pgv_lang["gedcom_editing_disabled"] 	= "Änderungen dieser Datei sind gesperrt.";
+$pgv_lang["privacy_not_granted"]		= "Sie haben keinen Zugriff auf";
+$pgv_lang["privacy_prevented_editing"]	= "Die Datenschutz Einstellungen verhindern, dass Sie diesen Datensatz bearbeiten können.";
 $pgv_lang["ged_noshow"]					= "Diese Seite wurde durch den Verwalter gesperrt.";
 
 //-- calendar.php messages

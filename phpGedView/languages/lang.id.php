@@ -3,7 +3,7 @@
  * Indonesian texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -1105,6 +1105,9 @@ $pgv_lang["edit_name"]				= "Sunting Nama";
 $pgv_lang["delete_name"]			= "Hapus Nama";
 $pgv_lang["select_date"]			= "Pilih tanggal";
 $pgv_lang["user_cannot_edit"]			= "Nama pengguna ini tidak dapat menyunting GEDCOM ini.";
+$pgv_lang["gedcom_editing_disabled"]	= "Penyuntingan GEDCOM ini telah dinonaktifkan oleh administrator.";
+$pgv_lang["privacy_not_granted"]		= "Anda tidak mempunyai akses ke";
+$pgv_lang["privacy_prevented_editing"]	= "Setelan privasi mencegah Anda menyunting rekaman ini.";
 $pgv_lang["ged_noshow"]				= "Halaman ini dinonaktifkan oleh administrator situs.";
 
 //-- calendar.php messages

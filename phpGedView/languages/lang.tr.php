@@ -3,7 +3,7 @@
  * Turkish Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -784,6 +784,9 @@ $pgv_lang["custom_event"]		= "Kişisel hadise";
 $pgv_lang["delete_name"]		= "İsmini sil";
 $pgv_lang["select_date"]		= "Bir tarih seçiniz";
 $pgv_lang["user_cannot_edit"]		= "Bu kullanıcı adlı üye bu GEDCOM veritabanını düzenleyemez.";
+$pgv_lang["gedcom_editing_disabled"]	= "Bu GEDCOM veritabanının düzenlenmesi sistem yöneticisi tarafından engellenmiştir.";
+$pgv_lang["privacy_prevented_editing"]	= "Mahremiyet ayarları bu kayıtı düzenlemenizi engellemektedir.";
+$pgv_lang["record_marked_deleted"]		= "Bu kayıt yönetici onayı üzerine silmek için işaretlendi.";
 $pgv_lang["ged_noshow"]				= "Bu sayfa yönetici tarafından devre dışı birakıldı.";
 $pgv_lang["bdm"]					= "Doğumlar, Ölümler, Evlilikler";
 $pgv_lang["delete_source"]		= "Bu kaynağı sil";

@@ -1168,6 +1168,9 @@ $pgv_lang["edit_name"]				= "Editar nombre";
 $pgv_lang["delete_name"]			= "Borrar nombre";
 $pgv_lang["select_date"]			= "Seleccione una fecha";
 $pgv_lang["user_cannot_edit"]		= "Este usuario no puede editar este GEDCOM.";
+$pgv_lang["gedcom_editing_disabled"]	= "El administrador ha deshabilitado las modificaciones a este GEDCOM.";
+$pgv_lang["privacy_not_granted"]	= "No tiene acceso a";
+$pgv_lang["privacy_prevented_editing"]	= "La configuración de privacidad le impide editar este registro.";
 $pgv_lang["ged_noshow"]				= "Esta página ha sido deshabilitada por el administrador del sitio";
 
 //-- calendar.php messages

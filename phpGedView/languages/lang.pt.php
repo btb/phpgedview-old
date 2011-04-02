@@ -3,7 +3,7 @@
  * Portugese Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -716,7 +716,7 @@ $pgv_lang["n_x_great_grandmother"]	= "%d x bis-avó";
 $pgv_lang["bosa_brothers_offspring_2"] 				= "sobrinho";            // brother's son
 $pgv_lang["bosa_brothers_offspring_3"] 				= "sobrinha";            // brother's daughter
 // 2nd generation
-$pgv_lang["bosa_brothers_offspring_4"] 				= "great nephew";       // brother's son's son 
+$pgv_lang["bosa_brothers_offspring_4"] 				= "great nephew";       // brother's son's son
 $pgv_lang["bosa_brothers_offspring_5"] 				= "great niece";        // brother's son's daughter
 $pgv_lang["bosa_brothers_offspring_6"] 				= "great nephew";       // brother's daughter's son
 $pgv_lang["bosa_brothers_offspring_7"] 				= "great niece";        // brother's daughter's daughter
@@ -732,7 +732,7 @@ $pgv_lang["n_x_brothers_daughter"] = "%2\$d x great niece";
 $pgv_lang["bosa_sisters_offspring_2"] 				= "sobrinho";             // sister's son
 $pgv_lang["bosa_sisters_offspring_3"] 				= "sobrinha";             // sister's daughter
 // 2nd generation
-$pgv_lang["bosa_sisters_offspring_4"] 				= "great nephew";       // sister's son's son 
+$pgv_lang["bosa_sisters_offspring_4"] 				= "great nephew";       // sister's son's son
 $pgv_lang["bosa_sisters_offspring_5"] 				= "great niece";        // sister's son's daughter
 $pgv_lang["bosa_sisters_offspring_6"] 				= "great nephew";       // sister's daughter's son
 $pgv_lang["bosa_sisters_offspring_7"] 				= "great niece";        // sister's daughter's daughter
@@ -748,16 +748,16 @@ $pgv_lang["n_x_sisters_daughter"] = "%2\$d x great niece";
 $pgv_lang["bosa_2"] 				= $pgv_lang["son"];                   // son
 $pgv_lang["bosa_3"] 				= $pgv_lang["daughter"];              // daughter
 // 2nd generation
-$pgv_lang["bosa_4"] 				= $pgv_lang["grandson"];              // son's son 
+$pgv_lang["bosa_4"] 				= $pgv_lang["grandson"];              // son's son
 $pgv_lang["bosa_5"] 				= $pgv_lang["granddaughter"];         // son's daughter
 $pgv_lang["bosa_6"] 				= $pgv_lang["grandson"];              // daughter's son
 $pgv_lang["bosa_7"] 				= $pgv_lang["granddaughter"];         // daughter's daughter
 // 3rd generation
-$pgv_lang["bosa_8"] 				= "bis-neto";   // son's son's son   
+$pgv_lang["bosa_8"] 				= "bis-neto";   // son's son's son
 $pgv_lang["bosa_9"] 				= "bis-neta";   // son's son's daughter
 $pgv_lang["bosa_10"] 				= "bis-neto";	// son's daughters son
 $pgv_lang["bosa_11"] 				= "bis-neta";   // son's daughters daughter
-$pgv_lang["bosa_12"] 				= "bis-neto";   // daughter's son's son 
+$pgv_lang["bosa_12"] 				= "bis-neto";   // daughter's son's son
 $pgv_lang["bosa_13"] 				= "bis-neta";   // daughter's son's daughter
 $pgv_lang["bosa_14"] 				= "bis-neto";   // daughter's daughters son
 $pgv_lang["bosa_15"] 				= "bis-neta";   // daughter's daughters daughter
@@ -777,7 +777,7 @@ $pgv_lang["n_x_granddaughter_from_daughter"] = "%3\$d x bis-neta";
 $pgv_lang["sosa_uncle_2"] 				= $pgv_lang["uncle"];            // fathers brother
 $pgv_lang["sosa_uncle_3"] 				= $pgv_lang["uncle"];            // mothers brother
 // 2nd generation
-$pgv_lang["sosa_uncle_4"] 				= "tio-avô";      // fathers's fathers brother 
+$pgv_lang["sosa_uncle_4"] 				= "tio-avô";      // fathers's fathers brother
 $pgv_lang["sosa_uncle_5"] 				= "tio-avô";      // fathers mothers brother
 $pgv_lang["sosa_uncle_6"] 				= "tio-avô";      // mothers fathers brother
 $pgv_lang["sosa_uncle_7"] 				= "tio-avô";      // mothers mothers brother
@@ -795,7 +795,7 @@ $pgv_lang["n_x_maternal_uncle"]	    = "%2\$d x great uncle";
 $pgv_lang["sosa_aunt_2"] 				= $pgv_lang["aunt"];            // fathers sister
 $pgv_lang["sosa_aunt_3"] 				= $pgv_lang["aunt"];            // mothers sister
 // 2nd generation
-$pgv_lang["sosa_aunt_4"] 				= "tia-avó";      // fathers's fathers sister 
+$pgv_lang["sosa_aunt_4"] 				= "tia-avó";      // fathers's fathers sister
 $pgv_lang["sosa_aunt_5"] 				= "tia-avó";      // fathers mothers sister
 $pgv_lang["sosa_aunt_6"] 				= "tia-avó";      // mothers fathers sister
 $pgv_lang["sosa_aunt_7"] 				= "tia-avó";      // mothers mothers sister
@@ -813,7 +813,7 @@ $pgv_lang["n_x_maternal_aunt"]	    = "%2\$d x great aunt";
 $pgv_lang["sosa_uncle_bm_2"] 				= $pgv_lang["uncle"];            // fathers brother
 $pgv_lang["sosa_uncle_bm_3"] 				= $pgv_lang["uncle"];            // mothers brother
 // 2nd generation
-$pgv_lang["sosa_uncle_bm_4"] 				= "tio-avô";      // fathers's fathers brother 
+$pgv_lang["sosa_uncle_bm_4"] 				= "tio-avô";      // fathers's fathers brother
 $pgv_lang["sosa_uncle_bm_5"] 				= "tio-avô";      // fathers mothers brother
 $pgv_lang["sosa_uncle_bm_6"] 				= "tio-avô";      // mothers fathers brother
 $pgv_lang["sosa_uncle_bm_7"] 				= "tio-avô";      // mothers mothers brother
@@ -831,7 +831,7 @@ $pgv_lang["n_x_maternal_uncle_bm"]	    = "%2\$d x great uncle";
 $pgv_lang["sosa_aunt_bm_2"] 				= $pgv_lang["aunt"];            // fathers sister
 $pgv_lang["sosa_aunt_bm_3"] 				= $pgv_lang["aunt"];            // mothers sister
 // 2nd generation
-$pgv_lang["sosa_aunt_bm_4"] 				= "tia-avó";      // fathers's fathers sister 
+$pgv_lang["sosa_aunt_bm_4"] 				= "tia-avó";      // fathers's fathers sister
 $pgv_lang["sosa_aunt_bm_5"] 				= "tia-avó";      // fathers mothers sister
 $pgv_lang["sosa_aunt_bm_6"] 				= "tia-avó";      // mothers fathers sister
 $pgv_lang["sosa_aunt_bm_7"] 				= "tia-avó";      // mothers mothers sister
@@ -906,6 +906,9 @@ $pgv_lang["edit_name"]="Alterar Nome";
 $pgv_lang["delete_name"]="Excluir Nome";
 $pgv_lang["select_date"]="Selecionar uma data";
 $pgv_lang["user_cannot_edit"]="Este usuário não tem permissão para edição do GEDCOM.";
+$pgv_lang["gedcom_editing_disabled"]="Edição deste GEDCOM foi desabilitada pelo administrador do sistema.";
+$pgv_lang["privacy_not_granted"]="Você não tem acesso para";
+$pgv_lang["privacy_prevented_editing"]="As configurações de privacidade impedem você de alterar esse registro.";
 $pgv_lang["ged_noshow"]="Esta página foi desabiltada pelo administrador.";
 $pgv_lang["bdm"]="Nascimentos, Falecimentos e Casamentos";
 $pgv_lang["on_this_day"]="Este Dia em nossa História ...";

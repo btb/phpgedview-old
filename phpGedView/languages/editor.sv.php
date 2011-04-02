@@ -3,7 +3,7 @@
  * English texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2005  PGV Development Team
+ * Copyright (C) 2002 to 2011  PGV Development Team
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -141,7 +141,6 @@ $pgv_lang["file_partial"]		= "Filen blev endast delvis uppladdad, var god förs�
 $pgv_lang["file_success"]		= "Filen laddades upp utan problem";
 $pgv_lang["file_too_big"]		= "Uppladdad fil överskrider max tillåtna storlek";
 $pgv_lang["folder"]		 		= "Mapp";
-$pgv_lang["gedcom_editing_disabled"]	= "Redigering av denna GEDCOM har stängta av av administratören.";
 $pgv_lang["gedcomid"]			= "GEDCOM personpostID";
 $pgv_lang["gedrec_deleted"]		= "GEDCOM-post raderad.";
 $pgv_lang["gen_thumb"]			= "Skapa miniatyrbilder";
@@ -191,8 +190,6 @@ $pgv_lang["no_upload"]			= "Uppladdning av media filer är inte tillåten efters
 $pgv_lang["paste_id_into_field"]= "Klistra in följande källid in i ditt redigeringsfält för att referera till denna källa  ";
 $pgv_lang["paste_rid_into_field"]	= "Klistra in följande arkivid i ditt redigeringsfält för att referera till detta arkiv ";
 $pgv_lang["photo_replace"] 		= "Vill du byta ut ett äldre foto med detta?";
-$pgv_lang["privacy_not_granted"]= "Du har inte access till";
-$pgv_lang["privacy_prevented_editing"]	= "Integritetsinställningarna hindrar dig från att redigera denna post.";
 $pgv_lang["record_marked_deleted"]		= "Denna post har markerats för radering efter godkännande av administratören.";
 $pgv_lang["replace_with"]			= "Ersätt med";
 $pgv_lang["show_changes"]		= "Denna post har uppdaterats. Klicka här för att se ändringarna.";
