@@ -3,7 +3,7 @@
  * Displays a place hierachy
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2010  PGV Development Team. All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team. All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -199,6 +199,7 @@ if ($display=="hierarchy") {
 				// to their 1-byte ASCII analogues without diacritics
 				$mapname = str_replace(array("Ę", "Ó", "Ą", "Ś", "Ł", "Ż", "Ź", "Ć", "Ń", "ę", "ó", "ą", "ś", "ł", "ż", "ź", "ć", "ń"), array("E", "O", "A", "S", "L", "Z", "Z", "C", "N", "e", "o", "a", "s", "l", "z", "z", "c", "n"), $mapname);
 				$mapname = str_replace(array("Š", "Œ", "Ž", "š", "œ", "ž", "Ÿ", "¥", "µ", "À", "Á", "Â", "Ã", "Ä", "Å", "Æ", "Ç", "È", "É", "Ê", "Ë", "Ì", "Í", "Î", "Ï", "Ð", "Ñ", "Ò", "Ó", "Ô", "Õ", "Ö", "Ø", "Ù", "Ú", "Û", "Ü", "Ý", "ß", "à", "á", "â", "ã", "ä", "å", "æ", "ç", "è", "é", "ê", "ë", "ì", "í", "î", "ï", "ð", "ñ", "ò", "ó", "ô", "õ", "ö", "ø", "ù", "ú", "û", "ü", "ý", "ÿ"), array("S", "O", "Z", "s", "o", "z", "Y", "Y", "u", "A", "A", "A", "A", "A", "A", "A", "C", "E", "E", "E", "E", "I", "I", "I", "I", "D", "N", "O", "O", "O", "O", "O", "O", "U", "U", "U", "U", "Y", "s", "a", "a", "a", "a", "a", "a", "a", "c", "e", "e", "e", "e", "i", "i", "i", "i", "o", "n", "o", "o", "o", "o", "o", "o", "u", "u", "u", "u", "y", "y"), $mapname);
+				$mapname = str_replace(array("À", "Á", "Â", "Ã", "È", "É", "Ê", "Ì", "Í", "Ò", "Ó", "Ô", "Õ", "Ù", "Ú", "Ý", "à", "á", "â", "ã", "è", "é", "ê", "ì", "í", "ò", "ó", "ô", "õ", "ù", "ú", "ý", "Ỳ", "Ỹ", "ỳ", "ỹ", "Ỷ", "ỷ", "Ỵ", "ỵ", "ự", "Ự", "ử", "Ử", "ữ", "Ữ", "ừ", "Ừ", "ứ", "Ứ", "ư", "Ư", "ụ", "Ụ", "ủ", "Ủ", "ũ", "Ũ", "ợ", "Ợ", "ở", "Ở", "ỡ", "Ỡ", "ờ", "Ờ", "ớ", "Ớ", "ơ", "Ơ", "ộ", "Ộ", "ổ", "Ổ", "ỗ", "Ỗ", "ồ", "Ồ", "ố", "Ố", "ọ", "Ọ", "ỏ", "Ỏ", "ị", "Ị", "ỉ", "Ỉ", "ĩ", "Ĩ", "ệ", "Ệ", "ể", "Ể", "ễ", "Ễ", "ề", "Ề", "ế", "Ế", "ẹ", "Ẹ", "ẻ", "Ẻ", "ẽ", "Ẽ", "ặ", "Ặ", "ẳ", "Ẳ", "ẵ", "Ẵ", "ằ", "Ằ", "ắ", "Ắ", "ă", "Ă", "ậ", "Ậ", "ẩ", "Ẩ", "ẫ", "Ẫ", "ầ", "Ầ", "ấ", "Ấ", "ạ", "Ạ", "ả", "Ả", "đ", "Đ"), array("A", "A", "A", "A", "E", "E", "E", "I", "I", "O", "O", "O", "O", "U", "U", "Y", "a", "a", "a", "a", "e", "e", "e", "i", "i", "o", "o", "o", "o", "u", "u", "y", "Y", "Y", "y", "y", "Y", "y", "Y", "y", "u", "U", "u", "U", "u", "U", "u", "U", "u", "U", "u", "U", "u", "U", "u", "U", "u", "U", "o", "O", "o", "O", "o", "O", "o", "O", "o", "O", "o", "O", "o", "O", "o", "O", "o", "O", "o", "O", "o", "O", "o", "O", "o", "O", "i", "I", "i", "I", "i", "I", "e", "E", "e", "E", "e", "E", "e", "E", "e", "E", "e", "E", "e", "E", "e", "E", "a", "A", "a", "A", "a", "A", "a", "A", "a", "A", "a", "A", "a", "A", "a", "A", "a", "A", "a", "A", "a", "A", "a", "A", "a", "A", "d", "D"), $mapname);
 				// Transform apostrophes and blanks to dashes
 				$mapname = str_replace(array("'", " "), "-", $mapname);
 				$imgfile = "places/".$country."/".$mapname.".gif";

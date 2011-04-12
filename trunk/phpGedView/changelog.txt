@@ -9,6 +9,7 @@
 =====================================================================
 
 Version 4.3.0
+ - Added: [ 3279989 ] Support for Vietnam clickable maps while editing places (cdeces)
  - Fixed: [ 3208343 ] Content of additional Advanced HTML blocks may be lost (ggpauly)
  - Fixed: [ 3202881 ] Not able to accept changes (canajun2eh)
  - Fixed: [ 3197154 ] PDO/Postgresql: error in branches list (canajun2eh)
