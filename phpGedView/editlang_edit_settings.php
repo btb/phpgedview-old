@@ -3,7 +3,7 @@
  * File to edit the language settings of PHPGedView
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -200,7 +200,7 @@ if ($action != "save" && $action != "toggleActive") {
 		$v_lang_use = $pgv_lang_use[$ln];
 	}
 	echo "<tr>";
-	echo '<td class="facts_label" >', print_help_link("active_help", "qm"), $pgv_lang["active"], "</td>";
+	echo '<td class="facts_label" >', print_help_link("active_help", "qm", "", false, true), $pgv_lang["active"], "</td>";
 	write_td_with_textdir_check();
 
 	if ($v_lang_use) {
@@ -604,7 +604,7 @@ if ($action == "save") {
 	$TIME_FORMAT_array[$ln]  = $_POST["v_time_format"];
 	$WEEK_START_array[$ln]  = $_POST["v_week_start"];
 	if ($_POST["v_text_direction"] == "0") {
-		$TEXT_DIRECTION_array[$ln] = "ltr"; 
+		$TEXT_DIRECTION_array[$ln] = "ltr";
 	} else {
 		$TEXT_DIRECTION_array[$ln] = "rtl";
 	}
