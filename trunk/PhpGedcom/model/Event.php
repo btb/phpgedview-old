@@ -29,6 +29,7 @@ if (!defined('PGC_PHPGEDCOM')) {
 }
  
 require_once 'Assertion.php';
+require_once 'Place.php';
 
 class Event extends Assertion {
 	private $date;
@@ -47,7 +48,7 @@ class Event extends Assertion {
 		return $this->place;
 	}
 
-	public function setPlace($place) {
+	public function setPlace(Place $place) {
 		$this->place = $place;
 	}
 
@@ -66,7 +67,7 @@ class Event extends Assertion {
 			if (($this->getDate() == null && $arg0->getDate() == null)
 					|| GedcomDate::Compare($this->getDate(), $arg0->getDate())==0) {
 				if (($this->getPlace() == null && $arg0->getPlace() == null)
-						|| (strcasecmp($this->getPlace(), $arg0->getPlace())==0)) {
+						|| ($this->getPlace()!=null && $this->getPlace()->equals($arg0->getPlace()))) {
 					if (($this->getDetail() == null && $arg0->getDetail() == null)
 							|| (strcasecmp($this->getDetail(), $arg0->getDetail())==0)) {
 						return true;

@@ -35,9 +35,9 @@ use PhpGedcom\model\Record;
 use PhpGedcom\model\Individual; 
 
 class Family extends Record {
-	private $husband;
-	private $wife;
-	private $children;
+	protected $husband;
+	protected $wife;
+	protected $children;
 	
 	/**
 	 * Get the spouse from this family using the given individual

@@ -135,8 +135,9 @@ abstract class DataSource implements Gedcom{
 		$birth = $person->getSingleAssertionByType("BIRT");
 		if ($birth != null) {
 			$date = null;
+			$place = null;
 			if ($birth->getDate()!=null) $date = $birth->getDate()->getOriginalDate();
-			$place = $birth->getPlace();
+			if ($birth->getPlace()!=null) $place = $birth->getPlace()->getOriginalPlace();
 			if ($date!=null && $date!="")
 				$params[$type . "birthDate"] = $date;
 			if ($place!=null && $place!="")
@@ -145,7 +146,9 @@ abstract class DataSource implements Gedcom{
 		$death = $person->getSingleAssertionByType("DEAT");
 		if ($death != null) {
 			$date = null;
+			$place = null;
 			if ($death->getDate()!=null) $date = $death->getDate()->getOriginalDate();
+			if ($death->getPlace()!=null) $place = $death->getPlace()->getOriginalPlace();
 			$place = $death->getPlace();
 			if ($date!=null && $date!="")
 				$params[$type . "deathDate"] = $date;

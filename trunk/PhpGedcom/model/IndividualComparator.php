@@ -124,8 +124,8 @@ class IndividualComparator {
 		
 		//-- check place
 		if ($e1->getPlace()!=null && $e2->getPlace()!=null) {
-			$p1 = preg_split("/, */", $e1->getPlace());
-			$p2 = preg_split("/, */", $e2->getPlace());
+			$p1 = $e1->getPlace()->getLevels();
+			$p2 = $e2->getPlace()->getLevels();
 			$k = 1;
 			for ($i = count($p1)-1; $i>=0 ; $i--) {
 				$j = count($p2)-$k;
