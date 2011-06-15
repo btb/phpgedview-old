@@ -5682,8 +5682,7 @@ if (!defined('PGV_PHPGEDVIEW')) {
   // --------------------------------------------------------------------------------
   function PclZipUtilTranslateWinPath($p_path, $p_remove_disk_letter=true)
   {
-    if (stristr(php_uname(), 'windows')) {
-      // ----- Look for potential disk letter
+	if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {      // ----- Look for potential disk letter
       if (($p_remove_disk_letter) && (($v_position = strpos($p_path, ':')) != false)) {
           $p_path = substr($p_path, $v_position+1);
       }
