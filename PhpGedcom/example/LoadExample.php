@@ -34,7 +34,7 @@ if ($r) {
 		if ($a instanceof Event) {
 			print($a->getType() . ": " . $a->getDetail()."\n");
 			if ($a->getDate()!=null) print("  DATE : " . $a->getDate()->getOriginalDate()."\n");
-			if ($a->getPlace()!=null) print("  PLAC : " . $a->getPlace()."\n");
+			if ($a->getPlace()!=null) print("  PLAC : " . $a->getPlace()->getOriginalPlace()."\n");
 		}
 		//-- names
 		else if ($a instanceof Name) {

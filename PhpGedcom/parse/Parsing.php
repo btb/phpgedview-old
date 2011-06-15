@@ -23,6 +23,8 @@ namespace PhpGedcom;
  * @author John Finlay
  */
 
+use PhpGedcom\model\Place;
+
 if (!defined('PGC_PHPGEDCOM')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
@@ -240,7 +242,8 @@ class Parsing {
 				$newEvent->setDate($date);
 			}
 			if ($ct3>0) {
-				$newEvent->setPlace(trim($matches3[1]));
+				$place = new Place(trim($matches3[1]));
+				$newEvent->setPlace($place);
 			}
 		}
 		return $newEvent;
