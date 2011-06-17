@@ -116,7 +116,7 @@ if ($action=='addBanned' || $action=='addSearch' || $action=='deleteBanned' || $
 			$errorBanned=$pgv_lang['error_ban_server'];
 		}
 		if ($action=='addSearch') {
-			$errorSearch=$pgv_lang['error_ban_server'];
+			$errorBanned=$pgv_lang['error_ban_server'];
 		}
 	}
 	$action='showForm';
@@ -233,21 +233,18 @@ function showSite(siteID) {
 		<td class="facts_value">
 			<table align="center">
 <?php
-	$sql="SELECT ip_address, comment FROM {$TBLPREFIX}ip_address WHERE category='search-engine'";
-	if ($DBTYPE=='mysql') {
-		$sql.=" ORDER BY INET_ATON(ip_address)";
-	} else {
-		$sql.=" ORDER BY comment";
-	}
+	$sql="SELECT ip_address, comment FROM {$TBLPREFIX}ip_address WHERE category='search-engine' ORDER BY comment";
 	$index=0;
 	$search_engines=PGV_DB::prepare($sql)->fetchAssoc();
 	foreach ($search_engines as $ip_address=>$ip_comment) {
 		echo '<tr><td>';
-		if (isset($PGV_IMAGES["remove"]["other"])) {
-			echo '<input type="image" src="', $PGV_IMAGE_DIR, '/', $PGV_IMAGES["remove"]["other"], '" alt="', $pgv_lang['delete'], '" name="deleteSearch" value="', $ip_address, '">';
-		} else {
-			echo '<button name="deleteSearch" value="', $ip_address, '" type="submit">', $pgv_lang["remove"], '</button>';
-		}
+			echo '<button name="deleteSearch" value="', $ip_address, '" type="submit">';
+			if (isset($PGV_IMAGES["remove"]["other"])) {
+				echo '<img src="', $PGV_IMAGE_DIR, '/', $PGV_IMAGES["remove"]["other"], '" alt="', $pgv_lang['remove'], '">';
+			} else {
+				echo $pgv_lang["remove"];
+			}
+			echo '</button>';
 		echo '</td><td><span dir="ltr"><input type="text" name="address', ++$index, '" size="16" value="', $ip_address, '" readonly /></span></td>';
 		echo '<td><input type="text" name="comment', ++$index, '" size="60" value="', $ip_comment, '" readonly /></td></tr>';
 	}
@@ -286,20 +283,17 @@ function showSite(siteID) {
 		<td class="facts_value">
 			<table align="center">
 <?php
-	$sql="SELECT ip_address, comment FROM {$TBLPREFIX}ip_address WHERE category='banned'";
-	if ($DBTYPE=='mysql') {
-		$sql.=" ORDER BY INET_ATON(ip_address)";
-	} else {
-		$sql.=" ORDER BY comment";
-	}
+	$sql="SELECT ip_address, comment FROM {$TBLPREFIX}ip_address WHERE category='banned' ORDER BY comment";
 	$banned=PGV_DB::prepare($sql)->fetchAssoc();
 	foreach ($banned as $ip_address=>$ip_comment) {
 		echo '<tr><td>';
-		if (isset($PGV_IMAGES["remove"]["other"])) {
-			echo '<input type="image" src="', $PGV_IMAGE_DIR, '/', $PGV_IMAGES["remove"]["other"], '" alt="', $pgv_lang['delete'], '" name="deleteBanned" value="', $ip_address, '">';
-		} else {
-			echo '<button name="deleteBanned" value="', $ip_address, '" type="submit">', $pgv_lang["remove"], '</button>';
-		}
+			echo '<button name="deleteBanned" value="', $ip_address, '" type="submit">';
+			if (isset($PGV_IMAGES["remove"]["other"])) {
+				echo '<img src="', $PGV_IMAGE_DIR, '/', $PGV_IMAGES["remove"]["other"], '" alt="', $pgv_lang['remove'], '">';
+			} else {
+				echo $pgv_lang["remove"];
+			}
+			echo '</button>';
 		echo '</td><td><span dir="ltr"><input type="text" name="address', ++$index, '" size="16" value="', $ip_address, '" readonly /></span></td>';
 		echo '<td><input type="text" name="comment', ++$index, '" size="60" value="', $ip_comment, '" readonly /></td></tr>';
 	}
