@@ -3,7 +3,7 @@
  * Polish texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -94,7 +94,7 @@ $pgv_lang["menu_help_help"]			= "~Menu Pomoc~<br />#pgv_lang[help_help_items]#";
 //-- Pages Help-messages
 //-- Index-page
 //-- Index-page Header
-//-- Index-page Menu 
+//-- Index-page Menu
 
 //-- Index-page Portal
 $pgv_lang["index_common_names_help"]	= "~BLOK NAJCZĘSTSZE NAZWISKA~<br />Ta blok wyświetla listę nazwisk, które występują w bazie danych najczęściej. Aby pojawiło się na liście, nazwisko musi wystąpić co najmniej #COMMON_NAMES_THRESHOLD# razy. Administrator może zmieniać tą wartość progową.<br /><br />Kliknięcie na nazwisko z listy spowoduje przeniesienie do strony #pgv_lang[individual_list]#, gdzie zobaczysz więcej szczegółów o danym nazwisku.<br /><br />";
@@ -131,9 +131,9 @@ $pgv_lang["mygedview_customize_help"]		= "~DOSTOSUJ #pgv_lang[mygedview]#~<br />
 $pgv_lang["mygedview_message_help"]		= "~BLOK WIADOMOŚCI~<br />W tym bloku znajdziesz wiadomości, które zostały przysłane do Ciebie od innych użytkowników i administratora. Ty również możesz wysyłać do nich wiadomości.<br /><br />System komunikacji PhpGedView jest zaprojektowany z myślą o ochronie twojej prywatności. Nie musisz podawać swojego adresu email, a inne osoby nie będą miały do niego dostępu.<br /><br />Aby rozwinąć wiadomość, kliknij na jej temat lub znak plus \"<b>+</b>\" obok niego. Możesz usunąć kilka wiadomości jednocześnie zaznaczając je, a następnie klikając przycisk <b>Usuń zaznaczone wiadomości</b>.<br /><br />";
 $pgv_lang["mygedview_favorites_help"]		= "~BLOK MOJE ULUBIONE~<br />Ulubione są podobne do zakładek.<br /><br />Załóżmy, że chcesz regularnie sprawdzać wpis o pewnej osobie w twoim drzewie genealogicznym. Wystarczy przejść na stronę #pgv_lang[indi_info]# tej osoby i wybrać opcję <b>Dodaj do moich ulubionych</b> z listy ulubionych. Wybrana osoba zostanie zaznaczona i dodana do twojej listy ulubionych.<br /><br />Z każdego miejsca w serwisie możesz rozwinąć listę \"Moje ulubione\" w nagłówku i wybrać nazwisko. Kliknięcie na nazwisko przeniesie cię do strony #pgv_lang[indi_info]# tej osoby.<br /><br />";
 
-//-- Index-Page Help 
+//-- Index-Page Help
 //-- Index-page Definitions
-//-- Index-page MyGedcom 
+//-- Index-page MyGedcom
 
 $pgv_lang["mygedview_myjournal_help"]	= "~BLOK MÓJ DZIENNIK~<br />Z dziennika możesz korzystać do prowadzenia notatek lub zapisywania przypomnień na własny użytek. Wprowadzone notatki będą tam nadal, kiedy ponownie odwiedzisz serwis.<br /><br />Notatki są prywatne i nie będą widoczne dla innych.<br /><br />";
 $pgv_lang["mygedview_welcome_help"]		= "~BLOK POWITANIE~<br />Blok powitania wyświetla:<ul><li>Bieżący plik GEDCOM</li><li>Datę i godzinę</li><li>Odnośniki do:<ul><li>#pgv_lang[myuserdata]#</li><li>#pgv_lang[my_pedigree]#</li><li>#pgv_lang[my_indi]#</li><li>#pgv_lang[customize_page]#</li></ul></li></ul><br /><b>Uwaga:</b><br />Odnośniki do <b>Mój Indi</b> i <b>Mój rodowód </b> zobaczysz tylko, jeśli występujesz w bieżącym pliku GEDCOM. Jeśli w aktualnym pliku GEDCOM znajduje się wpis z twoimi danymi, wówczas zobaczysz odnośniki <b>Mój Indi</b> i <b>Mój rodowód</b>, zaś jeśli nie masz w nim swojego wpisu, te odnośniki nie pojawią się.<br /><br />";
@@ -145,7 +145,7 @@ $pgv_lang["PEDIGREE_GENERATIONS_help"]	= "~LICZBA POKOLEŃ~<br /><br />Tutaj mo�
 
 //-- Pedigree-page
 
-//-- LOGIN-page 
+//-- LOGIN-page
 $pgv_lang["login_page_help"]			= "~STRONA LOGOWANIA~<br /><br />Na tej stronie możesz się zalogować, zamówić nowe hasło lub rozpocząć zakładanie nowego konta.<br />";
 $pgv_lang["password_help"]			= "~HASŁO~<br /><br />W to pole wpisujesz swoje hasło.<br /><br /><b>Małe i wielkie litery w haśle mają znaczenie.</b> Oznacza to, że <b>MojeHasło</b> to <u>nie</u> to samo, co <b>mojehasło</b> czy <b>MOJEHASŁO</b>.<br /><br />";
 $pgv_lang["login_buttons_help"]			= "~PRZYCISKI ZALOGUJ~<br /><br />Tutaj zobaczysz dwa przyciski, służące do zalogowania do systemu.<br /><br />Od tego, na który z nich klikniesz po wpisaniu loginu i hasła, zależy, gdzie znajdziesz się po zalogowaniu.<br /><ul><li>Przycisk <b>#pgv_lang[login]#</b><br />Po kliknięciu na ten przycisk powrócisz do strony aktualnie odwiedzanej, ale z prawami dostępu zalogowanego użytkownika.<br /><br />Na przykład kliknięcie <b>#pgv_lang[login]#</b> na stronie rodowodu spowoduje powrót na tą samą stronę. Jeśli klikniesz na ten przycisk na stronie głównej, po zalogowaniu znajdziesz się na stronie #pgv_lang[mygedview]#.</li><li>Przycisk <b>#pgv_lang[admin]#</b><br />Jeśli masz prawa administratora, kliknięcie na ten przycisk przeniesie cię bezpośrednio do głównej strony administracji.</li></ul><br />";
@@ -407,7 +407,6 @@ $pgv_lang["register_comments_help"]	= "~#pgv_lang[comments]#~<br /><br />Użyj t
 $pgv_lang["utf8_ansi_help"]		= "~PRZEKONWERTUJ Z UTF-8 DO ANSI~<br /><br />PhpGedView korzysta ze standardu kodowania UTF-8, który zapewnia poprawne kodowanie stron internetowych. Niektóre aplikacje, takie jak Family Tree Maker, nie obsługują importowania plików GEDCOM zakodowanych w UTF-8. Zaznaczenie tej opcji spowoduje przekonwertowanie pliku z <b>UTF-8</b> do <b>ANSI (ISO-8859-1)</b>.<br /><br />Format, którego potrzebujesz, zależy od aplikacji, której chcesz używać do pracy z pobranym plikiem GEDCOM. Jeśli nie wiesz, co wybrać, zajrzyj do dokumentacji swojej aplikacji.<br /><br />Pamiętaj, że aby korzystać ze znaków specjalnych, musisz pozostawić plik w formacie UTF-8 i w inny sposób przekonwertować go do sposobu, w jaki twoja aplikacja może obsłużyć te znaki. Skontaktuj się z producentem lub autorem twojej aplikacji.<br /><br />Ten <a href='http://pl.wikipedia.org/wiki/UTF-8' target='_blank' title='Artykuł w Wikipedii na temat UTF-8'><b>artykuł w Wikipedii</b></a> zawiera kompleksowe informacje i odnośniki na temat standardu UTF-8.<br /><br />";
 $pgv_lang["remove_tags_help"]	= "~USUŃ ZNACZNIKI PhpGedView~<br /><br />Zaznaczenie tej opcji spowoduje usunięcie wszystkich znaczników dodanych do wpisów przez PhpGedView.<br /><br />Własne znaczniki stosowane przez PhpGedView to na przykład <b>_PGVU</b>, który identyfikuje użytkownika, który edytował dany wpis online, oraz <b>_THUM</b>, który informuje PhpGedView, że ten obrazek ma być użyty do miniaturki.<br /><br />Własne znaczniki PhpGedView mogą powodować błędy przy importowaniu pobranego pliku GEDCOM do innej aplikacji genealogicznej.<br /><br />";
 $pgv_lang["download_zipped_help"]	= "~POBIERZ GEDCOM SPAKOWANY ZIPEM~<br /><br />Zaznaczenie tej opcji spowoduje utworzenie kopii pliku GEDCOM, która zostanie skompresowana do pliku ZIP przed rozpoczęciem pobierania. Dzięki temu znacznie zmniejszy się jego wielkość, ale zanim będzie można z niego korzystać, trzeba go będzie rozpakować za pomocą odpowiedniego programu (np. WinZIP).<br /><br />Ta opcja przydaje się w przypadku dużych plików GEDCOM. Istnieje ryzyko, że czas pobierania nieskompresowanego pliku może przekroczyć limit czasu wykonywania, przez co pobrane pliki będą niekompletne. Zastosowanie opcji ZIP powinno zmniejszyć czas pobierania o 75%.<br /><br />";
-$pgv_lang["remember_me_help"]	= "~ZAPAMIĘTAJ MNIE~<br /><br />Zaznaczenie tej opcji po zalogowaniu pozwoli PhpGedView zapamiętać twoje dane, kiedy następnym razem odwiedzisz stronę, dzięki czemu nie będzie trzeba się znowu logować. Ta opcja zapisuje na twoim komputerze cookie (\"ciasteczko\"), które twoja przeglądarka odeśle na stronę, kiedy znowu ją odwiedzisz.<br /><br />Kiedy ponownie wejdziesz na stronę, będziesz mieć dostęp do prywatnych informacji i stron użytkownika, ale aby edytować lub zarządzać danymi, będzie konieczne podanie swojego loginu i hasła.<br /><br /><b>Nie zaznaczaj tej opcji jeśli logujesz się z publicznie dostępnego komputera lub z komputera, który dzielisz z innymi; każdy osoba będzie mogła wówczas powrócić do PhpGedView tak samo, jak ty.</b>";
 $pgv_lang["edit_NCHI_help"]		= "~#factarray[NCHI]#~<br /><br />Wprowadź liczbę dzieci dla danej osoby lub rodziny. To pole nie jest obowiązkowe.<br /><br />";
 $pgv_lang["edit_TIME_help"]		= "~#factarray[TIME]#~<br /><br />Wprowadź godzinę wydarzenia w formacie 24-godzinnym, poprzedzając wartości mniejsze od 10 zerem. Północ to godzina 00:00. Przykłady: 04:50, 13:00, 20:30.<br /><br />";
 $pgv_lang["edit_NOTE_help"]		= "~#factarray[NOTE]#~<br /><br />Notatki są tekstem w dowolnej formie, który pojawi się w sekcji \"Szczegóły faktu\".<br /><br />";

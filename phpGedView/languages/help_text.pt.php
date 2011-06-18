@@ -3,7 +3,7 @@
  * Portugese Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2008  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -59,7 +59,6 @@ $pgv_lang["register_comments_help"]="~#pgv_lang[comments]#~<br /><br />Use este 
 $pgv_lang["utf8_ansi_help"]="~CONVERTER DE UTF-8 PARA ANSI~<br /><br />PhpGedView utiliza o conjunto de caracteres UTF-8. Alguns programas, tais como o Family Tree Maker, não importam arquivos GEDCOM neste formato. Marcando esta opção,  fará com que o arquivo seja convertido de <b>UTF-8</b> para <b>ANSI (ISO-8859-1)</b>.<br /><br />Consulte o manual de seu programa para saber qual o formato mais adequado.<br /><br />Obs.: Para que os caracteres especiais permaneçam inalterados, será necessário manter o formato em UTF-8 e usar alguma ferramenta para converter para o formato de seu programa. Consulte o fabricante de seu programa para esclarecimentos.<br /><br />";
 $pgv_lang["remove_tags_help"]="~EXCLUIR TAGS ESPECÍFICAS DO PGV~<br /><br />Marcando esta opção fará com que tags específicas do PhpGedView sejam removidas.<br /><br />Estas tags incluem as tags <b>_PGVU</b> que identifica o usuário que alterou um registro e a tag <b>_THUM</b> que informa qual imagem deve ser usada como Miniatura.<br /><br />Tags especiais podem causar Erros e Avisos no processo de importação do arquivo GEDCOM por outro programa genealógico.<br /><br />";
 $pgv_lang["download_zipped_help"]="~SALVAR GEDCOM COMO ARQ. ZIP~<br /><br />Marcando esta opção o arquivo GEDCOM será compactado no formato ZIP antes dele ser enviado para o seu computador. Isto reduzirá o tamanho e o tempo de transmissão do arquivo, mas será necessário descompacta-lo antes de importa-lo para seu programa genealógico.<br /><br />Esta opção é muito útil para arquivos GEDCOM muito grandes, que podem exceder o tempo máximo de transferência, acarretando em arquivos imcompletos.<br /><br />";
-$pgv_lang["remember_me_help"]="~LEMBRE-SE DE MIM~<br /><br />Marcando esta opção PhpGedView lembrará de você na sua próxima visita e não será necessário identificar-se novamente. Isto é possível através da gravação de um cookie em seu computador, que o identificará na sua próxima visita.<br /><br />Na próxima visita, você poderá ver as informações, porém para alterar qualquer dado será necessário identificar-se informando o nome de usuário e senha.<br /><br /><b>Não marque esta opção se você estiver utilizando um computador público ou que você compartilhe com outros; caso contrário qualquer um poderá acessar o site deste computador.</b>";
 $pgv_lang["edit_NCHI_help"]="~#factarray[NCHI]#~<br /><br />Informe a quantidade de filhos desta pessoa ou família. Este campo é opcional.<br /><br />";
 $pgv_lang["edit_TIME_help"]="~#factarray[TIME]#~<br /><br />Informe a hora deste evento, no formato 24 horas. Meia-noite é 00:00. Exemplos: 04:50 13:00 20:30.<br /><br />";
 $pgv_lang["edit_NOTE_help"]="~#factarray[NOTE]#~<br /><br />Notas é um texto livre que é exibido na seção Detalhes do Fato.<br /><br />";

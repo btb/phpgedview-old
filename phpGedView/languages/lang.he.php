@@ -280,8 +280,6 @@ $pgv_lang["total_dead"]		= "מתים";
 $pgv_lang["total_not_born"]		= "שנולדו מתים";
 
 $pgv_lang["remove_custom_tags"]	= "הסר נתוני PGV הפרטיים? (למשל <span dir=\"ltr\">_PGVU, _THUM</span>)";
-$pgv_lang["cookie_login_help"]	= "האתר זכר אותך מהתחברות קודמת. הדבר מאפשר גישה לנתונים פרטיים ומאפיינים התלויים במשתמש, אבל כדי לערוך או לנהל את האתר,עליך להתחבר שנית - מסיבות פרטיות.";
-$pgv_lang["remember_me"]		= "זכור אותי בגישה ממחשב זה?";
 $pgv_lang["fams_with_surname"]	= "משפחות עם שם משפחה #surname#";
 $pgv_lang["support_contact"]		= "קשר לסיוע טכני";
 $pgv_lang["genealogy_contact"]	= "קשר לנתוני חקר המשפחה";

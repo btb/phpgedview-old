@@ -3,7 +3,7 @@
  * Estonian texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2006 to 2010  PGV Development Team
+ * Copyright (C) 2006 to 2011  PGV Development Team
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -132,7 +132,6 @@ $pgv_lang["total_dead"]			= "Kokku surnuid";
 $pgv_lang["total_not_born"]			= "Kokku veel sündimata";
 $pgv_lang["remove_custom_tags"]		= "Eemalda kohandatud PGV tagid? (näiteks. _PGVU, _THUM)";
 $pgv_lang["download_zipped"]			= "Laadi GEDCOM alla ZIP failina?";
-$pgv_lang["remember_me"]			= "Mäleta mind sellel arvutil";
 $pgv_lang["fams_with_surname"]	= "Perekonnanime #surname# kandvad perekonnad";
 $pgv_lang["support_contact"]		= "Tehnilise abi kontakt";
 $pgv_lang["genealogy_contact"]		= "Genealoogia kontakt";

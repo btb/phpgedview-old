@@ -1178,8 +1178,6 @@ $pgv_lang["genealogy_contact"]	= "Genealogisk kontakt";
 $pgv_lang["common_upload_errors"]	= "Detta fel beror troligen på att filen du försöker ladda upp är större än gränsen som är satt av ditt webhotell. Standardgränsen i PHP är 2 MB. Du kan kontakta ditt webhotell och försöka få dem att öka gränsen i php.ini-filen, eller kan du ladda upp filen via FTP. Använd <a href=\"uploadgedcom.php?action=add_form\">Lägg till GEDCOM</a> sidan för att lägga till en GEDCOM som blivit uppladdad via FTP.";
 $pgv_lang["total_memory_usage"]	= "Total minnesanvändning:";
 $pgv_lang["fams_with_surname"]	= "Familjer med efternamn #surname#";
-$pgv_lang["remember_me"]		= "Kom ihåg mej ifrån denna dator?";
-$pgv_lang["cookie_login_help"]	= "Denna sajt kommer ihåg dej ifrån föregående inloggningar. Detta tillåter dig att komma åt privat information och andra användarinställningar, men för att administrera denna sajt så måste du logga in igen för att öka säkerheten.";
 $pgv_lang["ahnentafel_report"]	= "Antavlerapport";
 $pgv_lang["ahnentafel_header"]		= "Antavlerapport för ";
 $pgv_lang["ahnentafel_generation"]	= "Generationer ";
