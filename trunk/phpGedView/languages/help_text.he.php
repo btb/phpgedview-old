@@ -3,7 +3,7 @@
  * Hebrew Language Help-file
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -88,7 +88,6 @@ $pgv_lang["register_comments_help"]	= "~#pgv_lang[comments]#~<br /><br />השת�
 $pgv_lang["utf8_ansi_help"]			= "~הסב מ-UTF-8 ל-ANSI~<br /><br />לתצוגה אופטימאלית באינטרנט PhpGedView משתמש במערך אותיות UTF-8. תוכניות כמו למשל Family Tree Maker, אינן תומכות בייבוא קובצי GEDCOM מוצפנים ב-UTF-8. בחירת התיבה תתרגם את הקובץ מ-<b>UTF-8</b> ל-<b><span dir=\"ltr\">ANSI (ISO-8859-1)</span></b>.<br /><br />המבנה הדרוש תלוי בתוכנה שבה תרצה להשתמש בקובץ ה-GEDCOM שהורד. בדוק את התיעוד של התוכנה הזאת, אם אינך בטוח.<br /><br />שים לב שכדי שסימנים מיוחדים ישמרו ללא שינוי, עליך להוריד את הקובץ ב-UTF-8 ולהסב לשיטת טיפול של התוכנית שלך בסימנים המיוחדים הללו בדרך אחרת. התייעץ עם יצרן או עורך התוכנה שלך.<br /><br />הכתבה הבאה <a href='http://he.wikipedia.org/wiki/UTF-8' target='_blank' title='כתבה של ויקיפדיה'><b>של ויקיפדיה</b></a> כוללת מידע וקישורים מקיפים על UTF-8.<br /><br />";
 $pgv_lang["remove_tags_help"]		= "~הסר נתוני PGV פרטיים~<br /><br />בחירת האופציה תמחק נתונים פרטיים שאולי הוספו לרשומות ע\"י PhpGedView.<br /><br />נתונים פרטיים ש-PhpGedView משתמש בהם כוללים נתון <b><span dir=\"ltr\">_PGVU</span></b> שמסמן איזה משתמש שינה את הרשומה באון-ליין, ונתון <b><span dir=\"ltr\">_THUM</span></b> שאומר ל-PhpGedView שהתמונה תשמש כתמונה מזערית.<br /><br />נתונים פרטיים יכולים לגרום לשגיאות כאשר מייבאים את ה-GEDCOM שמיוצא לאפליקציה של חקר משפחה אחרת.<br /><br />";
 $pgv_lang["download_zipped_help"]		= "~הורד GEDCOM כקובץ ZIP~<br /><br />כאשר אתה בוחר את האפשרות הזו, עותק של קובץ ה-GEDCOM ידחס למבנה ZIP לפני שההורדה מתחילה. דבר זה יצמצם במידה ניכרת  את גודלו, אבל עליך להשתמש בתוכנית פתיחת דחיסה תואמת (WinZIP, למשל) כדי לבטל את הצמצום של קובץ ה-GEDCOM שהורד לפני שניתן יהיה להשתמש בו.<br /><br />אפשרות שימושית בהורדת קובצי GEDCOM גדולים.  קיים סיכון שזמן ההורדה של קובץ שאינו דחוס יעבור את זמן העיבוד המכסימלי, ויגרום לקובצי הורדה שאינם שלמים. אפשרות ה-ZIP מקטינה את זמן ההורדה ב-75%.<br /><br />";
-$pgv_lang["remember_me_help"]		= "~זכור אותי~<br /><br />בחירת התיבה בזמן התחברות מאפשרת ל-PhpGedView לזכור אותך בפעם הבאה שתבקר כך שלא תצטרך להתחבר שנית. האופציה מגדירה עוגייה (cookie) על המחשב שלך שיחזיר נתונים על ידי הדפדפן לאתר בביקורך הבא.<br /><br />כאשר תחזור לאתר תוכל לגשת לנתונים פרטיים ולדפי המשתמש, אבל כדי לערוך או לנהל, עליך להכניס שוב את קוד המשתמש והסיסמא שלך.<br /><br />אין לסמן את התיבה כאשר מתחברים ממחשב<b> ציבורי או מחשב שבו משתמשים עם אחרים; כל אחד יוכל לחזור ל-PhpGedView כאילו הוא אתה.</b>";
 $pgv_lang["edit_NCHI_help"]			= "~#factarray[NCHI]#~<br /><br />הכנס את מספר הילדים של האדם הזה או של המשפחה הזו. השדה הוא שדה בחירה.<br /><br />";
 $pgv_lang["edit_TIME_help"]			= "~#factarray[TIME]#~<br /><br />הכנס זמן לאירוע זה במבנה 24 שעות עם אפסים מובילים. חצות הוא 00:00. לדוגמא: 04:50 13:00 20:30.<br /><br />";
 $pgv_lang["edit_NOTE_help"]			= "~#factarray[NOTE]#~<br /><br />הערות הן טכסט במבנה חופשי ותופענה בחלק הדף של פירוט העובדה.<br /><br />";
