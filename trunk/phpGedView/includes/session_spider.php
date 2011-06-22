@@ -105,6 +105,7 @@ $SEARCH_SPIDER = false;		// set empty at start
 $ua = isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : "";
 
 $worms = array(
+	'Python',
 	'MaMa',
 	'CaSpEr',
 	'Casper',
@@ -138,24 +139,50 @@ $worms = array(
 
 $quitReason = "";
 
-// check for attempt to redirect
-if (preg_match("~=.*://~", rawurldecode($_SERVER["REQUEST_URI"]))) {
-	$quitReason = "Embedded URL detected";
-}
+while (true) {
+	$requestURI = rawurldecode($_SERVER["REQUEST_URI"]);
+	// check for attempt to redirect
+	if (preg_match("~=.*://~", $requestURI)) {
+		$quitReason = 'Embedded URL detected';
+		break;
+	}
 
-// check for attempt to escape from the PGV directory
-if (preg_match("~\.\.(/|\\\)~", rawurldecode($_SERVER["REQUEST_URI"]))) {
-	$quitReason = "Attempt escape from PGV directory";
-}
+	// check for attempt to escape from the PGV directory
+	if (preg_match("~\.\.(/|\\\)~", $requestURI)) {
+		$quitReason = 'Attempt escape from PGV directory';
+		break;
+	}
 
-// check for worms and bad bots
-if ($quitReason == "") {
+	// check for improperly formed URI
+	if (strpos($requestURI, '//') !== false) {
+		$quitReason = 'Improperly formed URI';
+		break;
+	}
+
+	// check for improperly formed UA string
+	if (strlen($ua) > 511) {
+		$quitReason = 'UA too long';
+		break;
+	}
+
+	// check for conflicting OS in UA string (e.g.: Linux, Windows, etc. in same UA string)
+	// -- still to be implemented --
+
+	// check for conflicting browsers in UA string (e.g.: MSIE, Firefox, Opera, Safari, Chrome, etc. in same UA string)
+	// -- still to be implemented --
+
+	// check for conflicting rendering engines in UA string (e.g.: Mozilla, AppleWebKit, Presto, etc. in same UA string)
+	// -- still to be implemented --
+
+	// check for worms and bad bots
 	foreach ($worms as $worm) {
 		if (preg_match('/'.$worm.'/i', $ua)) {
-			$quitReason = "Blocked crawler detected";
+			$quitReason = 'Blocked crawler detected';
 			break;
 		}
 	}
+
+	break;
 }
 
 // Do we have a reason to quit now?
@@ -188,6 +215,8 @@ $real_browsers = array(
 	'Konqueror',
 	'Gecko',
 	'Safari',
+	'Chrome',
+	'K-Meleon',
 	'http://www.avantbrowser.com',
 	'BlackBerry',
 	'Lynx',
