@@ -364,7 +364,9 @@ if (isset($MANUAL_SESSION_START) && !empty($SID)) {
 
 session_start();
 
-if (!$SEARCH_SPIDER && !isset($_SESSION['initiated'])) {
+// check whether it is necessary to regenerate a new session, destroying the current one
+// added SOAP_CONNECTED for SOAP session persistence (otherwise only one request per authentication is allowed)
+if (!$SEARCH_SPIDER && !isset($_SESSION['initiated']) && !isset($_SESSION['SOAP_CONNECTED'])) { 
 	// A new session, so prevent session fixation attacks by choosing a new PHPSESSID.
 	session_regenerate_id(true);
 	$_SESSION['initiated']=true;

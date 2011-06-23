@@ -24,7 +24,7 @@
  * done in PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2005  PGV Development Team
+ * Copyright (C) 2002 to 2011  PGV Development Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -1013,13 +1013,13 @@ class GenealogyService
 	***/
 	function start_session($SID)
 	{
-		/*if (!isset($_SESSION["SOAP_CONNECTED"]) || $_SESSION["SOAP_CONNECTED"]!==true)
+		if (!isset($_SESSION["SOAP_CONNECTED"]) || $_SESSION["SOAP_CONNECTED"]!==true)
 		{
 			return new SOAP_Fault('Invalid session id '.$SID.'. Please authenticate',
 								'Client',
 								'',
 								null);
-		}*/
+		}
 		return true;
 	}
 	/**
