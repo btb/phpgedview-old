@@ -3,7 +3,7 @@
  *  Entry point for SOAP web service
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,7 +25,7 @@
  */
 
 define('PGV_SCRIPT_NAME', 'genservice.php');
-require './config.php';
+// require './config.php';
 
 /**
  * we have to manually pull the SID from the SOAP request
@@ -37,19 +37,22 @@ if(!isset($_SERVER['QUERY_STRING']) || strstr($_SERVER['QUERY_STRING'],'wsdl')==
 {
 	if (isset($HTTP_RAW_POST_DATA)) {
 	//-- set the session id
-	//	<ns4:SID>6ca1b44936bf4zb7202e6bd8ce4bkcbd</ns4:SID>
-		$ct = preg_match("~<\w*:SID>(.*)</\w*:SID>~", $HTTP_RAW_POST_DATA, $match);
+	//	<SID xsi:type='xsd:string'>6ca1b44936bf4zb7202e6bd8ce4bkcbd<\SID>
+		$ct = preg_match("~<[^>]*SID[^>]*>(.*)</\SID[^>]*>~", $HTTP_RAW_POST_DATA, $match);
 		if ($ct>0) $SID = trim($match[1]);
 		$MANUAL_SESSION_START = true;
 
 		//-- set the gedcom id
-		$ct = preg_match("~<\w*:gedcom_id>(.*)</\w*:gedcom_id>~", $HTTP_RAW_POST_DATA, $match);
+	//	<gedcom_id xsi:type='xsd:string'>caposele<\gedcom_id>
+		$ct = preg_match("~<[^>]*gedcom_id[^>]*>(.*)</\gedcom_id[^>]*>~", $HTTP_RAW_POST_DATA, $match);
 		if ($ct>0) $_REQUEST['ged'] = trim($match[1]);
 
 		//AddToLog("Setting SID to ".$SID." ".$HTTP_RAW_POST_DATA);
-		require_once PGV_ROOT.'includes/functions/functions_edit.php';
+		//require_once PGV_ROOT.'includes/functions/functions_edit.php';
 	}
 }
+
+require './config.php';
 
 /**
  * load up the service implementation
