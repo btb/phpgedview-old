@@ -785,26 +785,28 @@ function check_media_depth($filename, $truncate = "FRONT", $noise = "VERBOSE") {
 				}
 			}
 		}
-		if (!is_dir(filename_decode($MEDIA_DIRECTORY . "thumbs/" . $folderName))) {
-			if (!mkdir(filename_decode($MEDIA_DIRECTORY . "thumbs/" . $folderName))) {
-				if ($noise == "VERBOSE") {
-					print "<div class=\"error\">" . $pgv_lang["folder_no_create"] . $MEDIA_DIRECTORY . "thumbs/" . $folderName . "</div>";
-				}
-			} else {
-				if ($noise == "VERBOSE") {
-					print $pgv_lang["folder_created"] . ": " . $MEDIA_DIRECTORY . "thumbs/" . $folderName . "/<br />";
-				}
-				$fp = @ fopen(filename_decode($MEDIA_DIRECTORY . "thumbs/" . $folderName . "/index.php"), "w+");
-				if (!$fp) {
+		if (is_dir(filename_decode($MEDIA_DIRECTORY . "thumbs"))) {
+			if (!is_dir(filename_decode($MEDIA_DIRECTORY . "thumbs/" . $folderName))) {
+				if (!mkdir(filename_decode($MEDIA_DIRECTORY . "thumbs/" . $folderName))) {
 					if ($noise == "VERBOSE") {
-						print "<div class=\"error\">" . $pgv_lang["security_no_create"] . $MEDIA_DIRECTORY . "thumbs/" . $folderName . "</div>";
+						print "<div class=\"error\">" . $pgv_lang["folder_no_create"] . $MEDIA_DIRECTORY . "thumbs/" . $folderName . "</div>";
 					}
 				} else {
-					fwrite($fp, "<?php\r\n");
-					fwrite($fp, "header(\"Location: {$backPointer}../medialist.php\");\r\n");
-					fwrite($fp, "exit;\r\n");
-					fwrite($fp, "?>\r\n");
-					fclose($fp);
+					if ($noise == "VERBOSE") {
+						print $pgv_lang["folder_created"] . ": " . $MEDIA_DIRECTORY . "thumbs/" . $folderName . "/<br />";
+					}
+					$fp = @ fopen(filename_decode($MEDIA_DIRECTORY . "thumbs/" . $folderName . "/index.php"), "w+");
+					if (!$fp) {
+						if ($noise == "VERBOSE") {
+							print "<div class=\"error\">" . $pgv_lang["security_no_create"] . $MEDIA_DIRECTORY . "thumbs/" . $folderName . "</div>";
+						}
+					} else {
+						fwrite($fp, "<?php\r\n");
+						fwrite($fp, "header(\"Location: {$backPointer}../medialist.php\");\r\n");
+						fwrite($fp, "exit;\r\n");
+						fwrite($fp, "?>\r\n");
+						fclose($fp);
+					}
 				}
 			}
 		}
@@ -1347,7 +1349,7 @@ function show_media_form($pid, $action = "newentry", $filename = "", $linktoid =
 			$gedtitl = "TITL";
 	}
 	add_simple_tag("2 $gedtitl");
-	
+
 	if (strstr($ADVANCED_NAME_FACTS, "_HEB")!==false) {
 		// 3 _HEB
 		if ($gedrec == "")
