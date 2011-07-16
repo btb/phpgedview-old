@@ -229,6 +229,7 @@ $countries["SLV"]="El Salvador";
 $countries["SMR"]="San Marino";
 $countries["SOM"]="Somalia";
 $countries["SPM"]="St. Pierre und Miquelon";
+$countries["SSD"]="Süd Sudan";
 $countries["STP"]="São Tomé und Príncipe";
 $countries["SUN"]="UdSSR";
 $countries["SUR"]="Suriname";
@@ -285,11 +286,11 @@ $countries["???"]="Unbekannt";
  * You do not have to list all the possibilities in all page languages.  This
  * will be done automatically by the country-to-Chapman conversion routine.
  *
- * Because the list, and its contents, are specific to each language, the 
+ * Because the list, and its contents, are specific to each language, the
  * Translator Tool won't let you work on the list directly.  The list will
  * have to be updated and amended manually.
  *
- * Suppose Chapman code "XYZ" represents the same country, and that country 
+ * Suppose Chapman code "XYZ" represents the same country, and that country
  * had the names "Name1", "Name2", "Name3" in its history.  It is now known
  * as "Current name".  You can list the various names like this:
  *
@@ -298,7 +299,7 @@ $countries["???"]="Unbekannt";
  *
  * The Chapman-to-country conversion will always use the $countries list of
  * the current page language, no matter what the original country name was.
- * 
+ *
  */
 $altCountryNames["COD"]="Zaire";
 $altCountryNames["DEU"]="Deutsche Demokratische Republik; DDR; Bundesrepublik Deutschland; BRD";
