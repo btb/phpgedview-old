@@ -17,10 +17,11 @@
  *		NFK		Norfolk Island
  *		PRI		Puerto Rico				Chapman lists this as a state of the USA
  *		SCG		Serbia and Montenegro	Chapman lists these separately
+ *		SSD		South Sudan				Newly (Jul 2011) independent from Sudan
  *		TLS		Timor-Leste
  *		UMI		US Minor Outlying Islands
  *		VIR		US Virgin Islands		Chapman lists this as a state of the USA
- *		
+ *
  * These Chapman country codes do not appear in the list following:
  *		UEL		United Empire Loyalist		This is NOT a country or region, it's
  *											a group of people
@@ -36,7 +37,7 @@
  *		TMP		East Timor					Official name is TLS "Timor-Leste"
  *		HOL		Holland						Official name is NLD "Netherlands"
  *		ESM		Western Samoa				Official name is WSM "Samoa"
- *											
+ *
  * @package PhpGedView
  * @subpackage Languages
  * @version $Id$
@@ -263,6 +264,7 @@ $countries["SLV"]="El Salvador";
 $countries["SMR"]="San Marino";
 $countries["SOM"]="Somalia";
 $countries["SPM"]="Saint Pierre and Miquelon";
+$countries["SSD"]="South Sudan";
 $countries["STP"]="São Tomé and Príncipe";
 $countries["SUN"]="USSR";
 $countries["SUR"]="Suriname";
@@ -319,11 +321,11 @@ $countries["???"]="Unknown";
  * You do not have to list all the possibilities in all page languages.  This
  * will be done automatically by the country-to-Chapman conversion routine.
  *
- * Because the list, and its contents, are specific to each language, the 
+ * Because the list, and its contents, are specific to each language, the
  * Translator Tool won't let you work on the list directly.  The list will
  * have to be updated and amended manually.
  *
- * Suppose Chapman code "XYZ" represents the same country, and that country 
+ * Suppose Chapman code "XYZ" represents the same country, and that country
  * had the names "Name1", "Name2", "Name3" in its history.  It is now known
  * as "Current name".  You can list the various names like this:
  *
@@ -332,7 +334,7 @@ $countries["???"]="Unknown";
  *
  * The Chapman-to-country conversion will always use the $countries list of
  * the current page language, no matter what the original country name was.
- * 
+ *
  */
 $altCountryNames["COD"]="Zaire";
 $altCountryNames["DEU"]="East Germany; West Germany; GDR; FRG";
