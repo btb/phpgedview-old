@@ -66,8 +66,8 @@ $countries["ATF"]="French Southern Territories";
 $countries["ATG"]="Antigua and Barbuda";
 $countries["AUS"]="Australia";
 $countries["AUT"]="Austria";
-$countries["AZR"]="Azores";
 $countries["AZE"]="Azerbaijan";
+$countries["AZR"]="Azores";
 $countries["BDI"]="Burundi";
 $countries["BEL"]="Belgium";
 $countries["BEN"]="Benin";
@@ -347,6 +347,7 @@ $altCountryNames["NLD"]="Holland";
 $altCountryNames["PLW"]="Belau";
 $altCountryNames["SUN"]="Soviet Union";
 $altCountryNames["TLS"]="East Timor";
+$altCountryNames["USA"]="United States; United States of America";
 $altCountryNames["VAT"]="Holy See";
 $altCountryNames["WSM"]="Western Samoa";
 
