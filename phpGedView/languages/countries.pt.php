@@ -11,7 +11,9 @@
  *
  * These codes do not appear in the two Chapman lists cited:
  *		ALA		Åland Islands
+ *		CAT		Catalonia
  *		COD		Congo (Brazzaville)		This country was known as Zaire
+ *		IOM		Isle of Man				Chapman lists this as part of the UK -- it's not!!
  *		NFK		Norfolk Island
  *		PRI		Puerto Rico				Chapman lists this as a state of the USA
  *		SCG		Serbia and Montenegro	Chapman lists these separately
@@ -37,7 +39,9 @@
  *											
  * @package PhpGedView
  * @subpackage Languages
- * @author: Anderson Wilson
+ * @author José Monteiro
+ * @website http://existologoescrevo.blogspot.com/
+ * @e-mail jalberto@bluewin.ch
  * @version $Id$
  */
 
@@ -47,7 +51,7 @@ if (!defined('PGV_PHPGEDVIEW')) {
 }
 
 $countries["ABW"]="Aruba";
-$countries["ACA"]="Acadia";
+$countries["ACA"]="Acádia";
 $countries["AFG"]="Afeganistão";
 $countries["AGO"]="Angola";
 $countries["AIA"]="Anguila";
@@ -57,7 +61,7 @@ $countries["AND"]="Andorra";
 $countries["ANT"]="Antilhas Neerlandesas";
 $countries["ARE"]="Emirados Árabes";
 $countries["ARG"]="Argentina";
-$countries["ARM"]="Armênia";
+$countries["ARM"]="Arménia";
 $countries["ASM"]="Samoa Americana";
 $countries["ATA"]="Antártida";
 $countries["ATF"]="Territórios Austrais Franceses";
@@ -66,16 +70,16 @@ $countries["AUS"]="Austrália";
 $countries["AUT"]="Áustria";
 $countries["AZR"]="Açores";
 $countries["AZE"]="Azerbaijão";
-$countries["BDI"]="Burúndi";
+$countries["BDI"]="Burundi";
 $countries["BEL"]="Bélgica";
-$countries["BEN"]="Benin";
+$countries["BEN"]="Benim";
 $countries["BFA"]="Burquina Faso";
 $countries["BGD"]="Bangladeche";
 $countries["BGR"]="Bulgária";
 $countries["BHR"]="Barém";
 $countries["BHS"]="Bahamas";
-$countries["BIH"]="Bôsnia e Herzegovina";
-$countries["BLR"]="Bielo-Rússia";
+$countries["BIH"]="Bósnia e Herzegovina";
+$countries["BLR"]="Bielorrússia";
 $countries["BLZ"]="Belize";
 $countries["BMU"]="Bermudas";
 $countries["BOL"]="Bolívia";
@@ -88,7 +92,8 @@ $countries["BWA"]="Botsuana";
 $countries["BWI"]="Índias Orientais Britânicas";
 $countries["CAF"]="República Centro-Africana";
 $countries["CAN"]="Canadá";
-$countries["CAP"]="Colônia do Cabo";
+$countries["CAP"]="Colónia do Cabo";
+$countries["CAT"]="Catalunha";
 $countries["CCK"]="Ilhas dos Cocos";
 $countries["CHE"]="Suíça";
 $countries["CHI"]="Ilhas do Canal";
@@ -103,21 +108,21 @@ $countries["COL"]="Colômbia";
 $countries["COM"]="Comores";
 $countries["CPV"]="Cabo Verde";
 $countries["CRI"]="Costa Rica";
-$countries["CSK"]="Tchecoslováquia";
+$countries["CSK"]="Checoslováquia";
 $countries["CUB"]="Cuba";
 $countries["CXR"]="Ilha do Natal";
 $countries["CYM"]="Ilhas Caimão";
 $countries["CYP"]="Chipre";
 $countries["CZE"]="República Checa";
 $countries["DEU"]="Alemanha";
-$countries["DJI"]="Jibuti";
+$countries["DJI"]="Djibuti";
 $countries["DMA"]="Domínica";
 $countries["DNK"]="Dinamarca";
 $countries["DOM"]="República Dominicana";
-$countries["DZA"]="Algéria";
+$countries["DZA"]="Argélia";
 $countries["ECU"]="Equador";
-$countries["EGY"]="Egíto";
-$countries["EIR"]="Eire";
+$countries["EGY"]="Egito";
+$countries["EIR"]="Irlanda";
 $countries["ENG"]="Inglaterra";
 $countries["ERI"]="Eritreia";
 $countries["ESH"]="Sahara Ocidental";
@@ -126,7 +131,7 @@ $countries["EST"]="Estónia";
 $countries["ETH"]="Etiópia";
 $countries["FIN"]="Finlândia";
 $countries["FJI"]="Fiji";
-$countries["FLD"]="Flanders";
+$countries["FLD"]="Flandres";
 $countries["FLK"]="Ilhas Falkland";
 $countries["FRA"]="França";
 $countries["FRO"]="Ilhas Faroé";
@@ -134,7 +139,7 @@ $countries["FSM"]="Micronésia";
 $countries["GAB"]="Gabão";
 $countries["GBR"]="Reino Unido";
 $countries["GEO"]="Geórgia";
-$countries["GHA"]="Ghana";
+$countries["GHA"]="Gana";
 $countries["GIB"]="Gibraltar";
 $countries["GIN"]="Guiné";
 $countries["GLP"]="Guadalupe";
@@ -156,6 +161,7 @@ $countries["HTI"]="Haiti";
 $countries["HUN"]="Hungria";
 $countries["IDN"]="Indonésia";
 $countries["IND"]="Índia";
+$countries["IOM"]="Ilha de Man";
 $countries["IOT"]="Território Britânico do Oceano Índico";
 $countries["IRL"]="Irlanda";
 $countries["IRN"]="Irão";
@@ -170,7 +176,7 @@ $countries["KAZ"]="Cazaquistão";
 $countries["KEN"]="Quénia";
 $countries["KGZ"]="Quirguizistão";
 $countries["KHM"]="Camboja";
-$countries["KIR"]="Quiribáti";
+$countries["KIR"]="Quiribati";
 $countries["KNA"]="São Cristóvão e Neves";
 $countries["KOR"]="Coreia do Sul";
 $countries["KWT"]="Kuwait";
@@ -205,7 +211,7 @@ $countries["MRT"]="Mauritânia";
 $countries["MSR"]="Montserrat";
 $countries["MTQ"]="Martinica";
 $countries["MUS"]="Maurícia";
-$countries["MWI"]="Malávi";
+$countries["MWI"]="Malawi";
 $countries["MYS"]="Malásia";
 $countries["MYT"]="Mayotte";
 $countries["NAM"]="Namíbia";
@@ -220,7 +226,7 @@ $countries["NLD"]="Países Baixos";
 $countries["NOR"]="Noruega";
 $countries["NPL"]="Nepal";
 $countries["NRU"]="Nauru";
-$countries["NTZ"]="Zona Neutra da Coréia";
+$countries["NTZ"]="Zona Neutra da Coreia";
 $countries["NZL"]="Nova Zelândia";
 $countries["OMN"]="Omã";
 $countries["PAK"]="Paquistão";
@@ -248,20 +254,20 @@ $countries["SCT"]="Escócia";
 $countries["SDN"]="Sudão";
 $countries["SEA"]="No Mar";
 $countries["SEN"]="Senegal";
-$countries["SER"]="Serbia";
+$countries["SER"]="Servia";
 $countries["SGP"]="Singapura";
 $countries["SGS"]="Ilhas Geórgia do Sul e Sandwich do Sul";
 $countries["SHN"]="Santa Helena";
 $countries["SIC"]="Sicília";
 $countries["SJM"]="Ilhas Svalbard e Jan Mayen";
 $countries["SLB"]="Ilhas Salomão";
-$countries["SLE"]="Sierra Leone";
+$countries["SLE"]="Serra Leão";
 $countries["SLV"]="El Salvador";
 $countries["SMR"]="São Marinho";
 $countries["SOM"]="Somália";
 $countries["SPM"]="São Pedro e Miquelon";
 $countries["STP"]="São Tomé e Príncipe";
-$countries["SUN"]="U.S.S.R.";
+$countries["SUN"]="USSR";
 $countries["SUR"]="Suriname";
 $countries["SVK"]="Eslováquia";
 $countries["SVN"]="Eslovénia";
@@ -300,15 +306,37 @@ $countries["VNM"]="Vietnam";
 $countries["VUT"]="Vanuatu";
 $countries["WAF"]="África Ocidental";
 $countries["WLF"]="Ilhas Wallis e Futuna";
-$countries["WLS"]="Wales";
+$countries["WLS"]="País de Gales";
 $countries["WSM"]="Samoa";
 $countries["YEM"]="Iémen";
-$countries["YUG"]="Iugoslávia";
+$countries["YUG"]="Jugoslávia";
 $countries["ZAF"]="África do Sul";
 $countries["ZAR"]="Zaire";
 $countries["ZMB"]="Zâmbia";
 $countries["ZWE"]="Zimbabué";
+$countries["???"]="Desconhecido";
 
+/*
+ * The following table lists alternate names for various Chapman codes.
+ * It will be used when country names have to be converted to Chapman codes.
+ * You do not have to list all the possibilities in all page languages.  This
+ * will be done automatically by the country-to-Chapman conversion routine.
+ *
+ * Because the list, and its contents, are specific to each language, the 
+ * Translator Tool won't let you work on the list directly.  The list will
+ * have to be updated and amended manually.
+ *
+ * Suppose Chapman code "XYZ" represents the same country, and that country 
+ * had the names "Name1", "Name2", "Name3" in its history.  It is now known
+ * as "Current name".  You can list the various names like this:
+ *
+ * $countries["XYZ"]="Current name";
+ * $altCountryNames["XYZ"]="Name1; Name2; Name3";
+ *
+ * The Chapman-to-country conversion will always use the $countries list of
+ * the current page language, no matter what the original country name was.
+ * 
+ */
 $altCountryNames["SUN"]="União Soviética";
 $altCountryNames["PLW"]="Belau";
 $altCountryNames["MMR"]="Birmânia";
