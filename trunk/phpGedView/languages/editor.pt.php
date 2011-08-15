@@ -20,8 +20,9 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  * @package PhpGedView
- * @author Maurício Menegazzo Rosa
- * @author Anderson Wilson and Clovis Bombardelli
+ * @author José Monteiro
+ * @website http://existologoescrevo.blogspot.com/
+ * @e-mail jalberto@bluewin.ch
  * @version $Id$
  */
 
@@ -30,6 +31,16 @@ if (!defined('PGV_PHPGEDVIEW')) {
 	exit;
 }
 
+$pgv_lang["add_marriage"]			= "Adicionar detalhes casamento";
+$pgv_lang["edit_concurrency_change"] = "Este registro foi recentemente alterada pela <i>#CHANGEUSER#</i> em #CHANGEDATE#";
+$pgv_lang["edit_concurrency_msg2"]	= "O registro com identificação #PID# foi alterado por outro membro desde que você acessou.";
+$pgv_lang["edit_concurrency_msg1"]	= "Ocorreu um erro ao criar a forma Editar. Outro membro pode ter alterado esse registro desde que você já visualizou.";
+$pgv_lang["edit_concurrency_reload"]	= "Por favor, recarregue a página anterior para se certificar que você está trabalhando com o registro mais recente.";
+$pgv_lang["admin_override"]			= "Opção do administrador";
+$pgv_lang["no_update_CHAN"]			= "Não atualize o registro CHAN (última alteração)";
+$pgv_lang["select_events"]			= "Selecionar eventos";
+$pgv_lang["source_events"]			= "Ligar eventos com esta fonte";
+$pgv_lang["advanced_name_fields"]	= "Nomes adicionais (cognome, nome de casada, etc.)";
 $pgv_lang["accept_changes"]="Aceitar / Rejeitar Alterações";
 $pgv_lang["replace"]="Substituir Registro";
 $pgv_lang["append"]="Adicionar Registro";
@@ -44,19 +55,31 @@ $pgv_lang["link_media"]="Ligar Mídia";
 $pgv_lang["to_person"]="Com a Pessoa";
 $pgv_lang["to_family"]="Com a Família";
 $pgv_lang["to_source"]="Com a Fonte";
-$pgv_lang["edit_fam"]="Alterar a Família";
+$pgv_lang["to_note"]				= "Com a Nota Compartilhados";
+$pgv_lang["to_repository"]			= "Com a Repositório";
+$pgv_lang["edit_fam"]="Editar Família";
+$pgv_lang["edit_repo"]				= "Editar Repositório";
 $pgv_lang["copy"]="Copiar";
 $pgv_lang["cut"]="Recortar";
 $pgv_lang["sort_by_birth"]="Ordenado por nascimento";
-$pgv_lang["reorder_children"]="Re-ordenar os Filhos";
+$pgv_lang["reorder_children"]="Reordenar os Filhos";
+$pgv_lang["reorder_media"]					= "Reordenar mídia";
+$pgv_lang["reorder_media_title"]			= "Arraste-e-soltar Miniaturas para re-ordenar os itens de mídia";
+$pgv_lang["reorder_media_window"]			= "Reordenar mídia (janela)";
+$pgv_lang["reorder_media_window_title"]		= "Clique em uma linha, arraste-e-soltar para re-ordenar mídia";
+$pgv_lang["reorder_media_save"]				= "Guardar a mídia ordenados para o banco de dados";
+$pgv_lang["reorder_media_reset"]			= "Reiniciar a ordem original";
+$pgv_lang["reorder_media_cancel"]			= "Sair e retornar";
 $pgv_lang["add_from_clipboard"]="Adicionar da Área de Transferência:";
 $pgv_lang["record_copied"]="Registro copiado para a Área de Transferência";
 $pgv_lang["add_unlinked_person"]="Adicionar uma pessoa sem parentes a árvore";
 $pgv_lang["add_unlinked_source"]="Adicionar uma fonte sem ligação alguma";
+$pgv_lang["add_unlinked_note"]		= "Adicionar uma nota desassociou";
+$pgv_lang["add_unlinked"]			= "Registos desassociados";
 $pgv_lang["server_file"]="Nome do arquivo no servidor";
 $pgv_lang["server_file_advice"]="Não altere para manter o nome original do arquivo.";
-$pgv_lang["server_file_advice2"]="Informe uma URL inciando por &laquo;http://&raquo;.";
-$pgv_lang["server_folder_advice"]="O máximo de níveis permitdos abaixo da pasta padrão de mídia &laquo;#GLOBALS[MEDIA_DIRECTORY]#&raquo; é de  #GLOBALS[MEDIA_DIRECTORY_LEVELS]#.<br />Suprima &laquo;#GLOBALS[MEDIA_DIRECTORY]#&raquo; do nome da pasta de destino.";
+$pgv_lang["server_file_advice2"]="Informe uma URL iniciada por &laquo;http://&raquo;.";
+$pgv_lang["server_folder_advice"]="O máximo de níveis permitidos abaixo da pasta padrão de mídia &laquo;#GLOBALS[MEDIA_DIRECTORY]#&raquo; é de  #GLOBALS[MEDIA_DIRECTORY_LEVELS]#.<br />Suprima &laquo;#GLOBALS[MEDIA_DIRECTORY]#&raquo; do nome da pasta de destino.";
 $pgv_lang["server_folder_advice2"]="O campo \"Nome do Arquivo\" não deve conter uma URL.";
 $pgv_lang["add_linkid_advice"]="Informe ou pesquise a ID da pessoa, família, ou fonte a qual esta mídia deverá estar ligada.";
 $pgv_lang["use_browse_advice"]="Use o botão de &laquo;Procurar&raquo; e selecione em seu computador o arquivo desejado.";
@@ -69,6 +92,7 @@ $pgv_lang["main_media_fail0"]="Pasta principal de mídia <b>#GLOBALS[oldMediaFol
 $pgv_lang["main_media_fail1"]="Não foi possível renomear o arquivo principal de mídia <b>#GLOBALS[oldMediaName]#</b> para <b>#GLOBALS[newMediaName]#</b>.";
 $pgv_lang["main_media_fail2"]="Não foi possível mover o arquivo principal de mídia <b>#GLOBALS[oldMediaName]#</b> de <b>#GLOBALS[oldMediaFolder]#</b> para <b>#GLOBALS[newMediaFolder]#.";
 $pgv_lang["main_media_fail3"]="Não foi possível mover e renomear o arquivo principal de mídia de <b>#GLOBALS[oldMediaFolder]##GLOBALS[oldMediaName]#</b> para <b>#GLOBALS[newMediaFolder]##GLOBALS[newMediaName]#</b>.";
+$pgv_lang["resn_disabled"]				= "Nota: Você deve ativar o recurso \"Usar RESN (GEDCOM restrição privacidade)\" para esta configuração tenha efeito.";
 $pgv_lang["thumb_media_ok1"]="Pasta de miniaturas <b>#GLOBALS[oldMediaName]#</b> foi renomeada para <b>#GLOBALS[newMediaName]#</b>.";
 $pgv_lang["thumb_media_ok2"]="Pasta de miniaturas <b>#GLOBALS[oldMediaName]#</b> movida de <b>#GLOBALS[oldThumbFolder]#</b> para <b>#GLOBALS[newThumbFolder]#</b>.";
 $pgv_lang["thumb_media_ok3"]="<b>#GLOBALS[oldThumbFolder]##GLOBALS[oldMediaName]#</b> movido e renomeado para <b>#GLOBALS[newThumbFolder]##GLOBALS[newMediaName]#</b>.";
@@ -93,6 +117,7 @@ $pgv_lang["add_child_to_family"]="Adicionar filho a esta família";
 $pgv_lang["add_fact"]="Adicionar Fato";
 $pgv_lang["add_father"]="Adicionar pai";
 $pgv_lang["add_husb"]="Adicionar marido";
+$pgv_lang["add_opf_child"]				= "Adicionar um filho para criar uma família monoparental";
 $pgv_lang["add_husb_to_family"]="Adicionar marido a esta família";
 $pgv_lang["add_media"]="Adicionar Mídia";
 $pgv_lang["add_media_lbl"]="Adicionar Mídia";
@@ -102,6 +127,8 @@ $pgv_lang["add_new_husb"]="Adicionar marido";
 $pgv_lang["add_new_wife"]="Adicionar esposa";
 $pgv_lang["add_note"]="Adicionar Nota";
 $pgv_lang["add_note_lbl"]="Adicionar Nota";
+$pgv_lang["add_shared_note"]		= "Adicionar uma nova nota partilhada";
+$pgv_lang["add_shared_note_lbl"]	= "Adicionar uma nota partilhada";
 $pgv_lang["add_sibling"]="Adicionar irmão ou irmã";
 $pgv_lang["add_son_daughter"]="Adicionar filho ou filha";
 $pgv_lang["add_source"]="Adicionar Citação à Fonte";
@@ -121,6 +148,10 @@ $pgv_lang["changes_occurred"]="As seguintes mudanças ocorreram para essa pessoa
 $pgv_lang["confirm_remove"]="Confirma a exclusão desta pessoa da Família?";
 $pgv_lang["confirm_remove_object"]="Confirma a exclusão do objeto?";
 $pgv_lang["create_repository"]="Nova Reposição";
+$pgv_lang["shared_note_assisted"]	= "Nota partilhada usando assistente";
+$pgv_lang["create_shared_note"]				= "Criar uma nova nota partilhada";
+$pgv_lang["create_shared_note_assisted"]	= "Criar uma nova nota partilhada usando assistente";
+$pgv_lang["add_new_event_assisted"]			= "Criar um novo evento usando assistente";
 $pgv_lang["create_source"]="Nova Fonte";
 $pgv_lang["current_person"]="O mesmo que agora";
 $pgv_lang["date"]="Data";
@@ -138,14 +169,19 @@ $pgv_lang["file_missing"]="Nenhum arquivo foi recebido. Por favor tente novament
 $pgv_lang["file_partial"]="Arquivo foi enviado parcialmente, por favor tente novamente";
 $pgv_lang["file_success"]="Arquivo enviado com sucesso";
 $pgv_lang["file_too_big"]="O arquivo a ser enviado excede o tamanho permitido";
+$pgv_lang["file_no_temp_dir"]		= "Faltando diretório temporário PHP";
+$pgv_lang["file_cant_write"]		= "PHP falhou a escrita para o disco";
+$pgv_lang["file_bad_extension"]		= "PHP bloqueado por extensão de arquivo";
+$pgv_lang["file_unkown_err"]		= "Desconhecido envio de arquivos de código de erro #pgv_lang[global_num1]#. Por favor, reporte isso como um defeito.";
 $pgv_lang["folder"]="Pasta no Servidor";
-$pgv_lang["gedcomid"]="Minha Identificação na Árvore Genealógica";
-$pgv_lang["gedrec_deleted"]="Registro GEDCOM excluido com sucesso.";
+$pgv_lang["gedrec_deleted"]="Registro GEDCOM excluído com sucesso.";
 $pgv_lang["gen_thumb"]="Criar Miniatura";
+$pgv_lang["gen_missing_thumbs"]		= "Criar miniaturas faltando";
+$pgv_lang["gen_missing_thumbs_lbl"]	= "Miniaturas faltando";
 $pgv_lang["gender_search"]="Sexo:";
 $pgv_lang["generate_thumbnail"]="Gerar Miniatura automaticamente de ";
-$pgv_lang["hebrew_givn"]="Nomes Hebráicos";
-$pgv_lang["hebrew_surn"]="Sobrenome Hebráico";
+$pgv_lang["hebrew_givn"]="Nomes Hebraicos";
+$pgv_lang["hebrew_surn"]="Sobrenome Hebraico";
 $pgv_lang["hide_changes"]="Clique aqui para não exibir as alterações.";
 $pgv_lang["highlighted"]="Imagem de Destaque";
 $pgv_lang["illegal_chars"]="Caracteres ilegais no nome";
@@ -155,11 +191,10 @@ $pgv_lang["label_diff_server"]="Site diferente";
 $pgv_lang["label_location"]="Local";
 $pgv_lang["label_password_id2"]="Senha:";
 $pgv_lang["label_rel_to_current"]="Relação com a pessoa atual";
-$pgv_lang["label_remote_id"]="ID da Pessoa Remota";
 $pgv_lang["label_same_server"]="Mesmo Site";
 $pgv_lang["label_site"]="Site";
 $pgv_lang["label_site_url"]="Endereço do Site:";
-$pgv_lang["label_username_id2"]="Usuário:";
+$pgv_lang["label_username_id2"]="Membro:";
 $pgv_lang["lbl_server_list"]="Usar um site que já exista.";
 $pgv_lang["lbl_type_server"]="Informe novo site.";
 $pgv_lang["link_as_child"]="Ligar esta pessoa como Filho de uma Família da árvore";
@@ -172,6 +207,7 @@ $pgv_lang["media_deleted"]="Pasta de Mídia excluída com sucesso.";
 $pgv_lang["media_exists"]="Arquivo de Mídia já existe.";
 $pgv_lang["media_file"]="Arquivo de Mídia a enviar";
 $pgv_lang["media_file_deleted"]="Arquivo de Mídia excluído com sucesso.";
+$pgv_lang["media_file_moved"]		= "Arquivo de Mídia movido.";
 $pgv_lang["media_file_not_moved"]="Não foi possível mover o arquivo de Mídia.";
 $pgv_lang["media_file_not_renamed"]="Não foi possível mover nem renomear a Mídia.";
 $pgv_lang["media_thumb_exists"]="Miniatura da Mídia já existe.";
@@ -179,6 +215,8 @@ $pgv_lang["multiple_gedcoms"]="Esta árvore contém ligações para outra árvor
 $pgv_lang["must_provide"]="Informe um ";
 $pgv_lang["name_search"]="Nome:";
 $pgv_lang["new_repo_created"]="Reposição criada";
+$pgv_lang["new_shared_note_created"] 	= "Nova Nota partilhada criado com sucesso.";
+$pgv_lang["shared_note_updated"] 	= "Nota partilhada atualizada com sucesso.";
 $pgv_lang["new_source_created"]="Nova fonte criada com sucesso.";
 $pgv_lang["no_changes"]="Não há mudança necessária a ser revisada.";
 $pgv_lang["no_known_servers"]="Nenhum Servidor conhecido<br />Nenhum resultado será encontrado";
@@ -186,7 +224,6 @@ $pgv_lang["no_temple"]="No Temple - Living Ordinance";
 $pgv_lang["no_upload"]="O envio de Mídia não é permitido porque esta opção está desabilitada ou porque a pasta de Mídia não possui permissão de escrita.";
 $pgv_lang["paste_id_into_field"]="Paste the following source ID into your editing fields to reference this source ";
 $pgv_lang["paste_rid_into_field"]="Para referenciar esta Reposição, Cole a ID da Reposição nos campos de edição ";
-$pgv_lang["photo_replace"]="Substituir foto anterior por esta?";
 $pgv_lang["record_marked_deleted"]="Este registro foi marcado para ser excluido após a aprovação do Administrador.";
 $pgv_lang["replace_with"]= "Substituir por";
 $pgv_lang["show_changes"]="Este registro foi atualizado. Clique aqui para exibir as alterações.";
@@ -201,10 +238,10 @@ $pgv_lang["undo_successful"]="Alterações desfeitas com sucesso.";
 $pgv_lang["update_successful"]="Atualização bem sucedida";
 $pgv_lang["upload"]="Enviar/Upload";
 $pgv_lang["upload_error"]="Um erro ocorreu durante o envio do arquivo GEDCOM.";
+$pgv_lang["copy_error"]				= "O arquivo não #GLOBALS[whichFile2]# pôde ser copiado do #GLOBALS[whichFile1]#";
 $pgv_lang["upload_media"]="Enviar arquivos de Mídia";
 $pgv_lang["upload_media_help"]="~#pgv_lang[upload_media]#~<br /><br />Selecione os arquivos de seu computador a serem enviados para o servidor. Todos os arquivos serão gravados na pasta <b>#MEDIA_DIRECTORY#</b> ou em uma de suas sub-pastas.<br /><br />Nomes de pasta especificados serão concatenados com #MEDIA_DIRECTORY#. Exemplo, #MEDIA_DIRECTORY#minhafamilia. A pasta de miniaturas é criada automaticamente caso não exista.<br />";
 $pgv_lang["upload_successful"]="Enviado com sucesso";
 $pgv_lang["view_change_diff"]="Exibir Diferenças";
-
 
 ?>
