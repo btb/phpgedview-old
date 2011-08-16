@@ -30,7 +30,6 @@ if (!defined('PGV_PHPGEDVIEW')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
-
 // -- Define a fact array to map GEDCOM tags with their English values
 $factarray["ABBR"]="Abreviação";
 $factarray["ADDR"]="Endereço ";
@@ -193,7 +192,7 @@ $factarray["FAMS:SPOUSE:BIRT:PLAC"] = "Local de nascimento do cônjuge";
 $factarray["FAMC:WIFE:GIVN"] = "Nome dado da mãe";
 $factarray["FAMC:HUSB:FAMC:HUSB:GIVN"] = "Nome dado do avô´ paterno";
 $factarray["FAMC:WIFE:FAMC:WIFE:GIVN"] = "Nome dado da avó³ materna";
-$factarray["FAMC:WIFE:FAMC:HUSB:GIVN"] = "Nome dado do avó´ materno"; 
+$factarray["FAMC:WIFE:FAMC:HUSB:GIVN"] = "Nome dado do avó´ materno";
 $factarray["FAMC:HUSB:FAMC:WIFE:GIVN"] = "Nome dado da avô³ paterna";
 $factarray["FAMS:CHIL:BIRT:PLAC"] = "Local de nascimento do filho";
 $factarray["FAMS:NOTE"] = "Nota do Cônjuge";
@@ -470,7 +469,7 @@ $factarray["_PGVU"]="Ultima alteração por";
 $factarray["SERV"]="Servidor remoto";
 $factarray["_GEDF"]="Arquivo GEDCOM";
 
-/*-- Fact abbreviations for use in Chart boxes.  
+/*-- Fact abbreviations for use in Chart boxes.
  *		Use these abbreviations in cases where the standard method of using the first
  *		letter of the spelled-out name results in an undesirable abbreviation or where
  *		you want to produce a different result (eg: "x" instead of "M" for "Married").
@@ -481,9 +480,9 @@ $factarray["_GEDF"]="Arquivo GEDCOM";
  *		These abbreviations are user-customizable. Just put them into file "extra.xx.php".
  *		The length of these abbreviations is not restricted to 1 letter.
  */
- 
-/*-- The following lines have been commented out.  They should serve as examples. 
- 
+
+/*-- The following lines have been commented out.  They should serve as examples.
+
 $factAbbrev["BIRT"]		= "B";
 $factAbbrev["MARR"]		= "M";
 $factAbbrev["DEAT"]		= "D";

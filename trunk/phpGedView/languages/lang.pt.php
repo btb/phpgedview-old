@@ -274,18 +274,19 @@ $pgv_lang["ancestors"]="Ancestrais diretos e suas famílias";
 $pgv_lang["descendants"]="Descendentes";
 $pgv_lang["choose_relatives"]="Escolha os parentes";
 $pgv_lang["relatives_report"]="Relatório de Parentes";
-$pgv_lang["Total_unknown"]			= "Desconhecido";
-$pgv_lang["Total_living"]="Vivos";
-$pgv_lang["Total_dead"]="Mortos";
-$pgv_lang["Total_not_born"]="Por Nascer";
+$pgv_lang["total_unknown"]			= "Desconhecido";
+$pgv_lang["total_living"]="Vivos";
+$pgv_lang["total_dead"]="Mortos";
+$pgv_lang["total_not_born"]="Por Nascer";
 $pgv_lang["remove_custom_tags"]="Remover tags específicas do PGV? (ex. _PGVU, _THUM)";
 $pgv_lang["fams_with_surname"]="Famílias com o sobrenome #surname#";
 $pgv_lang["support_contact"]="Contato para ajuda técnica";
 $pgv_lang["genealogy_contact"]="Contato para ajuda genealógica";
 $pgv_lang["common_upload_errors"]="Este êrro indica que o arquivo enviado excedeu o tamanho máximo permitido pelo provedor do site. O limite padrão do PHP é de 2MB. Peça ao suporte de seu provedor para aumentar este limite no arquivo php.ini, ou tente enviar o arquivo por FTP. Use a página <a href=\"uploadgedcom.php?action=add_form\"><b>Adicionar GEDCOM</b></a> para processar o arquivo GEDCOM enviado por FTP.";
-$pgv_lang["Total_memory_usage"]="Total de Memória Utilizada:";
+$pgv_lang["total_memory_usage"]="Total de Memória Utilizada:";
 $pgv_lang["mothers_family_with"]="Família Materna com ";
 $pgv_lang["fathers_family_with"]="Família Paterna com ";
+$pgv_lang["family_with"]			= "Família com ";
 $pgv_lang["halfsibling"]="Meio-Irmão";
 $pgv_lang["halfbrother"]="Meio-Irmão";
 $pgv_lang["halfsister"]="Meia-Irmã";
@@ -300,9 +301,9 @@ $pgv_lang["first_letter_name"]		= "Escolher um carta para mostram famílias cuja
 $pgv_lang["first_letter_sfname"]	= "Escolha uma letra para mostrar as famílias em que um cônjuge tem um nome dado que se inicia com essa letra.";
 $pgv_lang["first_letter_iname"]		= "Escolha uma letra para mostrar indivíduos cujo sobrenome começa com essa letra.";
 $pgv_lang["first_letter_fname"]="Escolha a letra inicial do nome das pessoas a serem exibidas.";
-$pgv_lang["Total_names"]="Total de Nomes";
-$pgv_lang["Total_changes"]			= "Mudanças totais";
-$pgv_lang["Total_links"]			= "Ligações totais";
+$pgv_lang["total_names"]="Total de Nomes";
+$pgv_lang["total_changes"]			= "Mudanças totais";
+$pgv_lang["total_links"]			= "Ligações totais";
 $pgv_lang["top10_pageviews_nohits"]="Não há hits para exibir";
 $pgv_lang["top10_pageviews_msg"]="Contadores de hit devem ser habilitados na configuração da GEDCOM, nas seções Exibição e Formatação, nos grupos Esconder e Exibir.";
 $pgv_lang["review_changes_descr"]="O Bloco de Pendências permite aos Membros, com permissão de Edição Imediata, de rever a lista de registos com as alterações pendentes. Estas alterações precisam ser aceitas ou rejeitadas.<br /><br />Caso este bloco seja habilitado, Membros com permissão de Edição Imediata, receberão um email uma vez ao dia para lembra-los das pendências.";
@@ -423,8 +424,8 @@ $pgv_lang["print_preview"]="Exibir formato de Impressão";
 $pgv_lang["cancel_preview"]="Voltar ao modo normal de exibição";
 $pgv_lang["change_lang"]="Trocar o Idioma";
 $pgv_lang["print"]="Imprimir";
-$pgv_lang["Total_queries"]="Nº de consultas ao Banco de Dados: ";
-$pgv_lang["Total_privacy_checks"]="Quantidade de verificações de privacidade:";
+$pgv_lang["total_queries"]="Nº de consultas ao Banco de Dados: ";
+$pgv_lang["total_privacy_checks"]="Nº de verificações de privacidade:";
 $pgv_lang["back"]="Voltar";
 
 //-- INDIVIDUAL FILE MESSAGES
@@ -549,6 +550,7 @@ $pgv_lang["name_description"]="Nome / Descrição";
 $pgv_lang["remove"]="Remover";
 $pgv_lang["empty_cart"]="Esvaziar o carrinho";
 $pgv_lang["download_now"]="Fazer Download agora";
+$pgv_lang["download_file"]			= "Download o arquivo #GLOBALS[whichFile]#";
 $pgv_lang["indi_downloaded_from"]="Download desta Pessoa feito de:";
 $pgv_lang["family_downloaded_from"]="Download desta Família feito de:";
 $pgv_lang["source_downloaded_from"]="Download desta Fonte feito de:";
@@ -570,7 +572,7 @@ $pgv_lang["view_records_in_place"]="Exibir os registos deste Local";
 $pgv_lang["place_list2"]="Lista de Locais";
 $pgv_lang["show_place_hierarchy"]="Exibir Hierarquia dos Locais";
 $pgv_lang["show_place_list"]="Exibir lista de todos os Locais";
-$pgv_lang["Total_unic_places"]="Total Locais";
+$pgv_lang["total_unic_places"]="Total Locais";
 
 //-- MEDIALIST FILE MESSAGES
 $pgv_lang["external_objects"]="Objetos externos";
@@ -627,32 +629,32 @@ $pgv_lang["find_source"]="Procurar pela Fonte";
 $pgv_lang["repository"] 			= "Repositório";
 $pgv_lang["repos_found"]="Reposições encontradas";
 $pgv_lang["find_repository"]="Procurar por Reposição";
-$pgv_lang["Total_repositories"]="Total de Reposições";
+$pgv_lang["total_repositories"]="Total de Reposições";
 $pgv_lang["confirm_delete_repo"]="Confirma a exclusão desta Reposição?";
 
 //-- SOURCE FILE MESSAGES
 $pgv_lang["source_info"]="Informações da Fonte";
 $pgv_lang["people"]="Pessoas";
 $pgv_lang["families"]="Famílias";
-$pgv_lang["Total_sources"]="Total de Fontes";
+$pgv_lang["total_sources"]="Total de Fontes";
 
 //-- SHARED NOTE FILE MESSAGES
 $pgv_lang["shared_note"]				= "Nota partilhada";
 $pgv_lang["shared_notes_found"]			= "Notas partilhadas encontrados";
 $pgv_lang["find_shared_note"]			= "Buscar nota partilhada";
 $pgv_lang["shared_note_info"]			= "Informações sobre nota partilhada";
-$pgv_lang["Total_shared_notes"]			= "Total de notas partilhadas";
+$pgv_lang["total_shared_notes"]			= "Total de notas partilhadas";
 
 //-- BUILDINDEX FILE MESSAGES
 $pgv_lang["invalid_gedformat"]="Formato de arquivo GEDCOM 5.5 inválido";
 $pgv_lang["exec_time"]="Tempo total de execução";
 $pgv_lang["unable_to_create_index"]="Impossibilitado de criar arquivo de índice.  Certifique-se que premissões de escrita estejam disponíveis ao PhpGedViewDirectory.  Permissões podem/devem ser restauradas após gravação dos arquivos de índice.";
 $pgv_lang["changes_present"]="Esta árvore (GEDCOM) tem alterações pendentes, que serão aceitas automaticamente, caso a importação prossiga. Revise as alterações pendentes antes de continuar com a importação.";
-$pgv_lang["sec"]="segundos.";
+$pgv_lang["sec"]="seg.";
 
 //-- INDIVIDUAL AND FAMILYLIST FILE MESSAGES
-$pgv_lang["Total_fams"]="Total Famílias";
-$pgv_lang["Total_indis"]="Total Pessoas";
+$pgv_lang["total_fams"]="Total Famílias";
+$pgv_lang["total_indis"]="Total Pessoas";
 $pgv_lang["notes"]="Notas";
 $pgv_lang["ssourcess"]="Fontes";
 $pgv_lang["media"]="Mídia";
@@ -703,7 +705,7 @@ $pgv_lang["add_another"]="Adicione uma outra pessoa ao gráfico:<br />ID da Pess
 $pgv_lang["find_id"]="Procurar ID";
 $pgv_lang["show"]="Exibir";
 $pgv_lang["year"]="Ano:";
-$pgv_lang["timeline_instructions"]=">>> Em Browsers mais novos você pode clicar e mover as caixas na linha do tempo com o rato <<<";
+$pgv_lang["timeline_instructions"]="Em Browsers mais novos você pode clicar e mover as caixas na linha do tempo com o rato.";
 $pgv_lang["zoom_in"]="Mais Zoom";
 $pgv_lang["zoom_out"]="Menos Zoom";
 $pgv_lang["timeline_beginYear"] = "Ano de Início";
@@ -954,7 +956,7 @@ $pgv_lang["n_x_sisters_daughter"] = "%2\$d x sobrinha";
 // 1st generation
 $pgv_lang["bosa_2"] 				= "filho";		// son
 $pgv_lang["bosa_3"] 				= "filha";		// daughter
-// 2nd generation                       
+// 2nd generation
 $pgv_lang["bosa_4"] 				= "neto";		// son's son
 $pgv_lang["bosa_5"] 				= "neta";		// son's daughter
 $pgv_lang["bosa_6"] 				= "neto";		// daughter's son
@@ -1034,7 +1036,7 @@ $pgv_lang["sosa_uncle_bm_7"] 				= "tio-avô";	// mothers mothers brother
 $pgv_lang["n_x_paternal_uncle_bm"]		= "%2\$d x tio-avô";
 $pgv_lang["n_x_maternal_uncle_bm"]	    = "%2\$d x tio-avô";
 
-// the sosa_aunt_bm name is used for aunts (by marriage) - the names below can be extended to any number
+// the sosa_aunt name is used for aunts (by marriage)- the names below can be extended to any number
 // of generations just by adding more translations.
 // to allow fo language variations we specify different relationships for paternal and maternal
 // aunts and aunts
@@ -1870,7 +1872,7 @@ $pgv_lang["block_summaries"]="~#pgv_lang[block_desc]#~<br /><br />Descrição su
 $pgv_lang["block_summary_table"]="&nbsp;";
 
 //-- Find page
-$pgv_lang["Total_places"]="Lugares encontrados";
+$pgv_lang["total_places"]="Lugares encontrados";
 $pgv_lang["media_contains"]="Mídia contém:";
 $pgv_lang["repo_contains"]="Reposição contém:";
 $pgv_lang["shared_note_contains"]	= "Nota partilhada contém:";

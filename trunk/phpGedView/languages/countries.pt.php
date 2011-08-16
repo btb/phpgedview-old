@@ -17,10 +17,11 @@
  *		NFK		Norfolk Island
  *		PRI		Puerto Rico				Chapman lists this as a state of the USA
  *		SCG		Serbia and Montenegro	Chapman lists these separately
+ *		SSD		South Sudan				Newly (Jul 2011) independent from Sudan
  *		TLS		Timor-Leste
  *		UMI		US Minor Outlying Islands
  *		VIR		US Virgin Islands		Chapman lists this as a state of the USA
- *		
+ *
  * These Chapman country codes do not appear in the list following:
  *		UEL		United Empire Loyalist		This is NOT a country or region, it's
  *											a group of people
@@ -36,7 +37,7 @@
  *		TMP		East Timor					Official name is TLS "Timor-Leste"
  *		HOL		Holland						Official name is NLD "Netherlands"
  *		ESM		Western Samoa				Official name is WSM "Samoa"
- *											
+ *
  * @package PhpGedView
  * @subpackage Languages
  * @author José Monteiro
@@ -68,8 +69,8 @@ $countries["ATF"]="Territórios Austrais Franceses";
 $countries["ATG"]="Antígua e Barbuda";
 $countries["AUS"]="Austrália";
 $countries["AUT"]="Áustria";
-$countries["AZR"]="Açores";
 $countries["AZE"]="Azerbaijão";
+$countries["AZR"]="Açores";
 $countries["BDI"]="Burundi";
 $countries["BEL"]="Bélgica";
 $countries["BEN"]="Benim";
@@ -122,7 +123,7 @@ $countries["DOM"]="República Dominicana";
 $countries["DZA"]="Argélia";
 $countries["ECU"]="Equador";
 $countries["EGY"]="Egito";
-$countries["EIR"]="Irlanda";
+$countries["EIR"]="Eire";
 $countries["ENG"]="Inglaterra";
 $countries["ERI"]="Eritreia";
 $countries["ESH"]="Sahara Ocidental";
@@ -266,6 +267,19 @@ $countries["SLV"]="El Salvador";
 $countries["SMR"]="São Marinho";
 $countries["SOM"]="Somália";
 $countries["SPM"]="São Pedro e Miquelon";
+$countries["SER"]="Servia";
+$countries["SGP"]="Singapura";
+$countries["SGS"]="Ilhas Geórgia do Sul e Sandwich do Sul";
+$countries["SHN"]="Santa Helena";
+$countries["SIC"]="Sicília";
+$countries["SJM"]="Ilhas Svalbard e Jan Mayen";
+$countries["SLB"]="Ilhas Salomão";
+$countries["SLE"]="Serra Leão";
+$countries["SLV"]="El Salvador";
+$countries["SMR"]="São Marinho";
+$countries["SOM"]="Somália";
+$countries["SPM"]="São Pedro e Miquelon";
+$countries["SSD"]="Sudão do Sul";
 $countries["STP"]="São Tomé e Príncipe";
 $countries["SUN"]="USSR";
 $countries["SUR"]="Suriname";
@@ -295,7 +309,7 @@ $countries["UGA"]="Uganda";
 $countries["UKR"]="Ucrânia";
 $countries["UMI"]="Ilhas Menores Distantes dos Estados Unidos";
 $countries["URY"]="Uruguai";
-$countries["USA"]="EUA";
+$countries["USA"]="USA";
 $countries["UZB"]="Usbequistão";
 $countries["VAT"]="Vaticano";
 $countries["VCT"]="São Vicente e Granadinas";
@@ -322,20 +336,20 @@ $countries["???"]="Desconhecido";
  * You do not have to list all the possibilities in all page languages.  This
  * will be done automatically by the country-to-Chapman conversion routine.
  *
- * Because the list, and its contents, are specific to each language, the 
+ * Because the list, and its contents, are specific to each language, the
  * Translator Tool won't let you work on the list directly.  The list will
  * have to be updated and amended manually.
  *
- * Suppose Chapman code "XYZ" represents the same country, and that country 
+ * Suppose Chapman code "XYZ" represents the same country, and that country
  * had the names "Name1", "Name2", "Name3" in its history.  It is now known
  * as "Current name".  You can list the various names like this:
  *
- * $countries["XYZ"]="Current name";
+ * ##$countries["XYZ"]="Current name";
  * $altCountryNames["XYZ"]="Name1; Name2; Name3";
  *
  * The Chapman-to-country conversion will always use the $countries list of
  * the current page language, no matter what the original country name was.
- * 
+ *
  */
 $altCountryNames["SUN"]="União Soviética";
 $altCountryNames["PLW"]="Belau";
@@ -343,5 +357,6 @@ $altCountryNames["MMR"]="Birmânia";
 $altCountryNames["LKA"]="Ceylon";
 $altCountryNames["GBR"]="Grã Bretanha";
 $altCountryNames["FLK"]="Ilhas Malvinas";
+$altCountryNames["USA"]="EUA";
 
 ?>
