@@ -44,6 +44,7 @@ VERSION 4.3.0
 
 ?$pgv_lang["whatever"]								dd Monthname, year		Change	codes and comments
 ----------------------------------------------------------------------------------------
++$pgv_lang["clustrmaps_locations"]					22 Aug 2011				A
 -$pgv_lang["cookie_login_help"]						18 Jun 2011				D
 -$pgv_lang["remember_me"]							18 Jun 2011				D
 +$pgv_lang["gedcom_editing_disabled"] 				02 Apr 2011				M moved from editor.en.php

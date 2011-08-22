@@ -34,6 +34,19 @@ if (!defined('PGV_PHPGEDVIEW')) {
 	exit;
 }
 
+$pgv_lang["analytics_config"]		= "Webanalysen";
+$pgv_lang["google_analytics"]		= "Google Analytics";
+$pgv_lang["USE_GOOGLE_ANALYTICS"]	= "Google Analytics aktivieren?";
+$pgv_lang["PGV_GOOGLE_ANALYTICS"]	= "Google Analytics Kontonummer";
+$pgv_lang["piwik_analytics"]		= "Piwik Analytics";
+$pgv_lang["USE_PIWIK_ANALYTICS"]	= "Piwik Analytics aktivieren?";
+$pgv_lang["PGV_PIWIK_URL"]			= "URL des Piwik Analytics servers";
+$pgv_lang["PGV_PIWIK_SITE"]			= "Piwik Analytics Sitenummer";
+$pgv_lang["clustrmaps_analytics"]	= "ClustrMaps Analytics";
+$pgv_lang["USE_CLUSTRMAPS_ANALYTICS"] = "ClustrMaps Analytics aktivieren?";
+$pgv_lang["PGV_CLUSTRMAPS_SITE"] 	= "URL dieser PhpGedView Seite";
+$pgv_lang["PGV_CLUSTRMAPS_SERVER"] 	= "ClustrMaps Servernummer";
+
 $pgv_lang["module_admin"]			= "Modulverwaltung";
 $pgv_lang["mod_admin_installed"]	= "Installierte Module";
 $pgv_lang["mod_admin_tabs"]			= "Reiter verwalten";

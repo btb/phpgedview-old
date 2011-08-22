@@ -3,7 +3,7 @@
  * German Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -30,6 +30,18 @@ if (!defined('PGV_PHPGEDVIEW')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
+
+$pgv_lang["google_analytics_help"]			= "~#pgv_lang[google_analytics]#~<br /><br />Auskunft über den #pgv_lang[google_analytics]# Dienst ist in diesem <a href='http://de.wikipedia.org/wiki/Google_Analytics' target='_blank' title='Google Analytics'>Wikipedia Artikel</a> zu finden.<br /><br />Bitte beachten Sie, dass, wenn Sie diesen Dienst nutzen, besitzt Google die Rechte zu allen von ihr erhobenen Daten über die Aktivitäten Ihrer Webseitenbesucher.";
+$pgv_lang["USE_GOOGLE_ANALYTICS_help"]		= "~#pgv_lang[USE_GOOGLE_ANALYTICS]#~<br /><br />Wählen Sie <b>#pgv_lang[yes]#</b> um die Überwachung Ihrer Webseiten mittels des #pgv_lang[google_analytics]# Dienstes zu ermöglichen. Sie müssen Ihre PhpGedView Webseite bei diesem Dienst anmelden, bevor Sie diese Option aktivieren.";
+$pgv_lang["PGV_GOOGLE_ANALYTICS_help"]		= "~#pgv_lang[PGV_GOOGLE_ANALYTICS]#~<br /><br />Geben Sie Ihre Kontonummer beim #pgv_lang[google_analytics]# Dienst ein.  Die Kontonummer hat das Format <b>UA-xxxxxx-x </b>.";
+$pgv_lang["piwik_analytics_help"]			= "~#pgv_lang[piwik_analytics]#~<br /><br />Das #pgv_lang[piwik_analytics]# Open-Source Projekt wird <a href='http://de.piwik.org/' target='_blank' title='Piwik official web site'>hier</a> beschrieben.<br /><br />Piwik ist eine Alternative zu #pgv_lang[google_analytics]#, und entfernt viele Privatsphärenbedenken.  Sie können #pgv_lang[piwik_analytics]# auf Ihrem eigenen Webserver oder in Ihrem eigenen Domain installieren.  So sind Sie sicher, dass nur Sie und Andere, denen Sie entsprechendes Erlaubnis gegeben haben, Zugriff zu den gesammelten Aktivitätsdaten haben.";
+$pgv_lang["USE_PIWIK_ANALYTICS_help"]		= "~#pgv_lang[USE_PIWIK_ANALYTICS]#~<br /><br />Wählen Sie <b>#pgv_lang[yes]#</b> um die Überwachung Ihrer Webseiten mittels eines #pgv_lang[piwik_analytics]# Servers zu ermöglichen.  Sie müssen Ihre PhpGedView Webseite bei solchem Server anmelden.";
+$pgv_lang["PGV_PIWIK_URL_help"]				= "~#pgv_lang[PGV_PIWIK_URL]#~<br /><br />Geben Sie die URL zu einem #pgv_lang[piwik_analytics]# Server, wo Ihre PhpGedView Webseite angemeldet ist, ein.";
+$pgv_lang["PGV_PIWIK_SITE_help"]			= "~#pgv_lang[PGV_PIWIK_SITE]#~<br /><br />Geben Sie die ID-Nummer, die Ihrer PhpGedView Webseite beim #pgv_lang[piwik_analytics]# Server entspricht, ein.";
+$pgv_lang["clustrmaps_analytics_help"]		= "~#pgv_lang[clustrmaps_analytics]#~<br /><br />ClustrMaps ist ein Werkzeug das Besucher Ihrer PhpGedView-Seite zählt, und deren geographische Verteilung andeuten kann.<br /><br />Jede Ihrer Seiten enthält eine, von ClustrMaps erstellte, Miniaturlandkarte.  Nach dem Laden dieses Miniaturbildes zählt ClustrMaps den Zugriff, und ermittelt auch den Wohnort des Besuchers.  Die Miniaturlandkarte, die allen Besuchern, aber nicht Suchmaschinen, sichtbar ist, wird täglich aktualisiert.<br /><br />Wenn Sie den erweiterten #pgv_lang[clustrmaps_analytics]# Dienst gekauft haben, können Ihre Besucher auf der Miniaturlandkarte klicken, um eine vergrösserte Karte und mehr Details zu erhalten.<br /><br />Mehr Details über den #pgv_lang[clustrmaps_analytics]# Dienst sind bei der <a href='http://www.clustrmaps.com/' target='_blank' title='ClustrMaps site'>ClustrMaps site</a> erhältlich.";
+$pgv_lang["USE_CLUSTRMAPS_ANALYTICS_help"]	= "~#pgv_lang[USE_CLUSTRMAPS_ANALYTICS]#~<br /><br />Wählen Sie <b>#pgv_lang[yes]#</b> um die Überwachung Ihrer Webseiten mittels des #pgv_lang[clustrmaps_analytics]# Dienstes zu ermöglichen.  Sie müssen Ihre PhpGedView Webseite beim #pgv_lang[clustrmaps_analytics]# Dienst anmelden.";
+$pgv_lang["PGV_CLUSTRMAPS_SITE_help"]		= "~#pgv_lang[PGV_CLUSTRMAPS_SITE]#~<br /><br />Geben Sie das URL Ihrer PhpGedView Webseite ein. Normalerweise ist es nicht notwending, diesen im Voraus eingetragenen Wert zu ändern.";
+$pgv_lang["PGV_CLUSTRMAPS_SERVER_help"]		= "~#pgv_lang[PGV_CLUSTRMAPS_SERVER]#~<br /><br />Geben Sie die vom #pgv_lang[clustrmaps_analytics]# Dienst zugewiesene Servernummer ein.";
 
 $pgv_lang["SHOW_LIST_PLACES"]			= "In Listen zu zeigende Ebenen der Ortsangaben";
 $pgv_lang["SHOW_LIST_PLACES_help"]		= "~#pgv_lang[SHOW_LIST_PLACES]#~<br /><br />Diese Option bestimmt, wie viele Ebenen der Ortsangaben in Listen zu zeigen sind.<br /><br />Die Wahl <b>9</b> bestimmt, dass alle Ortsangaben gezeigt werden.  Wenn Sie <b>0</b> (Null) wählen, werden keine Orte gezeigt.  Die Wahl <b>1</b> bedeutet, dass nur die höchste Ebene (normalerweise das Land) gezeigt wird.  Wenn Sie <b>2</b> wählen, werden die zwei höchsten Ebenen gezeigt.  Die zweit-höchste Ebene (unter dem Land) könnte Staat, Bundesland oder Provinz sein.  Usw.<br />";

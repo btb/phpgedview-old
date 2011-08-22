@@ -70,6 +70,14 @@ $PGV_SMTP_AUTH_USER = "";						//-- User name for SMTP authorization
 $PGV_SMTP_AUTH_PASS = "";						//-- Password for SMTP authorization
 $PGV_SMTP_SSL = false;							//-- Use SSL for SMTP authorization
 $PGV_SMTP_FROM_NAME = "";						//-- Sender name
+$USE_GOOGLE_ANALYTICS = false;					//-- Should this site link to Google Analytics server?
+$PGV_GOOGLE_ANALYTICS = "";						//-- This PGV site's Google Analytics account
+$USE_PIWIK_ANALYTICS = false;					//-- Should this site link to Piwik Analytics server?
+$PGV_PIWIK_URL = "";							//-- URL to Piwik Analytics server
+$PGV_PIWIK_SITE = "";							//-- This PGV site's site number on Piwik Analytics server
+$USE_CLUSTRMAPS_ANALYTICS = false;				//-- Should this site link to ClustrMaps Analytics server?
+$PGV_CLUSTRMAPS_SITE = "";						//-- This PGV site's URL, for use by ClustrMaps Analytics server
+$PGV_CLUSTRMAPS_SERVER = "";					//-- ClustrMaps server number assigned to handle your site's requests
 
 $CONFIGURED = false;
 require_once './includes/session.php';

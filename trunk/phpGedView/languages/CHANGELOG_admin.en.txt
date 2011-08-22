@@ -43,6 +43,17 @@ VERSION 4.3.0
 
 ?$pgv_lang["whatever"]								dd Monthname, year		Change	codes and comments
 ----------------------------------------------------------------------------------------
++$pgv_lang["analytics_config"]		                22 Aug 2011				A
++$pgv_lang["google_analytics"]		                22 Aug 2011				A
++$pgv_lang["USE_GOOGLE_ANALYTICS"]	                22 Aug 2011				A
++$pgv_lang["PGV_GOOGLE_ANALYTICS"]	                22 Aug 2011				A
++$pgv_lang["piwik_analytics"]		                22 Aug 2011				A
++$pgv_lang["USE_PIWIK_ANALYTICS"]	                22 Aug 2011				A
++$pgv_lang["PGV_PIWIK_URL"]			                22 Aug 2011				A
++$pgv_lang["PGV_PIWIK_SITE"]		                22 Aug 2011				A
++$pgv_lang["clustrmaps_analytics"]	                22 Aug 2011				A
++$pgv_lang["USE_CLUSTRMAPS_ANALYTICS"]              22 Aug 2011				A
++$pgv_lang["PGV_CLUSTRMAPS_ANALYTICS"]              22 Aug 2011				A
 *$pgv_lang["admin_OK_message"]						10 Feb 2011				f
 
 
