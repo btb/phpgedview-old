@@ -714,4 +714,25 @@ if (substr(PHP_SAPI, 0, 3) == 'cgi') {  // cgi-mode, should only be writable by 
 // Lightbox needs custom integration in many places.  Only check for the module once.
 define('PGV_USE_LIGHTBOX', !$SEARCH_SPIDER && $MULTI_MEDIA && file_exists(PGV_ROOT.'modules/lightbox.php') && is_dir(PGV_ROOT.'modules/lightbox'));
 
+// Definitions to enable site activity tracking
+if ((isset($USE_GOOGLE_ANALYTICS) && $USE_GOOGLE_ANALYTICS) && !empty($PGV_GOOGLE_ANALYTICS)) {
+	// Google Analytics tracking has been enabled in PGV site configuration
+	define('PGV_GOOGLE_ANALYTICS', $PGV_GOOGLE_ANALYTICS);		// This PGV site's Google Analytics account number
+}
+if ((isset($USE_PIWIK_ANALYTICS) && $USE_PIWIK_ANALYTICS) && !empty($PGV_PIWIK_URL) && !empty($PGV_PIWIK_SITE)) {
+	// Piwik tracking has been enabled in PGV site configuration
+	$temp = rtrim($PGV_PIWIK_URL, '/');
+	if (strtolower(substr($temp,0,7)) == 'http://') $temp = substr($temp,7);
+	else if (strtolower(substr($temp,0,8)) == 'https://') $temp = substr($temp,8);
+	
+	define('PGV_PIWIK_URL', $temp);					// The URL to the Piwik server (without the "http://" or "https://" part)
+	define('PGV_PIWIK_SITE', $PGV_PIWIK_SITE);		// The number assigned by Piwik to your PGV site
+}
+
+if (isset($USE_CLUSTRMAPS_ANALYTICS) && $USE_CLUSTRMAPS_ANALYTICS) {
+	// Clustrmaps tracking has been enabled in PGV site configuration
+	if (!empty($PGV_CLUSTRMAPS_SITE)) define ('PGV_CLUSTRMAPS_SITE', $PGV_CLUSTRMAPS_SITE);
+	else define ('PGV_CLUSTRMAPS_SITE', PGV_SERVER_NAME.PGV_SCRIPT_PATH);
+	if (!empty($PGV_CLUSTRMAPS_SERVER)) define ('PGV_CLUSTRMAPS_SERVER', $PGV_CLUSTRMAPS_SERVER);
+}
 ?>

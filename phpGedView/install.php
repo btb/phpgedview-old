@@ -240,6 +240,15 @@ switch($step) {
 		if (isset($_POST['NEW_PGV_MEMORY_LIMIT'])) $_SESSION['install_config']['PGV_MEMORY_LIMIT'] = $_POST['NEW_PGV_MEMORY_LIMIT'];
 		if (isset($_POST['NEW_MAX_VIEWS'])) $_SESSION['install_config']['MAX_VIEWS'] = $_POST['NEW_MAX_VIEWS'];
 		if (isset($_POST['NEW_MAX_VIEW_TIME'])) $_SESSION['install_config']['MAX_VIEW_TIME'] = $_POST['NEW_MAX_VIEW_TIME'];
+		
+		if (isset($_POST["NEW_USE_GOOGLE_ANALYTICS"])) $_SESSION['install_config']['USE_GOOGLE_ANALYTICS'] = $_POST["NEW_USE_GOOGLE_ANALYTICS"]=="yes"?true:false;
+		if (isset($_POST["NEW_PGV_GOOGLE_ANALYTICS"])) $_SESSION['install_config']['PGV_GOOGLE_ANALYTICS'] = $_POST["NEW_PGV_GOOGLE_ANALYTICS"];
+		if (isset($_POST["NEW_USE_PIWIK_ANALYTICS"])) $_SESSION['install_config']['USE_PIWIK_ANALYTICS'] = $_POST["NEW_USE_PIWIK_ANALYTICS"]=="yes"?true:false;
+		if (isset($_POST["NEW_PGV_PIWIK_URL"])) $_SESSION['install_config']['PGV_PIWIK_URL'] = $_POST["NEW_PGV_PIWIK_URL"];
+		if (isset($_POST["NEW_PGV_PIWIK_SITE"])) $_SESSION['install_config']['PGV_PIWIK_SITE'] = $_POST["NEW_PGV_PIWIK_SITE"];
+		if (isset($_POST["NEW_USE_CLUSTRMAPS_ANALYTICS"])) $_SESSION['install_config']['USE_CLUSTRMAPS_ANALYTICS'] = $_POST["NEW_USE_CLUSTRMAPS_ANALYTICS"]=="yes"?true:false;
+		if (isset($_POST["NEW_PGV_CLUSTRMAPS_SITE"])) $_SESSION['install_config']['PGV_CLUSTRMAPS_SITE'] = $_POST["NEW_PGV_CLUSTRMAPS_SITE"];
+		if (isset($_POST["NEW_PGV_CLUSTRMAPS_SERVER"])) $_SESSION['install_config']['PGV_CLUSTRMAPS_SERVER'] = $_POST["NEW_PGV_CLUSTRMAPS_SERVER"];
 
 		if (isset($_SESSION['install_config']['INDEX_DIRECTORY'])) {
 			$INDEX_DIRECTORY = $_SESSION['install_config']['INDEX_DIRECTORY'];
@@ -263,11 +272,14 @@ switch($step) {
 			$config_array = $_SESSION['install_config'];
 			$config_array['CONFIGURED'] = true;
 			
-			// Clear the SERVER_URL when it's identical to the calculated value
+			// Clear SERVER_URL and PGV_CLUSTRMAPS_SITE when they are identical to the calculated value
 			$GUESS_URL = PGV_SERVER_NAME.PGV_SCRIPT_PATH;
 			if (!isset($config_array['SERVER_URL'])) $config_array['SERVER_URL'] = '';
 			$config_array['SERVER_URL'] = rtrim(trim($config_array['SERVER_URL']),'/').'/';
 			if ($config_array['SERVER_URL'] == $GUESS_URL || $config_array['SERVER_URL'] == '/') $config_array['SERVER_URL'] = '';
+			if (!isset($config_array['PGV_CLUSTRMAPS_SITE'])) $config_array['PGV_CLUSTRMAPS_SITE'] = '';
+			$config_array['PGV_CLUSTRMAPS_SITE'] = rtrim(trim($config_array['PGV_CLUSTRMAPS_SITE']),'/').'/';
+			if ($config_array['PGV_CLUSTRMAPS_SITE'] == $GUESS_URL || $config_array['PGV_CLUSTRMAPS_SITE'] == '/') $config_array['PGV_CLUSTRMAPS_SITE'] = '';
 
 			$ret = update_site_config($config_array, $download);
 			if ($download && !is_array($ret)) {
@@ -423,17 +435,17 @@ $errormsg = "";
 		<td class="optionbox width75" style="white-space: normal">
 		<h3 class="center"><?php print $title; ?></h3>
 		<form name="configform" action="install.php" method="post" onsubmit="return checkForm(this);">
-		<input type="hidden" name="step" value="<?php print $step ?>" />
+		<input type="hidden" name="step" value="<?php print $step;?>" />
 		<?php {?>
 			<div style="float: right; display: none" id="next_display">
-			<input type="submit" id="next_button" name="next" value="<?php print $pgv_lang['next'] ?>" />
+			<input type="submit" id="next_button" name="next" value="<?php print $pgv_lang['next'];?>" />
 			<script type="text/javascript">
 			</script>
 			</div>
 		<?php } ?>
 		<?php if ($step>1) {?>
 			<div style="float: left;">
-			<input type="submit" name="prev" value="<?php print $pgv_lang['prev'] ?>" />
+			<input type="submit" name="prev" value="<?php print $pgv_lang['prev'];?>" />
 			</div>
 		<?php } ?>
 		<br /><br />
@@ -680,23 +692,23 @@ function printDBForm() {
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width30"><?php print_help_link("DBHOST_help", "qm", "DBHOST"); print $pgv_lang["DBHOST"];?></td>
-		<td class="optionbox"><input type="text" dir="ltr" name="NEW_DBHOST" value="<?php print $DBHOST?>" size="40" tabindex="<?php $i++; print $i?>" onfocus="getHelp('DBHOST_help');" /></td>
+		<td class="optionbox"><input type="text" dir="ltr" name="NEW_DBHOST" value="<?php print $DBHOST;?>" size="40" tabindex="<?php $i++; print $i?>" onfocus="getHelp('DBHOST_help');" /></td>
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width30"><?php print_help_link("DBPORT_help", "qm", "DBPORT"); print $pgv_lang["DBPORT"];?></td>
-		<td class="optionbox"><input type="text" dir="ltr" name="NEW_DBPORT" value="<?php print $DBPORT?>" size="10" tabindex="<?php $i++; print $i?>" onfocus="getHelp('DBPORT_help');" /></td>
+		<td class="optionbox"><input type="text" dir="ltr" name="NEW_DBPORT" value="<?php print $DBPORT;?>" size="10" tabindex="<?php $i++; print $i?>" onfocus="getHelp('DBPORT_help');" /></td>
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width30"><?php print_help_link("DBUSER_help", "qm", "DBUSER"); print $pgv_lang["DBUSER"];?></td>
-		<td class="optionbox"><input type="text" name="NEW_DBUSER" value="<?php print $DBUSER?>" size="40" tabindex="<?php $i++; print $i?>" onfocus="getHelp('DBUSER_help');" /></td>
+		<td class="optionbox"><input type="text" name="NEW_DBUSER" value="<?php print $DBUSER;?>" size="40" tabindex="<?php $i++; print $i?>" onfocus="getHelp('DBUSER_help');" /></td>
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width30"><?php print_help_link("DBPASS_help", "qm", "DBPASS"); print $pgv_lang["DBPASS"];?></td>
-		<td class="optionbox"><input type="password" name="NEW_DBPASS" value="<?php print $DBPASS?>" tabindex="<?php $i++; print $i?>" onfocus="getHelp('DBPASS_help');" /></td>
+		<td class="optionbox"><input type="password" name="NEW_DBPASS" value="<?php print $DBPASS;?>" tabindex="<?php $i++; print $i?>" onfocus="getHelp('DBPASS_help');" /></td>
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width30"><?php print_help_link("DBNAME_help", "qm", "DBNAME"); print $pgv_lang["DBNAME"];?></td>
-		<td class="optionbox"><input type="text" name="NEW_DBNAME" value="<?php print $DBNAME?>" size="40" tabindex="<?php $i++; print $i?>" onfocus="getHelp('DBNAME_help');" /></td>
+		<td class="optionbox"><input type="text" name="NEW_DBNAME" value="<?php print $DBNAME;?>" size="40" tabindex="<?php $i++; print $i?>" onfocus="getHelp('DBNAME_help');" /></td>
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width30"><?php print_help_link("DB_UTF8_COLLATION_help", "qm", "DB_UTF8_COLLATION"); print $pgv_lang["DB_UTF8_COLLATION"];?></td>
@@ -709,7 +721,7 @@ function printDBForm() {
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width30"><?php print_help_link("TBLPREFIX_help", "qm", "TBLPREFIX"); print $pgv_lang["TBLPREFIX"];?></td>
-		<td class="optionbox"><input type="text" name="NEW_TBLPREFIX" value="<?php print $TBLPREFIX?>" size="40" tabindex="<?php $i++; print $i?>" onfocus="getHelp('TBLPREFIX_help');" /></td>
+		<td class="optionbox"><input type="text" name="NEW_TBLPREFIX" value="<?php print $TBLPREFIX;?>" size="40" tabindex="<?php $i++; print $i?>" onfocus="getHelp('TBLPREFIX_help');" /></td>
 	</tr>
 
 	</table>
@@ -723,6 +735,9 @@ function printConfigForm(){
 	global $PGV_SMTP_ACTIVE, $PGV_SMTP_HOST, $PGV_SMTP_HELO, $PGV_SMTP_PORT, $PGV_SMTP_AUTH, $PGV_SMTP_AUTH_USER, $PGV_SMTP_AUTH_PASS, $PGV_SMTP_SSL, $PGV_SMTP_FROM_NAME;
 	global $LOGIN_URL, $PGV_SESSION_SAVE_PATH, $PGV_SESSION_TIME, $COMMIT_COMMAND, $PGV_MEMORY_LIMIT, $MAX_VIEWS;
 	global $MAX_VIEW_TIME, $INDEX_DIRECTORY;
+	global $USE_GOOGLE_ANALYTICS, $PGV_GOOGLE_ANALYTICS;
+	global $USE_PIWIK_ANALYTICS, $PGV_PIWIK_URL, $PGV_PIWIK_SITE;
+	global $USE_CLUSTRMAPS_ANALYTICS, $PGV_CLUSTRMAPS_SITE, $PGV_CLUSTRMAPS_SERVER;
 	global $pgv_lang;
 
 	$i=1;
@@ -751,6 +766,16 @@ function printConfigForm(){
 	if (isset($_SESSION['install_config']['PGV_MEMORY_LIMIT'])) $PGV_MEMORY_LIMIT = $_SESSION['install_config']['PGV_MEMORY_LIMIT'];
 	if (isset($_SESSION['install_config']['MAX_VIEWS'])) $MAX_VIEWS = $_SESSION['install_config']['MAX_VIEWS'];
 	if (isset($_SESSION['install_config']['MAX_VIEW_TIME'])) $MAX_VIEW_TIME = $_SESSION['install_config']['MAX_VIEW_TIME'];
+	
+	if (isset($_SESSION['install_config']['USE_GOOGLE_ANALYTICS'])) $USE_GOOGLE_ANALYTICS = $_SESSION['install_config']['USE_GOOGLE_ANALYTICS'];
+	if (isset($_SESSION['install_config']['PGV_GOOGLE_ANALYTICS'])) $PGV_GOOGLE_ANALYTICS = $_SESSION['install_config']['PGV_GOOGLE_ANALYTICS'];
+	if (isset($_SESSION['install_config']['USE_PIWIK_ANALYTICS'])) $USE_PIWIK_ANALYTICS= $_SESSION['install_config']['USE_PIWIK_ANALYTICS'];
+	if (isset($_SESSION['install_config']['PGV_PIWIK_URL'])) $PGV_PIWIK_URL= $_SESSION['install_config']['PGV_PIWIK_URL'];
+	if (isset($_SESSION['install_config']['PGV_PIWIK_SITE'])) $PGV_PIWIK_SITE = $_SESSION['install_config']['PGV_PIWIK_SITE'];
+	if (isset($_SESSION['install_config']['USE_CLUSTRMAPS_ANALYTICS'])) $USE_CLUSTRMAPS_ANALYTICS = $_SESSION['install_config']['USE_CLUSTRMAPS_ANALYTICS'];
+	if (isset($_SESSION['install_config']['PGV_CLUSTRMAPS_SITE'])) $PGV_CLUSTRMAPS_SITE = $_SESSION['install_config']['PGV_CLUSTRMAPS_SITE'];
+	if (isset($_SESSION['install_config']['PGV_CLUSTRMAPS_SERVER'])) $PGV_CLUSTRMAPS_SERVER = $_SESSION['install_config']['PGV_CLUSTRMAPS_SERVER'];
+	if (empty($PGV_CLUSTRMAPS_SITE)) $PGV_CLUSTRMAPS_SITE = $SERVER_URL;
 
 	$oldmemorylimit = @ini_get('memory_limit');
 	if ($oldmemorylimit > $PGV_MEMORY_LIMIT) $PGV_MEMORY_LIMIT = $oldmemorylimit;
@@ -762,11 +787,11 @@ function printConfigForm(){
 		<table class="width100">
 			<tr>
 				<td class="descriptionbox wrap width30"><?php print_help_link("INDEX_DIRECTORY_help", "qm", "INDEX_DIRECTORY"); print $pgv_lang["INDEX_DIRECTORY"];?></td>
-				<td class="optionbox"><input type="text" size="50" name="NEW_INDEX_DIRECTORY" value="<?php print $INDEX_DIRECTORY?>" dir="ltr" tabindex="<?php $i++; print $i?>" onfocus="getHelp('INDEX_DIRECTORY_help');" /></td>
+				<td class="optionbox"><input type="text" size="50" name="NEW_INDEX_DIRECTORY" value="<?php print $INDEX_DIRECTORY;?>" dir="ltr" tabindex="<?php $i++; print $i?>" onfocus="getHelp('INDEX_DIRECTORY_help');" /></td>
 			</tr>
 			<tr>
 				<td class="descriptionbox wrap width30"><?php print_help_link("SERVER_URL_help", "qm", "SERVER_URL"); print $pgv_lang["SERVER_URL"];?></td>
-				<td class="optionbox wrap"><input type="text" name="NEW_SERVER_URL" value="<?php print $SERVER_URL?>" dir="ltr" tabindex="<?php $i++; print $i?>" onfocus="getHelp('SERVER_URL_help');" size="50" />
+				<td class="optionbox wrap"><input type="text" name="NEW_SERVER_URL" value="<?php print $SERVER_URL;?>" dir="ltr" tabindex="<?php $i++; print $i?>" onfocus="getHelp('SERVER_URL_help');" size="50" />
 				<br /><?php
 					global $GUESS_URL;
 					$GUESS_URL = PGV_SERVER_NAME.PGV_SCRIPT_PATH;
@@ -818,7 +843,7 @@ function printConfigForm(){
 			<table class="width100">
 			<tr>
 				<td class="descriptionbox wrap width30"><?php print_help_link("LOGIN_URL_help", "qm", "LOGIN_URL"); print $pgv_lang["LOGIN_URL"];?></td>
-				<td class="optionbox"><input type="text" name="NEW_LOGIN_URL" value="<?php print $LOGIN_URL?>" dir="ltr" tabindex="<?php $i++; print $i?>" onfocus="getHelp('LOGIN_URL_help');" size="50" />
+				<td class="optionbox"><input type="text" name="NEW_LOGIN_URL" value="<?php print $LOGIN_URL;?>" dir="ltr" tabindex="<?php $i++; print $i?>" onfocus="getHelp('LOGIN_URL_help');" size="50" />
 				</td>
 			</tr>
 			<tr>
@@ -853,21 +878,21 @@ function printConfigForm(){
 			</tr>
 			<tr>
 				<td class="descriptionbox wrap width30"><?php print_help_link("PGV_SESSION_SAVE_PATH_help", "qm", "PGV_SESSION_SAVE_PATH"); print $pgv_lang["PGV_SESSION_SAVE_PATH"];?></td>
-				<td class="optionbox"><input type="text" dir="ltr" size="50" name="NEW_PGV_SESSION_SAVE_PATH" value="<?php print $PGV_SESSION_SAVE_PATH?>" tabindex="<?php $i++; print $i?>" onfocus="getHelp('PGV_SESSION_SAVE_PATH_help');" /></td>
+				<td class="optionbox"><input type="text" dir="ltr" size="50" name="NEW_PGV_SESSION_SAVE_PATH" value="<?php print $PGV_SESSION_SAVE_PATH;?>" tabindex="<?php $i++; print $i?>" onfocus="getHelp('PGV_SESSION_SAVE_PATH_help');" /></td>
 			</tr>
 			<tr>
 				<td class="descriptionbox wrap width30"><?php print_help_link("PGV_SESSION_TIME_help", "qm", "PGV_SESSION_TIME"); print $pgv_lang["PGV_SESSION_TIME"];?></td>
-				<td class="optionbox"><input type="text" name="NEW_PGV_SESSION_TIME" value="<?php print $PGV_SESSION_TIME?>" tabindex="<?php $i++; print $i?>" onfocus="getHelp('PGV_SESSION_TIME_help');" /></td>
+				<td class="optionbox"><input type="text" name="NEW_PGV_SESSION_TIME" value="<?php print $PGV_SESSION_TIME;?>" tabindex="<?php $i++; print $i?>" onfocus="getHelp('PGV_SESSION_TIME_help');" /></td>
 			</tr>
 			<tr>
 				<td class="descriptionbox wrap width30"><?php print_help_link("MAX_VIEW_RATE_help", "qm", "MAX_VIEW_RATE"); print $pgv_lang["MAX_VIEW_RATE"];?></td>
 				<td class="optionbox wrap">
-					<input type="text" size="5" name="NEW_MAX_VIEWS" value="<?php print $MAX_VIEWS?>" tabindex="<?php $i++; print $i?>" onfocus="getHelp('MAX_VIEW_RATE_help');" />
+					<input type="text" size="5" name="NEW_MAX_VIEWS" value="<?php print $MAX_VIEWS;?>" tabindex="<?php $i++; print $i?>" onfocus="getHelp('MAX_VIEW_RATE_help');" />
 					<?php
 						if ($TEXT_DIRECTION == "ltr") print $pgv_lang["page_views"];
 						else print $pgv_lang["seconds"];
 					?>
-					<input type="text" size="5" name="NEW_MAX_VIEW_TIME" value="<?php print $MAX_VIEW_TIME?>" tabindex="<?php $i++; print $i?>" onfocus="getHelp('MAX_VIEW_RATE_help');" />
+					<input type="text" size="5" name="NEW_MAX_VIEW_TIME" value="<?php print $MAX_VIEW_TIME;?>" tabindex="<?php $i++; print $i?>" onfocus="getHelp('MAX_VIEW_RATE_help');" />
 					<?php
 						if ($TEXT_DIRECTION == "ltr") print $pgv_lang["seconds"];
 						else print $pgv_lang["page_views"];
@@ -886,7 +911,7 @@ function printConfigForm(){
 		 	</tr>
 		 	<tr>
 				<td class="descriptionbox wrap width30"><?php print_help_link("PGV_MEMORY_LIMIT_help", "qm", "PGV_MEMORY_LIMIT"); print $pgv_lang["PGV_MEMORY_LIMIT"];?></td>
-				<td class="optionbox"><input type="text" name="NEW_PGV_MEMORY_LIMIT" value="<?php print $PGV_MEMORY_LIMIT?>" tabindex="<?php $i++; print $i?>" onfocus="getHelp('PGV_MEMORY_LIMIT_help');" /></td>
+				<td class="optionbox"><input type="text" name="NEW_PGV_MEMORY_LIMIT" value="<?php print $PGV_MEMORY_LIMIT;?>" tabindex="<?php $i++; print $i?>" onfocus="getHelp('PGV_MEMORY_LIMIT_help');" /></td>
 			</tr>
 			</table>
 		</div>
@@ -905,15 +930,15 @@ function printConfigForm(){
 			</tr>
 			<tr>
 				<td class="descriptionbox wrap width30"><?php print_help_link("PGV_SMTP_HOST_help", "qm", "PGV_SMTP_HOST"); print $pgv_lang["PGV_SMTP_HOST"];?></td>
-				<td class="optionbox"><input type="text" dir="ltr" size="50" name="NEW_PGV_SMTP_HOST" value="<?php print $PGV_SMTP_HOST?>" tabindex="<?php $i++; print $i?>" onfocus="getHelp('PGV_SMTP_HOST_help');" /></td>
+				<td class="optionbox"><input type="text" dir="ltr" size="50" name="NEW_PGV_SMTP_HOST" value="<?php print $PGV_SMTP_HOST;?>" tabindex="<?php $i++; print $i?>" onfocus="getHelp('PGV_SMTP_HOST_help');" /></td>
 			</tr>
 			<tr>
 				<td class="descriptionbox wrap width30"><?php print_help_link("PGV_SMTP_HELO_help", "qm", "PGV_SMTP_HELO"); print $pgv_lang["PGV_SMTP_HELO"];?></td>
-				<td class="optionbox"><input type="text" dir="ltr" size="50" name="NEW_PGV_SMTP_HELO" value="<?php print $PGV_SMTP_HELO?>" tabindex="<?php $i++; print $i?>" onfocus="getHelp('PGV_SMTP_HELO_help');" /></td>
+				<td class="optionbox"><input type="text" dir="ltr" size="50" name="NEW_PGV_SMTP_HELO" value="<?php print $PGV_SMTP_HELO;?>" tabindex="<?php $i++; print $i?>" onfocus="getHelp('PGV_SMTP_HELO_help');" /></td>
 			</tr>
 			<tr>
 				<td class="descriptionbox wrap width30"><?php print_help_link("PGV_SMTP_PORT_help", "qm", "PGV_SMTP_PORT"); print $pgv_lang["PGV_SMTP_PORT"];?></td>
-				<td class="optionbox"><input type="text" dir="ltr" size="5" name="NEW_PGV_SMTP_PORT" value="<?php print $PGV_SMTP_PORT?>" tabindex="<?php $i++; print $i?>" onfocus="getHelp('PGV_SMTP_PORT_help');" /></td>
+				<td class="optionbox"><input type="text" dir="ltr" size="5" name="NEW_PGV_SMTP_PORT" value="<?php print $PGV_SMTP_PORT;?>" tabindex="<?php $i++; print $i?>" onfocus="getHelp('PGV_SMTP_PORT_help');" /></td>
 			</tr>
 			<tr>
 				<td class="descriptionbox wrap width30"><?php print_help_link("PGV_SMTP_AUTH_help", "qm", "PGV_SMTP_AUTH"); print $pgv_lang["PGV_SMTP_AUTH"];?></td>
@@ -926,11 +951,11 @@ function printConfigForm(){
 			</tr>
 			<tr>
 				<td class="descriptionbox wrap width30"><?php print_help_link("PGV_SMTP_AUTH_USER_help", "qm", "PGV_SMTP_AUTH_USER"); print $pgv_lang["PGV_SMTP_AUTH_USER"];?></td>
-				<td class="optionbox"><input type="text" dir="ltr" size="50" name="NEW_PGV_SMTP_AUTH_USER" value="<?php print $PGV_SMTP_AUTH_USER?>" tabindex="<?php $i++; print $i?>" onfocus="getHelp('PGV_SMTP_AUTH_USER_help');" /></td>
+				<td class="optionbox"><input type="text" dir="ltr" size="50" name="NEW_PGV_SMTP_AUTH_USER" value="<?php print $PGV_SMTP_AUTH_USER;?>" tabindex="<?php $i++; print $i?>" onfocus="getHelp('PGV_SMTP_AUTH_USER_help');" /></td>
 			</tr>
 			<tr>
 				<td class="descriptionbox wrap width30"><?php print_help_link("PGV_SMTP_AUTH_PASS_help", "qm", "PGV_SMTP_AUTH_PASS"); print $pgv_lang["PGV_SMTP_AUTH_PASS"];?></td>
-				<td class="optionbox"><input type="password" name="NEW_PGV_SMTP_AUTH_PASS" value="<?php print $PGV_SMTP_AUTH_PASS?>" tabindex="<?php $i++; print $i?>" onfocus="getHelp('PGV_SMTP_AUTH_PASS_help');" /></td>
+				<td class="optionbox"><input type="password" name="NEW_PGV_SMTP_AUTH_PASS" value="<?php print $PGV_SMTP_AUTH_PASS;?>" tabindex="<?php $i++; print $i?>" onfocus="getHelp('PGV_SMTP_AUTH_PASS_help');" /></td>
 			</tr>
 			<tr>
 				<td class="descriptionbox wrap width30"><?php print_help_link("PGV_SMTP_SSL_help", "qm", "PGV_SMTP_SSL"); print $pgv_lang["PGV_SMTP_SSL"];?></td>
@@ -944,7 +969,68 @@ function printConfigForm(){
 			</tr>
 			<tr>
 				<td class="descriptionbox wrap width30"><?php print_help_link("PGV_SMTP_FROM_NAME_help", "qm", "PGV_SMTP_FROM_NAME"); print $pgv_lang["PGV_SMTP_FROM_NAME"];?></td>
-				<td class="optionbox"><input type="text" dir="ltr" size="50" name="NEW_PGV_SMTP_FROM_NAME" value="<?php print $PGV_SMTP_FROM_NAME?>" tabindex="<?php $i++; print $i?>" onfocus="getHelp('PGV_SMTP_FROM_NAME_help');" /></td>
+				<td class="optionbox"><input type="text" dir="ltr" size="50" name="NEW_PGV_SMTP_FROM_NAME" value="<?php print $PGV_SMTP_FROM_NAME;?>" tabindex="<?php $i++; print $i?>" onfocus="getHelp('PGV_SMTP_FROM_NAME_help');" /></td>
+			</tr>
+			</table>
+		</div>
+		<!--  Analytics settings -->
+		<div id="conf_analytics" name="<?php print $pgv_lang['analytics_config'];?>" class="indent">
+			<table class="width100">
+			<tr>
+				<td class="optionbox wrap center" colspan="2"><?php print_help_link("google_analytics_help", "qm", "google_analytics");?><b><?php print $pgv_lang["google_analytics"];?></b></td>
+			</tr>
+			<tr>
+				<td class="descriptionbox wrap width30"><?php print_help_link("USE_GOOGLE_ANALYTICS_help", "qm", "USE_GOOGLE_ANALYTICS"); print $pgv_lang["USE_GOOGLE_ANALYTICS"];?></td>
+				<td class="optionbox">
+					<select name="NEW_USE_GOOGLE_ANALYTICS" tabindex="<?php $i++; print $i?>" onfocus="getHelp('USE_GOOGLE_ANALYTICS_help');">
+						<option value="yes" <?php if ($USE_GOOGLE_ANALYTICS) print "selected=\"selected\""; ?>><?php print $pgv_lang["yes"];?></option>
+						<option value="no" <?php if (!$USE_GOOGLE_ANALYTICS) print "selected=\"selected\""; ?>><?php print $pgv_lang["no"];?></option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td class="descriptionbox wrap width30"><?php print_help_link("PGV_GOOGLE_ANALYTICS_help", "qm", "PGV_GOOGLE_ANALYTICS"); print $pgv_lang["PGV_GOOGLE_ANALYTICS"];?></td>
+				<td class="optionbox"><input type="text" dir="ltr" size="50" name="NEW_PGV_GOOGLE_ANALYTICS" value="<?php print $PGV_GOOGLE_ANALYTICS;?>" tabindex="<?php $i++; print $i?>" onfocus="getHelp('PGV_GOOGLE_ANALYTICS_help');" /></td>
+			</tr>
+			<tr>
+				<td class="optionbox wrap center" colspan="2"><?php print_help_link("piwik_analytics_help", "qm", "piwik_analytics");?><b><?php print $pgv_lang["piwik_analytics"];?></b></td>
+			</tr>
+			<tr>
+				<td class="descriptionbox wrap width30"><?php print_help_link("USE_PIWIK_ANALYTICS_help", "qm", "USE_PIWIK_ANALYTICS"); print $pgv_lang["USE_PIWIK_ANALYTICS"];?></td>
+				<td class="optionbox">
+					<select name="NEW_USE_PIWIK_ANALYTICS" tabindex="<?php $i++; print $i?>" onfocus="getHelp('USE_PIWIK_ANALYTICS_help');">
+						<option value="yes" <?php if ($USE_PIWIK_ANALYTICS) print "selected=\"selected\""; ?>><?php print $pgv_lang["yes"];?></option>
+						<option value="no" <?php if (!$USE_PIWIK_ANALYTICS) print "selected=\"selected\""; ?>><?php print $pgv_lang["no"];?></option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td class="descriptionbox wrap width30"><?php print_help_link("PGV_PIWIK_URL_help", "qm", "PGV_PIWIK_URL"); print $pgv_lang["PGV_PIWIK_URL"];?></td>
+				<td class="optionbox"><input type="text" dir="ltr" size="50" name="NEW_PGV_PIWIK_URL" value="<?php print $PGV_PIWIK_URL;?>" tabindex="<?php $i++; print $i?>" onfocus="getHelp('PGV_PIWIK_URL_help');" /></td>
+			</tr>
+			<tr>
+				<td class="descriptionbox wrap width30"><?php print_help_link("PGV_PIWIK_SITE_help", "qm", "PGV_PIWIK_SITE"); print $pgv_lang["PGV_PIWIK_SITE"];?></td>
+				<td class="optionbox"><input type="text" dir="ltr" size="3" name="NEW_PGV_PIWIK_SITE" value="<?php print $PGV_PIWIK_SITE;?>" tabindex="<?php $i++; print $i?>" onfocus="getHelp('PGV_PIWIK_SITE_help');" /></td>
+			</tr>
+			<tr>
+				<td class="optionbox wrap center" colspan="2"><?php print_help_link("clustrmaps_analytics_help", "qm", "clustrmaps_analytics");?><b><?php print $pgv_lang["clustrmaps_analytics"];?></b></td>
+			</tr>
+			<tr>
+				<td class="descriptionbox wrap width30"><?php print_help_link("USE_CLUSTRMAPS_ANALYTICS_help", "qm", "USE_CLUSTRMAPS_ANALYTICS"); print $pgv_lang["USE_CLUSTRMAPS_ANALYTICS"];?></td>
+				<td class="optionbox">
+					<select name="NEW_USE_CLUSTRMAPS_ANALYTICS" tabindex="<?php $i++; print $i?>" onfocus="getHelp('USE_CLUSTRMAPS_ANALYTICS_help');">
+						<option value="yes" <?php if ($USE_CLUSTRMAPS_ANALYTICS) print "selected=\"selected\""; ?>><?php print $pgv_lang["yes"];?></option>
+						<option value="no" <?php if (!$USE_CLUSTRMAPS_ANALYTICS) print "selected=\"selected\""; ?>><?php print $pgv_lang["no"];?></option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td class="descriptionbox wrap width30"><?php print_help_link("PGV_CLUSTRMAPS_SITE_help", "qm", "PGV_CLUSTRMAPS_SITE"); print $pgv_lang["PGV_CLUSTRMAPS_SITE"];?></td>
+				<td class="optionbox"><input type="text" dir="ltr" size="50" name="NEW_PGV_CLUSTRMAPS_SITE" value="<?php print $PGV_CLUSTRMAPS_SITE;?>" tabindex="<?php $i++; print $i?>" onfocus="getHelp('PGV_CLUSTRMAPS_SITE_help');" /></td>
+			</tr>
+			<tr>
+				<td class="descriptionbox wrap width30"><?php print_help_link("PGV_CLUSTRMAPS_SERVER_help", "qm", "PGV_CLUSTRMAPS_SERVER"); print $pgv_lang["PGV_CLUSTRMAPS_SERVER"];?></td>
+				<td class="optionbox"><input type="text" dir="ltr" size="3" name="NEW_PGV_CLUSTRMAPS_SERVER" value="<?php print $PGV_CLUSTRMAPS_SERVER;?>" tabindex="<?php $i++; print $i?>" onfocus="getHelp('PGV_CLUSTRMAPS_SERVER_help');" /></td>
 			</tr>
 			</table>
 		</div>

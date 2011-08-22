@@ -31,6 +31,7 @@ if (!defined('PGV_PHPGEDVIEW')) {
 	exit;
 }
 
+$pgv_lang["clustrmaps_locations"]	= "Locations of visitors to this page";
 $pgv_lang["gedcomid"]				= "GEDCOM INDI record ID";
 $pgv_lang["sortby"]					= "Sequence";
 $pgv_lang["exact"]					= "Exact";

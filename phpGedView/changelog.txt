@@ -9,6 +9,7 @@
 =====================================================================
 
 Version 4.3.0
+ - Added: Configurable links to Google Analytics, Piwik Analytics, ClustrMaps Analytics (canajun2eh)
  - Updated: dhtmlXTabbar to version 3.0 build 110707 (canajun2eh)
  - Fixed: Authentication between PGV sites with linked GEDCOMs not working properly (Pasquale Ceres)
  - Fixed: [ 3317813 ] Cannot remove entries from Banned IP list (canajun2eh)

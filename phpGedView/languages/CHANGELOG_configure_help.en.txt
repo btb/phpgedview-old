@@ -39,6 +39,22 @@ Additional codes, to help Translators, follow the date as follows:
 
 The above list of codes may be amended as new situations arise.
 
+VERSION 4.3.0
+
+?$pgv_lang["whatever"]								dd Monthname, year		Change	codes and comments
+----------------------------------------------------------------------------------------
++$pgv_lang["GOOGLE_ANALYTICS_help"]		   			22 Aug 2011				A
++$pgv_lang["USE_GOOGLE_ANALYTICS_help"]	   			22 Aug 2011				A
++$pgv_lang["PGV_GOOGLE_ANALYTICS_help"]	   			22 Aug 2011				A
++$pgv_lang["PIWIK_ANALYTICS_help"]		   			22 Aug 2011				A
++$pgv_lang["USE_PIWIK_ANALYTICS_help"]	   			22 Aug 2011				A
++$pgv_lang["PGV_PIWIK_URL_help"]					22 Aug 2011				A	
++$pgv_lang["PGV_PIWIK_SITE_help"]		   			22 Aug 2011				A
++$pgv_lang["CLUSTRMAPS_ANALYTICS_help"]	   			22 Aug 2011				A
++$pgv_lang["USE_CLUSTRMAPS_ANALYTICS_help"]			22 Aug 2011				A
++$pgv_lang["PGV_CLUSTRMAPS_SITE_help"]				22 Aug 2011				A
++$pgv_lang["PGV_CLUSTRMAPS_SERVER_help"]			22 Aug 2011				A
+
 VERSION 4.2.4
 
 ?$pgv_lang["whatever"]								dd Monthname, year		Change	codes and comments

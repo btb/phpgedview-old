@@ -5,7 +5,7 @@
 * Various printing functions used by all scripts and included by the functions.php file.
 *
 * phpGedView: Genealogy Viewer
-* Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+* Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -666,8 +666,7 @@ function print_footer() {
 	if (PGV_DEBUG_SQL) {
 		echo PGV_DB::getQueryLog();
 	}
-	echo clustrmaps();
-	echo google_analytics();
+	echo linkWebAnalytics();
 	echo '</body></html>';
 }
 
@@ -684,35 +683,83 @@ function print_simple_footer() {
 	echo '</body></html>';
 }
 
-// Generate code for google analytics
-function google_analytics() {
+/*
+ * Generate code to link to various Web Analytics engines.
+ *
+ * The supported engines are not mutually exclusive: You can activate support for each individually.
+ *
+ */
+function linkWebAnalytics() {
+	global $pgv_lang;
+
+	$result = '';
+/*
+ * ---------- Google Analytics -------
+ *
+ * Enable by adding a constant to "includes/session.php" as follows:
+ *		define('PGV_GOOGLE_ANALYTICS', 'UA-xxxxxx-x');		// This PGV site's Google Analytics account number
+ */
 	if (defined('PGV_GOOGLE_ANALYTICS')) {
-		return '<script type="text/javascript">var gaJsHost=(("https:"==document.location.protocol)?"https://ssl.":"http://www.");document.write(unescape("%3Cscript src=\'"+gaJsHost+"google-analytics.com/ga.js\' type=\'text/javascript\'%3E%3C/script%3E"));</script><script type="text/javascript">var pageTracker=_gat._getTracker("'.PGV_GOOGLE_ANALYTICS.'");pageTracker._initData();pageTracker._trackPageview();</script>';
-	} else {
-		return '';
+		$result .= '<!-- Google Analytics -->'."\n";
+		$result .= '<script type="text/javascript">'."\n";
+		$result .= 'var gaJsHost=(("https:"==document.location.protocol)?"https://ssl.":"http://www.");'."\n";
+		$result .= 'document.write(unescape("%3Cscript src=\'"+gaJsHost+"google-analytics.com/ga.js\' type=\'text/javascript\'%3E%3C/script%3E"));'."\n";
+		$result .= '</script><script type="text/javascript">'."\n";
+		$result .= 'var pageTracker=_gat._getTracker("'.PGV_GOOGLE_ANALYTICS.'");'."\n";
+		$result .= 'pageTracker._initData();'."\n";
+		$result .= 'pageTracker._trackPageview();'."\n";
+		$result .= '</script>'."\n";
+		$result .= '<!-- End Google Analytics Tracking Code -->'."\n";
 	}
-}
-
-// Generate code for clustrmaps
-// Enable by adding
-// define('PGV_CLUSTRMAPS', 'your website address');
-// e.g. define('PGV_CLUSTRMAPS', 'http://vidyasridhar.no-ip.org/');
-// to the end of your config.php
-
-function clustrmaps() {
-	if (defined('PGV_CLUSTRMAPS')) {
-		return '<a
- href="http://www2.clustrmaps.com/counter/maps.php?url='.PGV_CLUSTRMAPS.'"
- id="clustrMapsLink"><img
- src="http://www2.clustrmaps.com/counter/index2.php?url='.PGV_CLUSTRMAPS.'"
- style="border: 0px none ;"
- alt="Locations of visitors to this page"
- title="Locations of visitors to this page" id="clustrMapsImg"
- onerror="this.onerror=null; this.src=\'http://clustrmaps.com/images/clustrmaps-back-soon.jpg\'; document.getElementById(\'clustrMapsLink\').href=\'http://clustrmaps.com\';">
-</a>';
-	} else {
-		return '';
+/*
+ * ---------- Piwik -------
+ *
+ * Enable by adding two constants to "includes/session.php" as follows:
+ *		define('PGV_PIWIK_URL', 'PIWIK website address');		// The URL to the Piwik engine
+ *		define('PGV_PIWIK_SITE', 'your PIWIK site number');		// The number assigned by Piwik to your PGV site
+ */
+	if (defined('PGV_PIWIK_URL') && defined('PGV_PIWIK_SITE')) {
+		$result .= '<!-- Piwik -->'."\n";
+		$result .= '<script type="text/javascript">'."\n";
+		$result .= 'var pkBaseURL = (("https:" == document.location.protocol) ? "https://'.PGV_PIWIK_URL.'/" : "http://'.PGV_PIWIK_URL.'/");'."\n";
+		$result .= 'document.write(unescape("%3Cscript src=\'" + pkBaseURL + "piwik.js\' type=\'text/javascript\'%3E%3C/script%3E"));'."\n";
+		$result .= '</script><script type="text/javascript">'."\n";
+		$result .= 'try {'."\n";
+		$result .= 'var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", '.PGV_PIWIK_SITE.');'."\n";
+		$result .= 'piwikTracker.trackPageView();'."\n";
+		$result .= 'piwikTracker.enableLinkTracking();'."\n";
+		$result .= '} catch( err ) {}'."\n";
+		$result .= '</script><noscript><p><img src="http://'.PGV_PIWIK_URL.'/piwik.php?idsite='.PGV_PIWIK_SITE.'" style="border:0" alt="" /></p></noscript>'."\n";
+		$result .= '<!-- End Piwik Tracking Code -->'."\n";
 	}
+/*
+ * ---------- ClustrMaps -------
+ *
+ * Enable by adding a constant to "includes/session.php" as follows:
+ *		define('PGV_CLUSTRMAPS_SITE', 'PGV website address');			// The URL to your PGV installation
+ *		define('PGV_CLUSTRMAPS_SERVER', 'ClustrMaps server number');	// The ClustrMaps server number
+ */
+	if (defined('PGV_CLUSTRMAPS_SITE') && defined('PGV_CLUSTRMAPS_SERVER')) {
+		$result .= '<!-- ClustrMaps -->'."\n";
+		$result .= '<a href="http://www'.PGV_CLUSTRMAPS_SERVER.'.clustrmaps.com/counter/maps.php?url='.PGV_CLUSTRMAPS_SITE.'" id="clustrMapsLink">'."\n";
+		$result .= '<img src="http://www'.PGV_CLUSTRMAPS_SERVER.'.clustrmaps.com/counter/index2.php?url='.PGV_CLUSTRMAPS_SITE.'" style="border:0px;" alt="'.$pgv_lang["clustrmaps_locations"].'" title="'.$pgv_lang["clustrmaps_locations"].'" id="clustrMapsImg" />'."\n";
+		$result .= '</a>'."\n";
+		$result .= '<script type="text/javascript">'."\n";
+		$result .= '	function cantload() {'."\n";
+		$result .= '	img = document.getElementById("clustrMapsImg");'."\n";
+		$result .= '	img.onerror = null;'."\n";
+		$result .= '	img.src = "http://www2.clustrmaps.com/images/clustrmaps-back-soon.jpg";'."\n";
+		$result .= '	document.getElementById("clustrMapsLink").href = "http://www2.clustrmaps.com";'."\n";
+		$result .= '}'."\n";
+		$result .= 'img = document.getElementById("clustrMapsImg");'."\n";
+		$result .= 'img.onerror = cantload;'."\n";
+		$result .= '</script>'."\n";
+		$result .= '<!-- End ClustrMaps Tracking Code -->'."\n";
+	}
+/*
+ * ---------- the end -------
+ */
+	return $result;
 }
 
 /**
