@@ -30,6 +30,18 @@ if (!defined('PGV_PHPGEDVIEW')) {
 	exit;
 }
 
+$pgv_lang["google_analytics_help"]			= "~#pgv_lang[google_analytics]#~<br /><br />#pgv_lang[google_analytics]# hitmeti <a href='http://en.wikipedia.org/wiki/Google_Analytics' target='_blank' title='Google Analız�'>Wikipedia makale</a> sinde açıklanmıştır.<br /><br />Lütfen not, eğer bu hizmeti kullanıyorsanız Google sitenize ziyaretçi aktivite hakkında tüm bilgileri toplamaya hak kazanır unutmayın.";
+$pgv_lang["USE_GOOGLE_ANALYTICS_help"]		= "~#pgv_lang[USE_GOOGLE_ANALYTICS]#~<br /><br />#pgv_lang[google_analytics]# hizmeti ile sitenizin etkinliği izlemeyi etkinleştirmek için #pgv_lang[yes]# seçin.  Bu seçeneği etkinleştirmek için önce bu servise abone olmanız gerekir.";
+$pgv_lang["PGV_GOOGLE_ANALYTICS_help"]		= "~#pgv_lang[PGV_GOOGLE_ANALYTICS]#~<br /><br />Sitenize atanan #pgv_lang[google_analytics]# hizmet abone hesap numarasıgirin. Bu hesap numarası <b>UA-xxxxxx-x</b> biçimindedir.";
+$pgv_lang["piwik_analytics_help"]			= "~#pgv_lang[piwik_analytics]#~<br /><br />#pgv_lang[piwik_analytics]# açık-kaynak projesi <a href='http://piwik.org/' target='_blank' title='Piwik official web site'>burada</a> tanımlanmıştır.<br /><br />Piwik bir alternatif olarak #pgv_lang[google_analytics]# gizlilik endişelerini ortadan kaldırır.  Böylece toplanmış olan faaliyet verileri üzerinde tam kontrole sahip sağlanması, kendi web sunucunuzu veya kendi etki alanında Piwik uygulamayı yükleyebilir.";
+$pgv_lang["USE_PIWIK_ANALYTICS_help"]		= "~#pgv_lang[USE_PIWIK_ANALYTICS]#~<br /><br />Etkinlik sitenizde #pgv_lang[piwik_analytics]# sunucusu tarafından izlenmesini sağlamak için #pgv_lang[yes]# seçin. PhpGedView sitenizi Piwik sunucusunda kaydettirilmesi gerekir.";
+$pgv_lang["PGV_PIWIK_URL_help"]				= "~#pgv_lang[PGV_PIWIK_URL]#~<br /><br />PhpGedView sitede kayıtlı bir Piwik sunucusu URL'sini girin.";
+$pgv_lang["PGV_PIWIK_SITE_help"]			= "~#pgv_lang[PGV_PIWIK_SITE]#~<br /><br />Piwik sunucusunca PhpGedView sitenize atanmış sayısal site ID girin.";
+$pgv_lang["clustrmaps_analytics_help"]		= "~#pgv_lang[clustrmaps_analytics]#~<br /><br />ClustrMaps birleştirilmiş bir hit sayaç, ziyaretçi izleyici ve coğrafi görselleştirme aracı.<br /><br />Her sayfa ClustrMaps tarafından oluşturulan küçük bir harita görüntüsü içerir. Bu görüntü yükleri, ClustrMaps sitesindeki bir sayaç artırılır.  Tüm ziyaretçiler için görünür olan harita, (günlük, haftalık veya aylık trafik bağlı) güncelleştirildiğinde belirli bir zaman aralığıyla başından beri tüm ziyaretçi konumları gösterir.<br /><br />Bu küçük harita görüntüsü üzerinde tıklayarak, #pgv_lang[clustrmaps_analytics]# hizmeti için ödenen varsa daha büyük bir dünya haritası ekran ortaya koymaktadır.<br /><br />Daha fazla kullanılabilir detaylar <a href='http://www.clustrmaps.com/' target='_blank' title='ClustrMaps site'>ClustrMaps site</a> de mevcut.";
+$pgv_lang["USE_CLUSTRMAPS_ANALYTICS_help"]	= "~#pgv_lang[USE_CLUSTRMAPS_ANALYTICS]#~<br /><br />#pgv_lang[clustrmaps_analytics]# sunucu tarafından sitenizde faaliyet izlemeyi etkinleştirmek için <b>#pgv_lang[yes]#</b> seçin.";
+$pgv_lang["PGV_CLUSTRMAPS_SITE_help"]		= "~#pgv_lang[PGV_CLUSTRMAPS_SITE]#~<br /><br />PhpGedView sitenin URL'sini girin.  Bu değer, sizin için doldurulmuş ve normalde onu değiştirmek gerek olmazdı.";
+$pgv_lang["PGV_CLUSTRMAPS_SERVER_help"]		= "~#pgv_lang[PGV_CLUSTRMAPS_SERVER]#~<br /><br />Hesabınız aktive edildiğinde #pgv_lang[clustrmaps_analytics]# servisi tarafından atanan sunucu numarasını girin.";
+
 $pgv_lang["SHOW_SOURCES"]		= "Kaynakları göster";
 
 //-- CONFIGURE FILE MESSAGES

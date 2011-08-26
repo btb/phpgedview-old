@@ -30,6 +30,19 @@ if (!defined('PGV_PHPGEDVIEW')) {
 	exit;
 }
 
+$pgv_lang["analytics_config"]		= "Web Analızı";
+$pgv_lang["google_analytics"]		= "Google Analızı";
+$pgv_lang["USE_GOOGLE_ANALYTICS"]	= "Google Analızı aktifleştir?";
+$pgv_lang["PGV_GOOGLE_ANALYTICS"]	= "Google Analızı hesap numarası";
+$pgv_lang["piwik_analytics"]		= "Piwik Analızı";
+$pgv_lang["USE_PIWIK_ANALYTICS"]	= "Piwik Analızı aktifleştir?";
+$pgv_lang["PGV_PIWIK_URL"]			= "Piwik Analızı sunucu URL";
+$pgv_lang["PGV_PIWIK_SITE"]			= "Piwik Analızı site numarası";
+$pgv_lang["clustrmaps_analytics"]	= "ClustrMaps Analızı";
+$pgv_lang["USE_CLUSTRMAPS_ANALYTICS"] = "ClustrMaps Analızı aktifleştir?";
+$pgv_lang["PGV_CLUSTRMAPS_SITE"] 	= "PhpGedView URL";
+$pgv_lang["PGV_CLUSTRMAPS_SERVER"] 	= "ClustrMaps sunucu numarası";
+
 $pgv_lang["module_admin"]			= "Modül Yönetimi";
 $pgv_lang["mod_admin_installed"]	= "Kurulan Modüller";
 $pgv_lang["mod_admin_tabs"]			= "Yönetim Sekmeleri";
