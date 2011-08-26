@@ -30,6 +30,7 @@ if (!defined('PGV_PHPGEDVIEW')) {
 	exit;
 }
 
+$pgv_lang["clustrmaps_locations"]	= "Bu sayfadaki ziyaretçilerin konumları";
 $pgv_lang["gedcomid"]				= "GEDCOM INDI(kişi) kayıt ID";
 $pgv_lang["sortby"]				= "Ard arda";
 $pgv_lang["exact"]				= "Aynısı";
