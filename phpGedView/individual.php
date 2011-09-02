@@ -5,7 +5,7 @@
 * Display all of the information about an individual
 *
 * phpGedView: Genealogy Viewer
-* Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+* Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -124,9 +124,18 @@ $linkToID=$controller->pid; // -- Tell addmedia.php what to link to
 		</tr>
 		</table>
 		<?php
-		if ($hitCount) {
-			echo '<br />', $pgv_lang['hit_count'], $hitCount;
-		}
+			$webLinks = $controller->getWebLinks();
+			if ($hitCount || $webLinks) {
+				echo '<table><tr>';
+				if ($hitCount) {
+					echo '<td valign="top">', $pgv_lang['hit_count'], '&nbsp;', $hitCount, '</td><td width="15">&nbsp;</td>';
+				}
+				if ($webLinks) {
+					echo '<td>', $webLinks, '</td>';
+				}
+				echo '</tr></table>';
+			}
+
 		// if individual is a remote individual
 		// if information for this information is based on a remote site
 		if ($controller->indi->isRemote())
@@ -157,10 +166,10 @@ $linkToID=$controller->pid; // -- Tell addmedia.php what to link to
 		<div id="optionsmenu" class="sublinks_table">
 			<div class="list_label <?php echo $TEXT_DIRECTION; ?>"><?php echo $pgv_lang["indis_charts"]; ?></div>
 				<ul class="sublinks_cell <?php echo $TEXT_DIRECTION; ?>">
-		<?php } 
+		<?php }
 				//-- get charts menu from menubar
 				$menubar = new MenuBar();
-				$menu = $menubar->getChartsMenu($controller->pid); 
+				$menu = $menubar->getChartsMenu($controller->pid);
 				$menu->printMenu();
 				?>
 				</<?php if (!$PGV_MENUS_AS_LISTS) {?>td><td<?php } else { ?>ul><ul<?php }?> class="sublinks_cell <?php echo $TEXT_DIRECTION; ?>">
@@ -169,25 +178,25 @@ $linkToID=$controller->pid; // -- Tell addmedia.php what to link to
 				if (!$surname) {
 					$surname='@N.N.'; // TODO empty surname is not the same as @N.N.
 				}
-				$menu = $menubar->getListsMenu($surname); 
+				$menu = $menubar->getListsMenu($surname);
 				$menu->printMenu();
 				if (file_exists(PGV_ROOT.'reports/individual.xml')) {?>
 				</<?php if (!$PGV_MENUS_AS_LISTS) {?>td><td<?php } else { ?>ul><ul<?php }?> class="sublinks_cell <?php echo $TEXT_DIRECTION; ?>">
 					<?php
 					//-- get reports menu from menubar
-					$menu = $menubar->getReportsMenu($controller->pid); 
+					$menu = $menubar->getReportsMenu($controller->pid);
 					$menu->printMenu();
 				}
 				if ($controller->userCanEdit()) {
 				?>
 				</<?php if (!$PGV_MENUS_AS_LISTS) {?>td><td<?php } else { ?>ul><ul<?php }?> class="sublinks_cell <?php echo $TEXT_DIRECTION; ?>">
-				<?php $menu = $controller->getEditMenu(); 
+				<?php $menu = $controller->getEditMenu();
 				$menu->printMenu();
 				}
 				if ($controller->canShowOtherMenu()) {
 				?>
 				</<?php if (!$PGV_MENUS_AS_LISTS) {?>td><td<?php } else { ?>ul><ul<?php }?> class="sublinks_cell <?php echo $TEXT_DIRECTION; ?>">
-				<?php $menu = $controller->getOtherMenu(); 
+				<?php $menu = $controller->getOtherMenu();
 				$menu->printMenu();
 				}
 				?>
@@ -198,7 +207,7 @@ $linkToID=$controller->pid; // -- Tell addmedia.php what to link to
 		<?php } else { ?>
 				</ul>
 		</div>
-		<?php } 
+		<?php }
 			 } ?>
 	</td>
 	</tr>
@@ -514,7 +523,7 @@ else
 
 <!-- ============================= Start Tab 5 individual page ==== Tree -->
 <?php
-if(empty($SEARCH_SPIDER)) { 
+if(empty($SEARCH_SPIDER)) {
 	echo "<div id=\"tree\" class=\"tab_page\" style=\"display:none; border: solid blue 1px;\" >";
 ?>
 <div id="tree_content">
@@ -600,7 +609,7 @@ if (PGV_USE_LIGHTBOX) {
 		require_once PGV_ROOT.'modules/lightbox/functions/lb_head.php';
 		echo "<table class=\"facts_table\"><tr><td id=\"no_tab9\" colspan=\"2\" class=\"facts_value\">", $pgv_lang["no_tab4"], "</td></tr></table>";
 	}
-		
+
 	// Content info ---------------------------------------------------
 	echo "<div id=\"lightbox2_content\">";
 	if ($mediacnt!=0) {
@@ -634,10 +643,10 @@ if(empty($SEARCH_SPIDER)) {
 // *** Section <span> sunheader temporarily removed as it will become redundant when new Tabs Management function is released ***
 //		echo "<span class=\"subheaders\">Spare Tab</span>";
 //		echo "&nbsp;&nbsp;";
-		
+
 		// ---------- Help link --------------------
 		// print_help_link("lb_general_help", "qm", "lb_help", true); // (Temp removed to stop Error log reporting when Lightbox not installed)
-		
+
 		echo "<div id='spare_content'>";
 			// Fix if no googlemaps ========================================================
 			if (file_exists(PGV_ROOT.'modules/googlemap/googlemap.php')) {

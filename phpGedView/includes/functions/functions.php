@@ -1162,7 +1162,7 @@ function find_updated_record($gid, $ged_id) {
 function exists_pending_change($user_id=PGV_USER_ID, $ged_id=PGV_GED_ID) {
 	global $pgv_changes;
 
-	if (!isset($pgv_changes) || !(userIsAdmin($user_id) || userCanAccept($user_id, $ged_id))) { 
+	if (!isset($pgv_changes) || !(userIsAdmin($user_id) || userCanAccept($user_id, $ged_id))) {
 		return false;
 	}
 
@@ -1198,7 +1198,7 @@ function exists_pending_change($user_id=PGV_USER_ID, $ged_id=PGV_GED_ID) {
 function find_highlighted_object($pid, $ged_id, $indirec) {
 	global $MEDIA_DIRECTORY, $MEDIA_DIRECTORY_LEVELS, $PGV_IMAGE_DIR, $PGV_IMAGES, $MEDIA_EXTERNAL, $TBLPREFIX;
 
-	if (!showFactDetails("OBJE", $pid)) {
+	if (!showFactDetails("OBJE", $pid) || !function_exists("check_media_depth")) {
 		return false;
 	}
 	$media = array();
@@ -1228,12 +1228,12 @@ function find_highlighted_object($pid, $ged_id, $indirec) {
 
 	//-- find all of the media items for a person
 	$media=
-		PGV_DB::prepare("SELECT m_media, m_file, m_gedrec, mm_gedrec FROM {$TBLPREFIX}media, {$TBLPREFIX}media_mapping WHERE m_media=mm_media AND m_gedfile=mm_gedfile AND m_gedfile=? AND mm_gid=? ORDER BY mm_order")
+		PGV_DB::prepare("SELECT m_media, m_file, m_gedrec, mm_gedrec, m_titl FROM {$TBLPREFIX}media, {$TBLPREFIX}media_mapping WHERE m_media=mm_media AND m_gedfile=mm_gedfile AND m_gedfile=? AND mm_gid=? ORDER BY mm_order")
 		->execute(array($ged_id, $pid))
 		->fetchAll(PDO::FETCH_NUM);
 
 	foreach ($media as $i=>$row) {
-		if (displayDetailsById($row[0], 'OBJE') && !FactViewRestricted($row[0], $row[2])) {
+		if (displayDetailsById($row[0], 'OBJE') && !FactViewRestricted($row[0], $row[2]) && !preg_match("/:\/\//i",check_media_depth($row[1])) ) {
 			$level=0;
 			$ct = preg_match("/(\d+) OBJE/", $row[3], $match);
 			if ($ct>0) {
@@ -1258,6 +1258,7 @@ function find_highlighted_object($pid, $ged_id, $indirec) {
 						$objectA['_THUM'] = $thum;	// This overrides GEDCOM's "Use main image as thumbnail" option
 						$objectA['level'] = $level;
 						$objectA['mid'] = $row[0];
+						$objectA['titl'] = $row[4];
 					}
 				} else {
 					if (empty($objectB)) {
@@ -1266,6 +1267,7 @@ function find_highlighted_object($pid, $ged_id, $indirec) {
 						$objectB['_THUM'] = $thum;	// This overrides GEDCOM's "Use main image as thumbnail" option
 						$objectB['level'] = $level;
 						$objectB['mid'] = $row[0];
+						$objectB['titl'] = $row[4];
 					}
 				}
 			} else {
@@ -1276,6 +1278,7 @@ function find_highlighted_object($pid, $ged_id, $indirec) {
 						$objectC['_THUM'] = $thum;	// This overrides GEDCOM's "Use main image as thumbnail" option
 						$objectC['level'] = $level;
 						$objectC['mid'] = $row[0];
+						$objectC['titl'] = $row[4];
 					}
 				} else {
 					if (empty($objectD)) {
@@ -1284,6 +1287,7 @@ function find_highlighted_object($pid, $ged_id, $indirec) {
 						$objectD['_THUM'] = $thum;	// This overrides GEDCOM's "Use main image as thumbnail" option
 						$objectD['level'] = $level;
 						$objectD['mid'] = $row[0];
+						$objectD['titl'] = $row[4];
 					}
 				}
 			}
@@ -1296,6 +1300,57 @@ function find_highlighted_object($pid, $ged_id, $indirec) {
 //	if (!empty($objectD)) return $objectD;
 
 	return array();
+}
+
+/**
+ * find all weblink media object gedcom entities
+ *
+ * @param string $pid the individual, source, or family id
+ * @param string $indirec the gedcom record to look in
+ * @return array an object array with indexes "thumb" and "file" for thumbnail and filename
+ */
+function find_weblink_media_objects($pid, $ged_id, $indirec) {
+	global $MEDIA_DIRECTORY, $MEDIA_DIRECTORY_LEVELS, $PGV_IMAGE_DIR, $PGV_IMAGES, $MEDIA_EXTERNAL, $TBLPREFIX;
+
+	if (!showFactDetails("OBJE", $pid) || !function_exists("check_media_depth")) {
+		return false;
+	}
+
+	$webLinks = array();
+	$object = array();
+	$i = 0;
+
+	//-- find all of the media items for a person
+	$media=
+		PGV_DB::prepare("SELECT m_media, m_file, m_gedrec, mm_gedrec, m_titl FROM {$TBLPREFIX}media, {$TBLPREFIX}media_mapping WHERE m_media=mm_media AND m_gedfile=mm_gedfile AND m_gedfile=? AND mm_gid=? ORDER BY mm_order")
+		->execute(array($ged_id, $pid))
+		->fetchAll(PDO::FETCH_NUM);
+
+	foreach ($media as $row) {
+		if (displayDetailsById($row[0], 'OBJE') && !FactViewRestricted($row[0], $row[2])) {
+			$level=0;
+			$ct = preg_match("/(\d+) OBJE/", $row[3], $match);
+			if ($ct>0) {
+				$level = $match[1];
+			}
+
+			$file = check_media_depth($row[1]);
+			$thumb = thumbnail_file($row[1], true, false, $pid);
+
+			if (!preg_match("/\.(jpe?g|gif|png|pdf|avi|txt)$/i", $file)) {	// eliminate supported types
+
+				$object['file'] = $file;
+				$object['thumb'] = $thumb;
+				$object['level'] = $level;
+				$object['mid'] = $row[0];
+				$object['titl'] = $row[4];
+
+				$webLinks[$i] = $object;
+				$i++;
+			}
+		}
+	}
+	return $webLinks;
 }
 
 /**

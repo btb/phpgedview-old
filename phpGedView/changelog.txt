@@ -9,6 +9,8 @@
 =====================================================================
 
 Version 4.3.0
+ - Added: List all web page links in media object list near top of Personal Details page (George Pauly and canajun2eh)
+ - Added: Use media object title to caption image on Personal Details page (canajun2eh)
  - Added: Configurable links to Google Analytics, Piwik Analytics, ClustrMaps Analytics (canajun2eh)
  - Updated: dhtmlXTabbar to version 3.0 build 110707 (canajun2eh)
  - Fixed: Authentication between PGV sites with linked GEDCOMs not working properly (Pasquale Ceres)
