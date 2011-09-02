@@ -1517,13 +1517,19 @@ function show_media_form($pid, $action = "newentry", $filename = "", $linktoid =
 // looks in both the standard and protected media directories
 function findImageSize($file) {
 	global $USE_MEDIA_FIREWALL;
-	if (strtolower(substr($file, 0, 7)) == "http://")
-		$file = "http://" . rawurlencode(substr($file, 7));
-	else
-		$file = filename_decode($file);
-	$imgsize = @getimagesize($file);
-	if ($USE_MEDIA_FIREWALL && !$imgsize) {
-		$imgsize = @getimagesize(get_media_firewall_path($file));
+
+	$imgsize = false;
+
+	if (preg_match("/\.(jpe?g|gif|png)$/i", $file)) {
+		// Attempt to get image size only for supported image types
+		if (strtolower(substr($file, 0, 7)) == "http://")
+			$file = "http://" . rawurlencode(substr($file, 7));
+		else
+			$file = filename_decode($file);
+		$imgsize = @getimagesize($file);
+		if ($USE_MEDIA_FIREWALL && !$imgsize) {
+			$imgsize = @getimagesize(get_media_firewall_path($file));
+		}
 	}
 	if (!$imgsize) {
 		$imgsize[0] = 300;

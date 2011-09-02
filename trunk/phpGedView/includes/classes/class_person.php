@@ -3,7 +3,7 @@
 * Class file for a person
 *
 * phpGedView: Genealogy Viewer
-* Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+* Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -46,6 +46,7 @@ class Person extends GedcomRecord {
 	var $childFamilies = null;
 	var $label = '';
 	var $highlightedimage = null;
+	var $weblinks = null;
 	var $file = '';
 	var $age = null;
 	var $isdead = -1;
@@ -109,6 +110,17 @@ class Person extends GedcomRecord {
 			$this->highlightedimage = find_highlighted_object($this->xref, $this->ged_id, $this->gedrec);
 		}
 		return $this->highlightedimage;
+	}
+
+	/**
+	* get all web links
+	* @return array
+	*/
+	function findWebLinkMedia() {
+		if (is_null($this->weblinks)) {
+			$this->weblinks = find_weblink_media_objects($this->xref, $this->ged_id, $this->gedrec);
+		}
+		return $this->weblinks;
 	}
 
 	/**

@@ -3,7 +3,7 @@
 * Controller for the Individual Page
 *
 * phpGedView: Genealogy Viewer
-* Copyright (C) 2002 to 2010 PGV Development Team. All rights reserved.
+* Copyright (C) 2002 to 2011 PGV Development Team. All rights reserved.
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -374,6 +374,8 @@ class IndividualControllerRoot extends BaseController {
 	*/
 	function getHighlightedObject() {
 		global $USE_THUMBS_MAIN, $THUMBNAIL_WIDTH, $USE_MEDIA_VIEWER, $GEDCOM, $PGV_IMAGE_DIR, $PGV_IMAGES, $USE_SILHOUETTE, $sex;
+
+		$result = '';
 		if ($this->canShowHighlightedObject()) {
 			$firstmediarec = $this->indi->findHighlightedMedia();
 			if (!empty($firstmediarec)) {
@@ -386,7 +388,6 @@ class IndividualControllerRoot extends BaseController {
 				$isExternal = isFileExternal($filename);
 				if ($isExternal && $class=="thumbnail") $class .= "\" width=\"".$THUMBNAIL_WIDTH;
 				if (!empty($filename)) {
-					$result = "";
 					$imgsize = findImageSize($firstmediarec["file"]);
 					$imgwidth = $imgsize[0]+40;
 					$imgheight = $imgsize[1]+150;
@@ -394,15 +395,29 @@ class IndividualControllerRoot extends BaseController {
 					$mid = $firstmediarec['mid'];
 
 					$name = $this->indi->getFullName();
+					$result .= '<center>';
 					if (PGV_USE_LIGHTBOX) {
-						print "<a href=\"" . $firstmediarec["file"] . "\" rel=\"clearbox[general_1]\" rev=\"" . $mid . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name, ENT_QUOTES, 'UTF-8')) . "\">" . "\n";
+						$result .= "<a href=\"" . $firstmediarec["file"] . "\" rel=\"clearbox[general_1]\" rev=\"" . $mid . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name, ENT_QUOTES, 'UTF-8')) . "\">" . "\n";
 					} else if (!$USE_MEDIA_VIEWER && $imgsize) {
 						$result .= "<a href=\"javascript:;\" onclick=\"return openImage('".encode_url(encrypt($firstmediarec["file"]))."', $imgwidth, $imgheight);\">";
 					} else {
 						$result .= "<a href=\"mediaviewer.php?mid={$mid}\">";
 					}
-					$result .= "<img src=\"$filename\" align=\"left\" class=\"".$class."\" border=\"none\" title=\"".PrintReady(htmlspecialchars(strip_tags($name), ENT_QUOTES, 'UTF-8'))."\" alt=\"".PrintReady(htmlspecialchars(strip_tags($name), ENT_QUOTES, 'UTF-8'))."\" />";
-					$result .= "</a>";
+					$result .= "<img src=\"$filename\" class=\"".$class."\" border=\"none\" title=\"".PrintReady(htmlspecialchars(strip_tags($name), ENT_QUOTES, 'UTF-8'))."\" alt=\"".PrintReady(htmlspecialchars(strip_tags($name), ENT_QUOTES, 'UTF-8'))."\" />";
+					$result .= "</a><br />";
+					// Use the media object's title or file name as a caption
+					if (!empty($firstmediarec["titl"]) && $firstmediarec["titl"]!=$firstmediarec["file"]) {
+						$title = $firstmediarec["titl"];
+				 	} else {
+						$temp = pathinfo($firstmediarec["file"]);
+						$title = $temp['basename'];
+						if (!empty($temp['extension'])) {
+							$title = substr($title, 0, -(strlen($temp['extension'])+1));	// Strip the extension
+							}
+					}
+					$result .= '<sup>'.PrintReady($title).'</sup>';
+					$result .= '</center>';
+
 					return $result;
 				}
 			}
@@ -410,19 +425,40 @@ class IndividualControllerRoot extends BaseController {
 		if ($USE_SILHOUETTE && isset($PGV_IMAGES["default_image_U"]["other"])) {
 			$class = "\" width=\"".$THUMBNAIL_WIDTH;
 			$sex = $this->indi->getSex();
-			$result = "<img src=\"";
+			$result .= "<img src=\"";
 			if ($sex == 'F') {
 				$result .= $PGV_IMAGE_DIR."/".$PGV_IMAGES["default_image_F"]["other"];
-			} 
+			}
 			else if ($sex == 'M') {
 				$result .= $PGV_IMAGE_DIR."/".$PGV_IMAGES["default_image_M"]["other"];
 			}
 			else {
 				$result .= $PGV_IMAGE_DIR."/".$PGV_IMAGES["default_image_U"]["other"];
-			} 
+			}
 			$result .="\" class=\"".$class."\" border=\"none\" alt=\"\" />";
+
 			return $result;
 		}
+	}
+
+	/**
+	* get the web link objects HTML
+	* @return string HTML string for list of links
+	*/
+	function getWebLinks() {
+
+		$result = "";
+		$webLinks = $this->indi->findWebLinkMedia();
+
+		foreach($webLinks as $link) {
+			$name = $link["titl"];
+			$result .= '<a href="'.encode_url($link["file"]).'"  title="'.PrintReady(htmlspecialchars(strip_tags($link["file"]), ENT_QUOTES, 'UTF-8')).'" alt="'.PrintReady(htmlspecialchars(strip_tags($link["file"]), ENT_QUOTES, 'UTF-8')).'" target="_blank" >';
+				$result .= '<img src="images/download.png" border="none" />&nbsp;'.PrintReady($name);
+			$result .= '</a>';
+			$result .= '<br />';
+		}
+
+	return $result;
 	}
 
 	/**
@@ -1181,7 +1217,7 @@ class IndividualControllerRoot extends BaseController {
 				</td>
 				<td class="facts_value<?php echo $styleadd ?>">
 					<?php //echo "<span class=\"details_label\">", $factarray["NCHI"], ": </span>", $family->getNumberOfChildren(), "<br />";?>
-					<?php 
+					<?php
 					if ($date && $date->isOK() || $place) {
 						$marr_type = "MARR_".strtoupper($family->getMarriageType());
 						if (isset($factarray[$marr_type])) {
@@ -1345,6 +1381,7 @@ class IndividualControllerRoot extends BaseController {
 				break;
 			case "tree":
 				$this->print_tree_tab();
+
 				break;
 			case "spare":
 				$this->print_spare_tab();
