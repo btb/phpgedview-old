@@ -449,13 +449,14 @@ class IndividualControllerRoot extends BaseController {
 
 		$result = "";
 		$webLinks = $this->indi->findWebLinkMedia();
-
-		foreach($webLinks as $link) {
-			$name = $link["titl"];
-			$result .= '<a href="'.encode_url($link["file"]).'"  title="'.PrintReady(htmlspecialchars(strip_tags($link["file"]), ENT_QUOTES, 'UTF-8')).'" alt="'.PrintReady(htmlspecialchars(strip_tags($link["file"]), ENT_QUOTES, 'UTF-8')).'" target="_blank" >';
-				$result .= '<img src="images/download.png" border="none" />&nbsp;'.PrintReady($name);
-			$result .= '</a>';
-			$result .= '<br />';
+		if ($webLinks) {
+			foreach($webLinks as $link) {
+				$name = $link["titl"];
+				$result .= '<a href="'.encode_url($link["file"]).'"  title="'.PrintReady(htmlspecialchars(strip_tags($link["file"]), ENT_QUOTES, 'UTF-8')).'" alt="'.PrintReady(htmlspecialchars(strip_tags($link["file"]), ENT_QUOTES, 'UTF-8')).'" target="_blank" >';
+					$result .= '<img src="images/download.png" border="none" />&nbsp;'.PrintReady($name);
+				$result .= '</a>';
+				$result .= '<br />';
+			}
 		}
 
 	return $result;
