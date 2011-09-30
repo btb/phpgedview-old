@@ -264,6 +264,7 @@ $countries["SLV"]="El Salvador";
 $countries["SMR"]="San Marino";
 $countries["SOM"]="Somalië";
 $countries["SPM"]="Saint Pierre en Miquelon";
+$countries["SSD"]="Zuid Soedan";
 $countries["STP"]="São Tomé en Príncipe";
 $countries["SUN"]="USSR";
 $countries["SUR"]="Suriname";
