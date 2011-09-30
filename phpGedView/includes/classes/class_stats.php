@@ -6,7 +6,7 @@
 * about the GEDCOM.
 *
 * phpGedView: Genealogy Viewer
-* Copyright (C) 2002 to 2010 PGV Development Team.  All rights reserved.
+* Copyright (C) 2002 to 2011 PGV Development Team.  All rights reserved.
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -3878,8 +3878,9 @@ class stats {
 		$encoding = '';
 		foreach ($a as $value) {
 			if ($value<0) $value = 0;
-			$first = floor($value / 64);
-			$second = $value % 64;
+			if ($value > 4095) $value = 4095;
+			$first = ($value >> 6) & 0x3F;
+			$second = $value & 0x3F;
 			$encoding .= self::$_xencoding[$first].self::$_xencoding[$second];
 		}
 		return $encoding;

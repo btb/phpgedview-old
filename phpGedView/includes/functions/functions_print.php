@@ -920,10 +920,10 @@ function contact_links() {
 		return '';
 	}
 
+	$returnText = '<div class="contact_links">';
 	if ($supportLink==$contactLink) {
-		return '<div class="contact_links">'.$pgv_lang['for_all_contact'].' '.$supportLink.'</div>';
+		$returnText .= $pgv_lang['for_all_contact'].' '.$supportLink;
 	} else {
-		$returnText = '<div class="contact_links">';
 		if ($supportLink) {
 			$returnText .= $pgv_lang['for_support'].' '.$supportLink;
 			if ($contactLink) {
@@ -933,9 +933,9 @@ function contact_links() {
 		if ($contactLink) {
 			$returnText .= $pgv_lang['for_contact'].' '.$contactLink;
 		}
-		$returnText .= '</div>';
-		return $returnText;
 	}
+	$returnText .= '</div>';
+	return $returnText;
 }
 
 function contact_menus() {
