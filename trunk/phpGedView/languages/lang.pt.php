@@ -31,7 +31,8 @@ if (!defined('PGV_PHPGEDVIEW')) {
 	exit;
 }
 
-$pgv_lang["gedcomid"]="Minha Identificação na Árvore Genealógica";
+$pgv_lang["clustrmaps_locations"]	= "Localização dos visitantes a esta página";
+$pgv_lang["gedcomid"]				= "Minha Identificação na Árvore Genealógica";
 $pgv_lang["sortby"]					= "Ordem";
 $pgv_lang["exact"]					= "Exato";
 $pgv_lang["begins_with"]			= "Começa com";

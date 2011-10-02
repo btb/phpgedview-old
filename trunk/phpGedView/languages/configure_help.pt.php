@@ -3,7 +3,7 @@
  * Portugese Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,6 +20,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  * @package PhpGedView
+ * @author José Monteiro
  * @author Maurício Menegazzo Rosa
  * @author Anderson Wilson and Clovis Bombardelli
  * @version $Id$
@@ -29,6 +30,18 @@ if (!defined('PGV_PHPGEDVIEW')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
+
+$pgv_lang["google_analytics_help"]          = "~#pgv_lang[google_analytics]#~<br /><br />O serviço #pgv_lang[google_analytics]# descrito neste <a href='http://pt.wikipedia.org/wiki/Google_Analytics' target='_blank' title='Google Analytics'>Artigo da Wikipedia</a>.<br /><br /> Por favor note que, se você usar este serviço, o Google adquire os direitos de todos os dados que recolhe sobre a atividade do visitante no seu site.";
+$pgv_lang["USE_GOOGLE_ANALYTICS_help"]      = "~#pgv_lang[USE_GOOGLE_ANALYTICS]#~<br /><br />Selecione <b>#pgv_lang[yes]#</b> para habilitar o controle da atividade em seu site pelo serviço #pgv_lang[google_analytics]#. Você deve subscrever este serviço antes de ativar essa opção.";
+$pgv_lang["PGV_GOOGLE_ANALYTICS_help"]      = "~#pgv_lang[PGV_GOOGLE_ANALYTICS]#~<br /><br />Digite o número da conta atribuído ao seu site quando você se inscreveu para o serviço #pgv_lang[google_analytics]#. Este número conta o formato <b>UA-xxxxxx-x</b> .";
+$pgv_lang["piwik_analytics_help"]           = "~#pgv_lang[piwik_analytics]#~<br /><br />O projeto open-source #pgv_lang[piwik_analytics]# é descrito <a href='http://piwik.org/' target='_blank' title='Piwik official web site'>aqui</a>.<br /><br />Piwik é uma alternativa para #pgv_lang[google_analytics]# que elimina muitas das preocupações com a privacidade. Você pode instalar o aplicativo Piwik em seu próprio servidor web ou em seu próprio domínio, garantindo assim que você tem o controle completo sobre os dados de atividade que foram coletados.";
+$pgv_lang["USE_PIWIK_ANALYTICS_help"]       = "~#pgv_lang[USE_PIWIK_ANALYTICS]#~<br /><br />Selecione <b>#pgv_lang[yes]#</b> para habilitar o controle da atividade em seu site por um servidor #pgv_lang[piwik_analytics]#. Seu site PhpGedView deve ser registrado em um servidor Piwik.";
+$pgv_lang["PGV_PIWIK_URL_help"]             = "~#pgv_lang[PGV_PIWIK_URL]#~<br /><br />Digite a URL para um servidor onde seu site Piwik PhpGedView está registrado.";
+$pgv_lang["PGV_PIWIK_SITE_help"]            = "~#pgv_lang[PGV_PIWIK_SITE]#~<br /><br />Digite o ID numérico atribuído ao seu site PhpGedView pelo servidor Piwik.";
+$pgv_lang["clustrmaps_analytics_help"]      = "~#pgv_lang[clustrmaps_analytics]#~<br /><br />ClustrMaps é um contador de visitas combinadas, visitante tracker e ferramenta de visualização geográfica.<br /><br />Cada página inclui uma imagem de mapa em miniatura gerada pelo ClustrMaps. Ao que carrega imagem, um contador no site ClustrMaps é incrementado. Quando o mapa, que é visível a todos os seus visitantes, é atualizado (diário, semanal ou mensal, dependendo do tráfego) é mostra a localização de todos os visitantes de sua página desde o início de um intervalo de tempo específico.<br /><br />Se você pagou para o serviço #pgv_lang[clustrmaps_analytics]#, clicando em que a imagem revela um mapa em miniatura maior mundo exibição do mapa.<br /><br />Mais detalhes estão disponíveis no <a href='http://www.clustrmaps.com/' target='_blank' title='ClustrMaps site'>ClustrMaps site</a>.";
+$pgv_lang["USE_CLUSTRMAPS_ANALYTICS_help"]  = "~#pgv_lang[USE_CLUSTRMAPS_ANALYTICS]#~<br /><br />Selecione <b>#pgv_lang[yes]#</b> para habilitar o controle da atividade em seu site por um servidor #pgv_lang[clustrmaps_analytics]#.";
+$pgv_lang["PGV_CLUSTRMAPS_SITE_help"]       = "~#pgv_lang[PGV_CLUSTRMAPS_SITE]#~<br /><br />Digite a URL do seu site PhpGedView. Este valor tem sido preenchido por você, e você normalmente não precisa mudar ele.";
+$pgv_lang["PGV_CLUSTRMAPS_SERVER_help"]     = "~#pgv_lang[PGV_CLUSTRMAPS_SERVER]#~<br /><br />Digite o número do servidor designado pelo serviço #pgv_lang[clustrmaps_analytics]# quando ativado sua conta.";
 
 //-- CONFIGURE FILE MESSAGES
 $pgv_lang["COMMIT_COMMAND_help"]="~#pgv_lang[COMMIT_COMMAND]#~<br /><br />Deixe em branco caso não queira utilizar um sistema de controle de versão tal como o CVS para salvar as alterações e configurações do seu GEDCOM, caso contrário as opções são <b>cvs</b> e <b>svn</b>.<br />";

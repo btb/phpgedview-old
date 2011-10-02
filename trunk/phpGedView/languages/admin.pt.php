@@ -31,6 +31,19 @@ if (!defined('PGV_PHPGEDVIEW')) {
 	exit;
 }
 
+$pgv_lang["analytics_config"]       = "Web Analytics";
+$pgv_lang["google_analytics"]       = "Google Analytics";
+$pgv_lang["USE_GOOGLE_ANALYTICS"]   = "Ativar Google Analytics?";
+$pgv_lang["PGV_GOOGLE_ANALYTICS"]   = "Número da conta Google Analytics";
+$pgv_lang["piwik_analytics"]        = "Piwik Analytics";
+$pgv_lang["USE_PIWIK_ANALYTICS"]    = "Ativar Piwik Analytics?";
+$pgv_lang["PGV_PIWIK_URL"]          = "URL do servidor de Piwik Analytics";
+$pgv_lang["PGV_PIWIK_SITE"]         = "Número site";
+$pgv_lang["clustrmaps_analytics"]   = "ClustrMaps Analytics";
+$pgv_lang["USE_CLUSTRMAPS_ANALYTICS"] = "Ativar ClustrMaps Analytics?";
+$pgv_lang["PGV_CLUSTRMAPS_SITE"]    = "URL PhpGedView";
+$pgv_lang["PGV_CLUSTRMAPS_SERVER"]  = "Número do servidor ClustrMaps";
+
 $pgv_lang["module_admin"]			= "Administração dos Módulos";
 $pgv_lang["mod_admin_installed"]	= "Módulos instalados";
 $pgv_lang["mod_admin_tabs"]			= "Gerenciar Guias";
