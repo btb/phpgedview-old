@@ -3,7 +3,7 @@
 * Functions for exporting data
 *
 * phpGedView: Genealogy Viewer
-* Copyright (C) 2002 to 2009 PGV Development Team.  All rights reserved.
+* Copyright (C) 2002 to 2011 PGV Development Team.  All rights reserved.
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -166,22 +166,25 @@ function createTempUser($userID, $rights, $gedcom) {
 	set_user_setting($tempUserID, 'max_relation_path', '0');
 	set_user_setting($tempUserID, 'visibleonline', 'N');
 	set_user_setting($tempUserID, 'contactmethod', 'none');
+
+	$gedcomID = get_id_from_gedcom($gedcom);
+
 	switch ($rights) {
 	case 'admin':
 		set_user_setting($tempUserID, 'canadmin', 'Y');
-		set_user_gedcom_setting($tempUserID, $gedcom, 'canedit', 'admin');
+		set_user_gedcom_setting($tempUserID, $gedcomID, 'canedit', 'admin');
 	case 'gedadmin':
 		set_user_setting($tempUserID, 'canadmin', 'N');
-		set_user_gedcom_setting($tempUserID, $gedcom, 'canedit', 'admin');
+		set_user_gedcom_setting($tempUserID, $gedcomID, 'canedit', 'admin');
 		break;
 	case 'user':
 		set_user_setting($tempUserID, 'canadmin', 'N');
-		set_user_gedcom_setting($tempUserID, $gedcom, 'canedit', 'access');
+		set_user_gedcom_setting($tempUserID, $gedcomID, 'canedit', 'access');
 		break;
 	case 'visitor':
 	default:
 		set_user_setting($tempUserID, 'canadmin', 'N');
-		set_user_gedcom_setting($tempUserID, $gedcom, 'canedit', 'none');
+		set_user_gedcom_setting($tempUserID, $gedcomID, 'canedit', 'none');
 		break;
 	}
 	AddToLog("created dummy user -> {$userID} <- with level {$rights} to GEDCOM {$gedcom}");
