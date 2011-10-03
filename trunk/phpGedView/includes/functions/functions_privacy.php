@@ -5,7 +5,7 @@
 * See http://www.phpgedview.net/privacy.php for more information on privacy in PhpGedView
 *
 * phpGedView: Genealogy Viewer
-* Copyright (C) 2002 to 2009 PGV Development Team.  All rights reserved.
+* Copyright (C) 2002 to 2011 PGV Development Team.  All rights reserved.
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -78,7 +78,7 @@ function is_dead($indirec, $current_year='', $import=false, $sitemap=false) {
 	} else {
 		return false;
 	}
-	
+
 	// Allow "current year" to be modified, for countries where deaths do not become
 	// public until a certain time period has elapsed.
 	if (empty($current_year)) {
@@ -460,7 +460,7 @@ function displayDetailsById($pid, $type = "INDI", $sitemap = false) {
 			if ($type=="INDI") {
 				$gedrec = find_person_record($pid, $ged_id);
 				$isdead = is_dead($gedrec);
-				if ($USE_RELATIONSHIP_PRIVACY || get_user_setting($username, 'relationship_privacy')=="Y") {
+				if ($USE_RELATIONSHIP_PRIVACY || get_user_setting(PGV_USER_ID, 'relationship_privacy')=="Y") {
 					if ($isdead) {
 						if ($SHOW_DEAD_PEOPLE>=$pgv_USER_ACCESS_LEVEL) {
 							if ($PRIVACY_BY_YEAR && $SHOW_DEAD_PEOPLE==$pgv_USER_ACCESS_LEVEL) {
@@ -485,8 +485,8 @@ function displayDetailsById($pid, $type = "INDI", $sitemap = false) {
 							if ($cache_privacy) $privacy_cache[$pkey] = true;
 							return true;
 						}
-						if (get_user_setting($username, 'max_relation_path')>0) {
-							$path_length = get_user_setting($username, 'max_relation_path');
+						if (get_user_setting(PGV_USER_ID, 'max_relation_path')>0) {
+							$path_length = get_user_setting(PGV_USER_ID, 'max_relation_path');
 						} else {
 							$path_length = $MAX_RELATION_PATH_LENGTH;
 						}

@@ -9,6 +9,7 @@
 =====================================================================
 
 Version 4.3.0
+ - Fixed: [ 3409213 ] Error when privacy settings enabled (blaza-pl)
  - Fixed: [ 3417402 ] Function createTempUser() not working (canajun2eh)
  - Added: List all web page links in media object list near top of Personal Details page (George Pauly and canajun2eh)
  - Added: Use media object title to caption image on Personal Details page (canajun2eh)
