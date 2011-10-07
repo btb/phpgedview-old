@@ -105,6 +105,7 @@ $SEARCH_SPIDER = false;		// set empty at start
 $ua = isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : "";
 
 $worms = array(
+	'DomainCrawler',
 	'DLE_Spider',
 	'Python',
 	'MaMa',
