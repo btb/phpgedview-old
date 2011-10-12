@@ -1526,7 +1526,7 @@ class stats {
 				." death.d_file={$this->_ged_id} AND"
 				.' birth.d_file=death.d_file AND'
 				.' birth.d_file=indi.i_file AND'
-				." birth.d_fact IN ('BIRT', 'CHR', 'BAPM', '_BRTM') AND"
+				." birth.d_fact = 'BIRT' AND"
 				." death.d_fact IN ('DEAT', 'BURI', 'CREM') AND"
 				.' birth.d_julianday1<>0 AND'
 				.' death.d_julianday1>birth.d_julianday2 AND'
@@ -1615,7 +1615,7 @@ class stats {
 				." death.d_file={$this->_ged_id} AND"
 				.' birth.d_file=death.d_file AND'
 				.' birth.d_file=indi.i_file AND'
-				." birth.d_fact IN ('BIRT', 'CHR', 'BAPM', '_BRTM') AND"
+				." birth.d_fact = 'BIRT' AND"
 				." death.d_fact IN ('DEAT', 'BURI', 'CREM') AND"
 				.' birth.d_julianday1<>0 AND'
 				.' death.d_julianday1>birth.d_julianday2'
@@ -1690,7 +1690,7 @@ class stats {
 				.' indi.i_isdead=0 AND'
 				." birth.d_file={$this->_ged_id} AND"
 				.' birth.d_file=indi.i_file AND'
-				." birth.d_fact IN ('BIRT', 'CHR', 'BAPM', '_BRTM') AND"
+				." birth.d_fact = 'BIRT' AND"
 				.' birth.d_julianday1<>0'
 				.$sex_search
 			.' GROUP BY'
@@ -1758,7 +1758,7 @@ class stats {
 				." death.d_file={$this->_ged_id} AND"
 				.' birth.d_file=death.d_file AND'
 				.' birth.d_file=indi.i_file AND'
-				." birth.d_fact IN ('BIRT', 'CHR', 'BAPM', '_BRTM') AND"
+				." birth.d_fact = 'BIRT' AND"
 				." death.d_fact IN ('DEAT', 'BURI', 'CREM') AND"
 				.' birth.d_julianday1<>0 AND'
 				.' death.d_julianday1>birth.d_julianday2'
@@ -2092,7 +2092,7 @@ class stats {
 				.' married.d_gid = fam.f_id AND'
 				." indi.i_id = fam.{$sex_field} AND"
 				." fam.f_file = {$this->_ged_id} AND"
-				." birth.d_fact IN ('BIRT', 'CHR', 'BAPM', '_BRTM') AND"
+				." birth.d_fact = 'BIRT' AND"
 				." married.d_fact = 'MARR' AND"
 				.' birth.d_julianday1 <> 0 AND'
 				.' married.d_julianday2 > birth.d_julianday1 AND'
@@ -2302,9 +2302,9 @@ class stats {
 			.' WHERE'
 				." fam.f_file = {$this->_ged_id} AND"
 				.' husbbirth.d_gid = fam.f_husb AND'
-				." husbbirth.d_fact IN ('BIRT', 'CHR', 'BAPM', '_BRTM') AND"
+				." husbbirth.d_fact = 'BIRT' AND"
 				.' wifebirth.d_gid = fam.f_wife AND'
-				." wifebirth.d_fact IN ('BIRT', 'CHR', 'BAPM', '_BRTM') AND"
+				." wifebirth.d_fact = 'BIRT' AND"
 				.$query2
 			.' GROUP BY'
 				.' family'
