@@ -9,6 +9,7 @@
 =====================================================================
 
 Version 4.3.0
+ - Fixed: [ 3471553 ] Search Help Text doesn't print search results properly (canajun2eh)
  - Fixed: [ 3422404 ] Late-in-life CHR, BAPM, _BRTM events distort statistics (canajun2eh)
  - Fixed: [ 3409213 ] Error when privacy settings enabled (blaza-pl)
  - Fixed: [ 3417402 ] Function createTempUser() not working (canajun2eh)
