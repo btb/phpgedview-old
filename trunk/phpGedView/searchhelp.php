@@ -3,7 +3,7 @@
  * Search in help files
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reerved.
+ * Copyright (C) 2002 to 2012  PGV Development Team.  All rights reerved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -175,7 +175,7 @@ if ((!empty($searchtext)) && strlen($searchtext)>1)  {
 			if (strpos(UTF8_strtoupper($helptxtorg), UTF8_strtoupper($criterium))) {
 				// Set the search string for preg_replace, case insensitive
 				// The \\0 is for wrapping the existing string in the text with the span
-				$helptxt = str_ireplace($criterium, "<span class=\"search_hit\">\\0</span>", $helptxt);
+				$helptxt = preg_replace("~$criterium~i", '<span class="search_hit">$0</span>', $helptxt);
 				$cfound++;
 			}
 			else $cnotfound++;
