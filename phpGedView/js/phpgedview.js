@@ -2,7 +2,7 @@
  * Common javascript functions
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2012  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -984,7 +984,7 @@ if (menutimeouts[elementid] != null) {
  */
 function timeout_submenu(elementid) {
 	if (menutimeouts[elementid] == null) {
-		tout = setTimeout("hide_submenu('"+elementid+"')", 100);
+		tout = setTimeout("hide_submenu('"+elementid+"')", 1000);
 		menutimeouts[elementid] = tout;
 	}
 }
