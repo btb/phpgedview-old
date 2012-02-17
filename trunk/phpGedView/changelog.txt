@@ -9,6 +9,7 @@
 =====================================================================
 
 Version 4.3.0
+ - Fixed: [ 3474329 ] Sub-menus disappear too quickly (canajun2eh)
  - Fixed: [ 3471553 ] Search Help Text doesn't print search results properly (canajun2eh)
  - Fixed: [ 3422404 ] Late-in-life CHR, BAPM, _BRTM events distort statistics (canajun2eh)
  - Fixed: [ 3409213 ] Error when privacy settings enabled (blaza-pl)
