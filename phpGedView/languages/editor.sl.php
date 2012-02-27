@@ -3,7 +3,7 @@
  * Slovenian texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2011  PGV Development Team
+ * Copyright (C) 2002 to 2012  PGV Development Team
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -148,6 +148,7 @@ $pgv_lang["changes_occurred"]			= "Na zapsu so bile narejene naslednje spremembe
 $pgv_lang["confirm_remove"]			= "Ali res želite odstraniti to osebo iz družine?";
 $pgv_lang["confirm_remove_object"]		= "Ali res želite odstraniti ta objekt iz baze podatkov?";
 $pgv_lang["create_repository"]			= "Ustvari skladišče";
+$pgv_lang["shared_note_assisted"]		= "Skupen zapisek s pomočnikom";
 $pgv_lang["create_shared_note"]			= "Ustvari nov skupen zapisek";
 $pgv_lang["create_shared_note_assisted"]	= "S pomočnikom ustvari nov skupen zapisek";
 $pgv_lang["add_new_event_assisted"]		= "S pomočnikom ustvari nov dogodek";

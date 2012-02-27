@@ -3,7 +3,7 @@
  * Slovenian Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2009 PGV Development Team. All rights reserved.
+ * Copyright (C) 2002 to 2012 PGV Development Team. All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms the GNU General Public License as published by
@@ -107,7 +107,7 @@ $factarray["NATI"]	= "Narodnost";
 $factarray["NATU"]	= "Naturalizacija";
 $factarray["NCHI"]	= "Število otrok";
 $factarray["NICK"]	= "Vzdevek";
-$factarray["NMR"]	= "Štvilo porok";
+$factarray["NMR"]	= "Število porok";
 $factarray["NOTE"]	= "Zapisek";
 $factarray["NPFX"]	= "Predpona";
 $factarray["NSFX"]	= "Pripona";
@@ -191,7 +191,7 @@ $factarray["FAMS:SPOUSE:BIRT:PLAC"] = "Rojstni kraj soproga/e";
 $factarray["FAMC:WIFE:GIVN"] = "Materino ime";
 $factarray["FAMC:HUSB:FAMC:HUSB:GIVN"] = "Osebno ime starege očeta";
 $factarray["FAMC:WIFE:FAMC:WIFE:GIVN"] = "Osebno ime babice";
-$factarray["FAMC:WIFE:FAMC:HUSB:GIVN"] = "Mamino osebno ime starega očeta"; 
+$factarray["FAMC:WIFE:FAMC:HUSB:GIVN"] = "Mamino osebno ime starega očeta";
 $factarray["FAMC:HUSB:FAMC:WIFE:GIVN"] = "Očetovo osebno ime babice";
 $factarray["FAMS:CHIL:BIRT:PLAC"] = "Rojstni kraj otroka";
 $factarray["FAMS:NOTE"] = "Zapis zakončev";
@@ -441,7 +441,7 @@ $factarray["_PGVU"]	= " "; // last changed by
 $factarray["SERV"] = "Oddaljeni strežnik";
 $factarray["_GEDF"] = "GEDCOM datoteka";
 
-/*-- Fact abbreviations for use in Chart boxes.  
+/*-- Fact abbreviations for use in Chart boxes.
  *		Use these abbreviations in cases where the standard method using the first
  *		letter the spelled-out name results in an undesirable abbreviation or where
  *		you want to produce a different result (eg: "x" instead "M" for "Married").
@@ -452,18 +452,13 @@ $factarray["_GEDF"] = "GEDCOM datoteka";
  *		These abbreviations are user-customizable. Just put them into file "extra.xx.php".
  *		The length of these abbreviations is not restricted to 1 letter.
  */
- 
-/*-- The following lines have been commented out.  They should serve as examples. 
- 
+
+/*-- The following lines have been commented out.  They should serve as examples.
+
 $factAbbrev["BIRT"]		= "R";
 $factAbbrev["MARR"]		= "P";
 $factAbbrev["DEAT"]		= "S";
 
  */
 
-$factarray["_WEB"] = "Spletna stran";
-$factarray["_DCAUSE"] = "Vzrok smrti";
-$factarray["Address-skupni"] = "Skupni naslov";
-$factarray["address-share"] = "Skupni naslov";
-$factarray["Phone Number-shared"] = "Skupna tel. številka";
 ?>

@@ -3,7 +3,7 @@
  * Slovenian texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2012  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -31,6 +31,19 @@ if (!defined('PGV_PHPGEDVIEW')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
+
+$pgv_lang["analytics_config"]		= "Spletna analiza";
+$pgv_lang["google_analytics"]		= "Google Analytics";
+$pgv_lang["USE_GOOGLE_ANALYTICS"]	= "Aktiviraj Google Analytics?";
+$pgv_lang["PGV_GOOGLE_ANALYTICS"]	= "Številka računa na Google Analytics";
+$pgv_lang["piwik_analytics"]		= "Piwik Analytics";
+$pgv_lang["USE_PIWIK_ANALYTICS"]	= "Aktiviraj Piwik Analytics?";
+$pgv_lang["PGV_PIWIK_URL"]			= "Piwik Analytics server URL";
+$pgv_lang["PGV_PIWIK_SITE"]			= "Piwik Analytics številka spletne strani";
+$pgv_lang["clustrmaps_analytics"]	= "ClustrMaps Analytics";
+$pgv_lang["USE_CLUSTRMAPS_ANALYTICS"] = "Aktiviraj ClustrMaps Analytics?";
+$pgv_lang["PGV_CLUSTRMAPS_SITE"] 	= "Naslov PhpGedView URL";
+$pgv_lang["PGV_CLUSTRMAPS_SERVER"] 	= "ClustrMaps številka strežnika";
 
 $pgv_lang["module_admin"]		= "Upravljanje dodatkov";
 $pgv_lang["mod_admin_installed"]	= "Nameščeni dodatki";
@@ -336,7 +349,7 @@ $pgv_lang["mailto"]								= "Povezava pošlji-k";
 $pgv_lang["merge_records"]						= "Združi zapise";
 $pgv_lang["message_to_all"]						= "Pošlji sporočilo vsem uporabnikom";
 $pgv_lang["messaging"]							= "PhpGedView interno sporočanje";
-$pgv_lang["messaging2"]							= "Internno sporočanje z e-pošto";
+$pgv_lang["messaging2"]							= "Interno sporočanje z e-pošto";
 $pgv_lang["messaging3"]							= "PhpGedView pošilja e-pošto brez hranjenja";
 $pgv_lang["month_before_day"]					= "Dni pred dnem (MM DD YYYY)";
 $pgv_lang["monthly"]							= "Mesečno";
