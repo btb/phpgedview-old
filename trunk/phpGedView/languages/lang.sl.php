@@ -3,7 +3,7 @@
  * Slovenian texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2012  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,7 +32,7 @@ if (!defined('PGV_PHPGEDVIEW')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
-
+$pgv_lang["clustrmaps_locations"]	= "Lokacije obiskovalcev na to stran";
 $pgv_lang["gedcomid"]			= "GEDCOM INDI zapis ID";
 $pgv_lang["sortby"]			= "Razvrsti";
 $pgv_lang["exact"]			= "Natančno";
@@ -311,7 +311,7 @@ $pgv_lang["review_changes_descr"]	= "Nerazrešene skupine sprememb bodo omogoča
 $pgv_lang["review_changes_block"]	= "Nerazrešene spremembe";
 $pgv_lang["review_changes_email"]	= "Razpošlji opozorilna e-sporočila?";
 $pgv_lang["review_changes_email_freq"]	= "Pogostnost opozorilnih e-sporočil (na število dni)";
-$pgv_lang["review_changes_subject"]	= "PhpGedView - Preglej spremembes";
+$pgv_lang["review_changes_subject"]	= "PhpGedView - Preglej spremembe";
 $pgv_lang["review_changes_body"]	= "V rodoslovni podatkovni bazi so bile opravljene online spremembe. Spremembe je treba pregledati in odobriti, preden bodo prikazane vsem uporabnikom. Uporabite spodnji URL za vstop dotične strani PhpGedView site in se logirajte za pregled sprememb.";
 $pgv_lang["show_pending"]		= "Pokaži nerazrešene spremembe";
 $pgv_lang["show_spouses"]		= "Pokaži zakonca";
@@ -666,7 +666,7 @@ $pgv_lang["apply_filter"]		= "Apliciraj filter";
 $pgv_lang["find_individual"]		= "Poišči ID osebe";
 $pgv_lang["find_familyid"]		= "Poišči ID družine";
 $pgv_lang["find_sourceid"]		= "Poišči ID vira";
-$pgv_lang["find_specialchar"]		= "Find Special Characters";
+$pgv_lang["find_specialchar"]		= "Vstavi posebne črke";
 $pgv_lang["magnify"]			= "Povečaj";
 $pgv_lang["skip_surnames"]		= "Preskoči seznam priimkov";
 $pgv_lang["show_surnames"]		= "Pokaži seznam priimkov";
@@ -1169,8 +1169,10 @@ $pgv_lang["find_fam_list"]			= "Poišči družinski seznam";
 $pgv_lang["edit_name"]				= "Popravi ime";
 $pgv_lang["delete_name"]			= "Izbriši ime";
 $pgv_lang["select_date"]			= "Izberi datum";
-$pgv_lang["user_cannot_edit"]			= "Ta uporabnik ne morete urejati GEDCOM-a.";
+$pgv_lang["user_cannot_edit"]			= "Ta uporabnik ne more urejati GEDCOM-a.";
 $pgv_lang["gedcom_editing_disabled"]		= "Urejenje tega zapisa GEDCOM je izključil upravitelj.";
+$pgv_lang["privacy_not_granted"]		= "Nimate dostopa do";
+$pgv_lang["privacy_prevented_editing"]		= "Nastavitve zasebnosti vam ne dovoljujejo urejanja tega zapisa.";
 $pgv_lang["ged_noshow"]				= "Dostop do te strani je onemogočil upravitelj.";
 
 //-- calendar.php messages
@@ -1313,7 +1315,7 @@ $pgv_lang["no_to_user"] 			= "Niste navedli prejemnika. Postopka ni mogoče izpe
 $pgv_lang["provide_email"]			= "Napišite svoj elektronski naslov, da vam bomo lahko odgovorili, sicer to ne bo mogoče. Vaš elektronski naslov bomo uporabili samo za odziv na vaše sporočilo.";
 $pgv_lang["reply"]				= "Odgovori";
 $pgv_lang["message_deleted"]			= "Sporočilo je zbrisano";
-$pgv_lang["message_sent"]			= "Sporočilo je bil uspešno poslano uporabniku #TO_USER#";
+$pgv_lang["message_sent"]			= "Sporočilo je bilo uspešno poslano uporabniku #TO_USER#";
 $pgv_lang["reset"]				= "Ponastavi";
 $pgv_lang["site_default"]			= "Privzete vrednosti";
 $pgv_lang["mygedview_desc"] 			= "Ta stran omogoča hranjenje zaznamkov priljubljenih oseb, sledenje bližnjih dogodkov in sodelovanje z drugimi uporabniki.";
@@ -1467,15 +1469,17 @@ $pgv_lang["ahnentafel_header"]		= "Rodovniško poročilo za ";
 $pgv_lang["ahnentafel_generation"]	= "Rod ";
 $pgv_lang["ahnentafel_pronoun_m"]	= " ";
 $pgv_lang["ahnentafel_pronoun_f"]	= " ";
-$pgv_lang["ahnentafel_born_m"]		= "Rodil se je";
-$pgv_lang["ahnentafel_born_f"]		= "Rodila se je";
+$pgv_lang["ahnentafel_born_m"]		= "se je rodil";
+$pgv_lang["ahnentafel_born_f"]		= "se je rodila";
 $pgv_lang["ahnentafel_christened_m"] 	= "Krščen je bil";
 $pgv_lang["ahnentafel_christened_f"]   = "Krščena je bila";
 $pgv_lang["ahnentafel_married_m"]	= "Poročil se je z";
 $pgv_lang["ahnentafel_married_f"]	= "Poročila se je z";
 $pgv_lang["ahnentafel_married_post"]	= "&nbsp;";
-$pgv_lang["ahnentafel_died_m"]		= "Umrl je";
-$pgv_lang["ahnentafel_died_f"]		= "Umrla je";
+$pgv_lang["ahnentafel_died_m"]		= "je umrl";
+$pgv_lang["ahnentafel_died_f"]		= "je umrla";
+$pgv_lang["ahnentafel_cremated_m"]	= "je bil upepeljen";		// male
+$pgv_lang["ahnentafel_cremated_f"]	= "je bila upepeljena";		// female
 $pgv_lang["ahnentafel_buried_m"]	= "Pokopan je bil";
 $pgv_lang["ahnentafel_buried_f"]	= "Pokopana je bila";
 $pgv_lang["ahnentafel_place"]		= " v ";
@@ -1494,8 +1498,8 @@ $pgv_lang["son_of"]				= "sin od";
 $pgv_lang["daughter_of"]			= "hči od";
 $pgv_lang["child_of"]				= "Otrok od ";
 $pgv_lang["children_of"]			= "Otroci od ";
-$pgv_lang["descendancy_pronoun_m"]	= "On je ";
-$pgv_lang["descendancy_pronoun_f"]	= "Ona je ";
+$pgv_lang["descendancy_pronoun_m"]	= "On ";
+$pgv_lang["descendancy_pronoun_f"]	= "Ona ";
 
 
 $pgv_lang["family_group_report"]	= "Družinsko poročilo";
@@ -1504,7 +1508,6 @@ $pgv_lang["of"] 					= "od";
 $pgv_lang["enter_famid"]			= "Vnesi ID-številko družine";
 $pgv_lang["show_sources"]			= "Prikaz virov?";
 $pgv_lang["show_notes"] 			= "Prikaz zapiskov?";
-$pgv_lang["show_basic"] 			= "Natisni osnovne dogodke, tudi kadar ni podatkov?";
 $pgv_lang["show_photos"]			= "Pokaži slike?";
 $pgv_lang["relatives_report_ext"]	= "Razširjeno poročilo sorodnikov";
 $pgv_lang["with"]					= "z";
