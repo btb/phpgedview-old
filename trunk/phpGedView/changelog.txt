@@ -9,6 +9,7 @@
 =====================================================================
 
 Version 4.3.0
+ - Fixed: [ 3495818 ] Manage Media - repeated Login requests (canajun2eh)
  - Fixed: [ 3474329 ] Sub-menus disappear too quickly (canajun2eh)
  - Fixed: [ 3471553 ] Search Help Text doesn't print search results properly (canajun2eh)
  - Fixed: [ 3422404 ] Late-in-life CHR, BAPM, _BRTM events distort statistics (canajun2eh)
@@ -54,8 +55,8 @@ Version 4.2.4
  - Added: modules.css file for all themes (windmillway)
  - Fixed: [ 2939710 ] [6841?] Startup error (fisharebest)
  - Fixed: [ 2937064 ] Upgrade from 4.2.3 loses users/accounts (fisharebest)
- - Changed: Default sorting by lastname in user administration (volschin) 
- - Fixed: Sorting by username in user administration (volschin) 
+ - Changed: Default sorting by lastname in user administration (volschin)
+ - Fixed: Sorting by username in user administration (volschin)
  - Added: [ 1717787 ] Gedcomname.gedpgv_counters.txt in backup (fisharebest)
  - Added: [ 2677563 ] Counters in MySQL rather than in file. (fisharebest)
  - Fixed: [ 2928619 ] Burial w/o Death -> (on the date of death) (fisharebest)

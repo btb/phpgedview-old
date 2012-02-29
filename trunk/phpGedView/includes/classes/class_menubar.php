@@ -3,7 +3,7 @@
 * System for generating menus.
 *
 * phpGedView: Genealogy Viewer
-* Copyright (C) 2002 to 2010 PGV Development Team. All rights reserved.
+* Copyright (C) 2002 to 2012 PGV Development Team. All rights reserved.
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -88,7 +88,7 @@ class MenuBar
 	* @return Menu the menu item
 	*/
 	static function getMygedviewMenu() {
-		global $MEDIA_DIRECTORY, $MULTI_MEDIA;
+		global $MEDIA_DIRECTORY, $MULTI_MEDIA, $ALLOW_EDIT_GEDCOM;
 		global $TEXT_DIRECTION, $PGV_IMAGE_DIR, $PGV_IMAGES, $pgv_lang;
 		global $PEDIGREE_FULL_DETAILS, $PEDIGREE_LAYOUT, $USE_QUICK_UPDATE;
 		if ($TEXT_DIRECTION=="rtl") $ff="_rtl"; else $ff="";
@@ -180,7 +180,7 @@ class MenuBar
 				$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_admin");
 				$menu->addSubmenu($submenu);
 				//-- manage_media submenu
-				if (is_writable($MEDIA_DIRECTORY) && $MULTI_MEDIA) {
+				if (is_writable($MEDIA_DIRECTORY) && $MULTI_MEDIA && $ALLOW_EDIT_GEDCOM) {
 					$submenu = new Menu($pgv_lang["manage_media"], "media.php");
 					if (!empty($PGV_IMAGES["menu_media"]["small"]))
 						$submenu->addIcon($PGV_IMAGE_DIR."/".$PGV_IMAGES["menu_media"]["small"]);
@@ -974,7 +974,7 @@ class MenuBar
 		$current=get_user_setting(PGV_USER_ID, 'theme');
 		$all_themes=get_theme_names();
 		if (!array_key_exists($current, $all_themes)) {
-			$current=$THEME_DIR;		
+			$current=$THEME_DIR;
 		}
 
 		if ($ALLOW_THEME_DROPDOWN && $ALLOW_USER_THEMES && !$SEARCH_SPIDER) {
