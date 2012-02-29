@@ -3,7 +3,7 @@
  * Popup window that will allow a user to search for a media
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2012  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -194,6 +194,14 @@ function set_perms($path) {
 		closedir($dir);
 	}
 	return;
+}
+
+// ----------------------------- Main procedure begins here ------------------------------
+
+//-- If on-line editing is not allowed, stop right now.  This script was launched directly.
+if (!$ALLOW_EDIT_GEDCOM) {
+	header("Location: index.php");
+	exit;
 }
 
 // global var used by recursive functions
@@ -755,7 +763,7 @@ if (check_media_structure()) {
 
 		// main link displayed on page
 		$menu = new Menu();
-		
+
 		// GEDFact assistant Add Media Links =======================
 		if (file_exists('modules/GEDFact_assistant/_MEDIA/media_1_ctrl.php')) {
 			$menu->addLabel($pgv_lang["add_or_remove_links"]);
@@ -763,7 +771,7 @@ if (check_media_structure()) {
 			$menu->addClass("", "", "submenu");
 			$menu->addFlyout("left");
 			// Do not print submunu
-			
+
 		} else {
 			$menu->addLabel($pgv_lang["set_link"]);
 			$menu->addOnclick("return ilinkitem('$mediaid', 'person')");
