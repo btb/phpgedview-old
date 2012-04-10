@@ -5,7 +5,7 @@
  * The class is not tied to any particlular web page(or GUI) and needs to be inherited for proper use
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2012  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -429,7 +429,7 @@ class GrampsExport {
 		$eMediaRef = $eParent->appendChild($eMediaRef);
 
 		if (($sourceHlink = $this->query_dom("./objects/object[@id = \"$mediaId\"]/@handle")) == null)
-			$this->create_media($mediaId, find_media_record($mediaId), PGV_GED_ID);
+			$this->create_media($mediaId, find_media_record($mediaId, PGV_GED_ID), $level);
 		$eMediaRef->setAttribute("hlink", $this->query_dom("./objects/object[@id = \"$mediaId\"]/@handle"));
 
 		$eParent->appendChild($eMediaRef);
