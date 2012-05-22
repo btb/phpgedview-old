@@ -9,6 +9,7 @@
 =====================================================================
 
 Version 4.3.0
+ - Fixed: Search between PGV sites not working properly (Pasquale Ceres)
  - Fixed: [ 3516462 ] Incorrect call to find_media_record() (canajun2eh)
  - Fixed: [ 3495818 ] Manage Media - repeated Login requests (canajun2eh)
  - Fixed: [ 3474329 ] Sub-menus disappear too quickly (canajun2eh)

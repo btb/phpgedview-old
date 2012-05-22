@@ -3,7 +3,7 @@
  *  PGV SOAP implementation of the genealogy web service
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2012  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -718,9 +718,9 @@ class PGVServiceLogic extends GenealogyService {
 			$results = array();
 			$results_array = array();
 			foreach ($newarray as $gid=>$indi) {
+				$PID = $indi->getXref(); // PID of person is stored as 'xref' field in indi object
+				$search_result_element = $this->createPerson($PID, $indi->getGedcomRecord(), "item", false);
 
-				$search_result_element = $this->createPerson($gid, $indi->getGedcomRecord(), "item", false);
-				
 				$results_array[] = $search_result_element;
 
 				// sample how to get information for the result set
