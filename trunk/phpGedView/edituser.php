@@ -3,7 +3,7 @@
  * User Account Edit Interface.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2012  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -129,8 +129,8 @@ if ($form_action=='update') {
 			// Change username
 			if ($form_username!=PGV_USER_NAME) {
 				AddToLog('User renamed to ->'.$form_username.'<-');
-				rename_user(PGV_USER_ID, $form_username);
-				$_SESSION['pgv_user']=$form_username;
+				rename_user(PGV_USER_NAME, $form_username);
+				$_SESSION['pgv_user']=get_user_id($form_username);
 			}
 			// Reload page to pick up changes such as theme and user_id
 			header('Location: edituser.php');

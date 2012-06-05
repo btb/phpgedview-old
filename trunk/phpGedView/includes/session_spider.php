@@ -3,7 +3,7 @@
  * Startup and session logic for handling Bots and Spiders
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2008 to 2011  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2008 to 2012  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -164,6 +164,10 @@ while (true) {
 	// check for improperly formed UA string
 	if (strlen($ua) > 511) {
 		$quitReason = 'UA too long';
+		break;
+	}
+	if (strlen($ua) < 5) {
+		$quitReason = 'UA too short';
 		break;
 	}
 

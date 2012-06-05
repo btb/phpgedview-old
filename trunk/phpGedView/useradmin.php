@@ -3,7 +3,7 @@
  * Administrative User Interface.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2012  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -91,7 +91,7 @@ if (empty($ged)) {
 
 // Load all available gedcoms
 $all_gedcoms = get_all_gedcoms();
-//-- sorting by gedcom filename 
+//-- sorting by gedcom filename
 asort($all_gedcoms);
 
 // Delete a user
@@ -153,6 +153,7 @@ if ($action=='createuser' || $action=='edituser2') {
 				if ($action=='edituser2' && $username!=$oldusername) {
 					rename_user($oldusername, $username);
 					AddToLog("User ->{$oldusername}<- renamed to ->{$username}<-");
+					$user_id = get_user_id($username);
 				}
 				// Create/change settings that can be updated in the user's gedcom record?
 				$email_changed=($emailaddress!=get_user_setting($user_id, 'email'));
