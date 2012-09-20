@@ -4,7 +4,7 @@
 * Import specific functions
 *
 * phpGedView: Genealogy Viewer
-* Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
+* Copyright (C) 2002 to 2012  PGV Development Team.  All rights reserved.
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -37,6 +37,40 @@ require_once PGV_ROOT.'includes/classes/class_media.php';
 require_once PGV_ROOT.'includes/classes/class_mutex.php';
 require_once PGV_ROOT.'includes/functions/functions_lang.php';
 require_once PGV_ROOT.'includes/functions/functions_export.php';
+
+/*
+ * Implement the import_request_variables() function
+ *		This function was deprecated in PHP 5.3.0 and deleted entirely in PHP 5.4.0.
+ *
+ *		Unfortunately, the editconfig_gedcom.php and uploadgedcom.php scripts depend on this function!
+ *
+ */
+function import_req_variables($whichVars, $prepend='') {
+	$varList = strtoupper($whichVars);
+	while ($varList != '') {
+		$varType = substr($varList, 0, 1);		// Peel off the variable type (C: Cookie, G: Get, P: Post)
+		switch ($varType) {
+		case 'C':			// Cookies
+			foreach ($_COOKIE as $key => $value) {
+				$GLOBALS[$prepend.$key] = $value;
+			}
+			break;
+		case 'G':			// Get
+			foreach ($_GET as $key => $value) {
+				$GLOBALS[$prepend.$key] = $value;
+			}
+			break;
+		case 'P':			// Post
+			foreach ($_POST as $key => $value) {
+				$GLOBALS[$prepend.$key] = $value;
+			}
+			break;
+		}
+		$varList = substr($varList, 1);
+	}
+	return;
+}
+
 
 // Tidy up a gedcom record on import, so that we can access it consistently/efficiently.
 function reformat_record_import($rec) {
