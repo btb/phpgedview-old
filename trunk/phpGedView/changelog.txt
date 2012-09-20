@@ -9,6 +9,7 @@
 =====================================================================
 
 Version 4.3.0
+ - Fixed: [ 3569578 ] PGV not working in PHP 5.4.0 (canajun2eh)
  - Fixed: [ 3532300 ] Can't change ID of existing user (canajun2eh)
  - Fixed: [ 3532299 ] Can't send message to self (canajun2eh)
  - Fixed: Search between PGV sites not working properly (Pasquale Ceres)

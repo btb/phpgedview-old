@@ -3,7 +3,7 @@
  * UI for online updating of the GEDCOM config file.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2012  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -28,9 +28,13 @@
 define('PGV_SCRIPT_NAME', 'editconfig_gedcom.php');
 require './config.php';
 
-// editconfig.php and uploadgedcom.php make extensive use of
+// editconfig_gedcom.php and uploadgedcom.php make extensive use of
 // import_request_variables and are heavily inter-dependent.
-@import_request_variables('cgp');
+## @import_request_variables('cgp');
+/*	PHP version 5.4.0 has *removed* the import_request_variables() function, so we now have to use a
+ *	"roll-your-own" implementation!  Also, the input form only uses the "post" method, so we shouldn't
+ *	look at the $_COOKIE and $_GET arrays. */
+import_req_variables('p');
 
 if (isset($_REQUEST['action'])) $action = $_REQUEST['action'];
 if (empty($action)) $action = "";
@@ -252,7 +256,7 @@ if ($action=="update") {
 			$gedcom_title=str_replace("#GEDCOMFILE#", $FILE, $pgv_lang["new_gedcom_title"]);
 		}
 	}
-	
+
 	// Create the gedcom if it doesn't already exist
 	$ged_id=get_id_from_gedcom($FILE, true);
 	set_gedcom_setting($ged_id, 'config',  $gedcom_config);

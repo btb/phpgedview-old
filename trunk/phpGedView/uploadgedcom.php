@@ -7,7 +7,7 @@
  * file.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2012  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -58,9 +58,13 @@ if (!PGV_USER_GEDCOM_ADMIN) {
 	exit;
 }
 
-// editconfig.php and uploadgedcom.php make extensive use of
+// editconfig_gedcom.php and uploadgedcom.php make extensive use of
 // import_request_variables and are heavily inter-dependent.
-@import_request_variables('cgp');
+## @import_request_variables('cgp');
+/*	PHP version 5.4.0 has *removed* the import_request_variables() function, so we now have to use a
+ *	"roll-your-own" implementation!  Also, the input form only uses the "post" method, so we shouldn't
+ *	look at the $_COOKIE and $_GET arrays. */
+import_req_variables('p');
 
 @ini_set('zlib.output_compression','0');
 
