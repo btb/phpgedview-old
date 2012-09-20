@@ -105,6 +105,14 @@ $SEARCH_SPIDER = false;		// set empty at start
 $ua = isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : "";
 
 $worms = array(
+	'Mail.RU',
+	'Linguee',
+	'Aboundex',
+	'news bot',
+	'sosospider',
+	'Powermarks',
+	'Blog Search',
+	'SISTRIX',
 	'DomainCrawler',
 	'DLE_Spider',
 	'Python',
@@ -238,6 +246,8 @@ $real_browsers = array(
 // Here we list the search engines whose accesses we don't need to log.
 // This avoids cluttering the log files with useless entries
 $known_spiders = array(
+	'Seznam',
+	'NetcraftSurveyAgent',
 	'Ezooms',
 	'Googlebot',
 	'Yahoo Slurp',
