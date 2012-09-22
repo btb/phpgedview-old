@@ -34,7 +34,7 @@ require './config.php';
 /*	PHP version 5.4.0 has *removed* the import_request_variables() function, so we now have to use a
  *	"roll-your-own" implementation!  Also, the input form only uses the "post" method, so we shouldn't
  *	look at the $_COOKIE and $_GET arrays. */
-import_req_variables('p');
+import_req_variables('gp');
 
 if (isset($_REQUEST['action'])) $action = $_REQUEST['action'];
 if (empty($action)) $action = "";
