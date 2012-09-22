@@ -32,8 +32,8 @@ require './config.php';
 // import_request_variables and are heavily inter-dependent.
 ## @import_request_variables('cgp');
 /*	PHP version 5.4.0 has *removed* the import_request_variables() function, so we now have to use a
- *	"roll-your-own" implementation!  Also, the input form only uses the "post" method, so we shouldn't
- *	look at the $_COOKIE and $_GET arrays. */
+ *	"roll-your-own" implementation!  Also, the input forms only use the "get" and "post" methods, so
+ *	we shouldn't look at the $_COOKIE array. */
 import_req_variables('gp');
 
 if (isset($_REQUEST['action'])) $action = $_REQUEST['action'];
