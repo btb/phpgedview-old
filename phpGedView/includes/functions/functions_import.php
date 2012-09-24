@@ -44,12 +44,20 @@ require_once PGV_ROOT.'includes/functions/functions_export.php';
  *
  *		Unfortunately, the editconfig_gedcom.php and uploadgedcom.php scripts depend on this function!
  *
+ *	Note:
+ *		The import_request_variables() function _always_ imports the _FILES array.  We, however,
+ *		will make that optional.
  */
 function import_req_variables($whichVars, $prepend='') {
 	$varList = strtoupper($whichVars);
 	while ($varList != '') {
-		$varType = substr($varList, 0, 1);		// Peel off the variable type (C: Cookie, G: Get, P: Post)
+		$varType = substr($varList, 0, 1);		// Peel off the variable type (F: Files, C: Cookie, G: Get, P: Post)
 		switch ($varType) {
+		case 'F':			// Files
+			foreach ($_FILES as $key => $value) {
+				$GLOBALS[$prepend.$key] = $value;
+			}
+			break;
 		case 'C':			// Cookies
 			foreach ($_COOKIE as $key => $value) {
 				$GLOBALS[$prepend.$key] = $value;

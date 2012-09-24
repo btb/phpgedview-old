@@ -91,7 +91,8 @@ if (!isset($utf8convert)) $utf8convert = "no";
 if (isset($_REQUEST['keepmedia']) && $_REQUEST['keepmedia']=='yes') $keepmedia=true;
 else $keepmedia = false;
 
-$path = decrypt($path);		// path needed to be encrypted to get past hack detection
+$path = decrypt($path);				// path needed to be encrypted to get past hack detection
+$bakfile = decrypt($bakfile);		// bakfile needed to be encrypted to get past hack detection
 
 // NOTE: GEDCOM was uploaded
 if ($check == "upload") {

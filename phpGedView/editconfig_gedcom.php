@@ -34,7 +34,7 @@ require './config.php';
 /*	PHP version 5.4.0 has *removed* the import_request_variables() function, so we now have to use a
  *	"roll-your-own" implementation!  Also, the input forms only use the "get" and "post" methods, so
  *	we shouldn't look at the $_COOKIE array. */
-import_req_variables('gp');
+import_req_variables('fgp');	// Note: Import the _FILES array too.
 
 if (isset($_REQUEST['action'])) $action = $_REQUEST['action'];
 if (empty($action)) $action = "";
@@ -611,7 +611,7 @@ if ($action=="update") {
 			$bakfile = "";
 		}
 		if ($source !== "") {
-			header("Location: ".encode_url("uploadgedcom.php?action=$source&check=$check&step=2&GEDFILENAME={$GEDFILENAME}&path=".encrypt($path)."&verify=verify_gedcom&bakfile={$bakfile}", false));
+			header("Location: ".encode_url("uploadgedcom.php?action=$source&check=$check&step=2&GEDFILENAME={$GEDFILENAME}&path=".encrypt($path)."&verify=verify_gedcom&bakfile=".encrypt($bakfile), false));
 		} else {
 			header("Location: editgedcoms.php");
 		}
