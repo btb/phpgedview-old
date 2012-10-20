@@ -2,7 +2,7 @@
 /**
 * Menu for punBB Module
 * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2012  PGV Development Team.  All rights reserved.
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -44,7 +44,7 @@ class punbb_ModuleMenu
 	* @todo create a way to abstract menus for plugins
 	* @return Menu the menu item
 	*/
-	function &getMenu()
+	function getMenu()
 	{
 		global $TEXT_DIRECTION, $PGV_IMAGE_DIR, $PGV_IMAGES, $GEDCOM, $pgv_lang;
 		global $gallery;
