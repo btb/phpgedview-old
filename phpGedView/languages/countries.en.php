@@ -16,8 +16,8 @@
  *		IOM		Isle of Man				Chapman lists this as part of the UK -- it's not!!
  *		NFK		Norfolk Island
  *		PRI		Puerto Rico				Chapman lists this as a state of the USA
+ *		RSS		South Sudan				Newly (Jul 2011) independent from Sudan
  *		SCG		Serbia and Montenegro	Chapman lists these separately
- *		SSD		South Sudan				Newly (Jul 2011) independent from Sudan
  *		TLS		Timor-Leste
  *		UMI		US Minor Outlying Islands
  *		VIR		US Virgin Islands		Chapman lists this as a state of the USA
@@ -244,6 +244,7 @@ $countries["PYF"]="French Polynesia";
 $countries["QAT"]="Qatar";
 $countries["REU"]="Réunion";
 $countries["ROM"]="Romania";
+$countries["RSS"]="South Sudan";
 $countries["RUS"]="Russia";
 $countries["RWA"]="Rwanda";
 $countries["SAU"]="Saudi Arabia";
@@ -264,7 +265,6 @@ $countries["SLV"]="El Salvador";
 $countries["SMR"]="San Marino";
 $countries["SOM"]="Somalia";
 $countries["SPM"]="Saint Pierre and Miquelon";
-$countries["SSD"]="South Sudan";
 $countries["STP"]="São Tomé and Príncipe";
 $countries["SUN"]="USSR";
 $countries["SUR"]="Suriname";
