@@ -3,7 +3,7 @@
  * Functions used Tools to cleanup and manipulate Gedcoms before they are imported
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2012  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -146,14 +146,19 @@ function line_endings_cleanup() {
  * @return boolean	returns true if the cleanup is needed
  * @see place_cleanup()
  */
-function need_place_cleanup()
-{
+function need_place_cleanup() {
 	global $fcontents;
 	//$ct = preg_match("/SOUR.+(Family Tree Maker|FTW)/", $fcontents);
 	//if ($ct==0) return false;
 	$ct = preg_match_all ("/^1 (CAST|DSCR|IDNO|NATI|NCHI|NMR|OCCU|PROP|RELI|SSN|TITL|_FA1|_FA2|_FA3|_FA4|_FA5|_FA6)(\s*)$[\s]+(^2 TYPE(.*)[\s]+)?(^2 DATE(.*)[\s]+)?^2 PLAC (.*)$/m",$fcontents,$matches, PREG_SET_ORDER);
-	if($ct>0)
-		return $matches[0];
+	if($ct>0) {
+		$samplePlace = array();
+		$max = min(count($matches), 5);		//  Return first 5 occurrences
+		for ($i=0; $i<$max; $i++) {
+			$samplePlace[] = $matches[$i][0];
+		}
+		return $samplePlace;
+	}
 	return false;
 }
 
@@ -207,39 +212,65 @@ function fixreplaceval($val1,$val7,$val3,$val5)
  * @return boolean	returns true if the cleanup is needed
  * @see date_cleanup()
  */
-function need_date_cleanup()
-{
+function need_date_cleanup() {
 	global $fcontents;
-	$ct = preg_match_all ("/\n\d DATE[^\d]+(\d\d\d\d)[\/\\\\\-\.](\d\d)[\/\\\\\-\.](\d\d)/",$fcontents,$matches, PREG_SET_ORDER);
-	if($ct>0) {
-			return $matches[0];
-		}
-	else
-	{
-			$ct = preg_match_all ("/\n\d DATE[^\d]+(\d\d)[\/\\\\\-\.](\d\d)[\/\\\\\-\.](\d\d\d\d)/",$fcontents,$matches, PREG_SET_ORDER);
-		if($ct>0) {
-			// The user needs to choose between DMY and MDY
-			$matches[0]["choose"] = true;
-			return $matches[0];
-		}
-		else {
-			$ct = preg_match_all ("/\n\d DATE ([^\d]+) [0-9]{1,2}, (\d\d\d\d)/",$fcontents,$matches, PREG_SET_ORDER);
-			if($ct>0) {
-				return $matches[0];
-			}
-			else {
-				$ct = preg_match_all("/\n\d DATE (\d\d)[^\s]([^\d]+)[^\s](\d\d\d\d)/", $fcontents, $matches, PREG_SET_ORDER);
-				if($ct>0) {
-					return $matches[0];
-				} else {
-					if (preg_match_all("/^\d DATE (BET|FROM) \d\d? (AND|TO) \d\d? \w\w\w \d\d\d\d/m", $fcontents, $matches, PREG_SET_ORDER)) {
-						return $matches[0];
-					}
-				}
+	$ambiguousDate = false;
+	$sampleDate = array();
+
+	while (true) {
+		$ct = preg_match_all ("/\n\d DATE[^\d]+(\d{8})/",$fcontents,$matches, PREG_SET_ORDER);
+		if ($ct>0) {		// yyyymmdd
+			foreach ($matches as $sample) {
+				$sampleDate[] = $sample[0];
 			}
 		}
+
+		$ct = preg_match_all ("/\n\d DATE[^\d]+(\d{4})[^\d](\d{1,2})[^\d](\d{1,2})/",$fcontents,$matches, PREG_SET_ORDER);
+		if ($ct>0) {		// yyyy-mm-dd  (alternate punctuation possible)
+			foreach ($matches as $sample) {
+				$sampleDate[] = $sample[0];
+			}
+		}
+
+		$ct = preg_match_all ("/\n\d DATE[^\d]+(\d{1,2})[^\d](\d{1,2})[^\d](\d{4})/",$fcontents,$matches, PREG_SET_ORDER);
+		if ($ct>0) {		// mm-dd-yyyy or dd-mm-yyyy   (alternate punctuation possible)
+			$ambiguousDate = true;		// The user needs to choose between DMY and MDY
+			foreach ($matches as $sample) {
+				$sampleDate[] = $sample[0];
+			}
+		}
+
+		$ct = preg_match_all ("/\n\d DATE ([^\d]+) (\d{1,2}),? (\d{4})/",$fcontents,$matches, PREG_SET_ORDER);
+		if ($ct>0) {		// mmm dd, yyyy   (longer or shorter month names possible)
+			$ambiguousDate = true;		// The user needs to choose between DMY and MDY
+			foreach ($matches as $sample) {
+				$sampleDate[] = $sample[0];
+			}
+		}
+
+		$ct = preg_match_all("/\n\d DATE (\d{1,2})[^\s]([^\d]+)[^\s](\d{4})/", $fcontents, $matches, PREG_SET_ORDER);
+		if ($ct>0) {		// dd-mmm-yyyy   (longer or shorter month names possible, alternate punctuation possible)
+			foreach ($matches as $sample) {
+				$sampleDate[] = $sample[0];
+			}
+		}
+
+		$ct = (preg_match_all("/^\d DATE (BET|FROM) (\d{1,2}) (AND|TO) (\d{1,2}) (\w{3,}) (\d{4})/m", $fcontents, $matches, PREG_SET_ORDER));
+		if ($ct>0) {
+			foreach ($matches as $sample) {
+				$sampleDate[] = $sample[0];
+			}
+		}
+
+		break;
 	}
-	return false;
+
+	$max = count($sampleDate);
+	if ($max==0) return false;
+	if ($max > 5) $sampleDate = array_slice($sampleDate, 0, 5);
+	if ($ambiguousDate) $sampleDate['choose'] = true;
+	return $sampleDate;
+
 }
 
 function changemonth($monval)
@@ -269,7 +300,10 @@ function date_cleanup($dayfirst=1)
 	global $fcontents;
 	// Run all fixes twice, as there can be two dates in each DATE record
 
-	// Convert ISO/Japanese style dates "2000-12-31"
+	// Convert ISO style dates "20001231"
+	$fcontents=preg_replace("/2 DATE (.*)(\d{4})(\d{2})(\d{2})/e", "'2 DATE $1$4 '.changemonth('$3').' $2'", $fcontents);
+	$fcontents=preg_replace("/2 DATE (.*)(\d{4})(\d{2})(\d{2})/e", "'2 DATE $1$4 '.changemonth('$3').' $2'", $fcontents);
+	// Convert ISO style dates "2000-12-31"
 	$fcontents=preg_replace("/2 DATE (.*)(\d\d\d\d)\W(0?[1-9]|1[0-2])\W(\d\d)/e", "'2 DATE $1$4 '.changemonth('$3').' $2'", $fcontents);
 	$fcontents=preg_replace("/2 DATE (.*)(\d\d\d\d)\W(0?[1-9]|1[0-2])\W(\d\d)/e", "'2 DATE $1$4 '.changemonth('$3').' $2'", $fcontents);
 	// Convert US style dates "FEB 14, 2000" or "February 5, 2000"
