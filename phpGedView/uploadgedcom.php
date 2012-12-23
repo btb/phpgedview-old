@@ -222,10 +222,10 @@ if ($cleanup_needed == "cleanup_needed" && $continue == $pgv_lang["del_proceed"]
 			}
 
 			if (isset ($_POST["cleanup_places"]) && $_POST["cleanup_places"] == "YES") {
-				if (($sample = need_place_cleanup()) !== false) {
-					$l_placecleanup = true;
+//				if (($sample = need_place_cleanup()) !== false) {
+//					$l_placecleanup = true;
 					place_cleanup();
-				}
+//				}
 			}
 
 			if (line_endings_cleanup()) {
@@ -561,10 +561,14 @@ if ($verify == "validate_form") {
 		$l_headcleanup = false;
 		$l_macfilecleanup = false;
 		$l_lineendingscleanup = false;
+		$l_isansi = false;
 		$l_placecleanup = false;
 		$l_datecleanup = false;
-		$l_isansi = false;
 		$fp = fopen(get_gedcom_setting(get_id_from_gedcom($GEDFILENAME), 'path'), "r");
+
+		$samplePlace = array();
+		$sampleDate = array();
+		$ambiguousDate = false;
 
 		// TODO - there are two problems with this next block of code.  Firstly, by
 		// checking the file in chunks (rather than complete records), we won't spot
@@ -579,9 +583,23 @@ if ($verify == "validate_form") {
 			if (!$l_headcleanup && need_head_cleanup()) $l_headcleanup = true;
 			if (!$l_macfilecleanup && need_macfile_cleanup()) $l_macfilecleanup = true;
 			if (!$l_lineendingscleanup && need_line_endings_cleanup()) $l_lineendingscleanup = true;
-			if (!$l_placecleanup && ($placesample = need_place_cleanup()) !== false) $l_placecleanup = true;
-			if (!$l_datecleanup && ($datesample = need_date_cleanup()) !== false) $l_datecleanup = true;
+//			if (!$l_placecleanup && ($placesample = need_place_cleanup()) !== false) $l_placecleanup = true;
+//			if (!$l_datecleanup && ($datesample = need_date_cleanup()) !== false) $l_datecleanup = true;
 			if (!$l_isansi && is_ansi()) $l_isansi = true;
+			$sample = need_place_cleanup();
+			if ($sample !== false) {
+				$l_placecleanup = true;
+				$samplePlace += $sample;
+			}
+			$sample = need_date_cleanup();
+			if ($sample !== false) {
+				$l_datecleanup = true;
+				if (isset($sample['choose'])) {
+					$ambiguousDate = true;
+					unset($sample['choose']);
+				}
+				$sampleDate += $sample;
+			}
 		}
 		fclose($fp);
 
@@ -629,7 +647,7 @@ if ($verify == "validate_form") {
 			if ($l_placecleanup) {
 				print "<tr><td class=\"optionbox wrap\" colspan=\"2\">";
 				print "\n<table class=\"facts_table\">";
-				print "<tr><td class=\"optionbox wrap\" colspan=\"2\">";
+				print "<tr><td class=\"optionbox wrap\" colspan=\"3\">";
 				print "<span class=\"error\">".$pgv_lang["place_cleanup_detected"]."</span>\n";
 				print "</td></tr>";
 				print "<tr><td class=\"descriptionbox wrap width20\">";
@@ -638,7 +656,12 @@ if ($verify == "validate_form") {
 				print "</td><td class=\"optionbox\" colspan=\"2\"><select name=\"cleanup_places\">\n";
 				print "<option value=\"YES\" selected=\"selected\">".$pgv_lang["yes"]."</option>\n<option value=\"NO\">".$pgv_lang["no"]."</option>\n</select>";
 				print "</td></tr>";
-				print "</td></tr><tr><td class=\"optionbox\" colspan=\"2\">".$pgv_lang["example_place"]."<br />".PrintReady(nl2br($placesample[0]));
+				print "</td></tr><tr><td class=\"optionbox\" colspan=\"3\">".$pgv_lang["example_place"];
+				$max = min(count($samplePlace), 5);		// Show only the first 5 examples
+				for ($i=0; $i<$max; $i++) {
+					print "<br />".PrintReady(nl2br($samplePlace[$i]));
+				}
+				print "</td></tr>";
 				print "</table>\n";
 				print "</td></tr>";
 			}
@@ -652,12 +675,16 @@ if ($verify == "validate_form") {
 				print $pgv_lang["date_format"];
 
 				print "</td><td class=\"optionbox\" colspan=\"2\">";
-				if (isset ($datesample["choose"])) {
+				if ($ambiguousDate) {
 					print "<select name=\"datetype\">\n";
 					print "<option value=\"1\">".$pgv_lang["day_before_month"]."</option>\n<option value=\"2\">".$pgv_lang["month_before_day"]."</option>\n</select>";
 				} else
 				print "<input type=\"hidden\" name=\"datetype\" value=\"3\" />";
-				print "</td></tr><tr><td class=\"optionbox\" colspan=\"2\">".$pgv_lang["example_date"]."<br />".$datesample[0];
+				print "</td></tr><tr><td class=\"optionbox\" colspan=\"2\">".$pgv_lang["example_date"];
+				$max = min(count($sampleDate), 5);		// Show only the first 5 examples
+				for ($i=0; $i<$max; $i++) {
+					print "<br />".$sampleDate[$i];
+				}
 				print "</td></tr>";
 				print "</table>\n";
 				print "</td></tr>";
