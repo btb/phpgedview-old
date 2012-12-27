@@ -19,10 +19,10 @@ The CHANGELOG files are:
 		CHANGELOG_help_text.en.txt
 		CHANGELOG_lang.en.txt
 
-+ $pgv_lang["text"] / means added
-- $pgv_lang["text"] / deleted
-* $pgv_lang["text"] / translation was changed
-# $pgv_lang["text"] / keyword was changed
++$pgv_lang["keyword"] / means added
+-$pgv_lang["keyword"] / deleted
+*$pgv_lang["keyword"] / text was changed
+#$pgv_lang["keyword"] / keyword was changed; Comment field will indicate the old keyword
 
 Additional codes, to help Translators, follow the date as follows:
 	A - Added or moved from another file
@@ -42,7 +42,7 @@ The above list of codes may be amended as new situations arise.
 
 VERSION 4.3.0
 
-?$pgv_lang["whatever"]								dd Monthname, year		Change	codes and comments
+?$pgv_lang["whatever"]								dd Monthname, year		Change codes and comments
 ----------------------------------------------------------------------------------------
 +$pgv_lang["clustrmaps_locations"]					22 Aug 2011				A
 -$pgv_lang["cookie_login_help"]						18 Jun 2011				D
@@ -54,7 +54,7 @@ VERSION 4.3.0
 
 VERSION 4.2.4
 
-?$pgv_lang["whatever"]								dd Monthname, year		Change	codes and comments
+?$pgv_lang["whatever"]								dd Monthname, year		Change codes and comments
 ----------------------------------------------------------------------------------------
 -$pgv_lang["show_basic"]							26 Dec 2010				D
 +$pgv_lang["ahnentafel_cremated_m"]					26 Dec 2010				A
@@ -97,7 +97,7 @@ VERSION 4.2.4
 
 VERSION 4.2.3
 
-?$pgv_lang["whatever"]								dd Monthname, year		Change	codes and comments
+?$pgv_lang["whatever"]								dd Monthname, year		Change codes and comments
 ----------------------------------------------------------------------------------------
 +$pgv_lang["missing_facts_report"]					22 Dec 2009				A
 +$pgv_lang["sources_to_events"]						22 Dec 2009				A
@@ -215,7 +215,7 @@ VERSION 4.2.3
 
 VERSION 4.2.2
 
-?$pgv_lang["whatever"]								dd Monthname, year		Change	codes and comments
+?$pgv_lang["whatever"]								dd Monthname, year		Change codes and comments
 ----------------------------------------------------------------------------------------
 *$pgv_lang["ahnentafel_on"]							21 Jul 2009				W has to work with dates like ABT, BET-AND ...
 +$pgv_lang["cemetery_report"]						20 Jul 2009				A
@@ -274,7 +274,7 @@ VERSION 4.2.2
 
 VERSION 4.2.1
 
-?$pgv_lang["whatever"]								dd Monthname, year		Change	codes and comments
+?$pgv_lang["whatever"]								dd Monthname, year		Change codes and comments
 ----------------------------------------------------------------------------------------
 +$pgv_lang["cemetery_report"]						1 Apr 2009				A
 -$pgv_lang["autocomplete"]							27 Mar 2009				D
@@ -333,7 +333,7 @@ VERSION 4.2.1
 
 VERSION 4.2.0
 
-?$pgv_lang["whatever"]								dd Monthname, year		Change	codes and comments
+?$pgv_lang["whatever"]								dd Monthname, year		Change codes and comments
 ----------------------------------------------------------------------------------------
 *$pgv_lang["welcome_page"]							29 Jan 2009				C
 +$pgv_lang["males"]									29 Jan 2009				A

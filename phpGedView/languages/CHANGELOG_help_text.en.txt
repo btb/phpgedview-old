@@ -19,10 +19,10 @@ The CHANGELOG files are:
 		CHANGELOG_help_text.en.txt
 		CHANGELOG_lang.en.txt
 
-+ $pgv_lang["text"] / means added
-- $pgv_lang["text"] / deleted
-* $pgv_lang["text"] / translation was changed
-# $pgv_lang["text"] / keyword was changed
++$pgv_lang["keyword"] / means added
+-$pgv_lang["keyword"] / deleted
+*$pgv_lang["keyword"] / text was changed
+#$pgv_lang["keyword"] / keyword was changed; Comment field will indicate the old keyword
 
 Additional codes, to help Translators, follow the date as follows:
 	A - Added or moved from another file
@@ -41,14 +41,19 @@ The above list of codes may be amended as new situations arise.
 
 VERSION 4.3.0
 
-?$pgv_lang["whatever"]								dd Monthname, year		Change	codes and comments
+?$pgv_lang["whatever"]								dd Monthname, year		Change codes and comments
 ----------------------------------------------------------------------------------------
+*$pgv_lang["help_managesites"]						27 Dec 2012				W
+*$pgv_lang["help_remotesites"]						27 Dec 2012				w
++$pgv_lang["help_timedban"]							27 Dec 2012				A
+*$pgv_lang["help_banning"]							27 Dec 2012				A
+*$pgv_lang["help_manual_search_engines"]			27 Dec 2012				w
 -$pgv_lang["remember_me_help"]						18 Jun 2011				D
 
 
 VERSION 4.2.4
 
-?$pgv_lang["whatever"]								dd Monthname, year		Change	codes and comments
+?$pgv_lang["whatever"]								dd Monthname, year		Change codes and comments
 ----------------------------------------------------------------------------------------
 -$pgv_lang["accesskey_viewing_advice_help"]			08 Nov 2010				D
 *$pgv_lang["index_common_given_names_help"]			09 Sep 2010				W
@@ -67,7 +72,7 @@ VERSION 4.2.4
 
 VERSION 4.2.3
 
-?$pgv_lang["whatever"]								dd Monthname, year		Change	codes and comments
+?$pgv_lang["whatever"]								dd Monthname, year		Change codes and comments
 ----------------------------------------------------------------------------------------
 *$pgv_lang["edit_add_GEDFact_ASSISTED_help"]		06 Dec 2009				WC
 *$pgv_lang["edit_add_GEDFact_ASSISTED_help"]		03 Dec 2009				W
@@ -78,7 +83,7 @@ VERSION 4.2.3
 
 VERSION 4.2.2
 
-?$pgv_lang["whatever"]								dd Monthname, year		Change	codes and comments
+?$pgv_lang["whatever"]								dd Monthname, year		Change codes and comments
 ----------------------------------------------------------------------------------------
 +$pgv_lang["file_type_help"]						09 Jul 2009				A
 +$pgv_lang["apply_privacy_help"]					09 Jul 2009				A
