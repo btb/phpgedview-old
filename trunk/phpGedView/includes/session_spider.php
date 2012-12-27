@@ -71,14 +71,27 @@ function gen_spider_session_name($bot_name, $bot_language) {
 	return($outname);
 }
 
+// Clean up list of blocked IP addresses with expired timers
+try {
+	$currentTime = date('Y.m.d@H:i');
+	$sql="SELECT ip_address FROM {$TBLPREFIX}ip_address WHERE category='timedban' AND comment < '{$currentTime}'";
+	$expiredBan=PGV_DB::prepare($sql)->fetchOneColumn();
+	foreach ($expiredBan as $address) {
+		PGV_DB::prepare(
+			"DELETE FROM {$TBLPREFIX}ip_address WHERE category='timedban' AND ip_address=?"
+		)->execute(array($address));
+	}
+} catch (PDOException $ex) {
+	// Initial installation?  Site Down?  Fail silently.
+}
 
-// Block sites by IP address.
+// Block sites by IP address, either permanently or until a specified date & time.
 // Convert user-friendly such as '123.45.*.*' into SQL '%' wildcards.
-// Note: you may need to blcok IPv6 addresses as well as IPv4 ones.
+// Note: you may need to block IPv6 addresses as well as IPv4 ones.
 try {
 	$banned_ip=PGV_DB::prepareLimit(
 		"SELECT ip_address, comment FROM {$TBLPREFIX}ip_address".
-		" WHERE category='banned' AND ? LIKE REPLACE(ip_address, '*', '%')",
+		" WHERE (category='banned' OR category='timedban') AND ? LIKE REPLACE(ip_address, '*', '%')",
 		1
 	)->execute(array($_SERVER['REMOTE_ADDR']))->fetchOneRow();
 	if ($banned_ip) {
@@ -207,9 +220,18 @@ if ($quitReason != "") {
 		//-- load db specific functions
 		require_once PGV_ROOT.'includes/functions/functions_db.php';
 		require_once PGV_ROOT.'includes/authentication.php';      // -- load the authentication system
-		AddToLog("MSG>{$quitReason}; script terminated.");
+		AddToLog("MSG>{$quitReason}; script terminated; IP address blocked for 1 hour.");
 		AddToLog("UA>{$ua}<");
 		AddToLog("URI>{$_SERVER["REQUEST_URI"]}<");
+		//-- Block further access from this IP address for the next hour
+		$address = $_SERVER['REMOTE_ADDR'];
+		$comment = date('Y.m.d@H:i', time()+60*60);
+		PGV_DB::prepare(
+			"DELETE FROM {$TBLPREFIX}ip_address WHERE ip_address=? AND category='timedban'"
+		)->execute(array($address));
+		PGV_DB::prepare(
+			"INSERT INTO {$TBLPREFIX}ip_address (ip_address, category, comment) VALUES (?, ?, ?)"
+		)->execute(array($address, 'timedban', $comment));
 	}
 	header("HTTP/1.0 403 Forbidden");
 	print "Hackers are not welcome here.";

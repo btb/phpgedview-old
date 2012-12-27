@@ -9,6 +9,7 @@
 =====================================================================
 
 Version 4.3.0
+ - Added: Temporary (timed) ban of hacker IPs (canajun2eh)
  - Added: Support for date formats like 2012-12-24 and 20121224 when importing GEDCOM (canajun2eh)
  - Changed: Show up to 5 errors in Date or Place when importing GEDCOM (canajun2eh)
  - Changed: Country code for South Sudan changed from SSD to RSS (canajun2eh)

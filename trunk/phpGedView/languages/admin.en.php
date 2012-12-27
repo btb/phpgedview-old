@@ -3,7 +3,7 @@
  * English texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2012  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -30,6 +30,8 @@ if (!defined('PGV_PHPGEDVIEW')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
+$pgv_lang["label_timedban_servers"]	= "Timed Access Denial by IP";
+$pgv_lang["enter_banexpiry"]		= "Enter expiry date & time of access denial like this:<br />2012.12.31@23:59";
 
 $pgv_lang["analytics_config"]		= "Web Analytics";
 $pgv_lang["google_analytics"]		= "Google Analytics";
@@ -324,7 +326,7 @@ $pgv_lang["invalid_dates"]						= "Detected invalid date formats, on cleanup the
 $pgv_lang["BOM_detected"]						= "A Byte Order Mark (BOM) was detected at the beginning of the file. On cleanup, this special code will be removed.";
 $pgv_lang["invalid_header"]						= "Detected lines before the GEDCOM header <b>0&nbsp;HEAD</b>.  On cleanup, these lines will be removed.";
 $pgv_lang["label_added_servers"]				= "Remote Servers";
-$pgv_lang["label_banned_servers"]				= "Ban Sites by IP";
+$pgv_lang["label_banned_servers"]				= "Access Denial by IP";
 $pgv_lang["label_families"]						= "Families";
 $pgv_lang["label_gedcom_id2"]					= "Database ID:";
 $pgv_lang["label_individuals"]					= "Individuals";

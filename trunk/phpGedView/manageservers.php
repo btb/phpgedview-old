@@ -5,7 +5,7 @@
 *  Allow a user the ability to manage servers i.e. allowing, banning, deleting
 *
 * phpGedView: Genealogy Viewer
-* Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+* Copyright (C) 2002 to 2012  PGV Development Team.  All rights reserved.
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -69,6 +69,12 @@ if (!empty($deleteBanned)) { // A "remove banned IP" button was pushed
 	$address = $deleteBanned;
 }
 
+$deleteTimedBan = safe_POST('deleteTimedBan');
+if (!empty($deleteTimedBan)) { // A "remove timed banned IP" button was pushed
+	$action = 'deleteTimedBan';
+	$address = $deleteTimedBan;
+}
+
 $deleteSearch = safe_POST('deleteSearch');
 if (!empty($deleteSearch)) { // A "remove search engine IP" button was pushed
 	$action = 'deleteSearch';
@@ -95,7 +101,7 @@ function validIP($address) {
 	return true;
 }
 
-if ($action=='addBanned' || $action=='addSearch' || $action=='deleteBanned' || $action=='deleteSearch') {
+if ($action=='addBanned' || $action=='addTimedBan' || $action=='addSearch' || $action=='deleteBanned' || $action=='deleteTimedBan' || $action=='deleteSearch') {
 	if (validIP($address)) {
 		// Even if we are adding a new record, we must delete the existing one first.
 		PGV_DB::prepare(
@@ -106,6 +112,11 @@ if ($action=='addBanned' || $action=='addSearch' || $action=='deleteBanned' || $
 				"INSERT INTO {$TBLPREFIX}ip_address (ip_address, category, comment) VALUES (?, ?, ?)"
 			)->execute(array($address, 'banned', $comment));
 		}
+		if ($action=='addTimedBan') {
+			PGV_DB::prepare(
+				"INSERT INTO {$TBLPREFIX}ip_address (ip_address, category, comment) VALUES (?, ?, ?)"
+			)->execute(array($address, 'timedban', $comment));
+		}
 		if ($action=='addSearch') {
 			PGV_DB::prepare(
 				"INSERT INTO {$TBLPREFIX}ip_address (ip_address, category, comment) VALUES (?, ?, ?)"
@@ -113,6 +124,9 @@ if ($action=='addBanned' || $action=='addSearch' || $action=='deleteBanned' || $
 		}
 	} else {
 		if ($action=='addBanned') {
+			$errorBanned=$pgv_lang['error_ban_server'];
+		}
+		if ($action=='addTimedBan') {
 			$errorBanned=$pgv_lang['error_ban_server'];
 		}
 		if ($action=='addSearch') {
@@ -306,6 +320,55 @@ function showSite(siteID) {
 	echo '</td><td valign="top"><span dir="ltr"><input type="text" id="txtAddIp" name="address" size="16"  value="', empty($errorBanned) ? '':$address, '" /></span></td>';
 	echo '<td><input type="text" id="txtAddComment" name="comment" size="60"  value="" />';
 	echo '<br />', $pgv_lang["enter_comment"], '</td></tr>';
+
+	if (!empty($errorBanned)) {
+		print '<tr><td colspan="2"><span class="warning">';
+		print $errorBanned;
+		print '</span></td></tr>';
+		$errorBanned = '';
+	}
+	echo '</table></td></tr></table></form></td></tr></table>';
+?>
+
+<!-- Timed Ban IP address table -->
+<table class="width66" align="center">
+<tr>
+	<td>
+	<form name="timedbanIPform" action="manageservers.php" method="post">
+	<table class="width100" align="center">
+		<tr>
+		<td class="facts_label">
+			<?php print_help_link("help_timedban", "qm"); ?>
+			<b><?php echo $pgv_lang["label_timedban_servers"];?></b>
+		</td>
+		</tr>
+		<tr>
+		<td class="facts_value">
+			<table align="center">
+<?php
+	$sql="SELECT ip_address, comment FROM {$TBLPREFIX}ip_address WHERE category='timedban' ORDER BY comment";
+	$timedban=PGV_DB::prepare($sql)->fetchAssoc();
+	foreach ($timedban as $ip_address=>$ip_comment) {
+		echo '<tr><td>';
+			echo '<button name="deleteTimedBan" value="', $ip_address, '" type="submit">';
+			if (isset($PGV_IMAGES["remove"]["other"])) {
+				echo '<img src="', $PGV_IMAGE_DIR, '/', $PGV_IMAGES["remove"]["other"], '" alt="', $pgv_lang['remove'], '">';
+			} else {
+				echo $pgv_lang["remove"];
+			}
+			echo '</button>';
+		echo '</td><td><span dir="ltr"><input type="text" name="address', ++$index, '" size="16" value="', $ip_address, '" readonly /></span></td>';
+		echo '<td><input type="text" name="comment', ++$index, '" size="60" value="', $ip_comment, '" readonly /></td></tr>';
+	}
+	echo '<tr><td valign="top"><input name="action" type="hidden" value="addTimedBan"/>';
+	if (isset($PGV_IMAGES["add"]["other"])) {
+		echo '<input type="image" src="', $PGV_IMAGE_DIR, '/', $PGV_IMAGES["add"]["other"], '" alt="', $pgv_lang['add'], '">';
+	} else {
+		echo '<input type="submit" value="', $pgv_lang['add'], '" />';
+	}
+	echo '</td><td valign="top"><span dir="ltr"><input type="text" id="txtAddIp" name="address" size="16"  value="', empty($errorBanned) ? '':$address, '" /></span></td>';
+	echo '<td><input type="text" id="txtAddComment" name="comment" size="60"  value="" />';
+	echo '<br />', $pgv_lang["enter_banexpiry"], '</td></tr>';
 
 	if (!empty($errorBanned)) {
 		print '<tr><td colspan="2"><span class="warning">';

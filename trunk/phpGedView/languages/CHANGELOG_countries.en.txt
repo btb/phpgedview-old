@@ -19,10 +19,10 @@ The CHANGELOG files are:
 		CHANGELOG_help_text.en.txt
 		CHANGELOG_lang.en.txt
 
-+ $pgv_lang["text"] / means added
-- $pgv_lang["text"] / deleted
-* $pgv_lang["text"] / translation was changed
-# $pgv_lang["text"] / keyword was changed
++$pgv_lang["keyword"] / means added
+-$pgv_lang["keyword"] / deleted
+*$pgv_lang["keyword"] / text was changed
+#$pgv_lang["keyword"] / keyword was changed; Comment field will indicate the old keyword
 
 Additional codes, to help Translators, follow the date as follows:
 	A - Added or moved from another file
