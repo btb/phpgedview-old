@@ -10,7 +10,7 @@
  * Other possible options are to use LDAP for authentication.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2012  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2013  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -329,7 +329,7 @@ function AddToLog($LogString, $savelangerror=false) {
 //----------------------------------- AddToSearchLog
 //-- requires a string to add into the searchlog-file
 function AddToSearchLog($LogString, $allgeds) {
-	global $INDEX_DIRECTORY;
+	global $INDEX_DIRECTORY, $SEARCHLOG_CREATE;
 
 	if (empty($allgeds))
 		return;

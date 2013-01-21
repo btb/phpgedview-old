@@ -3,7 +3,7 @@
  * Startup and session logic for handling Bots and Spiders
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2008 to 2012  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2008 to 2013  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -177,7 +177,7 @@ while (true) {
 	}
 
 	// check for improperly formed URI
-	if (strpos($requestURI, '//') !== false) {
+	if (strpos($requestURI, '//') !== false || strpos($requestURI, '&amp;') !== false) {
 		$quitReason = 'Improperly formed URI';
 		break;
 	}
@@ -268,6 +268,7 @@ $real_browsers = array(
 // Here we list the search engines whose accesses we don't need to log.
 // This avoids cluttering the log files with useless entries
 $known_spiders = array(
+	'UP.Browser',
 	'Seznam',
 	'NetcraftSurveyAgent',
 	'Ezooms',
