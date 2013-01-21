@@ -3,7 +3,7 @@
  * Module system for adding features to phpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2013  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -52,7 +52,28 @@ if(!isset($mod)) {
 	if (isset($name)) $mod = $name;
 }
 
-$ua = isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : "";
+function logHacker($quitReason) {
+	global $TBLPREFIX;
+	if (empty($quitReason)) return;		// Nothing to log
+	// Log the hack attempt
+	$ua = isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : "";
+	AddToLog("MSG>{$quitReason}; script terminated; IP address blocked for 1 hour.");
+	AddToLog("UA>{$ua}<");
+	AddToLog("URI>{$_SERVER["REQUEST_URI"]}<");
+	//-- Block further access from this IP address for the next hour
+	$address = $_SERVER['REMOTE_ADDR'];
+	$comment = date('Y.m.d@H:i', time()+60*60);
+	PGV_DB::prepare(
+		"DELETE FROM {$TBLPREFIX}ip_address WHERE ip_address=? AND category='timedban'"
+	)->execute(array($address));
+	PGV_DB::prepare(
+		"INSERT INTO {$TBLPREFIX}ip_address (ip_address, category, comment) VALUES (?, ?, ?)"
+	)->execute(array($address, 'timedban', $comment));
+	header('HTTP/1.1 403 Access Denied');
+	print "Hackers are not welcome here.";
+	exit;
+}
+
 $log_msg = '';
 if ($mod == '' || !is_dir("modules/{$mod}")) {
 	$log_msg = 'Attempt to run non-existent module';	// No matching sub-directory
@@ -63,14 +84,7 @@ if ($mod == '' || !is_dir("modules/{$mod}")) {
 } else {
 	$log_msg = 'Attempt to run non-existent module';	// No matching description
 }
-if (!empty($log_msg)) {
-	AddToLog("MSG>{$log_msg}; script terminated");
-	AddToLog("UA>{$ua}<");
-	AddToLog("URI>{$_SERVER["REQUEST_URI"]}<");
-	header('HTTP/1.1 403 Access Denied');
-	print "Hackers are not welcome here.";
-	exit;
-}
+logHacker($log_msg);		// Log the hack attempt, if any
 switch($modinfo['Module']['type']) {
 	case PGV_MOD_SIMPLE:
 		if (isset($_REQUEST['pgvaction'])) $oldAction = $_REQUEST['pgvaction'];
@@ -250,14 +264,7 @@ switch($modinfo['Module']['type']) {
 		print_footer();
 		break;
 }
-if (!empty($log_msg)) {
-	AddToLog("MSG>{$log_msg}; script terminated");
-	AddToLog("UA>{$ua}<");
-	AddToLog("URI>{$_SERVER["REQUEST_URI"]}<");
-	header('HTTP/1.1 403 Access Denied');
-	print "Hackers are not welcome here.";
-	exit;
-}
+logHacker($log_msg);		// Log the hack attempt, if any
 
 function mod_print_header($title, $head='', $use_alternate_styles=true) {
 	ob_start();
