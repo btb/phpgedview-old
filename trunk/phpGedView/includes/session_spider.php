@@ -118,6 +118,9 @@ $SEARCH_SPIDER = false;		// set empty at start
 $ua = isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : "";
 
 $worms = array(
+	'Baidu',
+	'rarely used',
+	'curl',
 	'Mail.RU',
 	'Linguee',
 	'Aboundex',
@@ -177,7 +180,7 @@ while (true) {
 	}
 
 	// check for improperly formed URI
-	if (strpos($requestURI, '//') !== false || strpos($requestURI, '&amp;') !== false) {
+	if (strpos($requestURI, '//') !== false/* || strpos($requestURI, '&amp;) !== false*/) {
 		$quitReason = 'Improperly formed URI';
 		break;
 	}
