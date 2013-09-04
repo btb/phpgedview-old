@@ -9,6 +9,8 @@
 =====================================================================
 
 Version 4.3.0
+ - Deleted: Files with Hebrew names in places/isr directory (canajun2eh)
+ - Changed: Removed accents from several file names in images/flags directory (canajun2eh)
  - Fixed: [ 3527034 ] error autocomplete places (dyspd)
  - Added: Temporary (timed) ban of hacker IPs (canajun2eh)
  - Added: Support for date formats like 2012-12-24 and 20121224 when importing GEDCOM (canajun2eh)
