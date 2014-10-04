@@ -9,6 +9,8 @@
 =====================================================================
 
 Version 4.3.0
+ - Fixed: Errors in indilist.php caused by PHP 5.4 incompatibility (canajun2eh)
+ - Added: Additions to list of bad bots (canajun2eh)
  - Deleted: Files with Hebrew names in places/isr directory (canajun2eh)
  - Changed: Removed accents from several file names in images/flags directory (canajun2eh)
  - Fixed: [ 3527034 ] error autocomplete places (dyspd)
