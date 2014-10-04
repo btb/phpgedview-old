@@ -6,7 +6,7 @@
  * used on the indilist, famlist, find, and search pages.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2014  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -70,7 +70,7 @@ function print_indi_table($datalist, $legend="", $option="") {
 	if ($legend == "") $legend = $pgv_lang["individuals"];
 	$legend = "<img src=\"".$PGV_IMAGE_DIR."/".$PGV_IMAGES["indis"]["small"]."\" alt=\"\" align=\"middle\" /> ".$legend;
 	echo "<fieldset><legend>", $legend, "</legend>";
-	$table_id = "ID".floor(microtime()*1000000); // sorttable requires a unique ID
+	$table_id = "ID".intval(microtime()*1000000); // sorttable requires a unique ID
 	echo '<div id="', $table_id, '-table" class="center">';
 	//-- filter buttons
 	echo "<button type=\"button\" class=\"SEX_M\" title=\"", $pgv_lang["button_SEX_M"], "\" >";
@@ -226,7 +226,7 @@ function print_indi_table($datalist, $legend="", $option="") {
 				}
 			}
 			if ($birth_dates[0]->gregorianYear()>=1550 && $birth_dates[0]->gregorianYear()<2030) {
-				$birt_by_decade[floor($birth_dates[0]->gregorianYear()/10)*10] .= $person->getSex();
+				$birt_by_decade[intval($birth_dates[0]->gregorianYear()/10)*10] .= $person->getSex();
 			}
 		} else {
 			$birth_date=$person->getEstimatedBirthDate();
@@ -292,7 +292,7 @@ function print_indi_table($datalist, $legend="", $option="") {
 				}
 			}
 			if ($death_dates[0]->gregorianYear()>=1550 && $death_dates[0]->gregorianYear()<2030) {
-				$deat_by_decade[floor($death_dates[0]->gregorianYear()/10)*10] .= $person->getSex();
+				$deat_by_decade[intval($death_dates[0]->gregorianYear()/10)*10] .= $person->getSex();
 			}
 		} else {
 			$death_date=$person->getEstimatedDeathDate();
@@ -461,7 +461,7 @@ function print_fam_table($datalist, $legend="", $option="") {
 	if ($legend == "") $legend = $pgv_lang["families"];
 	$legend = "<img src=\"".$PGV_IMAGE_DIR."/".$PGV_IMAGES["sfamily"]["small"]."\" alt=\"\" align=\"middle\" /> ".$legend;
 	echo "<fieldset><legend>", $legend, "</legend>";
-	$table_id = "ID".floor(microtime()*1000000); // sorttable requires a unique ID
+	$table_id = "ID".intval(microtime()*1000000); // sorttable requires a unique ID
 	echo '<div id="', $table_id, '-table" class="center">';
 	//-- filter buttons
 	echo "<button type=\"button\" class=\"DEAT_N\" title=\"", $pgv_lang["button_DEAT_N"], "\" >";
@@ -580,7 +580,7 @@ function print_fam_table($datalist, $legend="", $option="") {
 		$hdate=$husb->getBirthDate();
 		if ($hdate->isOK()) {
 			if ($hdate->gregorianYear()>=1550 && $hdate->gregorianYear()<2030) {
-				$birt_by_decade[floor($hdate->gregorianYear()/10)*10] .= $husb->getSex();
+				$birt_by_decade[intval($hdate->gregorianYear()/10)*10] .= $husb->getSex();
 			}
 			if ($mdate->isOK()) {
 				$hage=GedcomDate::GetAgeYears($hdate, $mdate);
@@ -629,7 +629,7 @@ function print_fam_table($datalist, $legend="", $option="") {
 		$wdate=$wife->getBirthDate();
 		if ($wdate->isOK()) {
 			if ($wdate->gregorianYear()>=1550 && $wdate->gregorianYear()<2030) {
-				$birt_by_decade[floor($wdate->gregorianYear()/10)*10] .= $wife->getSex();
+				$birt_by_decade[intval($wdate->gregorianYear()/10)*10] .= $wife->getSex();
 			}
 			if ($mdate->isOK()) {
 				$wage=GedcomDate::GetAgeYears($wdate, $mdate);
@@ -654,7 +654,7 @@ function print_fam_table($datalist, $legend="", $option="") {
 				}
 			}
 			if ($marriage_dates[0]->gregorianYear()>=1550 && $marriage_dates[0]->gregorianYear()<2030) {
-				$marr_by_decade[floor($marriage_dates[0]->gregorianYear()/10)*10] .= $husb->getSex().$wife->getSex();
+				$marr_by_decade[intval($marriage_dates[0]->gregorianYear()/10)*10] .= $husb->getSex().$wife->getSex();
 			}
 		} else if (get_sub_record(1, "1 _NMR", $family->getGedcomRecord())) {
 			// Allow special processing for different languages
@@ -833,7 +833,7 @@ function print_sour_table($datalist, $legend=null) {
 		echo $pgv_lang['sources'];
 	}
 	echo '</legend>';
-	$table_id = "ID".floor(microtime()*1000000); // sorttable requires a unique ID
+	$table_id = "ID".intval(microtime()*1000000); // sorttable requires a unique ID
 	//-- table header
 	echo '<table id="', $table_id, '" class="sortable list_table center"><tr><td></td>';
 	if ($SHOW_ID_NUMBERS) {
@@ -974,7 +974,7 @@ function print_note_table($datalist, $legend=null) {
 		echo $pgv_lang['shared_notes'];
 	}
 	echo '</legend>';
-	$table_id = "ID".floor(microtime()*1000000); // sorttable requires a unique ID
+	$table_id = "ID".intval(microtime()*1000000); // sorttable requires a unique ID
 	//-- table header
 	echo '<table id="', $table_id, '" class="sortable list_table center" ><tr><td></td>';
 	if ($SHOW_ID_NUMBERS) {
@@ -1058,7 +1058,7 @@ function print_repo_table($repos, $legend='') {
 		echo $pgv_lang['repos_found'];
 	}
 	echo '</legend>';
-	$table_id = "ID".floor(microtime()*1000000); // sorttable requires a unique ID
+	$table_id = "ID".intval(microtime()*1000000); // sorttable requires a unique ID
 	//-- table header
 	echo '<table id="', $table_id, '" class="sortable list_table center"><tr><td></td>';
 	if ($SHOW_ID_NUMBERS) {
@@ -1115,7 +1115,7 @@ function print_media_table($datalist, $legend="") {
 	if ($legend == "") $legend = $pgv_lang["media"];
 	$legend = "<img src=\"".$PGV_IMAGE_DIR."/".$PGV_IMAGES["media"]["small"]."\" alt=\"\" align=\"middle\" /> ".$legend;
 	echo "<fieldset><legend>", $legend, "</legend>";
-	$table_id = "ID".floor(microtime()*1000000); // sorttable requires a unique ID
+	$table_id = "ID".intval(microtime()*1000000); // sorttable requires a unique ID
 	//-- table header
 	echo "<table width=\"100%\" id=\"", $table_id, "\" class=\"sortable list_table center\">";
 	echo "<tr>";
@@ -1209,7 +1209,7 @@ function print_surn_table($datalist, $target="INDI", $listFormat="") {
 	// Requested style is "cloud", where the surnames are a list of names (with links),
 	// and the font size used for each name depends on the number of occurrences of this name
 	// in the database - generally known as a 'tag cloud'.
-	$table_id = "ID".floor(microtime()*1000000); // sorttable requires a unique ID
+	$table_id = "ID".intval(microtime()*1000000); // sorttable requires a unique ID
 	//-- table header
 	echo "<table id=\"", $table_id, "\" class=\"tag_cloud_table\">";
 	//-- table body
@@ -1252,7 +1252,7 @@ function print_surn_table($datalist, $target="INDI", $listFormat="") {
 
 	// Requested style isn't "cloud".  In this case, we'll produce a sortable list.
 	require_once PGV_ROOT.'js/sorttable.js.htm';
-	$table_id = "ID".floor(microtime()*1000000); // sorttable requires a unique ID
+	$table_id = "ID".intval(microtime()*1000000); // sorttable requires a unique ID
 	//-- table header
 	echo "<table id=\"", $table_id, "\" class=\"sortable list_table center\">";
 	echo "<tr>";
@@ -1303,7 +1303,7 @@ function format_surname_table($surnames, $type) {
 	global $pgv_lang, $factarray, $GEDCOM;
 
 	require_once PGV_ROOT.'js/sorttable.js.htm';
-	$table_id ='ID'.floor(microtime()*1000000); // sorttable requires a unique ID
+	$table_id ='ID'.intval(microtime()*1000000); // sorttable requires a unique ID
 	$html='<table id="'.$table_id.'" class="sortable list_table center">';
 	$html.='<tr><th></th>';
 	$html.='<th class="list_label"><a href="javascript:;" onclick="sortByOtherCol(this, 1)">'.$factarray['SURN'].'</a></th>';
@@ -1404,7 +1404,7 @@ function format_surname_tagcloud($surnames, $type, $totals) {
 	// Requested style is "cloud", where the surnames are a list of names (with links),
 	// and the font size used for each name depends on the number of occurrences of this name
 	// in the database - generally known as a 'tag cloud'.
-	$table_id = "ID".floor(microtime()*1000000); // sorttable requires a unique ID
+	$table_id = "ID".intval(microtime()*1000000); // sorttable requires a unique ID
 	//-- table header
 	$html='<table id="'.$table_id.'" class="tag_cloud_table"><tr><td class="tag_cloud">';
 	//-- Calculate range for font sizing
@@ -1520,7 +1520,7 @@ function print_changes_table($datalist, $showChange=true, $total='', $show_pgvu=
 	require_once PGV_ROOT.'includes/classes/class_gedcomrecord.php';
 	if (empty($total)) $total = $pgv_lang["total_changes"];
 	$indi = false;
-	$table_id = "ID".floor(microtime()*1000000); // sorttable requires a unique ID
+	$table_id = "ID".intval(microtime()*1000000); // sorttable requires a unique ID
 	//-- table header
 	echo "<table id=\"", $table_id, "\" class=\"sortable list_table center\">";
 	echo "<tr>";
@@ -1631,7 +1631,7 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 	global $pgv_lang, $factarray, $TEXT_DIRECTION, $SERVER_URL;
 	require_once PGV_ROOT.'js/sorttable.js.htm';
 	require_once PGV_ROOT.'includes/classes/class_gedcomrecord.php';
-	$table_id = "ID".floor(microtime()*1000000); // sorttable requires a unique ID
+	$table_id = "ID".intval(microtime()*1000000); // sorttable requires a unique ID
 
 	// Did we have any output?  Did we skip anything?
 	$output = 0;
@@ -1968,11 +1968,11 @@ function print_chart_by_age($data, $title) {
 	$chart_url .= "|1:||".sprintf("%1.0f", $vmax/$count*100)." %"; // y axis
 	$chart_url .= "|2:||";
 	$step = $vmax;
-	for ($d=floor($vmax); $d>0; $d--) {
+	for ($d=intval($vmax); $d>0; $d--) {
 		if ($vmax<($d*10+1) && fmod($vmax, $d)==0) $step = $d;
 	}
-	if ($step==floor($vmax)) {
-		for ($d=floor($vmax-1); $d>0; $d--) {
+	if ($step==intval($vmax)) {
+		for ($d=intval($vmax-1); $d>0; $d--) {
 			if (($vmax-1)<($d*10+1) && fmod(($vmax-1), $d)==0) $step = $d;
 		}
 	}
@@ -1984,11 +1984,11 @@ function print_chart_by_age($data, $title) {
 	$chart_url .= "&amp;chd=s:"; // data : simple encoding from A=0 to 9=61
 	$CHART_ENCODING61 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 	for ($age=0; $age<=$agemax; $age++) {
-		$chart_url .= $CHART_ENCODING61[floor(substr_count($data[$age], "M")*61/$vmax)];
+		$chart_url .= $CHART_ENCODING61[intval(substr_count($data[$age], "M")*61/$vmax)];
 	}
 	$chart_url .= ",";
 	for ($age=0; $age<=$agemax; $age++) {
-		$chart_url .= $CHART_ENCODING61[floor(substr_count($data[$age], "F")*61/$vmax)];
+		$chart_url .= $CHART_ENCODING61[intval(substr_count($data[$age], "F")*61/$vmax)];
 	}
 	echo "<img src=\"", $chart_url, "\" alt=\"", $title, "\" title=\"", $title, "\" class=\"gchart\" />";
 }
@@ -2036,11 +2036,11 @@ function print_chart_by_decade($data, $title) {
 	$chart_url .= "|1:||".sprintf("%1.0f", $vmax/$count*100)." %"; // y axis
 	$chart_url .= "|2:||";
 	$step = $vmax;
-	for ($d=floor($vmax); $d>0; $d--) {
+	for ($d=intval($vmax); $d>0; $d--) {
 		if ($vmax<($d*10+1) && fmod($vmax, $d)==0) $step = $d;
 	}
-	if ($step==floor($vmax)) {
-		for ($d=floor($vmax-1); $d>0; $d--) {
+	if ($step==intval($vmax)) {
+		for ($d=intval($vmax-1); $d>0; $d--) {
 			if (($vmax-1)<($d*10+1) && fmod(($vmax-1), $d)==0) $step = $d;
 		}
 	}
@@ -2052,11 +2052,11 @@ function print_chart_by_decade($data, $title) {
 	$chart_url .= "&amp;chd=s:"; // data : simple encoding from A=0 to 9=61
 	$CHART_ENCODING61 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 	for ($y=1570; $y<2030; $y+=10) {
-		$chart_url .= $CHART_ENCODING61[floor(substr_count($data[$y], "M")*61/$vmax)];
+		$chart_url .= $CHART_ENCODING61[intval(substr_count($data[$y], "M")*61/$vmax)];
 	}
 	$chart_url .= ",";
 	for ($y=1570; $y<2030; $y+=10) {
-		$chart_url .= $CHART_ENCODING61[floor(substr_count($data[$y], "F")*61/$vmax)];
+		$chart_url .= $CHART_ENCODING61[intval(substr_count($data[$y], "F")*61/$vmax)];
 	}
 	echo "<img src=\"", $chart_url, "\" alt=\"", $title, "\" title=\"", $title, "\" class=\"gchart\" />";
 }
