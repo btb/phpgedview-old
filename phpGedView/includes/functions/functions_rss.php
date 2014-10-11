@@ -3,7 +3,7 @@
 * Various functions used to generate the PhpGedView RSS feed.
 *
 * phpGedView: Genealogy Viewer
-* Copyright (C) 2002 to 2009 PGV Development Team.  All rights reserved.
+* Copyright (C) 2002 to 2014 PGV Development Team.  All rights reserved.
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -468,8 +468,8 @@ function getRandomMedia() {
 			$value = array_rand($medialist);
 			$links = $medialist[$value]["LINKS"];
 			$disp = ($medialist[$value]["EXISTS"]>0) && $medialist[$value]["LINKED"] && $medialist[$value]["CHANGE"]!="delete" ;
-			$disp &= displayDetailsById($value["XREF"], "OBJE");
-			$disp &= !FactViewRestricted($value["XREF"], $value["GEDCOM"]);
+			$disp &= displayDetailsById($medialist[$value]["XREF"], "OBJE");
+			$disp &= !FactViewRestricted($medialist[$value]["XREF"], $medialist[$value]["GEDCOM"]);
 
 			$isExternal = isFileExternal($medialist[$value]["FILE"]);
 
