@@ -5,7 +5,7 @@
 * Various printing functions used by all scripts and included by the functions.php file.
 *
 * phpGedView: Genealogy Viewer
-* Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
+* Copyright (C) 2002 to 2014  PGV Development Team.  All rights reserved.
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -721,15 +721,18 @@ function linkWebAnalytics() {
 	if (defined('PGV_PIWIK_URL') && defined('PGV_PIWIK_SITE')) {
 		$result .= '<!-- Piwik -->'."\n";
 		$result .= '<script type="text/javascript">'."\n";
-		$result .= 'var pkBaseURL = (("https:" == document.location.protocol) ? "https://'.PGV_PIWIK_URL.'/" : "http://'.PGV_PIWIK_URL.'/");'."\n";
-		$result .= 'document.write(unescape("%3Cscript src=\'" + pkBaseURL + "piwik.js\' type=\'text/javascript\'%3E%3C/script%3E"));'."\n";
-		$result .= '</script><script type="text/javascript">'."\n";
-		$result .= 'try {'."\n";
-		$result .= 'var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", '.PGV_PIWIK_SITE.');'."\n";
-		$result .= 'piwikTracker.trackPageView();'."\n";
-		$result .= 'piwikTracker.enableLinkTracking();'."\n";
-		$result .= '} catch( err ) {}'."\n";
-		$result .= '</script><noscript><p><img src="http://'.PGV_PIWIK_URL.'/piwik.php?idsite='.PGV_PIWIK_SITE.'" style="border:0" alt="" /></p></noscript>'."\n";
+		$result .= 'var _paq = _paq || [];'."\n";
+		$result .= '_paq.push([\'trackPageView\']);'."\n";
+		$result .= '_paq.push([\'enableLinkTracking\']);'."\n";
+		$result .= '(function() {'."\n";
+		$result .= '    var u=(("https:" == document.location.protocol) ? "https" : "http") + "://'.PGV_PIWIK_URL.'/";'."\n";
+		$result .= '    _paq.push([\'setTrackerUrl\', u+\'piwik.php\']);'."\n";
+		$result .= '    _paq.push([\'setSiteId\', '.PGV_PIWIK_SITE.']);'."\n";
+		$result .= '    var d=document, g=d.createElement(\'script\'), s=d.getElementsByTagName(\'script\')[0]; g.type=\'text/javascript\';'."\n";
+		$result .= '    g.defer=true; g.async=true; g.src=u+\'piwik.js\'; s.parentNode.insertBefore(g,s);'."\n";
+		$result .= '  })();'."\n";
+		$result .= '</script>'."\n";
+		$result .= '<noscript><p><img src="http://'.PGV_PIWIK_URL.'/piwik.php?idsite='.PGV_PIWIK_SITE.'" style="border:0;" alt="" /></p></noscript>'."\n";
 		$result .= '<!-- End Piwik Tracking Code -->'."\n";
 	}
 /*

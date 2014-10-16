@@ -9,6 +9,7 @@
 =====================================================================
 
 Version 4.3.0
+ - Updated: Piwik tracking code to Piwik version 2.x (canajun2eh)
  - Fixed: Errors in functions_rss.php caused by PHP 5.4 incompatibility (canajun2eh)
  - Fixed: Errors in indilist.php caused by PHP 5.4 incompatibility (canajun2eh)
  - Added: Additions to list of bad bots (canajun2eh)
