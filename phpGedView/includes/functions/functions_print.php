@@ -722,6 +722,7 @@ function linkWebAnalytics() {
 		$result .= '<!-- Piwik -->'."\n";
 		$result .= '<script type="text/javascript">'."\n";
 		$result .= 'var _paq = _paq || [];'."\n";
+		$result .= '_paq.push([\'setRequestMethod\', \'POST\']);'."\n";
 		$result .= '_paq.push([\'trackPageView\']);'."\n";
 		$result .= '_paq.push([\'enableLinkTracking\']);'."\n";
 		$result .= '(function() {'."\n";
