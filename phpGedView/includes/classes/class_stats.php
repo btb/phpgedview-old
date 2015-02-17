@@ -6,7 +6,7 @@
 * about the GEDCOM.
 *
 * phpGedView: Genealogy Viewer
-* Copyright (C) 2002 to 2011 PGV Development Team.  All rights reserved.
+* Copyright (C) 2002 to 2015 PGV Development Team.  All rights reserved.
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -1637,8 +1637,8 @@ class stats {
 			$age = $row['age'];
 			if (floor($age/365.25)>0) {
 				$age = floor($age/365.25).'y';
-			} else if (floor($age/12)>0) {
-				$age = floor($age/12).'m';
+			} else if (floor($age/30.43)>0) {
+				$age = floor($age/30.43).'m';
 			} else {
 				$age = $age.'d';
 			}
@@ -1710,8 +1710,8 @@ class stats {
 			$age = (client_jd()-$row['age']);
 			if (floor($age/365.25)>0) {
 				$age = floor($age/365.25).'y';
-			} else if (floor($age/12)>0) {
-				$age = floor($age/12).'m';
+			} else if (floor($age/30.43)>0) {
+				$age = floor($age/30.43).'m';
 			} else {
 				$age = $age.'d';
 			}
@@ -1774,8 +1774,8 @@ class stats {
 			}
 			if (floor($age/365.25)>0) {
 				$age = floor($age/365.25).'y';
-			} else if (floor($age/12)>0) {
-				$age = floor($age/12).'m';
+			} else if (floor($age/30.43)>0) {
+				$age = floor($age/30.43).'m';
 			} else if (!empty($age)) {
 				$age = $age.'d';
 			}
@@ -2125,8 +2125,8 @@ class stats {
 					}
 					if (floor($age/365.25)>0) {
 						$age = floor($age/365.25).'y';
-					} else if (floor($age/12)>0) {
-						$age = floor($age/12).'m';
+					} else if (floor($age/30.43)>0) {
+						$age = floor($age/30.43).'m';
 					} else {
 						$age = $age.'d';
 					}
@@ -2241,8 +2241,8 @@ class stats {
 			}
 			if (floor($age/365.25)>0) {
 				$age = floor($age/365.25).'y';
-			} else if (floor($age/12)>0) {
-				$age = floor($age/12).'m';
+			} else if (floor($age/30.43)>0) {
+				$age = floor($age/30.43).'m';
 			} else {
 				$age = $age.'d';
 			}
@@ -2324,8 +2324,8 @@ class stats {
 			$age = $fam['age'];
 			if (floor($age/365.25)>0) {
 				$age = floor($age/365.25).'y';
-			} else if (floor($age/12)>0) {
-				$age = floor($age/12).'m';
+			} else if (floor($age/30.43)>0) {
+				$age = floor($age/30.43).'m';
 			} else {
 				$age = $age.'d';
 			}
@@ -2406,8 +2406,8 @@ class stats {
 					}
 					if (floor($age/365.25)>0) {
 						$age = floor($age/365.25).'y';
-					} else if (floor($age/12)>0) {
-						$age = floor($age/12).'m';
+					} else if (floor($age/30.43)>0) {
+						$age = floor($age/30.43).'m';
 					} else {
 						$age = $age.'d';
 					}
@@ -3005,8 +3005,8 @@ class stats {
 			$age = $fam['age'];
 			if (floor($age/365.25)>0) {
 				$age = floor($age/365.25).'y';
-			} else if (floor($age/12)>0) {
-				$age = floor($age/12).'m';
+			} else if (floor($age/30.43)>0) {
+				$age = floor($age/30.43).'m';
 			} else {
 				$age = $age.'d';
 			}
