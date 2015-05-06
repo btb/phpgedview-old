@@ -9,6 +9,7 @@
 =====================================================================
 
 Version 4.3.0
+ - Fixed: Remote link to another GEDCOM does not work (epooch)
  - Fixed: Incorrect age calculation in various statistics when age is less than 1 year (gbvalor)
  - Updated: Piwik tracking code to use POST instead of GET to improve security (canajun2eh)
  - Updated: Piwik tracking code to Piwik version 2.x (canajun2eh)
