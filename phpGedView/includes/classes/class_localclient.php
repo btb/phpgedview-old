@@ -2,7 +2,7 @@
 /**
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2015  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -54,7 +54,8 @@ class LocalClient extends ServiceClient {
 	 * @param string $remoteid	the id of the record to get
 	 */
 	function getRemoteRecord($remoteid) {
-		$rec = find_gedcom_record($remoteid, PGV_GED_ID);
+		$ged_id = get_id_from_gedcom($this->gedfile);
+		$rec = find_gedcom_record($remoteid, $ged_id);
 		$rec = preg_replace("/@(.*)@/", "@".$this->xref.":$1@", $rec);
 		return $rec;
 	}
@@ -68,7 +69,8 @@ class LocalClient extends ServiceClient {
 	 */
 	function mergeGedcomRecord($xref, $localrec, $isStub=false, $firstLink=false) {
 		//-- get the record from the database
-		$gedrec = find_gedcom_record($xref, PGV_GED_ID);
+		$ged_id = get_id_from_gedcom($this->gedfile);
+		$gedrec = find_gedcom_record($xref, $ged_id);
 		$gedrec = preg_replace("/@(.*)@/", "@".$this->xref.":$1@", $gedrec);
 		$gedrec = $this->checkIds($gedrec);
 		if (empty($localrec)) return $gedrec;
