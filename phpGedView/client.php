@@ -85,6 +85,7 @@ case 'connect':
 				print "SUCCESS\n".$stat;
 			}
 			$_SESSION['connected']=$user_id;
+			$_SESSION['initiated']=true;
 		} else {
 			addDebugLog($action." username=$username ERROR 10: Username and password key failed to authenticate.");
 			print "ERROR 10: Username and password key failed to authenticate.\n";
