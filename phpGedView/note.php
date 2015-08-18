@@ -4,7 +4,7 @@
 * reference this shared note.
 *
 * phpGedView: Genealogy Viewer
-* Copyright (C) 2009 PGV Development Team.  All rights reserved.
+* Copyright (C) 2009 to 2015 PGV Development Team.  All rights reserved.
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -57,12 +57,12 @@ else if ($controller->note->isMarkedDeleted()) {
 }
 
 $noterec = find_gedcom_record($controller->nid, PGV_GED_ID);
-$pnoterec = privatize_gedcom(find_gedcom_record($controller->nid, PGV_GED_ID));
+/* $pnoterec = privatize_gedcom(find_gedcom_record($controller->nid, PGV_GED_ID));
 if ($noterec!=$pnoterec) {
 	print_privacy_error($CONTACT_EMAIL);
 	print_footer();
 	exit;
-}
+} */
 
 echo PGV_JS_START;
 echo 'function show_gedcom_record() {';

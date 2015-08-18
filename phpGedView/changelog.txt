@@ -9,6 +9,7 @@
 =====================================================================
 
 Version 4.3.0
+ - Fixed: Cannot edit existing shared note (canajun2eh)
  - Updated: Arabic language files facts.ar.php and lang.ar.php (sfezz)
  - Fixed: Remote link to another GEDCOM does not work (epooch)
  - Fixed: Incorrect age calculation in various statistics when age is less than 1 year (gbvalor)
