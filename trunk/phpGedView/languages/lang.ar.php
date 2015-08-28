@@ -21,6 +21,7 @@
  *
  * @package PhpGedView
  * @author Ezz (sfezz)
+ * @translator Samar A Kadhi
  * @version $Id$
  */
 
