@@ -9,8 +9,9 @@
 =====================================================================
 
 Version 4.3.0
+ - Added: Vagabondo added to list of known search engines (canajun2eh)
  - Fixed: Cannot edit existing shared note (canajun2eh)
- - Updated: Arabic language files facts.ar.php and lang.ar.php (sfezz)
+ - Updated: Arabic language files facts.ar.php and lang.ar.php (samar)
  - Fixed: Remote link to another GEDCOM does not work (epooch)
  - Fixed: Incorrect age calculation in various statistics when age is less than 1 year (gbvalor)
  - Updated: Piwik tracking code to use POST instead of GET to improve security (canajun2eh)
