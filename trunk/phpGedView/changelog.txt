@@ -9,6 +9,7 @@
 =====================================================================
 
 Version 4.3.0
+ - Updated: Arabic language files countries.ar.php and facts.ar.php (samar)
  - Added: Vagabondo added to list of known search engines (canajun2eh)
  - Fixed: Cannot edit existing shared note (canajun2eh)
  - Updated: Arabic language files facts.ar.php and lang.ar.php (samar)
