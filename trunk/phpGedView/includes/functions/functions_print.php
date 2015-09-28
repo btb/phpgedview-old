@@ -5,7 +5,7 @@
 * Various printing functions used by all scripts and included by the functions.php file.
 *
 * phpGedView: Genealogy Viewer
-* Copyright (C) 2002 to 2014  PGV Development Team.  All rights reserved.
+* Copyright (C) 2002 to 2015  PGV Development Team.  All rights reserved.
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -1531,7 +1531,9 @@ function print_text($help, $level=0, $noprint=0){
 		}
 	}
 	// ------ Replace paired ~  by tag_start and tag_end (those vars contain CSS classes)
-	$sentence=preg_replace('/~([^<>]{1,})~/e', "'<span class=\"helpstart\">'.UTF8_strtoupper('\\1').'</span>'", $sentence);
+	$sentence = preg_replace_callback('/~([^<>]{1,})~/', 
+	                                  function($match) { return '<span class="helpstart">'.UTF8_strtoupper($match[1]).'</span>'; }, 
+	                                  $sentence);	
 	if ($noprint>0) return $sentence;
 	if ($level>0) return $sentence;
 	echo $sentence;

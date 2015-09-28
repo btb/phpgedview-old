@@ -6,7 +6,7 @@
  * routines and sorting functions.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2015  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -1134,7 +1134,9 @@ function unhtmlentities($string)  {
 	$trans_tbl=array_flip(get_html_translation_table (HTML_ENTITIES));
 	$trans_tbl['&lrm;']=PGV_UTF8_LRM;
 	$trans_tbl['&rlm;']=PGV_UTF8_RLM;
-	return preg_replace('/&#(\d+);/e', "chr(\\1)", strtr($string, $trans_tbl));
+	return preg_replace_callback('/&#(\d+);/', 
+	                             function ($match) { return chr($match[1]); }, 
+	                             strtr($string, $trans_tbl));
 }
 
 /**

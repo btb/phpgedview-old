@@ -4,7 +4,7 @@
 * Import specific functions
 *
 * phpGedView: Genealogy Viewer
-* Copyright (C) 2002 to 2012  PGV Development Team.  All rights reserved.
+* Copyright (C) 2002 to 2015  PGV Development Team.  All rights reserved.
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -1029,7 +1029,9 @@ function insert_media($objrec, $objlevel, $update, $gid, $ged_id, $count) {
 		//-- restructure the record to be a linked record
 		$objrec = str_replace(" OBJE", " @" . $m_media . "@ OBJE", $objrec);
 		//-- renumber the lines
-		$objrec = preg_replace("/^(\d+) /me", "($1-$objlevel).' '", $objrec);
+		$objrec = preg_replace_callback('/^(\d+) /m', 
+		                                function ($match) { return "($match[1]-$objlevel).' '"; }, 
+		                                $objrec);
 
 		//-- check if another picture with the same file and title was previously imported
 		$media = new Media($objrec);

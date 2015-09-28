@@ -3,7 +3,7 @@
 * Base class for all gedcom records
 *
 * phpGedView: Genealogy Viewer
-* Copyright (C) 2002 to 2009 PGV Development Team.  All rights reserved.
+* Copyright (C) 2002 to 2015 PGV Development Team.  All rights reserved.
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -437,7 +437,9 @@ class GedcomRecord {
 			'type'=>$type,
 			'full'=>$value,
 			'list'=>$value,
-			'sort'=>preg_replace('/([0-9]+)/e', 'substr("000000000\\1", -10)', $value)
+			'sort'=>preg_replace_callback('/([0-9]+)/',
+			                              function ($match) { return substr("000000000$match[1]", -10); }, 
+			                              $value)
 		);
 	}
 
