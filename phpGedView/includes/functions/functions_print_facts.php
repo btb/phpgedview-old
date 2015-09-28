@@ -5,7 +5,7 @@
  * Various printing functions used to print fact records
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2015  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -47,15 +47,12 @@ function expand_urls($text) {
 	// (([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?
 	// This matches far too much while a "precise" regex is several pages long.
 	// This is a compromise.
-	$URL_REGEX='((https?|ftp]):)(//([^\s/?#<>]*))?([^\s?#<>]*)(\?([^\s#<>]*))?(#[^\s?#<>]+)?';
+	$URL_REGEX='((https?|ftp):)(//([^\s/?#<>]*))?([^\s?#<>]*)(\?([^\s#<>]*))?(#[^\s?#<>]+)?';
 
-	return preg_replace_callback(
-		'/'.addcslashes("(?!>)$URL_REGEX(?!</a>)", '/').'/i',
-		create_function( // Insert soft hyphens into the replaced string
-			'$m',
-			'return "<a href=\"".$m[0]."\" target=\"blank\">".preg_replace("/\b/", "&shy;", $m[0])."</a>";'
-		),
-		preg_replace("/<(?!br)/i", "&lt;", $text) // no html except br
+	return preg_replace_callback('/'.addcslashes("(?!>)$URL_REGEX(?!</a>)", '/').'/i',
+                                 // Insert soft hyphens into the replaced string
+                                 function ($m) {return '<a href="'.$m[0].'" target="blank">'.preg_replace('/\b/', '&shy;', $m[0]).'</a>'; },
+                                 preg_replace('/<(?!br)/i', '&lt;', $text) // no html except br
 	);
 }
 

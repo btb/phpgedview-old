@@ -5,7 +5,7 @@
  * used by the SAX parser to generate reports from the XML report file.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2015  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -3224,7 +3224,9 @@ function PGVRListSHandler($attrs) {
 			foreach ($attrs as $attr=>$value) {
 				if ((strpos($attr, "filter")===0) && $value) {
 					// Substitute global vars
-					$value=preg_replace('/\$(\w+)/e', '$vars["\\1"]["id"]', $value);
+					$value=preg_replace_callback('/\$(\w+)/', 
+					                             function ($match) { return $vars["$match[1]"]["id"]; }, 
+					                             $value);
 					// Convert the various filters into SQL
 					if (preg_match('/^(\w+):DATE (LTE|GTE) (.+)$/', $value, $match)) {
 						$sql_join[]="JOIN {$TBLPREFIX}dates AS {$attr} ON ({$attr}.d_file={$sql_col_prefix}file AND {$attr}.d_gid={$sql_col_prefix}id)";
