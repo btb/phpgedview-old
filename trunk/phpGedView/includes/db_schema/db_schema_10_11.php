@@ -26,7 +26,8 @@
  * seconds, for systems with low timeout values.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2009 John Finlay
+ * Copyright (C) 2009 Greg Roach
+ * Copyright (C) 2010 to 2015  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -61,7 +62,7 @@ if (!self::table_exists("{$TBLPREFIX}module")) {
 		" mod_taborder     ".self::$INT1_TYPE." NOT NULL, ".
 		" mod_menuorder    ".self::$INT1_TYPE." NOT NULL, ".
 		" mod_sidebarorder ".self::$INT1_TYPE." NOT NULL ".
-		") ".self::$UTF8_TABLE
+		") ".self::$UTF8_TABLE." ".self::$DB_ENGINE
 	);
 }
 
@@ -73,7 +74,7 @@ if (!self::table_exists("{$TBLPREFIX}module_privacy")) {
 		" mp_file   ".self::$COL_FILE." NOT NULL,".
 		" mp_access ".self::$INT1_TYPE." NOT NULL,".
 		" mp_type   ".self::$CHAR_TYPE."(1) NOT NULL".
-		") ".self::$UTF8_TABLE
+		") ".self::$UTF8_TABLE." ".self::$DB_ENGINE
 	);
 	self::exec("CREATE INDEX {$TBLPREFIX}module_privacy_ix1 ON {$TBLPREFIX}module_privacy (mp_mod_id, mp_file, mp_access)");
 	self::exec("CREATE INDEX {$TBLPREFIX}module_privacy_ix2 ON {$TBLPREFIX}module_privacy (mp_mod_id, mp_access)");

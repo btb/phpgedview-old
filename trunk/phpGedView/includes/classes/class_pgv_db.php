@@ -1,29 +1,31 @@
 <?php
-//
-// Class file for the database access.  Extend PHP's native PDO and
-// PDOStatement classes to provide database access with logging, etc.
-//
-// See documentation at http://wiki.phpgedview.net/en/index.php?title=PGV_Database_Functions
-//
-// phpGedView: Genealogy Viewer
-// Copyright (C) 2009 Greg Roach (fisharebest)
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-//
-// @package PhpGedView
-// @version $Id$
+/**
+ * Class file for the database access.  Extend PHP's native PDO and
+ * PDOStatement classes to provide database access with logging, etc.
+ *
+ * See documentation at http://wiki.phpgedview.net/en/index.php?title=PGV_Database_Functions
+ *
+ * phpGedView: Genealogy Viewer
+ * Copyright (C) 2009 Greg Roach (fisharebest)
+ * Copyright (C) 2010 to 2015  PGV Development Team.  All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ *
+ * @package PhpGedView
+ * @version $Id$
+ */
 
 if (!defined('PGV_PHPGEDVIEW')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -58,6 +60,7 @@ class PGV_DB {
 	public static $TEXT_TYPE    =null;
 	public static $LONGTEXT_TYPE=null;
 	public static $UTF8_TABLE   =null;
+	public static $DB_ENGINE    =null;
 
 	// Standard column types for gedcom data
 	public static $COL_FILE=null;
@@ -127,6 +130,7 @@ class PGV_DB {
 			self::$RANDOM       ='RAND()';
 			self::$TEXT_TYPE    ='TEXT';
 			self::$LONGTEXT_TYPE='LONGTEXT';
+			self::$DB_ENGINE    ='ENGINE=MyISAM'; /* this should be made configurable, similar to the UTF-8 option */
 			if ($DB_UTF8_COLLATION) {
 				self::$pdo->exec("SET NAMES 'utf8', SQL_BIG_SELECTS=1");
 				self::$UTF8_TABLE   ='CHARACTER SET utf8 COLLATE utf8_unicode_ci';
@@ -157,6 +161,7 @@ class PGV_DB {
 			self::$RANDOM       ='RANDOM()';
 			self::$TEXT_TYPE    ='TEXT';
 			self::$LONGTEXT_TYPE='TEXT';
+			self::$DB_ENGINE    ='ENGINE=MyISAM'; /* this should be made configurable, similar to the UTF-8 option */
 			self::$UTF8_TABLE   ='';
 			if ($DB_UTF8_COLLATION) {
 				self::$pdo->exec("SET NAMES 'UTF8'");
@@ -186,6 +191,7 @@ class PGV_DB {
 			self::$RANDOM       ='NEWID';
 			self::$TEXT_TYPE    ='TEXT';
 			self::$LONGTEXT_TYPE='TEXT';
+			self::$DB_ENGINE    ='ENGINE=MyISAM'; /* this should be made configurable, similar to the UTF-8 option */
 			self::$UTF8_TABLE   ='';
 			break;
 		case 'sqlite':
@@ -228,6 +234,7 @@ class PGV_DB {
 			self::$RANDOM       ='RANDOM()';
 			self::$TEXT_TYPE    ='TEXT';
 			self::$LONGTEXT_TYPE='TEXT';
+			self::$DB_ENGINE    ='ENGINE=MyISAM'; /* this should be made configurable, similar to the UTF-8 option */
 			self::$UTF8_TABLE   ='';
 			break;
 		case 'firebird': // This DSN has not been tested!
@@ -254,6 +261,7 @@ class PGV_DB {
 			self::$RANDOM       ='RANDOM()';
 			self::$TEXT_TYPE    ='VARCHAR(32767)';
 			self::$LONGTEXT_TYPE='BLOB SUB_TYPE TEXT';
+			self::$DB_ENGINE    =''; /* this should be made configurable, similar to the UTF-8 option */
 			self::$UTF8_TABLE   ='';
 			break;
 		case 'ibm': // This DSN has not been tested!
@@ -280,6 +288,7 @@ class PGV_DB {
 			self::$RANDOM       ='RANDOM()';
 			self::$TEXT_TYPE    ='TEXT';
 			self::$LONGTEXT_TYPE='TEXT';
+			self::$DB_ENGINE    =''; /* this should be made configurable, similar to the UTF-8 option */
 			self::$UTF8_TABLE   ='';
 			break;
 		case 'informix': // This DSN has not been tested!
@@ -306,6 +315,7 @@ class PGV_DB {
 			self::$RANDOM       ='RANDOM()';
 			self::$TEXT_TYPE    ='TEXT';
 			self::$LONGTEXT_TYPE='TEXT';
+			self::$DB_ENGINE    =''; /* this should be made configurable, similar to the UTF-8 option */
 			self::$UTF8_TABLE   ='';
 			break;
 		case 'oci': // This DSN has not been tested!
@@ -332,6 +342,7 @@ class PGV_DB {
 			self::$RANDOM       ='RANDOM()';
 			self::$TEXT_TYPE    ='TEXT';
 			self::$LONGTEXT_TYPE='TEXT';
+			self::$DB_ENGINE    =''; /* this should be made configurable, similar to the UTF-8 option */
 			self::$UTF8_TABLE   ='';
 			break;
 		case 'odbc': // This DSN has not been tested!
@@ -358,6 +369,7 @@ class PGV_DB {
 			self::$RANDOM       ='RANDOM()';
 			self::$TEXT_TYPE    ='TEXT';
 			self::$LONGTEXT_TYPE='TEXT';
+			self::$DB_ENGINE    =''; /* this should be made configurable, similar to the UTF-8 option */
 			self::$UTF8_TABLE   ='';
 			break;
 		case '4D': // This DSN has not been tested!
@@ -384,7 +396,8 @@ class PGV_DB {
 			self::$RANDOM       ='RANDOM()';
 			self::$TEXT_TYPE    ='TEXT';
 			self::$LONGTEXT_TYPE='TEXT';
-			self::$UTF8_TABLE   ='';
+			self::$UTF8_TABLE   =''; /* this should be made configurable, similar to the UTF-8 option */
+			self::$DB_ENGINE     ='';
 			break;
 		}
 

@@ -15,6 +15,7 @@
  *
  * phpGedView: Genealogy Viewer
  * Copyright (C) 2009 Greg Roach
+ * Copyright (C) 2010 to 2015  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -52,7 +53,7 @@ if (!self::table_exists("{$TBLPREFIX}messages")) {
 		" m_body    ".self::$TEXT_TYPE."             NULL,".
 		" m_created ".self::$VARCHAR_TYPE."(255)     NULL,".
 		" PRIMARY KEY (m_id)".
-		") ".self::$UTF8_TABLE
+		") ".self::$UTF8_TABLE." ".self::$DB_ENGINE
 	);
 	self::exec("CREATE INDEX {$TBLPREFIX}messages_to ON {$TBLPREFIX}messages (m_to)");
 }
@@ -69,7 +70,7 @@ if (!self::table_exists("{$TBLPREFIX}favorites") || $sqlite && !self::column_exi
 	 	" fv_title    ".self::$VARCHAR_TYPE."(255)     NULL,".
 		" fv_note     ".self::$TEXT_TYPE."             NULL,".
 		" PRIMARY KEY (fv_id)".
-		") ".self::$UTF8_TABLE
+		") ".self::$UTF8_TABLE." ".self::$DB_ENGINE
 	);
 	self::exec("CREATE INDEX {$TBLPREFIX}favorites_username ON {$TBLPREFIX}favorites (fv_username)");
 } else {
@@ -90,7 +91,7 @@ if (!self::table_exists("{$TBLPREFIX}blocks") || $sqlite && !self::column_exists
 		" b_name     ".self::$VARCHAR_TYPE."(255)     NULL,".
 		" b_config   ".self::$TEXT_TYPE."             NULL,".
 		" PRIMARY KEY (b_id)".
-		") ".self::$UTF8_TABLE
+		") ".self::$UTF8_TABLE." ".self::$DB_ENGINE
 	);
 	self::exec("CREATE INDEX {$TBLPREFIX}blocks_username ON {$TBLPREFIX}blocks (b_username)");
 } else {
@@ -107,7 +108,7 @@ if (!self::table_exists("{$TBLPREFIX}news")) {
 		" n_title    ".self::$VARCHAR_TYPE."(255)     NULL,".
 		" n_text     ".self::$TEXT_TYPE."             NULL,".
 		" PRIMARY KEY (n_id)".
-		") ".self::$UTF8_TABLE
+		") ".self::$UTF8_TABLE." ".self::$DB_ENGINE
 	);
 	self::exec("CREATE INDEX {$TBLPREFIX}news_username ON {$TBLPREFIX}news (n_username)");
 }
@@ -119,7 +120,7 @@ if (!self::table_exists("{$TBLPREFIX}mutex")) {
 	 	" mx_thread ".self::$VARCHAR_TYPE."(255)     NULL,".
 		" mx_time   ".self::$INT4_TYPE."             NULL,".
 		" PRIMARY KEY (mx_id)".
-		") ".self::$UTF8_TABLE
+		") ".self::$UTF8_TABLE." ".self::$DB_ENGINE
 	);
 	self::exec("CREATE INDEX {$TBLPREFIX}mutex_name ON {$TBLPREFIX}mutex (mx_name)");
 }

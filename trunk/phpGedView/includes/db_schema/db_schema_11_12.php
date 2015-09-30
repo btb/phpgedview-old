@@ -28,6 +28,7 @@
  *
  * phpGedView: Genealogy Viewer
  * Copyright (C) 2010 Greg Roach
+ * Copyright (C) 2011 to 2015  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -59,7 +60,7 @@ if (!self::table_exists("{$TBLPREFIX}gedcom")) {
 		" gedcom_id   ".self::$AUTO_ID_TYPE."      NOT NULL,".
 		" gedcom_name ".self::$VARCHAR_TYPE."(255) NOT NULL,".
 		" CONSTRAINT {$TBLPREFIX}gedcom_ux1 UNIQUE (gedcom_name)".
-		") ".self::$UTF8_TABLE
+		") ".self::$UTF8_TABLE." ".self::$DB_ENGINE
 	);
 }
 
@@ -70,7 +71,7 @@ if (!self::table_exists("{$TBLPREFIX}gedcom_setting")) {
 		" setting_name  ".self::$VARCHAR_TYPE."(32)  NOT NULL,".
 		" setting_value ".self::$VARCHAR_TYPE."(255) NOT NULL,".
 		" PRIMARY KEY (gedcom_id, setting_name)".
-		") ".self::$UTF8_TABLE
+		") ".self::$UTF8_TABLE." ".self::$DB_ENGINE
 	);
 }
 
@@ -81,7 +82,7 @@ if (!self::table_exists("{$TBLPREFIX}user")) {
 		" user_name ".self::$VARCHAR_TYPE."(32)  NOT NULL,".
 		" password  ".self::$VARCHAR_TYPE."(255) NOT NULL,".
 		" CONSTRAINT {$TBLPREFIX}user_ux1 UNIQUE (user_name)".
-		") ".self::$UTF8_TABLE
+		") ".self::$UTF8_TABLE." ".self::$DB_ENGINE
 	);
 }
 
@@ -92,7 +93,7 @@ if (!self::table_exists("{$TBLPREFIX}user_setting")) {
 		" setting_name  ".self::$VARCHAR_TYPE."(32)  NOT NULL,".
 		" setting_value ".self::$VARCHAR_TYPE."(255) NOT NULL,".
 		" PRIMARY KEY (user_id, setting_name)".
-		") ".self::$UTF8_TABLE
+		") ".self::$UTF8_TABLE." ".self::$DB_ENGINE
 	);
 }
 
@@ -104,7 +105,7 @@ if (!self::table_exists("{$TBLPREFIX}user_gedcom_setting")) {
 		" setting_name  ".self::$VARCHAR_TYPE."(32)  NOT NULL,".
 		" setting_value ".self::$VARCHAR_TYPE."(255) NOT NULL,".
 		" PRIMARY KEY (user_id, gedcom_id, setting_name)".
-		") ".self::$UTF8_TABLE
+		") ".self::$UTF8_TABLE." ".self::$DB_ENGINE
 	);
 }
 
