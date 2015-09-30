@@ -29,6 +29,7 @@
  *
  * phpGedView: Genealogy Viewer
  * Copyright (C) 2010 Greg Roach
+ * Copyright (C) 2011 to 2015  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -62,7 +63,7 @@ if (!self::table_exists("{$TBLPREFIX}hit_counter")) {
 		" page_parameter ".self::$VARCHAR_TYPE."(32) NOT NULL,".
 		" page_count     ".self::$INT4_TYPE.   "     NOT NULL,".
 		" PRIMARY KEY (gedcom_id, page_name, page_parameter)".
-		") ".self::$UTF8_TABLE
+		") ".self::$UTF8_TABLE." ".self::$DB_ENGINE
 	);
 }
 

@@ -9,6 +9,7 @@
 =====================================================================
 
 Version 4.3.0
+ - Fixed: Import GEDCOM into new installation on systems using MySQL version 5.5 extremely slow (canajun2eh)
  - Fixed: Various instances of "preg_replace(): The /e modifier is deprecated" (lsces, canajun2eh)
  - Updated: Arabic language files countries.ar.php and facts.ar.php (samar)
  - Added: Vagabondo added to list of known search engines (canajun2eh)

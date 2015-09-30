@@ -16,6 +16,7 @@
  *
  * phpGedView: Genealogy Viewer
  * Copyright (C) 2009 Greg Roach
+ * Copyright (C) 2010 to 2015  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -56,7 +57,7 @@ if (!self::table_exists("{$TBLPREFIX}individuals") || $sqlite && (!self::column_
 		" i_sex    ".self::$CHAR_TYPE."(1)  NOT NULL,".
 		" i_gedcom ".self::$LONGTEXT_TYPE." NOT NULL,".
 		" PRIMARY KEY (i_id, i_file)".
-		") ".self::$UTF8_TABLE
+		") ".self::$UTF8_TABLE." ".self::$DB_ENGINE
 	);
 	self::exec("CREATE INDEX {$TBLPREFIX}indi_id   ON {$TBLPREFIX}individuals (i_id  )");
 	self::exec("CREATE INDEX {$TBLPREFIX}indi_file ON {$TBLPREFIX}individuals (i_file)");
@@ -91,7 +92,7 @@ if (!self::table_exists("{$TBLPREFIX}families") || $sqlite && (self::column_exis
 		" f_gedcom  ".self::$LONGTEXT_TYPE."     NULL,".
 		" f_numchil ".self::$INT4_TYPE."         NULL,".
 		" PRIMARY KEY (f_id, f_file)".
-		") ".self::$UTF8_TABLE
+		") ".self::$UTF8_TABLE." ".self::$DB_ENGINE
 	);
 	self::exec("CREATE INDEX {$TBLPREFIX}fam_id   ON {$TBLPREFIX}families (f_id  )");
 	self::exec("CREATE INDEX {$TBLPREFIX}fam_file ON {$TBLPREFIX}families (f_file)");
@@ -119,7 +120,7 @@ if (!self::table_exists("{$TBLPREFIX}places") || $sqlite && (self::column_exists
 		" p_std_soundex ".self::$TEXT_TYPE."             NULL,".
 		" p_dm_soundex  ".self::$TEXT_TYPE."             NULL,".
 		" PRIMARY KEY (p_id)".
-		") ".self::$UTF8_TABLE
+		") ".self::$UTF8_TABLE." ".self::$DB_ENGINE
 	);
 	self::exec("CREATE INDEX {$TBLPREFIX}place_place  ON {$TBLPREFIX}places (p_place    )");
 	self::exec("CREATE INDEX {$TBLPREFIX}place_level  ON {$TBLPREFIX}places (p_level    )");
@@ -143,7 +144,7 @@ if (!self::table_exists("{$TBLPREFIX}placelinks")) {
 		" pl_gid  ".self::$COL_XREF."  NOT NULL,".
 		" pl_file ".self::$COL_FILE."  NOT NULL,".
 		" PRIMARY KEY (pl_p_id, pl_gid, pl_file)".
-		") ".self::$UTF8_TABLE
+		") ".self::$UTF8_TABLE." ".self::$DB_ENGINE
 	);
 	self::exec("CREATE INDEX {$TBLPREFIX}plindex_place ON {$TBLPREFIX}placelinks (pl_p_id)");
 	self::exec("CREATE INDEX {$TBLPREFIX}plindex_gid   ON {$TBLPREFIX}placelinks (pl_gid )");
@@ -169,7 +170,7 @@ if (!self::table_exists("{$TBLPREFIX}dates") || $sqlite && (!self::column_exists
 		" d_gid        ".self::$COL_XREF."     NOT NULL,".
 		" d_file       ".self::$COL_FILE."     NOT NULL,".
 		" d_type       ".self::$COL_CAL."      NOT NULL".
-		") ".self::$UTF8_TABLE
+		") ".self::$UTF8_TABLE." ".self::$DB_ENGINE
 	);
 	self::exec("CREATE INDEX {$TBLPREFIX}date_day        ON {$TBLPREFIX}dates (d_day        )");
 	self::exec("CREATE INDEX {$TBLPREFIX}date_month      ON {$TBLPREFIX}dates (d_month      )");
@@ -204,7 +205,7 @@ if (!self::table_exists("{$TBLPREFIX}media")) {
 		" m_gedfile ".self::$COL_FILE."              NULL,".
 		" m_gedrec  ".self::$LONGTEXT_TYPE."         NULL,".
 		" PRIMARY KEY (m_id)".
-		") ".self::$UTF8_TABLE
+		") ".self::$UTF8_TABLE." ".self::$DB_ENGINE
 	);
 	self::exec("CREATE INDEX {$TBLPREFIX}m_media      ON {$TBLPREFIX}media (m_media           )");
 	self::exec("CREATE INDEX {$TBLPREFIX}m_media_file ON {$TBLPREFIX}media (m_media, m_gedfile)");
@@ -215,7 +216,7 @@ if (!self::table_exists("{$TBLPREFIX}remotelinks")) {
 		" r_gid    ".self::$COL_XREF."          NOT NULL,".
 		" r_linkid ".self::$VARCHAR_TYPE."(255)     NULL,".
 		" r_file   ".self::$COL_FILE."          NOT NULL".
-		") ".self::$UTF8_TABLE
+		") ".self::$UTF8_TABLE." ".self::$DB_ENGINE
 	);
 	self::exec("CREATE INDEX {$TBLPREFIX}r_gid     ON {$TBLPREFIX}remotelinks (r_gid   )");
 	self::exec("CREATE INDEX {$TBLPREFIX}r_link_id ON {$TBLPREFIX}remotelinks (r_linkid)");
@@ -231,7 +232,7 @@ if (!self::table_exists("{$TBLPREFIX}media_mapping")) {
 		" mm_gedfile ".self::$COL_FILE."          NULL,".
 		" mm_gedrec  ".self::$LONGTEXT_TYPE."     NULL,".
 		" PRIMARY KEY (mm_id)".
-		") ".self::$UTF8_TABLE
+		") ".self::$UTF8_TABLE." ".self::$DB_ENGINE
 	);
 	self::exec("CREATE INDEX {$TBLPREFIX}mm_media_id      ON {$TBLPREFIX}media_mapping (mm_media, mm_gedfile)");
 	self::exec("CREATE INDEX {$TBLPREFIX}mm_media_gid     ON {$TBLPREFIX}media_mapping (mm_gid, mm_gedfile  )");
@@ -244,7 +245,7 @@ if (!self::table_exists("{$TBLPREFIX}nextid")) {
 		" ni_type    ".self::$COL_TAG."   NOT NULL,".
 		" ni_gedfile ".self::$COL_FILE."  NOT NULL,".
 		" PRIMARY KEY (ni_type, ni_gedfile)".
-		") ".self::$UTF8_TABLE
+		") ".self::$UTF8_TABLE." ".self::$DB_ENGINE
 	);
 }
 if (!self::table_exists("{$TBLPREFIX}other")) {
@@ -255,7 +256,7 @@ if (!self::table_exists("{$TBLPREFIX}other")) {
 		" o_type   ".self::$COL_TAG."           NULL,".
 		" o_gedcom ".self::$LONGTEXT_TYPE."     NULL,".
 		" PRIMARY KEY (o_id, o_file)".
-		") ".self::$UTF8_TABLE
+		") ".self::$UTF8_TABLE." ".self::$DB_ENGINE
 	);
 	self::exec("CREATE INDEX {$TBLPREFIX}other_id   ON {$TBLPREFIX}other (o_id  )");
 	self::exec("CREATE INDEX {$TBLPREFIX}other_file ON {$TBLPREFIX}other (o_file)");
@@ -272,7 +273,7 @@ if (!self::table_exists("{$TBLPREFIX}sources") || $sqlite && (!self::column_exis
 		" s_gedcom ".self::$LONGTEXT_TYPE."         NULL,".
 		" s_dbid   ".self::$CHAR_TYPE."(1)          NULL,".
 		" PRIMARY KEY (s_id, s_file)".
-		") ".self::$UTF8_TABLE
+		") ".self::$UTF8_TABLE." ".self::$DB_ENGINE
 	);
 	self::exec("CREATE INDEX {$TBLPREFIX}sour_id   ON {$TBLPREFIX}sources (s_id  )");
 	self::exec("CREATE INDEX {$TBLPREFIX}sour_name ON {$TBLPREFIX}sources (s_name)");
@@ -296,7 +297,7 @@ if (!self::table_exists("{$TBLPREFIX}link")) {
 		" l_type    ".self::$COL_TAG."  NOT NULL,".
 		" l_to      ".self::$COL_XREF." NOT NULL,".
 		" PRIMARY KEY (l_from, l_file, l_type, l_to)".
-		") ".self::$UTF8_TABLE
+		") ".self::$UTF8_TABLE." ".self::$DB_ENGINE
 	);
 	self::exec("CREATE UNIQUE INDEX {$TBLPREFIX}ux1 ON {$TBLPREFIX}link (l_to, l_file, l_type, l_from)");
 }
@@ -319,7 +320,7 @@ if (!self::table_exists("{$TBLPREFIX}name")) {
 		" n_soundex_givn_dm  ".self::$VARCHAR_TYPE."(255)     NULL,".
 		" n_soundex_surn_dm  ".self::$VARCHAR_TYPE."(255)     NULL,".
 		" PRIMARY KEY (n_id, n_file, n_num)".
-		") ".self::$UTF8_TABLE
+		") ".self::$UTF8_TABLE." ".self::$DB_ENGINE
 	);
 	self::exec("CREATE INDEX {$TBLPREFIX}name_file ON {$TBLPREFIX}name (n_file)");
 }
