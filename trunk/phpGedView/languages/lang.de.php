@@ -3,7 +3,7 @@
  * German Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reerved.
+ * Copyright (C) 2002 to 2015  PGV Development Team.  All rights reerved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -385,7 +385,7 @@ $pgv_lang["gen_ped_chart"]				= "Stammbaum für #PEDIGREE_GENERATIONS# Generatio
 $pgv_lang["generations"]				= "Generationen";
 $pgv_lang["view"]						= "Zeige";
 $pgv_lang["fam_spouse"]					= "Familie mit Ehepartner";
-$pgv_lang["rootid"] 					= "Startperson für den Stammbaum";
+$pgv_lang["rootid"] 					= "Startperson im Stammbaum";
 $pgv_lang["root_person"]				= "ID der Startperson";
 $pgv_lang["hide_details"]				= "Einzelheiten verbergen";
 $pgv_lang["show_details"]				= "Einzelheiten zeigen";
