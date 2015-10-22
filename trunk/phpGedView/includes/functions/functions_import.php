@@ -996,6 +996,8 @@ function update_names($xref, $ged_id, $record) {
 */
 function insert_media($objrec, $objlevel, $update, $gid, $ged_id, $count) {
 	global $TBLPREFIX, $media_count, $found_ids, $fpnewged;
+	global $tempGlobal;
+	$tempGlobal = $objlevel;	// We have to pass this to a preg_replace_callback function.  These functions only accept one argument.
 
 	static $sql_insert_media=null;
 	static $sql_insert_media_mapping=null;
@@ -1029,8 +1031,8 @@ function insert_media($objrec, $objlevel, $update, $gid, $ged_id, $count) {
 		//-- restructure the record to be a linked record
 		$objrec = str_replace(" OBJE", " @" . $m_media . "@ OBJE", $objrec);
 		//-- renumber the lines
-		$objrec = preg_replace_callback('/^(\d+) /m', 
-		                                function ($match) { return "($match[1]-$objlevel).' '"; }, 
+		$objrec = preg_replace_callback('/^(\d+) /m',
+		                                function ($match) { global $tempGlobal; return "($match[1]-$tempGlobal).' '"; },
 		                                $objrec);
 
 		//-- check if another picture with the same file and title was previously imported
