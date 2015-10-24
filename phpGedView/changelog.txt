@@ -9,6 +9,7 @@
 =====================================================================
 
 Version 4.3.0
+ - Corrected: Previous incorrect fix to includes/functions/functions_import.php (canajun2eh)
  - Fixed: Undefined variable in includes/functions/functions_import.php (canajun2eh)
  - Fixed: Undefined variable in includes/classes/class_reportbase.php (canajun2eh)
  - Fixed: Import GEDCOM into new installation on systems using MySQL version 5.5 extremely slow (canajun2eh)
