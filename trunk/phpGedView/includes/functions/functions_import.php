@@ -1032,7 +1032,7 @@ function insert_media($objrec, $objlevel, $update, $gid, $ged_id, $count) {
 		$objrec = str_replace(" OBJE", " @" . $m_media . "@ OBJE", $objrec);
 		//-- renumber the lines
 		$objrec = preg_replace_callback('/^(\d+) /m',
-		                                function ($match) { global $tempGlobal; return "($match[1]-$tempGlobal).' '"; },
+		                                function ($match) { global $tempGlobal; return $match[1]-$tempGlobal.' '; },
 		                                $objrec);
 
 		//-- check if another picture with the same file and title was previously imported
