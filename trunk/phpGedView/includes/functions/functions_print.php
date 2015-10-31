@@ -742,22 +742,12 @@ function linkWebAnalytics() {
  * Enable by adding a constant to "includes/session.php" as follows:
  *		define('PGV_CLUSTRMAPS_SITE', 'PGV website address');			// The URL to your PGV installation
  *		define('PGV_CLUSTRMAPS_SERVER', 'ClustrMaps server number');	// The ClustrMaps server number
+ *              New code format. <script type="text/javascript" id="clustrmaps" src="//cdn.clustrmaps.com/map_v2.js?u=XXXX&d=YYYY"></script>
+                Replace XXXX and YYYY with your values for PGV_CLUSTRMAPS_SITE and PGV_CLUSTRMAPS_SERVER in config.php
  */
 	if (defined('PGV_CLUSTRMAPS_SITE') && defined('PGV_CLUSTRMAPS_SERVER')) {
 		$result .= '<!-- ClustrMaps -->'."\n";
-		$result .= '<a href="http://www'.PGV_CLUSTRMAPS_SERVER.'.clustrmaps.com/counter/maps.php?url='.PGV_CLUSTRMAPS_SITE.'" id="clustrMapsLink">'."\n";
-		$result .= '<img src="http://www'.PGV_CLUSTRMAPS_SERVER.'.clustrmaps.com/counter/index2.php?url='.PGV_CLUSTRMAPS_SITE.'" style="border:0px;" alt="'.$pgv_lang["clustrmaps_locations"].'" title="'.$pgv_lang["clustrmaps_locations"].'" id="clustrMapsImg" />'."\n";
-		$result .= '</a>'."\n";
-		$result .= '<script type="text/javascript">'."\n";
-		$result .= '	function cantload() {'."\n";
-		$result .= '	img = document.getElementById("clustrMapsImg");'."\n";
-		$result .= '	img.onerror = null;'."\n";
-		$result .= '	img.src = "http://www2.clustrmaps.com/images/clustrmaps-back-soon.jpg";'."\n";
-		$result .= '	document.getElementById("clustrMapsLink").href = "http://www2.clustrmaps.com";'."\n";
-		$result .= '}'."\n";
-		$result .= 'img = document.getElementById("clustrMapsImg");'."\n";
-		$result .= 'img.onerror = cantload;'."\n";
-		$result .= '</script>'."\n";
+		$result .= '<script type="text/javascript" id="clustrmaps" src="//cdn.clustrmaps.com/map_v2.js?u='.PGV_CLUSTRMAPS_SITE.'&d='.PGV_CLUSTRMAPS_SERVER.'"></script>'."\n";
 		$result .= '<!-- End ClustrMaps Tracking Code -->'."\n";
 	}
 /*
