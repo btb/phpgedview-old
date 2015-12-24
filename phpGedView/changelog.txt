@@ -9,6 +9,7 @@
 =====================================================================
 
 Version 4.3.0
+ - Fixed: Script injection vulnerability (canajun2eh)
  - Corrected: Previous incorrect fix to includes/functions/functions_import.php (canajun2eh)
  - Fixed: Undefined variable in includes/functions/functions_import.php (canajun2eh)
  - Fixed: Undefined variable in includes/classes/class_reportbase.php (canajun2eh)

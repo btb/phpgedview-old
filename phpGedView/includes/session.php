@@ -275,11 +275,18 @@ if (isset($_REQUEST['NEWLANGUAGE'])) {
 if (empty($_SERVER['QUERY_STRING'])) {
 	$QUERY_STRING='';
 } else {
-	$QUERY_STRING=str_replace(
+	$QUERY_STRING=str_ireplace(
 		array('&','<', 'show_context_help=no', 'show_context_help=yes'),
 		array('&amp;','&lt;', '', ''),
-		$_SERVER['QUERY_STRING']
+		urldecode($_SERVER['QUERY_STRING'])
 	);
+	//-- Zap any scripts embedded in the query string
+	$QUERY_STRING=preg_replace(
+		'~(".*>.*)?&lt;script.*&lt;/script.*>~i',
+		'',
+		$QUERY_STRING
+	);
+	//-- Here we could add some code to log the attempt to embed a script in the query string
 }
 
 //-- if not configured then redirect to the configuration script
@@ -329,7 +336,7 @@ try {
 
 // The authentication interface includes logging - which may be to the database
 require PGV_ROOT.'includes/authentication.php';
- 
+
 // Determine browser type
 $BROWSERTYPE = 'other';
 if (!empty($_SERVER['HTTP_USER_AGENT'])) {
@@ -364,7 +371,7 @@ session_start();
 
 // check whether it is necessary to regenerate a new session, destroying the current one
 // added SOAP_CONNECTED for SOAP session persistence (otherwise only one request per authentication is allowed)
-if (!$SEARCH_SPIDER && !isset($_SESSION['initiated']) && !isset($_SESSION['SOAP_CONNECTED'])) { 
+if (!$SEARCH_SPIDER && !isset($_SESSION['initiated']) && !isset($_SESSION['SOAP_CONNECTED'])) {
 	// A new session, so prevent session fixation attacks by choosing a new PHPSESSID.
 	session_regenerate_id(true);
 	$_SESSION['initiated']=true;
@@ -722,7 +729,7 @@ if ((isset($USE_PIWIK_ANALYTICS) && $USE_PIWIK_ANALYTICS) && !empty($PGV_PIWIK_U
 	$temp = rtrim($PGV_PIWIK_URL, '/');
 	if (strtolower(substr($temp,0,7)) == 'http://') $temp = substr($temp,7);
 	else if (strtolower(substr($temp,0,8)) == 'https://') $temp = substr($temp,8);
-	
+
 	define('PGV_PIWIK_URL', $temp);					// The URL to the Piwik server (without the "http://" or "https://" part)
 	define('PGV_PIWIK_SITE', $PGV_PIWIK_SITE);		// The number assigned by Piwik to your PGV site
 }
