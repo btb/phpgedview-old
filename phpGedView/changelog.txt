@@ -9,7 +9,9 @@
 =====================================================================
 
 Version 4.3.0
+ - Added: Log fact that attempt to inject a script was detected (canajun2eh)
  - Fixed: Script injection vulnerability (canajun2eh)
+ - Changed: Implement revised Clustrmaps calling sequence (sridharb)
  - Corrected: Previous incorrect fix to includes/functions/functions_import.php (canajun2eh)
  - Fixed: Undefined variable in includes/functions/functions_import.php (canajun2eh)
  - Fixed: Undefined variable in includes/classes/class_reportbase.php (canajun2eh)
