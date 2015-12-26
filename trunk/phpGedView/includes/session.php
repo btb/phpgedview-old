@@ -281,12 +281,18 @@ if (empty($_SERVER['QUERY_STRING'])) {
 		urldecode($_SERVER['QUERY_STRING'])
 	);
 	//-- Zap any scripts embedded in the query string
+	$temp = $QUERY_STRING;
 	$QUERY_STRING=preg_replace(
 		'~(".*>.*)?&lt;script.*&lt;/script.*>~i',
 		'',
 		$QUERY_STRING
 	);
-	//-- Here we could add some code to log the attempt to embed a script in the query string
+	if ($temp != $QUERY_STRING) {
+		require_once PGV_ROOT.'includes/authentication.php';
+		AddToLog('MSG>Script injection detected. Script removed.');
+		AddToLog("UA>{$_SERVER['HTTP_USER_AGENT']}<");
+		AddToLog("URI>{$_SERVER['REQUEST_URI']}<");
+	}
 }
 
 //-- if not configured then redirect to the configuration script
@@ -335,7 +341,7 @@ try {
 }
 
 // The authentication interface includes logging - which may be to the database
-require PGV_ROOT.'includes/authentication.php';
+require_once PGV_ROOT.'includes/authentication.php';
 
 // Determine browser type
 $BROWSERTYPE = 'other';
