@@ -1678,26 +1678,28 @@ class ra_functions {
 		return $out;
 	}
 
+/* -- the parseMonthsToInt function doesn't appear to be used.  Being commented-out until further notice.
+
 	function parseMonthsToInt($month)
 	{
 		switch($month){
-			case "JAN": return 01;
+			case "JAN": return 1;
 			break;
-			case "FEB": return 02;
+			case "FEB": return 2;
 			break;
-			case "MAR": return 03;
+			case "MAR": return 3;
 			break;
-			case "APR": return 04;
+			case "APR": return 4;
 			break;
-			case "MAY": return 05;
+			case "MAY": return 5;
 			break;
-			case "JUN": return 06;
+			case "JUN": return 6;
 			break;
-			case "JUL": return 07;
+			case "JUL": return 7;
 			break;
-			case "AUG": return 08;
+			case "AUG": return 8;
 			break;
-			case "SEP": return 09;
+			case "SEP": return 9;
 			break;
 			case "OCT": return 10;
 			break;
@@ -1705,11 +1707,12 @@ class ra_functions {
 			break;
 			case "DEC": return 12;
 			break;
-			default: return 00;
+			default: return 0;
 			break;
 
 		}
 	}
+*/
 
 	/*
 	 * This will return an array of comma delimited lists of all the PLAC facts for a person

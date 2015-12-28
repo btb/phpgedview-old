@@ -9,6 +9,7 @@
 =====================================================================
 
 Version 4.3.0
+ - Fixed: Incorrect use of leading zero in research_assistant function (canajun2eh)
  - Added: Log fact that attempt to inject a script was detected (canajun2eh)
  - Fixed: Script injection vulnerability (canajun2eh)
  - Changed: Implement revised Clustrmaps calling sequence (sridharb)
