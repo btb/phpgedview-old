@@ -5,7 +5,7 @@
  * used by the SAX parser to generate reports from the XML report file.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2015  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2016  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -1855,7 +1855,7 @@ function PGVRPageNumSHandler() {
 */
 function PGVRTotalPagesSHandler() {
 	global $currentElement;
-	$currentElement->addText("{{nb}}");
+	$currentElement->addText("#PAGETOT#");
 }
 
 /**

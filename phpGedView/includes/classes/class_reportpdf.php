@@ -5,7 +5,7 @@
  * used by the SAX parser to generate PDF reports from the XML report file.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2016  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -236,7 +236,7 @@ class PGVReportBasePDF extends PGVReportBase {
 	* @param int $w Image width
 	* @param int $h Image height
 	* @param string $align L:left, C:center, R:right or empty to use x/y
-	* @param string $ln T:same line, N:next line 
+	* @param string $ln T:same line, N:next line
 	* @return PGVRImagePDF
 	*/
 	function createImage($file, $x, $y, $w, $h, $align, $ln) {
@@ -317,7 +317,7 @@ class PGVRPDF extends TCPDF {
 	* @var int
 	*/
 	public $lastpicpage = 0;
-	
+
 	public $pgvreport;
 
 	/**
@@ -515,7 +515,7 @@ class PGVRPDF extends TCPDF {
 		$this->SetX($x);
 		return $x;
 	}
-	
+
 	/**
 	* Get the maximum line width to draw from the curren position -PGVRPDF
 	* RTL supported
@@ -529,7 +529,7 @@ class PGVRPDF extends TCPDF {
 			return ($this->getRemainingWidth() + $m["left"]);
 		}
 	}
-	
+
 	function getFootnotesHeight() {
 		$h=0;
 		foreach($this->printedfootnotes as $element) {
@@ -575,7 +575,7 @@ class PGVRPDF extends TCPDF {
 		$this->printedfootnotes[] = $footnote;
 		return false;
 	}
-	
+
 	/**
 	* Used this function instead of AddPage()
 	* This function will make sure that images will not be overwritten
@@ -587,11 +587,11 @@ class PGVRPDF extends TCPDF {
 		$this->AddPage();
 	}
 
-	
+
 	/*******************************************
 	* TCPDF protected functions
 	*******************************************/
-	
+
 	/**
 	* Add a page if needed -PGVRPDF
 	* @param $height Cell height. Default value: 0
@@ -608,7 +608,7 @@ class PGVRPDF extends TCPDF {
 	function getRemainingWidthPDF() {
 		return $this->getRemainingWidth();
 	}
-	
+
 } //-- END PGVRPDF
 
 /**
@@ -659,12 +659,12 @@ class PGVRCellPDF extends PGVRCell {
 		* This is the bugfree version
 		*/
 		$cX = 0;	// Class Left
-		
+
 		// Set up the text style
 		if (($pdf->getCurrentStyle()) != ($this->styleName)) {
 			$pdf->setCurrentStyle($this->styleName);
 		}
-		$temptext = str_replace("#PAGENUM#", $pdf->PageNo(), $this->text);
+		$temptext = str_replace(array("#PAGENUM#", "#PAGETOT#"), array($pdf->getAliasNumPage(), $pdf->getAliasNbPages()), $this->text);
 
 		$match = array();
 		// Indicates if the cell background must be painted (1) or transparent (0)
@@ -729,7 +729,11 @@ class PGVRCellPDF extends PGVRCell {
 			$cHT = $cHT * $pdf->getCellHeightRatio() * $pdf->getCurrentStyleHeight();
 			$cM = $pdf->getMargins();
 			// Add padding
-			$cHT += ($cM["cell"] * 2);
+			if (!is_array($cM['cell'])) {
+				$cHT += ($cM['cell'] * 2);
+			} else {
+				$cHT += ($cM['padding_top'] + $cM['padding_bottom']);
+			}
 			// Add a new page if needed
 			if ($pdf->checkPageBreakPDF($cHT)) {
 				$this->top = $pdf->GetY();
@@ -954,7 +958,11 @@ class PGVRTextBoxPDF extends PGVRTextBox {
 		$cM = $pdf->getMargins();
 		// Use cell padding to wrap the width
 		// Temp Width with cell padding
-		$cWT = $cW - ($cM["cell"] * 2);
+		if (!is_array($cM['cell'])) {
+			$cWT -= ($cM['cell'] * 2);
+		} else {
+			$cWT -= ($cM['padding_left'] + $cM['padding_right']);
+		}
 		// Element height (exept text)
 		$eH = 0;
 		$w = 0;
@@ -1009,7 +1017,11 @@ class PGVRTextBoxPDF extends PGVRTextBox {
 				$cHT = $cHT * $pdf->largestFontHeight;
 				// Add cell padding
 				if ($this->padding) {
-					$cHT += ($cM["cell"] * 2);
+					if (!is_array($cM['cell'])) {
+						$cHT += ($cM['cell'] * 2);
+					} else {
+						$cHT += ($cM['padding_top'] + $cM['padding_bottom']);
+					}
 				}
 				if ($cH < $cHT) {
 					$cH = $cHT;
@@ -1058,13 +1070,21 @@ class PGVRTextBoxPDF extends PGVRTextBox {
 		// Add cell pedding if set and if any text (element) exist
 		if ($this->padding) {
 			if ($cHT > 0) {
-				$pdf->SetY($cY + $cM["cell"]);
+				if (!is_array($cM['cell'])) {
+					$pdf->SetY($cY + $cM['cell']);
+				} else {
+					$pdf->SetY($cY + $cM['padding_top']);
+				}
 			}
 		}
 		// Change the margins X, Width
 		if (!$pdf->getRTL()) {
 			if ($this->padding){
-				$pdf->SetLeftMargin($cX + $cM["cell"]);
+				if (!is_array($cM['cell'])) {
+					$pdf->SetLeftMargin($cX + $cM['cell']);
+				} else {
+					$pdf->SetLeftMargin($cX + $cM['padding_left']);
+				}
 				$pdf->SetRightMargin($pdf->getRemainingWidthPDF() - $cW + $cM["right"]);
 			}
 			else {
@@ -1073,7 +1093,11 @@ class PGVRTextBoxPDF extends PGVRTextBox {
 			}
 		} else {
 			if ($this->padding){
-				$pdf->SetRightMargin($cX + $cM["cell"]);
+				if (!is_array($cM['cell'])) {
+					$pdf->SetRightMargin($cX + $cM['cell']);
+				} else {
+					$pdf->SetRightMargin($cX + $cM['padding_right']);
+				}
 				$pdf->SetLeftMargin($pdf->getRemainingWidthPDF() - $cW  + $cM["left"]);
 			} else {
 				$pdf->SetRightMargin($cX);
@@ -1082,7 +1106,7 @@ class PGVRTextBoxPDF extends PGVRTextBox {
 		}
 		// Save the current page number
 		$cPN = $pdf->getPage();
-		
+
 		// Render the elements (write text, print picture...)
 		foreach($this->elements as $element) {
 			if (is_object($element)) {
@@ -1146,7 +1170,7 @@ class PGVRTextPDF extends PGVRText {
 		if ($pdf->getCurrentStyle() != $this->styleName) {
 			$pdf->setCurrentStyle($this->styleName);
 		}
-		$temptext = str_replace("#PAGENUM#", $pdf->PageNo(), $this->text);
+		$temptext = str_replace(array("#PAGENUM#", "#PAGETOT#"), array($pdf->getAliasNumPage(), $pdf->getAliasNbPages()), $this->text);
 
 		// Paint the text color or they might use inherited colors by the previous function
 		$match = array();
@@ -1177,7 +1201,7 @@ class PGVRTextPDF extends PGVRText {
 
 	/**
 	* Splits the text into lines if necessary to fit into a giving cell
-	* 
+	*
 	* @param PGVRPDF &$pdf
 	* @return array
 	*/
@@ -1291,7 +1315,7 @@ class PGVRFootnotePDF extends PGVRFootnote {
 		if ($pdf->getCurrentStyle() != $this->styleName) {
 			$pdf->setCurrentStyle($this->styleName);
 		}
-		$temptext = str_replace("#PAGENUM#", $pdf->PageNo(), $this->text);
+		$temptext = str_replace(array("#PAGENUM#", "#PAGETOT#"), array($pdf->getAliasNumPage(), $pdf->getAliasNbPages()), $this->text);
 		$temptext = str_replace(array('«', '»'), array('<u>', '</u>'), $temptext);		// underline «title» part of Source item
 		// Set the link to this y/page position
 		$pdf->SetLink($this->addlink, -1, -1);
@@ -1327,7 +1351,7 @@ class PGVRFootnotePDF extends PGVRFootnote {
 	/**
 	* Splits the text into lines to fit into a giving cell
 	* and returns the last lines width
-	* 
+	*
 	* @param PGVRPDF &$pdf
 	* @return array
 	*/
@@ -1481,7 +1505,7 @@ class PGVRImagePDF extends PGVRImage {
 		} else {
 			$pdf->SetY($this->y);
 		}
-		
+
 		$pdf->Image($this->file, $this->x, $this->y, $this->width, $this->height, "", "", $this->line, false, 72, $this->align);
 		$lastpicpage = $pdf->PageNo();
 		$pdf->lastpicpage = $pdf->getPage();

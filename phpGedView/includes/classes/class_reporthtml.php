@@ -5,7 +5,7 @@
  * used by the SAX parser to generate HTML reports from the XML report file.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2016  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -623,9 +623,11 @@ class PGVRCellHTML extends PGVRCell {
 	*/
 	function render(&$html) {
 
-		if (strpos($this->text, "{{nb}}") !== false) {
+		// Check for Page x of y line, which is meaningless in HTML.  HTML isn't page-oriented.
+		if (strpos($this->text, "#PAGETOT#") !== false) {
 			return;
 		}
+		// This is not the Page x of y line
 		$temptext = str_replace("#PAGENUM#", $html->PageNo(), $this->text);
 
 		// Setup the style name
