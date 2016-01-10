@@ -959,9 +959,9 @@ class PGVRTextBoxPDF extends PGVRTextBox {
 		// Use cell padding to wrap the width
 		// Temp Width with cell padding
 		if (!is_array($cM['cell'])) {
-			$cWT -= ($cM['cell'] * 2);
+			$cWT = $cW - ($cM['cell'] * 2);
 		} else {
-			$cWT -= ($cM['padding_left'] + $cM['padding_right']);
+			$cWT = $cW - ($cM['padding_left'] + $cM['padding_right']);
 		}
 		// Element height (exept text)
 		$eH = 0;
