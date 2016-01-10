@@ -9,6 +9,7 @@
 =====================================================================
 
 Version 4.3.0
+ - Fixed: Undefined variable in "includes/classes/class_reportpdf.php" (canajun2eh)
  - Changed: Make report generator upwards compatible with TCPDF version 6.2 (canajun2eh)
  - Added: Log fact that attempt to inject a script was detected (canajun2eh)
  - Fixed: Script injection vulnerability (canajun2eh)
