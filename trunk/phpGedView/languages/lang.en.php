@@ -3,7 +3,7 @@
  * English texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2016  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -1391,6 +1391,12 @@ $pgv_lang["theme_select_descr"] 	= "The Theme Select block displays the Theme se
 $pgv_lang["block_top10_title"]		= "Top 10 Surnames";
 $pgv_lang["block_top10"]			= "Top 10 Surnames";
 $pgv_lang["block_top10_descr"]		= "This block shows a table of the 10 most frequently occurring surnames in the database.  The actual number of surnames shown in this block is configurable.  You can configure the GEDCOM to remove names from this list.";
+$pgv_lang["block_cookiepolicy"]			= "Cookie Policy";
+$pgv_lang["block_cookiepolicy_title"]	= "Cookie Policy";
+$pgv_lang["block_cookiepolicy_descr"]	= "This block shows the cookie policy of this site, as required by the EU Cookie Law.";
+$pgv_lang["block_cookiepolicy_body"]	= "<span class='warning'>This notice is required by the EU Cookie Law.</span><br />This website does its best not to use cookies, and does so only when technically needed. No personal information, not even your userid or password, is ever stored in cookies created by this site.<br /><br />For technical reasons beyond this site's control, these cookies are not deleted when you end your session with this site. However, they are deleted immediately when your browser terminates.";
+$pgv_lang["block_cookiepolicy_body_extlink"]	= "<span class='warning'>This notice is required by the EU Cookie Law.</span><br />This website does its best not to use cookies, and does so only when technically needed. No personal information, not even your userid or password, is ever stored in cookies created by this site. For further details about the cookie policy of this website please follow <a href='<link>' target='_blank' title='Site-specific cookie policy'>this link</a>.<br /><br />For technical reasons beyond this site's control, these cookies are not deleted when you end your session with this site. However, they are deleted immediately when your browser terminates.";
+$pgv_lang["block_cookiepolicy_link"]			= "Cookie policy page link";
 $pgv_lang["block_givn_top10_title"]		= "Top 10 Given Names";
 $pgv_lang["block_givn_top10"]			= "Top 10 Given Names";
 $pgv_lang["block_givn_top10_descr"]		= "This block shows a table of the 10 most frequently occurring given names in the database.  The actual number of given names shown in this block is configurable.";

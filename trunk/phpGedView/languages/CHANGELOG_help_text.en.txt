@@ -43,6 +43,9 @@ VERSION 4.3.0
 
 ?$pgv_lang["whatever"]								dd Monthname, year		Change codes and comments
 ----------------------------------------------------------------------------------------
++$pgv_lang["index_cookiepolicy_help"]				24 Jan 2016				A
++$pgv_lang["cookiepolicy_link_help"]				24 Jan 2016				A
++$pgv_lang["cookiepolicy_link_advice"]				24 Jan 2016				A
 *$pgv_lang["help_managesites"]						27 Dec 2012				W
 *$pgv_lang["help_remotesites"]						27 Dec 2012				w
 +$pgv_lang["help_timedban"]							27 Dec 2012				A

@@ -3,7 +3,7 @@
  * French Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2011  PGV Development Team. All rights reserved.
+ * Copyright (C) 2002 to 2016  PGV Development Team. All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -437,18 +437,18 @@ $pgv_lang["text"]                       = "Texte";
 $pgv_lang["note"]                       = "Note";
 $pgv_lang["NN"]                         = "(nom inconnu)";
 $pgv_lang["PN"]                         = "(prénom inconnu)";
-$pgv_lang["NNhebrew"]                   = "(לא ידוע)";
-$pgv_lang["PNhebrew"]                   = "(לא ידוע)";
-$pgv_lang["NNarabic"]                   = "(غير معروف)";
-$pgv_lang["PNarabic"]                   = "(غير معروف)";
-$pgv_lang["NNgreek"]                    = "(άγνωστος / η)";
-$pgv_lang["PNgreek"]                    = "(άγνωστος / η)";
-$pgv_lang["NNrussian"]                  = "(неопределено)";
-$pgv_lang["PNrussian"]                  = "(неопределено)";
-$pgv_lang["NNchinese"]                  = "(未知)";
-$pgv_lang["PNchinese"]                  = "(未知)";
+$pgv_lang["NNhebrew"]                   = "(?? ????)";
+$pgv_lang["PNhebrew"]                   = "(?? ????)";
+$pgv_lang["NNarabic"]                   = "(??? ?????)";
+$pgv_lang["PNarabic"]                   = "(??? ?????)";
+$pgv_lang["NNgreek"]                    = "(????st?? / ?)";
+$pgv_lang["PNgreek"]                    = "(????st?? / ?)";
+$pgv_lang["NNrussian"]                  = "(????????????)";
+$pgv_lang["PNrussian"]                  = "(????????????)";
+$pgv_lang["NNchinese"]                  = "(??)";
+$pgv_lang["PNchinese"]                  = "(??)";
 $pgv_lang["NNvietnamese"]               = "(vô danh)";
-$pgv_lang["PNvietnamese"]               = "(không biết tuổi)";
+$pgv_lang["PNvietnamese"]               = "(không bi?t tu?i)";
 $pgv_lang["NNthai"]                     = "(inconnu)";
 $pgv_lang["PNthai"]                     = "(inconnu)";
 $pgv_lang["NNother"]                    = "(inconnu)";
@@ -1383,6 +1383,12 @@ $pgv_lang["theme_select_descr"]         = "Le bloc «Changer de thème» affiche
 $pgv_lang["block_top10_title"]          = "Noms les plus fréquents";
 $pgv_lang["block_top10"]                = "Bloc «Top 10»";
 $pgv_lang["block_top10_descr"]          = "Le bloc «Top 10» affiche les 10 noms les plus fréquents.";
+$pgv_lang["block_cookiepolicy"]			= "Bloc «Politique Cookies»";
+$pgv_lang["block_cookiepolicy_title"]	= "Politique concernant les cookies";
+$pgv_lang["block_cookiepolicy_descr"]	= "Le bloc «Politique Cookies» affiche la politique de ce site concernant les cookies, comme c'est exigée par la loi de l'UE.";
+$pgv_lang["block_cookiepolicy_body"]	= "<span class='warning'>Cette affiche est exigée par la loi de l'UE.</span><br />Ce site vise à utiliser des cookies seulement si il n'y a pas d'autre possibilité. Les cookies crées par ce site ne stockent pas des renseignements personnels ou nom d'utilisateur et mot de passe.<br /><br />Pour des raisons techniques, ces cookies ne sont pas supprimés après la fin du programme PhpGedView. Cependant, ils sont supprimés immédiatement après la fin du navigateur.";
+$pgv_lang["block_cookiepolicy_body_extlink"]	= "<span class='warning'>Cette affiche est exigée par la loi de l'UE.</span><br />Ce site vise à utiliser des cookies seulement si il n'y a pas d'autre possibilité. Les cookies crées par ce site ne stockent pas des renseignements personnels ou nom d'utilisateur et mot de passe. Pour plus de détails au sujet de la politique de ce site concernant les cookies suivez <a href='<link>' target='_blank' title='Politique du site concernant les cookies'>ce lien</a>.<br /><br />Pour des raisons techniques, ces cookies ne sont pas supprimés après la fin du programme PhpGedView. Cependant, ils sont supprimés immédiatement après la fin du navigateur.";
+$pgv_lang["block_cookiepolicy_link"]			= "Lien vers la description";
 $pgv_lang["block_givn_top10_title"]     = "Top 10 des prénoms";
 $pgv_lang["block_givn_top10"]           = "Top 10 des prénoms";
 $pgv_lang["block_givn_top10_descr"]     = "Ce bloc affiche une table des 10 prénoms les plus fréquents présents dans la base de données. Le nombre de prénoms affiché dans ce bloc est configurable.";

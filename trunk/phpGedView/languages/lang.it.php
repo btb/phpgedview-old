@@ -3,7 +3,7 @@
  * Italian Language file
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2016  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,7 +20,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  *
- * @author Lorenzo Simionato, Fabio Parri, Marco Renini
+ * @author Lorenzo Simionato, Fabio Parri, Marco Renini, Pasquale Ceres
  * @package PhpGedView
  * @subpackage Languages
  * @version $Id$
@@ -443,18 +443,18 @@ $pgv_lang["text"]					= "Testo:";
 $pgv_lang["note"]					= "Nota";
 $pgv_lang["NN"] 					= "(sconosciuto)";
 $pgv_lang["PN"] 					= "(sconosciuta)";
-$pgv_lang["NNhebrew"] 		= "(לא-ידוע)";
-$pgv_lang["PNhebrew"] 		= "(לא-ידוע)";
-$pgv_lang["NNarabic"] 		= "(غير معروف)";
-$pgv_lang["PNarabic"] 		= "(غير معروف)";
-$pgv_lang["NNgreek"] 			= "(άγνωστος/η)";
-$pgv_lang["PNgreek"] 			= "(άγνωστος/η)";
-$pgv_lang["NNrussian"] 		= "(неопределено)";
-$pgv_lang["PNrussian"] 		= "(неопределено)";
-$pgv_lang["NNchinese"] 		= "(未知)";
-$pgv_lang["PNchinese"] 		= "(未知)";
+$pgv_lang["NNhebrew"] 		= "(??-????)";
+$pgv_lang["PNhebrew"] 		= "(??-????)";
+$pgv_lang["NNarabic"] 		= "(??? ?????)";
+$pgv_lang["PNarabic"] 		= "(??? ?????)";
+$pgv_lang["NNgreek"] 			= "(????st??/?)";
+$pgv_lang["PNgreek"] 			= "(????st??/?)";
+$pgv_lang["NNrussian"] 		= "(????????????)";
+$pgv_lang["PNrussian"] 		= "(????????????)";
+$pgv_lang["NNchinese"] 		= "(??)";
+$pgv_lang["PNchinese"] 		= "(??)";
 $pgv_lang["NNvietnamese"] = "(vô danh)";
-$pgv_lang["PNvietnamese"] = "(không biết tuổi)";
+$pgv_lang["PNvietnamese"] = "(không bi?t tu?i)";
 $pgv_lang["NNthai"] 			= "(sconosciuto)";
 $pgv_lang["PNthai"] 			= "(sconosciuto)";
 $pgv_lang["NNother"] 			= "(sconosciuto)";
@@ -1223,7 +1223,7 @@ $pgv_lang["mail02_subject"] 		= "Nuova registrazione a #SERVER_NAME#";
 
 $pgv_lang["hashcode"]				= "Codice di verifica:";
 $pgv_lang["thankyou"]				= "Ciao #user_fullname# ...<br />Grazie per la tua registrazione";
-$pgv_lang["pls_note06"] 			= "Manderemo ora una mail di conferma all'indirizzo <b>#user_email#</b>.<br />Devi verificare l'account richiesto seguendo le istruzioni nel messaggio di conferma.<br />Se non effettuerai questa verifica entro sette giorni, il tuo account sarà cancellato automaticamente, e dovrai registrarti di nuovo.<br/><br/>Dopo che avrai seguito le istruzioni nella mail di conferma, l'amministratore dovrà approvare la tua richiesta prima che tu possa utilizzare il tuo account.<br/><br/>Per collegarti al sito, devi ricordare l'username e la password.<br/><br/>";
+$pgv_lang["pls_note06"] 			= "Manderemo ora una mail di conferma all'indirizzo <b>#user_email#</b>.<br />Devi verificare l'account richiesto seguendo le istruzioni nel messaggio di conferma.<br />Se non effettuerai questa verifica entro sette giorni, il tuo account sarà cancellato automaticamente, e dovrai registrarti di nuovo.<br /><br />Dopo che avrai seguito le istruzioni nella mail di conferma, l'amministratore dovrà approvare la tua richiesta prima che tu possa utilizzare il tuo account.<br /><br />Per collegarti al sito, devi ricordare l'username e la password.<br /><br />";
 $pgv_lang["pls_note06a"] 			= "Manderemo adesso una e-mail all'indirizzo <b>#user_email#</b>. Devi verificare la tua richiesta di registrazione seguendo le istruzioni della e-mail di conferma. Se non confermi la tua richiesta di registrazione entro sette giorni, la tua richiesta verrà respinta automaticamente e dovrai effettuare nuovamente la richiesta..<br /><br />Dopo aver seguito le istruzioni della e-mail di conferma, potrai accedere. Per accedere a questo sito occorre che tu conosca nome utente e password.<br /><br />";
 
 $pgv_lang["registernew"]			= "Conferma nuovo Account";
@@ -1392,6 +1392,12 @@ $pgv_lang["theme_select_descr"] 	= "Il blocco Seleziona Tema mostra un selettore
 $pgv_lang["block_top10_title"]		= "Top 10 Cognomi";
 $pgv_lang["block_top10"]			= "Top 10 Cognomi";
 $pgv_lang["block_top10_descr"]		= "Questo blocco mostra una tabella di 10 cognomi più frequenti nel database. Il numero effettivo di cognomi mostrato in questo blocco è configurabile. È possibile configurare il GEDCOM per rimuovere i nomi di questo elenco.";
+$pgv_lang["block_cookiepolicy"]			= "Politica sui Cookie";
+$pgv_lang["block_cookiepolicy_title"]	= "Politica sui Cookie";
+$pgv_lang["block_cookiepolicy_descr"]	= "Questo blocco mostra la politica sui cookie adottata da questo sito, come richiesto dalla normativa europea sui cookie (Cookie Law).";
+$pgv_lang["block_cookiepolicy_body"]	= "<span class='warning'>Questo avviso è richiesto dalla normativa europea sui cookie (Cookie Law).</span><br />Questo sito fa del suo meglio per non usare cookie, e lo fa solo quando tecnicamente necessario. Nessuna informazione personale, nemmeno l'userid o la password, viene mai salvata in cookie creati da questo sito.<br /><br />Per ragioni tecniche al di là del controllo di questo sito, questi cookie non sono cancellati quando si termina la sessione su questo sito. Comunque, essi vengono eliminati immediatamente quando si chiude il browser.";
+$pgv_lang["block_cookiepolicy_body_extlink"]	= "<span class='warning'>Questo avviso è richiesto dalla normativa europea sui cookie (Cookie Law).</span><br />Questo sito fa del suo meglio per non usare cookie, e lo fa solo quando tecnicamente necessario. Nessuna informazione personale, nemmeno l'userid o la password, viene mai salvata in cookie creati da questo sito. Per ulteriori dettagli sulla politica sui cookie adottata da questo sito seguire <a href='<link>' target='_blank' title='Pagina sulla politica sui cookie'>questo link</a>.<br /><br />Per ragioni tecniche al di là del controllo di questo sito, questi cookie non sono cancellati quando si termina la sessione su questo sito. Comunque, essi vengono eliminati immediatamente quando si chiude il browser.";
+$pgv_lang["block_cookiepolicy_link"]	= "Link alla pagina sulla politica sui cookie";
 $pgv_lang["block_givn_top10_title"]		= "Top 10 nomi propri";
 $pgv_lang["block_givn_top10"]			= "Top 10 nomi propri";
 $pgv_lang["block_givn_top10_descr"]		= "Questo blocco mostra una tabella dei 10 nomi propri più frequenti. L'effettivo numero dei nomi propri mostrato in questo blocco è configurabile.";

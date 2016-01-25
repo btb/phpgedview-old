@@ -3,7 +3,7 @@
  * Portugese Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2016  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -443,18 +443,18 @@ $pgv_lang["text"]="Texto da Fonte:";
 $pgv_lang["note"]="Nota";
 $pgv_lang["NN"]="(Desconhecido)";
 $pgv_lang["PN"]="(Prenome desconhecido)";
-$pgv_lang["NNhebrew"] 		= "(לא-ידוע)";
-$pgv_lang["PNhebrew"] 		= "(לא-ידוע)";
-$pgv_lang["NNarabic"] 		= "(غير معروف)";
-$pgv_lang["PNarabic"] 		= "(غير معروف)";
-$pgv_lang["NNgreek"] 			= "(άγνωστος/η)";
-$pgv_lang["PNgreek"] 			= "(άγνωστος/η)";
-$pgv_lang["NNrussian"] 		= "(неопределено)";
-$pgv_lang["PNrussian"] 		= "(неопределено)";
-$pgv_lang["NNchinese"] 		= "(未知)";
-$pgv_lang["PNchinese"] 		= "(未知)";
+$pgv_lang["NNhebrew"] 		= "(??-????)";
+$pgv_lang["PNhebrew"] 		= "(??-????)";
+$pgv_lang["NNarabic"] 		= "(??? ?????)";
+$pgv_lang["PNarabic"] 		= "(??? ?????)";
+$pgv_lang["NNgreek"] 			= "(????st??/?)";
+$pgv_lang["PNgreek"] 			= "(????st??/?)";
+$pgv_lang["NNrussian"] 		= "(????????????)";
+$pgv_lang["PNrussian"] 		= "(????????????)";
+$pgv_lang["NNchinese"] 		= "(??)";
+$pgv_lang["PNchinese"] 		= "(??)";
 $pgv_lang["NNvietnamese"] = "(vô danh)";
-$pgv_lang["PNvietnamese"] = "(không biết tuổi)";
+$pgv_lang["PNvietnamese"] = "(không bi?t tu?i)";
 $pgv_lang["NNthai"] 			= "(Desconhecido)";
 $pgv_lang["PNthai"] 			= "(Prenome desconhecido)";
 $pgv_lang["NNother"] 			= "(Desconhecido)";
@@ -1391,6 +1391,12 @@ $pgv_lang["theme_select_descr"]="O bloco Seleção de Temas permite selecionar o
 $pgv_lang["block_top10_title"]="Sobrenomes mais Populares";
 $pgv_lang["block_top10"]="Sobrenomes Populares";
 $pgv_lang["block_top10_descr"]="Este bloco mostra uma tabela com os 10 sobrenomes mais populares do banco de dados.";
+$pgv_lang["block_cookiepolicy"]			= "Política de cookies";
+$pgv_lang["block_cookiepolicy_title"]	= "Política de cookies";
+$pgv_lang["block_cookiepolicy_descr"]	= "Como exigido pela lei de cookies da UE, este bloco mostra a política de cookies deste site.";
+$pgv_lang["block_cookiepolicy_body"]	= "<span class='warning'>O lei de cookies da UE exige que nota.</span><br />Este site se esforça para usar cookies apenas se não houver outra possibilidade. Cookies deste site nunca armazenar informações pessoais ou nome de usuário e senha.<br /><br />Por razões técnicas fora do controlo deste site, esses cookies não são apagados quando você encerrar a sessão com este site. No entanto, eles são apagados imediatamente quando o navegador encerra.";
+$pgv_lang["block_cookiepolicy_body_extlink"]	= "<span class='warning'>O lei de cookies da UE exige que nota.</span><br />Este site se esforça para usar cookies apenas se não houver outra possibilidade. Cookies deste site nunca armazenar informações pessoais ou nome de usuário e senha. Mais detalhes sobre a política de cookies deste site, você pode obter através <a href='<link>' target='_blank' title='Política de cookies no site'>deste link</a>.<br /><br />Por razões técnicas fora do controlo deste site, esses cookies não são apagados quando você encerrar a sessão com este site. No entanto, eles são apagados imediatamente quando o navegador encerra.";
+$pgv_lang["block_cookiepolicy_link"]	= "Link para a página política de cookies";
 $pgv_lang["block_givn_top10_title"]		= "10 mais frequentes Nomes";
 $pgv_lang["block_givn_top10"]			= "10 mais frequentes Nomes";
 $pgv_lang["block_givn_top10_descr"]		= "Este bloco mostra os 10 mais frequentes nomes no banco de dados. O número real de nomes mostrados neste bloco é configurável.";
