@@ -9,6 +9,7 @@
 =====================================================================
 
 Version 4.3.0
+ - Fixed: Undefined variable in block_main_temp.php when Cookie Policy block is activated (canajun2eh)
  - Changed: Show Cookie Policy block only on Welcome page and add to top of default list (canajun2eh)
  - Added: Block to display site's Cookie policy, as required by EU Cookie Law (pceres and canajun2eh)
  - Fixed: Undefined variable in "includes/classes/class_reportpdf.php" (canajun2eh)
