@@ -36,6 +36,7 @@ define('PGV_COOKIEPOLICY_PHP', '');
 
 $PGV_BLOCKS["print_block_cookie_policy"]["name"]		= $pgv_lang["block_cookiepolicy"];
 $PGV_BLOCKS["print_block_cookie_policy"]["descr"]		= "block_cookiepolicy_descr";
+$PGV_BLOCKS["print_block_cookie_policy"]["type"]		= "gedcom";		// Show this block only on Welcome page
 $PGV_BLOCKS["print_block_cookie_policy"]["canconfig"]	= true;
 $PGV_BLOCKS["print_block_cookie_policy"]["config"]		= array(
 	"cache"=>-1,

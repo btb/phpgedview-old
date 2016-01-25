@@ -9,6 +9,7 @@
 =====================================================================
 
 Version 4.3.0
+ - Changed: Show Cookie Policy block only on Welcome page and add to top of default list (canajun2eh)
  - Added: Block to display site's Cookie policy, as required by EU Cookie Law (pceres and canajun2eh)
  - Fixed: Undefined variable in "includes/classes/class_reportpdf.php" (canajun2eh)
  - Changed: Make report generator upwards compatible with TCPDF version 6.2 (canajun2eh)
