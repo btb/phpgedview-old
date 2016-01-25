@@ -3,7 +3,7 @@
  * German Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2015  PGV Development Team.  All rights reerved.
+ * Copyright (C) 2002 to 2016  PGV Development Team.  All rights reerved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -1393,6 +1393,12 @@ $pgv_lang["theme_select_descr"]			= "Der «Theme Auswahl» Block zeigt die Theme
 $pgv_lang["block_top10_title"]			= "Häufigste 10 Nachnamen";
 $pgv_lang["block_top10"]				= "Häufigste 10 Nachnamen";
 $pgv_lang["block_top10_descr"]			= "Dieser Block zeigt eine Liste mit den 10 häufigsten Nachnamen der Datenbank. Die tatsächliche Länge der Liste ist konfigurierbar. Sie können auch bestimmte Namen in der Liste unterdrücken.";
+$pgv_lang["block_cookiepolicy"]			= "Cookie-Politik";
+$pgv_lang["block_cookiepolicy_title"]	= "Cookie-Politik";
+$pgv_lang["block_cookiepolicy_descr"]	= "Wie vom Cookie-Gesetz der EU verlangt, zeigt dieser Block die Cookie-Politik dieser Website.";
+$pgv_lang["block_cookiepolicy_body"]	= "<span class='warning'>Das Cookie-Gesetz der EU verlangt diese Notiz.</span><br />Diese Website bemüht sich, Cookies nur dann zu verwenden, wenn es keine andere Möglichkeit gibt. Cookies dieser Webseite speichern niemals persönliche Informationen oder Benutzernamen und Kennwort.<br /><br />Aus technischen Gründen werden diese Cookies nicht nach dem Ende des Programms PhpGedView gelöscht. Sie werden aber sofort nach dem Ende des Browsers gelöscht.";
+$pgv_lang["block_cookiepolicy_body_extlink"]	= "<span class='warning'>Das Gesetz der EU verlangt diese Notiz.</span><br />Diese Website bemüht sich, Cookies nur dann zu verwenden, wenn es keine andere Möglichkeit gibt. Cookies dieser Webseite speichern niemals persönliche Informationen oder Benutzernamen und Kennwort. Weitere Details über die Cookie-Politik dieser Website können Sie über <a href='<link>' target='_blank' title='Cookie-Politik dieser Website'>diesen Link</a> erhalten.<br /><br />Aus technischen Gründen werden diese Cookies nicht nach dem Ende des Programms PhpGedView gelöscht. Sie werden aber sofort nach dem Ende des Browsers gelöscht.";
+$pgv_lang["block_cookiepolicy_link"]	= "Link: Cookie-Politik Seite";
 $pgv_lang["block_givn_top10_title"]		= "Häufigste 10 Vornamen";
 $pgv_lang["block_givn_top10"]			= "Häufigste 10 Vornamen";
 $pgv_lang["block_givn_top10_descr"]		= "Dieser Block zeigt eine Liste mit den 10 häufigsten Vornamen der Datenbank. Die tatsächliche Länge der Liste ist konfigurierbar.";

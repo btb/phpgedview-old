@@ -3,7 +3,7 @@
  * Dutch texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2016  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -1382,7 +1382,7 @@ $pgv_lang["gedcom_favorites_descr"]		= "In het vak \"GEDCOM-favorieten\" kan de 
 $pgv_lang["gedcom_stats_block"]			= "GEDCOM-statistieken";
 $pgv_lang["gedcom_stats_descr"]			= "Het vak \"GEDCOM-statistieken toont enkele gegevens over het GEDCOM-bestand, zoals het aantal erin aanwezige personen en de datum waarop het is aangemaakt.";
 $pgv_lang["gedcom_stats_show_surnames"]	= "Toon veel voorkomende achternamen?";
-$pgv_lang["portal_config_intructions"]	= "~#pgv_lang[customize_page]#~ <br/>~#pgv_lang[customize_gedcom_page]#~<br /><br />Op deze pagina kunt u uw persoonlijke MyGedView-pagina inrichten. U kunt kiezen welke vakken worden getoond en welke op positie op het scherm ze worden geplaatst.<br /><br />De pagina is in twee secties verdeeld: aan de linkerkant van het scherm de hoofdsectie, waarin de vakken groot worden weergegeven. Aan de rechterkant de rechtersectie, waarin de vakken klein worden weergegeven.<br /><br />Per sectie kunt u aangeven welke vakken worden getoond en, van boven naar beneden, in welke volgorde.";
+$pgv_lang["portal_config_intructions"]	= "~#pgv_lang[customize_page]#~ <br />~#pgv_lang[customize_gedcom_page]#~<br /><br />Op deze pagina kunt u uw persoonlijke MyGedView-pagina inrichten. U kunt kiezen welke vakken worden getoond en welke op positie op het scherm ze worden geplaatst.<br /><br />De pagina is in twee secties verdeeld: aan de linkerkant van het scherm de hoofdsectie, waarin de vakken groot worden weergegeven. Aan de rechterkant de rechtersectie, waarin de vakken klein worden weergegeven.<br /><br />Per sectie kunt u aangeven welke vakken worden getoond en, van boven naar beneden, in welke volgorde.";
 $pgv_lang["login_block"]			= "Aanmelden";
 $pgv_lang["login_descr"]			= "In het vak \"Aanmelden\" kunnen bezoekers zich aanmelden met hun gebruikersnaam en wachtwoord.";
 $pgv_lang["theme_select_block"]		= "Selecteer een thema";
@@ -1390,10 +1390,15 @@ $pgv_lang["theme_select_descr"]		= "Dit vak geeft de keuzelijst 'selecteer een t
 $pgv_lang["block_top10_title"]		= "Achternamen Top 10";
 $pgv_lang["block_top10"]			= "Achternamen Top 10";
 $pgv_lang["block_top10_descr"]		= "Geeft een lijst met de 10 meest gebruikte achternamen in de database. Het werkelijk aantal te tonen achternamen in dit blok is instelbaar";
+$pgv_lang["block_cookiepolicy"]			= "Cookie beleid";
+$pgv_lang["block_cookiepolicy_title"]	= "Cookie beleid";
+$pgv_lang["block_cookiepolicy_descr"]	= "Dit blok toont de cookie beleid van deze website, zoals vereist word door de EU Cookie Law.";
+$pgv_lang["block_cookiepolicy_body"]	= "<span class='warning'>De cookie-wetgeving van de EU vereist dit bericht.</span><br />Deze website streeft ernaar om alleen cookies te gebruiken als er geen andere mogelijkheid is. Cookies van deze website slaan nooit persoonlijke informatie of de gebruiksnaam en wachtwoord op.<br /><br />Om technische redenen zijn deze cookies niet verwijderd na het einde van PhpGedView. Maar ze worden onmiddellijk verwijderd wanneer Uw browser wordt beeindigd.";
+$pgv_lang["block_cookiepolicy_body_extlink"]	= "<span class='warning'>De cookie-wetgeving van de EU vereist dit bericht.</span><br />Deze website streeft ernaar om alleen cookies te gebruiken als er geen andere mogelijkheid is. Cookies van deze website slaan nooit persoonlijke informatie of de gebruiksnaam en wachtwoord op. Voor verdere details over de cookie beleid op deze website kunt U <a href='<link>' target='_blank' title='Cookie beleid op deze website'>deze link</a> volgen.<br /><br />Om technische redenen zijn deze cookies niet verwijderd na het einde van PhpGedView. Maar ze worden onmiddellijk verwijderd wanneer Uw browser wordt beeindigd.";
+$pgv_lang["block_cookiepolicy_link"]	= "Link naar cookie-beleid pagina";
 $pgv_lang["block_givn_top10_title"]	= "Voornamen Top 10";
 $pgv_lang["block_givn_top10"]		= "Voornamen Top 10";
 $pgv_lang["block_givn_top10_descr"]	= "Geeft een lijst met de 10 meest gebruikte voornamen in de database.  Het werkelijk aantal te tonen voornamen in dit blok is instelbaar.";
-
 $pgv_lang["gedcom_news_block"]			= "Genealogie prikbord";
 $pgv_lang["gedcom_news_descr"]			= "Op het Genealogie prikbord kan de gebruiker nieuws en berichten lezen die er door de beheerder op zijn geplaatst. Het prikbord is een goed middel om bijeenkomsten, nieuws met betrekking tot de site of de genealogie, etc. op te publiceren.";
 $pgv_lang["gedcom_news_limit"]			= "Artikelen gelimiteerd door:";

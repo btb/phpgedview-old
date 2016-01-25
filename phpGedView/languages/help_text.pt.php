@@ -3,7 +3,7 @@
  * Portugese Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2016  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -109,6 +109,9 @@ $pgv_lang["quick_update_spouse_help"]="~ADICIONAR CÔNJUGE~<br /><br />Use esta 
 $pgv_lang["quick_update_marriage_help"]="~ATUALIZAR CASAMENTO~<br /><br />Use estes campos para alterar os dados do casamento ou para adicionar um novo casamento informando um novo cônjuge. Datas devem ser informadas no formato genealógico (1 JAN 2004) ou clicando no calendário e selecionando a data desejada. Use o link <b>#pgv_lang[find_place]#</b> para selecionar um local cadastrado ou informe-o.<br /><br />";
 $pgv_lang["quick_update_child_help"]="~ADICIONAR FILHO~<br /><br />Use estes campos para adicionar um filho a esta pessoa, informand o nome, sexo, data e local de nascimento. Datas devem ser informadas no formato genealógico (1 JAN 2004) ou clicando no calendário e selecionando a data desejada. O local pode ser informado ou use the <b>#pgv_lang[find_place]#</b> para selecionar um já cadastrado.<br /><br />Estes campos servem apenas para adicionar um novo filho, para atualizar dados de um filho adicionado anteriormente, feche esta janela e clique no nome do filho na ficha #pgv_lang[relatives]#. Depois clique em Edição Simplificada para atualizar a informação desejada..<br /><br />";
 $pgv_lang["index_top10_pageviews_help"]="~BLOCO DOS ITENS PREDILETOS~<br /><br />Este bloco lista as 10 pessoas, famílias, ou fontes mais visitados do site. Este bloco só funcionará se o Administrador habilitou a opção \"Contador de Hit de Itens\".<br /><br />";
+$pgv_lang["index_cookiepolicy_help"]		= "~#pgv_lang[block_cookiepolicy]#~<br /><br />Este bloco mostra a política de cookies deste site.";
+$pgv_lang["cookiepolicy_link_help"]			= "~#pgv_lang[block_cookiepolicy_link]#~<br /><br />Deixe este campo em branco se você quiser usar o texto padrão.<br /><br />Se você quiser usar o texto padrão e também fornecer um link para um arquivo de texto ou página HTML que contém detalhes sobre a política de cookie específico para o seu site, você pode digitar o URL para essa página aqui.<br /><br />Por exemplo, <b>http://foo.bar.com/policy/cookies.txt</b> pode apontar para um arquivo de texto simples, enquanto <b>http://foo.bar.com/policy/cookies.htm</b> aponta para uma página formatada em HTML, e <b>http://foo.bar.com/policy/cookies.doc</b> aponta para um documento em formato Microsoft Word.";
+$pgv_lang["cookiepolicy_link_advice"]		= "Deixe em branco para usar o texto padrão.<br />Digite uma URL, como <b>http://foo.bar.com/policy/cookies.txt</b> para apontar para uma página de política específica do site.";
 $pgv_lang["useradmin_user_default_tab_help"]="~FICHA PREFERIDA~<br /><br />Esta opção permite selecionar a ficha aberta automaticamente ao acessar a página #pgv_lang[indi_info]#. Se for dado ao usuário permissão para alterar sua conta, ele poderá modificar esta opção posteriormente.<br /><br />";
 $pgv_lang["edituser_user_default_tab_help"]="~FICHA PREFERIDA~<br /><br />Esta opção permite selecionar qual ficha é aberta automaticamente quando a página #pgv_lang[indi_info]# é acessada.<br /><br />";
 $pgv_lang["reorder_children_help"]="~REORDENAR FILHOS~<br /><br />Os filhos são exibidos na ordem em que foram informados, pois nem sempre a data de nascimento é conhecida.<br /><br />Esta opção permite ordenar as crianças da forma como se queira. Para ordenar por data de nascimento, clique no botão correspondente.<br /><br />";

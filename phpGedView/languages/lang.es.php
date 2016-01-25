@@ -3,7 +3,7 @@
  * Spanish language file for PhpGedView
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2016  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -443,18 +443,18 @@ $pgv_lang["text"]					= "Texto de la fuente:";
 $pgv_lang["note"]					= "Nota";
 $pgv_lang["NN"] 					= "(apellido desconocido)";
 $pgv_lang["PN"] 					= "(nombre desconocido)";
-$pgv_lang["NNhebrew"] 		= "(לא ידוע)";
-$pgv_lang["PNhebrew"] 		= "(לא ידוע)";
-$pgv_lang["NNarabic"] 		= "(غير معروف)";
-$pgv_lang["PNarabic"] 		= "(غير معروف)";
-$pgv_lang["NNgreek"] 			= "(άγνωστος/η)";
-$pgv_lang["PNgreek"] 			= "(άγνωστος/η)";
-$pgv_lang["NNrussian"] 		= "(неопределено)";
-$pgv_lang["PNrussian"] 		= "(неопределено)";
-$pgv_lang["NNchinese"] 		= "(未知)";
-$pgv_lang["PNchinese"] 		= "(未知)";
+$pgv_lang["NNhebrew"] 		= "(?? ????)";
+$pgv_lang["PNhebrew"] 		= "(?? ????)";
+$pgv_lang["NNarabic"] 		= "(??? ?????)";
+$pgv_lang["PNarabic"] 		= "(??? ?????)";
+$pgv_lang["NNgreek"] 			= "(????st??/?)";
+$pgv_lang["PNgreek"] 			= "(????st??/?)";
+$pgv_lang["NNrussian"] 		= "(????????????)";
+$pgv_lang["PNrussian"] 		= "(????????????)";
+$pgv_lang["NNchinese"] 		= "(??)";
+$pgv_lang["PNchinese"] 		= "(??)";
 $pgv_lang["NNvietnamese"] = "(vô danh)";
-$pgv_lang["PNvietnamese"] = "(không biết tuổi)";
+$pgv_lang["PNvietnamese"] = "(không bi?t tu?i)";
 $pgv_lang["NNthai"] 			= "(apellido desconocido)";
 $pgv_lang["PNthai"] 			= "(nombre desconocido)";
 $pgv_lang["NNother"] 			= "(apellido desconocido)";
@@ -1334,7 +1334,7 @@ $pgv_lang["message_email3"] 		= "Vd. envió el siguiente mensaje a un administra
 $pgv_lang["viewing_url"]			= "Este mensaje se envió mientras se visitaba la URL: ";
 $pgv_lang["messaging2_help"]		= "Cuando envíe este mensaje recibirá una copia del mismo en la dirección de correo suministrada.";
 $pgv_lang["random_picture"] 		= "Imagen al azar";
-$pgv_lang["message_instructions"]	= "<b>AVISO:</b> La información privada de las personas vivas solamente se facilitará a familiares cercanos y amigos íntimos.  Se le solicitará su relación de parentesco para poder recibir datos privados.  En ocasiones la información sobre personas ya fallecidas también puede ser privada.  Esto es así cuando no hay información suficiente para determinar con seguridad si estas personas están vivas o no, por otra parte probablemente no dispongamos de más información sobre ellas.<br /><br />Antes de hacer una solicitud, revise todos los datos de la persona, fechas, lugares y detalles personales para asegurarse de que efectivamente sea la persona de su interés.  Si está enviando modificaciones sobre los datos genealógicos, no se olvide de incluir las fuentes de donde obtuvo la información.<br /><br />";
+$pgv_lang["message_instructions"]	= "<b>AVISO:</b> La información privada de las personas vivas solamente se facilitará a familiares cercanos y amigos íntimos.  Se le solicitará su relación de parentesco para poder recibir datos privados.  En ocasiones la información sobre personas ya fallecidas también puede ser privada.  Esto es así cuando no hay información suficiente para determinar con seguridad si estas personas están vivas o no, por otra parte probablemente no dispongamos de más informaci??n sobre ellas.<br /><br />Antes de hacer una solicitud, revise todos los datos de la persona, fechas, lugares y detalles personales para asegurarse de que efectivamente sea la persona de su interés.  Si está enviando modificaciones sobre los datos genealógicos, no se olvide de incluir las fuentes de donde obtuvo la información.<br /><br />";
 $pgv_lang["sending_to"] 			= "Este mensaje se enviará a #TO_USER#";
 $pgv_lang["preferred_lang"] 		= "Este usuario prefiere recibir mensajes en #USERLANG#";
 $pgv_lang["gedcom_created_using"]	= "Este GEDCOM se creó usando <b>#CREATED_SOFTWARE# #CREATED_VERSION#</b>";
@@ -1391,6 +1391,12 @@ $pgv_lang["theme_select_descr"] 	= "El bloque de Selección de Tema muestra el s
 $pgv_lang["block_top10_title"]		= "Apellidos más comunes";
 $pgv_lang["block_top10"]			= "10 apellidos más frecuentes";
 $pgv_lang["block_top10_descr"]		= "Este bloque muestra una tabla de los 10 apellidos más frecuentes en la base de datos. El número real de apellidos mostrados en este bloque es configurable  Puede configurar el GEDCOM para eliminar nombres de esta lista.";
+$pgv_lang["block_cookiepolicy"]			= "Política de cookies";
+$pgv_lang["block_cookiepolicy_title"]	= "Política de cookies";
+$pgv_lang["block_cookiepolicy_descr"]	= "Como lo requiere la ley de cookies de la UE, este bloque se muestra la política de cookies de este sitio web.";
+$pgv_lang["block_cookiepolicy_body"]	= "<span class='warning'>La ley de cookies de la UE exige este nota.</span><br />Este sitio se esfuerza por utilizar cookies sólo si no hay otra posibilidad. Las cookies de este sitio web no almacena información personal o nombre de usuario y contraseña.<br /><br />Por razones técnicas ajenas al control de este sitio, estas cookies no se borran cuando finaliza la sesión con este sitio. Sin embargo, se eliminan inmediatamente cuando su navegador termina.";
+$pgv_lang["block_cookiepolicy_body_extlink"]	= "<span class='warning'>La ley de cookies de la UE exige este nota.</span><br />Este sitio se esfuerza por utilizar cookies sólo si no hay otra posibilidad. Las cookies de este sitio web no almacena información personal o nombre de usuario y contraseña. Para más detalles sobre la política de cookies de este sitio web siga <a href='<link>' target='_blank' title='Política de cookies de este sitio'>este enlace</a>.<br /><br />Por razones técnicas ajenas al control de este sitio, estas cookies no se borran cuando finaliza la sesión con este sitio. Sin embargo, se eliminan inmediatamente cuando su navegador termina.";
+$pgv_lang["block_cookiepolicy_link"]			= "Enlace a la página de política de cookies";
 $pgv_lang["block_givn_top10_title"]		= "Los 10 nombres de pila más corrientes";
 $pgv_lang["block_givn_top10"]			= "Los 10 nombres de pila más corrientes";
 $pgv_lang["block_givn_top10_descr"]		= "Este bloque muestra la tabla de los 10 nombres de pila más frecuentes en la base de datos.  En número de nombres que se muestra en este bloque es configurable.";
