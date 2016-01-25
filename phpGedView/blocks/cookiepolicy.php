@@ -50,6 +50,7 @@ function print_block_cookie_policy($block=true, $config="", $side, $index) {
 		$config=$PGV_BLOCKS["print_block_cookie_policy"]["config"];
 	}
 
+	$id = 'cookie_policy';
 	$title = print_help_link("index_cookiepolicy_help", "qm","",false,true);
 	if ($PGV_BLOCKS["print_block_cookie_policy"]["canconfig"]) {
 		if ($ctype=="gedcom" && PGV_USER_GEDCOM_ADMIN || $ctype=="user" && PGV_USER_ID) {
