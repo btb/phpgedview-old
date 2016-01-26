@@ -3,7 +3,7 @@
  * Header for Cloudy theme
  *
  * PhpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2016  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -37,7 +37,7 @@ $menubar = new MenuBar();
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $CHARACTER_SET; ?>" />
 		<?php if (isset($_GET["pgvaction"]) && $_GET["pgvaction"]=="places_edit") { ?>
-			<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" /> <?php } 
+			<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" /> <?php }
 		?>
 		<?php if ($FAVICON) { ?><link rel="shortcut icon" href="<?php echo $FAVICON; ?>" type="image/x-icon" /> <?php } ?>
 
@@ -123,7 +123,7 @@ else { ?>
 										<form action="search.php" method="post">
 											<input type="hidden" name="action" value="general" />
 											<input type="hidden" name="topsearch" value="yes" />
-											<input type="text" class="formbut" name="query" size="15" value="<?php echo $pgv_lang['search']; ?>"
+											<input type="text" class="formbut" name="query" size="25" value="<?php echo $pgv_lang['search']; ?>"
 												onfocus="if (this.value == '<?php echo $pgv_lang['search']; ?>') this.value=''; focusHandler();"
 												onblur="if (this.value == '') this.value='<?php echo $pgv_lang['search']; ?>';" />
 											<input type="image" src="<?php echo $PGV_IMAGE_DIR; ?>/go.gif" align="top" title="<?php echo $pgv_lang['search']; ?>

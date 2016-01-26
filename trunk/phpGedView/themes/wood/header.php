@@ -3,7 +3,7 @@
  * Header for Wood theme
  *
  * PhpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2016  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -35,7 +35,7 @@ if (!defined('PGV_PHPGEDVIEW')) {
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $CHARACTER_SET; ?>" />
 		<?php if (isset($_GET["pgvaction"]) && $_GET["pgvaction"]=="places_edit") { ?>
-			<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" /> <?php } 
+			<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" /> <?php }
 		?>
 		<?php if ($FAVICON) { ?><link rel="shortcut icon" href="<?php echo $FAVICON; ?>" type="image/x-icon" /> <?php } ?>
 
@@ -105,10 +105,12 @@ else {?>
 			<?php print_theme_dropdown(); ?>
 		</td>
 		<td style="white-space: normal;" align="<?php echo $TEXT_DIRECTION=="rtl"?"left":"right" ?>" valign="middle" >
-			<form action="search.php" method="get">
+			<form action="search.php" method="post">
 				<input type="hidden" name="action" value="general" />
 				<input type="hidden" name="topsearch" value="yes" />
-				<input type="text" name="query" size="15" value="<?php echo $pgv_lang['search']?>" onfocus="if (this.value == '<?php echo $pgv_lang['search']?>') this.value=''; focusHandler();" onblur="if (this.value == '') this.value='<?php echo $pgv_lang['search']?>';" />
+				<input type="text" name="query" size="25" value="<?php echo $pgv_lang['search']?>"
+					onfocus="if (this.value == '<?php echo $pgv_lang['search']?>') this.value=''; focusHandler();"
+					onblur="if (this.value == '') this.value='<?php echo $pgv_lang['search']?>';" />
 				<input type="submit" name="search" value=" &gt; " style="{font-size: 8pt; }" />
 			</form>
 			<?php print_favorite_selector(0); ?>
