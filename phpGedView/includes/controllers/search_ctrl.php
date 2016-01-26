@@ -4,7 +4,7 @@
  * Controller for the Search Page
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2009	PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2016	PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -115,7 +115,7 @@ class SearchControllerRoot extends BaseController {
 			$this->action='general';
 		}
 
-		if (!empty ($_REQUEST["topsearch"])) {
+		if (!empty ($_POST["topsearch"])) {
 			$this->topsearch = true;
 			$this->isPostBack = true;
 			$this->srfams = 'yes';
@@ -125,33 +125,33 @@ class SearchControllerRoot extends BaseController {
 		}
 
 		// Get the query and remove slashes
-		if (isset ($_REQUEST["query"])) {
+		if (isset ($_POST["query"])) {
 			// Reset the "Search" text from the page header
-			if ($_REQUEST["query"] == $pgv_lang["search"] || strlen($_REQUEST["query"])<2 || preg_match("/^\.+$/", $_REQUEST["query"])>0) {
+			if ($_POST["query"] == $pgv_lang["search"] || strlen($_POST["query"])<2 || preg_match("/^\.+$/", $_POST["query"])>0) {
 				$this->query="";
 				$this->myquery="";
 			} else {
-				$this->query = $_REQUEST["query"];
+				$this->query = $_POST["query"];
 				$this->myquery = htmlspecialchars($this->query,ENT_COMPAT,'UTF-8');
 			}
 		}
-		if (isset ($_REQUEST["replace"])) {
-			$this->replace = $_REQUEST["replace"];
+		if (isset ($_POST["replace"])) {
+			$this->replace = $_POST["replace"];
 
-			if(isset($_REQUEST["replaceNames"])) $this->replaceNames = true;
-			if(isset($_REQUEST["replacePlaces"])) $this->replacePlaces = true;
-			if(isset($_REQUEST["replacePlacesWord"])) $this->replacePlacesWord = true;
-			if(isset($_REQUEST["replaceAll"])) $this->replaceAll = true;
+			if(isset($_POST["replaceNames"])) $this->replaceNames = true;
+			if(isset($_POST["replacePlaces"])) $this->replacePlaces = true;
+			if(isset($_POST["replacePlacesWord"])) $this->replacePlacesWord = true;
+			if(isset($_POST["replaceAll"])) $this->replaceAll = true;
 		}
 
-		// Aquire all the variables values from the $_REQUEST
+		// Aquire all the variables values from the $_POST
 		$varNames = array ("isPostBack", "action", "topsearch", "srfams", "srindi", "srsour", "srnote", "view", "soundex", "subaction", "nameprt", "tagfilter", "showasso", "resultsPageNum", "resultsPerPage", "totalResults", "totalGeneralResults", "indiResultsPrinted", "famResultsPrinted", "multiTotalResults", "srcResultsPrinted", "multiResultsPerPage", "myindilist", "mysourcelist", "mynotelist", "myfamlist");
-		$this->setRequestValues($varNames);
+		$this->setPostValues($varNames);
 
 		if (!$this->isPostBack) {
 			// Enable the default gedcom for search
 			$str = str_replace(array (".", "-", " "), array ("_", "_", "_"), $GEDCOM);
-			$_REQUEST["$str"] = $str;
+			$_POST["$str"] = $str;
 		}
 
 		// Retrieve the gedcoms to search in
@@ -159,9 +159,9 @@ class SearchControllerRoot extends BaseController {
 		if ($ALLOW_CHANGE_GEDCOM && count($all_gedcoms)>1) {
 			foreach ($all_gedcoms as $ged_id=>$gedcom) {
 				$str = str_replace(array (".", "-", " "), array ("_", "_", "_"), $gedcom);
-				if (isset ($_REQUEST["$str"]) || isset ($this->topsearch)) {
+				if (isset ($_POST["$str"]) || isset ($this->topsearch)) {
 					$this->sgeds[$ged_id] = $gedcom;
-					$_REQUEST["$str"] = 'yes';
+					$_POST["$str"] = 'yes';
 				}
 			}
 		} else {
@@ -172,29 +172,29 @@ class SearchControllerRoot extends BaseController {
 		$this->Sites = get_server_list();
 
 		// vars use for soundex search
-		if (!empty ($_REQUEST["firstname"])) {
-			$this->firstname = $_REQUEST["firstname"];
+		if (!empty ($_POST["firstname"])) {
+			$this->firstname = $_POST["firstname"];
 			$this->myfirstname = $this->firstname;
 		} else {
 			$this->firstname="";
 			$this->myfirstname = "";
 		}
-		if (!empty ($_REQUEST["lastname"])) {
-			$this->lastname = $_REQUEST["lastname"];
+		if (!empty ($_POST["lastname"])) {
+			$this->lastname = $_POST["lastname"];
 			$this->mylastname = $this->lastname;
 		} else {
 			$this->lastname="";
 			$this->mylastname = "";
 		}
-		if (!empty ($_REQUEST["place"])) {
-			$this->place = $_REQUEST["place"];
+		if (!empty ($_POST["place"])) {
+			$this->place = $_POST["place"];
 			$this->myplace = $this->place;
 		} else {
 			$this->place="";
 			$this->myplace = "";
 		}
-		if (!empty ($_REQUEST["year"])) {
-			$this->year = $_REQUEST["year"];
+		if (!empty ($_POST["year"])) {
+			$this->year = $_POST["year"];
 			$this->myyear = $this->year;
 		} else {
 			$this->year="";
@@ -206,50 +206,50 @@ class SearchControllerRoot extends BaseController {
 		};
 
 		// vars use for multisite search
-		if (!empty ($_REQUEST["multiquery"])) {
-			$this->multiquery = $_REQUEST["multiquery"];
+		if (!empty ($_POST["multiquery"])) {
+			$this->multiquery = $_POST["multiquery"];
 			$this->mymultiquery = $this->multiquery;
 		} else {
 			$this->multiquery="";
 			$this->mymultiquery = "";
 		}
-		if (!empty ($_REQUEST["name"])) {
-			$this->name = $_REQUEST["name"];
+		if (!empty ($_POST["name"])) {
+			$this->name = $_POST["name"];
 			$this->myname = $this->name;
 		} else {
 			$this->name="";
 			$this->myname = "";
 		}
-		if (!empty ($_REQUEST["birthdate"])) {
-			$this->birthdate = $_REQUEST["birthdate"];
+		if (!empty ($_POST["birthdate"])) {
+			$this->birthdate = $_POST["birthdate"];
 			$this->mybirthdate = $this->birthdate;
 		} else {
 			$this->birthdate="";
 			$this->mybirthdate = "";
 		}
-		if (!empty ($_REQUEST["birthplace"])) {
-			$this->birthplace = $_REQUEST["birthplace"];
+		if (!empty ($_POST["birthplace"])) {
+			$this->birthplace = $_POST["birthplace"];
 			$this->mybirthplace = $this->birthplace;
 		} else {
 			$this->birthplace="";
 			$this->mybirthplace = "";
 		}
-		if (!empty ($_REQUEST["deathdate"])) {
-			$this->deathdate = $_REQUEST["deathdate"];
+		if (!empty ($_POST["deathdate"])) {
+			$this->deathdate = $_POST["deathdate"];
 			$this->mydeathdate = $this->deathdate;
 		} else {
 			$this->deathdate="";
 			$this->mydeathdate = "";
 		}
-		if (!empty ($_REQUEST["deathplace"])) {
-			$this->deathplace = $_REQUEST["deathplace"];
+		if (!empty ($_POST["deathplace"])) {
+			$this->deathplace = $_POST["deathplace"];
 			$this->mydeathplace = $this->deathplace;
 		} else {
 			$this->deathplace="";
 			$this->mydeathplace = "";
 		}
-		if (!empty ($_REQUEST["gender"])) {
-			$this->gender = $_REQUEST["gender"];
+		if (!empty ($_POST["gender"])) {
+			$this->gender = $_POST["gender"];
 			$this->mygender = $this->gender;
 		} else {
 			$this->gender="";
@@ -311,31 +311,31 @@ class SearchControllerRoot extends BaseController {
 	}
 
 	/**
-	 * setRequestValues - Checks if the variable names ($varNames) are in
-	 * 					  the $_REQUEST and if so assigns their values to
+	 * setPostValues - Checks if the variable names ($varNames) are in
+	 * 					  the $_POST and if so assigns their values to
 	 * 					  $this based on the variable name ($this->$varName).
 	 *
 	 * @param array $varNames - Array of variable names(strings).
 	 */
-	function setRequestValues($varNames) {
+	function setPostValues($varNames) {
 		foreach ($varNames as $key => $varName) {
-			if (isset ($_REQUEST[$varName]))
+			if (isset ($_POST[$varName]))
 			{
 				if($varName == "action")
-				if($_REQUEST[$varName] == "replace")
+				if($_POST[$varName] == "replace")
 				if(!PGV_USER_CAN_ACCEPT)
 				{
 					$this->action = "general";
 					continue;
 				}
-				$this-> $varName = $_REQUEST[$varName];
+				$this-> $varName = $_POST[$varName];
 			}
 		}
 	}
 
 	/**
-	 * setRequestValues - Prints out all of the variable names and their
-	 * 					  values based on the variable name ($this->$varName).
+	 * printVars - 	Prints out all of the variable names and their
+	 * 				values based on the variable name ($this->$varNames).
 	 *
 	 * @param array $varNames - Array of variable names(strings).
 	 */
@@ -356,7 +356,7 @@ class SearchControllerRoot extends BaseController {
 
 		// Enable the default gedcom for search
 		$str = str_replace(array (".", "-", " "), array ("_", "_", "_"), $GEDCOM);
-		$_REQUEST["$str"] = "yes";
+		$_POST["$str"] = "yes";
 
 		// Then see if an ID is typed in. If so, we might want to jump there.
 		if (isset ($this->query)) {
@@ -726,7 +726,7 @@ class SearchControllerRoot extends BaseController {
 				$i = 0;
 				foreach ($this->Sites as $key => $site) {
 					$vartemp = "server".$i;
-					if (isset ($_REQUEST["$vartemp"])) {
+					if (isset ($_POST["$vartemp"])) {
 						$serviceClient = ServiceClient :: getInstance($key);
 						$result = $serviceClient->search($my_query);
 						$this->multisiteResults[$key] = $result;
@@ -833,7 +833,7 @@ class SearchControllerRoot extends BaseController {
 			$i = 0;
 			foreach ($this->Sites as $server) {
 				$siteName = "server".$i;
-				if (isset ($_REQUEST["$siteName"]))
+				if (isset ($_POST["$siteName"]))
 				$sitesChecked ++;
 				$i ++;
 			}

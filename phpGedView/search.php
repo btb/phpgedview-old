@@ -4,7 +4,7 @@
  * Searches based on user query.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2016  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -163,6 +163,7 @@ if ($ENABLE_AUTOCOMPLETE) require PGV_ROOT.'js/autocomplete.js.htm';
 					<?php print $pgv_lang["search_general"]; print_help_link("search_enter_terms_help", "qm"); ?>
 				</td>
 	</tr>
+	<?php printDatabaseSelector(); ?>
 	<!-- // search terms -->
 	<tr>
 		<td class="list_label" style="padding: 5px;">
@@ -312,6 +313,7 @@ if ($controller->action == "soundex") {
 					<?php print $pgv_lang["soundex_search"]; print_help_link("soundex_search_help", "qm"); ?>
 				</td>
 	</tr>
+	<?php printDatabaseSelector(); ?>
 	<!-- // search terms -->
 	<tr>
 		<td class="list_label" width="35%">
@@ -511,36 +513,6 @@ if ($controller->action == "multisite") {
 	<?php
 
 }
-// If the search is a general or soundex search then possibly display checkboxes for the gedcoms
-if ($controller->action == "general" || $controller->action == "soundex") {
-	$all_gedcoms=get_all_gedcoms();
-	// If more than one GEDCOM, switching is allowed AND DB mode is set, let the user select
-	if ((count($all_gedcoms) > 1) && ($ALLOW_CHANGE_GEDCOM)) {
-?>
-	<tr>
-		<td class="list_label" style="padding: 5px;">
-			<?php print $pgv_lang["search_geds"]; ?>
-		</td>
-		<td class="list_value" style="padding: 5px;" colspan="2">
-			<?php
-
-		//-- sorting menu by gedcom filename 
-		asort($all_gedcoms);
-		foreach ($all_gedcoms as $ged_id=>$gedcom) {
-			$str = str_replace(array (".", "-", " "), array ("_", "_", "_"), $gedcom);
-			$controller->inputFieldNames[] = "$str";
-			print "<input type=\"checkbox\" ";
-			if (isset ($_REQUEST["$str"]))
-				print "checked=\"checked\" ";
-			print "value=\"yes\" name=\"".$str."\""." /><span dir=$TEXT_DIRECTION>".PrintReady(get_gedcom_setting($ged_id, 'title'), true)."</span><br />";
-		}
-?>
-		</td>
-	</tr>
-	<?php
-
-	}
-}
 ?>
 <!--  not currently used
 	<tr>
@@ -639,4 +611,39 @@ if (($controller->action != "multisite") && !$somethingPrinted ) {
 }
 
 print_footer();
+?>
+
+<?php
+// -- Print the database selection checkboxes for General and Soundex searches
+function printDatabaseSelector() {
+	global $ALLOW_CHANGE_GEDCOM, $pgv_lang, $TEXT_DIRECTION;
+
+	$all_gedcoms=get_all_gedcoms();
+	// If more than one GEDCOM, switching is allowed AND DB mode is set, let the user select
+	if ((count($all_gedcoms) > 1) && ($ALLOW_CHANGE_GEDCOM)) {
+?>
+	<tr>
+		<td class="list_label" style="padding: 5px;">
+			<?php print $pgv_lang["search_geds"]; ?>
+		</td>
+		<td class="list_value" style="padding: 5px;" colspan="2">
+			<?php
+
+		//-- sorting menu by gedcom filename
+		asort($all_gedcoms);
+		foreach ($all_gedcoms as $ged_id=>$gedcom) {
+			$str = str_replace(array (".", "-", " "), array ("_", "_", "_"), $gedcom);
+			$controller->inputFieldNames[] = "$str";
+			print "<input type=\"checkbox\" ";
+			if (isset ($_REQUEST["$str"]))
+				print "checked=\"checked\" ";
+			print "value=\"yes\" name=\"".$str."\""." /><span dir=$TEXT_DIRECTION>".PrintReady(get_gedcom_setting($ged_id, 'title'), true)."</span><br />";
+		}
+?>
+		</td>
+	</tr>
+	<?php
+
+	}
+}
 ?>

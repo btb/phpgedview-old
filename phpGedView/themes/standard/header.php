@@ -3,7 +3,7 @@
  * Header for Standard theme
  *
  * PhpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2016  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -35,7 +35,7 @@ if (!defined('PGV_PHPGEDVIEW')) {
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $CHARACTER_SET; ?>" />
 		<?php if (isset($_GET["pgvaction"]) && $_GET["pgvaction"]=="places_edit") { ?>
-			<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" /> <?php } 
+			<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" /> <?php }
 		?>
 		<?php if ($FAVICON) { ?><link rel="shortcut icon" href="<?php echo $FAVICON; ?>" type="image/x-icon" /> <?php } ?>
 
@@ -88,29 +88,6 @@ if (!defined('PGV_PHPGEDVIEW')) {
 if ($view!='simple')
 if ($view=='preview') include($print_headerfile);
 else {?>
-<script type="text/javascript">
-
-function switchMenu(openMe,closeMe)
-    {
-	    var openIt = document.getElementById(openMe);
-	    var closeIt = document.getElementById(closeMe);
-	    closeIt.style.display = 'none';
-	    openIt.style.display = '';
-		SetCookie("menu",document.getElementById(openMe).id.toString(),7);
-		window.location = '<?php echo PGV_SCRIPT_NAME,"?",$QUERY_STRING; ?>';
-	}
-function SetCookie(cookieName,cookieValue,nDays)
-	{
- var today = new Date();
- var expire = new Date();
- if (nDays==null || nDays==0) nDays=1;
- expire.setTime(today.getTime() + 3600000*24*nDays);
- document.cookie = cookieName+"="+escape(cookieValue)
-                 + ";expires="+expire.toGMTString();
-	}
-
-
-</script>
 <div id="header" class="<?php echo $TEXT_DIRECTION; ?>">
 <table width="99%">
 	<tr>
@@ -134,10 +111,12 @@ function SetCookie(cookieName,cookieValue,nDays)
 				<?php } ?>
                     <td align="<?php echo $TEXT_DIRECTION=="rtl"?"left":"right"; ?>" valign="middle" >
 				<?php if (empty($SEARCH_SPIDER)) { ?>
-					<form action="search.php" method="get">
+					<form action="search.php" method="post">
 						<input type="hidden" name="action" value="general" />
 						<input type="hidden" name="topsearch" value="yes" />
-						<input type="text" name="query" size="12" value="<?php echo $pgv_lang['search']?>" onfocus="if (this.value == '<?php echo $pgv_lang['search']?>') this.value=''; focusHandler();" onblur="if (this.value == '') this.value='<?php echo $pgv_lang['search']?>';" />
+						<input type="text" name="query" size="25" value="<?php echo $pgv_lang['search']?>"
+							onfocus="if (this.value == '<?php echo $pgv_lang['search']?>') this.value=''; focusHandler();"
+							onblur="if (this.value == '') this.value='<?php echo $pgv_lang['search']?>';" />
 						<input type="submit" name="search" value="&gt;" />
 					</form>
 				<?php } ?>
