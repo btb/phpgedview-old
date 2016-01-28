@@ -6,7 +6,7 @@
  * routines and sorting functions.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2016  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -3709,14 +3709,22 @@ function mediaFileInfo($fileName, $thumbName, $mid, $name='', $notes='', $obeyVi
 		$type .= 'picasa';
 	} else if (preg_match('/\.(jpg|jpeg|gif|png)$/i', $fileName)) {
 		$type .= 'image';
-	} else if (preg_match('/\.(pdf|avi|txt)$/i', $fileName)) {
-		$type .= 'page';
+	} else if (preg_match('/\.(docx|doc)$/i', $fileName)) {
+		$type .= 'page_doc';
+	} else if (preg_match('/\.txt$/i', $fileName)) {
+		$type .= 'page_text';
+	} else if (preg_match('/\.pdf$/i', $fileName)) {
+		$type .= 'page_pdf';
+	} else if (preg_match('/\.tex$/i', $fileName)) {
+		$type .= 'page_tex';
+	} else if (preg_match('/\.(html|htm)$/i', $fileName)) {
+		$type .= 'page_html';
 	} else if (preg_match('/\.mp3$/i', $fileName)) {
 		$type .= 'audio';
-	} else if (preg_match('/\.wmv$/i', $fileName)) {
+	} else if (preg_match('/\.(wmv|avi)$/i', $fileName)) {
 		$type .= 'wmv';
 	} else $type .= 'other';
-	// $type is now: (url | local) _ (flv | picasa | image | page | audio | other)
+	// $type is now: (url | local) _ (flv | picasa | image | page_doc | page_text | page_pdf | page_tex | page_html | audio | other)
 	$result['type'] = $type;
 
 	// -- Determine the correct URL to open this media file
@@ -3743,9 +3751,9 @@ function mediaFileInfo($fileName, $thumbName, $mid, $name='', $notes='', $obeyVi
 				$url = encode_url($fileName) . "\" rel=\"clearbox[general]\" rev=\"" . $mid . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name, ENT_COMPAT, 'UTF-8')) . "::" . htmlspecialchars($notes, ENT_COMPAT, 'UTF-8');
 				break 2;
 			case 'url_picasa':
-			case 'url_page':
+			case 'url_page_text':
 			case 'url_other':
-			case 'local_page':
+			case 'local_page_text':
 			// case 'local_other':
 				$url = encode_url($fileName) . "\" rel='clearbox({$LB_URL_WIDTH}, {$LB_URL_HEIGHT}, click)' rev=\"" . $mid . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name, ENT_COMPAT, 'UTF-8')) . "::" . htmlspecialchars($notes, ENT_COMPAT, 'UTF-8');
 				break 2;
@@ -3774,12 +3782,20 @@ function mediaFileInfo($fileName, $thumbName, $mid, $name='', $notes='', $obeyVi
 			$url = "javascript:;\" onclick=\"var winimg = window.open('".encode_url($fileName)."', 'winimg', 'width=".$imgwidth.", height=".$imgheight.", left=200, top=200'); if (window.focus) {winimg.focus();}";
 			break 2;
 		case 'url_picasa':
-		case 'url_page':
+		case 'url_page_doc':
+		case 'url_page_text':
+		case 'url_page_pdf':
+		case 'url_page_tex':
+		case 'url_page_html':
 		case 'url_other':
-		case 'local_other';
 			$url = "javascript:;\" onclick=\"var winurl = window.open('".encode_url($fileName)."', 'winurl', 'width=900, height=600, left=200, top=200'); if (window.focus) {winurl.focus();}";
 			break 2;
-		case 'local_page':
+		case 'local_page_doc':
+		case 'local_page_text':
+		case 'local_page_pdf':
+		case 'local_page_tex':
+		case 'local_page_html':
+		case 'local_other';
 			$url = "javascript:;\" onclick=\"var winurl = window.open('".encode_url($SERVER_URL.$fileName)."', 'winurl', 'width=900, height=600, left=200, top=200'); if (window.focus) {winurl.focus();}";
 			break 2;
 		}
@@ -3797,33 +3813,48 @@ function mediaFileInfo($fileName, $thumbName, $mid, $name='', $notes='', $obeyVi
 	$result['url'] = $url;
 
 	// -- Determine the correct thumbnail or pseudo-thumbnail
+	$thumb = '';
 	$width = '';
 	switch ($type) {
 		case 'url_flv':
-			$thumb = isset($PGV_IMAGES["media"]["flashrem"]) ? $PGV_IMAGE_DIR.'/'.$PGV_IMAGES["media"]["flashrem"] : 'images/media/flashrem.png';
+			$thumb = $thumb = $PGV_IMAGE_DIR.'/'.$PGV_IMAGES["media"]["flashrem"];
 			break;
 		case 'local_flv':
-			$thumb = isset($PGV_IMAGES["media"]["flash"]) ? $PGV_IMAGE_DIR.'/'.$PGV_IMAGES["media"]["flash"] : 'images/media/flash.png';
+			$thumb = $thumb = $PGV_IMAGE_DIR.'/'.$PGV_IMAGES["media"]["flash"];
 			break;
 		case 'url_wmv':
-			$thumb = isset($PGV_IMAGES["media"]["wmvrem"]) ? $PGV_IMAGE_DIR.'/'.$PGV_IMAGES["media"]["wmvrem"] : 'images/media/wmvrem.png';
+			$thumb = $thumb = $PGV_IMAGE_DIR.'/'.$PGV_IMAGES["media"]["wmvrem"];
 			break;
 		case 'local_wmv':
-			$thumb = isset($PGV_IMAGES["media"]["wmv"]) ? $PGV_IMAGE_DIR.'/'.$PGV_IMAGES["media"]["wmv"] : 'images/media/wmv.png';
+			$thumb = $thumb = $PGV_IMAGE_DIR.'/'.$PGV_IMAGES["media"]["wmv"];
 			break;
 		case 'url_picasa':
-			$thumb = isset($PGV_IMAGES["media"]["picasa"]) ? $PGV_IMAGE_DIR.'/'.$PGV_IMAGES["media"]["picasa"] : 'images/media/picasa.png';
+			$thumb = $thumb = $PGV_IMAGE_DIR.'/'.$PGV_IMAGES["media"]["picasa"];
 			break;
-		case 'url_page':
+		case 'url_page_doc':
+		case 'url_page_text':
+		case 'url_page_pdf':
+		case 'url_page_tex':
+		case 'url_page_html':
 		case 'url_other':
-			$thumb = isset($PGV_IMAGES["media"]["globe"]) ? $PGV_IMAGE_DIR.'/'.$PGV_IMAGES["media"]["globe"] : 'images/media/globe.png';
+			$thumb = $thumb = $PGV_IMAGE_DIR.'/'.$PGV_IMAGES["media"]["globe"];
 			break;
-		case 'local_page':
-			$thumb = ($PGV_IMAGES["media"]["doc"]) ? $PGV_IMAGE_DIR.'/'.$PGV_IMAGES["media"]["doc"] : 'images/media/doc.gif';
+		case 'local_page_doc':
+		case 'local_page_text':
+			$thumb = $thumb = $PGV_IMAGE_DIR.'/'.$PGV_IMAGES["media"]["doc"];
+			break;
+		case 'local_page_pdf':
+			$thumb = $thumb = $PGV_IMAGE_DIR.'/'.$PGV_IMAGES["media"]["pdf"];
+			break;
+		case 'local_page_tex':
+			$thumb = $thumb = $PGV_IMAGE_DIR.'/'.$PGV_IMAGES["media"]["tex"];
+			break;
+		case 'local_page_html':
+			$thumb = $thumb = $PGV_IMAGE_DIR.'/'.$PGV_IMAGES["media"]["html"];
 			break;
 		case 'url_audio':
 		case 'local_audio':
-			$thumb = isset($PGV_IMAGES["media"]["audio"]) ? $PGV_IMAGE_DIR.'/'.$PGV_IMAGES["media"]["audio"] : 'images/media/audio.png';
+			$thumb = $thumb = $PGV_IMAGE_DIR.'/'.$PGV_IMAGES["media"]["audio"];
 			break;
 		default:
 			$thumb = $thumbName;
@@ -3831,41 +3862,40 @@ function mediaFileInfo($fileName, $thumbName, $mid, $name='', $notes='', $obeyVi
 				$width = ' width="'.$THUMBNAIL_WIDTH.'"';
 			}
 	}
-
+/*
 	// -- Use an overriding thumbnail if one has been provided
 	// Don't accept any overriding thumbnails that are in the "images" or "themes" directories
-	if (substr($thumbName, 0, 7)!='images/' && substr($thumbName, 0, 7)!='themes/') {
-		if ($USE_MEDIA_FIREWALL && $MEDIA_FIREWALL_THUMBS) {
-			$tempThumbName = get_media_firewall_path($thumbName);
-		} else {
-			$tempThumbName = $thumbName;
-		}
-		if (file_exists($tempThumbName)) {
-			$thumb = $thumbName;
-		}
+	if ($USE_MEDIA_FIREWALL && $MEDIA_FIREWALL_THUMBS) {
+		$tempThumbName = get_media_firewall_path($thumbName);
+	} else {
+		$tempThumbName = $thumbName;
 	}
-
+	if (file_exists($tempThumbName)) {
+		$thumb = $thumbName;
+	}
+*/
 	// -- Use the theme-specific media icon if nothing else works
 	$realThumb = $thumb;
-	if (substr($type, 0, 6)=='local_' && !file_exists($thumb)) {
-		if (!$USE_MEDIA_FIREWALL || !$MEDIA_FIREWALL_THUMBS) {
-			$thumb = $PGV_IMAGE_DIR.'/'.$PGV_IMAGES['media']['large'];
-			$realThumb = $thumb;
-		} else {
-			$realThumb = get_media_firewall_path($thumb);
-			if (!file_exists($realThumb)) {
+	if ($thumb == '') {
+		if (substr($type, 0, 6)=='local_') {
+			if (!$USE_MEDIA_FIREWALL || !$MEDIA_FIREWALL_THUMBS) {
 				$thumb = $PGV_IMAGE_DIR.'/'.$PGV_IMAGES['media']['large'];
 				$realThumb = $thumb;
+			} else {
+				$realThumb = get_media_firewall_path($thumb);
+				if (!file_exists($realThumb)) {
+					$thumb = $PGV_IMAGE_DIR.'/'.$PGV_IMAGES['media']['large'];
+					$realThumb = $thumb;
+				}
 			}
+			$width = '';
 		}
-		$width = '';
 	}
 
 	// At this point, $width, $realThumb, and $thumb describe the thumbnail to be displayed
 	$result['thumb'] = $thumb;
 	$result['realThumb'] = $realThumb;
 	$result['width'] = $width;
-
 	return $result;
 }
 

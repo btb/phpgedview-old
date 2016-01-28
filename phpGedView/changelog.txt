@@ -9,6 +9,7 @@
 =====================================================================
 
 Version 4.3.0
+ - Fixed: Wrong pseudo-icons for some file types, and Lightbox shouldn't try to handle HTM(L), DOC(X), PDF and TEX media files (canajun2eh)
  - Changed: General and Soundex searches, database checkboxes should be above search terms instead of below (canajun2eh)
  - Changed: Top menu "Search" should be using "post" method instead of "get", and field is too short (canajun2eh)
  - Fixed: Undefined variable in block_main_temp.php when Cookie Policy block is activated (canajun2eh)
