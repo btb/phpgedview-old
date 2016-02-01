@@ -6,7 +6,7 @@
 * to use an SQL database as its datastore.
 *
 * phpGedView: Genealogy Viewer
-* Copyright (C) 2002 to 2013  PGV Development Team.  All rights reserved.
+* Copyright (C) 2002 to 2016  PGV Development Team.  All rights reserved.
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -811,7 +811,7 @@ function fetch_linked_obje($xref, $link, $ged_id) {
 		" FROM {$TBLPREFIX}media".
 		" JOIN {$TBLPREFIX}link ON (m_gedfile=l_file AND m_media=l_from)".
 		" LEFT JOIN {$TBLPREFIX}name ON (m_gedfile=n_file AND m_media=n_id AND n_num=0)".
-		" WHERE m_gedfile=? AND l_type=? AND l_to=?".	
+		" WHERE m_gedfile=? AND l_type=? AND l_to=?".
 		" ORDER BY n_sort"
 	)->execute(array($ged_id, $link, $xref))->fetchAll(PDO::FETCH_ASSOC);
 
@@ -1037,7 +1037,7 @@ function find_gedcom_record($xref, $ged_id) {
 			"SELECT o_gedcom FROM {$TBLPREFIX}other       WHERE o_id    ".PGV_DB::$LIKE." ? ESCAPE '@' AND o_file   =?"
 		);
 	}
-	
+
 	// Exact match on xref?
 	$gedcom=$statement1->execute(array($xref, $ged_id, $xref, $ged_id, $xref, $ged_id, $xref, $ged_id, $xref, $ged_id))->fetchOne();
 	if (!$gedcom) {
@@ -1247,13 +1247,6 @@ function search_indis($query, $geds, $match, $skip) {
 	// Group results by gedcom, to minimise switching between privacy files
 	$sql.=' ORDER BY ged_id';
 
-	// Tags we might not want to search
-	if (PGV_USER_IS_ADMIN) {
-		$skipregex='/^\d (_UID|_PGVU|FILE|FORM|TYPE|CHAN|SUBM|REFN) .*('.implode('|', $queryregex).')/im';
-	} else {
-		$skipregex='/^\d (_UID|_PGVU|FILE|FORM|TYPE|CHAN|SUBM|REFN|RESN) .*('.implode('|', $queryregex).')/im';
-	}
-
 	$list=array();
 	$rows=PGV_DB::prepare($sql)->fetchAll(PDO::FETCH_ASSOC);
 	$GED_ID=PGV_GED_ID;
@@ -1272,11 +1265,12 @@ function search_indis($query, $geds, $match, $skip) {
 				continue 2;
 			}
 		}
-		if ($skip && preg_match($skipregex, $gedrec)) {
-			continue;
-		}
-		$list[]=$indi;
+
+		// SQL may have matched the searched text in tags that must be skipped:
+		// Check to make sure that this is a real hit elsewhere in the GEDCOM record
+		if (refine_filter_search($skip, $queryregex, $gedrec, $match)) $list[]=$indi;
 	}
+
 	// Switch privacy file if necessary
 	if ($GED_ID!=PGV_GED_ID) {
 		$GEDCOM=PGV_GEDCOM;
@@ -1481,7 +1475,7 @@ function search_indis_daterange($start, $end, $facts) {
 
 	$sql="SELECT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec, i_isdead, i_sex FROM {$TBLPREFIX}individuals JOIN {$TBLPREFIX}dates ON i_id=d_gid AND i_file=d_file WHERE i_file=? AND d_julianday1 BETWEEN ? AND ?";
 	$vars=array(PGV_GED_ID, $start, $end);
-	
+
 	if ($facts) {
 		$facts=explode(',', $facts);
 		foreach ($facts as $key=>$value) {
@@ -1543,13 +1537,6 @@ function search_fams($query, $geds, $match, $skip) {
 	// Group results by gedcom, to minimise switching between privacy files
 	$sql.=' ORDER BY ged_id';
 
-	// Tags we might not want to search
-	if (PGV_USER_IS_ADMIN) {
-		$skipregex='/^\d (_UID|_PGVU|FILE|FORM|TYPE|CHAN|SUBM|REFN) .*('.implode('|', $queryregex).')/im';
-	} else {
-		$skipregex='/^\d (_UID|_PGVU|FILE|FORM|TYPE|CHAN|SUBM|REFN|RESN) .*('.implode('|', $queryregex).')/im';
-	}
-
 	$list=array();
 	$rows=PGV_DB::prepare($sql)->fetchAll(PDO::FETCH_ASSOC);
 	$GED_ID=PGV_GED_ID;
@@ -1568,12 +1555,12 @@ function search_fams($query, $geds, $match, $skip) {
 				continue 2;
 			}
 		}
-		if ($skip && preg_match($skipregex, $gedrec)) {
-			continue;
-		}
 
-		$list[]=$family;
+		// SQL may have matched the searched text in tags that must be skipped:
+		// Check to make sure that this is a real hit elsewhere in the GEDCOM record
+		if (refine_filter_search($skip, $queryregex, $gedrec, $match)) $list[]=$family;
 	}
+
 	// Switch privacy file if necessary
 	if ($GED_ID!=PGV_GED_ID) {
 		$GEDCOM=PGV_GEDCOM;
@@ -1664,13 +1651,6 @@ function search_sources($query, $geds, $match, $skip) {
 	// Group results by gedcom, to minimise switching between privacy files
 	$sql.=' ORDER BY ged_id';
 
-	// Tags we might not want to search
-	if (PGV_USER_IS_ADMIN) {
-		$skipregex='/^\d (_UID|_PGVU|FILE|FORM|TYPE|CHAN|SUBM|REFN) .*('.implode('|', $queryregex).')/im';
-	} else {
-		$skipregex='/^\d (_UID|_PGVU|FILE|FORM|TYPE|CHAN|SUBM|REFN|RESN) .*('.implode('|', $queryregex).')/im';
-	}
-
 	$list=array();
 	$rows=PGV_DB::prepare($sql)->fetchAll(PDO::FETCH_ASSOC);
 	$GED_ID=PGV_GED_ID;
@@ -1689,11 +1669,12 @@ function search_sources($query, $geds, $match, $skip) {
 				continue 2;
 			}
 		}
-		if ($skip && preg_match($skipregex, $gedrec)) {
-			continue;
-		}
-		$list[]=$source;
+
+		// SQL may have matched the searched text in tags that must be skipped:
+		// Check to make sure that this is a real hit elsewhere in the GEDCOM record
+		if (refine_filter_search($skip, $queryregex, $gedrec, $match)) $list[]=$source;
 	}
+
 	// Switch privacy file if necessary
 	if ($GED_ID!=PGV_GED_ID) {
 		$GEDCOM=PGV_GEDCOM;
@@ -1719,7 +1700,7 @@ function search_notes($query, $geds, $match, $skip) {
 	$querysql=array();
 	// Convert the query into a regular expression
 	$queryregex=array();
-	
+
 	foreach ($query as $q) {
 		$queryregex[]=preg_quote(UTF8_strtoupper($q), '/');
 		if ($DB_UTF8_COLLATION || !has_utf8($q)) {
@@ -1733,13 +1714,6 @@ function search_notes($query, $geds, $match, $skip) {
 
 	// Group results by gedcom, to minimise switching between privacy files
 	$sql.=' ORDER BY ged_id';
-
-	// Tags we might not want to search
-	if (PGV_USER_IS_ADMIN) {
-		$skipregex='/^\d (_UID|_PGVU|FILE|FORM|TYPE|CHAN|SUBM|REFN) .*('.implode('|', $queryregex).')/im';
-	} else {
-		$skipregex='/^\d (_UID|_PGVU|FILE|FORM|TYPE|CHAN|SUBM|REFN|RESN) .*('.implode('|', $queryregex).')/im';
-	}
 
 	$list=array();
 	$rows=PGV_DB::prepare($sql)->fetchAll(PDO::FETCH_ASSOC);
@@ -1759,11 +1733,12 @@ function search_notes($query, $geds, $match, $skip) {
 				continue 2;
 			}
 		}
-		if ($skip && preg_match($skipregex, $gedrec)) {
-			continue;
-		}
-		$list[]=$note;
+
+		// SQL may have matched the searched text in tags that must be skipped:
+		// Check to make sure that this is a real hit elsewhere in the GEDCOM record
+		if (refine_filter_search($skip, $queryregex, $gedrec, $match)) $list[]=$note;
 	}
+
 	// Switch privacy file if necessary
 	if ($GED_ID!=PGV_GED_ID) {
 		$GEDCOM=PGV_GEDCOM;
@@ -2422,7 +2397,7 @@ function set_site_setting($site_setting_name, $site_setting_value) {
 		} elseif ($old_site_setting_value!=$site_setting_value) {
 			// Value exists, and is different
 			PGV_DB::prepare("UPDATE {$TBLPREFIX}site_setting SET site_setting_value=? WHERE site_setting_name=?")
-			->execute(array($site_setting_value, $site_setting_name));	
+			->execute(array($site_setting_value, $site_setting_name));
 		}
 	}
 }
@@ -2438,7 +2413,7 @@ function delete_site_setting($site_setting_name) {
 
 function get_all_gedcoms() {
 	global $TBLPREFIX;
-	
+
 	return
 		PGV_DB::prepare("SELECT gedcom_id, gedcom_name FROM {$TBLPREFIX}gedcom")
 		->fetchAssoc();
@@ -2446,7 +2421,7 @@ function get_all_gedcoms() {
 
 function get_gedcom_titles() {
 	global $TBLPREFIX;
-	
+
 	return
 		PGV_DB::prepare(
 			"SELECT g.gedcom_id, g.gedcom_name, COALESCE(gs.setting_value, g.gedcom_name) AS gedcom_title".
@@ -2987,7 +2962,7 @@ function get_autocomplete_SURN($FILTER, $ged_id=PGV_GED_ID) {
 	$sql="SELECT DISTINCT n_surname ".
 			 "FROM {$TBLPREFIX}name ".
 			 "WHERE n_surname ".PGV_DB::$LIKE." ? AND n_file=? ORDER BY n_surname";
-	return 
+	return
 		PGV_DB::prepareLimit($sql, PGV_AUTOCOMPLETE_LIMIT)
 		->execute(array("%{$FILTER}%", $ged_id))
 		->fetchOneColumn();
@@ -2999,7 +2974,7 @@ function get_autocomplete_GIVN($FILTER, $ged_id=PGV_GED_ID) {
 	$sql="SELECT DISTINCT n_givn ".
 			 "FROM {$TBLPREFIX}name ".
 			 "WHERE n_givn ".PGV_DB::$LIKE." ? AND n_file=? ORDER BY n_givn";
-	return 
+	return
 		PGV_DB::prepareLimit($sql, PGV_AUTOCOMPLETE_LIMIT)
 		->execute(array("%{$FILTER}%", $ged_id))
 		->fetchAll();
@@ -3011,9 +2986,9 @@ function get_autocomplete_PLAC($FILTER, $ged_id=PGV_GED_ID) {
 	// sqlite and postgreSQL don't have a CONCAT() function
 	// postgreSQL "like" is case-sensitive
 	// TODO: mssql might use + instead
-	
+
 	$like = 'like';
-	
+
 	switch ($DBTYPE) {
 	case 'pgsql':
 		$like = 'ilike';	//	Force case-insensitive comparison in postgreSQL
@@ -3083,10 +3058,67 @@ function get_autocomplete_PLAC($FILTER, $ged_id=PGV_GED_ID) {
 		break;
 	}
 
-	return 
+	return
 		PGV_DB::prepareLimit($sql, PGV_AUTOCOMPLETE_LIMIT)
 		->execute(array("%{$FILTER}%", $ged_id, "%{$FILTER}%", $ged_id, "%{$FILTER}%", $ged_id, "%{$FILTER}%", $ged_id, "%{$FILTER}%", $ged_id))
 		->fetchOneColumn();
+}
+
+
+// Exclude false matches in tag to be skipped, and check again for a match on the cleaned gedrec
+// $skip - should non-genealogical tags be skipped
+// $search - array of search terms (strings)
+// $gedrec - single gedcom text to be analysed
+// $matchType - (string) AND or OR to be applied on search terms
+function refine_filter_search($skip, $search, $gedrec, $matchType) {
+
+	$tempGedrec = $gedrec;
+
+	$skipList = '_UID|RESN';		// According to the Help text, these tags should always be skipped
+//	if ($skip) $skipList .= '|_PGVU|FILE|FORM|TYPE|CHAN|SUBM|REFN';		// These ones are optionally skipped
+	if ($skip) {
+		$skipList .= '|FILE|FORM|TYPE|REFN';		// These ones are optionally skipped
+		//  _PGVU, CHAN and SUBM don't need to be skipped.
+		//  In the case of CHAN, we need to remove the entire structure.
+		//    The potential hits are in the subordinate 2 DAT and 2 _PGVU lines.  _PGVU doesn't occur anywhere else, so removal of the
+		//    1 CHAN record will get rid of the offending 2 _PGVU line too.
+		//  SUBM is just a pointer to the 0 @SUBM@ SUBM record which is not returned by any of the database searches we are doing.
+
+		// remove all occurrences of a 1 CHAN record, including all its subordinate lines
+		$tempGedrec .= "\n1 NULL";		// Make sure the 1 CHAN structure isn't last in the GEDCOM record
+		while (true) {
+			$leftPos = stripos($tempGedrec, "\n1 CHAN");	// Find the start of the 1 CHAN record
+			if ($leftPos === false) break;		// No more 1 CHAN records exist: we're done
+			$rightPos = strpos($tempGedrec, "\n1 ", $leftPos+7);	// Find the start of the 1-level record that follows the 1 CHAN record
+			$tempGedrec = substr($tempGedrec, 0, $leftPos) . substr($tempGedrec, $rightPos);
+		}
+		$tempGedrec = substr($tempGedrec, 0, -7);		// Strip that "\n1 NULL" we just added
+	}
+
+ 	// remove lines that should be skipped
+	$tempGedrec = preg_replace(
+		'~^\d ('.$skipList.') .*~im',
+		'',
+		$tempGedrec
+	);
+
+	// check if gedcom with removed lines is still a match
+	if ($matchType == 'AND') {
+		// AND: all keys must be present
+		foreach ($search as $term) {
+			if (!preg_match('~'.$term.'~i', $tempGedrec)) {
+				return false;
+			}
+		}
+		return true;
+	} else {
+		// OR: only one key is enough for the match
+		if (!preg_match('~('.implode('|', $search).')~im', $tempGedrec)) {
+			return false;
+		} else {
+			return true;
+		}
+	}
 }
 
 ?>
