@@ -3,7 +3,7 @@
  *  PGV SOAP implementation of the genealogy web service
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2012  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2016  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -893,6 +893,11 @@ class PGVServiceLogic extends GenealogyService {
 	*/
 	function postGetXref($SID, $position, $type) {
 		global $fcontents;
+		if (empty($fcontents)) {
+			// $fcontents (gedcom txt file read into memory) is still unset, try to read it
+			read_gedcom_file();
+		}
+
 		if (empty($position)) $position='first';
 		if (empty($type)) $type='INDI';
 		if ((empty($type))||(!in_array($type, array("INDI","FAM","SOUR","REPO","NOTE","OBJE","OTHER")))) {
@@ -916,6 +921,8 @@ class PGVServiceLogic extends GenealogyService {
 			}
 		}
 		reset($myindilist);
+		// Sort array of keys by their numeric value (natsort instead of ksort), to let the highest numeric value returned by "last" action
+		natsort($myindilist);
 		if ($position=='first') {
 			$xref = current($myindilist);
 			addDebugLog("getXref type=$type position=$position SUCCESS\n$xref");

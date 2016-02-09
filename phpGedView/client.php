@@ -8,7 +8,7 @@
 * When $action is 'delete' the gedcom record with $xref is removed from the file.
 *
 * phpGedView: Genealogy Viewer
-* Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+* Copyright (C) 2002 to 2016  PGV Development Team.  All rights reserved.
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -358,37 +358,9 @@ case 'getxref':
 		print "SUCCESS\n$xref\n";
 		break;
 	case 'all':
-		switch($type) {
-			case "INDI":
-				$statement=
-					PGV_DB::prepare("SELECT i_id FROM {$TBLPREFIX}individuals WHERE i_file=? ORDER BY i_id")
-					->execute(array($GED_ID));
-				break;
-			case "FAM":
-				$statement=
-					PGV_DB::prepare("SELECT f_id FROM {$TBLPREFIX}families WHERE f_file=? ORDER BY f_id")
-					->execute(array($GED_ID));
-				break;
-			case "SOUR":
-				$statement=
-					PGV_DB::prepare("SELECT s_id FROM {$TBLPREFIX}sources WHERE s_file=? ORDER BY s_id")
-					->execute(array($GED_ID));
-			case "OBJE":
-				$statement=
-					PGV_DB::prepare("SELECT m_media FROM {$TBLPREFIX}media WHERE m_gedfile=? ORDER BY m_media")
-					->execute(array($GED_ID));
-			case "OTHER":
-				$statement=
-					PGV_DB::prepare("SELECT o_id FROM {$TBLPREFIX}other WHERE o_file=? AND o_type NOT IN ('REPO', 'NOTE') ORDER BY o_id")
-					->execute(array($GED_ID));
-				break;
-			default:
-				$statement=
-					PGV_DB::prepare("SELECT o_id FROM {$TBLPREFIX}other WHERE o_file=? AND o_type=? ORDER BY o_id")
-					->execute(array($GED_ID, $type));
-		}
+		$myindilist = get_sorted_xref_list($type, $GED_ID);
 		print "SUCCESS\n";
-		foreach ($statement->fetchOneColumn() as $id) {
+		foreach ($myindilist as $id) {
 			print "{$id}\n";
 		}
 		addDebugLog($action." type=$type position=$position ");
