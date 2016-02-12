@@ -3,7 +3,7 @@
  * Startup and session logic
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2016  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -280,20 +280,10 @@ if (empty($_SERVER['QUERY_STRING'])) {
 		array('&amp;','&lt;', '', ''),
 		urldecode($_SERVER['QUERY_STRING'])
 	);
-	//-- Zap any scripts embedded in the query string
-	$temp = $QUERY_STRING;
-	$QUERY_STRING=preg_replace(
-		'~(".*>.*)?&lt;script.*&lt;/script.*>~i',
-		'',
-		$QUERY_STRING
-	);
-	if ($temp != $QUERY_STRING) {
-		require_once PGV_ROOT.'includes/authentication.php';
-		AddToLog('MSG>Script injection detected. Script removed.');
-		AddToLog("UA>{$_SERVER['HTTP_USER_AGENT']}<");
-		AddToLog("URI>{$_SERVER['REQUEST_URI']}<");
-	}
 }
+//-- The original query string will be checked for script injection
+//   during the hacking check in session_spider.php
+define('PGV_QUERY_STRING', $QUERY_STRING);
 
 //-- if not configured then redirect to the configuration script
 if (!$CONFIGURED) {

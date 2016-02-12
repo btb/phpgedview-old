@@ -3,7 +3,7 @@
  * Startup and session logic for handling Bots and Spiders
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2008 to 2015  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2008 to 2016  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -101,6 +101,7 @@ try {
 		}
 		AddToLog($log_msg);
 		header('HTTP/1.1 403 Access Denied');
+		print "You are not welcome here.";
 		exit;
 	}
 } catch (PDOException $ex) {
@@ -181,10 +182,29 @@ $worms = array(
 	'(Microsoft)|(Internet)|(Explorer)'		// Internet Explorer self-identifies with "MSIE"
 	);
 
+//-- Recursively call the html_entity_decode() function so that things like &amp;gt;,
+//   are properly transformed to plain text
+$requestURI = $_SERVER['REQUEST_URI'];
+do {
+	$previousRequestURI = $requestURI;
+	$requestURI = html_entity_decode(urldecode($previousRequestURI));
+} while ($requestURI != $previousRequestURI);
+
 $quitReason = "";
 
 while (true) {
-	$requestURI = rawurldecode($_SERVER["REQUEST_URI"]);
+	// check for SQL injection
+	if (preg_match('~\b(join|union|select|insert|cast|set|declare|drop|update|md5|benchmark)\b~is', $requestURI)) {
+		$quitReason = 'SQL injection detected';
+		break;
+	}
+
+	// check for script injection
+	if (preg_match('~[<>"\%{};]~s', $requestURI)) {
+		$quitReason = 'Script injection detected';
+		break;
+	}
+
 	// check for attempt to redirect
 	if (preg_match("~=.*://~", $requestURI)) {
 		$quitReason = 'Embedded URL detected';
@@ -198,7 +218,7 @@ while (true) {
 	}
 
 	// check for improperly formed URI
-	if (strpos($requestURI, '//') !== false/* || strpos($requestURI, '&amp;) !== false*/) {
+	if (strpos($requestURI, '//') !== false) {
 		$quitReason = 'Improperly formed URI';
 		break;
 	}
@@ -226,7 +246,7 @@ while (true) {
 	foreach ($worms as $worm) {
 		if (preg_match('/'.$worm.'/i', $ua)) {
 			$quitReason = 'Blocked crawler detected';
-			break;
+			break 2;
 		}
 	}
 
@@ -241,9 +261,17 @@ if ($quitReason != "") {
 		//-- load db specific functions
 		require_once PGV_ROOT.'includes/functions/functions_db.php';
 		require_once PGV_ROOT.'includes/authentication.php';      // -- load the authentication system
+
+		// Prevent CR and LF from messing up the log
+		$requestURI = str_replace(
+			array("\r", "\n"),
+			array("%0B", "%0A"),
+			$requestURI
+		);
+
 		AddToLog("MSG>{$quitReason}; script terminated; IP address blocked for 1 hour.");
 		AddToLog("UA>{$ua}<");
-		AddToLog("URI>{$_SERVER["REQUEST_URI"]}<");
+		AddToLog("URI>{$requestURI}<");		// Use the human-readable URI instead of the incoming raw one
 		//-- Block further access from this IP address for the next hour
 		$address = $_SERVER['REMOTE_ADDR'];
 		$comment = date('Y.m.d@H:i', time()+60*60);
@@ -255,10 +283,9 @@ if ($quitReason != "") {
 		)->execute(array($address, 'timedban', $comment));
 	}
 	header("HTTP/1.0 403 Forbidden");
-	print "Hackers are not welcome here.";
+	print "You are not welcome here.";
 	exit;
 }
-
 
 // The search list has been reversed.  Whitelist all browsers, and
 // mark everything else as a spider/bot.

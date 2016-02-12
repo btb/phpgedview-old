@@ -9,6 +9,7 @@
 =====================================================================
 
 Version 4.3.0
+ - Changed: Tighten SQL and cross-site script injection checks and relocate them to includes/session_spider.php (canajun2eh)
  - Fixed: Remote requests can return wrong results (Pasquale Ceres)
  - Fixed: Search returns wrong results when hits occur in non-genealogical tags (Pasquale Ceres)
  - Fixed: Wrong pseudo-icons for some file types, and Lightbox shouldn't try to handle HTM(L), DOC(X), PDF and TEX media files (canajun2eh)

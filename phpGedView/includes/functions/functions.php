@@ -2770,7 +2770,8 @@ function normalize_query_string($query) {
 	foreach (preg_split('/(^\?|\&(amp;)*)/', urldecode($query), -1, PREG_SPLIT_NO_EMPTY) as $component)
 		if (strpos($component, '=')!==false) {
 			list ($key, $data)=explode('=', $component, 2);
-			if (!empty($data)) $components[$key]=$data;
+//			if (!empty($data)) $components[$key]=$data;
+			if ($data != '') $components[$key]=$data;	// Skip this one if the query part is blank
 		}
 	$new_query='';
 	foreach ($components as $key=>$data)

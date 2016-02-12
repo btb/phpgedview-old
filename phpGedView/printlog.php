@@ -3,7 +3,7 @@
  * Print logfiles
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2007  John Finlay and Others
+ * Copyright (C) 2002 to 2016  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -94,9 +94,11 @@ if ($auth) {
 			$result = explode(' - ', $lines[$i], 3);
 			//-- properly handle lines that may not have the correct format
 			if (count($result)<3) {
-				echo "<td class=\"optionbox\" colspan=\"3\" dir=\"ltr\">", PrintReady($lines[$i]), "</td>";
+				// Make sure the log entry doesn't have any embedded HTML or scripts
+				echo "<td class=\"optionbox\" colspan=\"3\" dir=\"ltr\">", htmlspecialchars($lines[$i], ENT_QUOTES, 'UTF-8', true), "</td>";
 			} else {
-				$result[2] = PrintReady($result[2]);
+				// Make sure the log entry doesn't have any embedded HTML or scripts
+				$result[2] = htmlspecialchars($result[2], ENT_QUOTES, 'UTF-8', true);
 				for ($j = 0; $j < 3; $j++) {
 					echo "<td class=\"optionbox\" dir=\"ltr\">", $result[$j], "</td>";
 				}
