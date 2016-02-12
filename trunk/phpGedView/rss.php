@@ -4,7 +4,7 @@
  * in the index page.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2016  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -38,6 +38,7 @@ if (!empty($lang)) {
 
 require_once PGV_ROOT.'includes/classes/class_feedcreator.php';
 require_once PGV_ROOT.'includes/functions/functions_rss.php';
+require_once PGV_ROOT.'includes/functions/functions.php';
 require_once PGV_ROOT.'includes/index_cache.php';
 
 $feedCacheName = "fullFeed";
@@ -52,10 +53,6 @@ $feedCacheName = "fullFeed";
 if (empty($rssStyle)){
 	if (!empty($RSS_FORMAT)) $rssStyle = $RSS_FORMAT;
 	else $rssStyle = "ATOM";	// Unless configured otherwise, default to ATOM
-}
-
-if (!isset($_SERVER['QUERY_STRING'])){
-	$_SERVER['QUERY_STRING'] = "lang=".$LANGUAGE;
 }
 
 $printTodays = false;
@@ -101,8 +98,8 @@ if(!loadCachedBlock($cacheControl, $rssStyle)){
 	$feed->descriptionHtmlSyndicated = true;
 	//$feed->descriptionTruncSize = 500; // does not make sense to truncate HTML since it will result in unpredictable output
 	$feed->link = $SERVER_URL;
-	$syndURL = $SERVER_URL."rss.php?".$_SERVER['QUERY_STRING'];
-	$syndURL = str_replace("&", "&amp;", $syndURL);
+	$queryString = normalize_query_string(cleanQueryString() . '&amp;lang=' . $LANGUAGE);
+	$syndURL = $SERVER_URL."rss.php".$queryString;
 	$feed->syndicationURL = $syndURL;
 
 	$feedDesc = str_replace("#GEDCOM_TITLE#", $feed->title, $pgv_lang["rss_descr"]);
