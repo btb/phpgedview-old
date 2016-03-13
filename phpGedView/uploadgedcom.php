@@ -7,7 +7,7 @@
  * file.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2012  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2016  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -1038,7 +1038,7 @@ if ($stage == 1) {
 			if ($i % 25 == 0) {
 				$newtime = time();
 				$exectime = $newtime - $oldtime;
-				echo PGV_JS_START, "update_progress($pos2, $exectime);", PGV_JS_END;
+				echo PGV_JS_START, "update_progress($TOTAL_BYTES, $exectime);", PGV_JS_END;
 				flush();
 			} else {
 				print ' ';
