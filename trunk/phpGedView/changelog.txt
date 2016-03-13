@@ -9,6 +9,7 @@
 =====================================================================
 
 Version 4.3.0
+ - Fixed: Import Progess bar should show percentage of total file size (canajun2eh)
  - Changed: Tighten SQL and cross-site script injection checks and relocate them to includes/session_spider.php (canajun2eh)
  - Fixed: Remote requests can return wrong results (Pasquale Ceres)
  - Fixed: Search returns wrong results when hits occur in non-genealogical tags (Pasquale Ceres)
