@@ -9,6 +9,8 @@
 =====================================================================
 
 Version 4.3.0
+ - Changed: Anonymous remote connections are now optional (Pasquale Ceres)
+ - Fixed: SOAP errors cause out-of-memory errors (Pasquale Ceres)
  - Fixed: "update" should not be part of SQL injection check (canajun2eh)
  - Fixed: Import Progess bar should show percentage of total file size (canajun2eh)
  - Changed: Tighten SQL and cross-site script injection checks and relocate them to includes/session_spider.php (canajun2eh)

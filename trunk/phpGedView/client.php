@@ -35,12 +35,13 @@ require PGV_ROOT.'includes/functions/functions_edit.php';
 
 header("Content-Type: text/plain; charset=$CHARACTER_SET");
 
+$allow_anonymous = false;		// Set to true to permit anonymous connections  (this should be configurable)
 $READ_ONLY = ((isset($_SESSION['readonly']))&&($_SESSION['readonly']==true)) ? 1 : 0;
 
 // Make sure there is at least one gedcom.
 if (count(get_all_gedcoms())==0) {
-	addDebugLog($action." ERROR 21: No Gedcoms available on this site.");
-	print "ERROR 21: No Gedcoms available on this site.\n";
+	addDebugLog($action." ERROR 20: No Gedcoms available on this site.");
+	print "ERROR 20: No Gedcoms available on this site.\n";
 	exit;
 }
 
@@ -87,18 +88,26 @@ case 'connect':
 			$_SESSION['connected']=$user_id;
 			$_SESSION['initiated']=true;
 		} else {
-			addDebugLog($action." username=$username ERROR 10: Username and password key failed to authenticate.");
-			print "ERROR 10: Username and password key failed to authenticate.\n";
+			addDebugLog($action." username=$username ERROR 10: Username and password pair failed to authenticate.");
+			print "ERROR 10: Username and password pair failed to authenticate.\n";
 		}
 	} else {
-		$stat=newConnection();
-		if ($stat!==false) {
-			addDebugLog($action." SUCCESS\n".$stat);
-			print "SUCCESS\n".$stat;
+		// anomymous connection
+		if (!$allow_anonymous) {
+			addDebugLog($action." ERROR 9: Anonymous connection is not allowed. Use 'username' and 'password' parameters.");
+			print "ERROR 9: Anonymous connection is not allowed. Use 'username' and 'password' parameters.\n";
+			$_SESSION['connected']='';
+			$_SESSION['initiated']=false;
+		} else {
+			$stat=newConnection();
+			if ($stat!==false) {
+				addDebugLog($action." SUCCESS\n".$stat);
+				print "SUCCESS\n".$stat;
+			}
+			AddToLog('Read-Only Anonymous Client connection.');
+			$_SESSION['connected']='Anonymous';
+			$_SESSION['readonly']=1;
 		}
-		AddToLog('Read-Only Anonymous Client connection.');
-		$_SESSION['connected']='Anonymous';
-		$_SESSION['readonly']=1;
 	}
 	exit;
 case 'listgedcoms':
