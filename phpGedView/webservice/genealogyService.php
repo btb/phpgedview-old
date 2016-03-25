@@ -24,7 +24,7 @@
  * done in PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2011  PGV Development Team
+ * Copyright (C) 2002 to 2016  PGV Development Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -55,6 +55,8 @@ if (!defined('PGV_PHPGEDVIEW')) {
 define('PGV_GENEALOGYSERVICE_PHP', '');
 
 require_once 'SOAP/Server.php';
+$skiptrace =& PEAR::getStaticProperty('PEAR_Error', 'skiptrace');
+$skiptrace = true;
 
 // Genealogy class
 class GenealogyService
