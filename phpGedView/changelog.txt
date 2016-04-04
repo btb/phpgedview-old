@@ -9,6 +9,7 @@
 =====================================================================
 
 Version 4.3.0
+ - Fixed: Notes containing two at-symbols are sometimes incorrectly identified as referencing shared notes (canajun2eh)
  - Changed: Anonymous remote connections are now optional (Pasquale Ceres)
  - Fixed: SOAP errors cause out-of-memory errors (Pasquale Ceres)
  - Fixed: "update" should not be part of SQL injection check (canajun2eh)
