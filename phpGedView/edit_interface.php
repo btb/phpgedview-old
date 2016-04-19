@@ -3,7 +3,7 @@
 * PopUp Window to provide editing features.
 *
 * phpGedView: Genealogy Viewer
-* Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+* Copyright (C) 2002 to 2016  PGV Development Team.  All rights reserved.
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -397,6 +397,7 @@ case 'delete':
 			}
 		}
 	}
+	$xref = '';		// Make sure we don't try to paste this ID
 	break;
 //------------------------------------------------------------------------------
 //-- echo a form to edit the raw gedcom record in a large textarea
@@ -1017,11 +1018,11 @@ case 'addnoteaction':
 	}
 	// $xref = "Test";
 	$xref = append_gedrec($newgedrec, $update_CHAN);
-	
+
 	// Not sure if next line is needed ?? BH ?? --------
 	// $link = "note.php?nid=$xref&show_changes=yes";
 	// -------------------------------------------------
-	
+
 	if ($xref != "none") {
 		echo "<br /><br />\n".$pgv_lang["new_shared_note_created"]." (".$xref.")<br /><br />";
 		echo "<a href=\"javascript://NOTE $xref\" onclick=\"openerpasteid('$xref'); return false;\">".$pgv_lang["paste_id_into_field"]." <b>$xref</b></a>\n";
@@ -1034,7 +1035,7 @@ case 'addnoteaction':
 case 'addnewnote_assisted':
 	if (isset($_REQUEST['pid'])) $pid = $_REQUEST['pid'];
 	global $pid;
-	
+
 	echo PGV_JS_START;
 	?>
 		function check_form(frm) {
@@ -1050,7 +1051,7 @@ case 'addnewnote_assisted':
 	<?php
 	echo PGV_JS_END;
 	?>
-	
+
 	<div class="center font11" style="width:100%;">
 		<b><?php echo $pgv_lang["create_shared_note_assisted"]; $tabkey = 1; ?></b>
 		<form method="post" action="edit_interface.php" onsubmit="return check_form(this);">
@@ -1071,7 +1072,7 @@ case 'addnewnote_assisted':
 case 'addnoteaction_assisted':
 	require PGV_ROOT.'modules/GEDFact_assistant/_CENS/addnoteaction_assisted.php';
 	break;
-	
+
 //-- add new Media Links
 case 'addmedia_links':
 	global $pid;
@@ -1090,9 +1091,9 @@ case 'addmedia_links':
 	?>
 	<!-- <form method="post" action="edit_interface.php" onsubmit="return check_form(this);"> -->
 	<form method="post" action="edit_interface.php?pid=<?php echo $pid; ?>" onsubmit="findindi()">
-		<input type="hidden" name="action" value="addmedia_links" /> 	
-		<input type="hidden" name="noteid" value="newnote" />			
-	<!--	<input type="hidden" name="pid" value="<?php // echo $pid; ?>" />		--> 
+		<input type="hidden" name="action" value="addmedia_links" />
+		<input type="hidden" name="noteid" value="newnote" />
+	<!--	<input type="hidden" name="pid" value="<?php // echo $pid; ?>" />		-->
 		<?php
 		require PGV_ROOT.'modules/GEDFact_assistant/MEDIA_ctrl.php';
 		?>
@@ -1135,7 +1136,7 @@ case 'editsource':
 		$level1type = create_edit_form($gedrec, $lines++, $level0type);
 		echo "<input type=\"hidden\" name=\"linenum[]\" value=\"$i\" />\n";
 	}
-	
+
 	if (PGV_USER_IS_ADMIN) {
 		echo "<tr><td class=\"descriptionbox ", $TEXT_DIRECTION, " wrap width25\">";
 		print_help_link("no_update_CHAN_help", "qm", "no_update_CHAN");
@@ -1201,7 +1202,7 @@ case 'editnote':
 					?></textarea><br /><?php print_specialchar_link("NOTE", true); ?>
 				</td>
 			</tr>
-			<?php $tabkey++; 
+			<?php $tabkey++;
 			if (PGV_USER_IS_ADMIN) {
 			echo "<tr><td class=\"descriptionbox ", $TEXT_DIRECTION, " wrap width25\">";
 			print_help_link("no_update_CHAN_help", "qm", "no_update_CHAN");
@@ -1351,14 +1352,14 @@ case 'updateraw':
 	$success = (!empty($newgedrec)&&(replace_gedrec($pid, $newgedrec, $update_CHAN)));
 	if ($success) echo "<br /><br />", $pgv_lang["update_successful"];
 	break;
-	
+
 //----------------------------------------------------------------------------------
 //-- reconstruct the gedcom from the incoming fields and store it in the file
 case 'update':
 	/* -----------------------------------------------------------------------------
-	 * $pids_array is a text file passed via js from the CENS GEDFact Assistant 
+	 * $pids_array is a text file passed via js from the CENS GEDFact Assistant
 	 * to the hidden field id=\"pids_array\" in the case 'add'.
-	 * The subsequent array ($cens_pids), after exploding this text file, 
+	 * The subsequent array ($cens_pids), after exploding this text file,
 	 * is an array of indi id's within the Census Transcription
 	 * If $cens_pids is set, then this allows the array to "copy" the new CENS event
 	 * using the foreach loop to these id's
@@ -1384,12 +1385,12 @@ case 'update':
 	foreach ($cens_pids as $pid) {
 		if (isset($pid)) {
 			$gedrec = find_updated_record($pid, PGV_GED_ID);
-			if (empty($gedrec)) $gedrec = find_gedcom_record($pid, PGV_GED_ID);			
+			if (empty($gedrec)) $gedrec = find_gedcom_record($pid, PGV_GED_ID);
 		} else if (isset($famid)) {
 			$gedrec = find_updated_record($famid, PGV_GED_ID);
-			if (empty($gedrec)) $gedrec = find_gedcom_record($famid, PGV_GED_ID);			
+			if (empty($gedrec)) $gedrec = find_gedcom_record($famid, PGV_GED_ID);
 		}
-		
+
 		if (PGV_DEBUG) {
 			phpinfo(INFO_VARIABLES);
 			echo "<pre>$gedrec</pre>";
@@ -1553,23 +1554,23 @@ case 'update':
 
 				if (!empty($_AKA)) $newged .= "2 _AKA $_AKA\n";
 				if (!empty($_MARNM)) $newged .= "2 _MARNM $_MARNM\n";
-				
+
 				$newged = handle_updates($newged);
 				$current = $editline;
 				break;
 			}
-			
+
 		}
 		if (PGV_DEBUG) {
 			echo "<br /><br />";
 			echo "<pre>$newged</pre>";
 		}
-		
+
 		$success  = (replace_gedrec($pid, $newged, $update_CHAN));
 		if ($success) {
 			echo "<br /><br />", $pgv_lang["update_successful"], " - ", $pid;
 		}
-		
+
 	} // end foreach $cens_pids  -------------
 	break;
 
@@ -2013,6 +2014,7 @@ case 'deleteperson':
 	else {
 		if (delete_person($pid, $gedrec)) echo "<br /><br />", $pgv_lang["gedrec_deleted"];
 	}
+	$xref = '';		// Make sure we don't try to paste this ID
 	break;
 //------------------------------------------------------------------------------
 case 'deletefamily':
@@ -2029,6 +2031,7 @@ case 'deletefamily':
 	{
 		if (delete_family($famid, $gedrec)) echo "<br /><br />", $pgv_lang["gedrec_deleted"];
 	}
+	$xref = '';		// Make sure we don't try to paste this ID
 	break;
 
 
@@ -2087,6 +2090,7 @@ if (isset($_REQUEST['action'])) $action = $_REQUEST['action'];
 			echo "<br /><br />".$pgv_lang["gedrec_deleted"];
 		}
 	}
+	$xref = '';		// Make sure we don't try to paste this ID
 	break;
 //------------------------------------------------------------------------------
 case 'editname':
@@ -2169,7 +2173,7 @@ case 'reset_media_update': // Reset sort using popup
 		}
 	}
 	$success = (replace_gedrec($pid, $newgedrec, $update_CHAN));
-	if ($success) { 
+	if ($success) {
 		echo "<br />", $pgv_lang["update_successful"], "<br /><br />";
 	}
 	break;
@@ -2778,7 +2782,7 @@ case 'mod_edit_fact':
 
 
 // Redirect to new record, if requested
-if (isset($_REQUEST['goto'])) { 
+if (isset($_REQUEST['goto'])) {
 	$goto = $_REQUEST['goto'];
 }
 if (isset($_REQUEST['link'])) {
@@ -2788,7 +2792,7 @@ if (empty($goto) || empty($link)) {
 	$link='';
 }
 
-// autoclose window when update successful  ==== 
+// autoclose window when update successful  ====
 if ($success && $EDIT_AUTOCLOSE && !PGV_DEBUG ) {
 	echo PGV_JS_START;
 	if ($action=="copy") {
@@ -2803,15 +2807,17 @@ if ($success && $EDIT_AUTOCLOSE && !PGV_DEBUG ) {
 }
 
 // Decide whether to print footer or not ================================================
+if (!empty($xref)) $pasteaction = "openerpasteid('$xref'); ";
+else $pasteaction = '';
 if ($action == 'addmedia_links' || $action == 'addnewnote_assisted' ) {
 	// Do not print footer.
-	echo "<br /><div class=\"center\"><a href=\"javascript:;\" onclick=\"edit_close('{$link}');\">", $pgv_lang["close_window"], "</a></div>\n";
+	echo "<br /><div class=\"center\"><a href=\"javascript:;\" onclick=\"{$pasteaction}edit_close('{$link}');\">", $pgv_lang["close_window"], "</a></div>\n";
 }else if (isset($closeparent) && $closeparent=="yes" ) {
 	// echo "<div class=\"center\"><a href=\"javascript:;\" onclick=\"edit_close('{$link}');window.opener.close();\">", $pgv_lang["close_window"], "</a></div><br />\n";
-	echo "<div class=\"center\"><a href=\"javascript:;\" onclick=\"edit_close('{$link}');\">", $pgv_lang["close_window"], "</a></div><br />\n";
+	echo "<div class=\"center\"><a href=\"javascript:;\" onclick=\"{$pasteaction}edit_close('{$link}');\">", $pgv_lang["close_window"], "</a></div><br />\n";
 	print_simple_footer();
 }else{
-	echo "<div class=\"center\"><a href=\"javascript:;\" onclick=\"edit_close('{$link}');\">", $pgv_lang["close_window"], "</a></div><br />\n";
+	echo "<div class=\"center\"><a href=\"javascript:;\" onclick=\"{$pasteaction}edit_close('{$link}');\">", $pgv_lang["close_window"], "</a></div><br />\n";
 	print_simple_footer();
 }
 
