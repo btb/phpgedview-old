@@ -200,7 +200,7 @@ while (true) {
 	}
 
 	// check for script injection
-	if (preg_match('~[<>"\%{};]~s', $requestURI)) {
+	if (preg_match('~[<>"\%;]~s', $requestURI)) {
 		$quitReason = 'Script injection detected';
 		break;
 	}

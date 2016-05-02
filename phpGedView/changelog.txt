@@ -9,6 +9,7 @@
 =====================================================================
 
 Version 4.3.0
+ - Fixed: Adding a new media item while editing a Fact causes "You are not welcome here" message (canajun2eh)
  - Changed: Automatically copy ID numbers of new shared notes, sources, and repositories (canajun2eh)
  - Fixed: Notes containing two at-symbols are sometimes incorrectly identified as referencing shared notes (canajun2eh)
  - Changed: Anonymous remote connections are now optional (Pasquale Ceres)
