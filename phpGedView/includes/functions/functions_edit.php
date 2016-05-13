@@ -3,7 +3,7 @@
 * Various functions used by the Edit interface
 *
 * phpGedView: Genealogy Viewer
-* Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+* Copyright (C) 2002 to 2016  PGV Development Team.  All rights reserved.
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -958,12 +958,16 @@ function print_calendar_popup($id, $asString=false) {
 * @todo add comments
 */
 function print_addnewmedia_link($element_id) {
-	global $pgv_lang, $PGV_IMAGE_DIR, $PGV_IMAGES, $pid;
-	
+	global $pgv_lang, $PGV_IMAGE_DIR, $PGV_IMAGES, $linkToID, $level;
+
 	$text = $pgv_lang["add_media"];
 	if (isset($PGV_IMAGES["addmedia"]["button"])) $Link = "<img src=\"".$PGV_IMAGE_DIR."/".$PGV_IMAGES["addmedia"]["button"]."\" alt=\"".$text."\" title=\"".$text."\" border=\"0\" align=\"middle\" />";
 	else $Link = $text;
-	echo '&nbsp;&nbsp;&nbsp;<a href="javascript:;" onclick="pastefield=document.getElementById(\'', $element_id, '\'); window.open(\'addmedia.php?action=showmediaform&linktoid={$linkToID}&level={$level}\', \'_blank\', \'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1\'); return false;">';
+	if (!empty($linkToID)) $linkTo = '&linktoid=' . $linkToID;
+	else $linkTo = '';
+	if (!empty($level)) $levelNum = '&level=' . $level;
+	else $levelNum = '';
+	echo '&nbsp;&nbsp;&nbsp;<a href="javascript:;" onclick="pastefield=document.getElementById(\'', $element_id, '\'); window.open(\'addmedia.php?action=showmediaform',$linkTo,$levelNum,'\', \'_blank\', \'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1\'); return false;">';
 	echo $Link;
 	echo "</a>";
 }
@@ -986,7 +990,7 @@ function print_addnewrepository_link($element_id) {
 */
 function print_addnewnote_link($element_id) {
 	global $pgv_lang, $PGV_IMAGE_DIR, $PGV_IMAGES, $pid;
-	
+
 	$text = $pgv_lang["create_shared_note"];
 	if (isset($PGV_IMAGES["addnote"]["button"])) $Link = "<img src=\"".$PGV_IMAGE_DIR."/".$PGV_IMAGES["addnote"]["button"]."\" alt=\"".$text."\" title=\"".$text."\" border=\"0\" align=\"middle\" />";
 	else $Link = $text;
@@ -1065,7 +1069,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 	global $QUICK_REQUIRED_FACTS, $QUICK_REQUIRED_FAMFACTS, $PREFER_LEVEL2_SOURCES;
 	global $action, $event_add;
 	global $CensDate;
-	
+
 if (substr($tag, 0, strpos($tag, "CENS"))) {
 	$event_add="census_add";
 }
@@ -1230,7 +1234,7 @@ if (substr($tag, 0, strpos($tag, "CENS"))) {
 		echo " style=\"display:none;\"";
 	}
 	echo " >\n";
-	
+
 	if (in_array($fact, $subnamefacts) || $fact=="LATI" || $fact=="LONG") {
 		echo "<td class=\"optionbox $TEXT_DIRECTION wrap width25\">";
 	}else{
@@ -1279,7 +1283,7 @@ if (substr($tag, 0, strpos($tag, "CENS"))) {
 	if (PGV_DEBUG) {
 		echo $element_name, "<br />\n";
 	}
-	
+
 
 	// tag name
 	if (!empty($label)) {
@@ -1293,7 +1297,7 @@ if (substr($tag, 0, strpos($tag, "CENS"))) {
 			echo $pgv_lang["shared_note"];
 			/*
 			if (file_exists(PGV_ROOT.'modules/GEDFact_assistant/_CENS/census_1_ctrl.php') && $pid && $label=="GEDFact Assistant") {
-				//	use $label (GEDFact Assistant); 
+				//	use $label (GEDFact Assistant);
 			}else{
 				echo $pgv_lang["shared_note"];
 			}
@@ -1322,8 +1326,8 @@ if (substr($tag, 0, strpos($tag, "CENS"))) {
 		echo "<input type=\"hidden\" name=\"islink[]\" value=\"", $islink, "\" />\n";
 		echo "<input type=\"hidden\" name=\"tag[]\" value=\"", $fact, "\" />\n";
 
-		// Shared Notes Debug ------------------------------------------------ 
-		// Please leave until GEDFact assistant/_CENS is released - B.Holland 
+		// Shared Notes Debug ------------------------------------------------
+		// Please leave until GEDFact assistant/_CENS is released - B.Holland
 			// echo "<br />Label = ".$label;
 			// echo "<br />Level = ".$level;
 			// echo "<br />Link  = ".$islink;
@@ -1357,18 +1361,18 @@ if (substr($tag, 0, strpos($tag, "CENS"))) {
 			echo $pgv_lang["yes"];
 		}
 /*
-		// If GEDFAct_assistant/_CENS/ module exists && we are on the INDI page && action is ADD a new CENS event 
+		// If GEDFAct_assistant/_CENS/ module exists && we are on the INDI page && action is ADD a new CENS event
 		// Then show the add Shared note input field and the GEDFact assisted icon.
-		// If GEDFAct_assistant/_CENS/ module not installed  ... do not show 
+		// If GEDFAct_assistant/_CENS/ module not installed  ... do not show
 		if (file_exists(PGV_ROOT.'modules/GEDFact_assistant/_CENS/census_1_ctrl.php') && $pid && $fact=="CENS") {
 			$type_pid=GedcomRecord::getInstance($pid);
-			if ($type_pid->getType()=="INDI" && $action=="add" ) { 
+			if ($type_pid->getType()=="INDI" && $action=="add" ) {
 				add_simple_tag("2 SHARED_NOTE", "", "GEDFact Assistant");
 			}
 		}
 		// -----------------------------------------------------------------------------------------------------
 */
-		
+
 	}
 	else if ($fact=="TEMP") {
 		echo "<select tabindex=\"", $tabkey, "\" name=\"", $element_name, "\" >\n";
@@ -1665,12 +1669,12 @@ if (substr($tag, 0, strpos($tag, "CENS"))) {
 				print_editnote_link($value);
 			}
 			// If GEDFact_assistant/_CENS/ module exists && we are on the INDI page and the action is a GEDFact CENS assistant addition.
-			// Then show the add Shared note assisted icon, if not  ... show regular Shared note icons. 
+			// Then show the add Shared note assisted icon, if not  ... show regular Shared note icons.
 			if (file_exists(PGV_ROOT.'modules/GEDFact_assistant/_CENS/census_1_ctrl.php') && ($action=="add" || $action=="edit" ) && $pid) {
 				// Check if a CENS event ---------------------------
 				if ($event_add=="census_add") {
 					$type_pid=GedcomRecord::getInstance($pid);
-					if ($type_pid->getType()=="INDI" ) { 
+					if ($type_pid->getType()=="INDI" ) {
 						echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 						echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 						echo "<a href=\"javascript:ADD;\" onclick=\"addnewnote_assisted(document.getElementById('", $element_id, "'), '", $pid, "' ); return false;\" title=\"".$pgv_lang["create_shared_note_assisted"]."\" alt=\"".$pgv_lang["create_shared_note_assisted"]."\">";
@@ -1682,17 +1686,17 @@ if (substr($tag, 0, strpos($tag, "CENS"))) {
 			}
 		}
 
-		if ($fact=="OBJE") { 
+		if ($fact=="OBJE") {
 			print_findmedia_link($element_id, "1media");
 		}
 		if ($fact=="OBJE" && !$value) {
 			print_addnewmedia_link($element_id);
 			$value = "new";
 		}
-		
+
 		echo "<br />";
 	}
-	
+
 	// current value
 	if ($TEXT_DIRECTION=="ltr") {
 		if ($fact=="DATE") {
@@ -2310,7 +2314,7 @@ function linkMedia($mediaid, $linktoid, $level=1, $chan=true) {
 * @param $linenum should be ALWAYS set to 'OBJE'.
 * @param int $level Level where the Media Object reference should be removed from (not used)
 * @param boolean $chan Whether or not to update/add the CHAN record
-* 
+*
 * @return  bool success or failure
 */
 function unlinkMedia($linktoid, $linenum, $mediaid, $level=1, $chan=true) {
@@ -2324,7 +2328,7 @@ function unlinkMedia($linktoid, $linenum, $mediaid, $level=1, $chan=true) {
 	} else {
 		$gedrec = find_gedcom_record($linktoid, PGV_GED_ID);
 	}
-	
+
 	//-- when deleting/unlinking a media link
 	//-- $linenum comes as an OBJE and the $mediaid to delete should be set
 	if (!is_numeric($linenum)) {
@@ -2344,7 +2348,7 @@ function create_add_form($fact) {
 	global $tags, $pgv_lang, $factarray, $FULL_SOURCES;
 
 	$tags = array();
-	
+
 	// GEDFact_assistant ================================================
 	if ($fact=="CENS" && file_exists(PGV_ROOT.'modules/GEDFact_assistant/_CENS/census_query_2a.php') ) {
 		require PGV_ROOT.'modules/GEDFact_assistant/_CENS/census_query_2a.php';
@@ -2411,13 +2415,13 @@ function create_edit_form($gedrec, $linenum, $level0type) {
 
 	$type = trim($fields[1]);
 	$level1type = $type;
-	
+
 	// GEDFact_assistant ================================================
 	if ($type=="CENS" && file_exists(PGV_ROOT.'modules/GEDFact_assistant/_CENS/census_query_2a.php') ) {
 			require PGV_ROOT.'modules/GEDFact_assistant/_CENS/census_query_2a.php';
 	}
 	// ==================================================================
-	
+
 	if (count($fields)>2) {
 		$ct = preg_match("/@.*@/", $fields[2]);
 		$levellink = $ct > 0;
@@ -2445,7 +2449,7 @@ function create_edit_form($gedrec, $linenum, $level0type) {
 	if (preg_match_all('/('.PGV_REGEX_TAG.')/', $ADVANCED_PLAC_FACTS, $match)) {
 		$expected_subtags['PLAC']=array_merge($match[1], $expected_subtags['PLAC']);
 	}
-	
+
 	$stack=array(0=>$level0type);
 	// Loop on existing tags :
 	while (true) {
