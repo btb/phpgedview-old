@@ -194,7 +194,7 @@ $quitReason = "";
 
 while (true) {
 	// check for SQL injection
-	if (preg_match('~\b(join|union|select|insert|cast|set|declare|drop|md5|benchmark)\b~is', $requestURI)) {
+	if (preg_match('~\b(join|select|insert|cast|set|declare|drop|md5|benchmark)\b~is', $requestURI)) {
 		$quitReason = 'SQL injection detected';
 		break;
 	}
