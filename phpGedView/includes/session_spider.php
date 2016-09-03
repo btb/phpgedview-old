@@ -193,6 +193,12 @@ do {
 $quitReason = "";
 
 while (true) {
+	// check for improperly formed URI
+	if ((strpos($requestURI, '//') || strpos($requestURI, "'&") || strpos($requestURI, "'\"")) !== false) {
+		$quitReason = 'Improperly formed URI';
+		break;
+	}
+
 	// check for SQL injection
 	if (preg_match('~\b(join|select|insert|cast|set|declare|drop|md5|benchmark)\b~is', $requestURI)) {
 		$quitReason = 'SQL injection detected';
@@ -214,12 +220,6 @@ while (true) {
 	// check for attempt to escape from the PGV directory
 	if (preg_match("~\.\.(/|\\\)~", $requestURI)) {
 		$quitReason = 'Attempt escape from PGV directory';
-		break;
-	}
-
-	// check for improperly formed URI
-	if (strpos($requestURI, '//') !== false) {
-		$quitReason = 'Improperly formed URI';
 		break;
 	}
 

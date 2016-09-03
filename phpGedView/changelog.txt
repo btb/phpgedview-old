@@ -9,6 +9,7 @@
 =====================================================================
 
 Version 4.3.0
+ - Changed: Improve checks for improperly formed URI (canajun2eh)
  - Fixed: Incorrect call to static function in PEAR.php (Pasquale Ceres)
  - Changed: Remove "union" (a legitimate place name) from SQL injection check (canajun2eh)
  - Fixed: Adding a new media item while editing a Fact requires entry of the Indi, Family, or Source ID number (canajun2eh)
