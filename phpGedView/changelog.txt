@@ -9,6 +9,7 @@
 =====================================================================
 
 Version 4.3.0
+ - Changed: Updates to PEAR.php and new PEAR5.php to accommodate more recent versions of PHP (Lester Caine)
  - Changed: Improve checks for improperly formed URI (canajun2eh)
  - Fixed: Incorrect call to static function in PEAR.php (Pasquale Ceres)
  - Changed: Remove "union" (a legitimate place name) from SQL injection check (canajun2eh)
