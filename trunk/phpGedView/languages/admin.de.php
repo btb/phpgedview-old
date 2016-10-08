@@ -3,7 +3,7 @@
  * German texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2012  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2016  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -132,7 +132,7 @@ $pgv_lang["associated_files"]		= "Verwandte Dateien:";
 $pgv_lang["remove_all_files"]		= "Alle nicht unbedingt erforderliche Dateien löschen";
 $pgv_lang["warn_file_delete"]		= "Diese Datei enthält wichtige Daten wie zum Beispiel die Spracheinstellungen oder noch nicht eingetragene Änderungen der Datenbank. Sind Sie sicher, dass Sie diese Datei löschen möchten?";
 $pgv_lang["deleted_files"]          = "Gelöschte Dateien:";
-$pgv_lang["index_dir_cleanup_inst"]	= "Dateien oder Unterverzeichnisse werden aus dem Index-Verzeichnis gelöscht, indem Sie die Namen in den Papierkorb verlegen oder sie in der Liste ankreuzen. Die so gekennzeichneten Dateien werden unwiderruflich gelöscht, wenn Sie auf den «Löschen» Button klicken.<br /><br />Unbedingt erforderliche Dateien sind mit <img src=\"./images/RESN_confidential.gif\" alt=\"\" /> gekennzeichnet; sie dürfen nicht gelöscht werden.<br />Dateien, die mit <img src=\"./images/RESN_locked.gif\" alt=\"\" /> gekennzeichnet sind, enthalten wichtige Datensätze und sollten nur gelöscht werden, wenn Sie sich dessen sicher sind.<br /><br />";
+$pgv_lang["index_dir_cleanup_inst"]	= "Dateien oder Unterverzeichnisse werden aus dem Index-Verzeichnis gelöscht, indem Sie die Namen in den Papierkorb verlegen oder sie in der Liste ankreuzen. Die so gekennzeichneten Dateien werden unwiderruflich gelöscht, wenn Sie auf den »Löschen« Button klicken.<br /><br />Unbedingt erforderliche Dateien sind mit <img src=\"./images/RESN_confidential.gif\" alt=\"\" /> gekennzeichnet; sie dürfen nicht gelöscht werden.<br />Dateien, die mit <img src=\"./images/RESN_locked.gif\" alt=\"\" /> gekennzeichnet sind, enthalten wichtige Datensätze und sollten nur gelöscht werden, wenn Sie sich dessen sicher sind.<br /><br />";
 $pgv_lang["index_dir_cleanup"]		= "Indexverzeichnis aufräumen";
 $pgv_lang["clear_cache_succes"]		= "Die Cachedateien wurden gelöscht.";
 $pgv_lang["clear_cache"]			= "Cachedateien löschen";
@@ -232,7 +232,7 @@ $pgv_lang["folder_no_create"]		= "Verzeichnis konnte nicht erstellt werden";
 $pgv_lang["security_no_create"]		= "Sicherheitshinweis: Die Datei <b><i>index.php</i></b> konnte nicht erstellt werden im Verzeichnis ";
 $pgv_lang["security_not_exist"]		= "Sicherheitshinweis: Die Datei <b><i>index.php</i></b> existiert nicht im Verzeichnis ";
 $pgv_lang["label_delete"]			= "Löschen";
-$pgv_lang["progress_bars_info"]		= "Der Fortschrittsbalken unten zeigt den Fortschritt des Datenimports an. Wenn das angegebene Zeitlimit erreicht ist, wird der Import unterbrochen. Sie können dann auf einen Button «Fortsetzen» klicken. Falls Ihnen dieser Button nicht zugänglich ist, müssen Sie den Datenimport mit einer kleineren Zeitlimit neu starten.";
+$pgv_lang["progress_bars_info"]		= "Der Fortschrittsbalken unten zeigt den Fortschritt des Datenimports an. Wenn das angegebene Zeitlimit erreicht ist, wird der Import unterbrochen. Sie können dann auf einen Button »Fortsetzen« klicken. Falls Ihnen dieser Button nicht zugänglich ist, müssen Sie den Datenimport mit einer kleineren Zeitlimit neu starten.";
 $pgv_lang["upload_replacement"]		= "Aktualisierte Datei hochladen";
 $pgv_lang["about_user"]				= "Sie müssen zunächst den Hauptverwalter erstellen. Dieser Benutzer wird das Recht erhalten, Konfigurationsdateien zu verändern, private Daten einzusehen oder andere Benutzer zu erstellen.";
 $pgv_lang["access"]					= "Zugriff";
@@ -312,13 +312,13 @@ $pgv_lang["ged_export"] 			= "Export";
 $pgv_lang["ged_check"]				= "Verifizieren";
 $pgv_lang["gedcom_adm_head"]		= "GEDCOM-Verwaltung";
 $pgv_lang["gedcom_config_write_error"]	= "F E H L E R !!!<br />Die Datei <i>#GLOBALS[whichFile]#</i> konnte nicht geschrieben werden.  Bitte prüfen Sie, ob diese Datei die richtigen Schreibrechte hat.";
-$pgv_lang["gedcom_downloadable"]	= "Diese GEDCOM-Datei könnte über das Internet heruntergeladen werden!<br />Bitte lesen Sie im Bereich «SECURITY» der Datei <a href=\"readme.txt\"><b>readme.txt</b></a> nach, wie Sie dieses Problem vermeiden können.";
+$pgv_lang["gedcom_downloadable"]	= "Diese GEDCOM-Datei könnte über das Internet heruntergeladen werden!<br />Bitte lesen Sie im Bereich »SECURITY« der Datei <a href=\"readme.txt\"><b>readme.txt</b></a> nach, wie Sie dieses Problem vermeiden können.";
 $pgv_lang["gedcom_file"]			= "GEDCOM-Datei:";
 $pgv_lang["gedcom_not_imported"]	= "Diese GEDCOM-Datei wurde noch nicht importiert.";
 $pgv_lang["ibase"]					= "InterBase";
 $pgv_lang["ifx"]					= "Informix";
 $pgv_lang["img_admin_settings"]		= "Konfiguration der Bildeinstellungen bearbeiten";
-$pgv_lang["autoContinue"]			= "«Fortsetzen» Button automatisch drücken";
+$pgv_lang["autoContinue"]			= "»Fortsetzen« Button automatisch drücken";
 $pgv_lang["import_complete"]		= "Import beendet";
 $pgv_lang["import_options"]			= "Import Optionen";
 $pgv_lang["import_progress"]		= "Import Fortschritt...";
@@ -453,7 +453,7 @@ $pgv_lang["batch_update"]			= "Ihre Datenbank mittels Stapelverarbeitung aktuali
 
 // Text for the Gedcom Checker
 $pgv_lang["gedcheck"]				= "GEDCOM Verifizierungs-Modul";
-$pgv_lang["gedcheck_text"]			= "Dieses Modul verifiziert GEDCOM Dateien gegen den <a href='http://phpgedview.sourceforge.net/ged551-5.pdf'>GEDCOM 5.5.1 Standard</a>.  Es sucht auch nach oft vorkommenden Fehlern.<br /><br />Bitte beachten Sie, dass viele Programme den GEDCOM 5.5.1 Standard erweitert haben.  Deshalb sollten Sie sich zuerst nur mit «kritischen» Fehlern befassen.  Den Grund der meisten Fehlermeldungen können Sie durch gündliches Lesen des Standards ermitteln.  Wenn absolut notwending, können Sie auch Ihre Fragen im <a href='https://sourceforge.net/forum/forum.php?forum_id=185166'>Help-Forum</a> stellen.";
+$pgv_lang["gedcheck_text"]			= "Dieses Modul verifiziert GEDCOM Dateien gegen den <a href='http://phpgedview.sourceforge.net/ged551-5.pdf'>GEDCOM 5.5.1 Standard</a>.  Es sucht auch nach oft vorkommenden Fehlern.<br /><br />Bitte beachten Sie, dass viele Programme den GEDCOM 5.5.1 Standard erweitert haben.  Deshalb sollten Sie sich zuerst nur mit »kritischen« Fehlern befassen.  Den Grund der meisten Fehlermeldungen können Sie durch gündliches Lesen des Standards ermitteln.  Wenn absolut notwending, können Sie auch Ihre Fragen im <a href='https://sourceforge.net/forum/forum.php?forum_id=185166'>Help-Forum</a> stellen.";
 $pgv_lang["gedcheck_sync"]			= "Die GEDCOM-Datei #GLOBALS[ged]# ist nicht mit der Datenbank synchronisiert;  die Datei ist womöglich nicht aktuell.  Sie können die Datei aktualisieren indem Sie die Datenbank jetzt <b><a \"#GLOBALS[ged_link]#\">exportieren</a></b>.";
 $pgv_lang["gedcheck_nothing"]		= "Keine Fehler gefunden.";
 $pgv_lang["level"]					= "Level";
