@@ -3,7 +3,7 @@
  * Google map module for phpGedView
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2016  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -57,6 +57,7 @@ loadLangFile("googlemap:lang");
 
 // functions copied from print_fact_place
 function print_fact_place_map($factrec) {
+	global $countries;
 	$ct = preg_match("/2 PLAC (.*)/", $factrec, $match);
 	if ($ct>0) {
 		$retStr = " ";
@@ -64,6 +65,8 @@ function print_fact_place_map($factrec) {
 		$place = trim($match[1]);
 		// reverse the array so that we get the top level first
 		$levels = array_reverse($levels);
+		loadLangFile("pgv_country");
+		if (isset($countries[trim($levels[0])])) $place = str_replace(trim($levels[0]), $countries[trim($levels[0])], $place);
 		$retStr .= "<a href=\"placelist.php?action=show&amp;";
 		foreach($levels as $pindex=>$ppart) {
 			// routine for replacing ampersands
@@ -262,7 +265,7 @@ function create_possible_place_names ($placename, $level) {
 
 function abbreviate($text) {
 	if (UTF8_strlen($text)>13) {
-		if (trim(UTF8_substr($text, 10, 1))!="") 
+		if (trim(UTF8_substr($text, 10, 1))!="")
 			$desc = UTF8_substr($text, 0, 11).".";
 		else $desc = trim(UTF8_substr($text, 0, 11));
 	}
@@ -302,29 +305,19 @@ function get_lati_long_placelocation ($place) {
 }
 
 function setup_map() {
-	global $GOOGLEMAP_ENABLED, $GOOGLEMAP_API_KEY, $GOOGLEMAP_MAP_TYPE, $GOOGLEMAP_MIN_ZOOM, $GOOGLEMAP_MAX_ZOOM, $pgv_lang;
+	global $GOOGLEMAP_ENABLED, $GOOGLEMAP_API_KEY, $GOOGLEMAP_MAP_TYPE, $GOOGLEMAP_MIN_ZOOM, $GOOGLEMAP_MAX_ZOOM, $pgv_lang, $language_settings, $LANGUAGE;
 	if (!$GOOGLEMAP_ENABLED) {
 		return;
 	}
 	?>
-	<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false&amp;key=<?php echo $GOOGLEMAP_API_KEY; ?>" type="text/javascript"></script>
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=<?php echo $GOOGLEMAP_API_KEY; ?>&language=<?php echo $language_settings[$LANGUAGE]['lang_short_cut']; ?>" type="text/javascript"></script>
 	<script src="modules/googlemap/pgvGoogleMap.js" type="text/javascript"></script>
+        <script src="modules/googlemap/infobubble.js" type="text/javascript"></script>
 	<script type="text/javascript">
-	// <![CDATA[
-		if (window.attachEvent) {
-			window.attachEvent("onunload", function() {
-				GUnload();      // Internet Explorer
-			});
-		} else {
-			window.addEventListener("unload", function() {
-				GUnload(); // Firefox and standard browsers
-			}, false);
-		}
-	var GOOGLEMAP_MAP_TYPE =<?php echo $GOOGLEMAP_MAP_TYPE;?>;
-	var minZoomLevel = <?php echo $GOOGLEMAP_MIN_ZOOM;?>;
-	var maxZoomLevel = <?php echo $GOOGLEMAP_MAX_ZOOM;?>;
-	var startZoomLevel = <?php echo $GOOGLEMAP_MAX_ZOOM;?>;
-	//]]>
+	  var GOOGLEMAP_MAP_TYPE = 0; //<?php echo $GOOGLEMAP_MAP_TYPE;?>;
+	  var minZoomLevel = <?php echo $GOOGLEMAP_MIN_ZOOM;?>;
+	  var maxZoomLevel = <?php echo $GOOGLEMAP_MAX_ZOOM;?>;
+	  var startZoomLevel = <?php echo $GOOGLEMAP_MAX_ZOOM;?>;
 	</script>
 	<?php
 
@@ -393,78 +386,10 @@ function create_indiv_buttons() {
 		top: -484px;
 		left: 101%;
 	}
-	
+
 	</style>
 	<script type='text/javascript'>
-	<!--
-	function Map_type() {}
-	Map_type.prototype = new GControl();
-
-	Map_type.prototype.refresh = function()
-	{
-		this.button1.className = 'non_active';
-		if(this.map.getCurrentMapType() != G_NORMAL_MAP)
-			this.button2.className = 'non_active';
-		else
-			this.button2.className = 'active';
-		if(this.map.getCurrentMapType() != G_SATELLITE_MAP)
-			this.button3.className = 'non_active';
-		else
-			this.button3.className = 'active';
-		if(this.map.getCurrentMapType() != G_HYBRID_MAP)
-			this.button4.className = 'non_active';
-		else
-			this.button4.className = 'active';
-		if(this.map.getCurrentMapType() != G_PHYSICAL_MAP)
-			this.button5.className = 'non_active';
-		else
-			this.button5.className = 'active';
-	}
-
-	Map_type.prototype.initialize = function(place_map)
-	{
-		var list 	= document.createElement("ul");
-		list.id	= 'map_type';
-
-		var button1 = document.createElement('li');
-		var button2 = document.createElement('li');
-		var button3 = document.createElement('li');
-		var button4 = document.createElement('li');
-		var button5 = document.createElement('li');
-
-		button1.innerHTML = '<?php echo $pgv_lang["gm_redraw_map"]?>';
-		button2.innerHTML = '<?php echo $pgv_lang["gm_map"]?>';
-		button3.innerHTML = '<?php echo $pgv_lang["gm_satellite"]?>';
-		button4.innerHTML = '<?php echo $pgv_lang["gm_hybrid"]?>';
-		button5.innerHTML = '<?php echo $pgv_lang["gm_physical"]?>';
-
-		button1.onclick = function() { javascript:ResizeMap(); return false; };
-		button2.onclick = function() { map.setMapType(G_NORMAL_MAP); return false; };
-		button3.onclick = function() { map.setMapType(G_SATELLITE_MAP); return false; };
-		button4.onclick = function() { map.setMapType(G_HYBRID_MAP); return false; };
-		button5.onclick = function() { map.setMapType(G_PHYSICAL_MAP); return false; };
-
-		list.appendChild(button1);
-		list.appendChild(button2);
-		list.appendChild(button3);
-		list.appendChild(button4);
-		list.appendChild(button5);
-
-		this.button1 = button1;
-		this.button2 = button2;
-		this.button3 = button3;
-		this.button4 = button4;
-		this.button5 = button5;
-		this.map = map;
-		map.getContainer().appendChild(list);
-		return list;
-	}
-
-	Map_type.prototype.getDefaultPosition = function()
-	{
-		return new GControlPosition(G_ANCHOR_TOP_RIGHT, new GSize(2, 2));
-	}
-	var map_type;
+	    var map_type;
 	</script>
 	<?php
 }
@@ -587,6 +512,7 @@ function build_indiv_map($indifacts, $famids) {
 							$markers[$i]["icon"] = $latlongval["icon"];
 							$markers[$i]["placerec"] = $placerec;
 							if ($zoomLevel > $latlongval["zoom"]) $zoomLevel = $latlongval["zoom"];
+							$markers[$i]["zoom"] = $latlongval["zoom"];
 							$markers[$i]["lati"] = str_replace(array('N', 'S', ','), array('', '-', '.') , $latlongval["lati"]);
 							$markers[$i]["lng"] = str_replace(array('E', 'W', ','), array('', '-', '.') , $latlongval["long"]);
 							$ctd = preg_match("/2 DATE (.+)/", $factrec, $match);
@@ -671,6 +597,7 @@ function build_indiv_map($indifacts, $famids) {
 												$markers[$i]["icon"] = $latlongval["icon"];
 												$markers[$i]["placerec"] = $placerec;
 												if ($zoomLevel > $latlongval["zoom"]) $zoomLevel = $latlongval["zoom"];
+												$markers[$i]["zoom"] = $latlongval["zoom"];
 												$markers[$i]["lati"]     = str_replace(array('N', 'S', ','), array('', '-', '.'), $latlongval["lati"]);
 												$markers[$i]["lng"]      = str_replace(array('E', 'W', ','), array('', '-', '.'), $latlongval["long"]);
 												if ($ctd > 0)
@@ -701,116 +628,51 @@ function build_indiv_map($indifacts, $famids) {
 	} else {
 		?>
 		<script type="text/javascript">
-		function SetMarkersAndBounds () {
-			var bounds = new GLatLngBounds();
+		            function SetBounds (){
+                        Boundaries = new google.maps.LatLngBounds();
 		<?php
 		foreach ($markers as $marker)
-			echo "bounds.extend(new GLatLng({$marker["lati"]}, {$marker["lng"]}));\n";
-		echo "SetBoundaries(bounds);\n";
+			echo "                        Boundaries.extend(new google.maps.LatLng(".$marker["lati"].", ".$marker["lng"]."));\n";
+            echo "                        if (Boundaries.getNorthEast().equals(Boundaries.getSouthWest())) {
+                            var extendPoint1 = new google.maps.LatLng(Boundaries.getNorthEast().lat() + 0.01, Boundaries.getNorthEast().lng() + 0.01);
+                            var extendPoint2 = new google.maps.LatLng(Boundaries.getNorthEast().lat() - 0.01, Boundaries.getNorthEast().lng() - 0.01);
+                            Boundaries.extend(extendPoint1);
+                            Boundaries.extend(extendPoint2);
+                        }
+                    }
 
-		echo "var icon = new GIcon();";
-		echo "icon.image = \"http://maps.google.com/intl/pl_ALL/mapfiles/marker.png\";";
-		echo "icon.shadow = \"modules/googlemap/images/shadow50.png\";";
-		echo "icon.iconAnchor = new GPoint(10, 34);";
-		echo "icon.infoWindowAnchor = new GPoint(5, 1);";
+                    function SetMarkers (){\n\n";
 
 		$indexcounter = 0;
 		for ($j=1; $j<=$i; $j++) {
 			// Use @ because some installations give warnings (but not errors?) about UTF-8
 			$tooltip=@html_entity_decode(strip_tags(tool_tip_text($markers[$j])), ENT_QUOTES, 'UTF-8');
 			if ($markers[$j]["placed"] == "no") {
-				$multimarker = -1;
-				// Count nr of locations where the long/lati is identical
-				for($k=$j; $k<=$i; $k++)
-					if (($markers[$j]["lati"] == $markers[$k]["lati"]) && ($markers[$j]["lng"] == $markers[$k]["lng"]))
-						$multimarker = $multimarker + 1;
-
-				if ($multimarker == 0) {        // Only one location with this long/lati combination
-					$markers[$j]["placed"] = "yes";
-					if (($markers[$j]["lati"] == NULL) || ($markers[$j]["lng"] == NULL) || (($markers[$j]["lati"] == "0") && ($markers[$j]["lng"] == "0"))) { 
-						echo "var Marker{$j}_flag = new GIcon();\n";
-						echo "	Marker{$j}_flag.image = \"modules/googlemap/images/marker_yellow.png\";\n";
-						echo "	Marker{$j}_flag.shadow = \"modules/googlemap/images/shadow50.png\";\n";
-						echo "	Marker{$j}_flag.iconSize = new GSize(20, 34);\n";
-						echo "	Marker{$j}_flag.shadowSize = new GSize(37, 34);\n";
-						echo "	Marker{$j}_flag.iconAnchor = new GPoint(10, 34);\n";
-						echo "	Marker{$j}_flag.infoWindowAnchor = new GPoint(5, 1);\n";
-						echo "var Marker{$j} = new GMarker(new GLatLng(0, 0), {icon:Marker{$j}_flag, title:\"", addslashes($tooltip), "\"});\n";
-					} else if (empty($markers[$j]["icon"])) {
-						echo "var Marker{$j} = new GMarker(new GLatLng({$markers[$j]["lati"]}, {$markers[$j]["lng"]}), {icon:icon, title:\"", addslashes($tooltip), "\"});\n";
-					} else {
-						echo "var Marker{$j}_flag = new GIcon();\n";
-						echo "    Marker{$j}_flag.image = \"", $markers[$j]["icon"], "\";\n";
-						echo "    Marker{$j}_flag.shadow = \"modules/googlemap/images/flag_shadow.png\";\n";
-						echo "    Marker{$j}_flag.iconSize = new GSize(25, 15);\n";
-						echo "    Marker{$j}_flag.shadowSize = new GSize(35, 45);\n";
-						echo "    Marker{$j}_flag.iconAnchor = new GPoint(1, 45);\n";
-						echo "    Marker{$j}_flag.infoWindowAnchor = new GPoint(5, 1);\n";
-						echo "var Marker{$j} = new GMarker(new GLatLng(", $markers[$j]["lati"], ", ", $markers[$j]["lng"], "), {icon:Marker{$j}_flag, title:\"", addslashes($tooltip), "\"});\n";
-					}
-					echo "GEvent.addListener(Marker{$j}, \"click\", function() {\n";
-					echo "Marker{$j}.openInfoWindowHtml(\"<div class='iwstyle'>";
-					echo PrintReady($markers[$j]["fact"]);
-					if (!empty($markers[$j]['info']))
-						echo ': ', addslashes($markers[$j]['info']);
-					if (!empty($markers[$j]["name"])) {
-						$person=Person::getInstance($markers[$j]['name']);
-						if ($person) {
-							echo ': <a href=\"', $person->getLinkUrl(), '\">', $person->canDisplayName() ? PrintReady(addcslashes($person->getFullName(), '"')) : $pgv_lang['private'], '</a>';
-						}
-					}
-					echo "<br />";
-					if (preg_match("/2 PLAC (.*)/", $markers[$j]["placerec"]) == 0) {
-						print_address_structure_map($markers[$j]["placerec"], 1);
-					} else {
-						echo preg_replace("/\"/", "\\\"", print_fact_place_map($markers[$j]["placerec"]));
-					}
-					if (!empty($markers[$j]["date"])) {
-						$date=new GedcomDate($markers[$j]["date"]);
-						echo "<br />", addslashes($date->Display(true));
-					}
-					if (($markers[$j]["lati"] == NULL) || ($markers[$j]["lng"] == NULL) || (($markers[$j]["lati"] == "0") && ($markers[$j]["lng"] == "0"))) {
-						echo "<br /><br />", $pgv_lang["gm_no_coord"];
-						if (PGV_USER_IS_ADMIN)
-							echo '<br /><a href=\"module.php?mod=googlemap&pgvaction=places&display=inactive\">', $pgv_lang["pl_edit"], '</a>';
-						echo "\");\n";
-					}
-					else if (!$GOOGLEMAP_COORD){
-						echo "\");\n";
-					} else {
-						echo "<br /><br />";
-						if ($markers[$j]["lati"]>'0'){echo "N", str_replace('-', '', $markers[$j]["lati"]);}else{ echo str_replace('-', 'S', $markers[$j]["lati"]);}
-						echo ", ";
-						if ($markers[$j]["lng"]>'0'){echo "E", str_replace('-', '', $markers[$j]["lng"]);}else{ echo str_replace('-', 'W', $markers[$j]["lng"]);}
-						echo "\");\n";
-					}
-					echo "});\n";
-					echo "markers.push(Marker{$j});\n";
-					echo "map.addOverlay(Marker{$j});\n";
-					$markers[$j]["index"] = $indexcounter;
-					$markers[$j]["tabindex"] = 0;
-					$indexcounter = $indexcounter + 1;
-				} else {
 					$tabcounter = 0;
-					$markersindex = 0;
 					$markers[$j]["placed"] = "yes";
 					if (empty($markers[$j]["icon"])) {
-						echo "var Marker{$j}_{$markersindex} = new GMarker(new GLatLng(", $markers[$j]["lati"], ", ", $markers[$j]["lng"], "), {icon:icon, title:\"", addslashes($tooltip), "\"});\n";
+						echo "
+                        var Marker{$j} = new google.maps.Marker({
+                            position: {lat: ".$markers[$j]["lati"].", lng: ".$markers[$j]["lng"]."},
+                            map: map,
+                            title: '".addslashes($tooltip)."'
+                        });\n";
 					} else {
-						echo "var Marker{$j}_{$markersindex}_flag = new GIcon();\n";
-						echo "    Marker{$j}_{$markersindex}_flag.image = \"", $markers[$j]["icon"], "\";\n";
-						echo "    Marker{$j}_{$markersindex}_flag.shadow = \"modules/googlemap/images/flag_shadow.png\";\n";
-						echo "    Marker{$j}_{$markersindex}_flag.iconSize = new GSize(25, 15);\n";
-						echo "    Marker{$j}_{$markersindex}_flag.shadowSize = new GSize(35, 45);\n";
-						echo "    Marker{$j}_{$markersindex}_flag.iconAnchor = new GPoint(1, 45);\n";
-						echo "    Marker{$j}_{$markersindex}_flag.infoWindowAnchor = new GPoint(5, 1);\n";
-						echo "var Marker{$j}_{$markersindex} = new GMarker(new GLatLng(", $markers[$j]["lati"], ", ", $markers[$j]["lng"], "), {icon:Marker{$j}_{$markersindex}_flag, title:\"", addslashes($tooltip), "\"});\n";
+						echo "
+                        var Marker{$j} = new google.maps.Marker({
+                            position: {lat: ".$markers[$j]["lati"].", lng: ".$markers[$j]["lng"]."},
+                            map: map,
+                            title: '".addslashes($tooltip)."',
+                            icon: '".$markers[$j]["icon"]."'
+                        });\n";
 					}
-					echo "var Marker{$j}_{$markersindex}Info = [\n";
+					echo "
+                        var infoBubble{$j} = new InfoBubble({ disableAutoPan: true });";
 					$markers[$j]["index"] = $indexcounter;
 					$markers[$j]["tabindex"] = $tabcounter;
 					$tabcounter = $tabcounter + 1;
-					echo "new GInfoWindowTab(\"", abbreviate($markers[$j]["fact"]), "\", \"<div class='iwstyle'>", PrintReady($markers[$j]["fact"]);
+					echo "
+                        infoBubble{$j}.addTab(\"", abbreviate($markers[$j]["fact"]), "\", \"<div class='iwstyle'>", PrintReady($markers[$j]["fact"]);
 					if (!empty($markers[$j]['info']))
 						echo ': ', addslashes($markers[$j]['info']);
 					if (!empty($markers[$j]["name"])) {
@@ -838,46 +700,15 @@ function build_indiv_map($indifacts, $famids) {
 						if ($markers[$j]["lng"]>='0'){echo "E", str_replace('-', '', $markers[$j]["lng"]);}else{ echo str_replace('-', 'W', $markers[$j]["lng"]);}
 						echo "\")";
 					}
+					echo ";\n";
 					for($k=$j+1; $k<=$i; $k++) {
 						if (($markers[$j]["lati"] == $markers[$k]["lati"]) && ($markers[$j]["lng"] == $markers[$k]["lng"])) {
 							$markers[$k]["placed"] = "yes";
 							$markers[$k]["index"] = $indexcounter;
-							if ($tabcounter == 4) {
-								// Use @ because some installations give warnings (but not errors?) about UTF-8
-								$tooltip=@html_entity_decode(strip_tags(tool_tip_text($markers[$k])), ENT_QUOTES, 'UTF-8');
-								echo "\n";
-								echo "];\n";
-								echo "GEvent.addListener(Marker{$j}_{$markersindex}, \"click\", function(tabToSelect) {\n";
-								echo "if (tabToSelect>0) \n";
-								echo "Marker{$j}_{$markersindex}.openInfoWindowTabsHtml(Marker{$j}_{$markersindex}Info, {selectedTab: tabToSelect});\n";
-								echo "else Marker{$j}_{$markersindex}.openInfoWindowTabsHtml(Marker{$j}_{$markersindex}Info);\n";
-								echo "});\n";
-								echo "markers.push(Marker{$j}_{$markersindex});\n";
-								echo "map.addOverlay(Marker{$j}_{$markersindex});\n";
-								$indexcounter = $indexcounter + 1;
-								$tabcounter = 0;
-								$markersindex = $markersindex + 1;
-
-								if (empty($markers[$j]["icon"])) {
-									echo "var Marker{$j}_{$markersindex} = new GMarker(new GLatLng(", ($markers[$j]["lati"]-(0.0015*$markersindex)), ", ", ($markers[$j]["lng"]+(0.0025*$markersindex)), "), {icon:icon, title:\"", addslashes($tooltip), "\"});\n";
-								} else {
-									echo "var Marker{$j}_{$markersindex}_flag = new GIcon();\n";
-									echo "    Marker{$j}_{$markersindex}_flag.image = \"", $markers[$j]["icon"], "\";\n";
-									echo "    Marker{$j}_{$markersindex}_flag.shadow = \"modules/googlemap/images/flag_shadow.png\";\n";
-									echo "    Marker{$j}_{$markersindex}_flag.iconSize = new GSize(25, 15);\n";
-									echo "    Marker{$j}_{$markersindex}_flag.shadowSize = new GSize(35, 45);\n";
-									echo "    Marker{$j}_{$markersindex}_flag.iconAnchor = new GPoint(1, 45);\n";
-									echo "    Marker{$j}_{$markersindex}_flag.infoWindowAnchor = new GPoint(5, 1);\n";
-									echo "var Marker{$j}_{$markersindex} = new GMarker(new GLatLng(", ($markers[$j]["lati"]-(0.0015*$markersindex)), ", ", ($markers[$j]["lng"]+(0.0025*$markersindex)), "), {icon:Marker{$j}_{$markersindex}_flag, title:\"", addslashes($tooltip), "\"});\n";
-								}
-								echo "var Marker{$j}_{$markersindex}Info = [\n";
-							} else {
-								echo ", \n";
-							}
 							$markers[$k]["index"] = $indexcounter;
 							$markers[$k]["tabindex"] = $tabcounter;
 							$tabcounter = $tabcounter + 1;
-							echo "new GInfoWindowTab(\"", abbreviate($markers[$k]["fact"]), "\", \"<div class='iwstyle'>", $markers[$k]["fact"];
+							echo "infoBubble{$j}.addTab(\"", abbreviate($markers[$k]["fact"]), "\", \"<div class='iwstyle'>", $markers[$k]["fact"];
 							if (!empty($markers[$k]['info']))
 								echo ': ', addslashes($markers[$k]['info']);
 							if (!empty($markers[$k]["name"])) {
@@ -905,50 +736,52 @@ function build_indiv_map($indifacts, $famids) {
 								if ($markers[$j]["lng"]>='0'){echo "E", str_replace('-', '', $markers[$j]["lng"]);}else{ echo str_replace('-', 'W', $markers[$j]["lng"]);}
 								echo "\")";
 							}
+							echo ";\n";
 						}
 					}
-					echo "\n";
-					echo "];\n";
-					echo "GEvent.addListener(Marker{$j}_{$markersindex}, \"click\", function(tabToSelect) {\n";
-					echo "if (tabToSelect>0) \n";
-					echo "Marker{$j}_{$markersindex}.openInfoWindowTabsHtml(Marker{$j}_{$markersindex}Info, {selectedTab: tabToSelect});\n";
-					echo "else Marker{$j}_{$markersindex}.openInfoWindowTabsHtml(Marker{$j}_{$markersindex}Info);\n";
-					echo "});\n";
-					echo "markers.push(Marker{$j}_{$markersindex});\n";
-					echo "map.addOverlay(Marker{$j}_{$markersindex});\n";
+					echo "
+						google.maps.event.addListener(Marker{$j}, 'click', function() {
+                                                    if (infoBubble{$j}.isOpen()) {
+                                                        infoBubble{$j}.close(map, Marker{$j});
+                                                    } else {
+                                                        infoBubble{$j}.open(map, Marker{$j});
+                                                    }
+                                                });
+                                                infoBubbles.push(infoBubble{$j});
+                                                markers.push(Marker{$j});\n";
 					$indexcounter = $indexcounter + 1;
-				}
 			}
 		}
-		echo "}</script>";
-		echo "<div style=\"overflow: auto; overflow-x: hidden; overflow-y: auto; height: {$GOOGLEMAP_YSIZE}px;\"><table class=\"facts_table\">";
+		echo "}\n</script>\n";
+		echo "<div style=\"overflow: auto; overflow-x: hidden; overflow-y: auto; height: {$GOOGLEMAP_YSIZE}px;\"><table class=\"facts_table\">\n";
 		foreach($markers as $marker) {
-			echo "<tr><td class=\"facts_label\">";
-			echo "<a href=\"javascript:highlight({$marker["index"]}, {$marker["tabindex"]})\">{$marker["fact"]}</a></td>";
-			echo "<td class=\"{$marker['class']}\" style=\"white-space: normal\">";
+			echo "<tr><td class=\"facts_label\">\n";
+			echo "<a href=\"javascript:highlight({$marker["index"]}, {$marker["tabindex"]}, {$marker["zoom"]})\">{$marker["fact"]}</a></td>\n";
+			echo "<td class=\"{$marker['class']}\" style=\"white-space: normal\">\n";
 			if (!empty($marker["info"]))
-				echo "<span class=\"field\">{$marker["info"]}</span><br />";
+				echo "<span class=\"field\">{$marker["info"]}</span><br />\n";
 			if (!empty($marker["name"])) {
 				$person=Person::getInstance($marker['name']);
 				if ($person) {
-					echo '<a href="', $person->getLinkUrl(), '">', $person->canDisplayName() ? PrintReady($person->getFullName()) : $pgv_lang['private'], '</a>';
+					echo '<a href="', $person->getLinkUrl(), '">', $person->canDisplayName() ? PrintReady($person->getFullName()) : $pgv_lang['private'], "</a>\n";
 				}
 				echo '<br />';
 			}
 			if (preg_match("/2 PLAC (.*)/", $marker["placerec"]) == 0) {
 				print_address_structure_map($marker["placerec"], 1);
 			} else {
-				echo print_fact_place_map($marker["placerec"]), "<br />";
+				echo print_fact_place_map($marker["placerec"]), "<br />\n";
 			}
 			if (!empty($marker['date'])) {
 				$date=new GedcomDate($marker['date']);
-				echo $date->Display(true), "<br />";
+				echo $date->Display(true), "<br />\n";
 			}
-			echo "</td></tr>";
+			echo "</td></tr>\n";
 		}
-		echo "</table></div><br />";
+        echo "<tr><td><a href=\"javascript:map.fitBounds(Boundaries);\">reset map</a></td></tr>\n";
+		echo "</table></div><br />\n";
 	}
-	echo "\n<br />";
+	echo "\n<br />\n";
 
 	return $i;
 }

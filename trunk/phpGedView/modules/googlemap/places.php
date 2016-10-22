@@ -3,7 +3,7 @@
  * Online UI for editing config.php site configuration variables
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2009  PGV Development Team. All rights reserved.
+ * Copyright (C) 2002 to 2016  PGV Development Team. All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -332,8 +332,8 @@ if ($action=="ImportFile") {
 				<select name="localfile">
 					<option></option>
 					<?php foreach($placefiles as $p=>$placefile) { ?>
-					<option value="<?php echo htmlspecialchars($placefile); ?>"><?php 
-						if (substr($placefile, 0, 1)=="/") echo substr($placefile, 1); 
+					<option value="<?php echo htmlspecialchars($placefile); ?>"><?php
+						if (substr($placefile, 0, 1)=="/") echo substr($placefile, 1);
 						else echo $placefile; ?></option>
 					<?php } ?>
 				</select>
@@ -390,12 +390,12 @@ if ($action=="ImportFile2") {
 			for ($ii=$fields-4; $ii>1; $ii--) {
 				if ($fieldrec[0] > $ii-2) $placelist[$j]["place"] .= $fieldrec[$ii].",";
 			}
-			foreach ($countries as $countrycode => $countryname) {
+			/* foreach ($countries as $countrycode => $countryname) {
 				if (UTF8_strtoupper($countrycode) == UTF8_strtoupper($fieldrec[1])) {
 					$fieldrec[1] = $countryname;
 					break;
 				}
-			}
+			} */
 			$placelist[$j]["place"] .= $fieldrec[1];
 			$placelist[$j]["long"] = $fieldrec[$fields-4];
 			$placelist[$j]["lati"] = $fieldrec[$fields-3];
@@ -510,7 +510,7 @@ if ($action=="DeleteRecord") {
 		PGV_DB::prepare("SELECT 1 FROM {$TBLPREFIX}placelocation WHERE pl_parent_id=?")
 		->execute(array($deleteRecord))
 		->fetchOne();
-	
+
 	if (!$exists) {
 		PGV_DB::prepare("DELETE FROM {$TBLPREFIX}placelocation WHERE pl_id=?")
 			->execute(array($deleteRecord));

@@ -2200,7 +2200,10 @@ function format_fact_date(&$eventObj, $anchor=false, $time=false) {
 * @param boolean $lds option to print LDS TEMPle and STATus
 */
 function format_fact_place(&$eventObj, $anchor=false, $sub=false, $lds=false) {
-	global $SHOW_PEDIGREE_PLACES, $TEMPLE_CODES, $pgv_lang, $factarray, $SEARCH_SPIDER;
+	global $SHOW_PEDIGREE_PLACES, $TEMPLE_CODES, $pgv_lang, $factarray, $SEARCH_SPIDER, $countries;
+
+	loadLangFile("pgv_country");
+
 	if ($eventObj==null) return '';
 	if (!is_object($eventObj)) {
 		pgv_error_handler("2", "Object was not sent in, please use Event object", __FILE__, __LINE__);
@@ -2213,9 +2216,12 @@ function format_fact_place(&$eventObj, $anchor=false, $sub=false, $lds=false) {
 	if ($ct>0) {
 		$html.=' ';
 		$levels = explode(',', $match[1]);
+		$country = trim(end($levels));
 		if ($anchor && (empty($SEARCH_SPIDER))) {
 			$place = trim($match[1]);
 			// reverse the array so that we get the top level first
+			if (isset($countries[$country]))
+				$place = str_replace($country,$countries[$country],$place);
 			$levels = array_reverse($levels);
 			$tempURL = "placelist.php?action=show&";
 			foreach($levels as $pindex=>$ppart) {
@@ -2234,7 +2240,10 @@ function format_fact_place(&$eventObj, $anchor=false, $sub=false, $lds=false) {
 					if ($level>0) {
 						$html.=", ";
 					}
-					$html.=PrintReady($levels[$level]);
+					if (isset($countries[$country]))
+						$html.=PrintReady(str_replace($country,$countries[$country],$levels[$level]));
+					else
+						$html.=PrintReady($levels[$level]);
 				}
 			}
 		}
