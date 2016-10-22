@@ -3,7 +3,7 @@
  * Displays a place hierachy
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2010  PGV Development Team. All rights reserved.
+ * Copyright (C) 2002 to 2016  PGV Development Team. All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,7 +21,7 @@
  *
  * @package PhpGedView
  * @subpackage Googlemap
- * @author Łukasz Wileński <wooc@users.sourceforge.net>
+ * @author Lukasz Wilenski <wooc@users.sourceforge.net>
  * $Id$
  */
 
@@ -175,7 +175,8 @@ function create_map() {
 	echo "background-image: url('images/loading.gif'); background-position: center; background-repeat: no-repeat; overflow: hidden;\"></div>";
 	?>
 	<!-- Start of map scripts -->
-	<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false&amp;key=<?php echo $GOOGLEMAP_API_KEY; ?>" type="text/javascript"></script>
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=<?php echo $GOOGLEMAP_API_KEY;
+		?>&language=<?php echo $language_settings[$LANGUAGE]['lang_short_cut']; ?>" type="text/javascript"></script>
 	<script src="modules/googlemap/pgvGoogleMap.js" type="text/javascript"></script>
 	<?php
 	if (PGV_USER_IS_ADMIN) {
@@ -385,9 +386,9 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 		$temp=str_replace(array('&lrm;', '&rlm;'), array(PGV_UTF8_LRM, PGV_UTF8_RLM), $temp);
 		if (!$GOOGLEMAP_COORD){
 			echo "<br /><br /></div></td>\", icon_type, \"", $temp, "\");\n";
-		} else { 
-			echo "<br /><br />", $place2['lati'], ", ", $place2['long'], "</div></td>\", icon_type, \"", $temp, "\");\n";	
-		}		
+		} else {
+			echo "<br /><br />", $place2['lati'], ", ", $place2['long'], "</div></td>\", icon_type, \"", $temp, "\");\n";
+		}
 	}
 	echo "place_map.addOverlay(marker);\n";
 	echo "bounds.extend(point);\n";

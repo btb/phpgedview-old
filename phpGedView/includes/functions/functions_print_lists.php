@@ -6,7 +6,7 @@
  * used on the indilist, famlist, find, and search pages.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2014  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2016  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -1952,7 +1952,7 @@ function print_chart_by_age($data, $title) {
 	}
 	if ($count<1) return;
 	$avg = round($avg/$count);
-	$chart_url = "http://chart.apis.google.com/chart?cht=bvs"; // chart type
+	$chart_url = "https://chart.apis.google.com/chart?cht=bvs"; // chart type
 	$chart_url .= "&amp;chs=725x150"; // size
 	$chart_url .= "&amp;chbh=3,2,2"; // bvg : 4,1,2
 	$chart_url .= "&amp;chf=bg,s,".$color; //background color
@@ -2022,7 +2022,7 @@ function print_chart_by_decade($data, $title) {
 		$count += $n;
 	}
 	if ($count<1) return;
-	$chart_url = "http://chart.apis.google.com/chart?cht=bvs"; // chart type
+	$chart_url = "https://chart.apis.google.com/chart?cht=bvs"; // chart type
 	$chart_url .= "&amp;chs=360x150"; // size
 	$chart_url .= "&amp;chbh=3,3"; // bvg : 4,1,2
 	$chart_url .= "&amp;chf=bg,s,".$color; //background color
