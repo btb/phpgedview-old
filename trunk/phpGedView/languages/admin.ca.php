@@ -3,7 +3,7 @@
  * Catalan texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2016  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -213,7 +213,7 @@ $pgv_lang["merge_records"]			= "Refosa de registres";
 $pgv_lang["message_to_all"]			= "Envia missatge a tot els usuaris";
 $pgv_lang["messaging"]				= "Missatgeria interna PhpGedView";
 $pgv_lang["messaging2"]				= "Missatgeria interna amb correu electrònic";
-$pgv_lang["messaging3"]				= "El PhpGedView envia correus electrònics sense emmagatzemar-los";
+$pgv_lang["messaging3"]				= "Correu electrònic";
 $pgv_lang["month_before_day"]		= "Mes abans del dia (MM DD AAAA)";
 $pgv_lang["monthly"]				= "Mensualment";
 $pgv_lang["msql"]					= "Mini SQL";

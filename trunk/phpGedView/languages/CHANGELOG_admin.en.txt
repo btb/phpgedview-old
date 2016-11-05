@@ -2,7 +2,7 @@ PHPGEDVIEW LANGUAGE FILE CHANGELOG
 
 # $Id$
 
-For information on changes prior to the release of PGV 4.2.0 (16 Nov. 2008), please 
+For information on changes prior to the release of PGV 4.2.0 (16 Nov. 2008), please
 refer to the files in ZIP file "languages/CHANGELOG_bef.20081117.zip"
 
 Use this file to follow the changes made to the English language files
@@ -43,6 +43,7 @@ VERSION 4.3.0
 
 ?$pgv_lang["whatever"]								dd Monthname, year		Change codes and comments
 ----------------------------------------------------------------------------------------
+*$pgv_lang["messaging3"]							04 Nov 2016				w
 +$pgv_lang["label_timedban_servers"]				27 Dec 2012				A
 +$pgv_lang["enter_banexpiry"]						27 Dec 2012				A
 *$pgv_lang["label_banned_servers"]					27 Dec 2012				W

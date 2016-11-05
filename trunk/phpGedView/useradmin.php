@@ -3,7 +3,7 @@
  * Administrative User Interface.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2012  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2016  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -39,7 +39,11 @@ if (!PGV_USER_IS_ADMIN) {
 
 // Valid values for form variables
 $ALL_ACTIONS=array('cleanup', 'cleanup2', 'createform', 'createuser', 'deleteuser', 'edituser', 'edituser2', 'listusers');
-$ALL_CONTACT_METHODS=array('messaging', 'messaging2', 'messaging3', 'mailto', 'none');
+if ($PGV_STORE_MESSAGES) {
+	$ALL_CONTACT_METHODS=array('messaging', 'messaging2', 'messaging3', 'none');
+} else {
+	$ALL_CONTACT_METHODS=array('messaging3', 'none');
+}
 $ALL_DEFAULT_TABS=array(0=>'personal_facts', 1=>'notes', 2=>'ssourcess', 3=>'media', 4=>'relatives', -1=>'all', -2=>'lasttab');
 $ALL_THEMES_DIRS=array();
 foreach (get_theme_names() as $themename=>$themedir) {
@@ -291,7 +295,7 @@ if ($action=="edituser") {
 	</td>
 	</tr>
 	<tr><td class="topbottombar" colspan="2">
-	<input type="submit" tabindex="<?php echo ++$tab; ?>" value="<?php echo $pgv_lang["update_user"]; ?>" />
+	<input type="submit" tabindex="<?php echo ++$tab; ?>" value="<?php echo $pgv_lang["save"]; ?>" />
 	<input type="button" tabindex="<?php echo ++$tab; ?>" value="<?php echo $pgv_lang["back"]; ?>" onclick="window.location='<?php echo encode_url("useradmin.php?action=listusers&sort={$sort}&filter={$filter}&usrlang={$usrlang}"); ?>';"/>
 	</td></tr>
 	<tr>
@@ -456,18 +460,11 @@ if ($action=="edituser") {
 	<tr>
 	<td class="descriptionbox wrap"><?php print_help_link("useradmin_user_contact_help", "qm", "user_contact_method"); echo $pgv_lang["user_contact_method"]; ?></td>
 	<td class="optionbox wrap"><select name="new_contact_method" tabindex="<?php echo ++$tab; ?>">
-	<?php
-	if ($PGV_STORE_MESSAGES) {
-		?>
+	<?php if ($PGV_STORE_MESSAGES) { ?>
 		<option value="messaging" <?php if (get_user_setting($user_id, 'contactmethod')=='messaging') echo "selected=\"selected\""; ?>><?php echo $pgv_lang["messaging"]; ?></option>
 		<option value="messaging2" <?php if (get_user_setting($user_id, 'contactmethod')=='messaging2') echo "selected=\"selected\""; ?>><?php echo $pgv_lang["messaging2"]; ?></option>
-		<?php
-	} else {
-		?>
-		<option value="messaging3" <?php if (get_user_setting($user_id, 'contactmethod')=='messaging3') echo "selected=\"selected\""; ?>><?php echo $pgv_lang["messaging3"]; ?></option>
-		<?php
-	}
-	?>
+	<?php } ?>
+	<option value="messaging3" <?php if (get_user_setting($user_id, 'contactmethod')=='messaging3') echo "selected=\"selected\""; ?>><?php echo $pgv_lang["messaging3"]; ?></option>
 	<option value="mailto" <?php if (get_user_setting($user_id, 'contactmethod')=='mailto') echo "selected=\"selected\""; ?>><?php echo $pgv_lang["mailto"]; ?></option>
 	<option value="none" <?php if (get_user_setting($user_id, 'contactmethod')=='none') echo "selected=\"selected\""; ?>><?php echo $pgv_lang["no_messaging"]; ?></option>
 	</select>
@@ -505,7 +502,7 @@ if ($action=="edituser") {
 	<td class="optionbox wrap"><input type="text" name="new_comment_exp" id="new_comment_exp" tabindex="<?php echo ++$tab; ?>" value="<?php echo get_user_setting($user_id, 'comment_exp'); ?>" />&nbsp;&nbsp;<?php print_calendar_popup("new_comment_exp"); ?></td>
 	</tr>
 	<tr><td class="topbottombar" colspan="2">
-	<input type="submit" tabindex="<?php echo ++$tab; ?>" value="<?php echo $pgv_lang["update_user"]; ?>" />
+	<input type="submit" tabindex="<?php echo ++$tab; ?>" value="<?php echo $pgv_lang["save"]; ?>" />
 	<input type="button" tabindex="<?php echo ++$tab; ?>" value="<?php echo $pgv_lang["back"]; ?>" onclick="window.location='<?php echo encode_url("useradmin.php?action=listusers&sort={$sort}&filter={$filter}&usrlang={$usrlang}"); ?>';"/>
 	</td></tr>
 	</table>
@@ -893,9 +890,8 @@ if ($action == "createform") {
 			<?php if ($PGV_STORE_MESSAGES) { ?>
 				<option value="messaging"><?php echo $pgv_lang["messaging"]; ?></option>
 				<option value="messaging2" selected="selected"><?php echo $pgv_lang["messaging2"]; ?></option>
-			<?php } else { ?>
-				<option value="messaging3" selected="selected"><?php echo $pgv_lang["messaging3"]; ?></option>
 			<?php } ?>
+				<option value="messaging3" selected="selected"><?php echo $pgv_lang["messaging3"]; ?></option>
 				<option value="mailto"><?php echo $pgv_lang["mailto"]; ?></option>
 				<option value="none"><?php echo $pgv_lang["no_messaging"]; ?></option>
 			</select>

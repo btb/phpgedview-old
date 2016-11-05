@@ -9,6 +9,7 @@
 =====================================================================
 
 Version 4.3.0
+ - Fixed: Incorrect implementation of some messaging options in user profiles (canajun2eh)
  - Updated: Implement https method of calling Google charts and support for Googlemaps version 3 (Leonhard Zachl)
  - Fixed: German language files use double angle quotation marks incorrectly (canajun2eh)
  - Changed: Updates to PEAR.php and new PEAR5.php to accommodate more recent versions of PHP (Lester Caine)

@@ -3,7 +3,7 @@
  * Spanish language file for PhpGedView
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2016  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -337,7 +337,7 @@ $pgv_lang["merge_records"]						= "Mezclar registros";
 $pgv_lang["message_to_all"]						= "Enviar un mensaje a todos los usuarios";
 $pgv_lang["messaging"]							= "Mensajes internos de PhpGedView";
 $pgv_lang["messaging2"]							= "Mensajes internos con correo electrónico";
-$pgv_lang["messaging3"]							= "PhpGedView envía correo electrónico sin almacenamiento";
+$pgv_lang["messaging3"]							= "Correo electrónico";
 $pgv_lang["month_before_day"]					= "Mes antes del día (MM DD AAAA)";
 $pgv_lang["monthly"]							= "Mensualmente";
 $pgv_lang["msql"]								= "Mini SQL";

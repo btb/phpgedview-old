@@ -3,7 +3,7 @@
  * Norwegian texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2016  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -290,7 +290,7 @@ $pgv_lang["merge_records"]		= "Flette data (dobbelregisterte)";
 $pgv_lang["message_to_all"]						= "Send melding til alle brukere";
 $pgv_lang["messaging"]					= "PhpGedView interne beskjeder";
 $pgv_lang["messaging2"]					= "PhpGedView interne beskjeder med e-post-kopi";
-$pgv_lang["messaging3"]					= "PhpGedView ekstern e-post";
+$pgv_lang["messaging3"]					= "E-post";
 $pgv_lang["month_before_day"]		= "Måned før dag (MM DD YYYY)";
 $pgv_lang["monthly"]					= "Månedlig";
 $pgv_lang["msql"]						= "Mini SQL";
