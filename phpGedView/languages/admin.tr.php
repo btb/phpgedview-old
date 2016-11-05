@@ -3,7 +3,7 @@
  * Turkish Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2016  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -30,18 +30,18 @@ if (!defined('PGV_PHPGEDVIEW')) {
 	exit;
 }
 
-$pgv_lang["analytics_config"]		= "Web Analızı";
-$pgv_lang["google_analytics"]		= "Google Analızı";
-$pgv_lang["USE_GOOGLE_ANALYTICS"]	= "Google Analızı aktifleştir?";
-$pgv_lang["PGV_GOOGLE_ANALYTICS"]	= "Google Analızı hesap numarası";
-$pgv_lang["piwik_analytics"]		= "Piwik Analızı";
-$pgv_lang["USE_PIWIK_ANALYTICS"]	= "Piwik Analızı aktifleştir?";
-$pgv_lang["PGV_PIWIK_URL"]			= "Piwik Analızı sunucu URL";
-$pgv_lang["PGV_PIWIK_SITE"]			= "Piwik Analızı site numarası";
-$pgv_lang["clustrmaps_analytics"]	= "ClustrMaps Analızı";
-$pgv_lang["USE_CLUSTRMAPS_ANALYTICS"] = "ClustrMaps Analızı aktifleştir?";
+$pgv_lang["analytics_config"]		= "Web Analizi";
+$pgv_lang["google_analytics"]		= "Google Analizi";
+$pgv_lang["USE_GOOGLE_ANALYTICS"]	= "Google Analizi aktiflestir?";
+$pgv_lang["PGV_GOOGLE_ANALYTICS"]	= "Google Analizi hesap numarasi";
+$pgv_lang["piwik_analytics"]		= "Piwik Analizi";
+$pgv_lang["USE_PIWIK_ANALYTICS"]	= "Piwik Analizi aktiflestir?";
+$pgv_lang["PGV_PIWIK_URL"]			= "Piwik Analizi sunucu URL";
+$pgv_lang["PGV_PIWIK_SITE"]			= "Piwik Analizi site numarasi";
+$pgv_lang["clustrmaps_analytics"]	= "ClustrMaps Analizi";
+$pgv_lang["USE_CLUSTRMAPS_ANALYTICS"] = "ClustrMaps Analizi aktiflestir?";
 $pgv_lang["PGV_CLUSTRMAPS_SITE"] 	= "PhpGedView URL";
-$pgv_lang["PGV_CLUSTRMAPS_SERVER"] 	= "ClustrMaps sunucu numarası";
+$pgv_lang["PGV_CLUSTRMAPS_SERVER"] 	= "ClustrMaps sunucu numarasi";
 
 $pgv_lang["module_admin"]			= "Modül Yönetimi";
 $pgv_lang["mod_admin_installed"]	= "Kurulan Modüller";
@@ -348,7 +348,7 @@ $pgv_lang["merge_records"]		= "Kayitlari birlestir";
 $pgv_lang["message_to_all"]						= "Tüm kullanicilara mesaj gönder";
 $pgv_lang["messaging"]							= "PhpGedView dahili mesajlasma";
 $pgv_lang["messaging2"]							= "Emailler ile dahili mesajlasma";
-$pgv_lang["messaging3"]							= "PhpGedView sunucuya kaydetmeden emailleri gönderir";
+$pgv_lang["messaging3"]							= "Email";
 $pgv_lang["month_before_day"]		= "Günde önce ay (AA GG YYYY)";
 $pgv_lang["monthly"]							= "Aylik";
 $pgv_lang["msql"]								= "Küçük SQL";

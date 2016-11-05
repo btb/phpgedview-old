@@ -3,7 +3,7 @@
  * File contains var's to glue Help_text for PHPGedView together
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2016  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -55,7 +55,9 @@ $pgv_lang["help_help_items"]			= "#pgv_lang[help_help]#<br />#pgv_lang[help_page
 $pgv_lang["def_help_items"]			= "<a name=\"def\">&nbsp;</a>#pgv_lang[def_help]#<br /><a name=\"def_gedcom\"></a><a href=\"#def\">$UpArrow </a>#pgv_lang[def_gedcom_help]#<br /><a name=\"def_gedcom_date\"></a><a href=\"#def\">$UpArrow </a>#pgv_lang[def_gedcom_date_help]#<br /><a name=\"def_pdf_format\"></a><a href=\"#def\">$UpArrow </a>#pgv_lang[def_pdf_format_help]#<br /><a name=\"def_pgv\"></a><a href=\"#def\">$UpArrow </a>#pgv_lang[def_pgv_help]#<br /><a name=\"def_portal\"></a><a href=\"#def\">$UpArrow </a>#pgv_lang[def_portal_help]#<br /><a name=\"def_theme\"></a><a href=\"#def\">$UpArrow </a>#pgv_lang[def_theme_help]#<br />";
 
 // edit_user.php (My account)
-$pgv_lang["edituser_user_contact_help"]		= "#pgv_lang[edituser_contact_meth_help]#<br /><br /><b>#pgv_lang[messaging]#</b><br />#pgv_lang[mail_option1_help]#<br /><b>#pgv_lang[messaging2]#</b><br />#pgv_lang[mail_option2_help]#<br /><b>#pgv_lang[mailto]#</b><br />#pgv_lang[mail_option3_help]#<br /><b>#pgv_lang[no_messaging]#</b><br />#pgv_lang[mail_option4_help]#<br />";
+$pgv_lang["edituser_user_contact_help"]		= '#pgv_lang[edituser_contact_meth_help]#<br /><br />';
+if ($PGV_STORE_MESSAGES) $pgv_lang["edituser_user_contact_help"] .= '<b>#pgv_lang[messaging]#</b><br />#pgv_lang[mail_option1_help]#<br /><b>#pgv_lang[messaging2]#</b><br />#pgv_lang[mail_option2_help]#<br />';
+$pgv_lang["edituser_user_contact_help"] .= '<b>#pgv_lang[messaging3]#</b><br />#pgv_lang[mail_option3_help]#<br /><b>#pgv_lang[no_messaging]#</b><br />#pgv_lang[mail_option4_help]#<br />';
 $pgv_lang["help_edituser.php"]			= "~#pgv_lang[myuserdata]#~<br /><br />#pgv_lang[edituser_my_account_help]#<br />#pgv_lang[more_help]#";
 
 // user_admin.php

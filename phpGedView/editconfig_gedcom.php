@@ -3,7 +3,7 @@
  * UI for online updating of the GEDCOM config file.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2012  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2016  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -2088,9 +2088,8 @@ print "&nbsp;<a href=\"javascript: ".$pgv_lang["contact_conf"]."\" onclick=\"exp
 		<?php if ($PGV_STORE_MESSAGES) { ?>
 				<option value="messaging" <?php if ($CONTACT_METHOD=='messaging') print "selected=\"selected\""; ?>><?php print $pgv_lang["messaging"]; ?></option>
 				<option value="messaging2" <?php if ($CONTACT_METHOD=='messaging2') print "selected=\"selected\""; ?>><?php print $pgv_lang["messaging2"]; ?></option>
-		<?php } else { ?>
-				<option value="messaging3" <?php if ($CONTACT_METHOD=='messaging3') print "selected=\"selected\""; ?>><?php print $pgv_lang["messaging3"]; ?></option>
 		<?php } ?>
+				<option value="messaging3" <?php if ($CONTACT_METHOD=='messaging3') print "selected=\"selected\""; ?>><?php print $pgv_lang["messaging3"]; ?></option>
 				<option value="mailto" <?php if ($CONTACT_METHOD=='mailto') print "selected=\"selected\""; ?>><?php print $pgv_lang["mailto"]; ?></option>
 				<option value="none" <?php if ($CONTACT_METHOD=='none') print "selected=\"selected\""; ?>><?php print $pgv_lang["no_messaging"]; ?></option>
 			</select>
@@ -2118,9 +2117,8 @@ print "&nbsp;<a href=\"javascript: ".$pgv_lang["contact_conf"]."\" onclick=\"exp
 		<?php if ($PGV_STORE_MESSAGES) { ?>
 				<option value="messaging" <?php if ($SUPPORT_METHOD=='messaging') print "selected=\"selected\""; ?>><?php print $pgv_lang["messaging"]; ?></option>
 				<option value="messaging2" <?php if ($SUPPORT_METHOD=='messaging2') print "selected=\"selected\""; ?>><?php print $pgv_lang["messaging2"]; ?></option>
-		<?php } else { ?>
-				<option value="messaging3" <?php if ($SUPPORT_METHOD=='messaging3') print "selected=\"selected\""; ?>><?php print $pgv_lang["messaging3"]; ?></option>
 		<?php } ?>
+				<option value="messaging3" <?php if ($SUPPORT_METHOD=='messaging3') print "selected=\"selected\""; ?>><?php print $pgv_lang["messaging3"]; ?></option>
 				<option value="mailto" <?php if ($SUPPORT_METHOD=='mailto') print "selected=\"selected\""; ?>><?php print $pgv_lang["mailto"]; ?></option>
 				<option value="none" <?php if ($SUPPORT_METHOD=='none') print "selected=\"selected\""; ?>><?php print $pgv_lang["no_messaging"]; ?></option>
 			</select>

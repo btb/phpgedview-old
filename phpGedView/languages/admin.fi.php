@@ -3,7 +3,7 @@
  * Finnish texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2016  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -204,7 +204,7 @@ $pgv_lang["macfile_detected"]	= "Havaittiin MacIntosh-tiedosto. Siivouksen yhtey
 $pgv_lang["merge_records"]          	= "Yhdistä tietueita";
 $pgv_lang["message_to_all"]		= "Lähetä viesti kaikille käyttäjille";
 $pgv_lang["messaging"]		= "PhpGedView:n sisäinen viestintä";
-$pgv_lang["messaging3"]		= "PhpGedView lähettää sähköposteja ilman säilytystä";
+$pgv_lang["messaging3"]		= "Sähköposti";
 $pgv_lang["messaging2"]		= "Sisäiset viestit ja sähköposti";
 $pgv_lang["month_before_day"]	= "Kuukausi ennen päivää (MM DD YYYY)";
 $pgv_lang["never"]			= "Ei koskaan";

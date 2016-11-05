@@ -3,7 +3,7 @@
  * User Account Edit Interface.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2012  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2016  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -40,7 +40,11 @@ loadLangFile('pgv_confighelp, pgv_admin, pgv_editor');
 
 // Valid values for form variables
 $ALL_ACTIONS=array('update');
-$ALL_CONTACT_METHODS=array('messaging', 'messaging2', 'messaging3', 'mailto', 'none');
+if ($PGV_STORE_MESSAGES) {
+	$ALL_CONTACT_METHODS=array('messaging', 'messaging2', 'messaging3', 'none');
+} else {
+	$ALL_CONTACT_METHODS=array('messaging3', 'none');
+}
 $ALL_DEFAULT_TABS=array(0=>'personal_facts', 1=>'notes', 2=>'ssourcess', 3=>'media', 4=>'relatives', -1=>'all', -2=>'lasttab');
 $ALL_THEMES_DIRS=array();
 foreach (get_theme_names() as $themename=>$themedir) {
@@ -196,7 +200,7 @@ echo '<table class="list_table center ', $TEXT_DIRECTION, '">';
 
 echo '<tr><td class="topbottombar" colspan="2"><h2>', $pgv_lang['editowndata'], '</h2></td></tr>';
 
-echo '<tr><td class="topbottombar" colspan="2"><input type="submit" tabindex="', ++$tab, '" value="', $pgv_lang['update_myaccount'], '" /></td></tr>';
+echo '<tr><td class="topbottombar" colspan="2"><input type="submit" tabindex="', ++$tab, '" value="', $pgv_lang['save'], '" /></td></tr>';
 
 echo '<tr><td class="descriptionbox width20 wrap">';
 echo print_help_link('edituser_username_help', 'qm', '', false, true);
@@ -288,14 +292,13 @@ echo '<tr><td class="descriptionbox wrap">';
 echo print_help_link('edituser_user_contact_help', 'qm', '', false, true);
 echo $pgv_lang['user_contact_method'], '</td><td class="optionbox">';
 echo '<select name="form_contact_method" tabindex="', ++$tab, '">';
+$currentMethod = get_user_setting(PGV_USER_ID, 'contactmethod');
 foreach ($ALL_CONTACT_METHODS as $key=>$value) {
-	if ($PGV_STORE_MESSAGES || $key>=2) {
-		echo '<option value="', $value, '"';
-		if ($value==get_user_setting(PGV_USER_ID, 'contactmethod')) {
-			echo ' selected="selected"';
-		}
-		echo '>', $pgv_lang[$value], '</option>';
+	echo '<option value="', $value, '"';
+	if ($value==$currentMethod) {
+		echo ' selected="selected"';
 	}
+	echo '>', $pgv_lang[$value], '</option>';
 }
 echo '</select></td></tr>';
 
@@ -321,7 +324,7 @@ foreach ($ALL_DEFAULT_TABS as $key=>$value) {
 }
 echo '</select></td></tr>';
 
-echo '<tr><td class="topbottombar" colspan="2"><input type="submit" tabindex="', ++$tab, '" value="', $pgv_lang['update_myaccount'], '" /></td></tr>';
+echo '<tr><td class="topbottombar" colspan="2"><input type="submit" tabindex="', ++$tab, '" value="', $pgv_lang['save'], '" /></td></tr>';
 
 echo '</table></form>';
 
