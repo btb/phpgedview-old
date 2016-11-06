@@ -460,13 +460,16 @@ if ($action=="edituser") {
 	<tr>
 	<td class="descriptionbox wrap"><?php print_help_link("useradmin_user_contact_help", "qm", "user_contact_method"); echo $pgv_lang["user_contact_method"]; ?></td>
 	<td class="optionbox wrap"><select name="new_contact_method" tabindex="<?php echo ++$tab; ?>">
-	<?php if ($PGV_STORE_MESSAGES) { ?>
-		<option value="messaging" <?php if (get_user_setting($user_id, 'contactmethod')=='messaging') echo "selected=\"selected\""; ?>><?php echo $pgv_lang["messaging"]; ?></option>
-		<option value="messaging2" <?php if (get_user_setting($user_id, 'contactmethod')=='messaging2') echo "selected=\"selected\""; ?>><?php echo $pgv_lang["messaging2"]; ?></option>
-	<?php } ?>
-	<option value="messaging3" <?php if (get_user_setting($user_id, 'contactmethod')=='messaging3') echo "selected=\"selected\""; ?>><?php echo $pgv_lang["messaging3"]; ?></option>
-	<option value="mailto" <?php if (get_user_setting($user_id, 'contactmethod')=='mailto') echo "selected=\"selected\""; ?>><?php echo $pgv_lang["mailto"]; ?></option>
-	<option value="none" <?php if (get_user_setting($user_id, 'contactmethod')=='none') echo "selected=\"selected\""; ?>><?php echo $pgv_lang["no_messaging"]; ?></option>
+		<?php
+		$currentMethod = get_user_setting($user_id, 'contactmethod');
+		foreach ($ALL_CONTACT_METHODS as $key=>$value) {
+			echo '<option value="', $value, '"';
+			if ($value==$currentMethod) {
+				echo ' selected="selected"';
+			}
+			echo '>', $pgv_lang[$value], '</option>';
+		}
+		?>
 	</select>
 	</td>
 	</tr>

@@ -3,7 +3,7 @@
  * Send a message to a user in the system
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2007  John Finlay and Others
+ * Copyright (C) 2002 to 2016  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -41,7 +41,6 @@ $to        =isset($_REQUEST['to'        ]) ? $_REQUEST['to'        ] : '';
 $action    =isset($_REQUEST['action'    ]) ? $_REQUEST['action'    ] : 'compose';
 $from      =isset($_REQUEST['from'      ]) ? $_REQUEST['from'      ] : '';
 $time      =isset($_REQUEST['time'      ]) ? $_REQUEST['time'      ] : '';
-$method    =isset($_REQUEST['method'    ]) ? $_REQUEST['method'    ] : '';
 
 if (empty($to)) {
 	print "<span class=\"error\">".$pgv_lang["no_to_user"]."</span><br />";
@@ -118,6 +117,7 @@ if (($action=="send")&&(isset($_SESSION["good_to_send"]))&&($_SESSION["good_to_s
 		}
 		$i = 0;
 		foreach($toarray as $indexval => $to) {
+			$to_user_id=get_user_id($to);
 			$message = array();
 			$message["to"]=$to;
 			$message["from"]=$from;
@@ -129,11 +129,10 @@ if (($action=="send")&&(isset($_SESSION["good_to_send"]))&&($_SESSION["good_to_s
 			$url = preg_replace("/".session_name()."=.*/", "", $url);
 			$message["body"] = $body;
 			$message["created"] = $time;
-			$message["method"] = $method;
+			$message["method"] = get_user_setting($to_user_id, 'contactmethod');
 			$message["url"] = $url.'&amp;ged='.$GEDCOM;
 			if ($i>0) $message["no_from"] = true;
 			if (addMessage($message)){
-				$to_user_id=get_user_id($to);
 				if ($to_user_id) {
 					print str_replace("#TO_USER#", "<b>".getUserFullName($to_user_id)."</b>", $pgv_lang["message_sent"]);
 					print "<br />";
@@ -189,6 +188,8 @@ if ($action=="compose") {
 	if ($to_user_id) {
 		$lang_temp = "lang_name_".get_user_setting($to_user_id, 'language');
 		$touserName = getUserFullName($to_user_id);
+		$toMethod = get_user_setting($to_user_id, 'contactmethod');
+
 		print "<tr><td></td><td>".str_replace("#TO_USER#", "<b>".$touserName."</b>", $pgv_lang["sending_to"])."<br />";
 		print str_replace("#USERLANG#", "<b>".$pgv_lang[$lang_temp]."</b>", $pgv_lang["preferred_lang"])."</td></tr>\n";
 	}
@@ -205,14 +206,14 @@ if ($action=="compose") {
 	print "<input type=\"hidden\" name=\"action\" value=\"send\" />\n";
 	print "<input type=\"hidden\" name=\"to\" value=\"$to\" />\n";
 	print "<input type=\"hidden\" name=\"time\" value=\"\" />\n";
-	print "<input type=\"hidden\" name=\"method\" value=\"$method\" />\n";
+	print "<input type=\"hidden\" name=\"method\" value=\"$toMethod\" />\n";
 	print "<input type=\"hidden\" name=\"url\" value=\"$url\" />\n";
 	print "<input type=\"text\" name=\"subject\" size=\"50\" value=\"$subject\" /><br /></td></tr>\n";
 	print "<tr><td valign=\"top\" align=\"right\">".$pgv_lang["message_body"]."<br /></td><td><textarea name=\"body\" cols=\"50\" rows=\"7\">$body</textarea><br /></td></tr>\n";
 	print "<tr><td></td><td><input type=\"submit\" value=\"".$pgv_lang["send"]."\" /></td></tr>\n";
 	print "</table>\n";
 	print "</form>\n";
-	if ($method=="messaging2") print $pgv_lang["messaging2_help"];
+	if ($toMethod=="messaging2") print $pgv_lang["messaging2_help"];
 }
 else if ($action=="delete") {
 	if (deleteMessage($id)) print $pgv_lang["message_deleted"];
