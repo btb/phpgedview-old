@@ -293,6 +293,7 @@ if ($action=="update") {
 	$configtext = preg_replace('/\$ADVANCED_NAME_FACTS\s*=\s*.*;/', "\$ADVANCED_NAME_FACTS = \"".$_POST["NEW_ADVANCED_NAME_FACTS"]."\";", $configtext);
 	$configtext = preg_replace('/\$ADVANCED_PLAC_FACTS\s*=\s*.*;/', "\$ADVANCED_PLAC_FACTS = \"".$_POST["NEW_ADVANCED_PLAC_FACTS"]."\";", $configtext);
 	$configtext = preg_replace('/\$USE_GEONAMES\s*=\s*.*;/', "\$USE_GEONAMES = ".$boolarray[$_POST["NEW_USE_GEONAMES"]].";", $configtext);
+	$configtext = preg_replace('/\$GEOCODE_KEY\s*=\s*.*;/', "\$GEOCODE_KEY = \"".$_POST["NEW_GEOCODE_KEY"]."\";", $configtext);
 	$configtext = preg_replace('/\$ALLOW_EDIT_GEDCOM\s*=\s*.*;/', "\$ALLOW_EDIT_GEDCOM = ".$boolarray[$_POST["NEW_ALLOW_EDIT_GEDCOM"]].";", $configtext);
 	$configtext = preg_replace('/\$ALLOW_THEME_DROPDOWN\s*=\s*.*;/', "\$ALLOW_THEME_DROPDOWN = ".$boolarray[$_POST["NEW_ALLOW_THEME_DROPDOWN"]].";", $configtext);
 	$configtext = preg_replace('/\$AUTO_GENERATE_THUMBS\s*=\s*.*;/', "\$AUTO_GENERATE_THUMBS = ".$boolarray[$_POST["NEW_AUTO_GENERATE_THUMBS"]].";", $configtext);
@@ -1931,10 +1932,17 @@ print "&nbsp;<a href=\"javascript: ".$pgv_lang["editopt_conf"]."\" onclick=\"exp
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width20"><?php print_help_link("USE_GEONAMES_help", "qm", "USE_GEONAMES"); print $pgv_lang["USE_GEONAMES"]; ?></td>
-		<td class="optionbox"><select name="NEW_USE_GEONAMES" tabindex="<?php $i++; print $i; ?>" onfocus="getHelp('USE_GEONAMES_help');">
+		<td class="optionbox">
+			<select name="NEW_USE_GEONAMES" tabindex="<?php $i++; print $i; ?>" onfocus="getHelp('USE_GEONAMES_help');">
 				<option value="yes" <?php if ($USE_GEONAMES) print "selected=\"selected\""; ?>><?php print $pgv_lang["yes"]; ?></option>
 				<option value="no" <?php if (!$USE_GEONAMES) print "selected=\"selected\""; ?>><?php print $pgv_lang["no"]; ?></option>
 			</select>
+		</td>
+	</tr>
+	<tr>
+		<td class="descriptionbox wrap width20"><?php print_help_link("GEOCODE_KEY_help", "qm", "GEOCODE_KEY"); print $pgv_lang["GEOCODE_KEY"]; ?></td>
+		<td class="optionbox">
+			<input type="text" name="NEW_GEOCODE_KEY" value="<?php print $GEOCODE_KEY; ?>" size="40" dir="ltr" tabindex="<?php $i++; print $i; ?>" onfocus="getHelp('GEOCODE_KEY_help');" /></td>
 		</td>
 	</tr>
 

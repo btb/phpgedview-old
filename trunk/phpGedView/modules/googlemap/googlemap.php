@@ -472,6 +472,7 @@ function build_indiv_map($indifacts, $famids) {
 					$markers[$i]["placerec"] = $placerec;
 					$match1[1] = trim($match1[1]);
 					$match2[1] = trim($match2[1]);
+					$markers[$i]["zoom"] = 12;
 					$markers[$i]["lati"] = str_replace(array('N', 'S', ','), array('', '-', '.') , $match1[1]);
 					$markers[$i]["lng"] = str_replace(array('E', 'W', ','), array('', '-', '.') , $match2[1]);
 					$ctd = preg_match("/2 DATE (.+)/", $factrec, $match);
@@ -565,6 +566,7 @@ function build_indiv_map($indifacts, $famids) {
 										$markers[$i]["placerec"] = $placerec;
 										$match1[1] = trim($match1[1]);
 										$match2[1] = trim($match2[1]);
+										$markers[$i]["zoom"] = 12;
 										$markers[$i]["lati"] = str_replace(array('N', 'S', ','), array('', '-', '.'), $match1[1]);
 										$markers[$i]["lng"]  = str_replace(array('E', 'W', ','), array('', '-', '.'), $match2[1]);
 										if ($ctd > 0)
@@ -633,7 +635,7 @@ function build_indiv_map($indifacts, $famids) {
 		<?php
 		foreach ($markers as $marker)
 			echo "                        Boundaries.extend(new google.maps.LatLng(".$marker["lati"].", ".$marker["lng"]."));\n";
-            echo "                        if (Boundaries.getNorthEast().equals(Boundaries.getSouthWest())) {
+		echo "                        if (Boundaries.getNorthEast().equals(Boundaries.getSouthWest())) {
                             var extendPoint1 = new google.maps.LatLng(Boundaries.getNorthEast().lat() + 0.01, Boundaries.getNorthEast().lng() + 0.01);
                             var extendPoint2 = new google.maps.LatLng(Boundaries.getNorthEast().lat() - 0.01, Boundaries.getNorthEast().lng() - 0.01);
                             Boundaries.extend(extendPoint1);

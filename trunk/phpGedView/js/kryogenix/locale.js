@@ -21,8 +21,8 @@ var _lc_native = _lc_locale.split("").sort().join("");
 
 function lc_debug(msg) {
 	// comment out to disable debug
+	// document.write('<div style="color: gray; font-size: small;">'+msg+'</div>');
 	return;
-	document.write('<div style="color: gray; font-size: small;">'+msg+'</div>');
 }
 
 // create character remapping array

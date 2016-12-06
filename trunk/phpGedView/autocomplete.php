@@ -3,7 +3,7 @@
 * Returns data for autocompletion
 *
 * phpGedView: Genealogy Viewer
-* Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+* Copyright (C) 2002 to 2016  PGV Development Team.  All rights reserved.
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -498,7 +498,7 @@ function autocomplete_NAME($FILTER) {
 * @return Array of string City, County, State/Province, Country
 */
 function autocomplete_PLAC($FILTER, $OPTION) {
-	global $USE_GEONAMES, $lang_short_cut, $LANGUAGE;
+	global $USE_GEONAMES, $GEOCODE_KEY, $lang_short_cut, $LANGUAGE;
 
 	$data=get_autocomplete_PLAC($FILTER);
 
@@ -510,14 +510,14 @@ function autocomplete_PLAC($FILTER, $OPTION) {
 					"&fcode=CMTY&fcode=ADM4&fcode=PPL&fcode=PPLA&fcode=PPLC".
 					"&style=full";
 		// try to use curl when file_get_contents not allowed
-		if (ini_get('allow_url_fopen')) {
-			$json = file_get_contents($url);
-		} elseif (function_exists('curl_init')) {
+		if (function_exists('curl_init')) {
 			$ch = curl_init();
 			curl_setopt($ch, CURLOPT_URL, $url);
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 			$json = curl_exec($ch);
 			curl_close($ch);
+		} elseif (ini_get('allow_url_fopen')) {
+			$json = file_get_contents($url);
 		} else {
 			return $data;
 		}
@@ -528,6 +528,81 @@ function autocomplete_PLAC($FILTER, $OPTION) {
 									$place["adminName2"].", ".
 									$place["adminName1"].", ".
 									$place["countryName"];
+			}
+		}
+	}
+	if (empty($data) && !empty($GEOCODE_KEY)) {
+		$iso3166=array(
+                        'ABW'=>'AW', 'AFG'=>'AF', 'AGO'=>'AO', 'AIA'=>'AI', 'ALA'=>'AX', 'ALB'=>'AL', 'AND'=>'AD', 'ANT'=>'AN',
+                        'ARE'=>'AE', 'ARG'=>'AR', 'ARM'=>'AM', 'ASM'=>'AS', 'ATA'=>'AQ', 'ATF'=>'TF', 'ATG'=>'AG', 'AUS'=>'AU',
+                        'AUT'=>'AT', 'AZE'=>'AZ', 'BDI'=>'BI', 'BEL'=>'BE', 'BEN'=>'BJ', 'BFA'=>'BF', 'BGD'=>'BD', 'BGR'=>'BG',
+                        'BHR'=>'BH', 'BHS'=>'BS', 'BIH'=>'BA', 'BLR'=>'BY', 'BLZ'=>'BZ', 'BMU'=>'BM', 'BOL'=>'BO', 'BRA'=>'BR',
+                        'BRB'=>'BB', 'BRN'=>'BN', 'BTN'=>'BT', 'BVT'=>'BV', 'BWA'=>'BW', 'CAF'=>'CF', 'CAN'=>'CA', 'CCK'=>'CC',
+                        'CHE'=>'CH', 'CHL'=>'CL', 'CHN'=>'CN', 'CHI'=>'JE', 'CIV'=>'CI', 'CMR'=>'CM', 'COD'=>'CD', 'COG'=>'CG',
+                        'COK'=>'CK', 'COL'=>'CO', 'COM'=>'KM', 'CPV'=>'CV', 'CRI'=>'CR', 'CUB'=>'CU', 'CXR'=>'CX', 'CYM'=>'KY',
+                        'CYP'=>'CY', 'CZE'=>'CZ', 'DEU'=>'DE', 'DJI'=>'DJ', 'DMA'=>'DM', 'DNK'=>'DK', 'DOM'=>'DO', 'DZA'=>'DZ',
+                        'ECU'=>'EC', 'EGY'=>'EG', 'ENG'=>'GB', 'ERI'=>'ER', 'ESH'=>'EH', 'ESP'=>'ES', 'EST'=>'EE', 'ETH'=>'ET',
+                        'FIN'=>'FI', 'FJI'=>'FJ', 'FLK'=>'FK', 'FRA'=>'FR', 'FRO'=>'FO', 'FSM'=>'FM', 'GAB'=>'GA', 'GBR'=>'GB',
+                        'GEO'=>'GE', 'GHA'=>'GH', 'GIB'=>'GI', 'GIN'=>'GN', 'GLP'=>'GP', 'GMB'=>'GM', 'GNB'=>'GW', 'GNQ'=>'GQ',
+                        'GRC'=>'GR', 'GRD'=>'GD', 'GRL'=>'GL', 'GTM'=>'GT', 'GUF'=>'GF', 'GUM'=>'GU', 'GUY'=>'GY', 'HKG'=>'HK',
+                        'HMD'=>'HM', 'HND'=>'HN', 'HRV'=>'HR', 'HTI'=>'HT', 'HUN'=>'HU', 'IDN'=>'ID', 'IND'=>'IN', 'IOT'=>'IO',
+                        'IRL'=>'IE', 'IRN'=>'IR', 'IRQ'=>'IQ', 'ISL'=>'IS', 'ISR'=>'IL', 'ITA'=>'IT', 'JAM'=>'JM', 'JOR'=>'JO',
+                        'JPN'=>'JA', 'KAZ'=>'KZ', 'KEN'=>'KE', 'KGZ'=>'KG', 'KHM'=>'KH', 'KIR'=>'KI', 'KNA'=>'KN', 'KOR'=>'KO',
+                        'KWT'=>'KW', 'LAO'=>'LA', 'LBN'=>'LB', 'LBR'=>'LR', 'LBY'=>'LY', 'LCA'=>'LC', 'LIE'=>'LI', 'LKA'=>'LK',
+                        'LSO'=>'LS', 'LTU'=>'LT', 'LUX'=>'LU', 'LVA'=>'LV', 'MAC'=>'MO', 'MAR'=>'MA', 'MCO'=>'MC', 'MDA'=>'MD',
+                        'MDG'=>'MG', 'MDV'=>'MV', 'MEX'=>'ME', 'MHL'=>'MH', 'MKD'=>'MK', 'MLI'=>'ML', 'MLT'=>'MT', 'MMR'=>'MM',
+                        'MNG'=>'MN', 'MNP'=>'MP', 'MNT'=>'ME', 'MOZ'=>'MZ', 'MRT'=>'MR', 'MSR'=>'MS', 'MTQ'=>'MQ', 'MUS'=>'MU',
+                        'MWI'=>'MW', 'MYS'=>'MY', 'MYT'=>'YT', 'NAM'=>'NA', 'NCL'=>'NC', 'NER'=>'NE', 'NFK'=>'NF', 'NGA'=>'NG',
+                        'NIC'=>'NI', 'NIR'=>'GB', 'NIU'=>'NU', 'NLD'=>'NL', 'NOR'=>'NO', 'NPL'=>'NP', 'NRU'=>'NR', 'NZL'=>'NZ',
+                        'OMN'=>'OM', 'PAK'=>'PK', 'PAN'=>'PA', 'PCN'=>'PN', 'PER'=>'PE', 'PHL'=>'PH', 'PLW'=>'PW', 'PNG'=>'PG',
+                        'POL'=>'PL', 'PRI'=>'PR', 'PRK'=>'KP', 'PRT'=>'PO', 'PRY'=>'PY', 'PSE'=>'PS', 'PYF'=>'PF', 'QAT'=>'QA',
+                        'REU'=>'RE', 'ROM'=>'RO', 'RUS'=>'RU', 'RWA'=>'RW', 'SAU'=>'SA', 'SCT'=>'GB', 'SDN'=>'SD', 'SEN'=>'SN',
+                        'SER'=>'RS', 'SGP'=>'SG', 'SGS'=>'GS', 'SHN'=>'SH', 'SIC'=>'IT', 'SJM'=>'SJ', 'SLB'=>'SB', 'SLE'=>'SL',
+                        'SLV'=>'SV', 'SMR'=>'SM', 'SOM'=>'SO', 'SPM'=>'PM', 'STP'=>'ST', 'SUN'=>'RU', 'SUR'=>'SR', 'SVK'=>'SK',
+                        'SVN'=>'SI', 'SWE'=>'SE', 'SWZ'=>'SZ', 'SYC'=>'SC', 'SYR'=>'SY', 'TCA'=>'TC', 'TCD'=>'TD', 'TGO'=>'TG',
+                        'THA'=>'TH', 'TJK'=>'TJ', 'TKL'=>'TK', 'TKM'=>'TM', 'TLS'=>'TL', 'TON'=>'TO', 'TTO'=>'TT', 'TUN'=>'TN',
+                        'TUR'=>'TR', 'TUV'=>'TV', 'TWN'=>'TW', 'TZA'=>'TZ', 'UGA'=>'UG', 'UKR'=>'UA', 'UMI'=>'UM', 'URY'=>'UY',
+                        'USA'=>'US', 'UZB'=>'UZ', 'VAT'=>'VA', 'VCT'=>'VC', 'VEN'=>'VE', 'VGB'=>'VG', 'VIR'=>'VI', 'VNM'=>'VN',
+                        'VUT'=>'VU', 'WLF'=>'WF', 'WLS'=>'GB', 'WSM'=>'WS', 'YEM'=>'YE', 'ZAF'=>'ZA', 'ZMB'=>'ZM', 'ZWE'=>'ZW'
+                );
+		$url = 'https://maps.googleapis.com/maps/api/geocode/json?address='.urlencode($FILTER).
+			'&key='.$GEOCODE_KEY.'&language='.$lang_short_cut[$LANGUAGE];
+		if (function_exists('curl_init')) {
+			$ch = curl_init();
+			curl_setopt($ch, CURLOPT_URL, $url);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+			$json = curl_exec($ch);
+			curl_close($ch);
+		} elseif (ini_get('allow_url_fopen')) {
+			$json = file_get_contents($url);
+		} else {
+			return $data;
+		}
+		$places = json_decode($json, true);
+		if ($places["status"] == 'OK') {
+			foreach ($places["results"] as $place) {
+				$plac = '';
+				$comma = '';
+				foreach ($place["address_components"] as $comp){
+					if (!in_array('administrative_area_level_2', $comp['types'])
+					    && !in_array('administrative_area_level_3', $comp['types'])
+					    && !in_array('country', $comp['types'])
+					    && !in_array('postal_code', $comp['types'])
+					    && $comp["long_name"] != $plac){
+						$plac .= $comma.$comp["long_name"];
+						$comma = ', ';
+					} elseif (in_array('country', $comp['types'])){
+						$cntry = array_search($comp["short_name"],$iso3166);
+						$plac .= $comma.(empty($cntry)?$comp["short_name"]:$cntry);
+						$comma = ', ';
+					}
+				}
+				if (isset($place['geometry']["location"])){
+					$plac .= '|'.$place['geometry']["location"]['lat'].'|'.$place['geometry']["location"]['lng'];
+					if (isset($place['geometry']['viewport']))
+						$plac .= '|'.round(log(360 /($place['geometry']['viewport']['northeast']['lat']-$place['geometry']['viewport']['southwest']['lat']))/1.4);
+				}
+				$data[] = $plac;
 			}
 		}
 	}

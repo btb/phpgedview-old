@@ -8,7 +8,7 @@
  * in the $INDEX_DIRECTORY.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2016  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -203,7 +203,8 @@ $SEARCH_FACTS_DEFAULT = "NAME:GIVN:SDX,NAME:SURN:SDX,BIRT:DATE,BIRT:PLAC,FAMS:MA
 $GENERATE_UIDS = false;		//-- automatically generate _UID fields for records that do not already have them
 $ADVANCED_NAME_FACTS = "NICK,_HEB,ROMN";
 $ADVANCED_PLAC_FACTS = "";
-$USE_GEONAMES = false;	// use geonames.org with autocomplite function
+$USE_GEONAMES = false; // use geonames.org with autocomplete function
+$GEOCODE_KEY = ''; // google geocode api server key
 $SURNAME_TRADITION = "paternal";
 $FULL_SOURCES = true; // Include the quality-of-data and date-of-entry-in-original-source fields
 $PREFER_LEVEL2_SOURCES = '1';	//-- When adding close relatives, which Source checkboxes are checked by default: 0: none, 1: facts, 2: record

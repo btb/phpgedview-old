@@ -175,7 +175,7 @@ function create_map() {
 	echo "background-image: url('images/loading.gif'); background-position: center; background-repeat: no-repeat; overflow: hidden;\"></div>";
 	?>
 	<!-- Start of map scripts -->
-	<script async defer src="https://maps.googleapis.com/maps/api/js?key=<?php echo $GOOGLEMAP_API_KEY;
+	<script src="https://maps.googleapis.com/maps/api/js?key=<?php echo $GOOGLEMAP_API_KEY;
 		?>&language=<?php echo $language_settings[$LANGUAGE]['lang_short_cut']; ?>" type="text/javascript"></script>
 	<script src="modules/googlemap/pgvGoogleMap.js" type="text/javascript"></script>
 	<?php
@@ -240,14 +240,14 @@ function print_how_many_people($level, $parent) {
 function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $placelevels, $lastlevel=false){
 	global $GOOGLEMAP_COORD, $GOOGLEMAP_PH_MARKER, $GM_DISP_SHORT_PLACE, $GM_DISP_COUNT, $pgv_lang;
 	if (($place2['lati'] == NULL) || ($place2['long'] == NULL) || (($place2['lati'] == "0") && ($place2['long'] == "0"))) {
-		echo "var icon_type = new GIcon();\n";
+		/* echo "var icon_type = new GIcon();\n";
 			echo "	icon_type.image = \"modules/googlemap/images/marker_yellow.png\";\n";
 			echo "	icon_type.shadow = \"modules/googlemap/images/shadow50.png\";\n";
 			echo "	icon_type.iconSize = new GSize(20, 34);\n";
 			echo "	icon_type.shadowSize = new GSize(37, 34);\n";
 			echo "	icon_type.iconAnchor = new GPoint(6, 20);\n";
-			echo "	icon_type.infoWindowAnchor = new GPoint(5, 1);\n";
-		echo "var point = new GLatLng(0, 0);\n";
+			echo "	icon_type.infoWindowAnchor = new GPoint(5, 1);\n"; */
+		echo "var point = { lat: 0, lng: 0 };\n";
 		if ($lastlevel)
 			echo "var marker = createMarker(point, \"<td width='100%'><div class='iwstyle' style='width: 250px;'><a href='?level=", $level, $linklevels, "'><br />";
 		else {
@@ -301,7 +301,7 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 		echo "<br />", $pgv_lang["gm_no_coord"];
 		if (PGV_USER_IS_ADMIN)
 			echo "<br /><a href='module.php?mod=googlemap&pgvaction=places&parent=", $levelm, "&display=inactive'>", $pgv_lang["pl_edit"], "</a>";
-		echo "</div></td>\", icon_type, \"", str_replace(array('&lrm;', '&rlm;'), array(PGV_UTF8_LRM, PGV_UTF8_RLM), PrintReady(addslashes($place2['place']))), "\");\n";
+		echo "</div></td>\", 'modules/googlemap/images/marker_yellow.png', \"", str_replace(array('&lrm;', '&rlm;'), array(PGV_UTF8_LRM, PGV_UTF8_RLM), PrintReady(addslashes($place2['place']))), "\", place_map);\n";
 	} else {
 		$lati = str_replace(array('N', 'S', ','), array('', '-', '.'), $place2['lati']);
 		$long = str_replace(array('E', 'W', ','), array('', '-', '.'), $place2['long']);
@@ -317,7 +317,7 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 			$long = "-".abs($long);
 		}
 		// flags by kiwi_pgv
-		if (($place2["icon"] == NULL) || ($place2['icon'] == "") || ($GOOGLEMAP_PH_MARKER != "G_FLAG")) {
+		/* if (($place2["icon"] == NULL) || ($place2['icon'] == "") || ($GOOGLEMAP_PH_MARKER != "G_FLAG")) {
 			echo "var icon_type = new GIcon(G_DEFAULT_ICON);\n";
 		} else {
 			echo "var icon_type = new GIcon();\n";
@@ -327,8 +327,8 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 			echo "	icon_type.shadowSize = new GSize(35, 45);\n";
 			echo "	icon_type.iconAnchor = new GPoint(1, 45);\n";
 			echo "	icon_type.infoWindowAnchor = new GPoint(5, 1);\n";
-		}
-		echo "var point = new GLatLng({$lati}, {$long});\n";
+		} */
+		echo "var point = { lat: $lati, lng: $long };\n";
 		if ($lastlevel) {
 			echo "var marker = createMarker(point, \"<td width='100%'><div class='iwstyle' style='width: 250px;'><a href='?level=", $level, $linklevels, "'><br />";
 		} else {
@@ -385,12 +385,11 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 		$temp=PrintReady(addslashes($place2['place']));
 		$temp=str_replace(array('&lrm;', '&rlm;'), array(PGV_UTF8_LRM, PGV_UTF8_RLM), $temp);
 		if (!$GOOGLEMAP_COORD){
-			echo "<br /><br /></div></td>\", icon_type, \"", $temp, "\");\n";
+			echo "<br /><br /></div></td>\", '".$place2['icon']."', \"", $temp, "\", place_map);\n";
 		} else {
-			echo "<br /><br />", $place2['lati'], ", ", $place2['long'], "</div></td>\", icon_type, \"", $temp, "\");\n";
+			echo "<br /><br />", $place2['lati'], ", ", $place2['long'], "</div></td>\", '".$place2['icon']."', \"", $temp, "\", place_map);\n";
 		}
 	}
-	echo "place_map.addOverlay(marker);\n";
 	echo "bounds.extend(point);\n";
 }
 
@@ -443,25 +442,29 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 	<?php echo create_buttons($numfound, $level);?>
 	<script type="text/javascript">
 	// <![CDATA[
-	if (window.attachEvent) {
-		window.attachEvent("onunload", function() {
-			GUnload();	  // Internet Explorer
-		});
-	} else {
-		window.addEventListener("unload", function() {
-			GUnload(); // Firefox and standard browsers
-		}, false);
-	}
-	if (GBrowserIsCompatible()) {
+	var infoWindows;
 	// Creates a marker whose info window displays the given name
-	function createMarker(point, html, icon, name)
+	function createMarker(point, html, icon, name, map)
 	{
-		var marker = new GMarker(point, {icon:icon, title:name});
+		if (icon == undefined || icon == "")
+			var marker = new google.maps.Marker({
+				map: map,
+				position: point,
+				title: name
+			});
+		else
+			var marker = new google.maps.Marker({
+				map: map,
+				icon: icon,
+				position: point,
+				title: name
+			});
 		// Show this markers name in the info window when it is clicked
-		GEvent.addListener(marker, "click", function() {marker.openInfoWindowHtml(html);});
+		var infowindow = new google.maps.InfoWindow({ content: html });
+		google.maps.event.addListener(marker, "click", function() {infowindow.open(map, marker);});
 		return marker;
 	};
-
+/*
 	function Map_type() {}
 	Map_type.prototype = new GControl();
 
@@ -509,7 +512,7 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 
 		button1.onclick = function() { <?php
 			if ($numfound>1) {
-				echo "place_map.setCenter(bounds.getCenter(), place_map.getBoundsZoomLevel(bounds));";
+				echo "place_map.fitBounds(bounds);";
 			} elseif ($level==1) {
 				echo "place_map.setCenter(bounds.getCenter(), place_map.getBoundsZoomLevel(bounds)-8);";
 			} elseif ($level==2) {
@@ -543,22 +546,22 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 	Map_type.prototype.getDefaultPosition = function()
 	{
 		return new GControlPosition(G_ANCHOR_TOP_RIGHT, new GSize(2, 2));
-	}
+	} */
 	var map_type;
-	var place_map = new GMap2(document.getElementById("place_map"));
-	map_type = new Map_type();
+	var place_map = new google.maps.Map(document.getElementById("place_map"));
+	/* map_type = new Map_type();
 	place_map.addControl(map_type);
 	GEvent.addListener(place_map, 'maptypechanged', function()
 	{
 		map_type.refresh();
-	});
-	var bounds = new GLatLngBounds();
+	}); */
+	var bounds = new google.maps.LatLngBounds();
 	// for further street view
 	//place_map.addControl(new GLargeMapControl3D(true));
-	place_map.addControl(new GLargeMapControl3D());
-	place_map.addControl(new GScaleControl());
-	var mini = new GOverviewMapControl();
-	place_map.addControl(mini);
+	// place_map.addControl(new GLargeMapControl3D());
+	// place_map.addControl(new GScaleControl());
+	// var mini = new GOverviewMapControl();
+	// place_map.addControl(mini);
 	// displays blank minimap - probably google api's bug
 	//mini.hide();
 	<?php
@@ -567,26 +570,30 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 		if (isset($levelo[0])) $levelo[0]=0;
 		$numls = count($parent)-1;
 		$levelo=check_were_am_i($numls, $levelm);
-		if ($numfound<2 && ($level==1 || !(isset($levelo[($level-1)])))){
-			echo "zoomlevel = place_map.getBoundsZoomLevel(bounds);\n";
-			echo "	place_map.setCenter(new GLatLng(0, 0), zoomlevel+5);\n";
+		/* if ($numfound<2 && ($level==1 || !(isset($levelo[($level-1)])))){
+			echo "  place_map.fitBounds(bounds);\n";
+			echo "  var zoomlevel = place_map.getZoom();\n";
+			echo "	place_map.setZoom( zoomlevel + 5);\n";
 		}
 		else if ($numfound<2 && !isset($levelo[($level-2)])){
-			echo "zoomlevel = place_map.getBoundsZoomLevel(bounds);\n";
-			echo "	place_map.setCenter(new GLatLng(0, 0), zoomlevel+6);\n";
+			echo "  place_map.fitBounds(bounds);\n";
+			echo "  var zoomlevel = place_map.getZoom();\n";
+			echo "	place_map.setZoom( zoomlevel + 6);\n";
 		}
 		else if ($level==2){
-			echo "zoomlevel = place_map.getBoundsZoomLevel(bounds);\n";
-			echo "	place_map.setCenter(new GLatLng(0, 0), zoomlevel+8);\n";
+			echo "  place_map.fitBounds(bounds);\n";
+			echo "  var zoomlevel = place_map.getZoom();\n";
+			echo "	place_map.setZoom( zoomlevel + 8);\n";
 		}
 		else if ($numfound<2 && $level>1){
-			echo "zoomlevel = place_map.getBoundsZoomLevel(bounds);\n";
-			echo "	place_map.setCenter(new GLatLng(0, 0), zoomlevel+10);\n";
+			echo "  place_map.fitBounds(bounds);\n";
+			echo "  var zoomlevel = place_map.getZoom();\n";
+			echo "	place_map.setZoom( zoomlevel + 10);\n";
 		}
 		else
-			echo "place_map.setCenter(new GLatLng(0, 0), 1);\n";
-		if ($GOOGLEMAP_PH_WHEEL) echo "place_map.enableScrollWheelZoom();\n";
-		echo "	place_map.setMapType($GOOGLEMAP_MAP_TYPE);\n";
+			echo "place_map.setZoom(1);\n"; */
+		// if ($GOOGLEMAP_PH_WHEEL) echo "place_map.enableScrollWheelZoom();\n";
+		// echo "	place_map.setMapType($GOOGLEMAP_MAP_TYPE);\n";
 		?>
 		//create markers
 		<?php
@@ -601,20 +608,20 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 								print_gm_markers($place2, $level, $parent, $levelo[($level-1)], $linklevels, $placelevels, true);
 						}
 						else {
-							echo "var icon_type = new GIcon();\n";
-							echo "icon_type.image = \"modules/googlemap/images/marker_yellow.png\"\n";
-							echo "icon_type.shadow = \"modules/googlemap/images/shadow50.png\";\n";
+							// echo "var icon_type = new GIcon();\n";
+							echo "icon_type = 'modules/googlemap/images/marker_yellow.png';\n";
+							/* echo "icon_type.shadow = \"modules/googlemap/images/shadow50.png\";\n";
 							echo "icon_type.iconSize = new GSize(20, 34);\n";
 							echo "icon_type.shadowSize = new GSize(37, 34);\n";
 							echo "icon_type.iconAnchor = new GPoint(6, 20);\n";
-							echo "icon_type.infoWindowAnchor = new GPoint(5, 1);\n";
-							echo "var point = new GLatLng(0, 0);\n";
+							echo "icon_type.infoWindowAnchor = new GPoint(5, 1);\n"; */
+							echo "var point = { lat: 0, lng: 0 };\n";
 							echo "var marker = createMarker(point, \"<td width='100%'><div class='iwstyle' style='width: 250px;'><b>";
 							echo substr($placelevels, 2), "</b><br />", $pgv_lang["gm_no_coord"];
 							if (PGV_USER_IS_ADMIN)
 								echo "<br /><a href='module.php?mod=googlemap&pgvaction=places&parent=0&display=inactive'>", $pgv_lang["pl_edit"], "</a>";
-							echo "<br /></div></td>\", icon_type, \"", $pgv_lang["pl_edit"], "\");\n";
-							echo "place_map.addOverlay(marker);\n";
+							echo "<br /></div></td>\", icon_type, \"", $pgv_lang["pl_edit"], "\", place_map);\n";
+							// echo "marker.setMap(place_map);\n";
 							echo "bounds.extend(point);\n";
 							break;
 						}
@@ -663,34 +670,31 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 		}
 	}
 	else {
-		echo "var icon_type = new GIcon();\n";
-		echo "icon_type.image = \"modules/googlemap/images/marker_yellow.png\"";
-		echo "var point = new GLatLng(0, 0);\n";
+		// echo "var icon_type = new GIcon();\n";
+		echo "icon_type = \"modules/googlemap/images/marker_yellow.png\"";
+		echo "var point = { lat: 0, lng: 0 };\n";
 		echo "var marker = createMarker(point, \"<td width='100%'><div class='iwstyle' style='width: 250px;'>";
 		echo "<br />", $pgv_lang["gm_no_coord"];
 		if (PGV_USER_IS_ADMIN)
 			echo "<br /><a href='module.php?mod=googlemap&pgvaction=places&parent=0&display=inactive'>", $pgv_lang["pl_edit"], "</a>";
-		echo "<br /></div></td>\", icon_type, \"", $pgv_lang["pl_edit"], "\");\n";
-		echo "place_map.addOverlay(marker);\n";
+		echo "<br /></div></td>\", icon_type, \"", $pgv_lang["pl_edit"], "\", place_map);\n";
+		// echo "marker.setMap(place_map);\n";
 		echo "bounds.extend(point);\n";
 	}
 	?>
 	//end markers
-	place_map.setCenter(bounds.getCenter());
+	place_map.fitBounds(bounds);
 	<?php if ($GOOGLEMAP_PH_CONTROLS) {?>
 		// hide controls
-		GEvent.addListener(place_map, 'mouseout', function() {place_map.hideControls();});
+	//	GEvent.addListener(place_map, 'mouseout', function() {place_map.hideControls();});
 		// show controls
-		GEvent.addListener(place_map, 'mouseover', function() {place_map.showControls();});
-		GEvent.trigger(place_map, 'mouseout');
+	//	GEvent.addListener(place_map, 'mouseover', function() {place_map.showControls();});
+	//	GEvent.trigger(place_map, 'mouseout');
 		<?php
 	}
 	if ($numfound>1)
-		echo "place_map.setZoom(place_map.getBoundsZoomLevel(bounds));\n";
+	//	echo "place_map.setZoom(place_map.getBoundsZoomLevel(bounds));\n";
 	?>
-	} else {
-	  alert("Sorry, the Google Maps API is not compatible with this browser");
-	}
 	// This Javascript is based on code provided by the
 	// Blackpool Community Church Javascript Team
 	// http://www.commchurch.freeserve.co.uk/

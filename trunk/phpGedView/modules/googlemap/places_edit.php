@@ -33,7 +33,7 @@ require PGV_ROOT.'modules/googlemap/defaultconfig.php';
 require PGV_ROOT.'includes/functions/functions_edit.php';
 require $INDEX_DIRECTORY."pgv_changes.php";
 
-loadLangFile("pgv_facts, googlemap:lang, googlemap:help_text");
+loadLangFile("pgv_facts, googlemap:lang, googlemap:help_text, pgv_country");
 
 if (isset($_REQUEST['placeid'])) $placeid = $_REQUEST['placeid'];
 if (isset($_REQUEST['place_name'])) $place_name = $_REQUEST['place_name'];
@@ -108,14 +108,14 @@ function showchanges() {
 // e.g. array(0=>"Top Level", 16=>"England", 19=>"London", 217=>"Westminster");
 // NB This function exists in both places.php and places_edit.php
 function place_id_to_hierarchy($id) {
-	global $TBLPREFIX;
+	global $TBLPREFIX, $countries;
 
 	$statement=
 		PGV_DB::prepare("SELECT pl_parent_id, pl_place FROM {$TBLPREFIX}placelocation WHERE pl_id=?");
 	$arr=array();
 	while ($id!=0) {
 		$row=$statement->execute(array($id))->fetchOneRow();
-		$arr=array($id=>$row->pl_place)+$arr;
+		$arr=array($id=>(isset($countries[$row->pl_place])?$countries[$row->pl_place]:$row->pl_place)) + $arr;
 		$id=$row->pl_parent_id;
 	}
 	return $arr;
@@ -270,7 +270,7 @@ if ($action=="add") {
 }
 
 ?>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=<?php echo $GOOGLEMAP_API_KEY;
+    <script src="https://maps.googleapis.com/maps/api/js?key=<?php echo $GOOGLEMAP_API_KEY;
         ?>&language=<?php echo $language_settings[$LANGUAGE]['lang_short_cut']; ?>" type="text/javascript"></script>
     <script type="text/javascript">
 <!--
@@ -278,22 +278,16 @@ if ($action=="add") {
 		window.attachEvent("onload", function() {
 			loadMap();	   // Internet Explorer
 		});
-		window.attachEvent("onunload", function() {
-			GUnload();	   // Internet Explorer
-		});
 	} else {
 		window.addEventListener("load", function() {
 			loadMap(); // Firefox and standard browsers
 		}, false);
-		window.addEventListener("unload", function() {
-			GUnload(); // Firefox and standard browsers
-		}, false);
 	}
 	var childplaces = [];
-	var geocoder = new GClientGeocoder();
+	var infowindows = [];
+	var geocoder = new google.maps.Geocoder();
 
 	function updateMap() {
-		var point;
 		var zoom;
 		var latitude;
 		var longitude;
@@ -311,15 +305,16 @@ if ($action=="add") {
 		}
 		if ((document.editplaces.NEW_PLACE_LATI.value == "") ||
 			(document.editplaces.NEW_PLACE_LONG.value == "")) {
-			latitude = parseFloat(document.editplaces.parent_lati.value).toFixed(prec);
-			longitude = parseFloat(document.editplaces.parent_long.value).toFixed(prec);
-			point = new GLatLng (latitude, longitude);
-			map.clearOverlays();
+			latitude = parseFloat(parseFloat(document.editplaces.parent_lati.value).toFixed(prec));
+			longitude = parseFloat(parseFloat(document.editplaces.parent_long.value).toFixed(prec));
+			// map.clearOverlays();
 		} else {
 			latitude = parseFloat(document.editplaces.NEW_PLACE_LATI.value).toFixed(prec);
 			longitude = parseFloat(document.editplaces.NEW_PLACE_LONG.value).toFixed(prec);
 			document.editplaces.NEW_PLACE_LATI.value = latitude;
 			document.editplaces.NEW_PLACE_LONG.value = longitude;
+			latitude = parseFloat(latitude);
+			longitude = parseFloat(longitude);
 
 			if (latitude < 0.0) {
 				latitude = latitude * -1;
@@ -336,44 +331,37 @@ if ($action=="add") {
 				longitude = longitude * -1;
 			}
 
-			point = new GLatLng (latitude, longitude);
-
-			map.clearOverlays();
-
 			if (document.editplaces.icon.value == "") {
-				map.addOverlay(new GMarker(point));
-			}
-			else {
-				var flagicon = new GIcon();
-				flagicon.image = document.editplaces.icon.value;
-				flagicon.shadow = "modules/googlemap/images/flag_shadow.png";
-				flagicon.iconSize = new GSize(25, 15);
-				flagicon.shadowSize = new GSize(35, 45);
-				flagicon.iconAnchor = new GPoint(1, 45);
-				flagicon.infoWindowAnchor = new GPoint(5, 1);
-				map.addOverlay(new GMarker(point, flagicon));
+				new google.maps.Marker({
+					position: {lat: latitude, lng: longitude},
+					map: map
+				});
+			} else {
+				new google.maps.Marker({
+					icon: document.editplaces.icon.value,
+					position: {lat: latitude, lng: longitude},
+					map: map
+				});
 			}
 		}
 
-		map.setCenter(point, zoom);
+		map.setCenter({lat: latitude, lng: longitude});
+		map.setZoom( zoom );
 		//document.getElementById('resultDiv').innerHTML = "";
 
-		var childicon = new GIcon();
-		childicon.image = "http://labs.google.com/ridefinder/images/mm_20_green.png";
-		childicon.shadow = "http://labs.google.com/ridefinder/images/mm_20_shadow.png";
-		childicon.iconSize = new GSize(12, 20);
-		childicon.shadowSize = new GSize(22, 20);
-		childicon.iconAnchor = new GPoint(6, 20);
-		childicon.infoWindowAnchor = new GPoint(5, 1);
 		for (i=0; i < childplaces.length; i++) {
-			map.addOverlay(childplaces[i]);
+			new google.maps.Marker({
+				position: childplaces[i],
+				icon: "https://maps.gstatic.com/mapfiles/ridefinder-images/mm_20_green.png",
+				map: map
+			});
 		}
 	}
 
-	function Map_type() {}
-	Map_type.prototype = new GControl();
+	// function Map_type() {}
+	// Map_type.prototype = new GControl();
 
-	Map_type.prototype.refresh = function()
+	/* Map_type.prototype.refresh = function()
 	{
 		if(this.map.getCurrentMapType() != G_NORMAL_MAP)
 			this.button1.className = 'non_active';
@@ -431,36 +419,29 @@ if ($action=="add") {
 	{
 		return new GControlPosition(G_ANCHOR_TOP_RIGHT, new GSize(2, 2));
 	}
-
+*/
 	function loadMap() {
 		var zoom;
-		if (GBrowserIsCompatible()) {
-			map = new GMap2(document.getElementById("map_pane"));
-			map.addControl(new GSmallZoomControl3D());
-			map.addControl(new GScaleControl()) ;
-			var bounds = new GLatLngBounds();
-			var map_type;
-			map_type = new Map_type();
-			map.addControl(map_type);
-			GEvent.addListener(map, 'maptypechanged', function()
+			map = new google.maps.Map(document.getElementById("map_pane"));
+			// map.addControl(new GSmallZoomControl3D());
+			// map.addControl(new GScaleControl()) ;
+			var bounds = new google.maps.LatLngBounds();
+			// var map_type;
+			// map_type = new Map_type();
+			// map.addControl(map_type);
+			/* GEvent.addListener(map, 'maptypechanged', function()
 			{
 				map_type.refresh();
-			});
-			GEvent.addListener(map, 'click', function(overlay, point) {
+			}); */
+			google.maps.event.addListener(map, 'click', function(overlay, point) {
 				if (overlay) {
 					//probably not needed in this case
 					//map.removeOverlay(overlay);
 				} else if (point) {
-					map.clearOverlays();
+					// map.clearOverlays();
 					// Create our "tiny" yellow marker icon where the user clicked,
 					// The full size red marker is at the stored coordinates.
-					var smicon = new GIcon();
-					smicon.image = "http://labs.google.com/ridefinder/images/mm_20_yellow.png";
-					smicon.shadow = "http://labs.google.com/ridefinder/images/mm_20_shadow.png";
-					smicon.iconSize = new GSize(12, 20);
-					smicon.shadowSize = new GSize(22, 20);
-					smicon.iconAnchor = new GPoint(6, 20);
-					smicon.infoWindowAnchor = new GPoint(5, 1);
+					var smicon = "https://maps.gstatic.com/mapfiles/ridefinder-images/mm_20_yellow.png";
 
 					map.panTo(point);
 					prec = 20;
@@ -484,53 +465,44 @@ if ($action=="add") {
 						document.editplaces.NEW_PLACE_LONG.value = point.x.toFixed(prec);
 						document.editplaces.LONG_CONTROL.value = "PL_E";
 					}
-					newval = new GLatLng (point.y.toFixed(prec), point.x.toFixed(prec));
-					if (document.editplaces.icon.value == "") {
-						map.addOverlay(new GMarker(newval));
-					}
-					else {
-						var flagicon = new GIcon();
-						flagicon.image = document.editplaces.icon.value;
-						flagicon.shadow = "modules/googlemap/images/flag_shadow.png";
-						flagicon.iconSize = new GSize(25, 15);
-						flagicon.shadowSize = new GSize(35, 45);
-						flagicon.iconAnchor = new GPoint(1, 45);
-						flagicon.infoWindowAnchor = new GPoint(5, 1);
-						map.addOverlay(new GMarker(newval, flagicon));
+					newval = new google.maps.LatLng (point.y.toFixed(prec), point.x.toFixed(prec));
+					if (document.editplaces.icon.value == ""){
+						new google.maps.Marker({
+							position: newval,
+							map: map
+						});
+					} else {
+						new google.maps.Marker({
+                           				position: newval,
+                                			icon: document.editplaces.icon.value,
+                                			map: map
+                        			});
 					}
 					// Trying to get the smaller yellow icon drawn in front.
-					map.addOverlay(new GMarker(point, smicon));
+					new google.maps.Marker({
+						position: point,
+						icon: smicon,
+						map: map
+					});
 					//document.getElementById('resultDiv').innerHTML = "";
 					document.editplaces.save1.disabled = "";
 					document.editplaces.save2.disabled = "";
-					var childicon = new GIcon();
-					childicon.image = "http://labs.google.com/ridefinder/images/mm_20_green.png";
-					childicon.shadow = "http://labs.google.com/ridefinder/images/mm_20_shadow.png";
-					childicon.iconSize = new GSize(12, 20);
-					childicon.shadowSize = new GSize(22, 20);
-					childicon.iconAnchor = new GPoint(6, 20);
-					childicon.infoWindowAnchor = new GPoint(5, 1);
-					for (i=0; i < childplaces.length; i++) {
+					var childicon = "https://maps.gstatic.com/mapfiles/ridefinder-images/mm_20_green.png";
+					/* for (i=0; i < childplaces.length; i++) {
 						map.addOverlay(childplaces[i]);
-					}
+					} */
 			}});
-			GEvent.addListener(map, "moveend", function() {
+			map.addListener("moveend", function() {
 				document.editplaces.NEW_ZOOM_FACTOR.value = map.getZoom();
 			});
 <?php if(($place_long == null) || ($place_lati == null)) { ?>
-			map.setCenter(new GLatLng( <?php echo $parent_lati, ", ", $parent_long, "), ", $zoomfactor;?>, G_NORMAL_MAP );
+			map.setCenter({ lat: <?=$parent_lati?>, lng: <?=$parent_long?> });
 <?php }else { ?>
-			map.setCenter(new GLatLng( <?php echo $place_lati, ", ", $place_long, "), ", $zoomfactor;?>, G_NORMAL_MAP );
+			map.setCenter({ lat: <?=$place_lati?>, lng: <?=$place_long?> });
 <?php } ?>
-
+			map.setZoom(<?=$zoomfactor?>);
 <?php   if ($level < 3) { ?>
-			var childicon = new GIcon();
-			childicon.image = "http://labs.google.com/ridefinder/images/mm_20_green.png";
-			childicon.shadow = "http://labs.google.com/ridefinder/images/mm_20_shadow.png";
-			childicon.iconSize = new GSize(12, 20);
-			childicon.shadowSize = new GSize(22, 20);
-			childicon.iconAnchor = new GPoint(6, 20);
-			childicon.infoWindowAnchor = new GPoint(5, 1);
+			var childicon = "https://maps.gstatic.com/mapfiles/ridefinder-images/mm_20_green.png";
 <?php
 			$rows=
 				PGV_DB::prepare("SELECT pl_place, pl_lati, pl_long, pl_icon FROM {$TBLPREFIX}placelocation WHERE pl_parent_id=?")
@@ -551,59 +523,49 @@ if ($action=="add") {
 						$row->pl_long = abs($pl_long);
 					} elseif ($pl_long < 0) {
 						$row->pl_long = "-".abs($pl_long);
-					}
+					} ?>
 
-					echo "	 	 	 childplaces.push(new GMarker(new GLatLng(", $row->pl_lati, ", ", $row->pl_long, "), childicon));\n";
-					echo "			 GEvent.addListener(childplaces[", $i, "], \"click\", function() {\n";
-					echo "             childplaces[", $i, "].openInfoWindowHtml(\"<td width='100%'><div class='iwstyle' style='width: 250px;'><br />", addslashes($row->pl_place), "<br /><br /></div>\")});\n";
-					echo "	 	 	 map.addOverlay(childplaces[", $i, "]);\n";
-					echo "	 	 	 bounds.extend(new GLatLng(", $row->pl_lati, ", ", $row->pl_long, "));\n";
+			 	childplaces.push(new google.maps.Marker({
+					position: {lat: <?=$row->pl_lati?>, lng: <?=$row->pl_long?>},
+					icon: childicon,
+					title: "<?=addslashes($row->pl_place)?>",
+					map: map
+				}));
+			  	bounds.extend({ lat: <?=$row->pl_lati?>, lng: <?=$row->pl_long?>});
+			  	map.setCenter(bounds.getCenter());
+<?php
 					$i++;
-					echo "	 	 	 map.setCenter(bounds.getCenter());\n";
 				}
 			}
 		}
 		if ($show_marker == true) {
 			if (($place_icon == NULL) || ($place_icon == "")) {
 				if (($place_lati == null) || ($place_long == null)) {?>
-					var icon_type = new GIcon();
-					icon_type.image = "modules/googlemap/images/marker_yellow.png";
-					icon_type.shadow = "modules/googlemap/images/shadow50.png";
-					icon_type.iconSize = new GSize(20, 34);
-					icon_type.shadowSize = new GSize(37, 34);
-					icon_type.iconAnchor = new GPoint(10, 34);
-					icon_type.infoWindowAnchor = new GPoint(5, 1);
-					map.addOverlay(new GMarker(new GLatLng(<?php echo $parent_lati, ", ", $parent_long;?>), icon_type));
+					var icon_type = "modules/googlemap/images/marker_yellow.png";
+					new google.maps.Marker({ position: {lat: <?=$parent_lati?>, lng: <?=$parent_long?>}, icon: icon_type, map: map});
 <?php			} else { ?>
-					map.addOverlay(new GMarker(new GLatLng(<?php echo $place_lati, ", ", $place_long;?>)));
+					new google.maps.Marker({ position: {lat: <?=$place_lati?>, lng: <?=$place_long?>}, icon: icon_type, map: map});
 <?php			}
 			}
 			else { ?>
-			var flagicon = new GIcon();
-			flagicon.image = "<?php echo $place_icon;?>";
-			flagicon.shadow = "modules/googlemap/images/flag_shadow.png";
-			flagicon.iconSize = new GSize(25, 15);
-			flagicon.shadowSize = new GSize(35, 45);
-			flagicon.iconAnchor = new GPoint(1, 45);
-			flagicon.infoWindowAnchor = new GPoint(5, 1);
+			var flagicon = "<?=$place_icon?>";
 <?php			if (($place_lati == null) || ($place_long == null)) {?>
-			map.addOverlay(new GMarker(new GLatLng(<?php echo $parent_lati, ", ", $parent_long;?>), flagicon));
+				new google.maps.Marker({ position: {lat: <?=$parent_lati?>, lng: <?=$parent_long?>}, icon: flagicon, map: map});
 <?php			} else { ?>
-			map.addOverlay(new GMarker(new GLatLng(<?php echo $place_lati, ", ", $place_long;?>), flagicon));
+				new google.maps.Marker({ position: {lat: <?=$place_lati?>, lng: <?=$place_long?>}, icon: flagicon, map: map});
 <?php			}
 			}
 		} ?>
 			// Our info window content
-		}
 	}
 
 	function edit_close() {
 		if (window.opener.showchanges) window.opener.showchanges();
-		GUnload();
+		// GUnload();
 		window.close();
 	}
 
-	function setLoc(lat, lng) {
+	function setLoc(lat, lng, zoom) {
 		prec = 20;
 		for (i=0;i<document.editplaces.NEW_PRECISION.length;i++) {
 			if (document.editplaces.NEW_PRECISION[i].checked) {
@@ -625,73 +587,86 @@ if ($action=="add") {
 			document.editplaces.NEW_PLACE_LONG.value = lng.toFixed(prec);
 			document.editplaces.LONG_CONTROL.value = "PL_E";
 		}
-		newval = new GLatLng (lat.toFixed(prec), lng.toFixed(prec));
+		document.editplaces.NEW_ZOOM_FACTOR.value = zoom;
+		newval = new google.maps.LatLng (lat.toFixed(prec), lng.toFixed(prec));
 		updateMap();
 	}
 
-	function createMarker(point, name, coordinates) {
-		var icon = new GIcon();
-		icon.image = "modules/googlemap/images/marker_yellow.png";
-		icon.shadow = "modules/googlemap/images/shadow50.png";
-		icon.iconSize = new GSize(20, 34);
-		icon.shadowSize = new GSize(37, 34);
-		icon.iconAnchor = new GPoint(10, 34);
-		icon.infoWindowAnchor = new GPoint(5, 1);
+	function createMarker(point, name, zoom) {
 
-		var marker = new GMarker(point, icon);
-		GEvent.addListener(marker, "click", function() {
-		marker.openInfoWindowHtml(name + "<br /><a href=\"javascript:;\" onclick=\"setLoc(" + coordinates[1] + ", " + coordinates[0] + ");\"><?php
- echo PrintReady($pgv_lang["pl_use_this_value"])?></a></div>");
+		var marker = new google.maps.Marker({
+			position: point,
+			draggable:true,
+			icon: "modules/googlemap/images/marker_yellow.png",
+			title: name + ': <?=PrintReady($pgv_lang["pl_use_this_value"])?> ' + point.lat() + ', ' + point.lng(),
+			map: map
+		});
+		marker.addListener("click", function() {
+			setLoc(point.lat(), point.lng(), zoom);
+		});
+		google.maps.event.addListener(marker, 'dragend', function(){
+			var newpos = marker.getPosition();
+			setLoc(newpos.lat(), newpos.lng(), zoom);
 		});
 		return marker;
 	}
 
 	function change_icon() {
-	window.open('module.php?mod=googlemap&pgvaction=flags&countrySelected=<?php echo $selected_country ?>', '_blank', 'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1');
-	return false;
+		window.open('module.php?mod=googlemap&pgvaction=flags&countrySelected=<?php echo $selected_country ?>', '_blank', 'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1');
+		return false;
 	}
 
 	function remove_icon() {
-	document.editplaces.icon.value = "";
-	document.getElementById('flagsDiv').innerHTML = "<a href=\"javascript:;\" onclick=\"change_icon();return false;\"><?php echo $pgv_lang["pl_change_flag"]?></a>";
+		document.editplaces.icon.value = "";
+		document.getElementById('flagsDiv').innerHTML = "<a href=\"javascript:;\" onclick=\"change_icon();return false;\"><?php echo $pgv_lang["pl_change_flag"]?></a>";
 	}
 
-	function addAddressToMap(response) {
-	   map.clearOverlays();
-	   var bounds = new GLatLngBounds();
-	   if (!response || response.Status.code != 200) {
-	 	 alert("<?php echo $pgv_lang["pl_no_places_found"];?>");
+	function addAddressToMap(response, status) {
+	   // map.clearOverlays();
+	   var bounds = new google.maps.LatLngBounds();
+           var place, point, name, marker;
+	   if (status != google.maps.GeocoderStatus.OK) {
+	 	 alert("<?=$pgv_lang["pl_no_places_found"]?>");
 	   } else {
-		if(response.Placemark.length>0) {
-			for (i=0;i<response.Placemark.length;i++) {
-			place = response.Placemark[i];
-			point = new GLatLng(place.Point.coordinates[1], place.Point.coordinates[0]);
-			var name = '<td width=\'100%\'><div class=\'iwstyle\' style=\'width: 250px;\'>' + place.address + '<br />' + '<b><?php echo $pgv_lang["pl_country"]?>:</b> ' + place.AddressDetails.Country.CountryNameCode;
-			var marker = createMarker(point, name, place.Point.coordinates);
-			map.addOverlay(marker);
-			bounds.extend(point);
+		if(response.length>0) {
+			for (i=0;i<response.length;i++) {
+				place = response[i];
+				point = place.geometry.location;
+				name = place.formatted_address;
+				zoomlevel = Math.round(Math.log(360 / (place.geometry.viewport.f.b - place.geometry.viewport.f.f) ) / Math.LN2) - 2;
+				marker = createMarker(point, name, zoomlevel);
+				// map.addOverlay(marker);
+				if (place.geometry.viewport) {
+					bounds.union(place.geometry.viewport);
+				} else {
+					bounds.extend(point);
+				}
 			}
-			zoomlevel = map.getBoundsZoomLevel(bounds)-1;
-			if (zoomlevel < <?php echo $GOOGLEMAP_MIN_ZOOM;?>) zoomlevel = <?php echo $GOOGLEMAP_MIN_ZOOM;?>;
-			if (zoomlevel > <?php echo $GOOGLEMAP_MAX_ZOOM;?>) zoomlevel = <?php echo $GOOGLEMAP_MAX_ZOOM;?>;
+			map.fitBounds(bounds);
+			zoomlevel = map.getZoom()-1;
+			if (zoomlevel < <?=$GOOGLEMAP_MIN_ZOOM?>) zoomlevel = <?=$GOOGLEMAP_MIN_ZOOM?>;
+			if (zoomlevel > <?=$GOOGLEMAP_MAX_ZOOM?>) zoomlevel = <?=$GOOGLEMAP_MAX_ZOOM?>;
 			if (document.editplaces.NEW_ZOOM_FACTOR.value<zoomlevel) {
 				zoomlevel = document.editplaces.NEW_ZOOM_FACTOR.value;
-				if (zoomlevel < <?php echo $GOOGLEMAP_MIN_ZOOM;?>) zoomlevel = <?php echo $GOOGLEMAP_MIN_ZOOM;?>;
-				if (zoomlevel > <?php echo $GOOGLEMAP_MAX_ZOOM;?>) zoomlevel = <?php echo $GOOGLEMAP_MAX_ZOOM;?>;
+				if (zoomlevel < <?=$GOOGLEMAP_MIN_ZOOM?>) zoomlevel = <?=$GOOGLEMAP_MIN_ZOOM?>;
+				if (zoomlevel > <?=$GOOGLEMAP_MAX_ZOOM?>) zoomlevel = <?=$GOOGLEMAP_MAX_ZOOM?>;
 
 			}
-			map.setCenter(bounds.getCenter(), zoomlevel);
 		}
 	  }
 	 }
 
 	function showLocation_level(address) {
+		<?php if (isset($countries[$place_name])) echo "address = '".$countries[$place_name]."';\n"; ?>
 		address += '<?php if ($level>0) echo ", ", addslashes(PrintReady(implode(', ', array_reverse($where_am_i, true))));?>';
-		geocoder.getLocations(address, addAddressToMap);
+		if (document.editplaces.NEW_PRECISION[1].checked || document.editplaces.NEW_PRECISION[2].checked)
+			geocoder.geocode({ componentRestrictions: { administrativeArea: address }}, addAddressToMap);
+		else
+			geocoder.geocode({ address: address }, addAddressToMap);
 	}
 
 	function showLocation_all(address) {
-		geocoder.getLocations(address, addAddressToMap);
+		geocoder.geocode({ address: address }, addAddressToMap);
 	}
 
 	function updatewholename() {
@@ -738,16 +713,17 @@ if ($action=="add") {
 		</td>
 	</tr>
 	<tr>
-		<td class="descriptionbox"><?php print_help_link("PLE_PLACES_help", "qm", "PLE_PLACES");?><?php echo $factarray["PLAC"];?></td>
-		 <td class="optionbox"><input type="text" id="new_pl_name" name="NEW_PLACE_NAME" value="<?php echo htmlspecialchars($place_name) ?>" size="25" class="address_input" tabindex="<?php echo ++$i;?>" />
+		<td class="descriptionbox"><?php print_help_link("PLE_PLACES_help", "qm", "PLE_PLACES"); echo $factarray["PLAC"]?></td>
+		<td class="optionbox"><input type="text" id="new_pl_name" name="NEW_PLACE_NAME" value="<?=htmlspecialchars($place_name)?>" size="25" class="address_input" tabindex="<?= ++$i?>" />
 		<div id="INDI_PLAC_pop" style="display: inline;">
-		<?php print_specialchar_link("NEW_PLACE_NAME", false);?></div>
-		<label for="new_pl_name"><a href="javascript:;" onclick="showLocation_level(document.getElementById('new_pl_name').value); return false">&nbsp;<?php echo $pgv_lang["pl_search_level"]?></a></label>&nbsp;&nbsp;|
-	 	<label for="new_pl_name"><a href="javascript:;" onclick="showLocation_all(document.getElementById('new_pl_name').value); return false">&nbsp;<?php echo $pgv_lang["pl_search_all"]?></a></label>
+			<?=print_specialchar_link("NEW_PLACE_NAME", false)?>
+		</div>
+		<label for="new_pl_name"><a href="javascript:;" onclick="showLocation_level(document.getElementById('new_pl_name').value); return false">&nbsp;<?=$pgv_lang["pl_search_level"]?></a></label>&nbsp;&nbsp;|
+	 	<label for="new_pl_name"><a href="javascript:;" onclick="showLocation_all(document.getElementById('new_pl_name').value); return false">&nbsp;<?=$pgv_lang["pl_search_all"]?></a></label>
 		</td>
 	</tr>
 	<tr>
-		<td class="descriptionbox"><?php print_help_link("PLE_PRECISION_help", "qm", "PLE_PRECISION");?><?php echo $pgv_lang["pl_precision"];?></td>
+		<td class="descriptionbox"><?php print_help_link("PLE_PRECISION_help", "qm", "PLE_PRECISION"); echo $pgv_lang["pl_precision"]?></td>
 		<?php
 			$exp = explode(".", $place_lati);
 			if (isset($exp[1])) {
