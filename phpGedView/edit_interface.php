@@ -982,11 +982,11 @@ case 'addnoteaction':
 		$newlines = preg_split("/\r?\n/", $NOTE, -1);
 		for ($k=0; $k<count($newlines); $k++) {
 			if ( $k==0 && count($newlines)>1) {
-				$newgedrec = "0 @XREF@ NOTE $newlines[$k]\n";
+				$newgedrec = "0 @XREF@ NOTE ".$newlines[$k]."\n";
 			}else if ( $k==0 ) {
-				$newgedrec = "0 @XREF@ NOTE $newlines[$k]\n1 CONT\n";
+				$newgedrec = "0 @XREF@ NOTE ".$newlines[$k]."\n1 CONT\n";
 			} else {
-				$newgedrec .= "1 CONT $newlines[$k]\n";
+				$newgedrec .= "1 CONT ".$newlines[$k]."\n";
 			}
 		}
 	}
@@ -1474,9 +1474,9 @@ case 'update':
 				$newlines = preg_split("/\r?\n/", $NOTE, -1 );
 				for ($k=0; $k<count($newlines); $k++) {
 					if ($k==0 && count($newlines)>1) {
-						$gedlines[$k] = "0 @$pid@ NOTE $newlines[$k]\n";
+						$gedlines[$k] = "0 @$pid@ NOTE ".$newlines[$k]."\n";
 					} else {
-						$gedlines[$k] = " 1 CONT $newlines[$k]\n";
+						$gedlines[$k] = " 1 CONT ".$newlines[$k]."\n";
 					}
 				}
 			}
@@ -1540,9 +1540,9 @@ case 'update':
 					$newlines = preg_split("/\r?\n/", $NOTE, -1 );
 					for ($k=0; $k<count($newlines); $k++) {
 						if ($k==0 && count($newlines)>1) {
-							$gedlines[$k] = "0 @$pid@ NOTE $newlines[$k]\n";
+							$gedlines[$k] = "0 @$pid@ NOTE ".$newlines[$k]."\n";
 						} else {
-							$gedlines[$k] = " 1 CONT $newlines[$k]\n";
+							$gedlines[$k] = " 1 CONT ".$newlines[$k]."\n";
 						}
 					}
 				}

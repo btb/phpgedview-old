@@ -2,7 +2,7 @@ PHPGEDVIEW LANGUAGE FILE CHANGELOG
 
 # $Id$
 
-For information on changes prior to the release of PGV 4.2.0 (16 Nov. 2008), please 
+For information on changes prior to the release of PGV 4.2.0 (16 Nov. 2008), please
 refer to the files in ZIP file "languages/CHANGELOG_bef.20081117.zip"
 
 Use this file to follow the changes made to the English language files
@@ -43,12 +43,16 @@ VERSION 4.3.0
 
 ?$pgv_lang["whatever"]								dd Monthname, year		Change codes and comments
 ----------------------------------------------------------------------------------------
+*$pgv_lang["USE_GEONAMES"]							06 Dec 2016				W
+*$pgv_lang["USE_GEONAMES_help"]						06 Dec 2016				W
++$pgv_lang["GEOCODE_KEY"]							06 Dec 2016				A
++$pgv_lang["GEOCODE_KEY_help"]						06 Dec 2016				A
 +$pgv_lang["GOOGLE_ANALYTICS_help"]		   			22 Aug 2011				A
 +$pgv_lang["USE_GOOGLE_ANALYTICS_help"]	   			22 Aug 2011				A
 +$pgv_lang["PGV_GOOGLE_ANALYTICS_help"]	   			22 Aug 2011				A
 +$pgv_lang["PIWIK_ANALYTICS_help"]		   			22 Aug 2011				A
 +$pgv_lang["USE_PIWIK_ANALYTICS_help"]	   			22 Aug 2011				A
-+$pgv_lang["PGV_PIWIK_URL_help"]					22 Aug 2011				A	
++$pgv_lang["PGV_PIWIK_URL_help"]					22 Aug 2011				A
 +$pgv_lang["PGV_PIWIK_SITE_help"]		   			22 Aug 2011				A
 +$pgv_lang["CLUSTRMAPS_ANALYTICS_help"]	   			22 Aug 2011				A
 +$pgv_lang["USE_CLUSTRMAPS_ANALYTICS_help"]			22 Aug 2011				A
@@ -61,7 +65,7 @@ VERSION 4.2.4
 ----------------------------------------------------------------------------------------
 +$pgv_lang["croatian"]								23 Mar 2010				A
 *$pgv_lang["add_faq_pgvLangRefs"]					07 Feb 2010				W	Added example of a reference to a "PGV_..." constant
-*$pgv_lang["um_bu_logs"]							24 Jan 2010				W 
+*$pgv_lang["um_bu_logs"]							24 Jan 2010				W
 *$pgv_lang["USE_SILHOUETTE_help"]					05 Jan 2010				w added missing '>'
 *$pgv_lang["USE_SILHOUETTE_help"]					03 Jan 2010				W
 +$pgv_lang["USE_SILHOUETTE"]						02 Jan 2010				A
@@ -76,7 +80,7 @@ VERSION 4.2.3
 +$pgv_lang["lang_name_english (us)"]				04 Nov 2009				A
 -$pgv_lang["ALLOW_REMEMBER_ME_help"]				30 Sep 2009				D
 -$pgv_lang["META_SURNAME_KEYWORDS"]					27 Sep 2009				D
--$pgv_lang["META_SURNAME_KEYWORDS_help"]			27 Sep 2009				D	
+-$pgv_lang["META_SURNAME_KEYWORDS_help"]			27 Sep 2009				D
 *$pgv_lang["PGV_SMTP_HOST_help"]					10 Aug 2009				W
 *$pgv_lang["PGV_SMTP_SSL_help"]						10 Aug 2009				W
 

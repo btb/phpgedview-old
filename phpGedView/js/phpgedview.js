@@ -2,7 +2,7 @@
  * Common javascript functions
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2012  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2016  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -516,7 +516,7 @@ function valid_date(datefield) {
 	}
 
 	// 2 passes, to catch things like "FROM 1860.11.17 TO 1860.11.25"
-	for (var pass=1; pass<=2; pass++) {	
+	for (var pass=1; pass<=2; pass++) {
 		// e.g. 1860 NOV 17  (i.e., year and day switched, optional text before and after date)
 		if (datestr.match(/(.*) (\d{4}) (\w+) (\d{1,2}) (.*)/)) {
 		 	day = parseInt(RegExp.$4, 10);
@@ -524,7 +524,7 @@ function valid_date(datefield) {
 			 	datestr = RegExp.$1+" "+RegExp.$4+" "+RegExp.$3+" "+RegExp.$2+" "+RegExp.$5;
 		 	}
 	 	}
-	
+
 	 	// e.g. 1860.11.17  (1 or 2-digit month and day permitted, optional text before and after date)
 	 	if (datestr.match(/(.*) (\d{4})[^\d](\d{1,2})[^\d](\d{1,2}) (.*)/)) {
 	 	 	day = parseInt(RegExp.$4, 10);
@@ -533,7 +533,7 @@ function valid_date(datefield) {
 			 	datestr = RegExp.$1+" "+RegExp.$4+" "+months[mth-1]+" "+RegExp.$2+" "+RegExp.$5;
 		 	}
 		}
-	
+
 	 	// e.g. 18601117  (2-digit month and day required, optional text before and after date)
 	 	if (datestr.match(/(.*) (\d{4})(\d\d)(\d\d) (.*)/)) {
 	 	 	day = parseInt(RegExp.$4, 10);
@@ -542,7 +542,7 @@ function valid_date(datefield) {
 			 	datestr = RegExp.$1+" "+RegExp.$4+" "+months[mth-1]+" "+RegExp.$2+" "+RegExp.$5;
 		 	}
 		}
-	
+
 		// e.g. 17.11.1860, 03/04/2005 or 1999-12-31.  Use locale settings where DMY order is ambiguous.
 		srch = /(.*) (\d+)[^\d](\d+)[^\d](\d+) (.*)/i;
 	 	if (srch.exec(datestr)) {
@@ -597,7 +597,7 @@ function valid_date(datefield) {
 		datestr=datestr+" ("+datephrase;
 	}
 	datefield.value=datestr;
-} 
+}
 
 var oldheight = 0;
 var oldwidth = 0;
@@ -1051,7 +1051,7 @@ function loadHandler() {
 		}
 }
 var IE = document.all?true:false;
-if (!IE) document.captureEvents(Event.MOUSEMOVE|Event.KEYDOWN|Event.KEYUP);
+// if (!IE) document.captureEvents(Event.MOUSEMOVE|Event.KEYDOWN|Event.KEYUP);
 document.onmousemove = getMouseXY;
 document.onkeyup = checkKeyPressed;
 

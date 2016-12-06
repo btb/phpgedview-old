@@ -144,7 +144,14 @@ jQuery(document).ready(function($){
 		extraParams: {field:'PLAC'},
 		width: 400,
 		minChars: 2
-	});
+	}); /* .result(function(event, data, val){
+		if (data[1] != undefined && data[1] != "0"){
+                	$('tr[id^="LATI"]').show();
+			$('tr[id^="LONG"]').show();
+			$('input[id^="LATI"]').val(data[1]).trigger('blur');
+                        $('input[id^="LONG"]').val(data[2]).trigger('blur');
+		}
+        }); */
 	// PLAC : splitted (mainly for search.php)
 	$("input[name=place], input[id=birthplace], input[id=marrplace], input[id=deathplace]").autocomplete("autocomplete.php", {
 		extraParams: {
