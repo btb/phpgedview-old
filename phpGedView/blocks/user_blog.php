@@ -5,7 +5,7 @@
  * This block allows users to have their own blog
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2016  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -77,8 +77,8 @@ function print_user_news($block=true, $config="", $side, $index) {
 			if (isset($pgv_lang[$match[1]])) {
 				$news["text"] = str_replace($match[0], $pgv_lang[$match[1]], $news["text"]);
 			}
-			if (isset($$match[1])) {
-				$news["text"] = str_replace($match[0], $$match[1], $news["text"]);
+			if (isset(${$match[1]})) {
+				$news["text"] = str_replace($match[0], ${$match[1]}, $news["text"]);
 			}
 		}
 		$trans = get_html_translation_table(HTML_SPECIALCHARS);

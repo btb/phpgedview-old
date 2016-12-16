@@ -95,8 +95,8 @@ function PGVReportSHandler($attrs) {
 
 	$access = $PRIV_PUBLIC;
 	if (isset($attrs["access"])) {
-		if (isset($$attrs["access"])) {
-			$access = $$attrs["access"];
+		if (isset(${$attrs["access"]})) {
+			$access = ${$attrs["access"]};
 		}
 	}
 	$report_array["access"] = $access;
