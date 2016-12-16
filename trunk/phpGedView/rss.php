@@ -98,7 +98,7 @@ if(!loadCachedBlock($cacheControl, $rssStyle)){
 	$feed->descriptionHtmlSyndicated = true;
 	//$feed->descriptionTruncSize = 500; // does not make sense to truncate HTML since it will result in unpredictable output
 	$feed->link = $SERVER_URL;
-	$queryString = normalize_query_string(cleanQueryString() . '&amp;lang=' . $LANGUAGE);
+	$queryString = normalize_query_string($queryString . '&amp;lang=' . $LANGUAGE);
 	$syndURL = $SERVER_URL."rss.php".$queryString;
 	$feed->syndicationURL = $syndURL;
 
