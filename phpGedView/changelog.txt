@@ -9,6 +9,7 @@
 =====================================================================
 
 Version 4.3.0
+ - Fixed: Mysql 5.7 error "1171 All parts of a PRIMARY KEY must be NOT NULL" (canajun2eh)
  - Fixed: Several instances of "array to string conversion" errors (canajun2eh)
  - Fixed: Call to undefined function cleanQueryString() in rss.php (canajun2eh)
  - Updated: Improved support for Googlemaps version 3 (Leonhard Zachl)
