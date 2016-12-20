@@ -16,7 +16,7 @@
  *
  * phpGedView: Genealogy Viewer
  * Copyright (C) 2009 Greg Roach
- * Copyright (C) 2010 to 2015  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2010 to 2016  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -268,7 +268,7 @@ if (!self::table_exists("{$TBLPREFIX}sources") || $sqlite && (!self::column_exis
 	self::exec(
 		"CREATE TABLE {$TBLPREFIX}sources (".
 		" s_id     ".self::$COL_XREF."          NOT NULL,".
-		" s_file   ".self::$COL_FILE."              NULL,".
+		" s_file   ".self::$COL_FILE."          NOT NULL,".
 		" s_name   ".self::$VARCHAR_TYPE."(255)     NULL,".
 		" s_gedcom ".self::$LONGTEXT_TYPE."         NULL,".
 		" s_dbid   ".self::$CHAR_TYPE."(1)          NULL,".
