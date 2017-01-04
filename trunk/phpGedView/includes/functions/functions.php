@@ -6,7 +6,7 @@
  * routines and sorting functions.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2016  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -341,9 +341,23 @@ function update_site_config($newconfig, $return = false) {
 		update_config($configtext, $setting, $value);
 	}
 
-	//-- check if the configtext is valid PHP
-	$res = @eval($configtext);
+	//-- check if the configtext, excluding the PHP open and PHP close tags, is valid PHP
+	$tempConfigText = $configtext;
+	if (strtoupper(substr($tempConfigText, 0, 5)) == '<?PHP') {
+		$tempConfigText = substr($tempConfigText, 5);	// Get rid of PHP open tag
+	}
+	$tempConfigText = trim($tempConfigText);	// Get rid of leading and trailing white spaces
+	if (substr($tempConfigText, -2) == '?>') {
+		$tempConfigText = substr($tempConfigText, 0, -2);	// Get rid of PHP close tag
+	}
+	$tempConfigText = str_ireplace('include', '// include', $tempConfigText);
+	$tempConfigText = str_ireplace('require', '// require', $tempConfigText);	// Make sure we don't escape from the config file
+
+	$res = @eval($tempConfigText);
 	if ($res===false) {
+		$error['msg'] = "There was an error in the generated config.php.<br />".htmlentities($configtext);
+		$errors[] = $error;
+	} else {
 		if ($return) {
 			return $configtext;
 		}
@@ -360,9 +374,6 @@ function update_site_config($newconfig, $return = false) {
 				check_in($logline, "config.php", "");
 			}
 		}
-	} else {
-		$error['msg'] = "There was an error in the generated config.php. ".htmlentities($configtext);
-		$errors[] = $error;
 	}
 
 	if (count($errors)>0) {

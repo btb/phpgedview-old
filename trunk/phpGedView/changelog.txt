@@ -9,6 +9,8 @@
 =====================================================================
 
 Version 4.3.0
+ - Fixed: PHP 7 error when SALT is missing in call to crypt() function (canajun2eh)
+ - Fixed: PHP 7 error in eval() function when it's fed the config.php file (canajun2eh)
  - Fixed: Mysql 5.7 error "1171 All parts of a PRIMARY KEY must be NOT NULL" (canajun2eh)
  - Fixed: Several instances of "array to string conversion" errors (canajun2eh)
  - Fixed: Call to undefined function cleanQueryString() in rss.php (canajun2eh)

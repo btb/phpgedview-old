@@ -3,7 +3,7 @@
  * Installation and Configuration
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2008 to 2011  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2008 to 2017  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -173,12 +173,12 @@ switch($step) {
 			try {
 				PGV_DB::disconnect(); // from the connect defined in config.php
 				PGV_DB::createInstance(
-					$_SESSION['install_config']['DBTYPE'], 
-					$_SESSION['install_config']['DBHOST'], 
-					$_SESSION['install_config']['DBPORT'], 
-					$_SESSION['install_config']['DBNAME'], 
-					$_SESSION['install_config']['DBUSER'], 
-					$_SESSION['install_config']['DBPASS'], 
+					$_SESSION['install_config']['DBTYPE'],
+					$_SESSION['install_config']['DBHOST'],
+					$_SESSION['install_config']['DBPORT'],
+					$_SESSION['install_config']['DBNAME'],
+					$_SESSION['install_config']['DBUSER'],
+					$_SESSION['install_config']['DBPASS'],
 					$_SESSION['install_config']['DB_UTF8_COLLATION']
 				);
 			} catch (PDOException $ex) {
@@ -240,7 +240,7 @@ switch($step) {
 		if (isset($_POST['NEW_PGV_MEMORY_LIMIT'])) $_SESSION['install_config']['PGV_MEMORY_LIMIT'] = $_POST['NEW_PGV_MEMORY_LIMIT'];
 		if (isset($_POST['NEW_MAX_VIEWS'])) $_SESSION['install_config']['MAX_VIEWS'] = $_POST['NEW_MAX_VIEWS'];
 		if (isset($_POST['NEW_MAX_VIEW_TIME'])) $_SESSION['install_config']['MAX_VIEW_TIME'] = $_POST['NEW_MAX_VIEW_TIME'];
-		
+
 		if (isset($_POST["NEW_USE_GOOGLE_ANALYTICS"])) $_SESSION['install_config']['USE_GOOGLE_ANALYTICS'] = $_POST["NEW_USE_GOOGLE_ANALYTICS"]=="yes"?true:false;
 		if (isset($_POST["NEW_PGV_GOOGLE_ANALYTICS"])) $_SESSION['install_config']['PGV_GOOGLE_ANALYTICS'] = $_POST["NEW_PGV_GOOGLE_ANALYTICS"];
 		if (isset($_POST["NEW_USE_PIWIK_ANALYTICS"])) $_SESSION['install_config']['USE_PIWIK_ANALYTICS'] = $_POST["NEW_USE_PIWIK_ANALYTICS"]=="yes"?true:false;
@@ -271,7 +271,7 @@ switch($step) {
 
 			$config_array = $_SESSION['install_config'];
 			$config_array['CONFIGURED'] = true;
-			
+
 			// Clear SERVER_URL and PGV_CLUSTRMAPS_SITE when they are identical to the calculated value
 			$GUESS_URL = PGV_SERVER_NAME.PGV_SCRIPT_PATH;
 			if (!isset($config_array['SERVER_URL'])) $config_array['SERVER_URL'] = '';
@@ -343,7 +343,7 @@ switch($step) {
 		$lastname =safe_POST('lastname');
 		if ($username && $pass1 && $firstname && $lastname) {
 			if ($pass1==$pass2) {
-				if ($user_id=create_user($username, crypt($pass1))) {
+				if ($user_id=create_user($username, crypt($pass1, PGV_SALT))) {
 					set_user_setting($user_id, 'firstname',            $firstname);
 					set_user_setting($user_id, 'lastname',             $lastname);
 					set_user_setting($user_id, 'canadmin',             'Y');
@@ -766,7 +766,7 @@ function printConfigForm(){
 	if (isset($_SESSION['install_config']['PGV_MEMORY_LIMIT'])) $PGV_MEMORY_LIMIT = $_SESSION['install_config']['PGV_MEMORY_LIMIT'];
 	if (isset($_SESSION['install_config']['MAX_VIEWS'])) $MAX_VIEWS = $_SESSION['install_config']['MAX_VIEWS'];
 	if (isset($_SESSION['install_config']['MAX_VIEW_TIME'])) $MAX_VIEW_TIME = $_SESSION['install_config']['MAX_VIEW_TIME'];
-	
+
 	if (isset($_SESSION['install_config']['USE_GOOGLE_ANALYTICS'])) $USE_GOOGLE_ANALYTICS = $_SESSION['install_config']['USE_GOOGLE_ANALYTICS'];
 	if (isset($_SESSION['install_config']['PGV_GOOGLE_ANALYTICS'])) $PGV_GOOGLE_ANALYTICS = $_SESSION['install_config']['PGV_GOOGLE_ANALYTICS'];
 	if (isset($_SESSION['install_config']['USE_PIWIK_ANALYTICS'])) $USE_PIWIK_ANALYTICS= $_SESSION['install_config']['USE_PIWIK_ANALYTICS'];
@@ -915,7 +915,7 @@ function printConfigForm(){
 			</tr>
 			</table>
 		</div>
-	
+
 		<!--  smtp settings -->
 		<div id="conf_smtp" name="SMTP" class="indent">
 			<table class="width100">
