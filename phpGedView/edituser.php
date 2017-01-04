@@ -3,7 +3,7 @@
  * User Account Edit Interface.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2016  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -89,7 +89,7 @@ if ($form_action=='update') {
 			// Change password
 			if (!empty($form_pass1)) {
 				AddToLog('User changed password');
-				set_user_password(PGV_USER_ID, crypt($form_pass1));
+				set_user_password(PGV_USER_ID, crypt($form_pass1, PGV_SALT));
 			}
 			$old_firstname=get_user_setting(PGV_USER_ID, 'firstname');
 			$old_lastname =get_user_setting(PGV_USER_ID, 'lastname');

@@ -3,7 +3,7 @@
  * Startup and session logic
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2016  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -374,6 +374,9 @@ if (!$SEARCH_SPIDER && !isset($_SESSION['initiated']) && !isset($_SESSION['SOAP_
 } else {
 	// An existing session
 }
+
+// MD-5 SALT for use in the crypt() function: use 1st 8 bytes of session ID padded with junk (in case it's too short)
+define ('PGV_SALT', '$1$'.substr(session_id().'padpadpa', 0, 8).'$');
 
 // Set the active GEDCOM
 if (isset($_REQUEST['ged'])) {

@@ -3,7 +3,7 @@
  * Register as a new User or request new password if it is lost
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -112,7 +112,7 @@ switch ($action) {
 					$user_new_pw .= $passchars{$index};
 				}
 
-				set_user_password($user_id, crypt($user_new_pw));
+				set_user_password($user_id, crypt($user_new_pw, PGV_SALT));
 				set_user_setting($user_id, 'pwrequested', 1);
 
 				// switch language to user settings
@@ -374,7 +374,7 @@ switch ($action) {
 					print "<a href=\"javascript:history.back()\">".$pgv_lang["back"]."</a><br />";
 				}
 				else if ($user_password01 == $user_password02) {
-					if ($user_id=create_user($user_name, crypt($user_password01))) {
+					if ($user_id=create_user($user_name, crypt($user_password01, PGV_SALT))) {
 						set_user_setting($user_id, 'firstname',           $user_firstname);
 						set_user_setting($user_id, 'lastname',            $user_lastname);
 						set_user_setting($user_id, 'email',               $user_email);
@@ -382,7 +382,7 @@ switch ($action) {
 						set_user_setting($user_id, 'verified',            'no');
 						set_user_setting($user_id, 'verified_by_admin',    $REQUIRE_ADMIN_AUTH_REGISTRATION ? 'no' : 'yes');
 						set_user_setting($user_id, 'reg_timestamp',        date('U'));
-						set_user_setting($user_id, 'reg_hashcode',         md5(crypt($user_name)));
+						set_user_setting($user_id, 'reg_hashcode',         md5(crypt($user_name, PGV_SALT)));
 						set_user_setting($user_id, 'contactmethod',        "messaging2");
 						set_user_setting($user_id, 'defaulttab',           $GEDCOM_DEFAULT_TAB);
 						set_user_setting($user_id, 'visibleonline',        'Y');
