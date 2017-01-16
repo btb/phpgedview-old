@@ -436,7 +436,8 @@ switch ($action) {
 					pgvMail($user_email, $PHPGEDVIEW_EMAIL, str_replace("#SERVER_NAME#", PGV_SERVER_NAME.PGV_SCRIPT_PATH, $pgv_lang["mail01_subject"]), $mail_body);
 
 					// switch language to webmaster settings
-					$adm_lang=get_user_setting($WEBMASTER_EMAIL, 'language');
+					$adm_id = get_user_id($WEBMASTER_EMAIL);
+					$adm_lang=get_user_setting($adm_id, 'language');
 					if ($adm_lang && $LANGUAGE!=$adm_lang) loadLanguage($adm_lang, true);
 
 					$mail_body = "";
@@ -557,7 +558,8 @@ switch ($action) {
 				AddToLog("User verified: ".$user_name);
 
 				// switch language to webmaster settings
-				$adm_lang=get_user_setting($WEBMASTER_EMAIL, 'language');
+				$adm_id = get_user_id($WEBMASTER_EMAIL);
+				$adm_lang=get_user_setting($adm_id, 'language');
 				if ($adm_lang && $LANGUAGE!=$adm_lang) loadLanguage($adm_lang, true);
 
 				$mail_body = "";
