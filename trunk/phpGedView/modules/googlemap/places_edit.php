@@ -311,6 +311,12 @@ if ($action=="add") {
 		} else {
 			latitude = parseFloat(document.editplaces.NEW_PLACE_LATI.value).toFixed(prec);
 			longitude = parseFloat(document.editplaces.NEW_PLACE_LONG.value).toFixed(prec);
+			if(document.editplaces.LATI_CONTROL.value == "") {
+				document.editplaces.LATI_CONTROL.value = latitude >= 0 ? "PL_N" : "PL_S";
+			}
+			if(document.editplaces.LONG_CONTROL.value == "") {
+				document.editplaces.LONG_CONTROL.value = longitude >= 0 ? "PL_E" : "PL_W";
+			}
 			document.editplaces.NEW_PLACE_LATI.value = latitude;
 			document.editplaces.NEW_PLACE_LONG.value = longitude;
 			latitude = parseFloat(latitude);
@@ -429,70 +435,79 @@ if ($action=="add") {
 			// var map_type;
 			// map_type = new Map_type();
 			// map.addControl(map_type);
-			/* GEvent.addListener(map, 'maptypechanged', function()
+			/* google.maps.event.addListener(map, 'maptypechanged', function()
 			{
 				map_type.refresh();
 			}); */
-			google.maps.event.addListener(map, 'click', function(overlay, point) {
-				if (overlay) {
-					//probably not needed in this case
-					//map.removeOverlay(overlay);
-				} else if (point) {
-					// map.clearOverlays();
-					// Create our "tiny" yellow marker icon where the user clicked,
-					// The full size red marker is at the stored coordinates.
-					var smicon = "https://maps.gstatic.com/mapfiles/ridefinder-images/mm_20_yellow.png";
+			var update_timeout = null;
 
-					map.panTo(point);
-					prec = 20;
-					for (i=0;i<document.editplaces.NEW_PRECISION.length;i++) {
-						if (document.editplaces.NEW_PRECISION[i].checked) {
-							prec = document.editplaces.NEW_PRECISION[i].value;
-						}
-					}
+			map.addListener('click', function(event){
+			    update_timeout = setTimeout(function(){ //workarount of a bug? in API - click is triggered also if dblclick occured
+			        if (event) {
+			            // map.clearOverlays();
+			            // Create our "tiny" yellow marker icon where the user clicked,
+			            // The full size red marker is at the stored coordinates.
+			            var smicon = "https://maps.gstatic.com/mapfiles/ridefinder-images/mm_20_yellow.png";
 
-					if (point.y < 0.0) {
-						document.editplaces.NEW_PLACE_LATI.value = (point.y.toFixed(prec) * -1);
-						document.editplaces.LATI_CONTROL.value = "PL_S";
-					} else {
-						document.editplaces.NEW_PLACE_LATI.value = point.y.toFixed(prec);
-						document.editplaces.LATI_CONTROL.value = "PL_N";
-					}
-					if (point.x < 0.0) {
-						document.editplaces.NEW_PLACE_LONG.value = (point.x.toFixed(prec) * -1);
-						document.editplaces.LONG_CONTROL.value = "PL_W";
-					} else {
-						document.editplaces.NEW_PLACE_LONG.value = point.x.toFixed(prec);
-						document.editplaces.LONG_CONTROL.value = "PL_E";
-					}
-					newval = new google.maps.LatLng (point.y.toFixed(prec), point.x.toFixed(prec));
-					if (document.editplaces.icon.value == ""){
-						new google.maps.Marker({
-							position: newval,
-							map: map
-						});
-					} else {
-						new google.maps.Marker({
-                           				position: newval,
-                                			icon: document.editplaces.icon.value,
-                                			map: map
-                        			});
-					}
-					// Trying to get the smaller yellow icon drawn in front.
-					new google.maps.Marker({
-						position: point,
-						icon: smicon,
-						map: map
-					});
-					//document.getElementById('resultDiv').innerHTML = "";
-					document.editplaces.save1.disabled = "";
-					document.editplaces.save2.disabled = "";
-					var childicon = "https://maps.gstatic.com/mapfiles/ridefinder-images/mm_20_green.png";
-					/* for (i=0; i < childplaces.length; i++) {
-						map.addOverlay(childplaces[i]);
-					} */
-			}});
-			map.addListener("moveend", function() {
+			            map.panTo(event.latLng);
+			            var lat = event.latLng.lat();
+			            var lon = event.latLng.lng();
+			            prec = 20;
+			            for (i=0;i<document.editplaces.NEW_PRECISION.length;i++) {
+			                if (document.editplaces.NEW_PRECISION[i].checked) {
+			                    prec = document.editplaces.NEW_PRECISION[i].value;
+			                }
+			            }
+
+			            if (lat < 0.0) {
+			                document.editplaces.NEW_PLACE_LATI.value = (lat.toFixed(prec) * -1);
+			                document.editplaces.LATI_CONTROL.value = "PL_S";
+			            } else {
+			                document.editplaces.NEW_PLACE_LATI.value = lat.toFixed(prec);
+			                document.editplaces.LATI_CONTROL.value = "PL_N";
+			            }
+			            if (lon < 0.0) {
+			                document.editplaces.NEW_PLACE_LONG.value = (lon.toFixed(prec) * -1);
+			                document.editplaces.LONG_CONTROL.value = "PL_W";
+			            } else {
+			                document.editplaces.NEW_PLACE_LONG.value = lon.toFixed(prec);
+			                document.editplaces.LONG_CONTROL.value = "PL_E";
+			            }
+			            newval = new google.maps.LatLng (lat.toFixed(prec), lon.toFixed(prec));
+			            if (document.editplaces.icon.value == ""){
+			                new google.maps.Marker({
+			                    position: newval,
+			                    map: map
+			                });
+			            } else {
+			                new google.maps.Marker({
+			                    position: newval,
+			                    icon: document.editplaces.icon.value,
+			                    map: map
+			                });
+			            }
+			            // Trying to get the smaller yellow icon drawn in front.
+			            new google.maps.Marker({
+			                position: event.latLng,
+			                icon: smicon,
+			                map: map
+			            });
+			            //document.getElementById('resultDiv').innerHTML = "";
+			            document.editplaces.save1.disabled = "";
+			            document.editplaces.save2.disabled = "";
+			            var childicon = "https://maps.gstatic.com/mapfiles/ridefinder-images/mm_20_green.png";
+			            /* for (i=0; i < childplaces.length; i++) {
+                            map.addOverlay(childplaces[i]);
+                        } */
+			        }   
+			    }, 200);        
+			});
+
+			map.addListener('dblclick', function(event) {       
+			    clearTimeout(update_timeout);
+			});
+
+			map.addListener("zoom_changed", function() {
 				document.editplaces.NEW_ZOOM_FACTOR.value = map.getZoom();
 			});
 <?php if(($place_long == null) || ($place_lati == null)) { ?>

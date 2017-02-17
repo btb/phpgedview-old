@@ -37,7 +37,6 @@ class plugin extends base_plugin {
 	}
 
 	function updateRecord($xref, $gedrec) {
-		global $SURNAME_TRADITION;
 
 		preg_match('/^1 NAME (.*)/m', $gedrec, $match);
 		$wife_name=$match[1];
@@ -48,9 +47,6 @@ class plugin extends base_plugin {
 				$married_names[]="\n2 _MARNM ".str_replace('/', '', $wife_name).' /'.$surname.'/';
 				break;
 			case 'replace':
-				if ($SURNAME_TRADITION=='polish') {
-					$surname=preg_replace(array('/ski$/','/cki$/','/dzki$/'), array('ska', 'cka', 'dzka'), $surname);
-				}
 				$married_names[]="\n2 _MARNM ".preg_replace('!/.*/!', '/'.$surname.'/', $wife_name);
 				break;
 			}
@@ -59,6 +55,7 @@ class plugin extends base_plugin {
 	}
 
 	static function _surnames_to_add($xref, $gedrec) {
+		global $SURNAME_TRADITION;
 		$wife_surnames=self::_surnames($xref, $gedrec);
 		$husb_surnames=array();
 		$missing_surnames=array();
@@ -71,6 +68,9 @@ class plugin extends base_plugin {
 			}
 		}
 		foreach ($husb_surnames as $husb_surname) {
+            if ($SURNAME_TRADITION=='polish') {
+                $husb_surname=preg_replace(array('/ski$/','/cki$/','/dzki$/'), array('ska', 'cka', 'dzka'), $husb_surname);
+            }
 			if (!in_array($husb_surname, $wife_surnames)) {
 				$missing_surnames[]=$husb_surname;
 			}

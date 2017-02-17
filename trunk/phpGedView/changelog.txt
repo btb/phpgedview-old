@@ -9,6 +9,8 @@
 =====================================================================
 
 Version 4.3.0
+ - Updated: Various improvements to Googlemap module (tbabczynski)
+ - Fixed: Correct polish tradition of wife's surname in batch_update (tbabczynski)
  - Fixed: E-mails to admin sometimes sent in wrong language (canajun2eh)
  - Fixed: PHP 7 error when SALT is missing in call to crypt() function (canajun2eh)
  - Fixed: PHP 7 error in eval() function when it's fed the config.php file (canajun2eh)
