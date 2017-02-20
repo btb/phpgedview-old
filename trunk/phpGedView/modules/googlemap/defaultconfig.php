@@ -41,7 +41,7 @@ try {
 
 $GOOGLEMAP_ENABLED     = get_site_setting('GM_ENABLED',     '0'); // Enable or disable Googlemap
 
-$GOOGLEMAP_API_KEY     = get_site_setting('GM_API_KEY',     'Fill in your key here. Request key from http://www.google.com/apis/maps/');  // Fill in your key here. Request key from http://www.google.com/apis/maps/
+$GOOGLEMAP_API_KEY     = get_site_setting('GM_API_KEY',     'Fill in your key here. Request key from https://developers.google.com/maps/web/');  // Fill in your key here. Request key from https://developers.google.com/maps/web/
 
 $GOOGLEMAP_MAP_TYPE    = get_site_setting('GM_MAP_TYPE',    'G_NORMAL_MAP');  // possible values: G_PHYSICAL_MAP, G_NORMAL_MAP, G_SATELLITE_MAP or G_HYBRID_MAP.
 
@@ -56,7 +56,7 @@ $GOOGLEMAP_PRECISION_1 = get_site_setting('GM_PRECISION_1', '1');  // State leve
 $GOOGLEMAP_PRECISION_2 = get_site_setting('GM_PRECISION_2', '2');  // City level
 $GOOGLEMAP_PRECISION_3 = get_site_setting('GM_PRECISION_3', '3');  // Neighborhood level
 $GOOGLEMAP_PRECISION_4 = get_site_setting('GM_PRECISION_4', '4');  // House level
-$GOOGLEMAP_PRECISION_5 = get_site_setting('GM_PRECISION_5', '9');  // Max prcision level
+$GOOGLEMAP_PRECISION_5 = get_site_setting('GM_PRECISION_5', '9');  // Max precision level
 
 $GM_MAX_NOF_LEVELS     = get_site_setting('GM_MAX_NOF_LEVELS',    '4'); // Max nr of levels to use in Googlemap
 $GM_DEFAULT_TOP_VALUE  = get_site_setting('GM_DEFAULT_TOP_VALUE', '' ); // Default value, inserted when no location can be found
