@@ -166,7 +166,7 @@ function set_levelm($level, $parent) {
 }
 
 function create_map() {
-	global $GOOGLEMAP_API_KEY, $GOOGLEMAP_PH_XSIZE, $GOOGLEMAP_PH_YSIZE, $GOOGLEMAP_MAP_TYPE, $TEXT_DIRECTION, $pgv_lang;
+	global $GOOGLEMAP_API_KEY, $GOOGLEMAP_PH_XSIZE, $GOOGLEMAP_PH_YSIZE, $GOOGLEMAP_MAP_TYPE, $TEXT_DIRECTION, $pgv_lang, $language_settings, $LANGUAGE;
 	// create the map
 	//<!-- start of map display -->
 	echo "\n<br /><br />\n";
@@ -176,7 +176,7 @@ function create_map() {
 	?>
 	<!-- Start of map scripts -->
 	<script src="https://maps.googleapis.com/maps/api/js?key=<?php echo $GOOGLEMAP_API_KEY;
-		?>&language=<?php echo $language_settings[$LANGUAGE]['lang_short_cut']; ?>" type="text/javascript"></script>
+		?>&amp;language=<?php echo $language_settings[$LANGUAGE]['lang_short_cut']; ?>" type="text/javascript"></script>
 	<script src="modules/googlemap/pgvGoogleMap.js" type="text/javascript"></script>
 	<?php
 	if (PGV_USER_IS_ADMIN) {
@@ -185,10 +185,10 @@ function create_map() {
 		echo "<a href=\"module.php?mod=googlemap&amp;pgvaction=editconfig\">", $pgv_lang["gm_manage"], "</a>";
 		echo "</td>\n";
 		echo "<td align=\"center\">\n";
-		echo "<a href=\"module.php?mod=googlemap&pgvaction=places\">", $pgv_lang["edit_place_locations"], "</a>";
+		echo "<a href=\"module.php?mod=googlemap&amp;pgvaction=places\">", $pgv_lang["edit_place_locations"], "</a>";
 		echo "</td>\n";
 		echo "<td align=\"right\">\n";
-		echo "<a href=\"module.php?mod=googlemap&pgvaction=placecheck\">", $pgv_lang["placecheck"], "</a>";
+		echo "<a href=\"module.php?mod=googlemap&amp;pgvaction=placecheck\">", $pgv_lang["placecheck"], "</a>";
 		echo "</td></tr>\n";
 		echo "</table>\n";
 	}
@@ -300,7 +300,7 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 		}
 		echo "<br />", $pgv_lang["gm_no_coord"];
 		if (PGV_USER_IS_ADMIN)
-			echo "<br /><a href='module.php?mod=googlemap&pgvaction=places&parent=", $levelm, "&display=inactive'>", $pgv_lang["pl_edit"], "</a>";
+			echo "<br /><a href='module.php?mod=googlemap&amp;pgvaction=places&amp;parent=", $levelm, "&amp;display=inactive'>", $pgv_lang["pl_edit"], "</a>";
 		echo "</div></td>\", 'modules/googlemap/images/marker_yellow.png', \"", str_replace(array('&lrm;', '&rlm;'), array(PGV_UTF8_LRM, PGV_UTF8_RLM), PrintReady(addslashes($place2['place']))), "\", place_map);\n";
 	} else {
 		$lati = str_replace(array('N', 'S', ','), array('', '-', '.'), $place2['lati']);
@@ -597,6 +597,7 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 		?>
 		//create markers
 		<?php
+		$min_zoom = 20;
 		if ($numfound==0 && $level>0) {
 			if (isset($levelo[($level-1)])) {
 				$placelist2=get_place_list_loc($levelo[($level-1)]);
@@ -604,8 +605,10 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 					//lastlevel place
 					foreach ($placelist2 as $place2) {
 						if (isset($levelo[$level])) {
-							if ($place2['place_id']==$levelo[$level])
+							if ($place2['place_id']==$levelo[$level]) {
 								print_gm_markers($place2, $level, $parent, $levelo[($level-1)], $linklevels, $placelevels, true);
+								if ($place2['zoom'] < $min_zoom) $min_zoom = $place2['zoom'];
+							}
 						}
 						else {
 							// echo "var icon_type = new GIcon();\n";
@@ -619,7 +622,7 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 							echo "var marker = createMarker(point, \"<td width='100%'><div class='iwstyle' style='width: 250px;'><b>";
 							echo substr($placelevels, 2), "</b><br />", $pgv_lang["gm_no_coord"];
 							if (PGV_USER_IS_ADMIN)
-								echo "<br /><a href='module.php?mod=googlemap&pgvaction=places&parent=0&display=inactive'>", $pgv_lang["pl_edit"], "</a>";
+								echo "<br /><a href='module.php?mod=googlemap&amp;pgvaction=places&amp;parent=0&amp;display=inactive'>", $pgv_lang["pl_edit"], "</a>";
 							echo "<br /></div></td>\", icon_type, \"", $pgv_lang["pl_edit"], "\", place_map);\n";
 							// echo "marker.setMap(place_map);\n";
 							echo "bounds.extend(point);\n";
@@ -632,8 +635,10 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 					$placelist2=get_place_list_loc($levelo[($level-1)], true);
 					foreach ($placelist2 as $place2) {
 						if (isset($levelo[$level])) {
-							if ($place2['place_id']==$levelo[$level])
+							if ($place2['place_id']==$levelo[$level]) {
 								print_gm_markers($place2, $level, $parent, $levelo[$level], $linklevels, $placelevels, true);
+								if ($place2['zoom'] < $min_zoom) $min_zoom = $place2['zoom'];
+							}
 						}
 					}
 				}
@@ -644,8 +649,10 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 			$placelist2=get_place_list_loc($levelm);
 			if (!empty($placelist2)) {
 				foreach ($placelist2 as $place2) {
-					if (check_place($place_names, $place2['place']))
+					if (check_place($place_names, $place2['place'])) {
 						print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $placelevels);
+						if ($place2['zoom'] < $min_zoom) $min_zoom = $place2['zoom'];
+					}
 				}
 			}
 			else if ($level>0){ //if unknown place display the upper level place
@@ -659,6 +666,7 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 							if ($place2['place']!="Unknown" || (($place2['lati'] != NULL) && ($place2['long'] != NULL))) {
 								if (isset ($levelo[$level-$i+1]) && $place2['place_id']==$levelo[$level-$i+1]) {
 									print_gm_markers($place2, ($level+1), $parent, $levelm, $linklevels, $placelevels, true);
+                                    if ($place2['zoom'] < $min_zoom) $min_zoom = $place2['zoom'];
 									$break = true;
 								}
 							}
@@ -676,7 +684,7 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 		echo "var marker = createMarker(point, \"<td width='100%'><div class='iwstyle' style='width: 250px;'>";
 		echo "<br />", $pgv_lang["gm_no_coord"];
 		if (PGV_USER_IS_ADMIN)
-			echo "<br /><a href='module.php?mod=googlemap&pgvaction=places&parent=0&display=inactive'>", $pgv_lang["pl_edit"], "</a>";
+			echo "<br /><a href='module.php?mod=googlemap&amp;pgvaction=places&amp;parent=0&amp;display=inactive'>", $pgv_lang["pl_edit"], "</a>";
 		echo "<br /></div></td>\", icon_type, \"", $pgv_lang["pl_edit"], "\", place_map);\n";
 		// echo "marker.setMap(place_map);\n";
 		echo "bounds.extend(point);\n";
@@ -684,6 +692,12 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 	?>
 	//end markers
 	place_map.fitBounds(bounds);
+	// if all markers in one place or there is only one marker
+	if (bounds.getNorthEast().equals(bounds.getSouthWest())) {
+		google.maps.event.addListenerOnce(place_map, "bounds_changed", function () {
+			place_map.setZoom(<?php echo $min_zoom; ?>);
+		});
+	}
 	<?php if ($GOOGLEMAP_PH_CONTROLS) {?>
 		// hide controls
 	//	GEvent.addListener(place_map, 'mouseout', function() {place_map.hideControls();});

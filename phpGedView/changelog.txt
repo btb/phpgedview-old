@@ -9,6 +9,7 @@
 =====================================================================
 
 Version 4.3.0
+ - Fixed: Several errors in Googlemap module (tbabczynski)
  - Updated: Various improvements to Googlemap module (tbabczynski)
  - Fixed: Correct polish tradition of wife's surname in batch_update (tbabczynski)
  - Fixed: E-mails to admin sometimes sent in wrong language (canajun2eh)
