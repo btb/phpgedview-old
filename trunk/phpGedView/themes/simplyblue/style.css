@@ -99,6 +99,11 @@ ul {
 	border: solid #00c0aa 1px;
 }
 
+.pedigree_map .person_box {
+	display: inline-block;
+	width: 100%;
+}
+
 .person_boxF {
 	background-image: url("images/bluewhitegradiant2.gif");
 	background-repeat: repeat;
@@ -414,6 +419,12 @@ a:hover .nameZoom {
 	padding-right: 3px;
 	border: none;
 	vertical-align: middle;
+}
+
+.pedigree_map div.pedigree_image {
+	min-height: 53px;
+	min-width: 53px;
+	float: left;
 }
 
 .pedigree_image_portrait, .pedigree_image_landscape {
