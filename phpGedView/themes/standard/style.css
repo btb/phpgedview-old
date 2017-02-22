@@ -81,6 +81,11 @@ ul {
 	border: solid #9ca3d4 1px;
 }
 
+.pedigree_map .person_box {
+	display: inline-block;
+	width: 100%;
+}
+
 .person_boxF {
 	background-color: #e9daf1;
 	border: 1px solid #ff2080;
@@ -376,6 +381,12 @@ a:hover .nameZoom {
 	margin: 0px 3px;
 	border: none;
 	vertical-align: middle;
+}
+
+.pedigree_map div.pedigree_image {
+	min-height: 53px;
+	min-width: 53px;
+	float: left;
 }
 
 .pedigree_image_portrait, .pedigree_image_landscape {

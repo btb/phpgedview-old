@@ -454,6 +454,11 @@ th {
 	padding: 3pt;
 }
 
+.pedigree_map .person_box {
+	display: inline-block;
+	width: 100%;
+}
+
 .person_boxF {
 	background-color: #fff0f0;
 	border: 1px solid #ff2080;
@@ -746,6 +751,12 @@ th {
 	padding-right: 3px;
 	border: none;
 	vertical-align: middle;
+}
+
+.pedigree_map div.pedigree_image {
+	min-height: 53px;
+	min-width: 53px;
+	float: left;
 }
 
 .pedigree_image_portrait, .pedigree_image_landscape {
