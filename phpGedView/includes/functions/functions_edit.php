@@ -3,7 +3,7 @@
 * Various functions used by the Edit interface
 *
 * phpGedView: Genealogy Viewer
-* Copyright (C) 2002 to 2016  PGV Development Team.  All rights reserved.
+* Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -1144,7 +1144,7 @@ if (substr($tag, 0, strpos($tag, "CENS"))) {
 
 	// element id : used by javascript functions
 	if ($level==0) $element_id=$fact; // ex: NPFX | GIVN ...
-	else $element_id=$fact.floor(microtime()*1000000); // ex: SOUR56402
+	else $element_id=$fact.floor(microtime(true)*1000000); // ex: SOUR56402
 	if ($upperlevel) $element_id=$upperlevel."_".$fact; // ex: BIRT_DATE | DEAT_DATE ...
 
 	// field value

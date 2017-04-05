@@ -5,7 +5,7 @@
 * Various printing functions used by all scripts and included by the functions.php file.
 *
 * phpGedView: Genealogy Viewer
-* Copyright (C) 2002 to 2016  PGV Development Team.  All rights reserved.
+* Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -1189,7 +1189,7 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false, $return=false
 	global $pgv_lang;
 	global $PGV_IMAGE_DIR, $PGV_IMAGES, $EXPAND_SOURCES, $EXPAND_NOTES;
 	if (!isset($EXPAND_NOTES)) $EXPAND_NOTES = $EXPAND_SOURCES; // FIXME
-	$elementID = "N-".floor(microtime()*1000000);
+	$elementID = "N-".floor(microtime(true)*1000000);
 	$text = trim($text);
 
 	// Check if Shared Note and if so enable url link on title -------------------

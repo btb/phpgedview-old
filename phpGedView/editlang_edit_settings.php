@@ -3,7 +3,7 @@
  * File to edit the language settings of PHPGedView
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -624,7 +624,7 @@ if ($action == "save" or $action=="toggleActive") {
 		echo '<form name="Form2" method="post" action="', PGV_SCRIPT_NAME, '">';
 		echo '<table class="facts_table">';
 		echo '<tr><td class="facts_value" style="text-align:center; " >';
-		srand((double)microtime()*1000000);
+		srand((double)microtime(true)*1000000);
 		echo '<input type="submit" value="', $pgv_lang["close_window"], '" onclick="window.opener.showchanges(); self.close();" />';
 		echo '</td></tr>';
 		echo '</table>';

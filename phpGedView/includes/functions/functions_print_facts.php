@@ -5,7 +5,7 @@
  * Various printing functions used to print fact records
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2015  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -145,7 +145,7 @@ function print_fact(&$eventObj, $noedit=false) {
 			}
 			$factref = $fact;
 			if (!$eventObj->canShow()) return false;
-			if ($styleadd=="") $rowID = "row_".floor(microtime()*1000000);
+			if ($styleadd=="") $rowID = "row_".floor(microtime(true)*1000000);
 			else $rowID = "row_".$styleadd;
 			echo "\n\t\t<tr class=\"", $rowID, "\">";
 			echo "\n\t\t\t<td class=\"descriptionbox $styleadd center width20\">";
@@ -206,7 +206,7 @@ function print_fact(&$eventObj, $noedit=false) {
 			if ($ct>0) $factref = trim($match[1]);
 			else $factref = $fact;
 			if (!showFact($factref, $pid)) return false;
-			if ($styleadd=="") $rowID = "row_".floor(microtime()*1000000);
+			if ($styleadd=="") $rowID = "row_".floor(microtime(true)*1000000);
 			else $rowID = "row_".$styleadd;
 			echo "\n\t\t<tr class=\"", $rowID, "\">";
 			$label = $factref;
@@ -577,7 +577,7 @@ function print_fact_sources($factrec, $level, $return=false) {
 			$lt = preg_match_all("/$nlevel \w+/", $srec, $matches);
 			$data .= "<br />";
 			$data .= "\n\t\t<span class=\"label\">";
-			$elementID = $sid."-".floor(microtime()*1000000);
+			$elementID = $sid."-".floor(microtime(true)*1000000);
 			if ($EXPAND_SOURCES) $plusminus="minus"; else $plusminus="plus";
 			if ($lt>0) {
 				$data .= "<a href=\"javascript:;\" onclick=\"expand_layer('$elementID'); return false;\"><img id=\"{$elementID}_img\" src=\"".$PGV_IMAGE_DIR."/".$PGV_IMAGES[$plusminus]["other"]."\" border=\"0\" width=\"11\" height=\"11\" alt=\"";
