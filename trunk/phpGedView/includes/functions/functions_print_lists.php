@@ -6,7 +6,7 @@
  * used on the indilist, famlist, find, and search pages.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2016  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -70,7 +70,7 @@ function print_indi_table($datalist, $legend="", $option="") {
 	if ($legend == "") $legend = $pgv_lang["individuals"];
 	$legend = "<img src=\"".$PGV_IMAGE_DIR."/".$PGV_IMAGES["indis"]["small"]."\" alt=\"\" align=\"middle\" /> ".$legend;
 	echo "<fieldset><legend>", $legend, "</legend>";
-	$table_id = "ID".intval(microtime()*1000000); // sorttable requires a unique ID
+	$table_id = "ID".intval(microtime(true)*1000000); // sorttable requires a unique ID
 	echo '<div id="', $table_id, '-table" class="center">';
 	//-- filter buttons
 	echo "<button type=\"button\" class=\"SEX_M\" title=\"", $pgv_lang["button_SEX_M"], "\" >";
@@ -461,7 +461,7 @@ function print_fam_table($datalist, $legend="", $option="") {
 	if ($legend == "") $legend = $pgv_lang["families"];
 	$legend = "<img src=\"".$PGV_IMAGE_DIR."/".$PGV_IMAGES["sfamily"]["small"]."\" alt=\"\" align=\"middle\" /> ".$legend;
 	echo "<fieldset><legend>", $legend, "</legend>";
-	$table_id = "ID".intval(microtime()*1000000); // sorttable requires a unique ID
+	$table_id = "ID".intval(microtime(true)*1000000); // sorttable requires a unique ID
 	echo '<div id="', $table_id, '-table" class="center">';
 	//-- filter buttons
 	echo "<button type=\"button\" class=\"DEAT_N\" title=\"", $pgv_lang["button_DEAT_N"], "\" >";
@@ -833,7 +833,7 @@ function print_sour_table($datalist, $legend=null) {
 		echo $pgv_lang['sources'];
 	}
 	echo '</legend>';
-	$table_id = "ID".intval(microtime()*1000000); // sorttable requires a unique ID
+	$table_id = "ID".intval(microtime(true)*1000000); // sorttable requires a unique ID
 	//-- table header
 	echo '<table id="', $table_id, '" class="sortable list_table center"><tr><td></td>';
 	if ($SHOW_ID_NUMBERS) {
@@ -974,7 +974,7 @@ function print_note_table($datalist, $legend=null) {
 		echo $pgv_lang['shared_notes'];
 	}
 	echo '</legend>';
-	$table_id = "ID".intval(microtime()*1000000); // sorttable requires a unique ID
+	$table_id = "ID".intval(microtime(true)*1000000); // sorttable requires a unique ID
 	//-- table header
 	echo '<table id="', $table_id, '" class="sortable list_table center" ><tr><td></td>';
 	if ($SHOW_ID_NUMBERS) {
@@ -1058,7 +1058,7 @@ function print_repo_table($repos, $legend='') {
 		echo $pgv_lang['repos_found'];
 	}
 	echo '</legend>';
-	$table_id = "ID".intval(microtime()*1000000); // sorttable requires a unique ID
+	$table_id = "ID".intval(microtime(true)*1000000); // sorttable requires a unique ID
 	//-- table header
 	echo '<table id="', $table_id, '" class="sortable list_table center"><tr><td></td>';
 	if ($SHOW_ID_NUMBERS) {
@@ -1115,7 +1115,7 @@ function print_media_table($datalist, $legend="") {
 	if ($legend == "") $legend = $pgv_lang["media"];
 	$legend = "<img src=\"".$PGV_IMAGE_DIR."/".$PGV_IMAGES["media"]["small"]."\" alt=\"\" align=\"middle\" /> ".$legend;
 	echo "<fieldset><legend>", $legend, "</legend>";
-	$table_id = "ID".intval(microtime()*1000000); // sorttable requires a unique ID
+	$table_id = "ID".intval(microtime(true)*1000000); // sorttable requires a unique ID
 	//-- table header
 	echo "<table width=\"100%\" id=\"", $table_id, "\" class=\"sortable list_table center\">";
 	echo "<tr>";
@@ -1209,7 +1209,7 @@ function print_surn_table($datalist, $target="INDI", $listFormat="") {
 	// Requested style is "cloud", where the surnames are a list of names (with links),
 	// and the font size used for each name depends on the number of occurrences of this name
 	// in the database - generally known as a 'tag cloud'.
-	$table_id = "ID".intval(microtime()*1000000); // sorttable requires a unique ID
+	$table_id = "ID".intval(microtime(true)*1000000); // sorttable requires a unique ID
 	//-- table header
 	echo "<table id=\"", $table_id, "\" class=\"tag_cloud_table\">";
 	//-- table body
@@ -1252,7 +1252,7 @@ function print_surn_table($datalist, $target="INDI", $listFormat="") {
 
 	// Requested style isn't "cloud".  In this case, we'll produce a sortable list.
 	require_once PGV_ROOT.'js/sorttable.js.htm';
-	$table_id = "ID".intval(microtime()*1000000); // sorttable requires a unique ID
+	$table_id = "ID".intval(microtime(true)*1000000); // sorttable requires a unique ID
 	//-- table header
 	echo "<table id=\"", $table_id, "\" class=\"sortable list_table center\">";
 	echo "<tr>";
@@ -1303,7 +1303,7 @@ function format_surname_table($surnames, $type) {
 	global $pgv_lang, $factarray, $GEDCOM;
 
 	require_once PGV_ROOT.'js/sorttable.js.htm';
-	$table_id ='ID'.intval(microtime()*1000000); // sorttable requires a unique ID
+	$table_id ='ID'.intval(microtime(true)*1000000); // sorttable requires a unique ID
 	$html='<table id="'.$table_id.'" class="sortable list_table center">';
 	$html.='<tr><th></th>';
 	$html.='<th class="list_label"><a href="javascript:;" onclick="sortByOtherCol(this, 1)">'.$factarray['SURN'].'</a></th>';
@@ -1404,7 +1404,7 @@ function format_surname_tagcloud($surnames, $type, $totals) {
 	// Requested style is "cloud", where the surnames are a list of names (with links),
 	// and the font size used for each name depends on the number of occurrences of this name
 	// in the database - generally known as a 'tag cloud'.
-	$table_id = "ID".intval(microtime()*1000000); // sorttable requires a unique ID
+	$table_id = "ID".intval(microtime(true)*1000000); // sorttable requires a unique ID
 	//-- table header
 	$html='<table id="'.$table_id.'" class="tag_cloud_table"><tr><td class="tag_cloud">';
 	//-- Calculate range for font sizing
@@ -1520,7 +1520,7 @@ function print_changes_table($datalist, $showChange=true, $total='', $show_pgvu=
 	require_once PGV_ROOT.'includes/classes/class_gedcomrecord.php';
 	if (empty($total)) $total = $pgv_lang["total_changes"];
 	$indi = false;
-	$table_id = "ID".intval(microtime()*1000000); // sorttable requires a unique ID
+	$table_id = "ID".intval(microtime(true)*1000000); // sorttable requires a unique ID
 	//-- table header
 	echo "<table id=\"", $table_id, "\" class=\"sortable list_table center\">";
 	echo "<tr>";
@@ -1631,7 +1631,7 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 	global $pgv_lang, $factarray, $TEXT_DIRECTION, $SERVER_URL;
 	require_once PGV_ROOT.'js/sorttable.js.htm';
 	require_once PGV_ROOT.'includes/classes/class_gedcomrecord.php';
-	$table_id = "ID".intval(microtime()*1000000); // sorttable requires a unique ID
+	$table_id = "ID".intval(microtime(true)*1000000); // sorttable requires a unique ID
 
 	// Did we have any output?  Did we skip anything?
 	$output = 0;

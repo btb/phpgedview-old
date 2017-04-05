@@ -5,7 +5,7 @@
  * This block will print a list of upcoming yahrzeit (hebrew death anniversaries)
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2008  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2008 to 2017  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -145,7 +145,7 @@ function print_yahrzeit($block=true, $config='', $side, $index) {
 	case "style2": // Table style
 		require_once PGV_ROOT.'js/sorttable.js.htm';
 		require_once PGV_ROOT.'includes/classes/class_gedcomrecord.php';
-		$table_id = "ID".floor(microtime()*1000000); // sorttable requires a unique ID
+		$table_id = "ID".floor(microtime(true)*1000000); // sorttable requires a unique ID
 		$content .= "<table id=\"{$table_id}\" class=\"sortable list_table center\">";
 		$content .= "<tr>";
 		$content .= "<th class=\"list_label\">{$factarray['NAME']}</th>";

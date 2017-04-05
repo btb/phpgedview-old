@@ -9,6 +9,7 @@
 =====================================================================
 
 Version 4.3.0
+ - Fixed: PHP7 errors caused by incorrect usage of microtime() function (Philippe Conde)
  - Updated: More improvements to Googlemap module (Leonhard Zachl)
  - Fixed: Several errors in Googlemap module (tbabczynski)
  - Updated: Various improvements to Googlemap module (tbabczynski)

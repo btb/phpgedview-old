@@ -3,7 +3,7 @@
  * Edit a language file
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -327,7 +327,7 @@ if ($action == "save") {
 
 	echo '<table class="facts_table">';
 	echo '<tr><td class="facts_value" style="text-align:center; " >';
-	srand((double)microtime()*1000000);
+	srand((double)microtime(true)*1000000);
 	// These 3 hidden variables has to be set or there will be a PHP ERROR message
 	echo '<input type="hidden" name="language2" value="', $language2, '"/>';
 	echo '<input type="hidden" name="file_type" value="', $file_type, '"/>';
