@@ -723,7 +723,8 @@ function get_gedcom_value($tag, $level, $gedrec, $truncate='', $convert=true) {
 	$tags = explode(':', $tag);
 	$origlevel = $level;
 	if ($level==0) {
-		$level = $gedrec{0} + 1;
+		$level = 1 + $gedrec{0};	// non-numeric level of incoming record should be treated as zero
+									// (see PHP manual topic "String conversion to numbers")
 	}
 
 	$subrec = $gedrec;
