@@ -4,7 +4,7 @@
 * Various functions used by the media DB interface
 *
 * phpGedView: Genealogy Viewer
-* Copyright (C) 2002 to 2016 PGV Development Team.  All rights reserved.
+* Copyright (C) 2002 to 2017 PGV Development Team.  All rights reserved.
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -1848,11 +1848,12 @@ function isImageTypeSupported($reqtype) {
 // from http://www.php.net/manual/en/function.ini-get.php
 function return_bytes($val) {
 	if (!$val) {
-		// no value was passed in, assume no limit and return -1
-		$val = -1;
+		return -1;   // no value was passed in, assume no limit and return -1
 	}
-	$val = trim($val);
-	$last = strtolower($val{strlen($val)-1});
+
+	$val=trim($val);
+	$last = strtolower(substr($val, -1));
+	$val = substr($val,0,-1);		// drop 'G', 'M', or 'K' suffix and assume rest is numeric
 	switch($last) {
 		case 'g': $val *= 1024;  // fallthrough
 		case 'm': $val *= 1024;  // fallthrough
