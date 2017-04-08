@@ -4,7 +4,7 @@
  * in the index page.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2016  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -98,7 +98,7 @@ if(!loadCachedBlock($cacheControl, $rssStyle)){
 	$feed->descriptionHtmlSyndicated = true;
 	//$feed->descriptionTruncSize = 500; // does not make sense to truncate HTML since it will result in unpredictable output
 	$feed->link = $SERVER_URL;
-	$queryString = normalize_query_string($queryString . '&amp;lang=' . $LANGUAGE);
+	$queryString = normalize_query_string($_SERVER['QUERY_STRING'] . '&amp;lang=' . $LANGUAGE);
 	$syndURL = $SERVER_URL."rss.php".$queryString;
 	$feed->syndicationURL = $syndURL;
 

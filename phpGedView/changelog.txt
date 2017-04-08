@@ -9,6 +9,7 @@
 =====================================================================
 
 Version 4.3.0
+ - Fixed: Undefined variable queryString in rss.php (canajun2eh)
  - Fixed: PHP7 complaining about arithmetic involving strings (Canajun2eh)
  - Fixed: PHP7 errors caused by incorrect usage of microtime() function (Philippe Conde)
  - Updated: More improvements to Googlemap module (Leonhard Zachl)
