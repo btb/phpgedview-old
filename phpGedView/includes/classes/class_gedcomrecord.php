@@ -3,7 +3,7 @@
 * Base class for all gedcom records
 *
 * phpGedView: Genealogy Viewer
-* Copyright (C) 2002 to 2015 PGV Development Team.  All rights reserved.
+* Copyright (C) 2002 to 2017 PGV Development Team.  All rights reserved.
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -438,7 +438,7 @@ class GedcomRecord {
 			'full'=>$value,
 			'list'=>$value,
 			'sort'=>preg_replace_callback('/([0-9]+)/',
-			                              function ($match) { return substr("000000000$match[1]", -10); }, 
+			                              function ($match) { return substr("000000000$match[1]", -10); },
 			                              $value)
 		);
 	}
@@ -453,12 +453,13 @@ class GedcomRecord {
 	// ['list'] = a version of the name as might appear in lists, e.g. 'van Gogh, Vincent' or 'Unknown, John'
 	// ['sort'] = a sortable version of the name (not for display), e.g. 'Gogh, Vincent' or '@N.N., John'
 	protected function _getAllNames($fact='!', $level=1) {
-		global $pgv_lang, $WORD_WRAPPED_NOTES;
+		global $pgv_lang;
 
 		if (is_null($this->_getAllNames)) {
 			$this->_getAllNames=array();
 			if ($this->canDisplayName()) {
-				$sublevel=$level+1;
+				if (is_numeric($level)) $sublevel = $level + 1;
+				else $sublevel = 1;		// treat pseudo-level "0 @[A-Za-z0-9:_-]+@" (passed by class_note.php line 57) as zero
 				$subsublevel=$sublevel+1;
 				if (preg_match_all("/^{$level} ({$fact}) (.+)((\n[{$sublevel}-9].+)*)/m", $this->gedrec, $matches, PREG_SET_ORDER)) {
 					foreach ($matches as $match) {
