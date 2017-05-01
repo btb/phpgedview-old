@@ -3,7 +3,7 @@
  * Send a message to a user in the system
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2016  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -116,7 +116,7 @@ if (($action=="send")&&(isset($_SESSION["good_to_send"]))&&($_SESSION["good_to_s
 			}
 		}
 		$i = 0;
-		foreach($toarray as $indexval => $to) {
+		foreach($toarray as $to) {
 			$to_user_id=get_user_id($to);
 			$message = array();
 			$message["to"]=$to;
@@ -184,14 +184,17 @@ if ($action=="compose") {
 	else print "return checkForm(this);";
 	print "\">\n";
 	print "<table>\n";
-	$to_user_id=get_user_id($to);
-	if ($to_user_id) {
-		$lang_temp = "lang_name_".get_user_setting($to_user_id, 'language');
-		$touserName = getUserFullName($to_user_id);
-		$toMethod = get_user_setting($to_user_id, 'contactmethod');
+	$toMethod = 'messaging2';
+	if ($to != 'all' && $to != 'never_logged' && $to != 'last_6mo') {
+		$to_user_id=get_user_id($to);
+		if ($to_user_id) {
+			$lang_temp = "lang_name_".get_user_setting($to_user_id, 'language');
+			$touserName = getUserFullName($to_user_id);
+			$toMethod = get_user_setting($to_user_id, 'contactmethod');
 
-		print "<tr><td></td><td>".str_replace("#TO_USER#", "<b>".$touserName."</b>", $pgv_lang["sending_to"])."<br />";
-		print str_replace("#USERLANG#", "<b>".$pgv_lang[$lang_temp]."</b>", $pgv_lang["preferred_lang"])."</td></tr>\n";
+			print "<tr><td></td><td>".str_replace("#TO_USER#", "<b>".$touserName."</b>", $pgv_lang["sending_to"])."<br />";
+			print str_replace("#USERLANG#", "<b>".$pgv_lang[$lang_temp]."</b>", $pgv_lang["preferred_lang"])."</td></tr>\n";
+		}
 	}
 
 	if (!PGV_USER_ID){

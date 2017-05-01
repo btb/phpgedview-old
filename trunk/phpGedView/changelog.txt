@@ -9,6 +9,7 @@
 =====================================================================
 
 Version 4.3.0
+ - Fixed: Bulk messages to all users or inactive users not working (canajun2eh)
  - Fixed: PHP7 complaining about arithmetic involving strings passed to class_gedcomrecord by class_note (Canajun2eh)
  - Fixed: Undefined variable queryString in rss.php (canajun2eh)
  - Fixed: PHP7 complaining about arithmetic involving strings (Canajun2eh)
