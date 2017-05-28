@@ -3,7 +3,7 @@
  * Dutch texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2016  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,6 +23,7 @@
  * @package PhpGedView
  * @subpackage Languages
  * @authors Erik Bent, Jans B. Luder, Boudewijn Sjouke, Eduard Wustenveld
+ * @translator Google Translate
  * @version $Id$
  */
 
@@ -1310,7 +1311,11 @@ $pgv_lang["no_to_user"]				= "Geen geadresseerde ingevoerd.";
 $pgv_lang["provide_email"]			= "Geef het e-mailadres waar wij het antwoord op uw bericht heen kunnen sturen. Als u dit achterwege laat kunnen wij uw vraag niet beantwoorden. Uw e-mailadres wordt uitsluitend gebruikt om uw vraag te beantwoorden.";
 $pgv_lang["reply"]					= "Antwoord";
 $pgv_lang["message_deleted"]		= "Bericht verwijderd";
-$pgv_lang["message_sent"]			= "Bericht verzonden";
+$pgv_lang["message_sent"]		= "Bericht verzonden naar #TO_USER#";
+$pgv_lang["message_failed"]		= "Bericht kon niet worden verzonden";
+$pgv_lang["message_error"]		= "PHPMailer fout: ";
+$pgv_lang["message_invalid_from"]	= "Ongeldig afzenderadres: &lt#email#&gt";
+$pgv_lang["message_invalid_to"]		= "Ongeldig ontvangeradres: &lt#email#&gt";
 $pgv_lang["reset"]					= "Herstel";
 $pgv_lang["site_default"]			= "Standaard site";
 $pgv_lang["mygedview_desc"]			= "Op uw persoonlijke MyGedView pagina kunt u uw favoriete personen aangeven, kijken naar gebeurtenissen die binnenkort plaatsvinden en samenwerken met andere PhpGedView gebruikers van deze site.";

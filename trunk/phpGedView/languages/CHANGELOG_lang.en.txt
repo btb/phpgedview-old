@@ -44,6 +44,11 @@ VERSION 4.3.0
 
 ?$pgv_lang["whatever"]								dd Monthname, year		Change codes and comments
 ----------------------------------------------------------------------------------------
+*$pgv_lang["message_sent"]							28 May 2017				w
++$pgv_lang["message_failed"]						28 May 2017				A
++$pgv_lang["message_error"]							28 May 2017				A
++$pgv_lang["message_invalid_from"]					28 May 2017				A
++$pgv_lang["message_invalid_to"]					28 May 2017				A
 +$pgv_lang["block_cookiepolicy"]					24 Jan 2016				A
 +$pgv_lang["block_cookiepolicy_title"]				24 Jan 2016				A
 +$pgv_lang["block_cookiepolicy_descr"]				24 Jan 2016				A

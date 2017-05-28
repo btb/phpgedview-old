@@ -3,7 +3,7 @@
  * French Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2016  PGV Development Team. All rights reserved.
+ * Copyright (C) 2002 to 2017  PGV Development Team. All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,6 +21,8 @@
  *
  * @package PhpGedView
  * @subpackage Languages
+ * @author PGV team
+ * @translator Google Translate
  * @version $Id$
  */
 if (!defined('PGV_PHPGEDVIEW')) {
@@ -1302,8 +1304,12 @@ $pgv_lang["message_body"]               = "Texte";
 $pgv_lang["no_to_user"]                 = "Pas de destinataire. Impossible de continuer.";
 $pgv_lang["provide_email"]              = "Merci d'indiquer votre adresse courriel.<br />Sans cette adresse, nous ne pourrons pas vous répondre.<br />Votre adresse ne sera utilisée que pour faire cette réponse.";
 $pgv_lang["reply"]                      = "Réponse";
-$pgv_lang["message_deleted"]            = "Message supprimé";
-$pgv_lang["message_sent"]               = "Message envoyé";
+$pgv_lang["message_deleted"]            = "Le message supprimé";
+$pgv_lang["message_sent"]		= "Le message envoyé à #TO_USER#";
+$pgv_lang["message_failed"]		= "Le message n'a pas pu être envoyé";
+$pgv_lang["message_error"]		= "Erreur PHPMailer: ";
+$pgv_lang["message_invalid_from"]	= "Adresse de l'expéditeur invalide: &lt#email#&gt";
+$pgv_lang["message_invalid_to"]		= "Adresse de destinataire non valide: &lt#email#&gt";
 $pgv_lang["reset"]                      = "Restaurer";
 $pgv_lang["site_default"]               = "Par défaut pour le site";
 $pgv_lang["mygedview_desc"]             = "Pour organiser vos favoris, suivre les anniversaires, échanger avec les autres utilisateurs...";

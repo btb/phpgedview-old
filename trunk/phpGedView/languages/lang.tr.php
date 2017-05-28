@@ -3,7 +3,7 @@
  * Turkish Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,6 +22,7 @@
  * @package PhpGedView
  * @author Kurt Norgaz
  * @author Adem GENÇ uzayuydu@gmail.com http://www.muttafi.com
+ * @translator Google Translate
  * @version $Id$
  */
 
@@ -1310,7 +1311,11 @@ $pgv_lang["no_to_user"] 		= "Alacak kullanıcı sağlanmadığı için Devam ede
 $pgv_lang["provide_email"]			= "Lütfen bu mesajınıza cevap verebilmemiz için email adresinizi girin. Eğer email adresinizi vermez iseniz sorunuza cevap vermemiz mümkün olmayacaktır. Email adresiniz bu sorunuza cevap dışında başka bir yerde kullanılmayacaktır.";
 $pgv_lang["reply"]			= "Cevapla";
 $pgv_lang["message_deleted"]		= "Mesaj Silindi";
-$pgv_lang["message_sent"]		= "#TO_USER# kullanıcıya mesaj başarıyla gönderildi";
+$pgv_lang["message_sent"]		= "#TO_USER# mesajı gönderildi";
+$pgv_lang["message_failed"]		= "İleti gönderilemedi";
+$pgv_lang["message_error"]		= "PHPMailer hatası: ";
+$pgv_lang["message_invalid_from"]	= "Geçersiz gönderen adresi: &lt#email#&gt";
+$pgv_lang["message_invalid_to"]		= "Geçersiz alıcı adresi: &lt#email#&gt";
 $pgv_lang["reset"]			= "Sıfırla";
 $pgv_lang["site_default"]		= "Site Varsayılan";
 $pgv_lang["mygedview_desc"]		= "Benim GedView sayfanızda favorilere sevdiklerinizi ekleyerek gelecek yıldönümleri/hadiseleri izlemeyi ve diğer PhpGedView kullanıcılarıyla işbirliği sağlar.";

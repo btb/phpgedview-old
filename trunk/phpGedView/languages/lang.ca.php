@@ -3,7 +3,7 @@
  * Catalan texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,6 +21,7 @@
  *
  *
  * @author Antoni Planas i Vilà
+ * @translator Google Translate
  * @package PhpGedView
  * @subpackage Languages
  * @version $Id$
@@ -1151,7 +1152,11 @@ $pgv_lang["no_to_user"] 		= "No hi ha destinatari. No puc continuar.";
 $pgv_lang["provide_email"]		= "Doneu la vostra adreça de correu electrònic perquè puguem respondre-us.  La vostra adreça no serà utilitzada per a res més que per aquest fi.";
 $pgv_lang["reply"]			= "Resposta";
 $pgv_lang["message_deleted"]		= "Missatge esborrat";
-$pgv_lang["message_sent"]		= "El missatge s'ha enviat a #TO_USER#";
+$pgv_lang["message_sent"]		= "Missatge enviat a #TO_USER#";
+$pgv_lang["message_failed"]		= "Missatge no s'ha pogut enviar";
+$pgv_lang["message_error"]		= "Error PHPMailer: ";
+$pgv_lang["message_invalid_from"]	= "Adreça del remitent no vàlid: &lt#email#&gt";
+$pgv_lang["message_invalid_to"]		= "Adreça del destinatari no vàlid: &lt#email#&gt";
 $pgv_lang["reset"]			= "Neteja";
 $pgv_lang["site_default"]		= "Per defecte la del lloc";
 $pgv_lang["mygedview_desc"] 		= "El vostre portal MyGedView us permet tenir ex-libris de familiars preferits, estar al corrent d'aniversaris i col·laborar amb altres usuaris.";

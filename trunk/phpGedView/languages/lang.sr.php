@@ -3,7 +3,7 @@
  * Serbian Language file for PhpGedView.
  *
  * PhpGedView: Genealogy Viewer
- * Copyright (C) 2009 to 2016  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2009 to 2017  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,6 +21,7 @@
  *
  * @package PhpGedView
  * @translator Vojin Damjanac
+ * @translator Google Translate
  * @version $Id$
  */
 
@@ -1309,8 +1310,12 @@ $pgv_lang["my_messages"]			= "Moje poruke";
 ##$pgv_lang["provide_email"]			= "Please provide your email address so that we may contact you in response to this message.  If you do not provide your email address we will not be able to respond to your inquiry.  You email address will not be used in any other way besides responding to this inquiry.";
 ##$pgv_lang["reply"]					= "Reply";
 ##$pgv_lang["message_deleted"]		= "Message Deleted";
-##$pgv_lang["message_sent"]			= "Message successfully sent to #TO_USER#";
-$pgv_lang["reset"]					= "Početni položaj";
+$pgv_lang["message_sent"]			= "Poruka poslata na #TO_USER#";
+$pgv_lang["message_failed"]			= "Poruka nije mogla biti poslata";
+$pgv_lang["message_error"]			= "PHPMailer greška: ";
+$pgv_lang["message_invalid_from"]		= "Pogrešna adresa pošiljaoca: &lt#email#&gt";
+$pgv_lang["message_invalid_to"]			= "Pogrešna adresa primaoca: &lt#email#&gt";
+$pgv_lang["reset"]				= "Početni položaj";
 ##$pgv_lang["site_default"]			= "Site Default";
 $pgv_lang["mygedview_desc"] 		= "Stranica Moj portal omogućava da sebi obeležite omiljene upise, da pratite prestojeće događaje i sarađujete sa drugim korisnicima ovog rodoslova";
 ##$pgv_lang["no_messages"]			= "You have no pending messages.";

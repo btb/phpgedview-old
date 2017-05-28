@@ -3,7 +3,7 @@
  * Lithuanian Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,6 +21,7 @@
  *
  * @package PhpGedView
  * @author Arturas Sleinius
+ * @translator Google Translate
  * @version $Id$
  */
 
@@ -447,8 +448,12 @@ $pgv_lang["savedata"]				= "Išsaugoti pakeistus duomenis";
 $pgv_lang["mail04_line01"]			= "Sveiki #user_fullname# ...";
 $pgv_lang["enter_email"]			= "Jūs turite nurodyti elektronino pašto adresą.";
 $pgv_lang["pls_note07"] 			= "Savo prisijungimo vardui patvirtiniti , suveskite naudotojo vardą, slaptažodį ir elektroniniu paštu gautą patvirtinimo kodą.";
-$pgv_lang["message_sent"]			= "Pranešimas išsiųstas";
 $pgv_lang["message_deleted"]		= "Pranešimas išrintas";
+$pgv_lang["message_sent"]		= "Pranešimas išsiųstas #TO_USER#";
+$pgv_lang["message_failed"]		= "Pranešimo negalėjo būti išsiųstas";
+$pgv_lang["message_error"]		= "PHPMailer klaida: ";
+$pgv_lang["message_invalid_from"]	= "Neteisingas siuntėjo adresas: &lt#email#&gt";
+$pgv_lang["message_invalid_to"]		= "Neteisingas gavėjo adresas: &lt#email#&gt";
 $pgv_lang["reply"]					= "Atsakyti";
 $pgv_lang["no_events_living"]		= "Artimiausias #pgv_lang[global_num1]# dienas nėra gyvenančių žmonių įvykių.";
 $pgv_lang["basic_or_all"]			= "Rodyti tik Giminus, Mirtis ir  Santuokas?";

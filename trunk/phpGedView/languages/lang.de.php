@@ -3,7 +3,7 @@
  * German Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2016  PGV Development Team.  All rights reerved.
+ * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reerved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,6 +25,7 @@
  * @translator Gerd Kroll
  * @translator Kurt Norgaz
  * @translator Peter Pluntke
+ * @translator Google Translate
  * @version $Id$
  */
 
@@ -1314,6 +1315,10 @@ $pgv_lang["provide_email"]				= "Bitte geben Sie die Mail Adresse an, damit wir 
 $pgv_lang["reply"]						= "Antwort";
 $pgv_lang["message_deleted"]			= "Nachricht gelöscht";
 $pgv_lang["message_sent"]				= "Nachricht an #TO_USER# gesendet";
+$pgv_lang["message_failed"]				= "Nachricht konnte nicht gesendet werden";
+$pgv_lang["message_error"]				= "PHPMailer Fehler: ";
+$pgv_lang["message_invalid_from"]		= "Ungültige Absenderadresse: &lt#email#&gt";
+$pgv_lang["message_invalid_to"]			= "Ungültige Empfängeradresse: &lt#email#&gt";
 $pgv_lang["reset"]						= "Reset";
 $pgv_lang["site_default"]				= "Grundeinstellung";
 $pgv_lang["mygedview_desc"]				= "Dieses Portal ermöglicht Ihnen das Anlegen von Lesezeichen zu bevorzugten Personen, Überwachen bevorstehender Ereignisse und die Zusammenarbeit mit anderen PhpGedView Benutzern.";

@@ -3,7 +3,7 @@
  * Finnish Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2011  PGV Development Team
+ * Copyright (C) 2002 to 2017  PGV Development Team
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,6 +22,7 @@
  * @package PhpGedView
  * @subpackage Languages
  * @author Jaakko Sarell, Jani Miettinen, Matti Valve, Marko Kohtala
+ * @translator Google Translate
  * @version $Id$
  */
 
@@ -1143,8 +1144,12 @@ $pgv_lang["message_body"]		= "Viesti:";
 $pgv_lang["no_to_user"]		= "Vastaanottajaa ei annettu. Ei voi jatkaa.";
 $pgv_lang["provide_email"]		= "Ilmoita sähköpostiosoitteesi, jotta voimme ottaa yhteyttä vastataksemme viestiisi. Ilman sitä emme voi vastata tiedusteluihisi. Sähköpostiosoitettasi ei tulla käyttämään mihinkään muuhun tarkoitukseen, kuin kysymyksiisi vastaamiseen.";
 $pgv_lang["reply"]			= "Vastaa";
-$pgv_lang["message_deleted"]	= "Viesti pyyhitty";
-$pgv_lang["message_sent"]		= "Viesti lähetetty";
+$pgv_lang["message_deleted"]		= "Viesti pyyhitty";
+$pgv_lang["message_sent"]		= "Viesti lähetettiin osoitteeseen #TO_USER#";
+$pgv_lang["message_failed"]		= "Viestiä ei voitu lähettää";
+$pgv_lang["message_error"]		= "PHPMailer virhe: ";
+$pgv_lang["message_invalid_from"]	= "Virheellinen lähettäjän osoite: &lt#email#&gt";
+$pgv_lang["message_invalid_to"]		= "Virheellinen vastaanottajan osoite: &lt#email#&gt";
 $pgv_lang["reset"]			= "Palauta";
 $pgv_lang["site_default"]		= "Sivuston oletusarvo";
 $pgv_lang["mygedview_desc"]	= "OmaGedView-sivusi antaa mahdollisuuden pitää luetteloa suosikkihenkilöistäsi, tarkastella tulevia merkkipäiviä ja olla yhteistyössä muiden PhpGedView-käyttäjien kanssa.";

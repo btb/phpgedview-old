@@ -10,7 +10,7 @@
  * Other possible options are to use LDAP for authentication.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2013  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -436,6 +436,8 @@ function addMessage($message) {
 		return false;
 	}
 
+	$success = false;
+
 	// Switch to the "from" user's language
 	$oldLanguage = $LANGUAGE;
 	$from_lang=get_user_setting($user_id_from, 'language');
@@ -490,7 +492,7 @@ function addMessage($message) {
 				$header2 = $to;
 			}
 			if (!empty($header2)) {
-				pgvMail($from, $header2, $subject2, $email2);
+				$success = pgvMail($from, $header2, $subject2, $email2, $message['bulkMail'], $fromFullName);
 			}
 		}
 	}
@@ -515,6 +517,7 @@ function addMessage($message) {
 	if ($PGV_STORE_MESSAGES && ($message["method"]!="messaging3" && $message["method"]!="mailto" && $message["method"]!="none")) {
 		PGV_DB::prepare("INSERT INTO {$TBLPREFIX}messages (m_id, m_from, m_to, m_subject, m_body, m_created) VALUES (?, ? ,? ,? ,? ,?)")
 			->execute(array(get_next_id("messages", "m_id"), $message["from"], $message["to"], $message["subject"], $message["body"], $message["created"]));
+		$success = true;
 	}
 	if ($message["method"]!="messaging") {
 		$subject1 = "[".$pgv_lang["phpgedview_message"].($TEXT_DIRECTION=="ltr"?"] ":" [").$message["subject"];
@@ -530,22 +533,25 @@ function addMessage($message) {
 		}
 		if (!$user_id_to) {
 			//-- the to user must be a valid user in the system before it will send any mails
+			if ($LANGUAGE!=$oldLanguage) loadLanguage($oldLanguage, true);			// restore language settings if needed
 			return false;
 		} else {
 			$toFullName=getUserFullName($user_id_to);
+			$to = get_user_setting($user_id_to, 'email');
 			if (!$PGV_SIMPLE_MAIL)
-				$to = hex4email($toFullName, $CHARACTER_SET). " <".get_user_setting($user_id_to, 'email').">";
-			else
-				$to = get_user_setting($user_id_to, 'email');
+				$to = hex4email($toFullName, $CHARACTER_SET). " <".$to.">";
 		}
-		if (get_user_setting($user_id_to, 'email'))
-			pgvMail($to, $from, $subject1, $email1);
+		if (!empty($to)) {
+			if ($from_lang && $LANGUAGE!=$from_lang) {
+				loadLanguage($from_lang, true);		// Switch back to sender's language so errors are in right language
+			}
+			$success = pgvMail($to, $from, $subject1, $email1, $message['bulkMail'], $fromFullName);
+		}
 	}
 
-	if ($LANGUAGE!=$oldLanguage)
-		loadLanguage($oldLanguage, true);			// restore language settings if needed
+	if ($LANGUAGE!=$oldLanguage) loadLanguage($oldLanguage, true);			// restore language settings if needed
 
-	return true;
+	return $success;
 }
 
 //----------------------------------- deleteMessage

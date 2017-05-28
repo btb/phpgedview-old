@@ -3,7 +3,7 @@
  * Vietnamese Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,6 +22,7 @@
  * @package PhpGedView
  * @author Anton Luu
  * @author Lan Nguyen
+ * @translator Google Translate
  * @version $Id$
  */
 
@@ -549,7 +550,11 @@ $pgv_lang["no_to_user"] 			= "Không cho biết người nhận. Không thể ti
 $pgv_lang["provide_email"]			= "Xin cho địa chỉ thư điện tử đặng chúng tôi liên lạc với bạn về thư điện này. Nếu bạn không cho địa chỉ thư điện tử, chúng tôi sẽ không đáp ứng câu hỏi của bạn được. Địa chỉ thư điện tử của bạn sẽ không sài  chuyện gì khác ngoài việc đáp ứng câu hỏi này.";
 $pgv_lang["reply"]					= "Trả lời";
 $pgv_lang["message_deleted"]		= "Bức điện đã xoá bỏ";
-$pgv_lang["message_sent"]			= "Bức điện đã gửi đi";
+$pgv_lang["message_sent"]		= "Thư được gửi tới #TO_USER#";
+$pgv_lang["message_failed"]		= "Không thể gửi tin nhắn";
+$pgv_lang["message_error"]		= "Lỗi PHPMailer: ";
+$pgv_lang["message_invalid_from"]	= "Địa chỉ người gửi không hợp lệ: &lt#email#&gt";
+$pgv_lang["message_invalid_to"]		= "Địa chỉ người nhận không hợp lệ: &lt#email#&gt";
 $pgv_lang["reset"]					= "Đặt lại";
 $pgv_lang["site_default"]			= "Mặc định của site";
 $pgv_lang["mygedview_desc"] 		= "Trong Trang GedView của Tôi, bạn có thể giữ người ưa chuộng, theo dõi những chuyện sắp đến, và cộng tác cùng với những thành viên PhpGedView khác.";

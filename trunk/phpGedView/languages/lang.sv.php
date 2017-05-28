@@ -3,7 +3,7 @@
  * Swedish Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2011  PGV Development Team
+ * Copyright (C) 2002 to 2017  PGV Development Team
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,6 +21,7 @@
  *
  * @package PhpGedView
  * @author Patrik Hansson
+ * @translator Google Translate
  * @version $Id$
  */
 
@@ -725,10 +726,14 @@ $pgv_lang["message_subject"]	= "Ärende:";
 $pgv_lang["message_body"]		= "Meddelande:";
 $pgv_lang["no_to_user"]			= "Ingen mottagare har angivits. Kan inte fortsätta.";
 $pgv_lang["provide_email"]		= "Ange din e-postadress så att vi kan kontakta dig för att svara på ditt meddelande. Om du inte anger din e-postadress kommer vi inte att kunna besvara din förfrågan. Din e-postadress kommer inte att användas på något annat sätt än för att besvara din förfrågan.";
-$pgv_lang["reply"]				= "Svara";
-$pgv_lang["message_deleted"]	= "Medelande raderat";
-$pgv_lang["message_sent"]		= "Meddelandet är skickat";
-$pgv_lang["reset"]				= "Återställ";
+$pgv_lang["reply"]			= "Svara";
+$pgv_lang["message_deleted"]		= "Medelande raderat";
+$pgv_lang["message_sent"]		= "Meddelande skickat till #TO_USER#";
+$pgv_lang["message_failed"]		= "Meddelandet kunde inte skickas";
+$pgv_lang["message_error"]		= "PHPMailer fel: ";
+$pgv_lang["message_invalid_from"]	= "Ogiltig avsändaradress: &lt#email#&gt";
+$pgv_lang["message_invalid_to"]		= "Ogiltig mottagareadress: &lt#email#&gt";
+$pgv_lang["reset"]			= "Återställ";
 $pgv_lang["site_default"]		= "Sajt-standard";
 $pgv_lang["mygedview_desc"]		= "Din MyGedView sida tillåter dig att ha bokmärken över dina favorit-personer, spåra kommande händelser och samarbeta med andra användare av PhpGedView.";
 $pgv_lang["no_messages"]		= "Du har inga väntande meddelanden.";

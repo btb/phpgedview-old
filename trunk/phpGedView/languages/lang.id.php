@@ -3,7 +3,7 @@
  * Indonesian texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,6 +22,7 @@
  *
  * @author PGV Developers
  * @translator alfarq
+ * @translator Google Translate
  * @package PhpGedView
  * @subpackage Languages
  * @version $Id$
@@ -1244,8 +1245,12 @@ $pgv_lang["message_body"]			= "Isi Surat:";
 $pgv_lang["no_to_user"] 			= "Tidak ada pengguna penerima yang tersedia. Tidak dapat melanjutkan.";
 $pgv_lang["provide_email"]			= "Silakan sediakan alamat email sehingga kami dapat menghubungi Anda sebagai jawaban pesan ini. Jika Anda tidak menyediakan alamat email Anda, Kami tidak akan dapat menjawab pertanyaan Anda. Alamat email Anda tidak akan digunakan untuk keperluan lain di samping menjawab pertanyaan ini.";
 $pgv_lang["reply"]				= "Balas";
-$pgv_lang["message_deleted"]			= "Pesan Dihapus";
-$pgv_lang["message_sent"]			= "Pesan berhasil dikirim ke #TO_USER#";
+$pgv_lang["message_deleted"]		= "Pesan Dihapus";
+$pgv_lang["message_sent"]		= "Pesan dikirim ke #TO_USER#";
+$pgv_lang["message_failed"]		= "Pesan tidak dapat dikirim";
+$pgv_lang["message_error"]		= "Kesalahan PHPMailer: ";
+$pgv_lang["message_invalid_from"]	= "Alamat pengirim tidak valid: &lt#email#&gt";
+$pgv_lang["message_invalid_to"]		= "Alamat penerima tidak valid: &lt#email#&gt";
 $pgv_lang["reset"]				= "Kembalikan";
 $pgv_lang["site_default"]			= "Default Situs";
 $pgv_lang["mygedview_desc"] 			= "Halaman GedViewSaya Anda membolehkan Anda menyimpan pembatasbuku dari orang favorit Anda, melacak peristiwa yang akan datang, dan berkolaborasi dengan pengguna PhpGedView yang lain.";

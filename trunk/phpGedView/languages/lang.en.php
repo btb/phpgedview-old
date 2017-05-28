@@ -3,7 +3,7 @@
  * English texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2016  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -1311,7 +1311,11 @@ $pgv_lang["no_to_user"] 			= "No recipient user was provided.  Cannot continue."
 $pgv_lang["provide_email"]			= "Please provide your email address so that we may contact you in response to this message.  If you do not provide your email address we will not be able to respond to your inquiry.  You email address will not be used in any other way besides responding to this inquiry.";
 $pgv_lang["reply"]					= "Reply";
 $pgv_lang["message_deleted"]		= "Message Deleted";
-$pgv_lang["message_sent"]			= "Message successfully sent to #TO_USER#";
+$pgv_lang["message_sent"]			= "Message sent to #TO_USER#";
+$pgv_lang["message_failed"]			= "Message could not be sent";
+$pgv_lang["message_error"]			= "PHPMailer error: ";
+$pgv_lang["message_invalid_from"]	= "Invalid sender address: &lt#email#&gt";
+$pgv_lang["message_invalid_to"]		= "Invalid recipient address: &lt#email#&gt";
 $pgv_lang["reset"]					= "Reset";
 $pgv_lang["site_default"]			= "Site Default";
 $pgv_lang["mygedview_desc"] 		= "Your MyGedView page allows you to keep bookmarks of your favorite people, track upcoming events, and collaborate with other PhpGedView users.";
