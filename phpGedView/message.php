@@ -88,11 +88,14 @@ if (($action=="send")&&(isset($_SESSION["good_to_send"]))&&($_SESSION["good_to_s
 		$action="compose";
 	}
 	if ($action!="compose") {
+		$bulkMail = false;
 		$toarray = array($to);
 		if ($to == "all") {
+			$bulkMail = true;
 			$toarray = get_all_users();
 		}
 		if ($to == "never_logged") {
+			$bulkMail = true;
 			$toarray = array();
 			foreach (get_all_users() as $user_id=>$user_name) {
 				// SEE Bug [ 1827547 ] Message to inactive users sent to newcomers
@@ -102,6 +105,7 @@ if (($action=="send")&&(isset($_SESSION["good_to_send"]))&&($_SESSION["good_to_s
 			}
 		}
 		if ($to == "last_6mo") {
+			$bulkMail = true;
 			$toarray = array();
 			$sixmos = 60*60*24*30*6;	//-- timestamp for six months
 			foreach (get_all_users() as $user_id=>$user_name) {
@@ -132,6 +136,7 @@ if (($action=="send")&&(isset($_SESSION["good_to_send"]))&&($_SESSION["good_to_s
 			$message["method"] = get_user_setting($to_user_id, 'contactmethod');
 			$message["url"] = $url.'&amp;ged='.$GEDCOM;
 			if ($i>0) $message["no_from"] = true;
+			$message['bulkMail'] = $bulkMail;
 			if (addMessage($message)){
 				if ($to_user_id) {
 					print str_replace("#TO_USER#", "<b>".getUserFullName($to_user_id)."</b>", $pgv_lang["message_sent"]);
@@ -140,6 +145,7 @@ if (($action=="send")&&(isset($_SESSION["good_to_send"]))&&($_SESSION["good_to_s
 					AddToLog('Invalid TO user.'.$to.' Possible spam attack.');
 				}
 			} else {
+				echo '<span class="error">', $pgv_lang["message_failed"], '</span><br /';
 				AddToLog('Unable to send message.  TO:'.$to.' FROM:'.$from);
 			}
 			$i++;

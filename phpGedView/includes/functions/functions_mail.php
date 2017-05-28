@@ -3,7 +3,7 @@
  * Mail specific functions
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2015  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -33,14 +33,28 @@ define('PGV_FUNCTIONS_MAIL_PHP', '');
 /**
  * this function is a wrapper to the php mail() function so that we can change settings globally
  * for more info on format="flowed" see: http://www.joeclark.org/ffaq.html
- * for deatiled info on MIME (RFC 1521) email see: http://www.freesoft.org/CIE/RFC/1521/index.htm
+ * for detailed info on MIME (RFC 1521) email see: http://www.freesoft.org/CIE/RFC/1521/index.htm
  */
-function pgvMail($to, $from, $subject, $message) {
+function pgvMail($to, $from, $subject, $message, $bulkMail=false, $fromFullName='') {
 	global $PGV_SMTP_ACTIVE, $PGV_SMTP_HOST, $PGV_SMTP_HELO, $PGV_SMTP_FROM_NAME, $PGV_SMTP_PORT, $PGV_SMTP_AUTH, $PGV_SMTP_AUTH_USER, $PGV_SMTP_AUTH_PASS, $PGV_SMTP_SSL;
-	global $pgv_lang, $CHARACTER_SET, $LANGUAGE, $PGV_STORE_MESSAGES, $TEXT_DIRECTION;
+	global $CHARACTER_SET, $PGV_STORE_MESSAGES, $TEXT_DIRECTION, $pgv_lang;
 	$mailFormat = "plain";
 	//$mailFormat = "html";
 	//$mailFormat = "multipart";
+
+	$errorMessage = '';
+	if (!validEmail($from)) {		// Validate "from" e-mail address
+		$errorMessage .= str_replace('#email#', $from, $pgv_lang["message_invalid_from"]);
+		$errorMessage .= '<br />';
+	}
+	if (!validEmail($to)) {			// Validate "to" e-mail address
+		$errorMessage .= str_replace('#email#', $to, $pgv_lang["message_invalid_to"]);
+		$errorMessage .= '<br />';
+	}
+	if ($errorMessage != '' ) {		// Quit if either address check failed
+		echo '<span class="error">', $errorMessage, '</span>';
+		return false;
+	}
 
 	$mailFormatText = "text/plain";
 
@@ -113,10 +127,11 @@ function pgvMail($to, $from, $subject, $message) {
 	}
 	// if SMTP mail is set active AND we have SMTP settings available, use the PHPMailer classes
 	if ($PGV_SMTP_ACTIVE  && ( $PGV_SMTP_HOST && $PGV_SMTP_PORT ) ) {
-		require_once PGV_ROOT.'includes/class.phpmailer.php';
+		require_once PGV_ROOT.'includes/PHPMailer/PHPMailerAutoload.php';
 		$mail_object = new PHPMailer();
 		$mail_object->IsSMTP();
-		$mail_object->SetLanguage('en','languages/');
+		$mail_object->SetLanguage('en','');		// PHPMailer errors are in English only
+		$mail_object->ShowWikiURL = false;		// Don't show Wiki URL on PHPMailer connect errors
 		if ( $PGV_SMTP_AUTH && ( $PGV_SMTP_AUTH_USER && $PGV_SMTP_AUTH_PASS ) ) {
 			$mail_object->SMTPAuth = $PGV_SMTP_AUTH;
 			$mail_object->Username = $PGV_SMTP_AUTH_USER;
@@ -131,13 +146,20 @@ function pgvMail($to, $from, $subject, $message) {
 		$mail_object->Port = $PGV_SMTP_PORT;
 		$mail_object->Hostname = $PGV_SMTP_HELO;
 		$mail_object->From = $from;
-		if (!empty($PGV_SMTP_FROM_NAME) && $from!=$PGV_SMTP_AUTH_USER) {
-			$mail_object->FromName = $PGV_SMTP_FROM_NAME;
-			$mail_object->AddAddress($to);
+		if ($bulkMail) {
+			if (!empty($PGV_SMTP_FROM_NAME)) {
+				$mail_object->FromName = $PGV_SMTP_FROM_NAME;
+			} else {
+				$mail_object->FromName = $from;
+			}
+		} else {
+			if (!empty($fromFullName)) {
+				$mail_object->FromName = $fromFullName;
+			} else {
+				$mail_object->FromName = $from;
+			}
 		}
-		else {
-			$mail_object->FromName = $mail_object->AddAddress($to);
-		}
+		$mail_object->AddAddress($to);
 		$mail_object->Subject = hex4email( $subject, $CHARACTER_SET );
 		$mail_object->ContentType = $mailFormatText;
 		if ( $mailFormat != "multipart" ) {
@@ -151,18 +173,15 @@ function pgvMail($to, $from, $subject, $message) {
 		}
 		$mail_object->Body = $message;
 		// attempt to send mail
-		if ( ! $mail_object->Send() ) {
-			echo 'Message was not sent.<br />';
-			echo 'Mailer error: ' . $mail_object->ErrorInfo . '<br />';
-			return;
-		} else {
-			// SMTP OK
-			return;
+		$success = $mail_object->Send();
+		if (!$success) {
+			echo '<span class="error">', $pgv_lang["message_error"], $mail_object->ErrorInfo, '</span><br />';
 		}
 	} else {
-		// use original PGV mail sending function	
-		mail($to, hex4email($subject,$CHARACTER_SET), $message, $extraHeaders);
+		// use original PGV mail sending function
+		$success = mail($to, hex4email($subject,$CHARACTER_SET), $message, $extraHeaders);
 	}
+	return $success;
 }
 
 function getPgvMailLogo() {
@@ -255,7 +274,6 @@ return $pgvLogo;
  * found at http://us3.php.net/bin2hex
  */
 function hex4email ($string,$charset) {
-	global $LANGUAGE;
 
 	//-- check if the string has extended characters in it
 	$str = utf8_decode($string);
@@ -272,12 +290,85 @@ function hex4email ($string,$charset) {
 
 function RFC2047Encode($string, $charset) {
 	if (preg_match('/[^a-z ]/i', $string)) {
-		$string = preg_replace_callback('/([^a-z ])/i', 
-		                                function ($match) { return '='.sprintf('%02X', ord($match[1])); }, 
+		$string = preg_replace_callback('/([^a-z ])/i',
+		                                function ($match) { return '='.sprintf('%02X', ord($match[1])); },
 		                                $string);
 		$string = str_replace(' ', '_', $string);
 		return "=?$charset?Q?$string?=";
 	}
 }
 
+/**
+ * Validate an email address.
+ *
+ * Returns true if the input email address has the correct address format and the domain exists.
+ */
+function validEmail($email) {
+	$isValid = true;
+
+	while ($isValid) {
+		$atIndex = strrpos($email, "@");
+		if ($atIndex === false) {
+		   $isValid = false;
+		   break;
+		}
+
+		$domain = substr($email, $atIndex+1);
+		$local = substr($email, 0, $atIndex);
+		$localLen = strlen($local);
+		$domainLen = strlen($domain);
+
+		// Validate local part (what's in front of last @ symbol)
+
+		if ($localLen < 1 || $localLen > 65) {
+			// local part missing or length exceeded
+			$isValid = false;
+			break;
+		}
+		if ($local[0] == '.' || $local[$localLen-1] == '.') {
+			// local part starts or ends with '.'
+			$isValid = false;
+			break;
+		}
+		if (preg_match('/\\.\\./', $local)) {
+			// local part has two consecutive dots
+			$isValid = false;
+			break;
+		}
+		$tempLocal = str_replace("\\\\","",$local);
+		if (!preg_match('/^(\\\\.|[A-Za-z0-9!#%&`_=\\/$\'*+?^{}|~.-])+$/', $tempLocal)) {
+			// character not valid in local part unless
+			// local part is quoted
+			if (!preg_match('/^"(\\\\"|[^"])+"$/', $tempLocal)) {
+				$isValid = false;
+				break;
+			}
+		}
+
+		// Validate domain part (what's after the last @ symbol)
+
+		if ($domainLen < 1 || $domainLen > 255) {
+			// domain part missing or length exceeded
+			$isValid = false;
+			break;
+		}
+		if (!preg_match('/^[A-Za-z0-9\\-\\.]+$/', $domain)) {
+			// character not valid in domain part
+			$isValid = false;
+			break;
+		}
+		if (preg_match('/\\.\\./', $domain)) {
+			// domain part has two consecutive dots
+			$isValid = false;
+			break;
+		}
+		if (!checkdnsrr($domain,"MX")) {
+			// domain not found in DNS or domain does not support email
+			$isValid = false;
+			break;
+		}
+		break;
+   }
+   return $isValid;
+}
 ?>

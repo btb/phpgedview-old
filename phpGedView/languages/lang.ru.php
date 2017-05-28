@@ -3,7 +3,7 @@
  * Russian Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2013  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,6 +23,7 @@
  * @translator Eugene Fedorov
  * @translator Natalia Anikeeva
  * @translator Ivan Platonov
+ * @translator Google Translate
  * @version $Id$
  */
 
@@ -1310,7 +1311,11 @@ $pgv_lang["no_to_user"]			= "Нет адреса получателя.";
 $pgv_lang["provide_email"]		= "Сообщите эл.адрес, на который Вы хотите получить ответ на Ваше письмо. Без указания эл.адреса мы не ответим на Ваше сообщение. ";
 $pgv_lang["reply"]			= "Ответ";
 $pgv_lang["message_deleted"]		= "Сообщение удалено";
-$pgv_lang["message_sent"]		= "Сообщение послано";
+$pgv_lang["message_sent"]		= "Сообщение отправлено на #TO_USER#";
+$pgv_lang["message_failed"]		= "Не удалось отправить сообщение";
+$pgv_lang["message_error"]		= "Ошибка PHPMailer: ";
+$pgv_lang["message_invalid_from"]	= "Недопустимый адрес отправителя: &lt#email#&gt";
+$pgv_lang["message_invalid_to"]		= "Недопустимый адрес получателя: &lt#email#&gt";
 $pgv_lang["reset"]			= "Восстановление";
 $pgv_lang["site_default"]		= "Стандартный сайт";
 $pgv_lang["mygedview_desc"]		= "На Вашей личной страничке MyGedView Вы можете указать свои приоритетные персоны, посмотреть события, которые произойдут в скором времени и работать с другими пользователями PhpGedView этого сайта.";

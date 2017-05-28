@@ -3,7 +3,7 @@
  * Danish Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,6 +21,7 @@
  *
  *
  * @author PGV Developers
+ * @translator Google Translate
  * @package PhpGedView
  * @subpackage Languages
  * @version $Id$
@@ -1137,8 +1138,12 @@ $pgv_lang["message_body"]		= "Din besked:";
 $pgv_lang["no_to_user"]			= "Skriv hvilken bruger, beskeden er til.";
 $pgv_lang["provide_email"]		= "Opgiv venligst din e-mail-adresse, så vi kan besvare dit brev.<br />Hvis du ikke opgiver din e-mail-adresse, har vi ikke mulighed for at komme i kontakt med dig.<br />PS. Din e-mail-adresse vil ikke blive brugt til andet end at besvare denne forespørgsel.";
 $pgv_lang["reply"]				= "Svar";
-$pgv_lang["message_deleted"]	= "Besked slettet";
-$pgv_lang["message_sent"]		= "Besked sendt til #TO_USER#";
+$pgv_lang["message_deleted"]		= "Meddelelsen slettet";
+$pgv_lang["message_sent"]		= "Meddelelsen sendt til #TO_USER#";
+$pgv_lang["message_failed"]		= "Meddelelsen kunne ikke sendes";
+$pgv_lang["message_error"]		= "PHPMailer fejl: ";
+$pgv_lang["message_invalid_from"]	= "Ugyldig afsenderadresse: &lt#email#&gt";
+$pgv_lang["message_invalid_to"]		= "Ugyldig modtageradresse: &lt#email#&gt";
 $pgv_lang["reset"]				= "Nulstil";
 $pgv_lang["site_default"]		= "Standard på hjemmesiden";
 $pgv_lang["mygedview_desc"]		= "Dette er <em>Mine Sider</em>, hvor du kan vælge egne <em>favoritter</em>, få en påmindelse om <em>begivenheder</em> og <em>samarbejde med andre brugere</em>.";

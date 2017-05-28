@@ -3,7 +3,7 @@
  * Polish texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2011  PGV Development Team. All rights reserved.
+ * Copyright (C) 2002 to 2017  PGV Development Team. All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,6 +20,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  * @author Łukasz Wileński <wooc@users.sourceforge.net>
+ * @translator Google Translate
  * @package PhpGedView
  * @subpackage Languages
  * @version $Id$
@@ -1306,7 +1307,11 @@ $pgv_lang["no_to_user"]				= "Nie podano odbiorcy, nie można kontynuować.";
 $pgv_lang["provide_email"]			= "Podaj swój adres email abyśmy mogli skontaktować się z tobą. Jeśli go nie podasz, nie będziemy mogli odpowiedzieć na twoje pytanie. Twój adres nie zostanie wykorzystany w żadnym innym celu poza wysłaniem odpowiedzi.";
 $pgv_lang["reply"]					= "Odpowiedz";
 $pgv_lang["message_deleted"]		= "Wiadomość usunięta";
-$pgv_lang["message_sent"]			= "Wiadomość do #TO_USER# została wysłana";
+$pgv_lang["message_sent"]		= "Wiadomość wysłana na #TO_USER#";
+$pgv_lang["message_failed"]		= "Nie można wysłać wiadomości";
+$pgv_lang["message_error"]		= "Błąd PHPMailer: ";
+$pgv_lang["message_invalid_from"]	= "Nieprawidłowy adres nadawcy: &lt#email#&gt";
+$pgv_lang["message_invalid_to"]		= "Nieprawidłowy adres odbiorcy: &lt#email#&gt";
 $pgv_lang["reset"]					= "Wyczyść";
 $pgv_lang["site_default"]			= "Domyślne ustawienia strony";
 $pgv_lang["mygedview_desc"]			= "Na stronie Twojego portalu możesz zapamiętywać ulubione osoby, śledzić nadchodzące wydarzenia i współpracować z innymi użytkownikami.";

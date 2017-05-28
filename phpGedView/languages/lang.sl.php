@@ -3,7 +3,7 @@
  * Slovenian texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2012  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,6 +25,7 @@
  * @subpackage Languages
  * @translator Silvana Orel Kos
  * @translator Leon Kos
+ * @translator Google Translate
  * @version $Id$
  */
 
@@ -1315,7 +1316,11 @@ $pgv_lang["no_to_user"] 			= "Niste navedli prejemnika. Postopka ni mogoče izpe
 $pgv_lang["provide_email"]			= "Napišite svoj elektronski naslov, da vam bomo lahko odgovorili, sicer to ne bo mogoče. Vaš elektronski naslov bomo uporabili samo za odziv na vaše sporočilo.";
 $pgv_lang["reply"]				= "Odgovori";
 $pgv_lang["message_deleted"]			= "Sporočilo je zbrisano";
-$pgv_lang["message_sent"]			= "Sporočilo je bilo uspešno poslano uporabniku #TO_USER#";
+$pgv_lang["message_sent"]			= "Sporočilo je bilo poslano #TO_USER#";
+$pgv_lang["message_failed"]			= "Sporočilo ni bilo mogoče poslati";
+$pgv_lang["message_error"]			= "Napaka PHPMailer: ";
+$pgv_lang["message_invalid_from"]		= "Neveljaven naslov pošiljatelja: &lt#email#&gt";
+$pgv_lang["message_invalid_to"]			= "Neveljaven naslov prejemnika: &lt#email#&gt";
 $pgv_lang["reset"]				= "Ponastavi";
 $pgv_lang["site_default"]			= "Privzete vrednosti";
 $pgv_lang["mygedview_desc"] 			= "Ta stran omogoča hranjenje zaznamkov priljubljenih oseb, sledenje bližnjih dogodkov in sodelovanje z drugimi uporabniki.";

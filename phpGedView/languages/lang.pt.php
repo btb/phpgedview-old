@@ -3,7 +3,7 @@
  * Portugese Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2016  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,6 +23,7 @@
  * @author José Monteiro
  * @website http://existologoescrevo.blogspot.com/
  * @e-mail jalberto@bluewin.ch
+ * @translator Google Translate
  * @version $Id$
  */
 
@@ -1310,8 +1311,12 @@ $pgv_lang["message_body"]="Corpo";
 $pgv_lang["no_to_user"]="Nenhum recipiente de Membro foi fornecido.  Impossível continuar.";
 $pgv_lang["provide_email"]="Favor fornecer seu endereço de e-mail de forma que possamos responder sua mensagem.  Seu endereço de e-mail <b>não</b> será usado para outros fins a não ser para responder sua mensagem.";
 $pgv_lang["reply"]="Responder";
-$pgv_lang["message_deleted"]="Mensagem Excluida";
-$pgv_lang["message_sent"]="Mensagem Enviada";
+$pgv_lang["message_deleted"] = "Mensagem excluida";
+$pgv_lang["message_sent"] = "Mensagem enviada para #TO_USER#";
+$pgv_lang["message_failed"] = "Não foi possível enviar a mensagem";
+$pgv_lang["message_error"] = "Erro PHPMailer: ";
+$pgv_lang["message_invalid_from"] = "Endereço do remetente inválido: &lt#email#&gt";
+$pgv_lang["message_invalid_to"] = "Endereço do destinatário inválido: &lt#email#&gt";
 $pgv_lang["reset"]="Restaurar";
 $pgv_lang["site_default"]="Padrão do Site";
 $pgv_lang["mygedview_desc"]="A página <b>\"Meu Portal\"</b> permite que você faça 'Bookmarks' de suas pessoas favoritas, veja os próximos eventos e colabore com outros Membros.";

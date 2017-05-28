@@ -3,7 +3,7 @@
  * Romanian texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2011  PGV Development Team
+ * Copyright (C) 2002 to 2017  PGV Development Team
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,6 +21,7 @@
  *
  *
  * @author Uifălean Mircea
+ * @translator Google Translate
  * @package PhpGedView
  * @subpackage Languages
  * @version $Id$
@@ -1195,7 +1196,11 @@ $pgv_lang["no_to_user"] 			= "Nu a fost specificat nici un destinatar.  Nu se po
 $pgv_lang["provide_email"]			= "Vă rugăm furnizaţi adresa dumneavoastră de email pentru a vă putea contacta în legătură cu acest mesaj.  Dacă nu furnizaţi adresa dumneavoastră de email nu vom putea să vă răspundem la întrebare.  Adresa dumneavoastră de email nu va fi folosită în nici un alt scop în afară de a vă răspunde la întrebare.";
 $pgv_lang["reply"]					= "Răspunde";
 $pgv_lang["message_deleted"]		= "Mesaj şters";
-$pgv_lang["message_sent"]			= "Mesajul a fost trimis la #TO_USER# cu succes";
+$pgv_lang["message_sent"]		= "Mesajul trimis la #TO_USER#";
+$pgv_lang["message_failed"]		= "Mesajul nu a putut fi trimis";
+$pgv_lang["message_error"]		= "Eroare PHPMailer: ";
+$pgv_lang["message_invalid_from"]	= "Adresa nevalidă a expeditorului: &lt#email#&gt";
+$pgv_lang["message_invalid_to"]		= "Adresă nevalidă a destinatarului: &lt#email#&gt";
 $pgv_lang["reset"]					= "Resetare";
 $pgv_lang["site_default"]			= "Setarea implicită";
 $pgv_lang["mygedview_desc"] 		= "Pagina dumneavoastră MyGedView vă permite să păstraţi marcaje către persoanele dumneavoastră favorite, să urmăriţi evenimentele următoare, şi să colaboraţi cu alti utilizatori PhpGedView.";

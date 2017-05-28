@@ -3,7 +3,7 @@
  * Hungarian texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,6 +22,7 @@
  *
  * @author PGV Developers
  * @author Hrotkó Gábor <roti@al.pmmf.hu>
+ * @translator Google Translate
  * @package PhpGedView
  * @subpackage Languages
  * @version $Id$
@@ -825,8 +826,12 @@ $pgv_lang["no_to_user"]						= "Nincs megadva címzett. Nem lehet folytatni.";
 $pgv_lang["provide_email"]					= "Kérem adja meg az e-mail címét, hogy üzenetére válaszolhassunk. E-mail címét kizárólag ebből a célból fogjuk felhasználni.";
 $pgv_lang["reply"]						= "Válasz";
 $pgv_lang["favorites"]						= "Kedvencek";
-$pgv_lang["message_deleted"]					= "Üzenet törölve";
-$pgv_lang["message_sent"]					= "Üzenet elküldve";
+$pgv_lang["message_deleted"]		= "Az üzenetet törölve";
+$pgv_lang["message_sent"]		= "Az üzenetet elküldése #TO_USER#";
+$pgv_lang["message_failed"]		= "Az üzenetet nem lehetett elküldeni";
+$pgv_lang["message_error"]		= "PHPMailer hiba: ";
+$pgv_lang["message_invalid_from"]	= "Érvénytelen a feladó címe: &lt#email#&gt";
+$pgv_lang["message_invalid_to"]		= "Érvénytelen címzett címe: &lt#email#&gt";
 $pgv_lang["reset"]						= "Visszaállít";
 $pgv_lang["site_default"]					= "Alapértelmezett";
 $pgv_lang["mygedview_desc"]					= "Az Ön MyGedView oldalán kiválaszthatja az Önnek kedves személyeket, figyelheti az elkövetkezendő eseményeket, és kapcsolatba léphet más felhasználókkal.";

@@ -3,7 +3,7 @@
  * Estonian texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2006 to 2011  PGV Development Team
+ * Copyright (C) 2006 to 2017  PGV Development Team
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,6 +21,7 @@
  *
  *
  * @author Anu Mullari
+ * @translator Google Translate
  * @package PhpGedView
  * @subpackage Languages
  * $Id$
@@ -803,7 +804,11 @@ $pgv_lang["no_to_user"] 		= "Saaja puudub. Pole võimalik jätkata.";
 $pgv_lang["provide_email"]		= "Palun lisa ka oma e-maili aadress, et saaksime sellele sõnumile vastamiseks sinuga ühendust võtta. Sinu meiliaadressi ei kasutata ühelgi muul viisil kui ainult sellele päringule vastamiseks.";
 $pgv_lang["reply"]			= "Vasta";
 $pgv_lang["message_deleted"]		= "Sõnum kustutatud";
-$pgv_lang["message_sent"]		= "Sõnumi saatmine kasutajale #TO_USER# õnnestus.";
+$pgv_lang["message_sent"]		= "Sõnum saadetakse #TO_USER#";
+$pgv_lang["message_failed"]		= "Sõnumit ei saa saata";
+$pgv_lang["message_error"]		= "PHPMailer viga: ";
+$pgv_lang["message_invalid_from"]	= "Kehtetu saatja aadress: &lt#email#&gt";
+$pgv_lang["message_invalid_to"]		= "Vale saaja aadress: &lt#email#&gt";
 $pgv_lang["reset"]			= "Taasta";
 $pgv_lang["site_default"]		= "Veebilehe vaikimisi teema";
 $pgv_lang["mygedview_desc"] 		= "Minu GedView lehekülg võimaldab seada järjehoidjaid tähtsamatele inimestele, jälgida saabuvaid sündmusi ja teha koostööd teiste PhpGedView kasutajatega.";

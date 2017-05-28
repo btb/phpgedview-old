@@ -3,7 +3,7 @@
  * Czech Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2012  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,6 +21,7 @@
  *
  * @package PhpGedView
  * @author Jan Hapala, Josef Pavlík
+ * @translator Google Translate
  * @version $Id$
  */
 
@@ -1309,7 +1310,11 @@ $pgv_lang["no_to_user"]			= "Nezadali jste příjemce zprávy.  Není možné po
 $pgv_lang["provide_email"]		= "Prosím zadejte svou e-mailovou adresu, abychom vás případně mohli kontaktovat.  Pokud nám neposkytnete svou e-mailovou adresu, nebudeme vám moci odpovědět.  Vaše e-mailová adresa nebude užita k žádným jiným účelům než k odpovědi na váš dotaz.";
 $pgv_lang["reply"]			= "Odpovědět";
 $pgv_lang["message_deleted"]		= "Zpráva byla smazána";
-$pgv_lang["message_sent"]		= "Zpráva byla zaslána";
+$pgv_lang["message_sent"]		= "Zpráva byla odeslána #TO_USER#";
+$pgv_lang["message_failed"]		= "Zpráva nemohla být odeslána";
+$pgv_lang["message_error"]		= "Chyba PHPMailer: ";
+$pgv_lang["message_invalid_from"]	= "Neplatná adresa odesílatele: &lt#email#&gt";
+$pgv_lang["message_invalid_to"]		= "Neplatná adresa příjemce: &lt#email#&gt";
 $pgv_lang["reset"]			= "Reset";
 $pgv_lang["site_default"]		= "Domácí stránka";
 $pgv_lang["mygedview_desc"]		= "Vaše stránka MyGedView vám umožňuje uchovávat záložky svých přátel, sledovat nadcházející události a spolupracovat s ostatními uživateli PhpGedView.";

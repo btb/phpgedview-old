@@ -3,7 +3,7 @@
  * Greek Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,6 +21,7 @@
  *
  * @package PhpGedView
  * @author Vangelis Skarmoutsos
+ * @translator Google Translate
  * @version $Id$
  */
 
@@ -556,8 +557,12 @@ $pgv_lang["message_body"]						= "Σώμα:";
 $pgv_lang["no_to_user"]							= "Δεν ορίσθηκε παραλήπτης. Η συνέχιση είναι αδύνατη.";
 $pgv_lang["provide_email"]						= "Παρακαλώ να παρέχετε την διεύθυνση email σας ώστε να μπορούμε να έρθουμε σε επαφή μαζί σας ως απόκριση σε αυτό το μήνυμα. Εάν δεν μας παρέχετε την διεύθυνση email σας, δεν θα μπορούμε να αποκριθούμε στο αίτημα σας. Η διεύθυνση email σας δεν θα χρησιμοποιηθεί με κανένα άλλο τρόπο, εκτός από την απόκριση σε αυτό το αίτημα.";
 $pgv_lang["reply"]								= "Απάντηση";
-$pgv_lang["message_deleted"]					= "Το μήνυμα διαγράφηκε";
-$pgv_lang["message_sent"]						= "Το μήνυμα στάλθηκε επιτυχώς στον #TO_USER#";
+$pgv_lang["message_deleted"]			= "Το μήνυμα διαγράφηκε";
+$pgv_lang["message_sent"]			= "Μήνυμα αποστέλλεται #TO_USER#";
+$pgv_lang["message_failed"]			= "Δεν ήταν δυνατή η αποστολή μηνύματος";
+$pgv_lang["message_error"]			= "Σφάλμα PHPMailer: ";
+$pgv_lang["message_invalid_from"]		= "Μη έγκυρη διεύθυνση αποστολέα: &lt#email#&gt";
+$pgv_lang["message_invalid_to"]			= "Μη έγκυρη διεύθυνση παραλήπτη: &lt#email#&gt";
 $pgv_lang["reset"]								= "Επαναφορά";
 $pgv_lang["site_default"]						= "Προεπιλογή τοποθεσίας";
 $pgv_lang["mygedview_desc"]						= "Η σελίδα Ατομική πύλη, σας επιτρέπει να κρατάτε σελιδοδείκτες των αγαπημένων σας ανθρώπων, να παρακολουθείτε επερχόμενα γεγονότα και να συνεργάζεσθε με άλλους χρήστες του PhpGedView.";

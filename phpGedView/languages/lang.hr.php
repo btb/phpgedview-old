@@ -3,7 +3,7 @@
  * Croatian texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2010 to 2011  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2010 to 2017  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,6 +21,7 @@
  *
  *
  * @translator Kresimir Puntijar
+ * @translator Google Translate
  * @package PhpGedView
  * @subpackage Languages
  * @version $Id$
@@ -1306,8 +1307,12 @@ $pgv_lang["message_body"]			= "Body:";
 $pgv_lang["no_to_user"] 			= "No recipient user was provided.  Cannot continue.";
 $pgv_lang["provide_email"]			= "Please provide your email address so that we may contact you in response to this message.  If you do not provide your email address we will not be able to respond to your inquiry.  You email address will not be used in any other way besides responding to this inquiry.";
 $pgv_lang["reply"]					= "Reply";
-$pgv_lang["message_deleted"]		= "poruka je obrisana";
-$pgv_lang["message_sent"]			= "poruka uspješno sent to #TO_USER#";
+$pgv_lang["message_deleted"]		= "Poruka je obrisana";
+$pgv_lang["message_sent"]		= "Poruka poslana na #TO_USER#";
+$pgv_lang["message_failed"]		= "Poruka nije mogla biti poslana";
+$pgv_lang["message_error"]		= "Pogreška PHPMailer: ";
+$pgv_lang["message_invalid_from"]	= "Nevažeća adresa pošiljatelja: &lt#email#&gt";
+$pgv_lang["message_invalid_to"]		= "Nevažeća adresa primatelja: &lt#email#&gt";
 $pgv_lang["reset"]					= "Početni položaj";
 $pgv_lang["site_default"]			= "Site Default";
 $pgv_lang["mygedview_desc"] 		= "Stranica Moj portal omogućava da sebi obilježite omiljene upise, da pratite prestojeće događaje i surađujete sa drugim korisnicima ovog rodoslovlja";
