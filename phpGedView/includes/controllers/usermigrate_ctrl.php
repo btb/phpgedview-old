@@ -5,7 +5,7 @@
  * authenticate.php and xxxxxx.dat files (MySQL mode).
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2010 PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2017 PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -66,13 +66,6 @@ class UserMigrateControllerRoot extends BaseController {
 	var $favSuccess = false;
 	var $newsSuccess = false;
 	var $blockSuccess = false;
-
-	/**
-	 * constructor
-	 */
-	function UserMigrateControllerRoot() {
-		parent::BaseController();
-	}
 
 	/**
 	 * Initialize the controller and start the logic

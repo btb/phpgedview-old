@@ -4,7 +4,7 @@
  * Controller for the Search Page
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2016	PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2017	PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -99,12 +99,6 @@ class SearchControllerRoot extends BaseController {
 	var $replacePlacesWord = false;
 	var $printplace = array();
 
-	/**
-	 * constructor
-	 */
-	function SearchControllerRoot() {
-		parent :: BaseController();
-	}
 	/**
 	 * Initialization function
 	 */

@@ -4,6 +4,9 @@
  *
  * See the readme file : http://www.phpclasses.org/browse/file/4685.html
  *
+ * This is version 1 of the CSS Parser,
+ * with a minor correction to the naming of the Constructor, as demanded by PHP 7.
+ *
  * $Id$
  *
  * @author http://www.phpclasses.org/browse/package/1289.html
@@ -22,7 +25,7 @@ class cssparser {
   var $css;
   var $html;
 
-  function cssparser($html = true) {
+  function __construct($html = true) {
     // Register "destructor"
     register_shutdown_function(array(&$this, "finalize"));
     $this->html = ($html != false);

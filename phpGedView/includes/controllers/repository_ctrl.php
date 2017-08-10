@@ -50,13 +50,6 @@ class RepositoryControllerRoot extends BaseController {
 	var $canedit = false;
 
 	/**
-	* constructor
-	*/
-	function RepositoryRootController() {
-		parent::BaseController();
-	}
-
-	/**
 	* initialize the controller
 	*/
 	function init() {

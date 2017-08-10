@@ -3,7 +3,7 @@
 * Controller for the Clippings Page
 *
 * phpGedView: Genealogy Viewer
-* Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+* Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -84,12 +84,6 @@ class ClippingsControllerRoot extends BaseController {
 	var $level2;
 	var $level3; // number of levels of descendents
 
-	/**
-	 * @param string $thing the id of the person
-	 */
-	function ClippingsControllerRoot() {
-		parent :: BaseController();
-	}
 	//----------------beginning of function definitions for ClippingsControllerRoot
 	function init() {
 		global $PRIV_HIDE, $PRIV_PUBLIC, $ENABLE_CLIPPINGS_CART, $pgv_lang, $SERVER_URL, $CONTACT_EMAIL, $HOME_SITE_TEXT, $HOME_SITE_URL, $MEDIA_DIRECTORY;

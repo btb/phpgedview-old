@@ -3,7 +3,7 @@
 * Controller for the source page view
 *
 * phpGedView: Genealogy Viewer
-* Copyright (C) 2002 to 2009 PGV Development Team.  All rights reserved.
+* Copyright (C) 2002 to 2017 PGV Development Team.  All rights reserved.
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -49,13 +49,6 @@ class SourceControllerRoot extends BaseController {
 	var $diffsource = null;
 	var $accept_success = false;
 	var $canedit = false;
-
-	/**
-	* constructor
-	*/
-	function SourceRootController() {
-		parent::BaseController();
-	}
 
 	/**
 	* initialize the controller
