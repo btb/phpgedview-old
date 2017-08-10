@@ -3,7 +3,7 @@
 * Controller for the timeline chart
 *
 * phpGedView: Genealogy Viewer
-* Copyright (C) 2002 to 2009 PGV Development Team.  All rights reserved.
+* Copyright (C) 2002 to 2017 PGV Development Team.  All rights reserved.
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -53,12 +53,7 @@ class TimelineControllerRoot extends BaseController {
 	var $scale = 2;
 	// GEDCOM elements that may have DATE data, but should not be displayed
 	var $nonfacts = array("BAPL","ENDL","SLGC","SLGS","_TODO","CHAN");
-	/**
-	* constructor
-	*/
-	function TimelineRootController() {
-		parent::BaseController();
-	}
+
 	/**
 	* Initialization function
 	*/

@@ -3,7 +3,7 @@
 * Controller for the Individual Page
 *
 * phpGedView: Genealogy Viewer
-* Copyright (C) 2002 to 2011 PGV Development Team. All rights reserved.
+* Copyright (C) 2002 to 2017 PGV Development Team. All rights reserved.
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -81,13 +81,6 @@ class IndividualControllerRoot extends BaseController {
 	var $SEX_COUNT = 0;
 	var $sexarray = array();
 	var $tabarray = array("facts", "notes", "sources", "media", "relatives", "tree", "research", "map", "lightbox", "spare", "nav");
-
-	/**
-	* constructor
-	*/
-	function IndividualControllerRoot() {
-		parent::BaseController();
-	}
 
 	/**
 	* Initialization function

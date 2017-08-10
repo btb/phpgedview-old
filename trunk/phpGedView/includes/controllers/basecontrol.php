@@ -3,7 +3,7 @@
  * Base controller for all controller classes
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -39,7 +39,7 @@ class BaseController {
 	/**
 	 * constructor for this class
 	 */
-	function BaseController() {
+	function __construct() {
 		$this->view        =safe_GET('view', 'preview');
 		$this->action      =safe_GET('action');
 		$this->show_changes=safe_GET('show_changes', 'no', 'yes')=='yes'; // if not specified, then default to "yes"

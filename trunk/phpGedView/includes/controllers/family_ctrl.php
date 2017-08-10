@@ -5,7 +5,7 @@
 * You must supply a $famid value with the identifier for the family.
 *
 * phpGedView: Genealogy Viewer
-* Copyright (C) 2002 to 2010 PGV Development Team.  All rights reserved.
+* Copyright (C) 2002 to 2017 PGV Development Team.  All rights reserved.
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -54,13 +54,6 @@ class FamilyRoot extends BaseController {
 	var $famid = '';
 	var $family = null;
 	var $difffam = null;
-
-	/**
-	* constructor
-	*/
-	function FamilyRoot() {
-		parent::BaseController();
-	}
 
 	function init() {
 		global

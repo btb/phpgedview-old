@@ -3,7 +3,7 @@
  * Controller for the Descendancy Page
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2009	PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2017	PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -84,12 +84,6 @@ class DescendancyControllerRoot extends BaseController {
 	var $cellwidth;
 	var $show_cousins;
 
-	/**
-	 * constructor
-	 */
-	function DescendancyRootController() {
-		parent::BaseController();
-	}
 	/**
 	 * Initialization function
 	 */
