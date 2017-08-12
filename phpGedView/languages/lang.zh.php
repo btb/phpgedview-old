@@ -3,7 +3,7 @@
  * Chinese Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -915,8 +915,8 @@ $pgv_lang["mail04_line03"]		= "建议：";
 $pgv_lang["mail04_line04"]		= "Now please click on the link below, login with the new Password and change it to keep the integrity of your data secure.";
 $pgv_lang["mgv"]					= "家谱";
 $pgv_lang["mail04_subject"]		= "Data request at #SERVER_NAME#";
-$pgv_lang["welcome_text_cust_head"] 	= "<center><b>欢迎来到这个家谱网站</b></center><br />只有注册过的可以观看网站。<br />";
-$pgv_lang["welcome_text_auth_mode_3"]	= "<center><b>欢迎到这个家谱网站</b></center><br />只有<u>家庭成员</u>才可以看。<br /><br />你可以登陆或申请一个账号<br /><br />注册后要通过网站管理的批准才可以看。";
+$pgv_lang["welcome_text_cust_head"] 	= "<span class='center'><b>欢迎来到这个家谱网站</b></span><br />只有注册过的可以观看网站。<br />";
+$pgv_lang["welcome_text_auth_mode_3"]	= "<span class='center'><b>欢迎到这个家谱网站</b></span><br />只有<u>家庭成员</u>才可以看。<br /><br />你可以登陆或申请一个账号<br /><br />注册后要通过网站管理的批准才可以看。";
 $pgv_lang["pwreqinfo"]			= "Hello...<br /><br />A mail was sent to the email adress (#user[email]#) including the new password.<br /><br />Please check your mail account because the mail should be received in the next few minutes.<br /><br />Recommendation:<br /><br />After you have requested the mail you should login to this site with your new password and change it to keep the integrity of your data sequrity.";
 $pgv_lang["editowndata"]		= "我的账号";
 $pgv_lang["savedata"]			= "Save changed data";

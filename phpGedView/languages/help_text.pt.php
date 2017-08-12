@@ -3,7 +3,7 @@
  * Portugese Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2016  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -121,20 +121,20 @@ $pgv_lang["more_help"]="<br />A Ajuda ao Contexto está disponível em cada jane
 $pgv_lang["more_config_help"]="<br /><b>Mais ajuda</b><br />#pgv_lang[context_help]#<br /><br />";
 $pgv_lang["start_admin_help"]="+++ Início Info Extra do Admin +++";
 $pgv_lang["end_admin_help"]="--- Fim Info Extra do Admin ---";
-$pgv_lang["multiple_help"]="<center>--- Este é um texto genérico para páginas múltiplas ---</center>";
-$pgv_lang["header_general_help"]="<div class=\"name_head\"><center><b>INFORMAÇÂO GERAL</b></center></div><br />";
+$pgv_lang["multiple_help"]="<span class='center'>--- Este é um texto genérico para páginas múltiplas ---</span>";
+$pgv_lang["header_general_help"]="<div class='name_head center'><b>INFORMAÇÂO GERAL</b></div><br />";
 $pgv_lang["best_display_help"]="~Resolução da Tela~<br />PhpGedView foi formatado para uma resolução de 1024x768 pixels. Este é o tamanho mínimo para que todas as informações sejam exibidas sem que haja necessidade de rolagem horizontal ou vertical da tela.<br /><br />";
 $pgv_lang["preview_help"]="~Impressão~<br />Clicando no link <b>Exibir no formato de impressão<b> fará com que todos os itens que não ficam bem na impressão sejam removidos (menus, caixa de texto, links extras, as interrogações de Ajuda, etc.) e acrescentará, no final da página, um link para Imprimir e outro para retornar ao modo de exibição anterior.<br /><br />";
 $pgv_lang["readme_help"]="Leia <a href=\"readme.txt\" target=\"_blank\"><b>Readme.txt</b></a> para mais informações.";
 $pgv_lang["is_user_help"]="--- Este é o mesmo texto de Ajuda que os visitantes lerão. --- <br />--- Por economia, não há texto especial para o Administrador. ---";
 $pgv_lang["header_search_help"]="~Cabeçalho: Caixa de Pesquisa~<br />Esta caixa de pesquisa é pequena, mas poderosa. Com ela você pode pesquisar por quase qualquer informação da árvore. Informe o que deseja pesquisar e clique o botão <b>></b> ou <b>Pesquisar</b>, a página com o resultado da pesquisa será exibida e nela você encontrará mais Ajuda sobre as opções de pesquisa.<br /><br />";
-$pgv_lang["menu_help"]="<div class=\"name_head\"><center><b>MENUS</b></center></div><br />No topo das páginas existem menus cujas opções apresentam sub-menus. Para acessar estes sub-menus basta passar o mouse sobre as opções.<br /><br />Se o icone da opção for clicado, será mostrada a página referente a primeira opção do sub-menu.<br /><br />Em geral, as seguintes opções estão disponíveis:<ul><li><a href=\"#menu_fam\">#pgv_lang[welcome_page]#</a><br /><li><a href=\"#menu_myged\">#pgv_lang[mygedview]#</a><br /><li><a href=\"#menu_charts\">#pgv_lang[charts]#</a><br /><li><a href=\"#menu_lists\">#pgv_lang[lists]#</a><br /><li><a href=\"#menu_annical\">#pgv_lang[anniversary_calendar]#</a><br /><li><a href=\"#menu_clip\">#pgv_lang[clippings_cart]#</a><br /><li><a href=\"#menu_search\">#pgv_lang[search]#</a><br /><li><a href=\"#menu_help\">#pgv_lang[page_help]#</a></ul><br />";
+$pgv_lang["menu_help"]="<div class='name_head center'><b>MENUS</b></div><br />No topo das páginas existem menus cujas opções apresentam sub-menus. Para acessar estes sub-menus basta passar o mouse sobre as opções.<br /><br />Se o icone da opção for clicado, será mostrada a página referente a primeira opção do sub-menu.<br /><br />Em geral, as seguintes opções estão disponíveis:<ul><li><a href=\"#menu_fam\">#pgv_lang[welcome_page]#</a><br /><li><a href=\"#menu_myged\">#pgv_lang[mygedview]#</a><br /><li><a href=\"#menu_charts\">#pgv_lang[charts]#</a><br /><li><a href=\"#menu_lists\">#pgv_lang[lists]#</a><br /><li><a href=\"#menu_annical\">#pgv_lang[anniversary_calendar]#</a><br /><li><a href=\"#menu_clip\">#pgv_lang[clippings_cart]#</a><br /><li><a href=\"#menu_search\">#pgv_lang[search]#</a><br /><li><a href=\"#menu_help\">#pgv_lang[page_help]#</a></ul><br />";
 $pgv_lang["menu_famtree_help"]="~Menu da Página de Boas-Vindas~<br />Todas os Bancos de Dados (B.D.) disponíveis neste site estão listadas neste menu. Cada B.D. pode ser sua própria página de Boas-Vindas, como esta. Se só houver um B.D., não haverá sub-menu abaixo do icone de Boas-Vindas.<br /><br />";
 $pgv_lang["menu_myged_help"]="~#pgv_lang[mygedview]# menu~<br />Se você se identificou, este menu pode incluir:<ol><li>#pgv_lang[mygedview]#<br /> - configuração de sua página iniical.</li><br /><li>#pgv_lang[editowndata]#<br /> - edição de seus dados pessoais.</li><br /><li>#pgv_lang[my_pedigree]#<br /> - árvore genealógica da pessoa definida em sua configuração.</li><br /><li>#pgv_lang[my_indi]#<br /> - link para #pgv_lang[indi_info]#  contendo seus dados genealógicos.</li></ol><br />";
 $pgv_lang["menu_clip_help"]="~#pgv_lang[clippings_cart]# Menu~<br />You will see this item in the menu bar only when the administrator has enabled this feature.<br /><br />The #pgv_lang[clip_cart]# allows you to store information about individuals, families, and sources in a temporary file that you can later download in GEDCOM 5.5.1 format.<br /><br />";
 $pgv_lang["menu_search_help"]="~Página de Pesquisa~<br />A Página de Pesquisa é uma versão mais poderosa do que a Caixa de Pesquisa encontrada no topo de cada página.<br /><br />";
 $pgv_lang["menu_help_help"]="~Menu Ajuda~<br />#pgv_lang[help_help_items]#";
-$pgv_lang["index_portal_head_help"]="<div class=\"name_head\"><center><b>PÁGINA de BOAS-VINDAS</b></center></div><br />";
+$pgv_lang["index_portal_head_help"]="<div class='name_head center'><b>PÁGINA de BOAS-VINDAS</b></div><br />";
 $pgv_lang["index_login_help"]="~BLOCO DE IDENTIFICAÇÂO~<br />É possivel identificar-se em quase todas as páginas do site. Normalmente isso é feito na primeira página, pois informações privilegiadas só são exibidas para usuários devidamente identificados.<br /><br />Para identificar-se basta informar seu <b>nome de usuário</b>, sua <b>senha</b> e clicar no botão correspondente.<br /><br />";
 $pgv_lang["index_events_help"]="~BLOCO PRÓXIMOS EVENTOS~<br />Este bloco exibe o aniversário de eventos que estão para acontecer.<br /><br />O Administrador determina o número de dias que o bloco antecipará. Através da configuração do bloco, você pode restringir quais eventos serão exibidos no bloco.<br /><br />";
 $pgv_lang["index_onthisday_help"]="~BLOCO DESTE DIA EM SUA HISTÓRIA~<br />Este bloco é similar ao bloco \"Próximos Eventos\", a diferença é que este mostra os eventos de hoje.<br /><br />";
@@ -177,6 +177,6 @@ $pgv_lang["show_thumb_help"]		= "~#pgv_lang[show_thumbnail]#~<br /><br />Marque 
 $pgv_lang["year_help"]				= "~#pgv_lang[alive_in_year]#~<br /><br />Informe o ano em que as pessoas, que você procura, estavam vivas.<br /><br />";
 $pgv_lang["help_faq.php"]="~Perguntas mais Frequentes~<br />#pgv_lang[text_faq_help]#<br />";
 $pgv_lang["text_faq_help"]="A página de FAQs (Perguntas mais frequentes), contém uma lista de perguntas e respostas sobre o uso deste site genealógico.<br /><br />O Administrador do site é responsável pelo conteúdo e ordenação desta lista.";
-$pgv_lang["hs_title_help"]="<center>~#pgv_lang[hs_title]#~</center><br />#pgv_lang[hs_intro]#<br /><br />#pgv_lang[hs_keyword_advice]#<br /><br />#pgv_lang[hs_searchhow_advice]#<br /><br />#pgv_lang[hs_searchin_advice]#";
+$pgv_lang["hs_title_help"]="<span class='center'>~#pgv_lang[hs_title]#~</span><br />#pgv_lang[hs_intro]#<br /><br />#pgv_lang[hs_keyword_advice]#<br /><br />#pgv_lang[hs_searchhow_advice]#<br /><br />#pgv_lang[hs_searchin_advice]#";
 $pgv_lang["hs_intro"]="É possível pesquisar a Ajuda do PhpGedView. O recurso #pgv_lang[hs_title]# proporciona um alto grau de controle sobre a forma a pesquisa funciona; você deveria ser capaz de encontrar o que procura facilmente.";
 ?>

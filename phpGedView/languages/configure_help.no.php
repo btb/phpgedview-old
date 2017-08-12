@@ -3,7 +3,7 @@
  * Norwegian texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -633,7 +633,7 @@ $pgv_lang["collation_help"]	= "~#pgv_lang[collation]#~<br /><br />Hvis du bruker
 $pgv_lang["lang_config_write_error"]	= "Feil ved skriving av språkets innstillinger til filen [language_settings.php]. Sjekk rettigheter og prøv igjen.";
 $pgv_lang["translation_forum"]			= "Forum for oversettere av PhpGedView";
 $pgv_lang["translation_forum_help"]	= "~#pgv_lang[translation_forum]#~<br /><br />#pgv_lang[translation_forum_desc]#";
-$pgv_lang["translation_forum_desc"]		= "<center>På nettstedet til PhpGedView på SourceForge.net er det et <a href=\"http://sourceforge.net/forum/forum.php?forum_id=294245\" alt=\"Gå til forum i nytt vindu\" title=\"Gå til forum i nytt vindu\" target=_blank><b><i>Forum for oversettere</i></b></a><br />der du kan se på og/eller bidra med aktuelle problemstillinger   :-)</center>";
+$pgv_lang["translation_forum_desc"]		= "På nettstedet til PhpGedView på SourceForge.net er det et <a href=\"http://sourceforge.net/forum/forum.php?forum_id=294245\" alt=\"Gå til forum i nytt vindu\" title=\"Gå til forum i nytt vindu\" target=_blank><b><i>Forum for oversettere</i></b></a><br />der du kan se på og/eller bidra med aktuelle problemstillinger   :-)";
 $pgv_lang["lang_set_file_read_error"]	= "F E I L !!! Klarte ikke å lese filen [language_settings.php]!";
 $pgv_lang["add_new_language_help"]	= "~#pgv_lang[add_new_language]#~<br /><br />#pgv_lang[add_new_language_desc]#";
 $pgv_lang["add_new_language_desc"]	= "Du kan bruke dette verktøyet til å legge til et nytt og enda ikke støttet språk for PhpGedView.<br /><br />Du starter med å legge inn standardinnstillinger for det nye språket slik som skråkkoder, ukestart, datoformat, nasjonalt alfabet mm.<br /><br />Du vil få mer hjelp til dette på et språk som du velger blant de som allerede støttes av PhpGedView etter å ha klikket på knappen <b>#pgv_lang[add_new_lang_button]#</b>.";

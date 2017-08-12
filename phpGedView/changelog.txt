@@ -9,6 +9,8 @@
 =====================================================================
 
 Version 4.3.0
+ - Changed: Make all language files HTML5 compliant by re-coding BIG, CENTER, FONT, and TT elements (canajun2eh)
+ - Fixed: Help text for Customize Welcome page not displaying properly (canajun2eh)
  - Fixed: PHP7 warning about class constructor naming convention (canajun2eh)
  - Added: Check sending and receiving e-mail addresses for validity before trying to send (canajun2eh)
  - Updated: PHPMailer package updated to version 5.2.23 (canajun2eh)
