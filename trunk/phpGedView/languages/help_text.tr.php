@@ -3,7 +3,7 @@
  * Turkish Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -106,11 +106,11 @@ $pgv_lang["edit_SURN_help"]			= "#pgv_lang[edit_surname_help]#";
 $pgv_lang["edit_NSFX_help"]			= "#pgv_lang[edit_suffix_help]#";
 $pgv_lang["start_admin_help"]			= "+++ Fazladan Admin bilgisine başla +++";
 $pgv_lang["end_admin_help"]			= "+++ Fazladan Admin bilgisi bitimi +++";
-$pgv_lang["multiple_help"]			= "<center>--- Bu çoklu sayfalar için yardım metnidir ---</center>";
-$pgv_lang["header_general_help"]		= "<div class=\"name_head\"><center><b>GENEL BİLGİ</b></center></div><br />";
+$pgv_lang["multiple_help"]			= "<span class='center'>--- Bu çoklu sayfalar için yardım metnidir ---</span>";
+$pgv_lang["header_general_help"]		= "<div class='name_head center'><b>GENEL BİLGİ</b></div><br />";
 $pgv_lang["readme_help"]			= "Daha çok bilgi için <a href=\"readme.txt\" target=\"_blank\"><b>Readme.txt</b></a> okuyun.";
 $pgv_lang["menu_help_help"]			= "~Help Menu~<br />#pgv_lang[help_help_items]#";
-$pgv_lang["index_portal_head_help"]		= "<div class=\"name_head\"><center><b>HOŞ GELDİN SAYFA</b></center></div><br />";
+$pgv_lang["index_portal_head_help"]		= "<div class='name_head center'><b>HOŞ GELDİN SAYFA</b></div><br />";
 $pgv_lang["sortby_help"]			= "~#pgv_lang[sortby]#~<br />Sırada hangi listeyi görmek istiyorsanız seçin.<br /><br />";
 $pgv_lang["edit_ASSO_help"]		= "~#factarray[ASSO]#~<br /><br />Birleştirilecek GEDCOM ID girin.<br /><br />";
 ?>

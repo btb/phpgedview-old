@@ -3,7 +3,7 @@
  * French Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -128,7 +128,7 @@ $pgv_lang["mouseover"]                  = "Passage de souris";
 $pgv_lang["mousedown"]                  = "Souris maintenue appuyée";
 $pgv_lang["click"]                      = "Clic de souris";
 $pgv_lang["enter_db_pass"]              = "Par sécurité, vous devez saisir votre <b>identificateur</b> et votre <b>mot de passe</b> avant toute modification.";
-$pgv_lang["server_url_note"]            = "Chemin du répertoire PhpGedView. Ne modifier qu'avec précaution. Valeur par défaut pour votre installation : <tt>#GUESS_URL#</tt>";
+$pgv_lang["server_url_note"]            = "Chemin du répertoire PhpGedView. Ne modifier qu'avec précaution. Valeur par défaut pour votre installation : <b>#GUESS_URL#</b>";
 $pgv_lang["DBTYPE"]                     = "Type de la base de données";
 $pgv_lang["DBTYPE_help"]                = "Type PEAR (PHP Extension and Application Repository) pour connexion à la base de données. À choisir parmi : MySQL, PostgreSQL, Oracle, SQLite... <br />";
 $pgv_lang["DBHOST"]                     = "Serveur de la base de données";
@@ -241,7 +241,7 @@ $pgv_lang["SHOW_PEDIGREE_PLACES_help"]  = "Indique le nombre de niveaux à affic
 $pgv_lang["MULTI_MEDIA"]                = "Autoriser les fonctions MultiMédia";
 $pgv_lang["MULTI_MEDIA_help"]           = "GEDCOM 5.5 permet d'associer des images, des vidéos et autres objets MultiMédia. Si vous n'avez pas inclus d'objets MultiMédia dans votre fichier GEDCOM vous pouvez désactiver cette option.<br /><br />Voir le chapitre MultiMédia du fichier <a href=readme.txt>readme.txt</a> pour plus d'informations sur l'insertion de fichiers MultiMédia sur votre site.";
 $pgv_lang["MEDIA_EXTERNAL"]             = "Conserver les liens";
-$pgv_lang["MEDIA_EXTERNAL_help"]        = "Option pour les liens MultiMédia au format <tt>http://</tt>, <tt>ftp://</tt>, <tt>mms://</tt><br />Choix <i>Oui</i> : les liens ne sont pas modifiés. Par exemple : <u>http://www.myfamily.com/photo/dad.jpg</u> restera <u>http://www.myfamily.com/photo/dad.jpg</u>.<br />Choix <i>Non</i> : ces liens suivent la règle des objets MultiMédia. Par example : <u>http://www.myfamily.com/photo/dad.jpg</u> deviendra <u>./media/dad.jpg</u>";
+$pgv_lang["MEDIA_EXTERNAL_help"]        = "Option pour les liens MultiMédia au format http://, ftp://, mms://<br />Choix <b>Oui</b> : les liens ne sont pas modifiés. Par exemple : http://www.myfamily.com/photo/papa.jpg restera http://www.myfamily.com/photo/papa.jpg.<br />Choix <b>Non</b> : ces liens suivent la règle des objets MultiMédia. Par example : http://www.myfamily.com/photo/papa.jpg deviendra ./media/dad.jpg<br />";
 $pgv_lang["MEDIA_DIRECTORY"]            = "Répertoire MultiMédia";
 $pgv_lang["MEDIA_DIRECTORY_help"]       = "Chemin d'accès à un répertoire accessible en lecture où PhpGedView doit trouver les fichiers MultiMédia (coder le «/» final).";
 $pgv_lang["MEDIA_DIRECTORY_LEVELS"]     = "Niveaux de sous-répertoires MultiMédia";
@@ -287,9 +287,9 @@ $pgv_lang["THEME_DIR_help"]             = "Le répertoire dans lequel les fichie
 $pgv_lang["TIME_LIMIT"]                 = "Durée max.";
 $pgv_lang["TIME_LIMIT_help"]            = "Temps maximal en secondes que PhpGedView est autorisé à consommer. La valeur par défaut est d'une minute.  Selon la taille de votre fichier GEDCOM, il peut être nécessaire d'augmenter cette valeur.  En codant une valeur de 0, vous supprimez la limite de temps d'exécution de PHP.<br />ATTENTION : En codant 0 ou en codant une valeur trop élevée vous pourrez causer le blocage de votre site sur certains systèmes d'exploitation jusqu'à la fin de l'exécution du script.  La valeur de 0 signifie qu'il pourrait ne jamais se terminer jusqu'à ce qu'un administrateur du serveur arrête le processus ou redémarre le serveur. La construction d'un grand arbre généalogique peut prendre un très long temps, et en laissant cette valeur aussi basse que possible vous serez certain que personne ne pourra bloquer le serveur de votre site en demandant la construction d'un arbre de 1000 générations.";
 $pgv_lang["PGV_SESSION_SAVE_PATH_help"] = "Indique le chemin à utiliser pour stocker les fichiers des sessions PhpGedView. Certains serveurs n'ont pas une configuration correcte de PHP et les sessions ne sont pas maintenues en passant d'une page à une autre. Cette option permet aux administrateurs de régler le problème en sauvegardant les fichiers dans un répertoire local. Le répertoire ./index/ est un bon choix si vous devez choisir un répertoire. Par défaut ce champ est laissé vide, ce qui permet d'utiliser le chemin configuré dans le fichier php.ini.<br />";
-$pgv_lang["SERVER_URL_help"]            = "Si vous utilisez le protocole <tt>https</tt>, ou un port autre que celui par défaut, entrez ici le chemin d'accès au serveur.<br />";
+$pgv_lang["SERVER_URL_help"]            = "Si vous utilisez le protocole https ou un port autre que celui par défaut, entrez ici le chemin d'accès au serveur.<br />";
 $pgv_lang["LOGIN_URL"]                  = "URL de connexion (login)";
-$pgv_lang["LOGIN_URL_help"]             = "À utiliser uniquement dans le cas où vous souhaitez rediriger la connexion vers un autre site, ou pour basculer du mode <tt>http</tt> au mode <tt>https</tt>.<br /><br />Entrer ici l'URL complète du fichier login.php, par exemple :<br /><tt>https://www.yourserver.com/phpgedview/login.php</tt>.";
+$pgv_lang["LOGIN_URL_help"]             = "À utiliser uniquement dans le cas où vous souhaitez rediriger la connexion vers un autre site, ou pour basculer du mode http au mode https.<br /><br />Entrer ici l'URL complète du fichier <i>login.php</i>, par exemple : <b>https://www.yourserver.com/phpgedview/login.php</b>.";
 $pgv_lang["PGV_SESSION_TIME_help"]      = "Durée, en secondes, pendant laquelle une session PhpGedView reste active avant de nécessiter une nouvelle connexion.  La valeur par défaut est de 30 minutes.<br />";
 $pgv_lang["SHOW_STATS"]                 = "Afficher les statistiques";
 $pgv_lang["SHOW_STATS_help"]            = "Affichage des statistiques d'exécution du programme et des requêtes faites sur la base de données au bas de chaque page.";
@@ -454,7 +454,7 @@ $pgv_lang["no_additions"]               = "Aucun ajout";
 $pgv_lang["subtractions"]               = "Suppressions";
 $pgv_lang["no_subtractions"]            = "Aucune suppression";
 $pgv_lang["config_lang_utility"]        = "Configuration des langues supportées";
-$pgv_lang["config_lang_utility_help"]   = "Ce module vous aide à configurer les langues utilisables avec PhpGedView.<br /><br />Attention : au premier changement, PhpGedView va créer un nouveau fichier <tt>lang_settings.php</tt> dans le répertoire <tt>#INDEX_DIRECTORY#</tt>.<br /><br />Ensuite PhpGedView utilisera uniquement ce fichier. Par conséquent, pour tout problème relatif à une langue, merci de préciser que vous utilisez un fichier modifié de votre répertoire <tt>#INDEX_DIRECTORY#</tt>.";
+$pgv_lang["config_lang_utility_help"]   = "Ce module vous aide à configurer les langues utilisables avec PhpGedView.<br /><br />Attention : au premier changement, PhpGedView va créer un nouveau fichier <b>lang_settings.php</b> dans le répertoire <b>#INDEX_DIRECTORY#</b>.<br /><br />Ensuite PhpGedView utilisera uniquement ce fichier. Par conséquent, pour tout problème relatif à une langue, merci de préciser que vous utilisez un fichier modifié de votre répertoire <b>#INDEX_DIRECTORY#</b>.";
 $pgv_lang["active"]                     = "Actif";
 $pgv_lang["active_help"]                = "Permet de choisir une autre langue, si l'administrateur l'autorise.";
 $pgv_lang["edit_settings"]              = "Éditer les préférences";
@@ -521,7 +521,7 @@ $pgv_lang["multi_letter_alphabet"]      = "Alphabet multi-lettres";
 $pgv_lang["dictionary_sort"]            = "Tri dans l'ordre du dictionnaire";
 $pgv_lang["lang_config_write_error"]    = "Erreur d'écriture du fichier [language_settings.php]. Vérifier les droits d'accès et réessayer.";
 $pgv_lang["translation_forum"]          = "Forum traduction";
-$pgv_lang["translation_forum_help"]     = "Lien direct au forum des traductions de PhpGedView sur le serveur SourceForge où vous pourrez parler des problèmes spécifiques de traduction <tt>http://sourceforge.net/forum/forum.php?forum_id=294245</tt>";
+$pgv_lang["translation_forum_help"]     = "<a href=\"http://sourceforge.net/forum/forum.php?forum_id=294245\" target=\"_blank\"><b>Lien direct</b></a> au forum des traductions de PhpGedView sur le serveur SourceForge où vous pourrez parler des problèmes spécifiques de traduction.";
 $pgv_lang["lang_set_file_read_error"]   = "Erreur de lecture du fichier [language_settings.php]!";
 $pgv_lang["add_new_language_help"]      = "Utilitaire pour ajouter une nouvelle langue à PhpGedView.<br /><br />Merci de remplir tous les champs nécessaires dans la fenêtre suivante. Après la création des fichiers, vous serez en mesure de modifier les messages pour cette nouvelle langue.";
 $pgv_lang["add_new_lang_button"]        = "Ajouter une nouvelle langue";
