@@ -9,6 +9,8 @@
 =====================================================================
 
 Version 4.3.0
+ - Fixed: Person names should not contain comma when family name comes first (as in Hungarian) (canajun2eh)
+ - Fixed: Undefined index "bulkMail" in includes/authentication.php when sending the Review Changes message (canajun2eh)
  - Changed: Make all language files HTML5 compliant by re-coding BIG, CENTER, FONT, and TT elements (canajun2eh)
  - Fixed: Help text for Customize Welcome page not displaying properly (canajun2eh)
  - Fixed: PHP7 warning about class constructor naming convention (canajun2eh)
