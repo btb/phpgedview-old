@@ -3,7 +3,7 @@
 * Class file for a person
 *
 * phpGedView: Genealogy Viewer
-* Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
+* Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -1771,9 +1771,9 @@ class Person extends GedcomRecord {
 		$listNN=$list;
 		$surname=$surn;
 
-		// Hungarians want the 'full' name to be the surname first (i.e. 'list') variant
+		// Hungarians and Chinese, etc. want the 'full' name to be the surname first (i.e. 'list') variant
 		if ($NAME_REVERSE) {
-			$full=$list;
+			$full = str_replace(',', '', $list);	// but without the comma
 		}
 
 		// Some people put preferred names in quotes
