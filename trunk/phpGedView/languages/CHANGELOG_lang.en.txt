@@ -44,6 +44,21 @@ VERSION 4.3.0
 
 ?$pgv_lang["whatever"]								dd Monthname, year		Change codes and comments
 ----------------------------------------------------------------------------------------
++$pgv_lang["birth_M"]								05 Sep 2017				A
++$pgv_lang["birth_F"]								05 Sep 2017				A
++$pgv_lang["born_in_M"]								05 Sep 2017				A
++$pgv_lang["born_in_F"]								05 Sep 2017				A
++$pgv_lang["born_on_M"]								05 Sep 2017				A
++$pgv_lang["born_on_F"]								05 Sep 2017				A
++$pgv_lang["death_M"]								05 Sep 2017				A
++$pgv_lang["death_F"]								05 Sep 2017				A
++$pgv_lang["died_in_M"]								05 Sep 2017				A
++$pgv_lang["died_in_F"]								05 Sep 2017				A
++$pgv_lang["died_on_M"]								05 Sep 2017				A
++$pgv_lang["died_on_F"]								05 Sep 2017				A
++$pgv_lang["anniversary_of"]						05 Sep 2017				A
++$pgv_lang["married_in"]							05 Sep 2017				A
++$pgv_lang["married_on"]							05 Sep 2017				A
 *$pgv_lang["message_sent"]							28 May 2017				w
 +$pgv_lang["message_failed"]						28 May 2017				A
 +$pgv_lang["message_error"]							28 May 2017				A

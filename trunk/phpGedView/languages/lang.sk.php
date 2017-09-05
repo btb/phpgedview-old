@@ -32,6 +32,22 @@ if (!defined('PGV_PHPGEDVIEW')) {
 	exit;
 }
 
+$pgv_lang["birth_M"]				= "Narodeniny #name#a";		// For male persons
+$pgv_lang["birth_F"]				= "Narodeniny #name#a";		// For female persons
+$pgv_lang["born_in_M"]				= "Narodil sa #date# v #place#";		// For male persons
+$pgv_lang["born_in_F"]				= "Narodila sa #date# v #place#";		// For female persons
+$pgv_lang["born_on_M"]				= "Narodil sa #date#";		// For male persons
+$pgv_lang["born_on_F"]				= "Narodila sa #date#";		// For female persons
+$pgv_lang["death_M"]				= "Výročie smrti #name#a";		// For male persons
+$pgv_lang["death_F"]				= "Výročie smrti #name#a";		// For female persons
+$pgv_lang["died_in_M"]				= "Zomrel #date# v #place#";		// For male persons
+$pgv_lang["died_in_F"]				= "Zomrela #date# v #place#";		// For female persons
+$pgv_lang["died_on_M"]				= "Zomrel #date#";		// For male persons
+$pgv_lang["died_on_F"]				= "Zomrela #date#";		// For female persons
+$pgv_lang["anniversary_of"]			= "Svadobné výročie #husband# a #wife#";
+$pgv_lang["married_in"]				= "Oženil sa #date# v #place#";
+$pgv_lang["married_on"]				= "Oženil sa #date#";
+$pgv_lang["clustrmaps_locations"]	= "Miesta návštevníkov tejto stránky";
 $pgv_lang["none"]			= "Žiadny";
 
 //-- GENERAL HELP MESSAGES
@@ -162,6 +178,22 @@ $pgv_lang["text"]			= "Zdrojový text:";
 $pgv_lang["note"]			= "Poznámka";
 $pgv_lang["NN"]				= "(neznáme)";
 $pgv_lang["PN"]				= "(neznáme)";
+$pgv_lang["NNhebrew"] 		= "(לא-ידוע)";
+$pgv_lang["PNhebrew"] 		= "(לא-ידוע)";
+$pgv_lang["NNarabic"] 		= "(غير معروف)";
+$pgv_lang["PNarabic"] 		= "(غير معروف)";
+$pgv_lang["NNgreek"] 		= "(άγνωστος/η)";
+$pgv_lang["PNgreek"] 		= "(άγνωστος/η)";
+$pgv_lang["NNrussian"] 		= "(неопределено)";
+$pgv_lang["PNrussian"] 		= "(неопределено)";
+$pgv_lang["NNchinese"] 		= "(未知)";
+$pgv_lang["PNchinese"] 		= "(未知)";
+$pgv_lang["NNvietnamese"] 	= "(vô danh)";
+$pgv_lang["PNvietnamese"] 	= "(không biết tuổi)";
+$pgv_lang["NNthai"] 		= "(neznáme)";
+$pgv_lang["PNthai"] 		= "(neznáme)";
+$pgv_lang["NNother"] 		= "(neznáme)";
+$pgv_lang["PNother"] 		= "(neznáme)";
 $pgv_lang["unrecognized_code"]		= "Nebol rozoznaný GEDCOM kód";
 $pgv_lang["unrecognized_code_msg"]	= "Došlo k chybe. Radi by sme ju opravili. Prosím informujte nás o tomto probléme na ";
 $pgv_lang["indi_info"]			= "Informácie o osobe";

@@ -33,6 +33,22 @@ if (!defined('PGV_PHPGEDVIEW')) {
 	exit;
 }
 
+$pgv_lang["birth_M"]				= "#name# születésnapja";		// For male persons
+$pgv_lang["birth_F"]				= "#name# születésnapja";		// For female persons
+$pgv_lang["born_in_M"]				= "#date#-ben született #place#országban";		// For male persons
+$pgv_lang["born_in_F"]				= "#date#-én született #place#országban";		// For female persons
+$pgv_lang["born_on_M"]				= "#date#-ben született";		// For male persons
+$pgv_lang["born_on_F"]				= "#date#-én született";		// For female persons
+$pgv_lang["death_M"]				= "#name# halála évfordulója";		// For male persons
+$pgv_lang["death_F"]				= "#name# halála évfordulója";		// For female persons
+$pgv_lang["died_in_M"]				= "#date#-ben halt meg #place#országban";		// For male persons
+$pgv_lang["died_in_F"]				= "#date#-én halt meg #place#országban";		// For female persons
+$pgv_lang["died_on_M"]				= "#date#-ben halt meg";	// For male persons
+$pgv_lang["died_on_F"]				= "#date#-én halt meg";		// For female persons
+$pgv_lang["anniversary_of"]			= "#husband# és #wife# esküvői évfordulója";
+$pgv_lang["married_in"]				= "Felesége: #date# #place#";
+$pgv_lang["married_on"]				= "Felesége: #date#";
+$pgv_lang["clustrmaps_locations"]	= "Az oldal látogatóinak helyszínei";
 $pgv_lang["none"]					= "Semmi";
 
 //-- GENERAL HELP MESSAGES
@@ -125,8 +141,24 @@ $pgv_lang["status"]						= "Státusz";
 $pgv_lang["source"]						= "Forrás";
 $pgv_lang["text"]						= "Forrás Szöveg: ";
 $pgv_lang["note"]						= "Megjegyzés:";
-$pgv_lang["NN"]							= "(ismeretlen)";
-$pgv_lang["PN"]							= "(ismeretlen)";
+$pgv_lang["NN"]				= "(ismeretlen)";
+$pgv_lang["PN"]				= "(ismeretlen)";
+$pgv_lang["NNhebrew"] 		= "(לא-ידוע)";
+$pgv_lang["PNhebrew"] 		= "(לא-ידוע)";
+$pgv_lang["NNarabic"] 		= "(غير معروف)";
+$pgv_lang["PNarabic"] 		= "(غير معروف)";
+$pgv_lang["NNgreek"] 		= "(άγνωστος/η)";
+$pgv_lang["PNgreek"] 		= "(άγνωστος/η)";
+$pgv_lang["NNrussian"] 		= "(неопределено)";
+$pgv_lang["PNrussian"] 		= "(неопределено)";
+$pgv_lang["NNchinese"] 		= "(未知)";
+$pgv_lang["PNchinese"] 		= "(未知)";
+$pgv_lang["NNvietnamese"] 	= "(vô danh)";
+$pgv_lang["PNvietnamese"] 	= "(không biết tuổi)";
+$pgv_lang["NNthai"] 		= "(ismeretlen)";
+$pgv_lang["PNthai"] 		= "(ismeretlen)";
+$pgv_lang["NNother"] 		= "(ismeretlen)";
+$pgv_lang["PNother"] 		= "(ismeretlen)";
 $pgv_lang["unrecognized_code"]					= "Ismeretlen GEDCOM-kód";
 $pgv_lang["unrecognized_code_msg"]				= "Ez egy programhiba, és szeretnénk kijavítani. Kérjük jelezze felénk a hibát:";
 $pgv_lang["indi_info"]						= "Személyes adatok";

@@ -5,7 +5,7 @@
  * This block will print a list of upcoming events
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -54,7 +54,7 @@ $PGV_BLOCKS["print_upcoming_events"]["config"]		= array(
 //-- this block prints a list of upcoming events of people in your gedcom
 function print_upcoming_events($block=true, $config="", $side, $index) {
 	global $pgv_lang, $SHOW_ID_NUMBERS, $ctype, $TEXT_DIRECTION;
-	global $PGV_IMAGE_DIR, $PGV_IMAGES, $PGV_BLOCKS;
+	global $PGV_IMAGE_DIR, $PGV_IMAGES, $PGV_BLOCKS, $THEME_DIR;
 	global $DAYS_TO_SHOW_LIMIT;
 
 	$block = true;      // Always restrict this block's height
@@ -105,7 +105,7 @@ function print_upcoming_events($block=true, $config="", $side, $index) {
 	switch ($infoStyle) {
 	case "style1":
 		// Output style 1:  Old format, no visible tables, much smaller text.  Better suited to right side of page.
-		$content .= print_events_list($startjd, $endjd, $onlyBDM=='yes'?'BIRT MARR DEAT':'', $filter=='living', $sortStyle);
+		$content .= print_events_list($startjd, $endjd, $onlyBDM=='yes'?'BIRT MARR DEAT':'', $filter=='living', $allowDownload=='yes', $sortStyle);
 		break;
 	case "style2":
 		// Style 2: New format, tables, big text, etc.  Not too good on right side of page
@@ -115,7 +115,6 @@ function print_upcoming_events($block=true, $config="", $side, $index) {
 		break;
 	}
 
-	global $THEME_DIR;
 	if ($block) {
 		require $THEME_DIR.'templates/block_small_temp.php';
 	} else {

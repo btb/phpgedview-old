@@ -32,6 +32,22 @@ if (!defined('PGV_PHPGEDVIEW')) {
 	exit;
 }
 
+$pgv_lang["birth_M"]				= "#name#'s verjaardag";		// For male persons
+$pgv_lang["birth_F"]				= "#name#'s verjaardag";		// For female persons
+$pgv_lang["born_in_M"]				= "Geboren op #date# in #place#";		// For male persons
+$pgv_lang["born_in_F"]				= "Geboren op #date# in #place#";		// For female persons
+$pgv_lang["born_on_M"]				= "Geboren op #date#";		// For male persons
+$pgv_lang["born_on_F"]				= "Geboren op #date#";		// For female persons
+$pgv_lang["death_M"]				= "Verjaardag van de dood van #name#";		// For male persons
+$pgv_lang["death_F"]				= "Verjaardag van de dood van #name#";		// For female persons
+$pgv_lang["died_in_M"]				= "Overleden op #date# in #place#";		// For male persons
+$pgv_lang["died_in_F"]				= "Overleden op #date# in #place#";		// For female persons
+$pgv_lang["died_on_M"]				= "Overleden op #date#";		// For male persons
+$pgv_lang["died_on_F"]				= "Overleden op #date#";		// For female persons
+$pgv_lang["anniversary_of"]			= "Huwelijksverjaardag van #husband# en #wife#";
+$pgv_lang["married_in"]				= "Gehuwd op #date# in #place#";
+$pgv_lang["married_on"]				= "Gehuwd op #date#";
+$pgv_lang["clustrmaps_locations"]	= "Locaties van bezoekers op deze pagina";
 $pgv_lang["gedcomid"]					= "GEDCOM INDI kaart ID";
 $pgv_lang["sortby"]					= "Volgorde";
 $pgv_lang["exact"]						= "Exact";
@@ -456,9 +472,9 @@ $pgv_lang["PNchinese"] 				= "(未知)";
 $pgv_lang["NNvietnamese"] 			= "(vô danh)";
 $pgv_lang["PNvietnamese"] 			= "(không biết tuổi)";
 $pgv_lang["NNthai"] 				= "(Onbekend)";
-$pgv_lang["PNthai"] 				= "(onbekend)";
+$pgv_lang["PNthai"] 				= "(Voornaam onbekend)";
 $pgv_lang["NNother"] 				= "(Onbekend)";
-$pgv_lang["PNother"] 				= "(onbekend)";
+$pgv_lang["PNother"] 				= "(Voornaam onbekend)";
 $pgv_lang["unrecognized_code"]		= "Onbekende GEDCOM-code";
 $pgv_lang["unrecognized_code_msg"]  = "Er is een fout opgetreden, die we graag willen verhelpen. Meldt deze fout a.u.b. aan";
 $pgv_lang["indi_info"]				= "Persoonsinformatie";

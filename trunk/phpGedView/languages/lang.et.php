@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Estonian texts
  *
@@ -32,6 +32,22 @@ if (!defined('PGV_PHPGEDVIEW')) {
 	exit;
 }
 
+$pgv_lang["birth_M"]				= "#name#i sünnipäev";		// For male persons
+$pgv_lang["birth_F"]				= "#name#i sünnipäev";		// For female persons
+$pgv_lang["born_in_M"]				= "Sündinud #date# #place#";		// For male persons
+$pgv_lang["born_in_F"]				= "Sündinud #date# #place#";		// For female persons
+$pgv_lang["born_on_M"]				= "Sündinud #date#";		// For male persons
+$pgv_lang["born_on_F"]				= "Sündinud #date#";		// For female persons
+$pgv_lang["death_M"]				= "#name#i surma aastapäev";		// For male persons
+$pgv_lang["death_F"]				= "#name#i surma aastapäev";		// For female persons
+$pgv_lang["died_in_M"]				= "Surnud #date# #place#";		// For male persons
+$pgv_lang["died_in_F"]				= "Surnud #date# #place#";		// For female persons
+$pgv_lang["died_on_M"]				= "Surnud #date#";		// For male persons
+$pgv_lang["died_on_F"]				= "Surnud #date#";		// For female persons
+$pgv_lang["anniversary_of"]			= "#husband#'i ja #wife# pulmapeod";
+$pgv_lang["married_in"]				= "Abielus #date# #place#";
+$pgv_lang["married_on"]				= "Abielus #date#";
+$pgv_lang["clustrmaps_locations"]	= "Selle lehe külastajate asukohad";
 $pgv_lang["page_x_of_y"]			= "Lk #GLOBALS[currentPage]# / #GLOBALS[lastPage]#";
 $pgv_lang["options"]				= "Valikud:";
 $pgv_lang["inc_languages"]			= " Keeled";

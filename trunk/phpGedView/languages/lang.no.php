@@ -33,6 +33,22 @@ if (!defined('PGV_PHPGEDVIEW')) {
 	exit;
 }
 
+$pgv_lang["birth_M"]				= "#name#s bursdag";		// For male persons
+$pgv_lang["birth_F"]				= "#name#s bursdag";		// For female persons
+$pgv_lang["born_in_M"]				= "Født #date# i #place#";		// For male persons
+$pgv_lang["born_in_F"]				= "Født #date# i #place#";		// For female persons
+$pgv_lang["born_on_M"]				= "Født #date#";		// For male persons
+$pgv_lang["born_on_F"]				= "Født #date#";		// For female persons
+$pgv_lang["death_M"]				= "Årsdagen for #name#s død";		// For male persons
+$pgv_lang["death_F"]				= "Årsdagen for #name#s død";		// For female persons
+$pgv_lang["died_in_M"]				= "Døde #date# i #place#";		// For male persons
+$pgv_lang["died_in_F"]				= "Døde #date# i #place#";		// For female persons
+$pgv_lang["died_on_M"]				= "Døde #date#";		// For male persons
+$pgv_lang["died_on_F"]				= "Døde #date#";		// For female persons
+$pgv_lang["anniversary_of"]			= "Bryllupsdagen til #husband# og #wife#";
+$pgv_lang["married_in"]				= "Gift den #date# i #place#";
+$pgv_lang["married_on"]				= "Gift den #date#";
+$pgv_lang["clustrmaps_locations"]	= "Steder av besøkende til denne siden";
 $pgv_lang["exact"]				= "lik";
 $pgv_lang["begins_with"]		= "begynner med";
 $pgv_lang["contains"]			= "inneholder";
@@ -436,7 +452,7 @@ $pgv_lang["NNchinese"] 			= "(未知)";
 $pgv_lang["PNchinese"] 			= "(未知)";
 $pgv_lang["NNvietnamese"] 		= "(vô danh)";
 $pgv_lang["PNvietnamese"] 		= "(không biết tuổi)";
-$pgv_lang["NNthai"] 			= "(ukjent))";
+$pgv_lang["NNthai"] 			= "(ukjent)";
 $pgv_lang["PNthai"] 			= "(ukjent)";
 $pgv_lang["NNother"] 			= "(ukjent)";
 $pgv_lang["PNother"] 			= "(ukjent)";

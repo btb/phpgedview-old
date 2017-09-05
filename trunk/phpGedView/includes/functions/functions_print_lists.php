@@ -1629,6 +1629,7 @@ function print_changes_table($datalist, $showChange=true, $total='', $show_pgvu=
  */
 function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_living=false, $allow_download=false, $sort_by_event=false) {
 	global $pgv_lang, $factarray, $TEXT_DIRECTION, $SERVER_URL;
+
 	require_once PGV_ROOT.'js/sorttable.js.htm';
 	require_once PGV_ROOT.'includes/classes/class_gedcomrecord.php';
 	$table_id = "ID".intval(microtime(true)*1000000); // sorttable requires a unique ID
@@ -1701,11 +1702,13 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 		uasort($filtered_events, 'event_sort_name');
 	}
 
+	$eventList = '';	// List of events to be passed to ical.php
 	foreach($filtered_events as $value) {
-		$return .= "<tr class=\"vevent\">"; // hCalendar:vevent
+		$return .= "<tr>";
 		//-- Record name(s)
 		$name = $value['name'];
 		if ($value['record']->getType()=="FAM") {
+			$eventList .= "M{$value['id']},";		// This is a wedding anniversary
 			$exp = explode("<br />", $name);
 			$husb = $value['record']->getHusband();
 			if ($husb) $exp[0] .= $husb->getPrimaryParentsNames("parents_$table_id details1", "none");
@@ -1716,6 +1719,11 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 		$return .= "<td class=\"list_value_wrap\" align=\"".get_align($name)."\">";
 		$return .= "<a href=\"".encode_url($value['url'])."\" class=\"list_item name2\" dir=\"".$TEXT_DIRECTION."\">".PrintReady($name)."</a>";
 		if ($value['record']->getType()=="INDI") {
+			if ($value['fact'] == 'DEAT') {
+				$eventList .= "D{$value['id']},";		// This is a death anniversary
+			} else {
+				$eventList .= "B{$value['id']},";		// This must be a birth anniversary
+			}
 			$return .= $value['sex'];
 			$return .= $value['record']->getPrimaryParentsNames("parents_$table_id details1", "none");
 		}
@@ -1734,15 +1742,10 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 		$anniv = $value['anniv'];
 		if ($anniv==0) $return .= '<a name="-1">&nbsp;</a>';
 		else $return .= "<a name=\"{$anniv}\">{$anniv}</a>";
-		if ($allow_download) {
-			// hCalendar:dtstart and hCalendar:summary
-			$return .= "<abbr class=\"dtstart\" title=\"".strip_tags($value['date']->Display(false, 'Ymd', array()))."\"></abbr>";
-			$return .= "<abbr class=\"summary\" title=\"".$pgv_lang["anniversary"]." #$anniv ".$factarray[$value['fact']]." : ".PrintReady(strip_tags($record->getFullName()))."\"></abbr>";
-		}
 		$return .= "</td>";
 		//-- Event name
 		$return .= "<td class=\"list_value_wrap\">";
-		$return .= "<a href=\"".encode_url($value['url'])."\" class=\"list_item url\">".$factarray[$value['fact']]."</a>"; // hCalendar:url
+		$return .= $factarray[$value['fact']];
 		$return .= "&nbsp;</td>";
 
 		$return .= "</tr>\n";
@@ -1756,11 +1759,10 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 		$return .= "</td><td class=\"list_label\" colspan=\"3\">";
 		$return .= $pgv_lang["stat_events"].": ".$output;
 		if ($allow_download) {
-			$uri = $SERVER_URL.basename($_SERVER["REQUEST_URI"]);
 			global $whichFile;
-			$whichFile = "hCal-events.ics";
+			$whichFile = PGV_PHPGEDVIEW.'.ics';
 			$title = print_text("download_file", 0, 1);
-			$return .= "<br /><a href=\"".encode_url("http://feeds.technorati.com/events/{$uri}")."\"><img src=\"images/hcal.png\" border=\"0\" alt=\"".$title."\" title=\"".$title."\" /></a>";
+			$return .= "<br /><a href=\"".encode_url("ical.php?events={$eventList}")."\"><img src=\"images/ical.png\" border=\"0\" alt=\"".$title."\" title=\"".$title."\" /></a>";
 		}
 		$return .= "</td>";
 		$return .= "<td></td>";
@@ -1812,8 +1814,9 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
  *
  * This performs the same function as print_events_table(), but formats the output differently.
  */
-function print_events_list($startjd, $endjd, $events='BIRT MARR DEAT', $only_living=false, $sort_by_event=false) {
+function print_events_list($startjd, $endjd, $events='BIRT MARR DEAT', $only_living=false, $allow_download=false, $sort_by_event=false) {
 	global $pgv_lang, $factarray, $TEXT_DIRECTION;
+	global $icalEvents;
 
 	// Did we have any output?  Did we skip anything?
 	$output = 0;
@@ -1851,6 +1854,7 @@ function print_events_list($startjd, $endjd, $events='BIRT MARR DEAT', $only_liv
 			$private ++;
 			continue;
 		}
+
 		$output ++;
 
 		$value['name'] = $record->getListName();
@@ -1870,7 +1874,15 @@ function print_events_list($startjd, $endjd, $events='BIRT MARR DEAT', $only_liv
 		uasort($filtered_events, 'event_sort_name');
 	}
 
+	$eventList = '';	// List of events to be passed to ical.php
 	foreach($filtered_events as $value) {
+		if ($value['fact'] == 'MARR') {
+			$eventList .= "M{$value['id']},";		// This is a wedding anniversary
+		} else if ($value['fact'] == 'DEAT') {
+			$eventList .= "D{$value['id']},";		// This is a death anniversary
+		} else {
+			$eventList .= "B{$value['id']},";		// This must be a birthday anniversary
+		}
 		$return .= "<a href=\"".encode_url($value['url'])."\" class=\"list_item name2\" dir=\"".$TEXT_DIRECTION."\">".PrintReady($value['name'])."</a>".$value['sex'];
 		$return .= "<br /><div class=\"indent\">";
 		$return .= $factarray[$value['fact']].' - '.$value['date']->Display(true);
@@ -1878,6 +1890,13 @@ function print_events_list($startjd, $endjd, $events='BIRT MARR DEAT', $only_liv
 		if (!empty($value['plac'])) $return .= " - <a href=\"".encode_url(get_place_url($value['plac']))."\">".$value['plac']."</a>";
 		$return .= "</div>";
 	}
+
+		if ($allow_download) {
+			global $whichFile;
+			$whichFile = PGV_PHPGEDVIEW.'.ics';
+			$title = print_text("download_file", 0, 1);
+			$return .= "<br /><a href=\"".encode_url("ical.php?events={$eventList}")."\"><img src=\"images/ical.png\" border=\"0\" alt=\"".$title."\" title=\"".$title."\" /></a>";
+		}
 
 	// Print a final summary message about restricted/filtered facts
 	$pgv_lang["global_num1"] = $endjd-$startjd+1;		// This is the number of days

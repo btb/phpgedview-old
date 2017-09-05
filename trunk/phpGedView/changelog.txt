@@ -9,6 +9,12 @@
 =====================================================================
 
 Version 4.3.0
+ - Fixed: "Download calendar file" not working in Todays Events, Upcoming Events, and Yahrzeiten blocks (canajun2eh)
+ - Changed: Replaced /images/hcal.png with ical.png (canajun2eh)
+ - Fixed: Yahrzeiten block does not obey "Allow download" configuration option (canajun2eh)
+ - Fixed: ical.php not respecting language selection -- uses only English (canajun2eh)
+ - Changed: Moved ical functions out of ical.php into their own file within includes/functions (canajun2eh)
+ - Fixed: ical.php causes errors in class GedcomDate (canajun2eh)
  - Fixed: Person names should not contain comma when family name comes first (as in Hungarian) (canajun2eh)
  - Fixed: Undefined index "bulkMail" in includes/authentication.php when sending the Review Changes message (canajun2eh)
  - Changed: Make all language files HTML5 compliant by re-coding BIG, CENTER, FONT, and TT elements (canajun2eh)

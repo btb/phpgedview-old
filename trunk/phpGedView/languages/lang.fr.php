@@ -25,10 +25,28 @@
  * @translator Google Translate
  * @version $Id$
  */
+
 if (!defined('PGV_PHPGEDVIEW')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
+
+$pgv_lang["birth_M"]				= "Anniversaire de #name#";		// For male persons
+$pgv_lang["birth_F"]				= "Anniversaire de #name#";		// For female persons
+$pgv_lang["born_in_M"]				= "Né le #date# à #place#";		// For male persons
+$pgv_lang["born_in_F"]				= "Née le #date# à #place#";		// For female persons
+$pgv_lang["born_on_M"]				= "Né le #date#";		// For male persons
+$pgv_lang["born_on_F"]				= "Née le #date#";		// For female persons
+$pgv_lang["death_M"]				= "Anniversaire de la mort de #name#";		// For male persons
+$pgv_lang["death_F"]				= "Anniversaire de la mort de #name#";		// For female persons
+$pgv_lang["died_in_M"]				= "Décédé le  #date# à #place#";		// For male persons
+$pgv_lang["died_in_F"]				= "Décédée le  #date# à #place#";		// For female persons
+$pgv_lang["died_on_M"]				= "Décédé le  #date#";		// For male persons
+$pgv_lang["died_on_F"]				= "Décédée le  #date#";		// For female persons
+$pgv_lang["anniversary_of"]			= "Anniversaire de mariage de #husband# et #wife#";
+$pgv_lang["married_in"]				= "Marié le #date# à #place#";
+$pgv_lang["married_on"]				= "Marié le #date#";
+$pgv_lang["clustrmaps_locations"]	= "Emplacements des visiteurs de cette page";
 $pgv_lang["gedcomid"]                   = "Code GEDCOM";
 $pgv_lang["sortby"]                     = "Trier par";
 $pgv_lang["exact"]                      = "Exact";

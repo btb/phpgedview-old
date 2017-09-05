@@ -43,6 +43,7 @@ VERSION 4.3.0
 
 ?$pgv_lang["whatever"]								dd Monthname, year		Change codes and comments
 ----------------------------------------------------------------------------------------
+*$pgv_lang["cal_download_user_help"]				05 Sep 2017				w	Changed "hcal.png" to "ical.png"
 +$pgv_lang["index_cookiepolicy_help"]				24 Jan 2016				A
 +$pgv_lang["cookiepolicy_link_help"]				24 Jan 2016				A
 +$pgv_lang["cookiepolicy_link_advice"]				24 Jan 2016				A

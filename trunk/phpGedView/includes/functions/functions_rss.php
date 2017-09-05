@@ -3,7 +3,7 @@
 * Various functions used to generate the PhpGedView RSS feed.
 *
 * phpGedView: Genealogy Viewer
-* Copyright (C) 2002 to 2014 PGV Development Team.  All rights reserved.
+* Copyright (C) 2002 to 2017 PGV Development Team.  All rights reserved.
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -83,7 +83,7 @@ function getUpcomingEvents() {
 	$startjd=client_jd()+1;
 	$endjd=client_jd()+$daysprint;
 
-	$daytext=print_events_list($startjd, $endjd, $onlyBDM=='yes'?'BIRT MARR DEAT':'', $filter=='living', true);
+	$daytext=print_events_list($startjd, $endjd, $onlyBDM=='yes'?'BIRT MARR DEAT':'', $filter=='living', false, true);
 	$daytext = str_replace(array("<br />", "<ul></ul>", " </a>"), array(" ", "", "</a>"), $daytext);
 	$daytext = strip_tags($daytext, '<a><ul><li><b><span>');
 	$dataArray[2]  = $daytext;
@@ -112,7 +112,7 @@ function getTodaysEvents() {
 	if (isset($config["onlyBDM"])) $onlyBDM = $config["onlyBDM"];  // "yes" or "no"
 	else $onlyBDM = "no";
 
-	$daytext=print_events_list(client_jd(), client_jd(), $onlyBDM=='yes'?'BIRT MARR DEAT':'', $filter=='living', true);
+	$daytext=print_events_list(client_jd(), client_jd(), $onlyBDM=='yes'?'BIRT MARR DEAT':'', $filter=='living', false, true);
 	$daytext = str_replace(array("<br />", "<ul></ul>", " </a>"), array(" ", "", "</a>"), $daytext);
 	$daytext = strip_tags($daytext, '<a><ul><li><b><span>');
 	$dataArray[2]  = $daytext;

@@ -32,7 +32,22 @@ if (!defined('PGV_PHPGEDVIEW')) {
 	exit;
 }
 
-
+$pgv_lang["birth_M"]				= "День рождения #name#а";		// For male persons
+$pgv_lang["birth_F"]				= "День рождения #name#а";		// For female persons
+$pgv_lang["born_in_M"]				= "Родился #date# года в #place#";		// For male persons
+$pgv_lang["born_in_F"]				= "Родилась #date# года в #place#";		// For female persons
+$pgv_lang["born_on_M"]				= "Родился #date#";		// For male persons
+$pgv_lang["born_on_F"]				= "Родилась #date#";		// For female persons
+$pgv_lang["death_M"]				= "Годовщина смерти #name#";		// For male persons
+$pgv_lang["death_F"]				= "Годовщина смерти #name#";		// For female persons
+$pgv_lang["died_in_M"]				= "Умер #date# года в #place#";		// For male persons
+$pgv_lang["died_in_F"]				= "Умерла #date# года в #place#";		// For female persons
+$pgv_lang["died_on_M"]				= "Умер #date#";		// For male persons
+$pgv_lang["died_on_F"]				= "Умерла #date#";		// For female persons
+$pgv_lang["anniversary_of"]			= "Свадебная годовщина #husband# и #wife#";
+$pgv_lang["married_in"]				= "Женат #date# в #place#";
+$pgv_lang["married_on"]				= "Женат #date#";
+$pgv_lang["clustrmaps_locations"]	= "Расположение посетителей на этой странице";
 $pgv_lang["gedcomid"]           = "ID запись индивидуума GEDCOM";
 $pgv_lang["sortby"]             = "Последовательность";
 $pgv_lang["exact"]			= "Точно";
@@ -450,18 +465,18 @@ $pgv_lang["NNhebrew"] 		= "(לא-ידוע)";
 $pgv_lang["PNhebrew"] 		= "(לא-ידוע)";
 $pgv_lang["NNarabic"] 		= "(غير معروف)";
 $pgv_lang["PNarabic"] 		= "(غير معروف)";
-$pgv_lang["NNgreek"] 			= "(άγνωστος/η)";
-$pgv_lang["PNgreek"] 			= "(άγνωστος/η)";
+$pgv_lang["NNgreek"] 		= "(άγνωστος/η)";
+$pgv_lang["PNgreek"] 		= "(άγνωστος/η)";
 $pgv_lang["NNrussian"] 		= "(неопределено)";
 $pgv_lang["PNrussian"] 		= "(неопределено)";
 $pgv_lang["NNchinese"] 		= "(未知)";
 $pgv_lang["PNchinese"] 		= "(未知)";
-$pgv_lang["NNvietnamese"] = "(vô danh)";
-$pgv_lang["PNvietnamese"] = "(không biết tuổi)";
-$pgv_lang["NNthai"] 			= "(unknown)";
-$pgv_lang["PNthai"] 			= "(unknown)";
-$pgv_lang["NNother"] 			= "(unknown)";
-$pgv_lang["PNother"] 			= "(unknown)";
+$pgv_lang["NNvietnamese"] 	= "(vô danh)";
+$pgv_lang["PNvietnamese"] 	= "(không biết tuổi)";
+$pgv_lang["NNthai"] 		= "(неопределено)";
+$pgv_lang["PNthai"] 		= "(неопределено)";
+$pgv_lang["NNother"] 		= "(неопределено)";
+$pgv_lang["PNother"] 		= "(неопределено)";
 $pgv_lang["unrecognized_code"]		= "Неопознанный тэг GEDCOM";
 $pgv_lang["unrecognized_code_msg"]	= "Ошибка, надо бы ее исправить. Пожалуйста, сообщите об ошибке";
 $pgv_lang["indi_info"]			= "Персональные сведения";

@@ -30,7 +30,22 @@ if (!defined('PGV_PHPGEDVIEW')) {
 	exit;
 }
 
-//-- GENERAL HELP MESSAGES
+$pgv_lang["birth_M"]				= "#name#s födelsedag";		// For male persons
+$pgv_lang["birth_F"]				= "#name#s födelsedag";		// For female persons
+$pgv_lang["born_in_M"]				= "Född den #date# i #place#";		// For male persons
+$pgv_lang["born_in_F"]				= "Född den #date# i #place#";		// For female persons
+$pgv_lang["born_on_M"]				= "Född den #date#";		// For male persons
+$pgv_lang["born_on_F"]				= "Född den #date#";		// For female persons
+$pgv_lang["death_M"]				= "Årsdagen för #name#s död";		// For male persons
+$pgv_lang["death_F"]				= "Årsdagen för #name#s död";		// For female persons
+$pgv_lang["died_in_M"]				= "Död den #date# i #place#";		// For male persons
+$pgv_lang["died_in_F"]				= "Död den #date# i #place#";		// For female persons
+$pgv_lang["died_on_M"]				= "Död den #date#";		// For male persons
+$pgv_lang["died_on_F"]				= "Död den #date#";		// For female persons
+$pgv_lang["anniversary_of"]			= "Bröllopsdag för #husband# och #wife#";
+$pgv_lang["married_in"]				= "Gift den #date# i #place#";
+$pgv_lang["married_on"]				= "Gift den #date#";
+$pgv_lang["clustrmaps_locations"]	= "Platser av besökare på den här sidan";
 $pgv_lang["date_of_entry"]		= "Datum i orginalkälla";
 $pgv_lang["multi_site_search"] 		= "Multisajtsökning";
 $pgv_lang["differences"]			= "Skillnader";
@@ -134,12 +149,24 @@ $pgv_lang["status"]				= "Status";
 $pgv_lang["source"]				= "Källa";
 $pgv_lang["text"]				= "Källtext:";
 $pgv_lang["note"]				= "Anteckning";
-$pgv_lang["NN"]					= "(Okänt)";
-$pgv_lang["PN"]					= "(Okänt)";
-$pgv_lang["NNthai"] 			= "(Okänt)";
-$pgv_lang["PNthai"] 			= "(Okänt)";
-$pgv_lang["NNother"] 			= "(Okänt)";
-$pgv_lang["PNother"] 			= "(Okänt)";
+$pgv_lang["NN"]				= "(Okänt)";
+$pgv_lang["PN"]				= "(Okänt)";
+$pgv_lang["NNhebrew"] 		= "(לא-ידוע)";
+$pgv_lang["PNhebrew"] 		= "(לא-ידוע)";
+$pgv_lang["NNarabic"] 		= "(غير معروف)";
+$pgv_lang["PNarabic"] 		= "(غير معروف)";
+$pgv_lang["NNgreek"] 		= "(άγνωστος/η)";
+$pgv_lang["PNgreek"] 		= "(άγνωστος/η)";
+$pgv_lang["NNrussian"] 		= "(неопределено)";
+$pgv_lang["PNrussian"] 		= "(неопределено)";
+$pgv_lang["NNchinese"] 		= "(未知)";
+$pgv_lang["PNchinese"] 		= "(未知)";
+$pgv_lang["NNvietnamese"] 	= "(vô danh)";
+$pgv_lang["PNvietnamese"] 	= "(không biết tuổi)";
+$pgv_lang["NNthai"] 		= "(Okänt)";
+$pgv_lang["PNthai"] 		= "(Okänt)";
+$pgv_lang["NNother"] 		= "(Okänt)";
+$pgv_lang["PNother"] 		= "(Okänt)";
 $pgv_lang["unrecognized_code"]	= "Okänd GEDCOM-kod";
 $pgv_lang["unrecognized_code_msg"]	= "Detta är ett fel och vi skulle gärna vilja rätta till det. Var vänlig rapportera detta till";
 $pgv_lang["indi_info"]			= "Personlig information";
@@ -842,7 +869,7 @@ $pgv_lang["upcoming_events_descr"] 	= "Kommande händelser-blocket visar en list
 $pgv_lang["customize_page"]			= "Skräddarsy MyGedView-portalen";
 $pgv_lang["upcoming_events_block"] 	= "Kommande händelser-block";
 $pgv_lang["default_news_title"]		= "Välkommen till din släkt";
-$pgv_lang["default_news_text"]		= "Genealogiska informationen på denna sida drivs av <a href=\"http://www.phpgedview.net/\" target=\"_blank\">PhpGedView</a>. Denna sida tillhandahåller en introduktion och en översikt för denna genealogi. För att börja arbeta med datan, välj en av tavlorna från Tavelmenyn, gå till personlistan eller sök efter ett namn eller en ort.<br /><br />Om du har problem att använda sajten klicka på hjälpmenyn så får du hjälp om om hur du ska använda sidan du just nu är på.<br /><br />Tack för att du besöker denna sida.";
+$pgv_lang["default_news_text"]		= "Genealogiska informationen på denna sida drivs av <a href=\"http://www.phpgedview.net/\" target=\"_blank\">PhpGedView</a>. Denna sida tillhandahåller en introduktion och en översikt för denna genealogi. För att börja arbeta med datan, välj en av tavlorna från Tavelmenyn, gå till personlistan eller sök efter ett namn eller en ort.<br /><br />Om du har problem att använda sajten klicka på hjälpmenyn så får du hjälp om om hur du ska använda sidan du just nu ??r på.<br /><br />Tack för att du besöker denna sida.";
 $pgv_lang["reset_default_blocks"]	= "Återställ till standardområden";
 $pgv_lang["recent_changes"]			= "Senaste ändringar";
 $pgv_lang["recent_changes_block"]	= "Nyligen ändrade område";
