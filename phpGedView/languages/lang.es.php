@@ -33,6 +33,22 @@ if (!defined('PGV_PHPGEDVIEW')) {
 	exit;
 }
 
+$pgv_lang["birth_M"]				= "Cumpleaños de #name#";		// For male persons
+$pgv_lang["birth_F"]				= "Cumpleaños de #name#";		// For female persons
+$pgv_lang["born_in_M"]				= "Nació el #date# en #place#";		// For male persons
+$pgv_lang["born_in_F"]				= "Nació el #date# en #place#";		// For female persons
+$pgv_lang["born_on_M"]				= "Nació el #date#";		// For male persons
+$pgv_lang["born_on_F"]				= "Nació el #date#";		// For female persons
+$pgv_lang["death_M"]				= "Aniversario de la muerte de #name#";		// For male persons
+$pgv_lang["death_F"]				= "Aniversario de la muerte de #name#";		// For female persons
+$pgv_lang["died_in_M"]				= "Murió el #date# en #place#";		// For male persons
+$pgv_lang["died_in_F"]				= "Murió el #date# en #place#";		// For female persons
+$pgv_lang["died_on_M"]				= "Murió el #date#";		// For male persons
+$pgv_lang["died_on_F"]				= "Murió el #date#";		// For female persons
+$pgv_lang["anniversary_of"]			= "Aniversario de la boda de #husband# y #wife#";
+$pgv_lang["married_in"]				= "Casado el #date# en #place#";
+$pgv_lang["married_on"]				= "Casado el #date#";
+$pgv_lang["clustrmaps_locations"]	= "Ubicaciones de los visitantes de esta página";
 $pgv_lang["gedcomid"]				= "ID GEDCOM del registro de persona";
 $pgv_lang["sortby"]					= "Ordenar por";
 $pgv_lang["exact"]					= "Exacto";

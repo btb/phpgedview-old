@@ -56,7 +56,7 @@ function print_yahrzeit($block=true, $config='', $side, $index) {
 		$config=$PGV_BLOCKS['print_yahrzeit']['config'];
 
 	if (empty($config['infoStyle'    ])) $config['infoStyle'    ]='style2';
-	if (empty($config['allowDownload'])) $config['allowDownload']='yes';
+	if (empty($config['allowDownload'])) $config['allowDownload']='no';
 	if (empty($config['days'         ])) $config['days'         ]=$DAYS_TO_SHOW_LIMIT;
 
 	if ($config['days']<1                  ) $config['days']=1;
@@ -65,9 +65,8 @@ function print_yahrzeit($block=true, $config='', $side, $index) {
 	$startjd=server_jd();
 	$endjd  =$startjd+max(min($config['days'], 1), $DAYS_TO_SHOW_LIMIT)-1;
 
-	if (!PGV_USER_ID) {
-		$allowDownload = "no";
-	}
+	if (!PGV_USER_ID) $allowDownload = "no";
+	else $allowDownload = $config['allowDownload'];
 
 	$id="yahrzeit";
 	$title = print_help_link('yahrzeit_help', 'qm','',false,true);
@@ -88,7 +87,7 @@ function print_yahrzeit($block=true, $config='', $side, $index) {
 	// The standard anniversary rules cover most of the Yahrzeit rules, we just
 	// need to handle a few special cases.
 	// Fetch normal anniversaries...
-	$yahrzeits=array();
+	$yahrzeiten=array();
 	$hidden=0;
 	for ($jd=$startjd-1; $jd<=$endjd+30;++$jd) {
 		foreach (get_anniversary_events($jd, 'DEAT _YART') as $fact) {
@@ -96,7 +95,7 @@ function print_yahrzeit($block=true, $config='', $side, $index) {
 			if ($fact['date']->date1->CALENDAR_ESCAPE()=='@#DHEBREW@' && $fact['date']->MinJD()==$fact['date']->MaxJD()) {
 				// Apply privacy
 				if (displayDetailsById($fact['id']) && showFactDetails($fact['fact'], $fact['id']) && !FactViewRestricted($fact['id'], $fact['factrec'])) {
-					$yahrzeits[]=$fact;
+					$yahrzeiten[]=$fact;
 				} else {
 					++$hidden;
 				}
@@ -105,7 +104,7 @@ function print_yahrzeit($block=true, $config='', $side, $index) {
 	}
 
 	// ...then adjust dates
-	foreach ($yahrzeits as $key=>$yahrzeit) {
+	foreach ($yahrzeiten as $key=>$yahrzeit) {
 		if (strpos('1 DEAT', $yahrzeit['factrec'])!==false) { // Just DEAT, not _YART
 			$today=new JewishDate($yahrzeit['jd']);
 			$hd=$yahrzeit['date']->MinDate();
@@ -129,18 +128,32 @@ function print_yahrzeit($block=true, $config='', $side, $index) {
 		}
 	}
 
+	$count=0;
+	$eventList = '';	// List of Death events to be passed to ical.php
+
 	switch ($config['infoStyle']) {
 	case "style1": // List style
-		foreach ($yahrzeits as $yahrzeit)
+		foreach ($yahrzeiten as $yahrzeit)
 			if ($yahrzeit['jd']>=$startjd && $yahrzeit['jd']<$startjd+$config['days']) {
+				$count ++;
+				$eventList .= "D{$yahrzeit['id']}',";		// Yahrzeiten are death anniversaries
 				$ind=person::GetInstance($yahrzeit['id']);
-//@@			$content .= "<a href=\"".encode_url($ind->getLinkUrl())."\" class=\"list_item name2\">".$ind->getFullName()."</a>".$ind->getSexImage();
 				$content .= "<a href=\"".encode_url($ind->getLinkUrl())."\" class=\"list_item name2\">".PrintReady($ind->getFullName())."</a>".$ind->getSexImage();
 				$content .= "<div class=\"indent\">";
 				$content .= $yahrzeit['date']->Display(true);
 				$content .= ', '.str_replace("#year_var#", $yahrzeit['anniv'], $pgv_lang["year_anniversary"]);
 				$content .= "</div>";
 			}
+		$content .= $pgv_lang["total_names"].": ".$count;
+		if ($hidden) {
+			$content .= "<br /><span class=\"warning\">{$pgv_lang['hidden']} : {$hidden}</span>";
+		}
+		if ($allowDownload && $count!=0) {
+			global $whichFile;
+			$whichFile = PGV_PHPGEDVIEW.'.ics';
+			$title = print_text("download_file", 0, 1);
+			$content .= "<br /><a href=\"".encode_url("ical.php?events={$eventList}")."\"><img src=\"images/ical.png\" border=\"0\" alt=\"".$title."\" title=\"".$title."\" /></a>";
+		}
 		break;
 	case "style2": // Table style
 		require_once PGV_ROOT.'js/sorttable.js.htm';
@@ -155,12 +168,12 @@ function print_yahrzeit($block=true, $config='', $side, $index) {
 		$content .= "<th class=\"list_label\">{$factarray['_YART']}</th>";
 		$content .= "</tr>";
 
-		$count=0;
-		foreach ($yahrzeits as $yahrzeit) {
+		foreach ($yahrzeiten as $yahrzeit) {
 			if ($yahrzeit['jd']>=$startjd && $yahrzeit['jd']<$startjd+$config['days']) {
-				++$count;
+				$count ++;
+				$eventList .= "D{$yahrzeit['id']}',";		// Yahrzeiten are death anniversaries
 				$ind=person::GetInstance($yahrzeit['id']);
-				$content .= "<tr class=\"vevent\">"; // hCalendar:vevent
+				$content .= "<tr>";
 				// Record name(s)
 				$name=$ind->getFullName();
 				$url=$ind->getLinkUrl();
@@ -195,12 +208,6 @@ function print_yahrzeit($block=true, $config='', $side, $index) {
 				} else {
 					$content .= "<a name=\"{$anniv}\">{$anniv}</a>";
 				}
-				if ($config['allowDownload']=='yes') {
-					// hCalendar:dtstart and hCalendar:summary
-					//TODO does this work??
-					$content .= "<abbr class=\"dtstart\" title=\"".strip_tags($yahrzeit['date']->Display(false,'Ymd',array()))."\"></abbr>";
-					$content .= "<abbr class=\"summary\" title=\"".$pgv_lang["anniversary"]." #$anniv ".$factarray[$yahrzeit['fact']]." : ".PrintReady(strip_tags($ind->getFullName()))."\"></abbr>";
-				}
 
 				// upcomming yahrzeit dates
 				$content .= "<td class=\"list_value_wrap\">";
@@ -222,14 +229,11 @@ function print_yahrzeit($block=true, $config='', $side, $index) {
 		$content .= "</td>";
 		$content .= "<td style=\"display:none\">GIVN</td>";
 		$content .= "<td>";
-		if ($config['allowDownload']=='yes') {
-			$uri = $SERVER_URL.basename($_SERVER['REQUEST_URI']);
+		if ($allowDownload && $count!=0) {
 			global $whichFile;
-			$whichFile = 'hCal-events.ics';
-			$alt = print_text('download_file',0,1);
-			if (count($yahrzeits)) {
-				$content .= "<a href=\"http://feeds.technorati.com/events/{$uri}\"><img src=\"images/hcal.png\" border=\"0\" alt=\"{$alt}\" title=\"{$alt}\" /></a>";
-			}
+			$whichFile = PGV_PHPGEDVIEW.'.ics';
+			$title = print_text("download_file", 0, 1);
+			$content .= "<br /><a href=\"".encode_url("ical.php?events={$eventList}")."\"><img src=\"images/ical.png\" border=\"0\" alt=\"".$title."\" title=\"".$title."\" /></a>";
 		}
 		$content .= '</td><td>&nbsp;</td><td>&nbsp;</td></tr>';
 		$content .= '</table>';

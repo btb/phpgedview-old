@@ -32,6 +32,21 @@ if (!defined('PGV_PHPGEDVIEW')) {
 	exit;
 }
 
+$pgv_lang["birth_M"]				= "Aniversário de #name#";		// For male persons
+$pgv_lang["birth_F"]				= "Aniversário de #name#";		// For female persons
+$pgv_lang["born_in_M"]				= "Nascido em #date# em #place#";		// For male persons
+$pgv_lang["born_in_F"]				= "Nascido em #date# em #place#";		// For female persons
+$pgv_lang["born_on_M"]				= "Nascido em #date#";		// For male persons
+$pgv_lang["born_on_F"]				= "Nascido em #date#";		// For female persons
+$pgv_lang["death_M"]				= "Aniversário da morte de #name#";		// For male persons
+$pgv_lang["death_F"]				= "Aniversário da morte de #name#";		// For female persons
+$pgv_lang["died_in_M"]				= "Morreu em #date# em #place#";		// For male persons
+$pgv_lang["died_in_F"]				= "Morreu em #date# em #place#";		// For female persons
+$pgv_lang["died_on_M"]				= "Morreu em #date#";		// For male persons
+$pgv_lang["died_on_F"]				= "Morreu em #date#";		// For female persons
+$pgv_lang["anniversary_of"]			= "Aniversário de casamento de #husband# e #wife#";
+$pgv_lang["married_in"]				= "Casado em #date# em #place#";
+$pgv_lang["married_on"]				= "Casado em #date#";
 $pgv_lang["clustrmaps_locations"]	= "Localização dos visitantes a esta página";
 $pgv_lang["gedcomid"]				= "Minha Identificação na Árvore Genealógica";
 $pgv_lang["sortby"]					= "Ordem";
