@@ -38,7 +38,7 @@ function ordinal_suffix_en($n) {
 
 	$zeroTo9 = $n % 10;	// get last digit of input number
 
-	switch $zeroTo9 {
+	switch ($zeroTo9) {
 	case 1:
 		return 'st';	// 1st, 21st, 31st, 41st, ... 101st, etc.
 		break;
