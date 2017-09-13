@@ -9,6 +9,9 @@
 =====================================================================
 
 Version 4.3.0
+ - Changed: Move functions used only for debugging into their own functions_debug.php file (canajun2eh)
+ - Added: Implement limited support for BMP images in media files -- can only write 24-bit images (canajun2eh)
+ - Fixed: Correct generation of ordinal suffix in English (1st, 2nd, 3rd, etc.), French, and German (canajun2eh)
  - Fixed: "Download calendar file" not working in Todays Events, Upcoming Events, and Yahrzeiten blocks (canajun2eh)
  - Changed: Replaced /images/hcal.png with ical.png (canajun2eh)
  - Fixed: Yahrzeiten block does not obey "Allow download" configuration option (canajun2eh)

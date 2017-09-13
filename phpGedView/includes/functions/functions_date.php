@@ -3,7 +3,7 @@
 * Date Functions that can be used by any page in PGV
 *
 * phpGedView: Genealogy Viewer
-* Copyright (C) 2002 to 2009 PGV Development Team.  All rights reserved.
+* Copyright (C) 2002 to 2017 PGV Development Team.  All rights reserved.
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -98,12 +98,12 @@ function DefaultAgeLocalisation(&$agestring, &$show_years) {
  * Format elapsed time
  *
  * The output of this function is a string, expressed as "i years, j months, k days, l hours, m minutes",
- * ready to be inserted into a message such as "xxx ago" or "after xxx" or "in xxx".  
+ * ready to be inserted into a message such as "xxx ago" or "after xxx" or "in xxx".
  *
- * The output is NOT suitable for insertion into a message such as "xxx after death" in all languages 
+ * The output is NOT suitable for insertion into a message such as "xxx after death" in all languages
  * because cases of words such as "months" and "days" can vary according to context.
  *
- * Example:  
+ * Example:
  * In English you say "after 2 months" and "2 months after death".  The German equivalents of these
  * expressions use different forms of the plural for "month": "nach 2 Monaten" and "2 Monate nach Tod"
  *
@@ -306,4 +306,40 @@ function client_time() {
 	}
 }
 
+////////////////////////////////////////////////////////////////////////////////
+// Convert a number to its equivalent in Roman numerals
+//		usually used to convert a year, as in the French Revolutionary calendar,
+//		but can be used elsewhere
+////////////////////////////////////////////////////////////////////////////////
+function integerToRoman($integer) {
+	$integer = intval($integer);	// Convert the integer into an integer (just to make sure)
+	if ($integer == 0) return '';	// The Roman numbering system has no provision for zero
+
+	$result = '';
+
+	// Create a lookup array that contains all of the Roman numerals.
+	$lookup = array(
+		'M' => 1000,
+		'CM' => 900,
+		'D' => 500,
+		'CD' => 400,
+		'C' => 100,
+		'XC' => 90,
+		'L' => 50,
+		'XL' => 40,
+		'X' => 10,
+		'IX' => 9,
+		'V' => 5,
+		'IV' => 4,
+		'I' => 1);
+
+	foreach($lookup as $roman => $value) {
+		$repeat = intval($integer/$value);		// Determine the maximum number of repeats of this Roman numeral
+		$result .= str_repeat($roman,$repeat);		// Repeat the Roman numeral accordingly
+		$integer = $integer % $value;		// The remainder is what's left to be processed
+		if ($integer == 0) break;			// There's no need to continue once we reach zero
+	}
+
+	return $result;
+}
 ?>

@@ -33,8 +33,20 @@ if (!defined('PGV_PHPGEDVIEW')) {
 define('PGV_FUNCTIONS_MEDIADB_PHP', '');
 
 //-- Setup array of media types
-$MEDIATYPE = array("a11", "acb", "adc", "adf", "afm", "ai", "aiff", "aif", "amg", "anm", "ans", "apd", "asf", "au", "avi", "awm", "bga", "bmp", "bob", "bpt", "bw", "cal", "cel", "cdr", "cgm", "cmp", "cmv", "cmx", "cpi", "cur", "cut", "cvs", "cwk", "dcs", "dib", "dmf", "dng", "doc", "docx", "dsm", "dxf", "dwg", "emf", "enc", "eps", "fac", "fax", "fit", "fla", "flc", "fli", "fpx", "ftk", "ged", "gif", "gmf", "hdf", "htm", "html", "iax", "ica", "icb", "ico", "idw", "iff", "img", "jbg", "jbig", "jfif", "jpe", "jpeg", "jp2", "jpg", "jtf", "jtp", "lwf", "mac", "mid", "midi", "miff", "mki", "mmm", ".mod", "mov", "mp2", "mp3", "mpg", "mpt", "msk", "msp", "mus", "mvi", "nap", "ogg", "pal", "pbm", "pcc", "pcd", "pcf", "pct", "pcx", "pdd", "pdf", "pfr", "pgm", "pic", "pict", "pk", "pm3", "pm4", "pm5", "png", "ppm", "ppt", "ps", "psd", "psp", "pxr", "qt", "qxd", "ras", "rgb", "rgba", "rif", "rip", "rla", "rle", "rpf", "rtf", "scr", "sdc", "sdd", "sdw", "sgi", "sid", "sng", "swf", "tex", "tga", "tiff", "tif", "txt", "text", "tub", "ul", "vda", "vis", "vob", "vpg", "vst", "wav", "wdb", "win", "wk1", "wks", "wmf", "wmv", "wpd", "wxf", "wp4", "wp5", "wp6", "wpg", "wpp", "xbm", "xls", "xpm", "xwd", "yuv", "zgm");
-$BADMEDIA = array(".", "..", "CVS", "thumbs", "index.php", "MediaInfo.txt", ".cvsignore", ".svn", "watermark");
+$MEDIATYPE = array(
+			'a11', 'acb', 'adc', 'adf', 'afm', 'ai', 'aiff', 'aif', 'amg', 'anm', 'ans', 'apd', 'asf', 'au', 'avi', 'awm',
+			'bga', 'bmp', 'bob', 'bpt', 'bw', 'cal', 'cel', 'cdr', 'cgm', 'cmp', 'cmv', 'cmx', 'cpi', 'cur', 'cut', 'cvs',
+			'cwk', 'dcs', 'dib', 'dmf', 'dng', 'doc', 'docx', 'dsm', 'dxf', 'dwg', 'emf', 'enc', 'eps', 'fac', 'fax', 'fit',
+			'fla', 'flc', 'fli', 'fpx', 'ftk', 'ged', 'gif', 'gmf', 'hdf', 'htm', 'html', 'iax', 'ica', 'icb', 'ico', 'idw',
+			'iff', 'img', 'jbg', 'jbig', 'jfif', 'jpe', 'jpeg', 'jp2', 'jpg', 'jtf', 'jtp', 'lwf', 'mac', 'mid', 'midi',
+			'miff', 'mki', 'mmm', 'mod', 'mov', 'mp2', 'mp3', 'mpg', 'mpt', 'msk', 'msp', 'mus', 'mvi', 'nap', 'ogg', 'pal',
+			'pbm', 'pcc', 'pcd', 'pcf', 'pct', 'pcx', 'pdd', 'pdf', 'pfr', 'pgm', 'pic', 'pict', 'pk', 'pm3', 'pm4', 'pm5',
+			'png', 'ppm', 'ppt', 'ps', 'psd', 'psp', 'pxr', 'qt', 'qxd', 'ras', 'rgb', 'rgba', 'rif', 'rip', 'rla', 'rle',
+			'rpf', 'rtf', 'scr', 'sdc', 'sdd', 'sdw', 'sgi', 'sid', 'sng', 'swf', 'tex', 'tga', 'tiff', 'tif', 'txt', 'text',
+			'tub', 'ul', 'vda', 'vis', 'vob', 'vpg', 'vst', 'wav', 'wdb', 'win', 'wk1', 'wks', 'wmf', 'wmv', 'wpd', 'wxf',
+			'wp4', 'wp5', 'wp6', 'wpg', 'wpp', 'xbm', 'xls', 'xpm', 'xwd', 'yuv', 'zgm'
+			);
+$BADMEDIA = array('.', '..', 'CVS', 'thumbs', 'index.php', 'MediaInfo.txt', '.cvsignore', '.svn', 'watermark');
 
 /*
 ****************************
@@ -201,7 +213,7 @@ function get_medialist($currentdir = false, $directory = "", $linkonly = false, 
 	foreach ($rows as $row) {
 		$fileName = check_media_depth($row->m_file, "NOTRUNC", "QUIET");
 		$isExternal = isFileExternal($fileName);
-		if ( $isExternal && (!$MEDIA_EXTERNAL || !$includeExternal) ) {
+		if ($isExternal && (!$MEDIA_EXTERNAL || !$includeExternal)) {
 			continue;
 		}
 		if ($isExternal || !$currentdir || $directory == dirname($fileName) . "/") {
@@ -633,18 +645,18 @@ function thumbnail_file($filename, $generateThumb = true, $overwrite = false) {
 	// Thumbnail doesn't exist and could not be generated:
 	// Return an icon image instead
 	switch ($thumbExt) {
-		case "pdf" :
-			$which = "pdf";
-			break;
-		case "doc" :
-		case "txt" :
-			$which = "doc";
-			break;
-		case "ged" :
-			$which = "ged";
-			break;
-		default :
-			$which = "large";
+	case "pdf" :
+		$which = "pdf";
+		break;
+	case "doc" :
+	case "txt" :
+		$which = "doc";
+		break;
+	case "ged" :
+		$which = "ged";
+		break;
+	default :
+		$which = "large";
 	}
 	return $PGV_IMAGE_DIR . "/" . $PGV_IMAGES["media"][$which];
 }
@@ -999,9 +1011,7 @@ function show_mediaUpload_form($URL='media.php') {
 	// Check for thumbnail generation support
 	$thumbSupport = "";
 	if ($AUTO_GENERATE_THUMBS) {
-/*  "wbmp" is NOT "Windows BMP" -- it's "Wireless BMP", a simple B&W bit mapped format
-		if (function_exists("imagecreatefromwbmp") && function_exists("imagewbmp")) $thumbSupport .= ", BMP";
-*/
+		if (function_exists("imagecreatefrombmp") && function_exists("imagebmp")) $thumbSupport .= ", BMP";
 		if (function_exists("imagecreatefromgif") && function_exists("imagegif")) $thumbSupport .= ", GIF";
 		if (function_exists("imagecreatefromjpeg") && function_exists("imagejpeg")) $thumbSupport .= ", JPG";
 		if (function_exists("imagecreatefrompng") && function_exists("imagepng")) $thumbSupport .= ", PNG";
@@ -1195,9 +1205,7 @@ function show_media_form($pid, $action = "newentry", $filename = "", $linktoid =
 		// Check for thumbnail generation support
 			$thumbSupport = "";
 			if ($AUTO_GENERATE_THUMBS) {
-/*    "wbmp" is NOT "Windows BMP" -- it's "Wireless BMP", a simple B&W bit mapped format
-				if (function_exists("imagecreatefromwbmp") && function_exists("imagewbmp")) $thumbSupport .= ", WBMP";
-*/
+				if (function_exists("imagecreatefrombmp") && function_exists("imagebmp")) $thumbSupport .= ", BMP";
 				if (function_exists("imagecreatefromgif") && function_exists("imagegif")) $thumbSupport .= ", GIF";
 				if (function_exists("imagecreatefromjpeg") && function_exists("imagejpeg")) $thumbSupport .= ", JPG";
 				if (function_exists("imagecreatefrompng") && function_exists("imagepng")) $thumbSupport .= ", PNG";
@@ -1520,7 +1528,7 @@ function findImageSize($file) {
 
 	$imgsize = false;
 
-	if (preg_match("/\.(jpe?g|gif|png)$/i", $file)) {
+	if (preg_match("/\.(jpe?g|gif|png|bmp)$/i", $file)) {
 		// Attempt to get image size only for supported image types
 		if (strtolower(substr($file, 0, 7)) == "http://")
 			$file = "http://" . rawurlencode(substr($file, 7));
@@ -1547,7 +1555,6 @@ function findImageSize($file) {
 */
 
 function PrintMediaLinks($links, $size = "small") {
-	;
 	global $SHOW_ID_NUMBERS, $TEXT_DIRECTION, $pgv_lang;
 
 	if (count($links) == 0)
@@ -1580,7 +1587,6 @@ function PrintMediaLinks($links, $size = "small") {
 				$linkItem['record']=$record;
 				$linkList[] = $linkItem;
 				break;
-
 			}
 		}
 	}
@@ -1640,7 +1646,7 @@ function PrintMediaLinks($links, $size = "small") {
 	return true;
 }
 
-function get_media_id_from_file($filename){
+function get_media_id_from_file($filename) {
 	global $TBLPREFIX;
 	return
 		PGV_DB::prepare("SELECT m_media FROM {$TBLPREFIX}media WHERE m_file ".PGV_DB::$LIKE." ?")
@@ -1648,7 +1654,7 @@ function get_media_id_from_file($filename){
 		->fetchOne();
 }
 //returns an array of rows from the database containing the Person ID's for the people associated with this picture
-function get_media_relations($mid){
+function get_media_relations($mid) {
 	global $medialist;
 
 	//-- check in the medialist cache first
@@ -1664,28 +1670,27 @@ function get_media_relations($mid){
 	}
 
 	$media = array();
-		foreach (fetch_linked_indi($mid, 'OBJE', PGV_GED_ID) as $indi) {
-			if ($mid!=$indi->getXref()) {
-				$media[$indi->getXref()]='INDI';
-			}
+	foreach (fetch_linked_indi($mid, 'OBJE', PGV_GED_ID) as $indi) {
+		if ($mid!=$indi->getXref()) {
+			$media[$indi->getXref()]='INDI';
 		}
-		foreach (fetch_linked_fam($mid, 'OBJE', PGV_GED_ID) as $fam) {
-			if ($mid!=$fam->getXref()) {
-				$media[$fam->getXref()]='FAM';
-			}
+	}
+	foreach (fetch_linked_fam($mid, 'OBJE', PGV_GED_ID) as $fam) {
+		if ($mid!=$fam->getXref()) {
+			$media[$fam->getXref()]='FAM';
 		}
-		foreach (fetch_linked_sour($mid, 'OBJE', PGV_GED_ID) as $sour) {
-			if ($mid!=$sour->getXref()) {
-				$media[$sour->getXref()]='SOUR';
-			}
+	}
+	foreach (fetch_linked_sour($mid, 'OBJE', PGV_GED_ID) as $sour) {
+		if ($mid!=$sour->getXref()) {
+			$media[$sour->getXref()]='SOUR';
 		}
+	}
 	$medialist[$keyMediaList]['LINKS'] = $media;
 	return $media;
 }
 
 // clips a media item based on data from the gedcom
-function picture_clip($person_id, $image_id, $filename, $thumbDir)
-{
+function picture_clip($person_id, $image_id, $filename, $thumbDir) {
 	global $TBLPREFIX;
 	// This gets the gedrec
 	$gedrec=
@@ -1700,9 +1705,8 @@ function picture_clip($person_id, $image_id, $filename, $thumbDir)
 	$bottom = get_gedcom_value("_BOTTOM", 2, $gedrec);
 	$left = get_gedcom_value("_LEFT", 2, $gedrec);
 	$right = get_gedcom_value("_RIGHT", 2, $gedrec);
-	//check to see if all values were retrived
-	if ($top != null || $bottom != null || $left != null || $right != null)
-	{
+	//check to see if all values were retrieved
+	if ($top != null || $bottom != null || $left != null || $right != null) {
 		$image_filename = check_media_depth($filename);
 		$image_dest = $thumbDir.$person_id."_".$image_filename[count($image_filename)-1].".jpg";
 		//call the cropimage function
@@ -1712,7 +1716,10 @@ function picture_clip($person_id, $image_id, $filename, $thumbDir)
 	return "";
 }
 
-function cropImage($image, $dest_image, $left, $top, $right, $bottom){ //$image is the string location of the original image, $dest_image is the string file location of the new image, $fx is the..., $fy is the...
+function cropImage($image, $dest_image, $left, $top, $right, $bottom) {
+//$image is the string location of the original image,
+//$dest_image is the string file location of the new image,
+//$fx is the..., $fy is the...
 	global $THUMBNAIL_WIDTH;
 	$ims = @getimagesize($image);
 	$cwidth = ($ims[0]-$right)-$left;
@@ -1727,6 +1734,7 @@ function cropImage($image, $dest_image, $left, $top, $right, $bottom){ //$image 
 		$ims = @getimagesize($image);
 		imagecopyresampled($img, $org_img, 0, 0, $left, $top, $width, $height, ($ims[0]-$right)-$left, ($ims[1]-$bottom)-$top);
 		imagepng($img, $dest_image);
+		imagedestroy($org_img);
 		imagedestroy($img);
 		break;
 	case 'image/jpeg':
@@ -1736,6 +1744,7 @@ function cropImage($image, $dest_image, $left, $top, $right, $bottom){ //$image 
 		$ims = @getimagesize($image);
 		imagecopyresampled($img, $org_img, 0, 0, $left, $top, $width, $height, ($ims[0]-$right)-$left, ($ims[1]-$bottom)-$top);
 		imagejpeg($img, $dest_image, 90);
+		imagedestroy($org_img);
 		imagedestroy($img);
 		break;
 	case 'image/gif':
@@ -1745,18 +1754,19 @@ function cropImage($image, $dest_image, $left, $top, $right, $bottom){ //$image 
 		$ims = @getimagesize($image);
 		imagecopyresampled($img, $org_img, 0, 0, $left, $top, $width, $height, ($ims[0]-$right)-$left, ($ims[1]-$bottom)-$top);
 		imagegif($img, $dest_image);
+		imagedestroy($org_img);
 		imagedestroy($img);
 		break;
-/*  "wbmp" is NOT "Windows BMP" -- it's "Wireless BMP", a simple B&W bit mapped format
-		if (!function_exists('imagecreatefromwbmp') || !function_exists('imagewbmp')) break;
+	case 'image/bmp':
+		if (!function_exists('imagecreatefrombmp') || !function_exists('imagebmp')) break;
 		$img = imagecreatetruecolor(($ims[0]-$right)-$left, ($ims[1]-$bottom)-$top);
-		$org_img = imagecreatefromwbmp($image);
+		$org_img = imagecreatefrombmp($image);
 		$ims = @getimagesize($image);
 		imagecopyresampled($img, $org_img, 0, 0, $left, $top, $width, $height, ($ims[0]-$right)-$left, ($ims[1]-$bottom)-$top);
-		imagewbmp($img, $dest_image);
+		imagebmp($img, $dest_image);
+		imagedestroy($org_img);
 		imagedestroy($img);
 		break;
-*/
 	}
 }
 
@@ -1787,12 +1797,12 @@ function media_filesize($filename) {
 // returns path to file on server
 function get_server_filename($filename) {
 		global $USE_MEDIA_FIREWALL;
-		if (file_exists($filename)){
+		if (file_exists($filename)) {
 			return($filename);
 		}
 		if ($USE_MEDIA_FIREWALL) {
 			$protectedfilename = get_media_firewall_path($filename);
-			if (file_exists($protectedfilename)){
+			if (file_exists($protectedfilename)) {
 				return($protectedfilename);
 			}
 		}
@@ -1819,13 +1829,13 @@ function get_media_standard_path($path) {
 // recursively make directories
 // taken from http://us3.php.net/manual/en/function.mkdir.php#60861
 function mkdirs($dir, $mode = PGV_PERM_EXE, $recursive = true) {
-	if( is_null($dir) || $dir === "" ){
+	if( is_null($dir) || $dir === "" ) {
 		return FALSE;
 	}
-	if( is_dir($dir) || $dir === "/" ){
+	if( is_dir($dir) || $dir === "/" ) {
 		return TRUE;
 	}
-	if( mkdirs(dirname($dir), $mode, $recursive) ){
+	if( mkdirs(dirname($dir), $mode, $recursive) ) {
 		return mkdir($dir, $mode);
 	}
 	return FALSE;
@@ -1833,7 +1843,7 @@ function mkdirs($dir, $mode = PGV_PERM_EXE, $recursive = true) {
 
 // pass in an image type and this will determine if your system supports editing of that image type
 function isImageTypeSupported($reqtype) {
-	$supportByGD = array('jpg'=>'jpeg', 'jpeg'=>'jpeg', 'gif'=>'gif', 'png'=>'png');
+	$supportByGD = array('jpg'=>'jpeg', 'jpeg'=>'jpeg', 'gif'=>'gif', 'png'=>'png', 'bmp'=>'bmp');
 	$reqtype = strtolower($reqtype);
 
 	if (empty($supportByGD[$reqtype])) return false;
@@ -1994,4 +2004,191 @@ function generate_thumbnail($filename, $thumbnail) {
 	return true;
 }
 
+/*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-
+  BMP SUPPORT (READING)
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*/
+
+function imagecreatefrombmp($filename) {
+	# Author:     DHKold
+	# Date:     The 15th of June 2005
+	# Version:    2.0B
+	# Purpose:    To create an image from a BMP file.
+	# Param in:   BMP file to open.
+	# Param out:  Return a resource like the other ImageCreateFrom functions
+	# Reference:  http://us3.php.net/manual/en/function.imagecreate.php#53879
+	# Bug fix:    Author:   domelca at terra dot es
+	#       Date:   06 March 2008
+	#       Fix:    Correct 16bit BMP support
+	# Notes:
+	#
+
+	//Ouverture du fichier en mode binaire
+	if (! $f1 = fopen($filename,"rb")) return FALSE;
+
+	//1 : Chargement des entêtes FICHIER
+	$FILE = unpack("A2file_type/Vfile_size/Vreserved/Vbitmap_offset", fread($f1,14));
+	if ($FILE['file_type'] != 'BM') return FALSE;
+
+	//2 : Chargement des entêtes BMP
+	$BMP = unpack('Vheader_size/Vwidth/Vheight/vplanes/vbits_per_pixel'.
+	 	'/Vcompression/Vsize_bitmap/Vhoriz_resolution'.
+	 	'/Vvert_resolution/Vcolors_used/Vcolors_important', fread($f1,40));
+	$BMP['colors'] = pow(2,$BMP['bits_per_pixel']);
+
+	if ($BMP['size_bitmap'] == 0) {
+		$BMP['size_bitmap'] = $FILE['file_size'] - $FILE['bitmap_offset'];
+	}
+
+	$BMP['bytes_per_pixel'] = $BMP['bits_per_pixel']/8;
+	$BMP['bytes_per_pixel2'] = ceil($BMP['bytes_per_pixel']);
+	$BMP['decal'] = ($BMP['width']*$BMP['bytes_per_pixel']/4);
+	$BMP['decal'] -= floor($BMP['width']*$BMP['bytes_per_pixel']/4);
+	$BMP['decal'] = 4-(4*$BMP['decal']);
+
+	if ($BMP['decal'] == 4) {
+		$BMP['decal'] = 0;
+	}
+
+	//3 : Chargement des couleurs de la palette
+	$PALETTE = array();
+	if ($BMP['colors'] < 16777216) {
+		$PALETTE = unpack('V'.$BMP['colors'], fread($f1,$BMP['colors']*4));
+	}
+
+	//4 : Création de l'image
+	$IMG = fread($f1,$BMP['size_bitmap']);
+	$VIDE = chr(0);
+
+	$res = imagecreatetruecolor($BMP['width'],$BMP['height']);
+	$P = 0;
+	$Y = $BMP['height']-1;
+	$bitsPerPixel = $BMP['bits_per_pixel'];
+	while ($Y >= 0) {
+		$X=0;
+		while ($X < $BMP['width']) {
+			switch ($bitsPerPixel) {
+			case 24:
+				$COLOR = unpack("V",substr($IMG,$P,3).$VIDE);
+				break;
+			case 16:
+				//$COLOR = unpack("n",substr($IMG,$P,2));
+				//$COLOR[1] = $PALETTE[$COLOR[1]+1];
+				/*
+				 * BMP 16bit fix
+				 * =================
+				 *
+				 * Ref: http://us3.php.net/manual/en/function.imagecreate.php#81604
+				 *
+				 * Notes:
+				 * Original code above did not work.
+				 */
+				$COLOR = unpack("v",substr($IMG,$P,2));
+				$blue = ($COLOR[1] & 0x001f) << 3;
+				$green = ($COLOR[1] & 0x07e0) >> 3;
+				$red = ($COLOR[1] & 0xf800) >> 8;
+				$COLOR[1] = $red * 65536 + $green * 256 + $blue;
+				break;
+			case 8:
+				$COLOR = unpack("n",$VIDE.substr($IMG,$P,1));
+				$COLOR[1] = $PALETTE[$COLOR[1]+1];
+				break;
+			case 4:
+				$COLOR = unpack("n",$VIDE.substr($IMG,floor($P),1));
+				if (($P*2)%2 == 0) $COLOR[1] = ($COLOR[1] >> 4) ; else $COLOR[1] = ($COLOR[1] & 0x0F);
+				$COLOR[1] = $PALETTE[$COLOR[1]+1];
+				break;
+			case 1:
+				$COLOR = unpack("n",$VIDE.substr($IMG,floor($P),1));
+				$bitNumber = ($P*8)%8;
+				switch ($bitNumber) {
+				case 0:
+					$COLOR[1] =  $COLOR[1]        >>7;
+					break;
+				case 1:
+					$COLOR[1] = ($COLOR[1] & 0x40)>>6;
+					break;
+				case 2:
+					$COLOR[1] = ($COLOR[1] & 0x20)>>5;
+					break;
+				case 3:
+					$COLOR[1] = ($COLOR[1] & 0x10)>>4;
+					break;
+				case 4:
+					$COLOR[1] = ($COLOR[1] & 0x8)>>3;
+					break;
+				case 5:
+					$COLOR[1] = ($COLOR[1] & 0x4)>>2;
+					break;
+				case 6:
+					$COLOR[1] = ($COLOR[1] & 0x2)>>1;
+					break;
+				case 7:
+					$COLOR[1] = ($COLOR[1] & 0x1);
+					break;
+				}
+				$COLOR[1] = $PALETTE[$COLOR[1]+1];
+				break;
+			default:
+				return false;
+			}
+
+			imagesetpixel($res,$X,$Y,$COLOR[1]);
+			$X++;
+			$P += $BMP['bytes_per_pixel'];
+		}
+
+		$Y--;
+		$P+=$BMP['decal'];
+	}
+
+	//Fermeture du fichier
+	fclose($f1);
+
+	return $res;
+}
+
+/*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-
+  BMP SUPPORT (WRITING)
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*/
+
+function imagebmp(&$gd_img, $savePath) {
+	# Author:     James Heinrich
+	# Purpose:    Save file as type bmp
+	# Param in:   The image canvas (passed as ref)
+	# Param out:
+	# Reference:
+	# Notes:    This code was stripped out of two external files
+	#       	(phpthumb.bmp.php,phpthumb.functions.php), modified slightly,
+	#       	and added below to avoid dependencies.
+	#
+	#			This code handles ONLY 24 bit colours.
+	#
+
+	$imageX = ImageSX($gd_img);
+	$imageY = ImageSY($gd_img);
+
+	$BMP = '';
+	for ($y = ($imageY - 1); $y >= 0; $y--) {
+		$thisline = '';
+		for ($x = 0; $x < $imageX; $x++) {
+			$argb = @ImageColorsForIndex($gd_img, @ImageColorAt($gd_img, $x, $y));
+			$thisline .= chr($argb['blue']).chr($argb['green']).chr($argb['red']);
+		}
+		while (strlen($thisline) % 4) {
+			$thisline .= "\x00";
+		}
+		$BMP .= $thisline;
+	}
+
+	$bmpSize = strlen($BMP) + 14 + 40;
+	// BITMAPFILEHEADER [14 bytes] - http://msdn.microsoft.com/library/en-us/gdi/bitmaps_62uq.asp
+	$BITMAPFILEHEADER = pack('A2VvvV', 'BM', $bmpSize, 0, 0, 54);
+
+	// BITMAPINFOHEADER - [40 bytes] http://msdn.microsoft.com/library/en-us/gdi/bitmaps_1rw2.asp
+	$BITMAPINFOHEADER = pack('VVVvvVVVVVV', 40, $imageX, $imageY, 1, 24, 0, 0, 2835, 2835, 0, 0);
+
+	file_put_contents($savePath, $BITMAPFILEHEADER.$BITMAPINFOHEADER.$BMP);
+
+	return;
+}
 ?>

@@ -2,7 +2,7 @@
 /**
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -442,7 +442,7 @@ function getFirstRelationsName_pl($pid) {
 		$fname='';
 	}
 	return $fname;
-	
+
 	// tested
 	$pname='';
 	$sex = Person::getInstance($pid)->getSex();
@@ -595,15 +595,7 @@ function getFirstRelationsName_pl($pid) {
 }
 
 function century_localisation_pl($n, $show=true) {
-	$arab = array(1, 4, 5, 9, 10);
-	$roman = array("I", "IV", "V", "IX", "X");
-	$roman_century = "";
-	for ($i=4; $i>=0; $i--) {
-		while ($n>=$arab[$i]) {
-			$n-=$arab[$i];
-			$roman_century .= $roman[$i];
-		}
-	}
+	$roman_century = integerToRoman($n);
 	if ($show) return $roman_century." w.";
 	else return $roman_century;
 }

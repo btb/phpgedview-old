@@ -2,7 +2,7 @@
 /**
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2009  PGV Development Team
+ * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -33,13 +33,25 @@ define('PGV_FUNCTIONS_EN_PHP', '');
 // Create an ordinal suffix for a number.
 ////////////////////////////////////////////////////////////////////////////////
 function ordinal_suffix_en($n) {
-	if ($n==1 || $n==21 || $n==31)
-		return 'st';
-	if ($n==2 || $n==22)
-		return 'nd';
-	if ($n==3 || $n==23)
-		return 'rd';
-  return 'th';
+	$zeroTo99 = $n % 100; 	// get last 2 digits of input number
+	if ($zeroTo99==11 || $zeroTo99==12 || $zeroTo99==13) return 'th';	// 11th, 12th, 13th are exceptions
+
+	$zeroTo9 = $n % 10;	// get last digit of input number
+
+	switch $zeroTo9 {
+	case 1:
+		return 'st';	// 1st, 21st, 31st, 41st, ... 101st, etc.
+		break;
+	case 2:
+		return 'nd';	// 2nd, 22nd, 32nd, 42nd, ... 102nd, etc.
+		break;
+	case 3:
+		return 'rd';	// 3rd, 23rd, 33rd, 43rd, ... 103rd, etc.
+		break;
+	default:
+		return 'th';	// 4th, 5th, ... 10th, 14th, 15th, ... 100th, 104th, etc.
+		break;
+	}
 }
 
 function getRelationshipText_en($relationshipDescription, $node, $pid1, $pid2) {
