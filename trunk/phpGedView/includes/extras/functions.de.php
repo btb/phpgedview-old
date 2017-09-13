@@ -2,7 +2,7 @@
 /**
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2008  PGV Development Team
+ * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -28,6 +28,13 @@ if (!defined('PGV_PHPGEDVIEW')) {
 }
 
 define('PGV_FUNCTIONS_DE_PHP', '');
+
+////////////////////////////////////////////////////////////////////////////////
+// Create an ordinal suffix for a number.
+////////////////////////////////////////////////////////////////////////////////
+function ordinal_suffix_de($n) {
+	return '.';		// Germans normally use a full-stop.  The alternative "te" suffix is sometimes used.
+}
 
 /*
  * The following routine is designed to produce text to describe the relationship

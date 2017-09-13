@@ -2,7 +2,7 @@
 /**
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2007 Greg Roach
+ * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -35,24 +35,28 @@ define('PGV_FUNCTIONS_FR_PHP', '');
 function ordinal_suffix_fr($n) {
 	if ($n==1)
 		return 'er';
-	return 'éme';
+	return 'ème';
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// Localise a date. "[qualifier] date [qualifier date] [qualifier]"
+// Localise a date. "[qualifier] date [qualifier] date [qualifier]"
 ////////////////////////////////////////////////////////////////////////////////
 function date_localisation_fr(&$q1, &$d1, &$q2, &$d2, &$q3) {
 	global $pgv_lang;
 
-	// Years in the french republican calendar are displayed in roman numerals.
+	// Years in the French Revolutionary calendar are displayed in roman numerals.
 	// They need a prefix of "an"
-	$d1=preg_replace("/(\b[IVX]+$)/", "an $1", $d1);
-	$d2=preg_replace("/(\b[IVX]+$)/", "an $1", $d2);
+	// Although the French Revolutionary calendar was no longer used after Year 9, it's still possible
+	// to have years greater than 9 in there.
+	$d1=preg_replace("/(\b[IVXLCDM]+$)/", "an $1", $d1);
+	$d2=preg_replace("/(\b[IVXLCDM]+$)/", "an $1", $d2);
 
 	if (isset($pgv_lang[$q1]))
 		$q1=$pgv_lang[$q1];
 	if (isset($pgv_lang[$q2]))
 		$q2=$pgv_lang[$q2];
+	if (isset($pgv_lang[$q3]))
+		$q3=$pgv_lang[$q3];
 }
 
 ?>
