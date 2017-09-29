@@ -29,10 +29,21 @@ if (!defined('PGV_PHPGEDVIEW')) {
 	exit;
 }
 
-define('PGV_FUNCTIONS_debug_PHP', '');
+define('PGV_FUNCTIONS_DEBUG_PHP', '');
 
 /**
-* This function produces a hexadecimal dump of the input string for debugging purposes
+ * This function produces a hexadecimal dump of the input string for debugging purposes.
+ *
+ * The input string is expected to be in UTF-8.  UTF-8 characters are from 1 to 4 bytes long.
+ *
+ * The dump consists of a ruler line, followed by the UTF-8 input string.  Each UTF-8 character is separated
+ * into up to 4 bytes, which are then printed in hexadecimal, vertically, under the original UTF-8 character.
+ *
+ * Thus, the dump will consist of at least 4 lines:
+ * 		ruler, UTF-8 character, left nibble of 1st byte, right nibble of 1st byte
+ *
+ * The dump will contain up to 3 additional pairs of lines, each corresponding to the left and right nibbles
+ * of the following 2nd, 3rd, and 4th bytes of the original UTF-8 character.
 */
 
 function DumpString($input) {
