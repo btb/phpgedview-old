@@ -1688,7 +1688,7 @@ function get_media_relations($mid) {
 	$medialist[$keyMediaList]['LINKS'] = $media;
 	return $media;
 }
-
+/*	function picture_clip() appears to be dead code
 // clips a media item based on data from the gedcom
 function picture_clip($person_id, $image_id, $filename, $thumbDir) {
 	global $TBLPREFIX;
@@ -1711,14 +1711,16 @@ function picture_clip($person_id, $image_id, $filename, $thumbDir) {
 		$image_dest = $thumbDir.$person_id."_".$image_filename[count($image_filename)-1].".jpg";
 		//call the cropimage function
 		cropImage($filename, $image_dest, $left, $top, $right, $bottom); //removed offset 50
-		return  $image_dest;
+		return $image_dest;
 	}
 	return "";
 }
+*/
 
-function cropImage($image, $dest_image, $left, $top, $right, $bottom) {
+/* function cropImage() is only used by function picture_clip().  Therefore, it's dead code too.
+function cropImage($image, $destination, $left, $top, $right, $bottom) {
 //$image is the string location of the original image,
-//$dest_image is the string file location of the new image,
+//$destination is the string file location of the new image,
 //$fx is the..., $fy is the...
 	global $THUMBNAIL_WIDTH;
 	$ims = @getimagesize($image);
@@ -1728,47 +1730,36 @@ function cropImage($image, $dest_image, $left, $top, $right, $bottom) {
 	$height = round($cheight * ($width/$cwidth));
 	switch ($ims['mime']) {
 	case 'image/png':
-		if (!function_exists('imagecreatefrompng') || !function_exists('imagepng')) break;
-		$img = imagecreatetruecolor(($ims[0]-$right)-$left, ($ims[1]-$bottom)-$top);
-		$org_img = imagecreatefrompng($image);
-		$ims = @getimagesize($image);
-		imagecopyresampled($img, $org_img, 0, 0, $left, $top, $width, $height, ($ims[0]-$right)-$left, ($ims[1]-$bottom)-$top);
-		imagepng($img, $dest_image);
-		imagedestroy($org_img);
-		imagedestroy($img);
+		$imageType = 'png';
 		break;
 	case 'image/jpeg':
-		if (!function_exists('imagecreatefromjpeg') || !function_exists('imagejpeg')) break;
-		$img = imagecreatetruecolor($width, $height);
-		$org_img = imagecreatefromjpeg($image);
-		$ims = @getimagesize($image);
-		imagecopyresampled($img, $org_img, 0, 0, $left, $top, $width, $height, ($ims[0]-$right)-$left, ($ims[1]-$bottom)-$top);
-		imagejpeg($img, $dest_image, 90);
-		imagedestroy($org_img);
-		imagedestroy($img);
+		$imageType = 'jpeg';
 		break;
 	case 'image/gif':
-		if (!function_exists('imagecreatefromgif') || !function_exists('imagegif')) break;
-		$img = imagecreatetruecolor(($ims[0]-$right)-$left, ($ims[1]-$bottom)-$top);
-		$org_img = imagecreatefromgif($image);
-		$ims = @getimagesize($image);
-		imagecopyresampled($img, $org_img, 0, 0, $left, $top, $width, $height, ($ims[0]-$right)-$left, ($ims[1]-$bottom)-$top);
-		imagegif($img, $dest_image);
-		imagedestroy($org_img);
-		imagedestroy($img);
+		$imageType = 'gif';
 		break;
 	case 'image/bmp':
-		if (!function_exists('imagecreatefrombmp') || !function_exists('imagebmp')) break;
-		$img = imagecreatetruecolor(($ims[0]-$right)-$left, ($ims[1]-$bottom)-$top);
-		$org_img = imagecreatefrombmp($image);
-		$ims = @getimagesize($image);
-		imagecopyresampled($img, $org_img, 0, 0, $left, $top, $width, $height, ($ims[0]-$right)-$left, ($ims[1]-$bottom)-$top);
-		imagebmp($img, $dest_image);
-		imagedestroy($org_img);
-		imagedestroy($img);
+		$imageType = 'png';
 		break;
+	default:
+		return false;		// Unsupported image type
 	}
+
+	$imCreateFunc = 'imagecreatefrom'.$imageType;
+	$imSendFunc = 'image'.$imageType;
+	if (!function_exists($imCreateFunc) || !function_exists($imSendFunc)) return false;		// Unsupported image type
+	$img = imagecreatetruecolor($cwidth, $cheight);
+	$org_img = $imCreateFunc($image);
+	imagecopyresampled($img, $org_img, 0, 0, $left, $top, $cwidth, $cheight, $width, $height);
+	$imSendFunc($img, $destination, 90);		// The last parameter (quality) is meaningful only to the imagejpeg() function.
+	break;
+
+	// Clean up, to avoid excessive memory usage
+	imagedestroy($org_img);
+	imagedestroy($img);
+
 }
+*/
 
 // checks whether a media file exists.
 // returns 1 for external media
@@ -1983,30 +1974,28 @@ function generate_thumbnail($filename, $thumbnail) {
 	// make sure we have enough memory to process this file
 	if (!hasMemoryForImage(filename_decode($filename))) return false;
 
-	$width = $THUMBNAIL_WIDTH;
-	$height = round($imgsize[1] * ($width/$imgsize[0]));
+	$widthImg = $imgsize[0];
+	$heightImg = $imgsize[1];
+	$widthThumb = $THUMBNAIL_WIDTH;
+	$heightThumb = round($heightImg * ($widthThumb/$widthImg));		// Make sure the image's aspect ratio is preserved
 
 	$imCreateFunc = 'imagecreatefrom'.$type;
 	$imSendFunc = 'image'.$type;
 
 	// load the image into memory
-	$im = @$imCreateFunc(filename_decode($filename));
-	if (!$im) return false;
+	$img = @$imCreateFunc(filename_decode($filename));
+	if (!$img) return false;
 	// create a blank thumbnail image in memory
-	$new = imagecreatetruecolor($width, $height);
+	$thumb = imagecreatetruecolor($widthThumb, $heightThumb);
 	// resample the original image into the thumbnail
-	imagecopyresampled($new, $im, 0, 0, 0, 0, $width, $height, $imgsize[0], $imgsize[1]);
+	imagecopyresampled($thumb, $img, 0, 0, 0, 0, $widthThumb, $heightThumb, $widthImg, $heightImg);
 	// save the thumbnail to a file
-	$imSendFunc($new, filename_decode($thumbnail));
+	$imSendFunc($thumb, filename_decode($thumbnail), 90);		// The last parameter (quality) is meaningful only to the imagejpeg() function.
 	// free up memory
-	imagedestroy($im);
-	imagedestroy($new);
+	imagedestroy($img);
+	imagedestroy($thumb);
 	return true;
 }
-
-/*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-
-  BMP SUPPORT (READING)
-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*/
 
 function imagecreatefrombmp($filename) {
 	# Author:     DHKold
@@ -2016,134 +2005,171 @@ function imagecreatefrombmp($filename) {
 	# Param in:   BMP file to open.
 	# Param out:  Return a resource like the other ImageCreateFrom functions
 	# Reference:  http://us3.php.net/manual/en/function.imagecreate.php#53879
-	# Bug fix:    Author:   domelca at terra dot es
-	#       Date:   06 March 2008
-	#       Fix:    Correct 16bit BMP support
 	# Notes:
+	#
+	# Major re-write by G. Kroll (canajun2eh)
 	#
 
 	//Ouverture du fichier en mode binaire
-	if (! $f1 = fopen($filename,"rb")) return FALSE;
+	$f1 = fopen($filename,"rb");
+	if (!$f1) return FALSE;
+	$fileContents = stream_get_contents($f1);	// Read the entire file into memory
+	fclose($f1);		// We're done with this input file
 
 	//1 : Chargement des entêtes FICHIER
-	$FILE = unpack("A2file_type/Vfile_size/Vreserved/Vbitmap_offset", fread($f1,14));
+	$FILE = unpack("A2file_type/Vfile_size/Vreserved/Vbitmap_offset", substr($fileContents,0,14));
 	if ($FILE['file_type'] != 'BM') return FALSE;
 
 	//2 : Chargement des entêtes BMP
 	$BMP = unpack('Vheader_size/Vwidth/Vheight/vplanes/vbits_per_pixel'.
-	 	'/Vcompression/Vsize_bitmap/Vhoriz_resolution'.
-	 	'/Vvert_resolution/Vcolors_used/Vcolors_important', fread($f1,40));
-	$BMP['colors'] = pow(2,$BMP['bits_per_pixel']);
+				'/Vcompression/Vsize_bitmap/Vhoriz_resolution'.
+				'/Vvert_resolution/Vcolors_used/Vcolors_important', substr($fileContents,14,40));
 
-	if ($BMP['size_bitmap'] == 0) {
-		$BMP['size_bitmap'] = $FILE['file_size'] - $FILE['bitmap_offset'];
-	}
+	$bitsPerPixel = $BMP['bits_per_pixel'];
+	$colors = 1 << $bitsPerPixel;
+	$width = $BMP['width'];
+	$height = $BMP['height'];
 
-	$BMP['bytes_per_pixel'] = $BMP['bits_per_pixel']/8;
-	$BMP['bytes_per_pixel2'] = ceil($BMP['bytes_per_pixel']);
-	$BMP['decal'] = ($BMP['width']*$BMP['bytes_per_pixel']/4);
-	$BMP['decal'] -= floor($BMP['width']*$BMP['bytes_per_pixel']/4);
-	$BMP['decal'] = 4-(4*$BMP['decal']);
-
-	if ($BMP['decal'] == 4) {
-		$BMP['decal'] = 0;
-	}
+	if ($height < 0) {
+		// If the height is negative, the image is recorded from top to bottom instead of the normal
+		// bottom to top -- we have to invert it at the end.
+		$height = 0 - $height;
+		$invertedImage = true;
+	} else $invertedImage = false;
 
 	//3 : Chargement des couleurs de la palette
-	$PALETTE = array();
-	if ($BMP['colors'] < 16777216) {
-		$PALETTE = unpack('V'.$BMP['colors'], fread($f1,$BMP['colors']*4));
+	if ($bitsPerPixel <= 8) {
+		// The Palette is present and used only for 1, 4, and 8 bits per pixel
+		$PALETTE = unpack('V'.$colors, substr($fileContents,54,$colors*4));
+	}
+	if ($bitsPerPixel == 16) {
+		// For 16 bits per pixel, the Palette region is a set of 3 colour masks
+		$PALETTE = unpack('V3', substr($fileContents,40,12));
+		// There are two types of colour mask, the 565 type where green gets 6 bits while red and blue
+		// each get 5 bits, and the RGB555 type where red, green, and blue each get 5 bits.  In both
+		// of these, the missing low-order bits of each colour should be zero.
+		//
+		//          --------------- RGB565 ----------------      --------------- RGB555 ----------------
+		// red		1111 1000 0000 0000 0000 0000 0000 0000  or  1111 1000 0000 0000 0000 0000 0000 0000
+		// green	0000 0111 1110 0000 0000 0000 0000 0000  or  0000 0111 1100 0000 0000 0000 0000 0000
+		// blue		0000 0000 0001 1111 0000 0000 0000 0000  or  0000 0000 0011 1110 0000 0000 0000 0000
+		//
+		$RGB565 = ($PALETTE[2] == 0x07E00000);		// We're dealing with the RGB565 set of colour masks
 	}
 
 	//4 : Création de l'image
-	$IMG = fread($f1,$BMP['size_bitmap']);
+	$IMG = substr($fileContents,$FILE['bitmap_offset']);
+	unset($FILE, $BMP, $fileContents);		// Free up some memory; we're done with the raw file contents
 	$VIDE = chr(0);
 
-	$res = imagecreatetruecolor($BMP['width'],$BMP['height']);
-	$P = 0;
-	$Y = $BMP['height']-1;
-	$bitsPerPixel = $BMP['bits_per_pixel'];
-	while ($Y >= 0) {
-		$X=0;
-		while ($X < $BMP['width']) {
-			switch ($bitsPerPixel) {
-			case 24:
-				$COLOR = unpack("V",substr($IMG,$P,3).$VIDE);
-				break;
-			case 16:
-				//$COLOR = unpack("n",substr($IMG,$P,2));
-				//$COLOR[1] = $PALETTE[$COLOR[1]+1];
-				/*
-				 * BMP 16bit fix
-				 * =================
-				 *
-				 * Ref: http://us3.php.net/manual/en/function.imagecreate.php#81604
-				 *
-				 * Notes:
-				 * Original code above did not work.
-				 */
-				$COLOR = unpack("v",substr($IMG,$P,2));
-				$blue = ($COLOR[1] & 0x001f) << 3;
-				$green = ($COLOR[1] & 0x07e0) >> 3;
-				$red = ($COLOR[1] & 0xf800) >> 8;
-				$COLOR[1] = $red * 65536 + $green * 256 + $blue;
-				break;
-			case 8:
-				$COLOR = unpack("n",$VIDE.substr($IMG,$P,1));
+	$res = imagecreatetruecolor($width,$height);
+
+	$inputPosition = 0;			// Position in input BMP
+	$lineNumber = $height-1;	// Scan line number
+
+	// The switch($bitsPerPixel) statement was moved outside the inner while($pixelNumber < $width) loop
+	// for speed reasons; this way, it's executed only once per image instead of once per pixel.
+	// This makes the code more verbose but also LOT faster.
+
+	switch ($bitsPerPixel) {
+	case 24:
+		while ($lineNumber >= 0) {
+			$pixelNumber=0;
+			while ($pixelNumber < $width) {
+				$COLOR = unpack("V",substr($IMG,$inputPosition,3).$VIDE);
+				imagesetpixel($res,$pixelNumber,$lineNumber,$COLOR[1]);
+				$pixelNumber ++;
+				$inputPosition += 3;	// 3 bytes per pixel
+			}
+			$lineNumber --;
+			$inputPosition = ($inputPosition + 3) & 0xFFFFFFFC;	// The next scan line must start on a double-word boundary
+		}
+		break;
+
+	case 16:
+		while ($lineNumber >= 0) {
+			$pixelNumber=0;
+			while ($pixelNumber < $width) {
+				$COLOR = unpack("v",substr($IMG,$inputPosition,2));		// 16 bits, in little endian format
+				if ($RGB565) {
+					// red gets 5 bits, green gets 6, and blue gets 5 (in that order)
+					$red =   ($COLOR[1] >> 8) & 0xF8;		// left 5 bits correspond to red
+					$green = ($COLOR[1] >> 3) & 0xFC;		// next 6 bits correspond to green
+					$blue =  ($COLOR[1] << 3) & 0xF8;		// last 5 bits correspond to blue
+				} else {
+					// red, green, and blue each get 5 bits with 1 bit left over
+					$red =   ($COLOR[1] >> 8) & 0xF8;		// left 5 bits correspond to red
+					$green = ($COLOR[1] >> 3) & 0xF8;		// next 5 bits correspond to green
+					$blue =  ($COLOR[1] << 2) & 0xF8;		// next 5 bits correspond to blue
+				}
+				$COLOR[1] = strval($red) . strval($green) . strval($blue);
+				imagesetpixel($res,$pixelNumber,$lineNumber,$COLOR[1]);
+				$pixelNumber ++;
+				$inputPosition += 2;	// 2 bytes per pixel
+			}
+			$lineNumber --;
+			$inputPosition = ($inputPosition + 3) & 0xFFFFFFFC;	// The next scan line must start on a double-word boundary
+		}
+		break;
+
+	case 8:
+		while ($lineNumber >= 0) {
+			$pixelNumber=0;
+			while ($pixelNumber < $width) {
+				$COLOR = unpack("n",$VIDE.substr($IMG,$inputPosition,1));
 				$COLOR[1] = $PALETTE[$COLOR[1]+1];
-				break;
-			case 4:
-				$COLOR = unpack("n",$VIDE.substr($IMG,floor($P),1));
-				if (($P*2)%2 == 0) $COLOR[1] = ($COLOR[1] >> 4) ; else $COLOR[1] = ($COLOR[1] & 0x0F);
-				$COLOR[1] = $PALETTE[$COLOR[1]+1];
-				break;
-			case 1:
-				$COLOR = unpack("n",$VIDE.substr($IMG,floor($P),1));
-				$bitNumber = ($P*8)%8;
-				switch ($bitNumber) {
-				case 0:
-					$COLOR[1] =  $COLOR[1]        >>7;
-					break;
-				case 1:
-					$COLOR[1] = ($COLOR[1] & 0x40)>>6;
-					break;
-				case 2:
-					$COLOR[1] = ($COLOR[1] & 0x20)>>5;
-					break;
-				case 3:
-					$COLOR[1] = ($COLOR[1] & 0x10)>>4;
-					break;
-				case 4:
-					$COLOR[1] = ($COLOR[1] & 0x8)>>3;
-					break;
-				case 5:
-					$COLOR[1] = ($COLOR[1] & 0x4)>>2;
-					break;
-				case 6:
-					$COLOR[1] = ($COLOR[1] & 0x2)>>1;
-					break;
-				case 7:
-					$COLOR[1] = ($COLOR[1] & 0x1);
-					break;
+				imagesetpixel($res,$pixelNumber,$lineNumber,$COLOR[1]);
+				$pixelNumber ++;
+				$inputPosition ++;	// 1 byte per pixel
+			}
+			$lineNumber --;
+			$inputPosition = ($inputPosition + 3) & 0xFFFFFFFC;	// The next scan line must start on a double-word boundary
+		}
+		break;
+
+	case 4:
+		while ($lineNumber >= 0) {
+			$pixelNumber=0;
+			while ($pixelNumber < $width) {
+				$COLOR = unpack("n",$VIDE.substr($IMG,floor($inputPosition),1));
+				$nibbleNumber = ($inputPosition*2)%2;
+				if ($nibbleNumber == 0) {
+					$COLOR[1] = $COLOR[1] >> 4;
+				} else {
+					$COLOR[1] = $COLOR[1] & 0x0F;
 				}
 				$COLOR[1] = $PALETTE[$COLOR[1]+1];
-				break;
-			default:
-				return false;
+				imagesetpixel($res,$pixelNumber,$lineNumber,$COLOR[1]);
+				$pixelNumber ++;
+				$inputPosition += 0.5;	// 2 pixels per byte
 			}
-
-			imagesetpixel($res,$X,$Y,$COLOR[1]);
-			$X++;
-			$P += $BMP['bytes_per_pixel'];
+			$lineNumber --;
+			$inputPosition = ($inputPosition + 3) & 0xFFFFFFFC;	// The next scan line must start on a double-word boundary
 		}
+		break;
 
-		$Y--;
-		$P+=$BMP['decal'];
+	case 1:
+		while ($lineNumber >= 0) {
+			$pixelNumber=0;
+			while ($pixelNumber < $width) {
+				$COLOR = unpack("n",$VIDE.substr($IMG,floor($inputPosition),1));
+				$bitNumber = ($inputPosition*8)%8;
+				$COLOR[1] = ($COLOR[1] >> (7-$bitNumber)) & 0x1;
+				$COLOR[1] = $PALETTE[$COLOR[1]+1];
+				imagesetpixel($res,$pixelNumber,$lineNumber,$COLOR[1]);
+				$pixelNumber ++;
+				$inputPosition += 0.125;	// 8 pixels per byte
+			}
+			$lineNumber --;
+			$inputPosition = ($inputPosition + 3) & 0xFFFFFFFC;	// The next scan line must start on a double-word boundary
+		}
+		break;
+
+	default:
+		return false;
 	}
 
-	//Fermeture du fichier
-	fclose($f1);
-
+	if ($invertedImage) return imagerotate($res, 180, 0);
 	return $res;
 }
 

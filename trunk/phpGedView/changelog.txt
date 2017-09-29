@@ -9,6 +9,7 @@
 =====================================================================
 
 Version 4.3.0
+ - Changed: Improve performance of BMP image support (canajun2eh)
  - Fixed: Syntax error in /includes/extras/functions.en.php (canajun2eh)
  - Changed: Move functions used only for debugging into their own functions_debug.php file (canajun2eh)
  - Added: Implement limited support for BMP images in media files -- can only write 24-bit images (canajun2eh)
