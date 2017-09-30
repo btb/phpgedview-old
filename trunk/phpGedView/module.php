@@ -3,7 +3,7 @@
  * Module system for adding features to phpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2013  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -75,7 +75,7 @@ function logHacker($quitReason) {
 }
 
 $log_msg = '';
-if ($mod == '' || !is_dir("modules/{$mod}")) {
+if (empty($mod) || !is_dir("modules/{$mod}")) {
 	$log_msg = 'Attempt to run non-existent module';	// No matching sub-directory
 } else if (file_exists("modules/{$mod}.php")) {
 	$modinfo = parse_ini_file("modules/{$mod}.php", true);
