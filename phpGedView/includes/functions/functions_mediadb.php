@@ -2087,23 +2087,39 @@ function imagecreatefrombmp($filename) {
 		break;
 
 	case 16:
+		if ($RGB565) {
+			// In the RGB565 encoding, red gets 5 bits, green gets 6, and blue gets 5 (in that order)
+			$redShift = 8; $redMask = 0xF8;			// left 5 bits correspond to red
+			$greenShift = 3; $greenMask = 0xFC;		// next 6 bits correspond to green
+			$blueShift = 3; $blueMask = 0xF8;		// last 5 bits correspond to blue
+		} else {
+			// In the RGB555 encoding, red, green, and blue each get 5 bits (in that order), with 1 bit left over
+			$redShift = 8; $redMask = 0xF8;			// left 5 bits correspond to red
+			$greenShift = 3; $greenMask = 0xF8;		// next 5 bits correspond to green
+			$blueShift = 2; $blueMask = 0xF8;		// next 5 bits correspond to blue
+		}
 		while ($lineNumber >= 0) {
 			$pixelNumber=0;
 			while ($pixelNumber < $width) {
 				$COLOR = unpack("v",substr($IMG,$inputPosition,2));		// 16 bits, in little endian format
+/*
 				if ($RGB565) {
-					// red gets 5 bits, green gets 6, and blue gets 5 (in that order)
+					// In the RGB565 encoding, red gets 5 bits, green gets 6, and blue gets 5 (in that order)
 					$red =   ($COLOR[1] >> 8) & 0xF8;		// left 5 bits correspond to red
 					$green = ($COLOR[1] >> 3) & 0xFC;		// next 6 bits correspond to green
 					$blue =  ($COLOR[1] << 3) & 0xF8;		// last 5 bits correspond to blue
 				} else {
-					// red, green, and blue each get 5 bits with 1 bit left over
+					// In the RGB555 encoding, red, green, and blue each get 5 bits (in that order), with 1 bit left over
 					$red =   ($COLOR[1] >> 8) & 0xF8;		// left 5 bits correspond to red
 					$green = ($COLOR[1] >> 3) & 0xF8;		// next 5 bits correspond to green
 					$blue =  ($COLOR[1] << 2) & 0xF8;		// next 5 bits correspond to blue
 				}
-				$COLOR[1] = strval($red) . strval($green) . strval($blue);
-				imagesetpixel($res,$pixelNumber,$lineNumber,$COLOR[1]);
+*/
+				// Separate the three colours, according to RGB565 or RGB555 encoding
+				$red =   ($COLOR[1] >> $redShift) & $redMask;			// left 5 bits correspond to red
+				$green = ($COLOR[1] >> $greenShift) & $greenMask;		// next 6 or 5 bits correspond to green
+				$blue =  ($COLOR[1] << $blueShift) & $blueMask;			// last or next 5 bits correspond to blue
+				imagesetpixel($res,$pixelNumber,$lineNumber,strval($red) . strval($green) . strval($blue));
 				$pixelNumber ++;
 				$inputPosition += 2;	// 2 bytes per pixel
 			}
