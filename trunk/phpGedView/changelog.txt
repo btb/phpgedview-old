@@ -9,6 +9,7 @@
 =====================================================================
 
 Version 4.3.0
+ - Changed: Speed improvement in reading 16-bit (256 colour) BMP images (canajun2eh)
  - Fixed: Undefined variable mod in module.php line 78 (canajun2eh)
  - Changed: Improve performance of BMP image support (canajun2eh)
  - Fixed: Syntax error in /includes/extras/functions.en.php (canajun2eh)
