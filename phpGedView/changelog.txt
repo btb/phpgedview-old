@@ -9,6 +9,7 @@
 =====================================================================
 
 Version 4.3.0
+ - Fixed: "Invalid GEDCOM format" error when saving an edited shared note (canajun2eh)
  - Changed: Speed improvement in reading 16-bit (256 colour) BMP images (canajun2eh)
  - Fixed: Undefined variable mod in module.php line 78 (canajun2eh)
  - Changed: Improve performance of BMP image support (canajun2eh)
