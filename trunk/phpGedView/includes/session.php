@@ -308,6 +308,7 @@ require PGV_ROOT.'includes/config_data.php';
 //--load common functions
 require  PGV_ROOT.'includes/functions/functions.php';
 require  PGV_ROOT.'includes/functions/functions_name.php';
+if (PGV_DEBUG) require  PGV_ROOT.'includes/functions/functions_debug.php';		// Make debugging functions available
 //-- set the error handler
 set_error_handler('pgv_error_handler');
 
