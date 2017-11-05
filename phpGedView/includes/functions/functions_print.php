@@ -652,10 +652,11 @@ function print_footer() {
 	} else {
 		require $print_footerfile;
 		echo "<div id=\"backprint\" style=\"text-align: center; width: 95%\">";
-		$backlink = PGV_SCRIPT_NAME."?".get_query_string();
+		$query = '?' . get_query_string();
+		if ($query == '?') $query = '';		// Make sure the URL doesn't end with an orphan question-mark
 		if (!$printlink) {
 			echo "<br /><a id=\"printlink\" href=\"javascript:;\" onclick=\"print(); return false;\">", $pgv_lang["print"], "</a><br />";
-			echo " <a id=\"printlinktwo\" href=\"javascript:;\" onclick=\"window.location='", $backlink, "'; return false;\">", $pgv_lang["cancel_preview"], "</a><br />";
+			echo " <a id=\"printlinktwo\" href=\"javascript:;\" onclick=\"window.location='", PGV_SCRIPT_NAME, $query, "'; return false;\">", $pgv_lang["cancel_preview"], "</a><br />";
 		}
 		$printlink = true;
 		echo "</div>";
