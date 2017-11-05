@@ -3,7 +3,7 @@
  * Startup and session logic for handling Bots and Spiders
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2008 to 2016  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2008 to 2017  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -193,12 +193,6 @@ do {
 $quitReason = "";
 
 while (true) {
-	// check for improperly formed URI
-	if ((strpos($requestURI, '//') || strpos($requestURI, "'&") || strpos($requestURI, "'\"")) !== false) {
-		$quitReason = 'Improperly formed URI';
-		break;
-	}
-
 	// check for SQL injection
 	if (preg_match('~\b(join|select|insert|cast|set|declare|drop|md5|benchmark)\b~is', $requestURI)) {
 		$quitReason = 'SQL injection detected';
@@ -206,7 +200,7 @@ while (true) {
 	}
 
 	// check for script injection
-	if (preg_match('~[<>"\%{};]~s', $requestURI)) {
+	if (preg_match('~[<>"\%{};]~', $requestURI) || preg_match('~sleep~i', $requestURI)) {
 		$quitReason = 'Script injection detected';
 		break;
 	}
@@ -214,6 +208,12 @@ while (true) {
 	// check for attempt to redirect
 	if (preg_match("~=.*://~", $requestURI)) {
 		$quitReason = 'Embedded URL detected';
+		break;
+	}
+
+	// check for improperly formed URI
+	if (preg_match("~(//|\?\?|\?&|&&|\?'|&'|'&|'$|\?$|&$)~s", $requestURI)) {
+		$quitReason = 'Improperly formed URI';
 		break;
 	}
 

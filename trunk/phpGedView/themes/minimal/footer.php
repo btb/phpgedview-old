@@ -3,7 +3,7 @@
  * Footer for Minimal theme
  *
  * PhpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -35,8 +35,10 @@ echo "\n\t<br /><div align=\"center\" style=\"width:99%;\">";
 echo contact_links();
 echo '<br /><a href="', PGV_PHPGEDVIEW_URL, '" target="_blank"><img src="', $PGV_IMAGE_DIR, '/', $PGV_IMAGES['gedview']['other'], '" width="100" height="45" border="0" alt="', PGV_PHPGEDVIEW, PGV_USER_IS_ADMIN? (" - " .PGV_VERSION_TEXT): "" , '" title="', PGV_PHPGEDVIEW , PGV_USER_IS_ADMIN? (" - " .PGV_VERSION_TEXT): "" , '" /></a><br />';
 echo "\n\t<br />";
+$query = '&amp;' . get_query_string();
+if ($query == '&amp;') $query = '';		// Make sure the URL doesn't end with an orphan ampersand
 print_help_link("preview_help", "qm");
-echo '<a href="', PGV_SCRIPT_NAME, '?view=preview&amp;', get_query_string(), '">', $pgv_lang['print_preview'], '</a>';
+echo '<a href="', PGV_SCRIPT_NAME, '?view=preview', $query, '">', $pgv_lang['print_preview'], '</a>';
 echo "<br />";
 if ($SHOW_STATS || PGV_DEBUG) {
 	echo execution_stats();

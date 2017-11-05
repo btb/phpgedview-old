@@ -3,7 +3,7 @@
  * Footer for Standard theme
  *
  * PhpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -40,8 +40,12 @@ echo "</div> <!-- closing div id=\"content\" -->";
 	<img src="<?php echo $PGV_IMAGE_DIR, '/', $PGV_IMAGES['gedview']['other']; ?>" width="100" height="45" border="0" alt="<?php echo PGV_PHPGEDVIEW, PGV_USER_IS_ADMIN? (" - " .PGV_VERSION_TEXT): ""; ?>"
 		title="<?php echo PGV_PHPGEDVIEW, PGV_USER_IS_ADMIN? (" - " .PGV_VERSION_TEXT): "" ;?>" /></a><br />
 <br />
-<?php print_help_link("preview_help", "qm"); ?>
-<a href="<?php echo PGV_SCRIPT_NAME, '?view=preview&amp;', get_query_string(); ?>"><?php echo $pgv_lang['print_preview']; ?></a>
+<?php
+$query = '&amp;' . get_query_string();
+if ($query == '&amp;') $query = '';		// Make sure the URL doesn't end with an orphan ampersand
+print_help_link("preview_help", "qm");
+echo '<a href="', PGV_SCRIPT_NAME, '?view=preview', $query, '">', $pgv_lang['print_preview'], '</a>';
+?>
 <br />
 <?php
 if ($SHOW_STATS || PGV_DEBUG) {
