@@ -1981,6 +1981,8 @@ function generate_thumbnail($filename, $thumbnail) {
 
 	$imCreateFunc = 'imagecreatefrom'.$type;
 	$imSendFunc = 'image'.$type;
+	$imQuality = 90;						// Image quality is meaningful only to the imagejpeg() and imagepng() functions.
+	if ($type == 'png') $imQuality = 9;		// Note that these functions use the "quality" parameters differently!
 
 	// load the image into memory
 	$img = @$imCreateFunc(filename_decode($filename));
@@ -1990,7 +1992,7 @@ function generate_thumbnail($filename, $thumbnail) {
 	// resample the original image into the thumbnail
 	imagecopyresampled($thumb, $img, 0, 0, 0, 0, $widthThumb, $heightThumb, $widthImg, $heightImg);
 	// save the thumbnail to a file
-	$imSendFunc($thumb, filename_decode($thumbnail), 90);		// The last parameter (quality) is meaningful only to the imagejpeg() function.
+	$imSendFunc($thumb, filename_decode($thumbnail), $imQuality);
 	// free up memory
 	imagedestroy($img);
 	imagedestroy($thumb);
