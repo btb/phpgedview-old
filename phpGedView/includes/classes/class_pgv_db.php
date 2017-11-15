@@ -7,7 +7,7 @@
  *
  * phpGedView: Genealogy Viewer
  * Copyright (C) 2009 Greg Roach (fisharebest)
- * Copyright (C) 2010 to 2015  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2010 to 2017  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -80,7 +80,7 @@ class PGV_DB {
 	public final function __clone() {
 		trigger_error('PGV_DB::clone() is not allowed.', E_USER_ERROR);
 	}
- 	
+
 	// Prevent instantiation via serialize()
 	public final function __wakeup() {
 		trigger_error('PGV_DB::unserialize() is not allowed.', E_USER_ERROR);
@@ -161,7 +161,7 @@ class PGV_DB {
 			self::$RANDOM       ='RANDOM()';
 			self::$TEXT_TYPE    ='TEXT';
 			self::$LONGTEXT_TYPE='TEXT';
-			self::$DB_ENGINE    ='ENGINE=MyISAM'; /* this should be made configurable, similar to the UTF-8 option */
+			self::$DB_ENGINE    =''; 		// pgsql CREATE TABLE does not support the 'ENGINE=' clause
 			self::$UTF8_TABLE   ='';
 			if ($DB_UTF8_COLLATION) {
 				self::$pdo->exec("SET NAMES 'UTF8'");
@@ -191,7 +191,7 @@ class PGV_DB {
 			self::$RANDOM       ='NEWID';
 			self::$TEXT_TYPE    ='TEXT';
 			self::$LONGTEXT_TYPE='TEXT';
-			self::$DB_ENGINE    ='ENGINE=MyISAM'; /* this should be made configurable, similar to the UTF-8 option */
+			self::$DB_ENGINE    =''; 		// mssql CREATE TABLE does not support the 'ENGINE=' clause
 			self::$UTF8_TABLE   ='';
 			break;
 		case 'sqlite':
@@ -234,7 +234,7 @@ class PGV_DB {
 			self::$RANDOM       ='RANDOM()';
 			self::$TEXT_TYPE    ='TEXT';
 			self::$LONGTEXT_TYPE='TEXT';
-			self::$DB_ENGINE    ='ENGINE=MyISAM'; /* this should be made configurable, similar to the UTF-8 option */
+			self::$DB_ENGINE    =''; 		// sqlite CREATE TABLE does not support the 'ENGINE=' clause
 			self::$UTF8_TABLE   ='';
 			break;
 		case 'firebird': // This DSN has not been tested!
@@ -602,7 +602,7 @@ class PGV_DB {
 
 		switch (self::$pdo->getAttribute(PDO::ATTR_DRIVER_NAME)) {
 		case 'pgsql':
-			
+
 			return (bool)
 				PGV_DB::prepare("SELECT 1 FROM information_schema.tables WHERE table_catalog=? AND table_name=? AND table_type='BASE TABLE'")
 				->execute(array($DBNAME, $table))
@@ -753,7 +753,7 @@ class PGV_DB {
 		}
 		return new PGV_DBStatement(self::$pdo->prepare($statement));
 	}
-	
+
 	// Map all other functions onto the base PDO object
 	public function __call($function, $params) {
 		return call_user_func_array(array(self::$pdo, $function), $params);
@@ -765,7 +765,7 @@ class PGV_DB {
 	public static function updateSchema($schema_dir, $schema_name, $target_version) {
 		global $TBLPREFIX;
 
-		// Allow the schema scripts to do different things for different databases		
+		// Allow the schema scripts to do different things for different databases
 		$DRIVER_NAME=self::getInstance()->getAttribute(PDO::ATTR_DRIVER_NAME);
 
 		// Define some "standard" columns, so we create our tables consistently
