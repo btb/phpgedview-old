@@ -1,9 +1,10 @@
-<?php 
+<?php
 /**
  * Search Plug-in for www.werelate.org
  *
  * phpGedView: Genealogy Viewer
  * Copyright (C) 2008 Greg Roach. All rights reserved.
+ * Copyright (C) 2008 to 2017  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,7 +33,7 @@ if (!defined('PGV_PHPGEDVIEW')) {
 require_once PGV_ROOT.'modules/research_assistant/search_plugin/base_autosearch.php';
 
 class AutoSearch extends Base_AutoSearch {
-	function AutoSearch() {
+	function __construct() {
 		parent::__construct(
 			// Name of this file, without the extension.
 			// NB must also define this in $pgv_lang["autosearch_plugin_name_XXXX"]

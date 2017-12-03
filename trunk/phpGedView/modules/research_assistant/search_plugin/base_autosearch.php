@@ -3,7 +3,7 @@
  * Common functions for the Search Plug-in of the Auto search Assistant
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2008  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -39,7 +39,7 @@ class Base_AutoSearch {
 	private $fields=null;
 
 	// Constructor simply defines the fields to be used
-	function Base_AutoSearch($title, $url, $method, $fields) {
+	function __construct($title, $url, $method, $fields) {
 		$this->title =$title;
 		$this->url   =$url;
 		$this->method=$method;
@@ -58,14 +58,15 @@ class Base_AutoSearch {
 		$html.='<input type="hidden" name="mod"        value="research_assistant" />';
 		$html.='<input type="hidden" name="action"     value="auto_search" />';
 		$html.='<input type="hidden" name="searchtype" value="'.$this->title.'" />';
-		$html.='<table width="50%">';
+		$html.='<table>';
 		foreach ($this->fields as $field=>$settings) {
 			if (!array_key_exists('extra', $settings)) {
 				$settings['extra']='';
 			}
-			$html.='<tr><td class="optionbox">'.$pgv_lang['autosearch_'.$settings['function']].'</td>';
-			$html.='<td class="optionbox"><input type="checkbox" name="enable_'.$settings['function'].'" value="Y" ';
-			$edit=$this->$settings['function']($person);
+			$html.='<tr><td class="descriptionbox wrap width33">'.$pgv_lang['autosearch_'.$settings['function']].'</td>';
+			$html.='<td class="optionbox wrap width66"><input type="checkbox" name="enable_'.$settings['function'].'" value="Y" ';
+			$editFunction = $settings['function'];
+			$edit = $this->$editFunction($person);
 			if (strip_tags($edit)) {
 				if ($settings['extra']) {
 					$html.=$settings['extra'];
@@ -168,7 +169,7 @@ class Base_AutoSearch {
 			return '<input type="hidden" name="fgivennames" value="">';
 		}
 	}
-	
+
 	function fsurname($person) {
 		$parents=$person->getPrimaryChildFamily();
 		if ($parents && $parents->getHusband()) {
@@ -177,7 +178,7 @@ class Base_AutoSearch {
 			return '<input type="hidden" name="fsurname" value="">';
 		}
 	}
-	
+
 	function ffullname($person) {
 		$parents=$person->getPrimaryChildFamily();
 		if ($parents && $parents->getHusband()) {
@@ -204,7 +205,7 @@ class Base_AutoSearch {
 			return '<input type="hidden" name="msurname" value="">';
 		}
 	}
-	
+
 	function mfullname($person) {
 		$parents=$person->getPrimaryChildFamily();
 		if ($parents && $parents->getWife()) {
