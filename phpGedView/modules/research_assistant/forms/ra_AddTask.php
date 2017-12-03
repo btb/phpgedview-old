@@ -3,7 +3,7 @@
  * phpGedView Research Assistant Tool - ra_AddTask
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -134,8 +134,11 @@ global $pgv_lang, $TBLPREFIX, $SOURCE_ID_PREFIX;
 			<td class="optionbox" colspan=3>
 			<select name="Users"> <option value=""></option>
 			<?php
-				foreach(get_all_users() as $username) {
-					print "<option value=\"$username\">".getUserFullName($username)."</option>";
+				foreach(get_all_users() as $user_id=>$username) {
+					// Don't allow assignment to ordinary (non-editing) users
+					if (userCanEdit($user_id)) {
+						echo '<option value="', $username, '">', getUserFullName($user_id), '&nbsp;&nbsp;(', $username, ')</option>';
+					}
 				}
 			?>
 			</select>

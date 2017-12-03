@@ -3,7 +3,7 @@
  * Class file for a single fact inference
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2007 John Finlay and Others
+ * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -31,7 +31,7 @@ if (!defined('PGV_PHPGEDVIEW')) {
 }
 
 class FactInference{
-	
+
 	var $globalFactPercentage;
 	var $globalFactCount;
 	var $localFactPercentage;
@@ -41,8 +41,8 @@ class FactInference{
 	var $factRelation;
 	var $compareFact;
 	var $factValue;
-	
-	function FactInference($globalPercentage,$globalCount,$localPercentage,$localCount,$factTag,$relation,$compare,$pid,$factVal = "")
+
+	function __construct($globalPercentage,$globalCount,$localPercentage,$localCount,$factTag,$relation,$compare,$pid,$factVal = "")
 	{
 		$this->globalFactPercentage = $globalPercentage;
 		$this->localFactPercentage = $localPercentage;
@@ -52,9 +52,9 @@ class FactInference{
 		$this->localFactCount = $localCount;
 		$this->globalFactCount = $globalCount;
 		$this->pid = $pid;
-		
+
 	}
-	
+
 	function getFactValue()
 	{
 		if(isset($this->factValue))
@@ -66,51 +66,51 @@ class FactInference{
 			return "";
 		}
 	}
-	
+
 	function setFactValue($factVal)
 	{
 		$this->factValue = $factVal;
 	}
-	
+
 	function setGlobalFactPercentage($factPerc)
 	{
 		$this->globalFactPercentage = $factPerc;
 	}
-	
+
 	function setGlobalFactCount($factCount)
 	{
 		$this->globalFactCount = $factCount;
 	}
-	
+
 	function getCompareTag()
 	{
 		return $this->compareFact;
 	}
-	
+
 	function getRelationTag()
 	{
 		return $this->factRelation;
 	}
-	
+
 	function getFactTag()
 	{
 		return $this->factType;
 	}
-	
+
 	function getLocalPercentage()
 	{
 		return $this->localFactPercentage;
 	}
-	
+
 	function getGlobalPercentage()
 	{
 		return $this->globalFactPercentage;
 	}
-	
+
 	function getAverage()
 	{
 		global $pgv_lang;
-		
+
 		if($this->globalFactPercentage != 0 && $this->localFactPercentage != 0)
 		{
 			return (($this->globalFactPercentage + $this->localFactPercentage) /2);

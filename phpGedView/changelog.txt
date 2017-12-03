@@ -9,6 +9,9 @@
 =====================================================================
 
 Version 4.3.1
+ - Fixed: Research Assistant: PHP7 "array to string conversion" error (canajun2eh)
+ - Fixed: Research Assistant: PHP7 warning about class constructor naming convention (canajun2eh)
+ - Fixed: Research Assistant: Cannot assign tasks (canajun2eh)
  - Fixed: "ENGINE=" phrase only supported by mysql (canajun2eh)
  - Fixed: Thumbnail creation fails for PNG images (Philippe Condé)
  - Changed: The "SVN" version is now called "4.3.1 svn" (canajun2eh)
