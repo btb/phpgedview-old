@@ -1688,78 +1688,6 @@ function get_media_relations($mid) {
 	$medialist[$keyMediaList]['LINKS'] = $media;
 	return $media;
 }
-/*	function picture_clip() appears to be dead code
-// clips a media item based on data from the gedcom
-function picture_clip($person_id, $image_id, $filename, $thumbDir) {
-	global $TBLPREFIX;
-	// This gets the gedrec
-	$gedrec=
-		PGV_DB::prepare("SELECT m_gedrec FROM {$TBLPREFIX}media WHERE m_media=? AND m_gedfile=?")
-		->execute(array($image_id, PGV_GED_ID))
-		->fetchOne();
-
-	//Get the location of the file, and then make a location for the clipped image
-
-	//store values to the variables
-	$top = get_gedcom_value("_TOP", 2, $gedrec);
-	$bottom = get_gedcom_value("_BOTTOM", 2, $gedrec);
-	$left = get_gedcom_value("_LEFT", 2, $gedrec);
-	$right = get_gedcom_value("_RIGHT", 2, $gedrec);
-	//check to see if all values were retrieved
-	if ($top != null || $bottom != null || $left != null || $right != null) {
-		$image_filename = check_media_depth($filename);
-		$image_dest = $thumbDir.$person_id."_".$image_filename[count($image_filename)-1].".jpg";
-		//call the cropimage function
-		cropImage($filename, $image_dest, $left, $top, $right, $bottom); //removed offset 50
-		return $image_dest;
-	}
-	return "";
-}
-*/
-
-/* function cropImage() is only used by function picture_clip().  Therefore, it's dead code too.
-function cropImage($image, $destination, $left, $top, $right, $bottom) {
-//$image is the string location of the original image,
-//$destination is the string file location of the new image,
-//$fx is the..., $fy is the...
-	global $THUMBNAIL_WIDTH;
-	$ims = @getimagesize($image);
-	$cwidth = ($ims[0]-$right)-$left;
-	$cheight = ($ims[1]-$bottom)-$top;
-	$width = $THUMBNAIL_WIDTH;
-	$height = round($cheight * ($width/$cwidth));
-	switch ($ims['mime']) {
-	case 'image/png':
-		$imageType = 'png';
-		break;
-	case 'image/jpeg':
-		$imageType = 'jpeg';
-		break;
-	case 'image/gif':
-		$imageType = 'gif';
-		break;
-	case 'image/bmp':
-		$imageType = 'png';
-		break;
-	default:
-		return false;		// Unsupported image type
-	}
-
-	$imCreateFunc = 'imagecreatefrom'.$imageType;
-	$imSendFunc = 'image'.$imageType;
-	if (!function_exists($imCreateFunc) || !function_exists($imSendFunc)) return false;		// Unsupported image type
-	$img = imagecreatetruecolor($cwidth, $cheight);
-	$org_img = $imCreateFunc($image);
-	imagecopyresampled($img, $org_img, 0, 0, $left, $top, $cwidth, $cheight, $width, $height);
-	$imSendFunc($img, $destination, 90);		// The last parameter (quality) is meaningful only to the imagejpeg() function.
-	break;
-
-	// Clean up, to avoid excessive memory usage
-	imagedestroy($org_img);
-	imagedestroy($img);
-
-}
-*/
 
 // checks whether a media file exists.
 // returns 1 for external media
@@ -1981,8 +1909,6 @@ function generate_thumbnail($filename, $thumbnail) {
 
 	$imCreateFunc = 'imagecreatefrom'.$type;
 	$imSendFunc = 'image'.$type;
-	$imQuality = 90;						// Image quality is meaningful only to the imagejpeg() and imagepng() functions.
-	if ($type == 'png') $imQuality = 9;		// Note that these functions use the "quality" parameters differently!
 
 	// load the image into memory
 	$img = @$imCreateFunc(filename_decode($filename));
@@ -1992,13 +1918,15 @@ function generate_thumbnail($filename, $thumbnail) {
 	// resample the original image into the thumbnail
 	imagecopyresampled($thumb, $img, 0, 0, 0, 0, $widthThumb, $heightThumb, $widthImg, $heightImg);
 	// save the thumbnail to a file
-	$imSendFunc($thumb, filename_decode($thumbnail), $imQuality);
+	$imSendFunc($thumb, filename_decode($thumbnail), 9);		// The last parameter (quality) is meaningful only to the imagejpeg() function.
 	// free up memory
 	imagedestroy($img);
 	imagedestroy($thumb);
 	return true;
 }
-
+// PCE add condition
+if (!function_exists('imagecreatefrombmp')) {		// From PHP 7.2 on, we no longer need to build our own version of this function
+	//PCE Proceed to declare function
 function imagecreatefrombmp($filename) {
 	# Author:     DHKold
 	# Date:     The 15th of June 2005
@@ -2190,10 +2118,13 @@ function imagecreatefrombmp($filename) {
 	if ($invertedImage) return imagerotate($res, 180, 0);
 	return $res;
 }
-
+}  // PCE added end condition
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*-
   BMP SUPPORT (WRITING)
 *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*/
+// PCE add condition
+if (!function_exists('imagebmp')) {		// From PHP 7.2 on, we no longer need to build our own version of this function
+	//PCE Proceed to declare function
 
 function imagebmp(&$gd_img, $savePath) {
 	# Author:     James Heinrich
@@ -2235,4 +2166,5 @@ function imagebmp(&$gd_img, $savePath) {
 
 	return;
 }
+} // PCE end condition
 ?>
