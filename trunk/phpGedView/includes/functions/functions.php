@@ -2817,7 +2817,7 @@ function getAlphabet() {
 /**
  * get a list of the reports in the reports directory
  *
- * When $force is false, the function will first try to read the reports list from the$INDEX_DIRECTORY."/reports.dat"
+ * When $force is false, the function will first try to read the reports list from the $INDEX_DIRECTORY."/reports.dat"
  * data file.  Otherwise the function will parse the report xml files and get the titles.
  * @param boolean $force	force the code to look in the directory and parse the files again
  * @return array 	The array of the found reports with indexes [title] [file]
@@ -2892,7 +2892,7 @@ function get_report_list($force=false) {
 	$fp = @fopen($INDEX_DIRECTORY."/reports.dat", "w");
 	@fwrite($fp, serialize($files));
 	@fclose($fp);
-	$logline = AddToLog("reports.dat updated");
+	$logline = AddToLog("reports.dat updated for $LANGUAGE");
  	check_in($logline, "reports.dat", $INDEX_DIRECTORY);
 
 	return $files;
