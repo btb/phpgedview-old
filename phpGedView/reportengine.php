@@ -5,7 +5,7 @@
  * Processes PGV XML Reports and generates a report
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -133,7 +133,7 @@ if (!empty($report)) {
 //-- choose a report to run
 if ($action=="choose") {
 	// Get the list of available reports in sorted localized title order
-	$reportList = get_report_list(true);
+	$reportList = get_report_list();
 	$reportTitles = array();
 	foreach ($reportList as $file=>$report) {
 		$reportTitles[$file] = $report["title"][$LANGUAGE];
@@ -143,7 +143,7 @@ if ($action=="choose") {
 	foreach ($reportTitles as $file=>$title) {
 		$reports[$file] = $reportList[$file];
 	}
-	
+
 	print_header($pgv_lang["choose_report"]);
 
 	echo "<br /><br />\n<form name=\"choosereport\" method=\"get\" action=\"reportengine.php\">\n";
@@ -208,7 +208,7 @@ elseif ($action=="setup") {
 			}
 			<?php
 		echo PGV_JS_END;
-		
+
 		init_calendar_popup();
 		echo "<form name=\"setupreport\" method=\"get\" target=\"_blank\" action=\"reportengine.php\">\n";
 		echo "<input type=\"hidden\" name=\"action\" value=\"run\" />\n";
