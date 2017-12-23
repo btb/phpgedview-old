@@ -1918,7 +1918,7 @@ function generate_thumbnail($filename, $thumbnail) {
 	// resample the original image into the thumbnail
 	imagecopyresampled($thumb, $img, 0, 0, 0, 0, $widthThumb, $heightThumb, $widthImg, $heightImg);
 	// save the thumbnail to a file
-	$imSendFunc($thumb, filename_decode($thumbnail), 9);		// The last parameter (quality) is meaningful only to the imagejpeg() function.
+	$imSendFunc($thumb, filename_decode($thumbnail));
 	// free up memory
 	imagedestroy($img);
 	imagedestroy($thumb);
