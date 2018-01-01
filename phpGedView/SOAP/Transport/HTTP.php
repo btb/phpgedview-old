@@ -123,9 +123,9 @@ class SOAP_Transport_HTTP extends SOAP_Base
      * @param string $url       HTTP url to SOAP endpoint.
      * @param string $encoding  Encoding to use.
      */
-    function SOAP_Transport_HTTP($url, $encoding = SOAP_DEFAULT_ENCODING)
+    function __construct($url, $encoding = SOAP_DEFAULT_ENCODING)
     {
-        parent::SOAP_Base('HTTP');
+        parent::__construct('HTTP');
         $this->urlparts = @parse_url($url);
         $this->url = $url;
         $this->encoding = $encoding;

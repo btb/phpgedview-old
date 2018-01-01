@@ -69,9 +69,9 @@ class SOAP_Parser extends SOAP_Base
      * @param string xml content
      * @param string xml character encoding, defaults to 'UTF-8'
      */
-    function SOAP_Parser(&$xml, $encoding = SOAP_DEFAULT_ENCODING, $attachments = null)
+    function __construct(&$xml, $encoding = SOAP_DEFAULT_ENCODING, $attachments = null)
     {
-        parent::SOAP_Base('Parser');
+        parent::__construct('Parser');
         $this->_setSchemaVersion(SOAP_XML_SCHEMA_VERSION);
 
         $this->attachments = $attachments;
