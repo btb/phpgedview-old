@@ -24,7 +24,7 @@
  * done in PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2016  PGV Development Team
+ * Copyright (C) 2002 to 2018  PGV Development Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -69,7 +69,7 @@ class GenealogyService
 	var $varNames = array();
 	var $logging = false;
 
-	function GenealogyService()
+	function __construct()
 	{
 		/*
 		 * SOAP Method declarations
@@ -1034,8 +1034,23 @@ class GenealogyService
 	}
 	/* Process this file.  Handles soap requests and wsdl requests
 	*/
-	function &process() {
-		global $HTTP_RAW_POST_DATA;
+	function &process(&$raw_post_data) {
+		// $raw_post_data contains the raw http post data (xml data for SOAP request,
+		// or empty for the initial wsdl request)
+		//
+		// es.: SOAP request:
+		// "<?xml version="1.0" encoding="utf-8"? >
+		// <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:n="urn:Genealogy" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+		//   <soap:Body soap:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+		//       <n:Authenticate>
+		//      <username xsi:type="xs:string">uploader</username>
+		//      <password xsi:type="xs:string">password</password>
+		//      <gedcom xsi:type="xs:string">caposele</gedcom>
+		//      <compression xsi:type="xs:string">none</compression>
+		//      <data_type xsi:type="xs:string">GEDCOM</data_type>
+		//       </n:Authenticate>
+		//   </soap:Body>
+		// </soap:Envelope>"
 
 		// Fire up PEAR::SOAP_Server
 		$server = new SOAP_Server();
@@ -1043,12 +1058,13 @@ class GenealogyService
 		// Add your object to SOAP server (note namespace)
 		$server->addObjectMap($this,'urn:' . $this->__namespace);
 
-		// Handle SOAP requests coming is as POST data
+		// Handle SOAP requests coming in as POST data
 		if (isset($_SERVER['REQUEST_METHOD']) &&
 			$_SERVER['REQUEST_METHOD']=='POST')
 		{
 
-			$server->service($HTTP_RAW_POST_DATA);
+//			$server->service($HTTP_RAW_POST_DATA);
+			$server->service($raw_post_data);		// superglobal $HTTP_RAW_POST_DATA deprecated in PHP 5.6 and removed in PHP 7.0
 			return $server;
 		}
 		else

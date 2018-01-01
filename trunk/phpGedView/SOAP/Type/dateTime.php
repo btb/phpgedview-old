@@ -52,7 +52,7 @@ class SOAP_Type_dateTime
          (Z|[+\-][0-9]{4}|[+\-][0-9]{2}:[0-9]{2})?';
 
     var $timestamp = -1;
-    
+
     /**
      * Constructor.
      *
@@ -60,7 +60,7 @@ class SOAP_Type_dateTime
      *                              date and time this object is going to
      *                              represent.
      */
-    function SOAP_Type_dateTime($date = -1)
+    function __construct($date = -1)
     {
         if ($date == -1) {
             $this->timestamp = time();
@@ -70,7 +70,7 @@ class SOAP_Type_dateTime
             $this->timestamp = $this->toUnixtime($date);
         }
     }
-    
+
     /**
      * Alias of {@link SOAP_Type_dateTime::toUTC}.
      */
@@ -78,7 +78,7 @@ class SOAP_Type_dateTime
     {
         return $this->toUTC($date);
     }
-    
+
     /**
      * Converts this object or a timestamp to an ISO 8601 date/time string.
      *
@@ -97,7 +97,7 @@ class SOAP_Type_dateTime
 
         return date('Y-m-d\TH:i:sO', $timestamp);
     }
-    
+
     /**
      * Splits a date/time into its components.
      *
@@ -114,7 +114,7 @@ class SOAP_Type_dateTime
         } elseif (is_int($datestr)) {
             $datestr = $this->toString($datestr);
         }
-            
+
         if (preg_match('/' . $this->_iso8601 . '/x', $datestr, $regs)) {
             if (empty($regs[8])) {
                 $timestamp = strtotime(sprintf('%04d-%02d-%02d %02d:%02d:%02d',
@@ -159,7 +159,7 @@ class SOAP_Type_dateTime
 
         return false;
     }
-    
+
     /**
      * Returns an ISO 8601 formatted UTC date/time string.
      *
@@ -228,7 +228,7 @@ class SOAP_Type_dateTime
         if (!is_int($date2)) {
             $date2 = $this->toUnixtime($date2);
     }
-    
+
         if ($date1 != -1 && $date2 != -1) {
             return $date1 - $date2;
         }

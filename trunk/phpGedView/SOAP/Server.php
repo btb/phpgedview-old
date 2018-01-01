@@ -85,10 +85,10 @@ class SOAP_Server extends SOAP_Base
                            'http_status_success' => '200 OK',
                            'http_status_fault' => '500 SOAP Fault');
 
-    function SOAP_Server($options = null)
+    function __construct($options = null)
     {
         ini_set('track_errors', 1);
-        parent::SOAP_Base('Server');
+        parent::__construct('Server');
 
         if (is_array($options)) {
             if (isset($options['use'])) {

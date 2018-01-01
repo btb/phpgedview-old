@@ -3,7 +3,7 @@
  *  Entry point for SOAP web service
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2018  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -27,6 +27,8 @@
 define('PGV_SCRIPT_NAME', 'genservice.php');
 // require './config.php';
 
+$raw_post_data = @file_get_contents('php://input');		// superglobal $HTTP_RAW_POST_DATA deprecated in PHP 5.6 and removed in PHP 7.0
+
 /**
  * we have to manually pull the SID from the SOAP request
  * in order to set the correct session during initialization.
@@ -35,19 +37,20 @@ $SID = "";
 //Only include and set the session if it's not a wsdl request
 if(!isset($_SERVER['QUERY_STRING']) || strstr($_SERVER['QUERY_STRING'],'wsdl')===false)
 {
-	if (isset($HTTP_RAW_POST_DATA)) {
+//	if (isset($HTTP_RAW_POST_DATA)) {
+	if (!empty($raw_post_data)) {
 	//-- set the session id
 	//	<SID xsi:type='xsd:string'>6ca1b44936bf4zb7202e6bd8ce4bkcbd<\SID>
-		$ct = preg_match("~<[^>]*SID[^>]*>(.*)</\SID[^>]*>~", $HTTP_RAW_POST_DATA, $match);
+		$ct = preg_match("~<[^>]*SID[^>]*>(.*)</\SID[^>]*>~", $raw_post_data, $match);
 		if ($ct>0) $SID = trim($match[1]);
 		$MANUAL_SESSION_START = true;
 
 		//-- set the gedcom id
 	//	<gedcom_id xsi:type='xsd:string'>caposele<\gedcom_id>
-		$ct = preg_match("~<[^>]*gedcom_id[^>]*>(.*)</\gedcom_id[^>]*>~", $HTTP_RAW_POST_DATA, $match);
+		$ct = preg_match("~<[^>]*gedcom_id[^>]*>(.*)</\gedcom_id[^>]*>~", $raw_post_data, $match);
 		if ($ct>0) $_REQUEST['ged'] = trim($match[1]);
 
-		//AddToLog("Setting SID to ".$SID." ".$HTTP_RAW_POST_DATA);
+		//AddToLog("Setting SID to ".$SID." ".$raw_post_data);
 		//require_once PGV_ROOT.'includes/functions/functions_edit.php';
 	}
 }
@@ -61,5 +64,5 @@ require_once './webservice/PGVServiceLogic.class.php';
 
 $genealogyServer = new PGVServiceLogic();
 //-- process the SOAP request
-$server = $genealogyServer->process();
+$server = $genealogyServer->process($raw_post_data);
 ?>

@@ -109,13 +109,13 @@ class SOAP_WSDL extends SOAP_Base
      *
      * @access public
      */
-    function SOAP_WSDL($wsdl_uri    = false,
+    function __construct($wsdl_uri    = false,
                        $proxy       = array(),
                        $cacheUse    = WSDL_CACHE_USE,
                        $cacheMaxAge = WSDL_CACHE_MAX_AGE,
                        $docs        = false)
     {
-        parent::SOAP_Base('WSDL');
+        parent::__construct('WSDL');
         $this->uri         = $wsdl_uri;
         $this->proxy       = $proxy;
         $this->cacheUse    = $cacheUse;
@@ -896,10 +896,10 @@ class SOAP_WSDL_Cache extends SOAP_Base
      * @param  int     cache max lifetime (in seconds)
      * @access public
      */
-    function SOAP_WSDL_Cache($cacheUse = WSDL_CACHE_USE,
+    function __construct($cacheUse = WSDL_CACHE_USE,
                              $cacheMaxAge = WSDL_CACHE_MAX_AGE)
     {
-        parent::SOAP_Base('WSDLCACHE');
+        parent::__construct('WSDLCACHE');
         $this->_cacheUse = $cacheUse;
         $this->_cacheMaxAge = $cacheMaxAge;
     }
@@ -1052,9 +1052,9 @@ class SOAP_WSDL_Parser extends SOAP_Base
     /**
      * constructor
      */
-    function SOAP_WSDL_Parser($uri, &$wsdl, $docs = false)
+    function __construct($uri, &$wsdl, $docs = false)
     {
-        parent::SOAP_Base('WSDLPARSER');
+        parent::__construct('WSDLPARSER');
         $this->cache =& new SOAP_WSDL_Cache($wsdl->cacheUse, $wsdl->cacheMaxAge);
         $this->uri = $uri;
         $this->wsdl = &$wsdl;
@@ -1875,9 +1875,9 @@ class SOAP_WSDL_ObjectParser extends SOAP_Base
      * @param  $service_name Name of the WSDL <service>
      * @param  $service_desc Optional description of the WSDL <service>
      */
-    function SOAP_WSDL_ObjectParser(&$objects, &$wsdl, $targetNamespace, $service_name, $service_desc = '')
+    function __construct(&$objects, &$wsdl, $targetNamespace, $service_name, $service_desc = '')
     {
-        parent::SOAP_Base('WSDLOBJECTPARSER');
+        parent::__construct('WSDLOBJECTPARSER');
 
         $this->wsdl = &$wsdl;
 

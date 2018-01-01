@@ -176,10 +176,10 @@ class SOAP_Client extends SOAP_Client_Overload
      * @param array $proxy_params  Options for the HTTP_Request class (see
      *                             HTTP/Request.php)
      */
-    function SOAP_Client($endpoint, $wsdl = false, $portName = false,
+    function __construct($endpoint, $wsdl = false, $portName = false,
                          $proxy_params = array())
     {
-        parent::SOAP_Base('Client');
+        parent::__construct('Client');
 
         $this->_endpoint = $endpoint;
         $this->_portName = $portName;
