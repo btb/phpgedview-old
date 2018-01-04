@@ -4,7 +4,7 @@
 // and other common errors.
 //
 // phpGedView: Genealogy Viewer
-// Copyright (C) 2006-2009 Greg Roach, all rights reserved
+// Copyright (C) 2006-2017 Greg Roach and the PhpGedView team, all rights reserved
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -182,13 +182,13 @@ $PGV_LINK=array(
 	'REPO'=>'repo.php?rid=',
 	'OBJE'=>'mediaviewer.php?mid='
 );
-$target=($openinnew==1 ? ' target="_new"' : '');
+$target=($openinnew==1 ? ' target="_blank"' : '');
 function pgv_href($tag, $xref, $name='')
 {
 	global $PGV_LINK, $target, $ged;
 	$text=($name=='' ? "$tag $xref" : "$name ($xref)");
 	if (isset($PGV_LINK[$tag]) && get_id_from_gedcom($ged)) {
-		return '&lrm;<a href="'.$PGV_LINK[$tag].str_replace('@','',$xref).'"&amp;ged='.$ged.$target.'>'.$text.'</a>&lrm;';
+		return '&lrm;<a href="'.$PGV_LINK[$tag].str_replace('@','',$xref).'&amp;ged='.$ged.'"'.$target.'>'.$text.'</a>&lrm;';
 	} else {
 		return "&lrm;$tag $xref&lrm;";
 	}
@@ -904,7 +904,7 @@ foreach ($gedfile as $num=>$value) {
 				} elseif ($tag_level=='0' && $xref!='' && !isset($used_xrefs[$xref.$tag])) {
 					$err=$pgv_lang['noref'];
 				}
-				if ($err_level>=$info && $err=='') { // INFOMATIONAL CHECKS - spacing
+				if ($err_level>=$info && $err=='') { // INFORMATIONAL CHECKS - spacing
 					if ($whitespace1!=''  ||
 							$whitespace2!=' ' ||
 							$whitespace3==' ' && $xref=='' ||
