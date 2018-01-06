@@ -61,7 +61,7 @@
 		<!-- Text color - black -->
 		<PGVRSetVar name="tcolor" value="#000000" />
 	</PGVRif>
-	
+
 	<!-- New Page controller -->
 	<PGVRSetVar name="newpage" value="0" />
 	<!-- New Page for Sources controller if SOUR exist -->
@@ -112,7 +112,7 @@
 									<PGVRif condition="@PUBL!=''"> (<PGVRGedcomValue tag="PUBL" />)</PGVRif>
 								</PGVRGedcom>
 								<PGVRif condition="@PAGE!=''">: <PGVRGedcomValue tag="SOUR:PAGE" /></PGVRif>
-								 <PGVRGedcomValue tag="SOUR:DATA:TEXT" />	
+								 <PGVRGedcomValue tag="SOUR:DATA:TEXT" />
 							</PGVRFootnote>
 							<PGVRSetVar name="source_exist" value="1" />
 						</PGVRRepeatTag>
@@ -125,7 +125,7 @@
 									<PGVRif condition="@PUBL!=''"> (<PGVRGedcomValue tag="PUBL" />)</PGVRif>
 								</PGVRGedcom>
 								<PGVRif condition="@PAGE!=''">: <PGVRGedcomValue tag="SOUR:PAGE" /></PGVRif>
-								 <PGVRGedcomValue tag="SOUR:DATA:TEXT" />	
+								 <PGVRGedcomValue tag="SOUR:DATA:TEXT" />
 							</PGVRFootnote>
 							<PGVRSetVar name="source_exist" value="1" />
 						</PGVRRepeatTag>
@@ -163,7 +163,7 @@
 										<PGVRif condition="@PUBL!=''"> (<PGVRGedcomValue tag="PUBL" />)</PGVRif>
 									</PGVRGedcom>
 									<PGVRif condition="@PAGE!=''">: <PGVRGedcomValue tag="SOUR:PAGE" /></PGVRif>
-									 <PGVRGedcomValue tag="SOUR:DATA:TEXT" />	
+									 <PGVRGedcomValue tag="SOUR:DATA:TEXT" />
 								</PGVRFootnote>
 							<PGVRSetVar name="source_exist" value="1" />
 							</PGVRRepeatTag>
@@ -190,9 +190,7 @@
 					<PGVRif condition="@desc==''">
 						<PGVRTextBox bgcolor="$fbbgcolor" border="1" newline="1" width="$width2">
 							<PGVRText color="$tcolor" style="text">
-								<PGVRGedcomValue tag="@fact:PLAC" />
-								<!-- Print only when exist to reduce some spaces in the text, might avoid a line break -->
-								<PGVRif condition="@fact:TEMP!=''">  <PGVRGedcomValue tag="@fact:TEMP" /></PGVRif>
+								<PGVRGedcomValue tag="@fact:PLAC" />  <PGVRGedcomValue tag="@fact:TEMP" />
 							</PGVRText>
 							<PGVRGedcom id="@_PGVS">
 								<PGVRif condition="@SEX=='M'">
@@ -235,7 +233,7 @@
 												<PGVRif condition="@PUBL!=''"> (<PGVRGedcomValue tag="PUBL" />)</PGVRif>
 											</PGVRGedcom>
 											<PGVRif condition="@PAGE!=''">: <PGVRGedcomValue tag="SOUR:PAGE" /></PGVRif>
-											 <PGVRGedcomValue tag="SOUR:DATA:TEXT" />	
+											 <PGVRGedcomValue tag="SOUR:DATA:TEXT" />
 										</PGVRFootnote>
 										<PGVRSetVar name="source_exist" value="1" />
 									</PGVRRepeatTag>
@@ -248,7 +246,7 @@
 												<PGVRif condition="@PUBL!=''"> (<PGVRGedcomValue tag="PUBL" />)</PGVRif>
 											</PGVRGedcom>
 											<PGVRif condition="@PAGE!=''">: <PGVRGedcomValue tag="SOUR:PAGE" /></PGVRif>
-											 <PGVRGedcomValue tag="SOUR:DATA:TEXT" />	
+											 <PGVRGedcomValue tag="SOUR:DATA:TEXT" />
 										</PGVRFootnote>
 										<PGVRSetVar name="source_exist" value="1" />
 									</PGVRRepeatTag>
@@ -271,7 +269,7 @@
 												<PGVRif condition="@PUBL!=''"> (<PGVRGedcomValue tag="PUBL" />)</PGVRif>
 											</PGVRGedcom>
 											<PGVRif condition="@PAGE!=''">: <PGVRGedcomValue tag="SOUR:PAGE" /></PGVRif>
-											 <PGVRGedcomValue tag="SOUR:DATA:TEXT" />	
+											 <PGVRGedcomValue tag="SOUR:DATA:TEXT" />
 										</PGVRFootnote>
 										<PGVRSetVar name="source_exist" value="1" />
 									</PGVRRepeatTag>
@@ -284,7 +282,7 @@
 												<PGVRif condition="@PUBL!=''"> (<PGVRGedcomValue tag="PUBL" />)</PGVRif>
 											</PGVRGedcom>
 											<PGVRif condition="@PAGE!=''">: <PGVRGedcomValue tag="SOUR:PAGE" /></PGVRif>
-											 <PGVRGedcomValue tag="SOUR:DATA:TEXT" />	
+											 <PGVRGedcomValue tag="SOUR:DATA:TEXT" />
 										</PGVRFootnote>
 										<PGVRSetVar name="source_exist" value="1" />
 									</PGVRRepeatTag>
@@ -311,7 +309,7 @@
 														<PGVRif condition="@PUBL!=''"> (<PGVRGedcomValue tag="PUBL" />)</PGVRif>
 													</PGVRGedcom>
 													<PGVRif condition="@PAGE!=''">: <PGVRGedcomValue tag="SOUR:PAGE" /></PGVRif>
-													 <PGVRGedcomValue tag="SOUR:DATA:TEXT" />	
+													 <PGVRGedcomValue tag="SOUR:DATA:TEXT" />
 												</PGVRFootnote>
 												<PGVRSetVar name="source_exist" value="1" />
 											</PGVRRepeatTag>
@@ -324,7 +322,7 @@
 														<PGVRif condition="@PUBL!=''"> (<PGVRGedcomValue tag="PUBL" />)</PGVRif>
 													</PGVRGedcom>
 													<PGVRif condition="@PAGE!=''">: <PGVRGedcomValue tag="SOUR:PAGE" /></PGVRif>
-													 <PGVRGedcomValue tag="SOUR:DATA:TEXT" />	
+													 <PGVRGedcomValue tag="SOUR:DATA:TEXT" />
 												</PGVRFootnote>
 												<PGVRSetVar name="source_exist" value="1" />
 											</PGVRRepeatTag>
@@ -347,7 +345,7 @@
 														<PGVRif condition="@PUBL!=''"> (<PGVRGedcomValue tag="PUBL" />)</PGVRif>
 													</PGVRGedcom>
 													<PGVRif condition="@PAGE!=''">: <PGVRGedcomValue tag="SOUR:PAGE" /></PGVRif>
-													 <PGVRGedcomValue tag="SOUR:DATA:TEXT" />	
+													 <PGVRGedcomValue tag="SOUR:DATA:TEXT" />
 												</PGVRFootnote>
 												<PGVRSetVar name="source_exist" value="1" />
 											</PGVRRepeatTag>
@@ -360,7 +358,7 @@
 														<PGVRif condition="@PUBL!=''"> (<PGVRGedcomValue tag="PUBL" />)</PGVRif>
 													</PGVRGedcom>
 													<PGVRif condition="@PAGE!=''">: <PGVRGedcomValue tag="SOUR:PAGE" /></PGVRif>
-													 <PGVRGedcomValue tag="SOUR:DATA:TEXT" />	
+													 <PGVRGedcomValue tag="SOUR:DATA:TEXT" />
 												</PGVRFootnote>
 												<PGVRSetVar name="source_exist" value="1" />
 											</PGVRRepeatTag>
@@ -383,7 +381,7 @@
 														<PGVRif condition="@PUBL!=''"> (<PGVRGedcomValue tag="PUBL" />)</PGVRif>
 													</PGVRGedcom>
 													<PGVRif condition="@PAGE!=''">: <PGVRGedcomValue tag="SOUR:PAGE" /></PGVRif>
-													 <PGVRGedcomValue tag="SOUR:DATA:TEXT" />	
+													 <PGVRGedcomValue tag="SOUR:DATA:TEXT" />
 												</PGVRFootnote>
 												<PGVRSetVar name="source_exist" value="1" />
 											</PGVRRepeatTag>
@@ -396,7 +394,7 @@
 														<PGVRif condition="@PUBL!=''"> (<PGVRGedcomValue tag="PUBL" />)</PGVRif>
 													</PGVRGedcom>
 													<PGVRif condition="@PAGE!=''">: <PGVRGedcomValue tag="SOUR:PAGE" /></PGVRif>
-													 <PGVRGedcomValue tag="SOUR:DATA:TEXT" />	
+													 <PGVRGedcomValue tag="SOUR:DATA:TEXT" />
 												</PGVRFootnote>
 												<PGVRSetVar name="source_exist" value="1" />
 											</PGVRRepeatTag>
@@ -441,7 +439,7 @@
 													<PGVRif condition="@PUBL!=''"> (<PGVRGedcomValue tag="PUBL" />)</PGVRif>
 												</PGVRGedcom>
 												<PGVRif condition="@PAGE!=''">: <PGVRGedcomValue tag="SOUR:PAGE" /></PGVRif>
-												 <PGVRGedcomValue tag="SOUR:DATA:TEXT" />	
+												 <PGVRGedcomValue tag="SOUR:DATA:TEXT" />
 											</PGVRFootnote>
 											<PGVRSetVar name="source_exist" value="1" />
 										</PGVRRepeatTag>
@@ -454,7 +452,7 @@
 													<PGVRif condition="@PUBL!=''"> (<PGVRGedcomValue tag="PUBL" />)</PGVRif>
 												</PGVRGedcom>
 												<PGVRif condition="@PAGE!=''">: <PGVRGedcomValue tag="SOUR:PAGE" /></PGVRif>
-												 <PGVRGedcomValue tag="SOUR:DATA:TEXT" />	
+												 <PGVRGedcomValue tag="SOUR:DATA:TEXT" />
 											</PGVRFootnote>
 											<PGVRSetVar name="source_exist" value="1" />
 										</PGVRRepeatTag>
@@ -477,7 +475,7 @@
 													<PGVRif condition="@PUBL!=''"> (<PGVRGedcomValue tag="PUBL" />)</PGVRif>
 												</PGVRGedcom>
 												<PGVRif condition="@PAGE!=''">: <PGVRGedcomValue tag="SOUR:PAGE" /></PGVRif>
-												 <PGVRGedcomValue tag="SOUR:DATA:TEXT" />	
+												 <PGVRGedcomValue tag="SOUR:DATA:TEXT" />
 											</PGVRFootnote>
 											<PGVRSetVar name="source_exist" value="1" />
 										</PGVRRepeatTag>
@@ -490,7 +488,7 @@
 													<PGVRif condition="@PUBL!=''"> (<PGVRGedcomValue tag="PUBL" />)</PGVRif>
 												</PGVRGedcom>
 												<PGVRif condition="@PAGE!=''">: <PGVRGedcomValue tag="SOUR:PAGE" /></PGVRif>
-												 <PGVRGedcomValue tag="SOUR:DATA:TEXT" />	
+												 <PGVRGedcomValue tag="SOUR:DATA:TEXT" />
 											</PGVRFootnote>
 											<PGVRSetVar name="source_exist" value="1" />
 										</PGVRRepeatTag>
@@ -518,7 +516,7 @@
 														<PGVRif condition="@PUBL!=''"> (<PGVRGedcomValue tag="PUBL" />)</PGVRif>
 													</PGVRGedcom>
 													<PGVRif condition="@PAGE!=''">: <PGVRGedcomValue tag="SOUR:PAGE" /></PGVRif>
-													 <PGVRGedcomValue tag="SOUR:DATA:TEXT" />	
+													 <PGVRGedcomValue tag="SOUR:DATA:TEXT" />
 												</PGVRFootnote>
 												<PGVRSetVar name="source_exist" value="1" />
 											</PGVRRepeatTag>
@@ -531,7 +529,7 @@
 														<PGVRif condition="@PUBL!=''"> (<PGVRGedcomValue tag="PUBL" />)</PGVRif>
 													</PGVRGedcom>
 													<PGVRif condition="@PAGE!=''">: <PGVRGedcomValue tag="SOUR:PAGE" /></PGVRif>
-													 <PGVRGedcomValue tag="SOUR:DATA:TEXT" />	
+													 <PGVRGedcomValue tag="SOUR:DATA:TEXT" />
 												</PGVRFootnote>
 												<PGVRSetVar name="source_exist" value="1" />
 											</PGVRRepeatTag>
@@ -554,7 +552,7 @@
 														<PGVRif condition="@PUBL!=''"> (<PGVRGedcomValue tag="PUBL" />)</PGVRif>
 													</PGVRGedcom>
 													<PGVRif condition="@PAGE!=''">: <PGVRGedcomValue tag="SOUR:PAGE" /></PGVRif>
-													 <PGVRGedcomValue tag="SOUR:DATA:TEXT" />	
+													 <PGVRGedcomValue tag="SOUR:DATA:TEXT" />
 												</PGVRFootnote>
 												<PGVRSetVar name="source_exist" value="1" />
 											</PGVRRepeatTag>
@@ -567,7 +565,7 @@
 														<PGVRif condition="@PUBL!=''"> (<PGVRGedcomValue tag="PUBL" />)</PGVRif>
 													</PGVRGedcom>
 													<PGVRif condition="@PAGE!=''">: <PGVRGedcomValue tag="SOUR:PAGE" /></PGVRif>
-													 <PGVRGedcomValue tag="SOUR:DATA:TEXT" />	
+													 <PGVRGedcomValue tag="SOUR:DATA:TEXT" />
 												</PGVRFootnote>
 												<PGVRSetVar name="source_exist" value="1" />
 											</PGVRRepeatTag>
@@ -590,7 +588,7 @@
 														<PGVRif condition="@PUBL!=''"> (<PGVRGedcomValue tag="PUBL" />)</PGVRif>
 													</PGVRGedcom>
 													<PGVRif condition="@PAGE!=''">: <PGVRGedcomValue tag="SOUR:PAGE" /></PGVRif>
-													 <PGVRGedcomValue tag="SOUR:DATA:TEXT" />	
+													 <PGVRGedcomValue tag="SOUR:DATA:TEXT" />
 												</PGVRFootnote>
 												<PGVRSetVar name="source_exist" value="1" />
 											</PGVRRepeatTag>
@@ -603,7 +601,7 @@
 														<PGVRif condition="@PUBL!=''"> (<PGVRGedcomValue tag="PUBL" />)</PGVRif>
 													</PGVRGedcom>
 													<PGVRif condition="@PAGE!=''">: <PGVRGedcomValue tag="SOUR:PAGE" /></PGVRif>
-													 <PGVRGedcomValue tag="SOUR:DATA:TEXT" />	
+													 <PGVRGedcomValue tag="SOUR:DATA:TEXT" />
 												</PGVRFootnote>
 												<PGVRSetVar name="source_exist" value="1" />
 											</PGVRRepeatTag>
