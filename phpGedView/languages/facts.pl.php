@@ -3,7 +3,7 @@
  * Polish texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2018  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -271,10 +271,10 @@ $factarray["_MSTAT"]= "Status na początku małżeństwa";
 $factarray["_MEND"]	= "Status na końcu małżeństwa";
 $factarray["_NAMS"]	= "Imiennik";
 
-// Fakty związane z GedCom 5.5.1 
+// Fakty związane z GedCom 5.5.1
 $factarray["FAX"]	= "Faks";
 $factarray["FACT"]	= "Fakt";
-$factarray["WWW"]	= "Strona WWW";
+$factarray["WWW"]	= "Strona główna";
 $factarray["MAP"]	= "Mapa";
 $factarray["LATI"]	= "Szerokość geograficzna";
 $factarray["LONG"]	= "Długość geograficzna";

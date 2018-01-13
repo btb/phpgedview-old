@@ -3,7 +3,7 @@
  * Portugese Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2018  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -274,7 +274,7 @@ $factarray["_NAMS"]	= "Homónimo";
 // GEDCOM 5.5.1 related facts
 $factarray["FAX"]="FAX";
 $factarray["FACT"]="Fato";
-$factarray["WWW"]="Página pessoal na internet";
+$factarray["WWW"]="Página pessoal";
 $factarray["MAP"]="Mapa";
 $factarray["LATI"]="Latitude";
 $factarray["LONG"]="Longitude";

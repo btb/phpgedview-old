@@ -3,7 +3,7 @@
  * Hungarian texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2018  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -292,12 +292,13 @@ $pgv_lang["link_remote_site_help"]	= "~#pgv_lang[label_site]#~<br /><br />Itt ke
 $pgv_lang["link_gedcom_id_help"]	= "~#pgv_lang[label_gedcom_id]#~<br /><br />Ebben a részben az alternatív azonosítót adhatja meg egy személyhez, akire hivatkozik.";
 $pgv_lang["link_person_id_help"]	= "~#pgv_lang[label_local_id]#~<br /><br />Ebbe a mezőbe írja be a személy azonosítóját akihez kapcsolni akar (pl. I100).";
 $pgv_lang["edit_SEX_help"]			= "#pgv_lang[edit_sex_help]#";
-$pgv_lang["edit_ADDR_help"]			= "Írjon be címet a mezőbe, épp úgy mint ahogyan egy borítékra írná.<br /><br />Üresen hagyható.";
 $pgv_lang["edit_SPFX_help"]			= "~Surname Prefix~<br /><br />Írjon be, vagy válasszon a listából a névhez előtagot, amely része a vezetéknévnek. Például: <b>von</b> Braun, <b>van der</b> Kloot, <b>de</b> Graaf, stb.";
-$pgv_lang["edit_PHON_help"]			= "Adjon meg telefonszámot az országkóddal együtt.<br /><br />Üresen hagyható. Például egy németországi telefonszám így néz ki: +49 25859 56 76 89, USA-ban vagy Kanadában pedig így: +1 888 555-1212. Magyarország országkódja: 36";
-$pgv_lang["edit_FAX_help"]			= "Adjon meg FAX számot országkóddal együtt.<br /><br />Üresen hagyható. Például egy németországi fax szám így néz ki: +49 25859 56 76 89, USA-ban vagy Kanadában pedig így: +1 888 555-1212. Magyarország országkódja: 36";
-$pgv_lang["edit_EMAIL_help"]		= "Adjon meg email címet.<br /><br />Például:: <b>name@hotmail.com</b>. Üresen hagyható.";
-$pgv_lang["edit_URL_help"]			= "Adja meg az URL címet a http:// előtaggal együtt<br /><br />Például: <b>http://www.phpgedview.net/</b>.";
+$pgv_lang["edit_URL_help"]			= "~#factarray[URL]#~<br /><br />Adja meg az URL címet a http:// előtaggal együtt. Például: <b>http://www.phpgedview.net/</b>.<br /><br />Hagyja ezt a mezőt üresen, ha nem kíván URL-t beilleszteni.";
+$pgv_lang["edit_WWW_help"]			= "~#factarray[WWW]#~<br /><br />Adja meg a weboldal kezdőlapját címet a http:// előtaggal együtt. Például: <b>http://www.phpgedview.net/</b>.<br /><br />Hagyja ezt a mezőt üresnek, ha nem kíván weboldal kezdőlapot megadni.";
+$pgv_lang["edit_EMAIL_help"]		= "~#factarray[EMAIL]#~<br /><br />Adjon meg email címet. Például: <b>name@hotmail.com</b>.<br /><br />Hagyja ezt a mezőt üresnek, ha nem kíván e-mail címet bevinni.";
+$pgv_lang["edit_FAX_help"]			= "~#factarray[FAX]#~<br /><br />Adjon meg FAX számot országkóddal együtt. Például egy németországi fax szám így néz ki: +49 25859 56 76 89, USA-ban vagy Kanadában pedig így: +1 888 555-1212. Magyarország országkódja: 36<br /><br />Hagyja ezt a mezőt üresen, ha nem kíván faxszámot bevinni.";
+$pgv_lang["edit_PHON_help"]			= "~#factarray[PHON]#~<br /><br />Adjon meg telefonszámot az országkóddal együtt. Például egy németországi telefonszám így néz ki: +49 25859 56 76 89, USA-ban vagy Kanadában pedig így: +1 888 555-1212. Magyarország országkódja: 36<br /><br />Hagyja ezt a mezőt üresnek, ha nem kíván telefonszámot bevinni.";
+$pgv_lang["edit_ADDR_help"]			= "~#factarray[ADDR]#~<br /><br />Írjon be címet a mezőbe, épp úgy mint ahogyan egy borítékra írná.<br /><br />Hagyja ezt a mezőt üresnek, ha nem kíván címtípust beilleszteni.";
 $pgv_lang["edit_add_unlinked_person_help"]	= "~#pgv_lang[add_unlinked_person]#~<br /><br />Ezt a formot arra használhatja, hogy olyan személyeket vigyen fel, akikre nincs hivatkozás.<br /><br />Amikor egy ilyen személyt ad a családfához, azok nem fognak kapcsolódni senkihez, amíg össze nem kapcsoljuk valakivel. Később is összekapcsolhat személyeket a #pgv_lang[relatives]# menüpontot választva a(z) #pgv_lang[indi_info]# oldalon.";
 $pgv_lang["edit_NAME_help"]			= "#pgv_lang[edit_name_help]#";
 $pgv_lang["edit_GIVN_help"]			= "#pgv_lang[edit_given_name_help]#";

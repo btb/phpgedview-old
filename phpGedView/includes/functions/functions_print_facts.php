@@ -5,7 +5,7 @@
  * Various printing functions used to print fact records
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2018  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -881,7 +881,7 @@ function print_address_structure($factrec, $level) {
 	if ($ct>0) {
 		for($i=0; $i<$ct; $i++) {
 			$resultText .= "<tr>";
-			$resultText .= "\n\t\t<td><span class=\"label\"><b>".$factarray["URL"].": </b></span></td><td><span class=\"field\">";
+			$resultText .= "\n\t\t<td><span class=\"label\"><b>".$factarray["WWW"].": </b></span></td><td><span class=\"field\">";
 			$resultText .= "<a href=\"".$omatch[$i][2]."\" target=\"_blank\">".$omatch[$i][2]."</a>\n";
 			$resultText .= "</span></td></tr>\n";
 		}

@@ -44,6 +44,12 @@ VERSION 4.3.1
 
 ?$pgv_lang["whatever"]								dd Monthname, year		Change codes and comments
 ----------------------------------------------------------------------------------------
+*$pgv_lang["edit_URL_help"]							12 January 2018			w
++$pgv_lang["edit_WWW_help"]							12 January 2018			A
+*$pgv_lang["edit_EMAIL_help"]						12 January 2018			w
+*$pgv_lang["edit_FAX_help"]							12 January 2018			w
+*$pgv_lang["edit_PHON_help"]						12 January 2018			w
+*$pgv_lang["edit_ADDR_help"]						12 January 2018			w
 +$pgv_lang["edit_LATI_help"]						02 January 2018			A
 +$pgv_lang["edit_LONG_help"]                        02 January 2018			A
 

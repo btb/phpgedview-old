@@ -3,7 +3,7 @@
  * Norwegian texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2018  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -64,11 +64,12 @@ $pgv_lang["add_gedcom_instructions"]	= "Tast inn et filnavn for denne nye slekts
 $pgv_lang["edit_SEX_help"]			= "#pgv_lang[edit_sex_help]#";
 $pgv_lang["edit_NAME_help"]			= "#pgv_lang[edit_name_help]#";
 $pgv_lang["edit_add_unlinked_person_help"]	= "~#pgv_lang[add_unlinked_person]#~<br /><br />Bruk dette skjemaet for å legge til en person som ikke er knyttet til en familie.<br /><br />Når du legger til en \"frittstående\" person i slektsbasen din, vil personen ikke bli knyttet til noen andre personer før du oppgir slektskapet/familebåndet.  Du kan når som helst knytte personer sammen ved å benytte valget for dette under arkfanen #pgv_lang[relatives]# på siden for #pgv_lang[indi_info]#.";
-$pgv_lang["edit_URL_help"]			= "Angi internettadressen (URL) inkludert http:// først.<br /><br />Et eksempel på en internettadresse er: <b>http://www.phpgedview.net/</b> <br />La dette feltet være tomt dersom du ikke ønsker å oppgi en adresse (URL).";
-$pgv_lang["edit_EMAIL_help"]		= "Angi en epost-adresse.<br /><br />Et eksempel på epost-adresse er: <b>navn@hotmail.com</b> <br />La dette feltet være tomt dersom du ikke ønsker å oppgi en epost-adresse.";
-$pgv_lang["edit_FAX_help"]			= "Angi et FAKS-nummer, inkludert landskode og eventuelt retningsnummer.<br /><br />Eksempler:<ul><li>Norge: +47 35 00 00 01</li><li>Tyskland: +49 25859 56 76 89</li><li>USA: +1 888 555-1212</li></ul>La dette feltet være tomt dersom du ikke ønsker å oppgi et faksnummer.";
-$pgv_lang["edit_PHON_help"]			= "Angi et telefonnummer, inlkudert landskode og eventuelt retningsnummer.<br /><br />Eksempel:<ul><li>Norge: +47 35 00 00 00</li><li>Tyskland: +49 25859 56 76 89</li><li>USA: +1 888 555-1212.</li></ul>La dette feltet være tomt dersom du ikke ønsker å oppgi et telefonnummer.";
-$pgv_lang["edit_ADDR_help"]			= "Angi en postadresse i feltet på samme måte som du ville gjort på en konvolutt.<br /><br />La dette feltet være tom dersom du ikke ønsker å oppgi en postadresse.";
+$pgv_lang["edit_URL_help"]			= "~#factarray[URL]#~<br /><br />Angi internettadressen (URL) inkludert http:// først. Eksempel: <b>http://www.phpgedview.net/</b><br /><br />La dette feltet være tomt dersom du ikke ønsker å oppgi en adresse (URL).";
+$pgv_lang["edit_WWW_help"]			= "~#factarray[WWW]#~<br /><br />Angi hjemmesiden for websiden inkludert http:// først. Eksempel: <b>http://www.phpgedview.net/</b><br /><br />La dette feltet være tomt dersom du ikke ønsker å oppgi en hjemmesiden for websiden.";
+$pgv_lang["edit_EMAIL_help"]		= "~#factarray[EMAIL]#~<br /><br />Angi en epost-adresse. Eksempel: <b>navn@hotmail.com</b><br /><br />La dette feltet være tomt dersom du ikke ønsker å oppgi en epost-adresse.";
+$pgv_lang["edit_FAX_help"]			= "~#factarray[FAX]#~<br /><br />Angi et FAKS-nummer, inkludert landskode og eventuelt retningsnummer. Eksempler:<ul><li>Norge: +47 35 00 00 01</li><li>Tyskland: +49 25859 56 76 89</li><li>USA: +1 888 555-1212</li></ul><br /><br />La dette feltet være tomt dersom du ikke ønsker å oppgi et faksnummer.";
+$pgv_lang["edit_PHON_help"]			= "~#factarray[PHON]#~<br /><br />Angi et telefonnummer, inlkudert landskode og eventuelt retningsnummer. Eksempel:<ul><li>Norge: +47 35 00 00 00</li><li>Tyskland: +49 25859 56 76 89</li><li>USA: +1 888 555-1212.</li></ul><br /><br />La dette feltet være tomt dersom du ikke ønsker å oppgi et telefonnummer.";
+$pgv_lang["edit_ADDR_help"]			= "~#factarray[ADDR]#~<br /><br />Angi en postadresse i feltet på samme måte som du ville gjort på en konvolutt.<br /><br />La dette feltet være tom dersom du ikke ønsker å oppgi en postadresse.";
 $pgv_lang["edit_GIVN_help"]			= "#pgv_lang[edit_given_name_help]#";
 $pgv_lang["edit_SPFX_help"]			= "~Prefiks til etternavn~<br /><br />Angi eller velg fra listen ord som er en del av etternavnet.  Eksempler på slike ord er <b>von</b> Braun, <b>van der</b> Kloot, <b>de</b> Graaf, mm.";
 $pgv_lang["edit_SURN_help"]			= "#pgv_lang[edit_surname_help]#";

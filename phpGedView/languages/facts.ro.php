@@ -3,7 +3,7 @@
  * Romanian Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2008  PGV Development Team
+ * Copyright (C) 2002 to 2018  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -177,7 +177,7 @@ $factarray["FAMS:SPOUSE:BIRT:PLAC"] = "Locul naşterii soţului";
 $factarray["FAMC:WIFE:GIVN"] = "Prenumele mamei";
 $factarray["FAMC:HUSB:FAMC:HUSB:GIVN"] = "Prenumele bunicului din partea tatălui";
 $factarray["FAMC:WIFE:FAMC:WIFE:GIVN"] = "Prenumele bunicii din partea mamei";
-$factarray["FAMC:WIFE:FAMC:HUSB:GIVN"] = "Prenumele bunicului din partea mamei"; 
+$factarray["FAMC:WIFE:FAMC:HUSB:GIVN"] = "Prenumele bunicului din partea mamei";
 $factarray["FAMC:HUSB:FAMC:WIFE:GIVN"] = "Prenumele bunicii din partea tatălui";
 $factarray["FAMS:CHIL:BIRT:PLAC"] = "Locul naşterii copilului";
 
@@ -217,7 +217,7 @@ $factarray["_MEND"]	= "Statut încheiere căsătorie";
 // GEDCOM 5.5.1 related facts
 $factarray["FAX"] = "FAX";
 $factarray["FACT"] = "Fapt";
-$factarray["WWW"] = "Site";
+$factarray["WWW"] = "Pagina principala";
 $factarray["MAP"] = "Hartă";
 $factarray["LATI"] = "Latitudine";
 $factarray["LONG"] = "Longitudine";

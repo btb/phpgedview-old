@@ -3,7 +3,7 @@
  * Slovak Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2018  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -431,11 +431,12 @@ $pgv_lang["rss_feed_help"]			= "~NASTAVENIE RSS~<br /><br />RSS správy dostupn�
 $pgv_lang["edit_SEX_help"]			= "~Edit #factarray[SEX]#~<br /><br />Použite toto pole na špecifikáciu ci je osoba <b>#pgv_lang[male]#</b> alebo <b>#pgv_lang[female]#</b>. Vyberte <b>#pgv_lang[unknown]#</b> iba v prípade ak nie ste si istý pohlavím osoby.";
 $pgv_lang["edit_NAME_help"]			= "~Edit #factarray[NAME]#~<br /><br />Mená by mali byt napísané s lomítkami \"/\" uzatvárajúcimi priezvisko.<br /><br />Vezmite v úvahu následujúci príklad:<ul><li>Krstné meno /Priezvisko/</li><li>Krstné meno /Priezvisko/ ml.</li><li>Krstné meno /von Priezvisko/ jr.</li></ul>";
 $pgv_lang["edit_add_unlinked_person_help"]	= "~#pgv_lang[add_unlinked_person]#~<br /><br />Použijte tento formulár na pridanie nezávislej osoby.<br /><br />Ak pridáte nezávislú osobu do vášho rodokmena, táto osoba nebude mat žiadny vztah k ostatným osobám až dokial ho nevytvoríte. Neskoršie môžete vytvorit vztah medzi osobami z tabulky #pgv_lang[relatives]# na stránke #pgv_lang[indi_info]#.";
-$pgv_lang["edit_URL_help"]			= "Vložte URL adresu vcetne http://.<br /><br />Ako je napríklad táto: <b>http://www.phpgedview.net/</b> Ponechajte pole prázdne ak nechcete zadat URL.";
-$pgv_lang["edit_EMAIL_help"]			= "Vložte e-mailovú adresu.<br /><br />Ako je napríklad táto: <b>name@hotmail.com</b> Ponechajte toto pole prázdné ak nechcete zadat e-mailovú adresu.";
-$pgv_lang["edit_FAX_help"]			= "Vložte císlo FAXu vcetne kódu štátu a oblasti.<br /><br />Ponechajte toto pole prázdné ak nechcete zadat císlo FAXu. Napríklad císlo pre Nemecko môže byt +49 25859 56 76 89 a císlo pre USA môže byt +1 888 555-1212.";
-$pgv_lang["edit_PHON_help"]			= "Vložte telefónne císlo vcetne kódu štátu a oblasti.<br /><br />Ponechajte toto pole prázdné ak nechcete zadat císlo telefónu. Napríklad císlo pre Nemecko môže byt +49 25859 56 76 89 a císlo pre USA môže byt +1 888 555-1212.";
-$pgv_lang["edit_ADDR_help"]			= "Vložte do tohoto pola poštovú adresu presne v tom tvare v akom ju chcete tlacit na obálku.<br /><br />Ponechajte toto pole prázdne ak nechcete zadat adresu.";
+$pgv_lang["edit_URL_help"]			= "~#factarray[URL]#~<br /><br />Vložte URL adresu vcetne http://. Príklad: <b>http://www.phpgedview.net/</b><br /><br />Ponechajte pole prázdne ak nechcete zadat URL.";
+$pgv_lang["edit_WWW_help"]			= "~#factarray[WWW]#~<br /><br />Vložte adresu domovskej stránky vcetne http://. Príklad: <b>http://www.phpgedview.net/</b><br /><br />Ponechajte pole prázdne ak nechcete zadat adresu domovskej stránky.";
+$pgv_lang["edit_EMAIL_help"]		= "~#factarray[EMAIL]#~<br /><br />Vložte e-mailovú adresu. Príklad: <b>name@hotmail.com</b><br /><br />Ponechajte toto pole prázdné ak nechcete zadat e-mailovú adresu.";
+$pgv_lang["edit_FAX_help"]			= "~#factarray[FAX]#~<br /><br />Vložte císlo FAXu vcetne kódu štátu a oblasti. Napríklad císlo pre Nemecko môže byt +49 25859 56 76 89 a císlo pre USA môže byt +1 888 555-1212.<br /><br />Ponechajte toto pole prázdné ak nechcete zadat císlo FAXu.";
+$pgv_lang["edit_PHON_help"]			= "~#factarray[PHON]#~<br /><br />Vložte telefónne císlo vcetne kódu štátu a oblasti. Napríklad císlo pre Nemecko môže byt +49 25859 56 76 89 a císlo pre USA môže byt +1 888 555-1212.<br /><br />Ponechajte toto pole prázdné ak nechcete zadat císlo telefónu.";
+$pgv_lang["edit_ADDR_help"]			= "~#factarray[ADDR]#~<br /><br />Vložte do tohoto pola poštovú adresu presne v tom tvare v akom ju chcete tlacit na obálku.<br /><br />Ponechajte toto pole prázdne ak nechcete zadat adresu.";
 $pgv_lang["edit_GIVN_help"]			= "#pgv_lang[edit_given_name_help]#";
 $pgv_lang["edit_SPFX_help"]			= "~Prefix Priezviska~<br /><br />Vložte, alebo vyberte zo zoznamu prefix, ktorý je umiestnený pred hlavnou castou priezviska. Napríklad <b>von</b> Braun, <b>van der</b> Kloot, <b>de</b> Graaf, atd.";
 $pgv_lang["edit_SURN_help"]			= "#pgv_lang[edit_surname_help]#";
