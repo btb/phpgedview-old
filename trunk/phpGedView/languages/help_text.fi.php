@@ -3,7 +3,7 @@
  * Finnish Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2018  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -506,11 +506,12 @@ $pgv_lang["help_dir_editor.php"]		= "~#pgv_lang[index_dir_cleanup]#~<br /><br />
 $pgv_lang["register_gedcomid_help"]		= "~#pgv_lang[gedcomid]#~<br /><br />Jokaisella henkilöllä tietokannassa on oma yksilöllinen ID-tunnuksensa. Mikäli tiedät oman ID-tunnuksesi lisää se tähän. Mikäli et tiedä sitä tai et voinut löytää sitä yksityisyysasetusten vuoksi, toimita kommenttikenttään riittävästi tietoa itsestäsi jotta ylläpitäjä tunnistaa sinut voidakseen asettaa ID-tunnuksen.<br /><br />";
 $pgv_lang["register_comments_help"]	= "~#pgv_lang[comments]#~<br /><br />Käytä tätä kenttää kertoaksesi ylläpitäjälle miksi haluat käyttäjätilin ja kuinka olet sukua tämän sivuston henkilöille. Voit lisätä tähän myös muita kommentteja, joita sinulla on ylläpitäjälle.<br /><br />";
 $pgv_lang["context_help"]			= "Lisää ohjeita saa klikkaamalla <b>?</b> kohteen vieressä sivulla.";
-$pgv_lang["edit_URL_help"]			= "Lisää URL-osoite http:// mukaanlukien.<br /><br />Esimerkki URL-osoitteesta on  http://www.phpgedview.net/<br /><br />Jätä tämä kenttä tyhjäksi, mikäli et halua lisätä URL-osoitetta.";
-$pgv_lang["edit_EMAIL_help"]		= "Lisää sähköpostiosoite.<br /><br /> Esimerkki sähköpostiosoitteesta on <b>nimi@hotmail.com</b>. Jätä tämä kenttä tyhjäksi, mikäli et halua lisätä sähköpostiosoitetta.";
-$pgv_lang["edit_FAX_help"]			= "Lisää telefaxnumero maa- ja suuntanumeroineen. <br /><br />Jätä tämä kenttä tyhjäksi, mikäli et halua lisätä telefaxnumeroa. Esimerkiksi numero Saksassa voi olla +49 25859 56 76 89 ja Yhdysvalloissa tai Kanadassa +1 888 555-1212.";
-$pgv_lang["edit_PHON_help"]			= "Lisää puhelinnumero maa- ja suuntanumeroineen.<br /><br />Jätä tämä kenttä tyhjäksi, mikäli et halua lisätä puhelinnumeroa. Esimerkiksi numero Saksassa voi olla +49 25859 56 76 89 ja Yhdysvalloissa tai Kanadassa +1 888 555-1212.";
-$pgv_lang["edit_ADDR_help"]		= "Lisää osoite kenttään samalla tavoin kuin kirjoittaisit sen kirjekuoreen.<br /><br />Jätä kenttä tyhjäksi, mikäli et halua lisätä osoitetta.";
+$pgv_lang["edit_URL_help"]			= "#factarray[URL]#~<br /><br />Lisää URL-osoite http:// mukaanlukien. Esimerkki: http://www.phpgedview.net/<br /><br />Jätä tämä kenttä tyhjäksi, mikäli et halua lisätä URL-osoitetta.";
+$pgv_lang["edit_WWW_help"]			= "#factarray[WWW]#~<br /><br />Lisää Web-kotisivun osoite http:// mukaanlukien. Esimerkki: http://www.phpgedview.net/<br /><br />Jätä tämä kenttä tyhjäksi, mikäli et halua lisätä URL-osoitetta.";
+$pgv_lang["edit_EMAIL_help"]		= "#factarray[EMAIL]#~<br /><br />Lisää sähköpostiosoite.  Esimerkki: <b>nimi@hotmail.com</b>. Jätä tämä kenttä tyhjäksi, mikäli et halua lisätä sähköpostiosoitetta.";
+$pgv_lang["edit_FAX_help"]			= "#factarray[FAX]#~<br /><br />Lisää telefaxnumero maa- ja suuntanumeroineen. Esimerkiksi numero Saksassa voi olla +49 25859 56 76 89 ja Yhdysvalloissa tai Kanadassa +1 888 555-1212.<br /><br />Jätä tämä kenttä tyhjäksi, mikäli et halua lisätä telefaxnumeroa.";
+$pgv_lang["edit_PHON_help"]			= "#factarray[PHON]#~<br /><br />Lisää puhelinnumero maa- ja suuntanumeroineen. Esimerkiksi numero Saksassa voi olla +49 25859 56 76 89 ja Yhdysvalloissa tai Kanadassa +1 888 555-1212.<br /><br />Jätä tämä kenttä tyhjäksi, mikäli et halua lisätä puhelinnumeroa.";
+$pgv_lang["edit_ADDR_help"]			= "#factarray[ADDR]#~<br /><br />Lisää osoite kenttään samalla tavoin kuin kirjoittaisit sen kirjekuoreen.<br /><br />Jätä kenttä tyhjäksi, mikäli et halua lisätä osoitetta.";
 $pgv_lang["edit_GIVN_help"]			= "#pgv_lang[edit_given_name_help]#";
 $pgv_lang["edit_SPFX_help"]			= "~Sukunimen etuliite~<br /><br />Lisää tai valitse luettelosta sukunimeä edeltävä etuliite. Tällaisia ovat esimerkiksi <b>von</b> Braun, <b>van der</b> Kloot, <b>de</b> Graaf, jne.";
 $pgv_lang["edit_SURN_help"]			= "#pgv_lang[edit_surname_help]#";

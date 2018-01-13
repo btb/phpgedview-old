@@ -3,7 +3,7 @@
  * Dutch Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2018  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -70,10 +70,11 @@ $pgv_lang["edit__HEB_SURN_help"]			= "#pgv_lang[edit__HEB_help]#<br /><br />In d
 $pgv_lang["edit_SEX_help"]					= "~WIJZIG #factarray[SEX]#~<br /><br />Gebruik deze keuze om aan te geven of de persoon <b>#pgv_lang[male]#</b> of <b>#pgv_lang[female]#</b> is. Kies <b>#pgv_lang[unknown]#</b> alleen als u niet zeker bent van het geslacht van de persoon.";
 $pgv_lang["edit_NAME_help"]					= "~WIJZIG #factarray[NAME]#~<br /><br />Namen worden ingegeven met een schuine streep \"/\" voor en achter de achternaam van de persoon.<br /><br />Voorbeelden:<ul><li>Voornaam /Achternaam/</li><li>Voornaam /Achternaam/ Jr.</li><li>Voornaam /van Achternaam/ jr.</li></ul>";
 $pgv_lang["edit_add_unlinked_person_help"]	= "~#pgv_lang[add_unlinked_person]#~<br /><br />Gebruik deze functie om een niet-gekoppeld persoon toe te voegen.<br />Deze persoon blijft als losse persoon in de genealogie bestaan en is niet verbonden met partner, ouders of kinderen, totdat u de koppeling aanbrengt. Dit kan via het #pgv_lang[relatives]# tabblad op de #pgv_lang[indi_info]# pagina.";
-$pgv_lang["edit_URL_help"]					= "~#factarray[URL]#~<br /><br />Een voorbeeld van een Web-URL ziet er als volgt uit: <b>http://www.phpgedview.net</b>. Laat dit vak leeg als u geen Web-URL wilt toevoegen.<br /><br />";
-$pgv_lang["edit_EMAIL_help"]				= "~#factarray[EMAIL]#~<br /><br />Voer een e-mailadres in.<br />Een voorbeeld van een e-mailadres is: <b>naam@hotmail.com</b>.<br />Laat dit vak leeg als u geen e-mailadres wilt invoeren.<br /><br />";
-$pgv_lang["edit_FAX_help"]					= "~#factarray[FAX]#~<br /><br />Voer het faxnummer in, inclusief de land- en regiocode.<br />Een voorbeeld van een faxnummer is: +31 71 1234567.<br />Als u geen faxnummer wilt invoeren, laat dit vak dan leeg.<br /><br />";
-$pgv_lang["edit_PHON_help"]					= "~#factarray[PHON]#~<br /><br />Voer het telefoonnummer in, inclusief de land- en regiocode.<br />Een voorbeeld van een telefoonnummer is: +31 71 1234567.<br />Als u geen telefoonnummer wilt invoeren, laat dit vak dan leeg.<br /><br />";
+$pgv_lang["edit_URL_help"]					= "~#factarray[URL]#~<br /><br />Voer het URL-adres in, inclusief http: //. Voorbeeld: <b>http://www.phpgedview.net</b><br /><br />Laat dit vak leeg als u geen URL-adres wilt toevoegen.<br /><br />";
+$pgv_lang["edit_WWW_help"]					= "~#factarray[URL]#~<br /><br />Voer het adres van de webpagina in, inclusief http: //. Voorbeeld: <b>http://www.phpgedview.net</b><br /><br />Laat dit vak leeg als u geen Web-URL wilt toevoegen.<br /><br />";
+$pgv_lang["edit_EMAIL_help"]				= "~#factarray[EMAIL]#~<br /><br />Voer een e-mailadres in. Voorbeeld: <b>naam@hotmail.com</b>.<br />Laat dit vak leeg als u geen e-mailadres wilt invoeren.<br /><br />";
+$pgv_lang["edit_FAX_help"]					= "~#factarray[FAX]#~<br /><br />Voer het faxnummer in, inclusief de land- en regiocode. Een voorbeeld: +31 71 1234567.<br /><br />Laat dit vak leeg als u geen faxnummer wilt invoeren.<br /><br />";
+$pgv_lang["edit_PHON_help"]					= "~#factarray[PHON]#~<br /><br />Voer het telefoonnummer in, inclusief de land- en regiocode.<br />Een voorbeeld: +31 71 1234567.<br /><br />Laat dit vak leeg als u geen telefoonnummer wilt invoeren.<br /><br />";
 $pgv_lang["edit_ADDR_help"]					= "~#factarray[ADDR]#~<br /><br />Voer het adres in, op dezelfde wijze als u het op een envelop zou schrijven.<br /><br />Laat dit vak leeg als u geen adres wilt invoeren.";
 $pgv_lang["edit_GIVN_help"]					= "#pgv_lang[edit_given_name_help]#";
 $pgv_lang["edit_SPFX_help"]					= "~Achternaam voegsel~<br /><br />Hier kunt u een eventueel voorvoegesle invullen, of selecteren uit de lijst.  Voorbeelden van zulke voorvoegsel zijn:  <b>van der</b> Vaart, <b>de</b> Graaf, <b>von</b> Braun, enz.";

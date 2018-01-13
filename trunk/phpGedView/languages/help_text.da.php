@@ -3,7 +3,7 @@
  * Danish Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2018  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -42,11 +42,12 @@ $pgv_lang["edit_ROMN_help"]			= "~#factarray[ROMN]#~<br /><br />Her anføres det
 $pgv_lang["edit_SEX_help"]			= "~#factarray[SEX]#~<br /><br />Brug dette felt til at angive om personen er <b>#pgv_lang[male]#</b> eller <b>#pgv_lang[female]#</b>.  Vælg kun <b>#pgv_lang[unknown]#</b> når du ikke er sikker på personens køn.";
 $pgv_lang["edit_NAME_help"]			= "~Ændre #factarray[NAME]#~<br /><br />Navn bør angives med skråstreg \"/\" før og efter personens efternavn.<br /><br />Se følgende eksempler:<ul><li>Fornavn /Efternavn/</li><li>Fornavn /Efternavn/ Jr.</li><li>Fornavn /von Efternavn/ de.</li></ul>";
 $pgv_lang["edit_add_unlinked_person_help"]	= "~#pgv_lang[add_unlinked_person]#~<br /><br />Brug dette skema til at tilføje en person, som ikke er knyttet til en familie.<br /><br />Når du tilføjer en \"fritstående\" person til din slægtsdatabase, vil personen ikke blive knyttet til andre personer førend du opgiver slægtskabet/familiebåndet.  Du kan når som helst knytte personer sammen ved at vælge dette under fanebladet: <b>#pgv_lang[relatives]#</b> på siden for #pgv_lang[indi_info]#.";
-$pgv_lang["edit_URL_help"]			= "Angiv internet adresse (URL) inklusiv http://.<br /><br />Et eksempel på en internet adresse er: <b>http://www.phpgedview.net/</b> <br />Lad dette felt være tomt hvis du ikke ønsker at opgive en adresse (URL).";
-$pgv_lang["edit_EMAIL_help"]		= "Angiv en e-mail-adresse.<br /><br />Et eksempel på en e-mail-adresse er: <b>navn@hotmail.com</b> <br />Lad feltet være tomt, hvis du ikke ønsker at opgive en e-mail-adresse.";
-$pgv_lang["edit_FAX_help"]			= "Angiv et FAX-nummer, inklusiv landekode og eventuelt områdenummer.<br /><br />Eksempler:<ul><li>Norge: +47 35 00 00 01</li><li>Tyskland: +49 25859 56 76 89</li><li>USA: +1 888 555-1212</li></ul>Lad dette felt være tomt hvis du ikke ønsker at opgive et faxnummer.";
-$pgv_lang["edit_PHON_help"]			= "Angiv et telefonnummer, inklusiv landekode og eventuelt områdenummer.<br /><br />Eksempel:<ul><li>Norge: +47 35 00 00 00</li><li>Tyskland: +49 25859 56 76 89</li><li>USA: +1 888 555-1212.</li></ul>Lad dette felt være tomt hvis du ikke ønsker at opgive et telefonnummer.";
-$pgv_lang["edit_ADDR_help"]			= "Angiv en postadresse i feltet på samme måde, som du ville gjort på en konvolut.<br /><br />Lad feltet være tomt, hvis du ikke ønsker at opgive en postadresse.";
+$pgv_lang["edit_URL_help"]			= "~#factarray[URL]#~<br /><br />Angiv internet adresse (URL) inklusiv http://. Eksempel: <b>http://www.phpgedview.net/</b><br /><br />Lad dette felt være tomt hvis du ikke ønsker at opgive en adresse (URL).";
+$pgv_lang["edit_WWW_help"]			= "~#factarray[WWW]#~<br /><br />Angiv webside-adressen, inklusiv http: //. Eksempel: <b>http://www.phpgedview.net/</b><br /><br />Lad dette felt være tomt hvis du ikke ønsker at opgive en adresse (URL).";
+$pgv_lang["edit_EMAIL_help"]		= "~#factarray[EMAIL]#~<br /><br />Angiv en e-mail-adresse. Eksempel: <b>navn@hotmail.com</b><br /><br />Lad feltet være tomt, hvis du ikke ønsker at opgive en e-mail-adresse.";
+$pgv_lang["edit_FAX_help"]			= "~#factarray[FAX]#~<br /><br />Angiv et FAX-nummer, inklusiv landekode og eventuelt områdenummer. Eksempel:<ul><li>Norge: +47 35 00 00 01</li><li>Tyskland: +49 25859 56 76 89</li><li>USA: +1 888 555-1212</li></ul><br /><br />Lad dette felt være tomt hvis du ikke ønsker at opgive et faxnummer.";
+$pgv_lang["edit_PHON_help"]			= "~#factarray[PHON]#~<br /><br />Angiv et telefonnummer, inklusiv landekode og eventuelt områdenummer. Eksempel:<ul><li>Norge: +47 35 00 00 00</li><li>Tyskland: +49 25859 56 76 89</li><li>USA: +1 888 555-1212.</li></ul><br /><br />Lad dette felt være tomt hvis du ikke ønsker at opgive et telefonnummer.";
+$pgv_lang["edit_ADDR_help"]			= "~#factarray[ADDR]#~<br /><br />Angiv en postadresse i feltet på samme måde, som du ville gjort på en konvolut.<br /><br />Lad feltet være tomt, hvis du ikke ønsker at opgive en postadresse.";
 $pgv_lang["edit_GIVN_help"]			= "~#factarray[GIVN]#~<br /><br />I dette valgfrie felt skrives fornavnet.";
 $pgv_lang["edit_SPFX_help"]			= "~#factarray[SPFX]#~<br /><br />Her anføres et evt. præfiks foran efternavnet. Klik på et af de foreslåede præfikser efter feltet, for at indsætte det i feltet. Skriv evt. selv et, hvis du ikke kan finde præfikset blandt de foreslåede.";
 $pgv_lang["edit_SURN_help"]			= "~#factarray[SURN]#~<br /><br />Her anføres efternavnet.";

@@ -4,7 +4,7 @@
 * Import specific functions
 *
 * phpGedView: Genealogy Viewer
-* Copyright (C) 2002 to 2015  PGV Development Team.  All rights reserved.
+* Copyright (C) 2002 to 2018  PGV Development Team.  All rights reserved.
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -549,6 +549,10 @@ function reformat_record_import($rec) {
 				$xref='';
 				$data='';
 			}
+			break;
+		case 'URL':
+		case '_URL':
+			$tag='WWW';
 			break;
 		case 'VERSION':
 			$tag='VERS';

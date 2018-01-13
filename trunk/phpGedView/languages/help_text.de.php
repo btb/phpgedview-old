@@ -3,7 +3,7 @@
  * German Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2018  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -70,11 +70,12 @@ $pgv_lang["edit__HEB_SURN_help"]		= "#pgv_lang[edit__HEB_help]#In dieses Feld ge
 $pgv_lang["edit_SEX_help"]				= "#pgv_lang[edit_sex_help]#";
 $pgv_lang["edit_NAME_help"]				= "#pgv_lang[edit_name_help]#";
 $pgv_lang["edit_add_unlinked_person_help"]	= "~#pgv_lang[add_unlinked_person]#~<br /><br />Hier können Sie eine allein stehende Person eintragen.<br /><br />Alleinstehende Personen sind am Anfang mit keinen anderen Personen verbunden.  Später, wenn Sie mehr über die Verwandtschaft dieser Person wissen, können Sie sie mit einer anderen Person über den #pgv_lang[relatives]# Ordner der #pgv_lang[indi_info]# Seite verbinden.<br /><br />";
-$pgv_lang["edit_URL_help"]				= "Geben Sie die URL Adresse mit <b>http://</b> ein.<br /><br />Zum Beispiel, eine gültige URL Adresse wäre: <b>http://www.phpgedview.net/</b> Das leere Feld bedeutet dass keine URL Adresse bekannt ist.<br /><br />";
-$pgv_lang["edit_EMAIL_help"]			= "Geben Sie die Mail-Adresse ein.<br /><br />Zum Beispiel, eine gültige Mail-Adresse wäre: <b>name@hotmail.com</b> Das leere Feld bedeutet dass keine Mail-Adresse bekannt ist.<br /><br />";
-$pgv_lang["edit_FAX_help"]				= "Geben Sie die FAX Nummer, inklusiv den internationalen und lokalen Vorwahlnummern.  Bei den lokalen Vorwahlnummern soll die erste Null nicht eingegeben werden.<br /><br />Das leere Feld bedeutet dass keine FAX Nummer vorhanden ist.<br /><br />Beispiele wären <b>+49&nbsp;561&nbsp;56&nbsp;76&nbsp;89</b> für Nummern in Deutschland oder <b>+1&nbsp;888&nbsp;555-1212</b> für Nummern in USA oder Kanada.<br /><br />";
-$pgv_lang["edit_PHON_help"]				= "Geben Sie die Telefon Nummer, inklusiv den internationalen und lokalen Vorwahlnummern.  Bei den lokalen Vorwahlnummern soll die erste Null nicht eingegeben werden.<br /><br />Das leere Feld bedeutet dass keine Telefon Nummer vorhanden ist.<br /><br />Beispiele wären <b>+49&nbsp;561&nbsp;56&nbsp;76&nbsp;89</b> für Nummern in Deutschland oder <b>+1&nbsp;888&nbsp;555-1212</b> für Nummern in USA oder Kanada.<br /><br />";
-$pgv_lang["edit_ADDR_help"]				= "Geben Sie die Adresse, genau wie sie auf einem Briefumschlag geschrieben wird.<br /><br />Das leere Feld bedeutet dass die Adresse nicht bekannt ist.<br /><br />";
+$pgv_lang["edit_URL_help"]				= "~#factarray[URL]#~<br /><br />Geben Sie die URL Adresse mit <b>http://</b> ein. Beispiel: <b>http://www.phpgedview.net/</b><br /><br />Das leere Feld bedeutet dass keine URL Adresse bekannt ist.<br /><br />";
+$pgv_lang["edit_WWW_help"]				= "~#factarray[WWW]#~<br /><br />Geben Sie die Web-Homepage Adresse mit <b>http://</b> ein. Beispiel: <b>http://www.phpgedview.net/</b><br /><br />Das leere Feld bedeutet dass keine Web-Homepage Adresse bekannt ist.<br /><br />";
+$pgv_lang["edit_EMAIL_help"]			= "~#factarray[EMAIL]#~<br /><br />Geben Sie die Mail-Adresse ein. Beispiel: <b>name@hotmail.com</b><br /><br />Das leere Feld bedeutet dass keine Mail-Adresse bekannt ist.<br /><br />";
+$pgv_lang["edit_FAX_help"]				= "~#factarray[FAX]#~<br /><br />Geben Sie die FAX Nummer, inklusiv den internationalen und lokalen Vorwahlnummern ein.  Bei den lokalen Vorwahlnummern soll die erste Null nicht eingegeben werden. Beispiele wären <b>+49&nbsp;561&nbsp;56&nbsp;76&nbsp;89</b> für Nummern in Deutschland oder <b>+1&nbsp;888&nbsp;555-1212</b> für Nummern in USA oder Kanada.<br /><br />Das leere Feld bedeutet dass die FAX Nummer unbekannt ist.";
+$pgv_lang["edit_PHON_help"]				= "~#factarray[PHON]#~<br /><br />Geben Sie die Telefon Nummer, inklusiv den internationalen und lokalen Vorwahlnummern ein.  Bei den lokalen Vorwahlnummern soll die erste Null nicht eingegeben werden. Beispiele wären <b>+49&nbsp;561&nbsp;56&nbsp;76&nbsp;89</b> für Nummern in Deutschland oder <b>+1&nbsp;888&nbsp;555-1212</b> für Nummern in USA oder Kanada.<br /><br />Das leere Feld bedeutet dass die Telefon Nummer unbekannt ist.";
+$pgv_lang["edit_ADDR_help"]				= "~#factarray[ADDR]#~<br /><br />Geben Sie die Adresse, genau wie sie auf einem Briefumschlag geschrieben wird ein.<br /><br />Das leere Feld bedeutet dass die Adresse nicht bekannt ist.<br /><br />";
 $pgv_lang["edit_GIVN_help"]				= "#pgv_lang[edit_given_name_help]#";
 $pgv_lang["edit_SPFX_help"]				= "~#factarray[SPFX]#~<br /><br />Sie können Wörter eingeben oder wählen, die vor dem Hauptteil des Nachnamens genannt werden.  Zum Beispiel: <b>von</b> Braun, <b>auf der</b> Maur, <b>van der</b> Kloot, <b>de</b> Graaf, usw.<br /><br />";
 $pgv_lang["edit_SURN_help"]				= "#pgv_lang[edit_surname_help]#";

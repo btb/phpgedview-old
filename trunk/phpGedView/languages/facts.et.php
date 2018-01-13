@@ -3,7 +3,7 @@
  * Defines an array of GEDCOM codes and the Estonian name facts that they represent.
  *
  * PhpGedView: Genealogy Viewer
- * Copyright (C) 2006  PGV Development Team
+ * Copyright (C) 2002 to 2018  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -84,6 +84,7 @@ $factarray["WILL"]	= "Testament";
 $factarray["FAX"] = "Faks";
 $factarray["FACT"] = "Fakt";
 $factarray["URL"] = "Veebiaadress";
+$factarray["WWW"] = "Koduleht";
 $factarray["_HEB"] = "Heebrea";
 $factarray["_SCBK"] = "Väljalõigete raamat";
 $factarray["_TYPE"] = "Meedia tüüp";

@@ -3,7 +3,7 @@
  * Croatian Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2010 PGV Development Team. All rights reserved.
+ * Copyright (C) 2002 to 2018  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -191,7 +191,7 @@ $factarray["FAMC:HUSB:GIVN"] = "Očevo osobno ime";
 $factarray["FAMC:WIFE:GIVN"] = "Majčino osobno ime";
 ##$factarray["FAMC:HUSB:FAMC:HUSB:GIVN"] = "Paternal Grandfather's Given Name";
 ##$factarray["FAMC:WIFE:FAMC:WIFE:GIVN"] = "Maternal Grandmother's Given Name";
-##$factarray["FAMC:WIFE:FAMC:HUSB:GIVN"] = "Maternal Grandfather's Given Name"; 
+##$factarray["FAMC:WIFE:FAMC:HUSB:GIVN"] = "Maternal Grandfather's Given Name";
 ##$factarray["FAMC:HUSB:FAMC:WIFE:GIVN"] = "Paternal Grandmother's Given Name";
 $factarray["FAMS:CHIL:BIRT:PLAC"] = "Mjesto rođenja dijeteta";
 ##$factarray["FAMS:NOTE"] = "Spouse Note";
@@ -273,7 +273,7 @@ $factarray["_FA13"]	= "Podatak 13";
 // GEDCOM 5.5.1 related facts
 ##$factarray["FAX"] = "FAX";
 $factarray["FACT"] = "Podatak";
-##$factarray["WWW"] = "Web Home Page";
+$factarray["WWW"] = "Početna stranica";
 $factarray["MAP"] = "Karta";
 ##$factarray["LATI"] = "Latitude";
 ##$factarray["LONG"] = "Longitude";
@@ -468,7 +468,7 @@ $factarray["_FAMC_RESI"] = "Prebivalište roditelja";
 ##$factarray["SERV"] = "Remote Server";
 ##$factarray["_GEDF"] = "GEDCOM File";
 
-/*-- Fact abbreviations for use in Chart boxes.  
+/*-- Fact abbreviations for use in Chart boxes.
  *		Use these abbreviations in cases where the standard method of using the first
  *		letter of the spelled-out name results in an undesirable abbreviation or where
  *		you want to produce a different result (eg: "x" instead of "M" for "Married").
@@ -479,9 +479,9 @@ $factarray["_FAMC_RESI"] = "Prebivalište roditelja";
  *		These abbreviations are user-customizable. Just put them into file "extra.xx.php".
  *		The length of these abbreviations is not restricted to 1 letter.
  */
- 
-/*-- The following lines have been commented out.  They should serve as examples. 
- 
+
+/*-- The following lines have been commented out.  They should serve as examples.
+
 $factAbbrev["BIRT"]		= "B";
 $factAbbrev["MARR"]		= "M";
 $factAbbrev["DEAT"]		= "D";

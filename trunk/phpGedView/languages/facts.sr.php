@@ -3,7 +3,7 @@
  * Serbian Language file for PhpGedView.
  *
  * PhpGedView: Genealogy Viewer
- * Copyright (C) 2009  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2018  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -233,7 +233,7 @@ $factarray["_FA13"]	= "Podatak 13";
 // GEDCOM 5.5.1 related facts
 ##$factarray["FAX"] = "FAX";
 $factarray["FACT"] = "Podatak";
-##$factarray["WWW"] = "Web Home Page";
+$factarray["WWW"] = "Početna stranica";
 $factarray["MAP"] = "Karta";
 ##$factarray["LATI"] = "Latitude";
 ##$factarray["LONG"] = "Longitude";

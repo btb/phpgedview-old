@@ -3,7 +3,7 @@
  * Spanish language file for PhpGedView
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2018  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -71,11 +71,12 @@ $pgv_lang["edit__HEB_SURN_help"]	= "#pgv_lang[edit__HEB_help]#<br /><br />En est
 $pgv_lang["edit_SEX_help"]			= "#pgv_lang[edit_sex_help]#";
 $pgv_lang["edit_NAME_help"]			= "#pgv_lang[edit_name_help]#";
 $pgv_lang["edit_add_unlinked_person_help"]	= "~#pgv_lang[add_unlinked_person]#~<br /><br />Utilice este formulario para agregar una persona desconectada.<br /><br />Si añade una persona desconectada a su árbol genealógico, esta persona no estará vinculada a ninguna otra persona hasta que la vincule.  Posteriormente, puede vincular personas desde la pestaña #pgv_lang[relatives]# en la página #pgv_lang[indi_info]#.";
-$pgv_lang["edit_URL_help"]			= "Introduzca la dirección URL incluyendo el http://.<br /><br />Un ejemplo sería: <b>http://www.phpgedview.net/</b> Deje este campo en blanco si no quiere incluir una URL.";
-$pgv_lang["edit_EMAIL_help"]		= "Introduzca la dirección de correo electrónico.<br /><br />Un ejemplo sería: <b>name@hotmail.com</b>  Deje en blanco este campo si no desea incluir una dirección de correo electrónico.";
-$pgv_lang["edit_FAX_help"]			= "Introduzca el número de fax incluyendo los prefijos de país y de área.<br /><br />Deje en blanco este campo si no desea incluir un número de fax.  Por ejemplo, un número en España podría ser +34 926 123 457 y un número en Estados Unidos o Canadá podría ser +1 888 555-1212.";
-$pgv_lang["edit_PHON_help"]			= "Introduzca el número de teléfono incluyendo los prefijos de país y de área.<br /><br />Deje en blanco este campo si no desea incluir un número de teléfono.  Por ejemplo, un número en España podría ser +34 926 123 457 y un número en Estados Unidos o Canadá podría ser +1 888 555-1212.";
-$pgv_lang["edit_ADDR_help"]			= "Introduzca la dirección en el campo tal como aparecería en un sobre.<br /><br />Deje en blanco este campo si no desea incluir una dirección.";
+$pgv_lang["edit_URL_help"]			= "#factarray[URL]#~<br /><br />Introduzca la dirección URL incluyendo el http://. Ejemplo: <b>http://www.phpgedview.net/</b><br /><br />Deje este campo en blanco si no quiere incluir una URL.";
+$pgv_lang["edit_WWW_help"]			= "#factarray[WWW]#~<br /><br />Introduzca la dirección de la página de inicio de la Web incluyendo el http://. Ejemplo: <b>http://www.phpgedview.net/</b><br /><br />Deje este campo en blanco si no quiere incluir una URL.";
+$pgv_lang["edit_EMAIL_help"]		= "#factarray[EMAIL]#~<br /><br />Introduzca la dirección de correo electrónico. Ejemplo: <b>nombre@hotmail.com</b><br /><br />Deje en blanco este campo si no desea incluir una dirección de correo electrónico.";
+$pgv_lang["edit_FAX_help"]			= "#factarray[FAX]#~<br /><br />Introduzca el número de fax incluyendo los prefijos de país y de área. Por ejemplo, un número en España podría ser +34 926 123 457 y un número en Estados Unidos o Canadá podría ser +1 888 555-1212.<br /><br />Deje en blanco este campo si no desea incluir un número de fax.";
+$pgv_lang["edit_PHON_help"]			= "#factarray[PHON]#~<br /><br />Introduzca el número de teléfono incluyendo los prefijos de país y de área. Por ejemplo, un número en España podría ser +34 926 123 457 y un número en Estados Unidos o Canadá podría ser +1 888 555-1212.<br /><br />Deje en blanco este campo si no desea incluir un número de teléfono.";
+$pgv_lang["edit_ADDR_help"]			= "#factarray[ADDR]#~<br /><br />Introduzca la dirección en el campo tal como aparecería en un sobre.<br /><br />Deje en blanco este campo si no desea incluir una dirección.";
 $pgv_lang["edit_GIVN_help"]			= "#pgv_lang[edit_given_name_help]#";
 $pgv_lang["edit_SPFX_help"]			= "~Prefijo de apellidos~<br /><br />Introduzca o seleccione de la lista las palabras que precedan a la parte principal del Apellido.  Ejemplos son: <b>de la</b> Torre, <b>von</b> Braun, <b>van der</b> Kloot, <b>de</b> Graaf, etc.";
 $pgv_lang["edit_SURN_help"]			= "#pgv_lang[edit_surname_help]#";

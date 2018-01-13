@@ -3,7 +3,7 @@
  * Catalan texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2018  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -52,11 +52,12 @@ $pgv_lang["edit__HEB_help"]			= "~NOM HEBREU~<br /><br />En algunes cultures és
 $pgv_lang["edit_SEX_help"]			= "#pgv_lang[edit_sex_help]#";
 $pgv_lang["edit_NAME_help"]			= "#pgv_lang[edit_name_help]#";
 $pgv_lang["edit_add_unlinked_person_help"]	= "~#pgv_lang[add_unlinked_person]#~<br /><br />Feu servir aquest formulari per afegir una persona pendent de vincular.<br /><br />Quan afegiu una persona desvinculada de l'arbre familiar, no queda enllaçada a cap altre si no ho feu expressament. Posteriorment, podeu vincular-la mitjançant el diagrama de #pgv_lang[relatives]# o la pàgina de #pgv_lang[indi_info]#.";
-$pgv_lang["edit_URL_help"]			= "Entreu l'adreça URL incloent-hi el http://.<br /><br />Un exemple d'URL és aquest: <b>http://www.phpgedview.net/</b> Deixeu-ho en blanc si no voleu incloure'n cap.";
-$pgv_lang["edit_EMAIL_help"]		= "Entreu l'adreça de correu electrònic.<br /><br />Un exemple d'adreça és aquest: <b>nom@hotmail.com</b> Deixeu-ho en blanc si no la voleu incloure.";
-$pgv_lang["edit_FAX_help"]			= "Entreu el número de FAX incloent-hi el codi de país i l'àrea.<br /><br />Deixeu-ho en blanc si no el voleu incloure. Per exemple, un número espanyol pot ser el +34 93 831469 i un número dels USA o Canada pot ser +1 888 555-1212.";
-$pgv_lang["edit_PHON_help"]			= "Entreu el número de telèfon incloent-hi en codi de país i àrea.<br /><br />Deixeu-ho en blanc si no el voleu incloure. Per exemple, un número espanyol pot ser el +34 93 831469 i un número dels USA o Canada pot ser +1 888 555-1212.";
-$pgv_lang["edit_ADDR_help"]			= "Entreu l'adreça tal i com l'escriuríeu a un sobre.<br /><br />Deixeu-ho en blanc si no la voleu incloure.";
+$pgv_lang["edit_URL_help"]			= "~#factarray[URL]#~<br /><br />Entreu l'adreça URL incloent-hi el http://. Exemple: <b>http://www.phpgedview.net/</b><br /><br />Deixeu-ho en blanc si no voleu incloure'n cap.";
+$pgv_lang["edit_WWW_help"]			= "~#factarray[WWW]#~<br /><br />Entreu l'adreça de la pàgina d'inici web, inclosa la http: //. Exemple: <b>http://www.phpgedview.net/</b><br /><br />Deixeu-ho en blanc si no voleu incloure'n cap.";
+$pgv_lang["edit_EMAIL_help"]			= "~#factarray[EMAIL]#~<br /><br />Entreu l'adreça de correu electrònic. Exemple: <b>nom@hotmail.com</b><br /><br />Deixeu-ho en blanc si no la voleu incloure.";
+$pgv_lang["edit_FAX_help"]			= "~#factarray[FAX]#~<br /><br />Entreu el número de FAX incloent-hi el codi de país i l'àrea.  Per exemple, un número espanyol pot ser el +34 93 831469 i un número dels USA o Canada pot ser +1 888 555-1212.<br /><br />Deixeu-ho en blanc si no el voleu incloure.";
+$pgv_lang["edit_PHON_help"]			= "~#factarray[PHON]#~<br /><br />Entreu el número de telèfon incloent-hi en codi de país i àrea.  Per exemple, un número espanyol pot ser el +34 93 831469 i un número dels USA o Canada pot ser +1 888 555-1212.<br /><br />Deixeu-ho en blanc si no el voleu incloure.";
+$pgv_lang["edit_ADDR_help"]			= "~#factarray[ADDR]#~<br /><br />Entreu l'adreça tal i com l'escriuríeu a un sobre.<br /><br />Deixeu-ho en blanc si no la voleu incloure.";
 $pgv_lang["edit_GIVN_help"]			= "#pgv_lang[edit_given_name_help]#";
 $pgv_lang["edit_SPFX_help"]			= "~Surname Prefix~<br /><br />Entreu o seleccioneu de la llista, els mots que precedeixen la part principal del cognom. Exemples d'aquestes d'aquest mots ho son <b>von</b> Braun, <b>van der</b> Kloot, <b>de</b> Peguera,  <b>del</b> Villar, etc.";
 $pgv_lang["edit_SURN_help"]			= "#pgv_lang[edit_surname_help]#";

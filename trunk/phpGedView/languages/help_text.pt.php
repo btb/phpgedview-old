@@ -3,7 +3,7 @@
  * Portugese Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2018  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -43,11 +43,12 @@ $pgv_lang["edit__HEB_help"]="~NOME HEBRAICO~<br /><br />Muitas culturas tem por 
 $pgv_lang["edit_SEX_help"]="#pgv_lang[edit_sex_help]#";
 $pgv_lang["edit_NAME_help"]="#pgv_lang[edit_name_help]#";
 $pgv_lang["edit_add_unlinked_person_help"]="~#pgv_lang[add_unlinked_person]#~<br /><br />Use este formulário para adicionar uma pessoa não ligada a nenhuma outra pessoa desta árvore.<br /><br />Posteriormente esta pessoa poderá ser ligada a outras através da ficha #pgv_lang[relatives]# da página #pgv_lang[indi_info]#.";
-$pgv_lang["edit_URL_help"]="Informe o endereço URL incluindo http://.<br /><br />Exemplo de uma URL:<b>http://www.phpgedview.net/</b> Este campo é opcional e pode ser deixado em branco.";
-$pgv_lang["edit_EMAIL_help"]="Informe o endereço de email.<br /><br />Exemplo: <b>name@hotmail.com</b> Este campo é opcional e pode ser deixado em branco.";
-$pgv_lang["edit_FAX_help"]="Informe o FAX incluindo o DDI e DDD, mas não inclua a operadora.<br /><br />Este campo é ocpional e pode ser deixado em branco. Exemplo: Um fax na cidade do Rio de Janeiro-Brasil seria +55 21 2233-4455 na Alemanha +49 25859 56 76 89 e nos EUA ou Canadá +1 888 555-1212.";
-$pgv_lang["edit_PHON_help"]="Informe o Telefone incluindo o DDI e DDD, mas não inclua a operadora.<br /><br />Este campo é ocpional e pode ser deixado em branco. Exemplo: Um telefone na cidade do Rio de Janeiro-Brasil seria +55 21 2233-4455 na Alemanha +49 25859 56 76 89 e nos EUA ou Canadá +1 888 555-1212.";
-$pgv_lang["edit_ADDR_help"]="Informe o endereço da mesma forma como você escreveria no envelope.<br /><br />Este campo é opcional e pode ser deixado em branco.";
+$pgv_lang["edit_URL_help"]	="~#factarray[URL]#~<br /><br />Informe o endereço URL incluindo http://. Exemplo: <b>http://www.phpgedview.net/</b><br /><br />Este campo é opcional e pode ser deixado em branco.";
+$pgv_lang["edit_WWW_help"]	="~#factarray[WWW]#~<br /><br />Informe o endereço da página da Web incluindo http://. Exemplo: <b>http://www.phpgedview.net/</b><br /><br />Este campo é opcional e pode ser deixado em branco.";
+$pgv_lang["edit_EMAIL_help"]="~#factarray[EMAIL]#~<br /><br />Informe o endereço de email. Exemplo: <b>name@hotmail.com</b><br /><br />Este campo é opcional e pode ser deixado em branco.";
+$pgv_lang["edit_FAX_help"]	="~#factarray[FAX]#~<br /><br />Informe o FAX incluindo o DDI e DDD, mas não inclua a operadora. Exemplo: Um fax na cidade do Rio de Janeiro-Brasil seria +55 21 2233-4455 na Alemanha +49 25859 56 76 89 e nos EUA ou Canadá +1 888 555-1212.<br /><br />Este campo é ocpional e pode ser deixado em branco.";
+$pgv_lang["edit_PHON_help"]	="~#factarray[PHON]#~<br /><br />Informe o Telefone incluindo o DDI e DDD, mas não inclua a operadora. Exemplo: Um telefone na cidade do Rio de Janeiro-Brasil seria +55 21 2233-4455 na Alemanha +49 25859 56 76 89 e nos EUA ou Canadá +1 888 555-1212.<br /><br />Este campo é ocpional e pode ser deixado em branco.";
+$pgv_lang["edit_ADDR_help"]	="~#factarray[ADDR]#~<br /><br />Informe o endereço da mesma forma como você escreveria no envelope.<br /><br />Este campo é opcional e pode ser deixado em branco.";
 $pgv_lang["edit_GIVN_help"]="#pgv_lang[edit_given_name_help]#";
 $pgv_lang["edit_SPFX_help"]="~Surname Prefix~<br /><br />Informe ou selecione da lista, as palavras que precedem o sobrenome. Exemplos: <b>von</b> Braun, <b>van der</b> Kloot, <b>de</b> Graaf, etc.";
 $pgv_lang["edit_SURN_help"]="#pgv_lang[edit_surname_help]#";
