@@ -1,9 +1,9 @@
 <?php
 /**
- * Slovak Language file for PhpGedView.
+ * Slovak texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2007  PGV Development Team
+ * Copyright (C) 2002 to 2018  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,11 +19,9 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- *
- * @author PGV Developers
  * @package PhpGedView
  * @subpackage Languages
- * @author Peter Moravčík
+ * @author Peter Moravcík
  * @version $Id$
  */
 
@@ -32,7 +30,6 @@ if (!defined('PGV_PHPGEDVIEW')) {
 	exit;
 }
 
-//-- Define Slovak name equivalents for Chapman country codes
 $countries["ABW"]="Aruba";
 $countries["ACA"]="Acadia";
 $countries["AFG"]="Afganistan";
@@ -51,8 +48,8 @@ $countries["ATF"]="Francúzske južné teritória";
 $countries["ATG"]="Antigua a Barbuda";
 $countries["AUS"]="Austrália";
 $countries["AUT"]="Rakúsko";
-$countries["AZR"]="Azory";
 $countries["AZE"]="Azerbajdžan";
+$countries["AZR"]="Azory";
 $countries["BDI"]="Burundi";
 $countries["BEL"]="Belgicko";
 $countries["BEN"]="Benin";
@@ -62,6 +59,7 @@ $countries["BGR"]="Bulharsko";
 $countries["BHR"]="Bahrajn";
 $countries["BHS"]="Bahamy";
 $countries["BIH"]="Bosna a Hercegovina";
+$countries["BLM"]="Saint-Barthélemy";
 $countries["BLR"]="Bielorusko";
 $countries["BLZ"]="Belize";
 $countries["BMU"]="Bermudy";
@@ -77,10 +75,10 @@ $countries["CAF"]="Stredoafrická republika";
 $countries["CAN"]="Kanada";
 $countries["CAP"]="Cape Colony";
 $countries["CCK"]="Kokosové ostrovy";
-$countries["CHE"]="Švajčiarsko";
+$countries["CHE"]="Švajciarsko";
 $countries["CHI"]="Normanské ostrovy";
-$countries["CHL"]="Čile";
-$countries["CHN"]="Čína";
+$countries["CHL"]="Cile";
+$countries["CHN"]="Cína";
 $countries["CIV"]="Pobrežie slonoviny";
 $countries["CMR"]="Kamerun";
 $countries["COD"]="Kongo (Kinshasa)";
@@ -90,12 +88,12 @@ $countries["COL"]="Kolumbia";
 $countries["COM"]="Komory";
 $countries["CPV"]="Kapverdy";
 $countries["CRI"]="Kostarika";
-$countries["CSK"]="Československo";
+$countries["CSK"]="Ceskoslovensko";
 $countries["CUB"]="Kuba";
-$countries["CXR"]="Vianočný ostrov";
+$countries["CXR"]="Vianocný ostrov";
 $countries["CYM"]="Kajmanské ostrovy";
 $countries["CYP"]="Cyprus";
-$countries["CZE"]="Česká republika";
+$countries["CZE"]="Ceská republika";
 $countries["DEU"]="Nemecko";
 $countries["DJI"]="Džibuti";
 $countries["DMA"]="Dominika";
@@ -119,8 +117,9 @@ $countries["FRA"]="Francúzsko";
 $countries["FRO"]="Faerské ostrovy";
 $countries["FSM"]="Mikronézia";
 $countries["GAB"]="Gabun";
-$countries["GBR"]="Spojené kráľovstvo";
+$countries["GBR"]="Spojené královstvo";
 $countries["GEO"]="Gruzínsko";
+$countries["GGY"]="Guernsey";
 $countries["GHA"]="Ghana";
 $countries["GIB"]="Džibraltar";
 $countries["GIN"]="Guinea";
@@ -140,8 +139,9 @@ $countries["HMD"]="Heardov ostrov a MacDonaldove ostrovy";
 $countries["HND"]="Honduras";
 $countries["HRV"]="Chorvátsko";
 $countries["HTI"]="Haity";
-$countries["HUN"]="Maďarsko";
+$countries["HUN"]="Madarsko";
 $countries["IDN"]="Indonézia";
+$countries["IMN"]="Ostrov Man";
 $countries["IND"]="India";
 $countries["IOT"]="Britské indickooceánske územie";
 $countries["IRL"]="Írsko";
@@ -151,10 +151,11 @@ $countries["ISL"]="Island";
 $countries["ISR"]="Izrael";
 $countries["ITA"]="Taliansko";
 $countries["JAM"]="Jamajka";
+$countries["JEY"]="Jersey";
 $countries["JOR"]="Jordánsko";
 $countries["JPN"]="Japonsko";
 $countries["KAZ"]="Kazachstan";
-$countries["KEN"]="Keňa";
+$countries["KEN"]="Kena";
 $countries["KGZ"]="Kirgizsko";
 $countries["KHM"]="Kambodža";
 $countries["KIR"]="Kiribati";
@@ -173,6 +174,7 @@ $countries["LTU"]="Litva";
 $countries["LUX"]="Luxembursko";
 $countries["LVA"]="Lotyšsko";
 $countries["MAC"]="Macao";
+$countries["MAF"]="Saint-Martin";
 $countries["MAR"]="Maroko";
 $countries["MCO"]="Monako";
 $countries["MDA"]="Moldavsko";
@@ -184,9 +186,9 @@ $countries["MKD"]="Macedónia";
 $countries["MLI"]="Mali";
 $countries["MLT"]="Malta";
 $countries["MMR"]="Majanmar";
+$countries["MNE"]="Cierna Hora";
 $countries["MNG"]="Mongolsko";
 $countries["MNP"]="Severné Mariany";
-$countries["MNT"]="Čierna Hora";
 $countries["MOZ"]="Mozambik";
 $countries["MRT"]="Mauretánia";
 $countries["MSR"]="Montserrat";
@@ -217,7 +219,7 @@ $countries["PER"]="Peru";
 $countries["PHL"]="Filipíny";
 $countries["PLW"]="Palau";
 $countries["PNG"]="Papua - Nová Guinea";
-$countries["POL"]="Poľsko";
+$countries["POL"]="Polsko";
 $countries["PRI"]="Portoriko";
 $countries["PRK"]="Severná Kórea";
 $countries["PRT"]="Portugalsko";
@@ -226,16 +228,15 @@ $countries["PSE"]="Okupované Palestínske územie";
 $countries["PYF"]="Francúzska Polynézia";
 $countries["QAT"]="Katar";
 $countries["REU"]="Réunion";
-$countries["ROM"]="Rumunsko";
+$countries["ROU"]="Rumunsko";
 $countries["RUS"]="Rusko";
 $countries["RWA"]="Rwanda";
 $countries["SAU"]="Saudská Arábia";
-$countries["SCG"]="Srbsko a Čierna Hora";
+$countries["SCG"]="Srbsko a Cierna Hora";
 $countries["SCT"]="Škótsko";
 $countries["SDN"]="Sudán";
 $countries["SEA"]="Na mori";
 $countries["SEN"]="Senegal";
-$countries["SER"]="Srbsko";
 $countries["SGP"]="Singapur";
 $countries["SGS"]="Južná Georgia a Južné Sandwichove ostrovy";
 $countries["SHN"]="Svätá Helena";
@@ -247,17 +248,19 @@ $countries["SLV"]="Salvádor";
 $countries["SMR"]="San Marino";
 $countries["SOM"]="Somálsko";
 $countries["SPM"]="Saint Pierre a Miquelon";
+$countries["SRB"]="Srbsko";
+$countries["SSD"]="Južný Sudán";
 $countries["STP"]="Svätý Tomáš";
 $countries["SUN"]="ZSSR";
 $countries["SUR"]="Surinam";
 $countries["SVK"]="Slovensko";
 $countries["SVN"]="Slovinsko";
 $countries["SWE"]="Švédsko";
-$countries["SWZ"]="Švajčiarsko";
+$countries["SWZ"]="Švajciarsko";
 $countries["SYC"]="Seychely";
 $countries["SYR"]="Sýrska arabská republika";
 $countries["TCA"]="Ostrovy Turks a Caicos";
-$countries["TCD"]="Čad";
+$countries["TCD"]="Cad";
 $countries["TGO"]="Togo";
 $countries["THA"]="Thajsko";
 $countries["TJK"]="Tadžikistan";
@@ -274,7 +277,7 @@ $countries["TWN"]="Taiwan";
 $countries["TZA"]="Tanzánia";
 $countries["UGA"]="Uganda";
 $countries["UKR"]="Ukrajina";
-$countries["UMI"]="Menšie odľahlé ostrovy USA ";
+$countries["UMI"]="Menšie odlahlé ostrovy USA ";
 $countries["URY"]="Uruguaj";
 $countries["USA"]="USA";
 $countries["UZB"]="Uzbekistan";
@@ -298,7 +301,7 @@ $countries["ZWE"]="Zimbabwe";
 $countries["???"]="Neznáma";
 
 $altCountryNames["FLK"]="Malvíny";
-$altCountryNames["GBR"]="Veľká Británia";
+$altCountryNames["GBR"]="Velká Británia";
 $altCountryNames["LKA"]="Ceylon";
 $altCountryNames["MMR"]="Barma";
 $altCountryNames["PLW"]="Belau";

@@ -6,37 +6,10 @@
  * see http://helpdesk.rootsweb.com/codes for a comprehensive list of Chapman codes.
  * see http://www.rootsweb.com/~wlsgfhs/ChapmanCodes.htm for another list of Chapman codes
  *
+ * see https://www.iso.org/iso-3166-country-codes.html for the final authority on all current country codes
+ *
  * The list that follows is the list of Chapman country codes, with additions from the
  * other sources mentioned above.
- *
- * These codes do not appear in the two Chapman lists cited:
- *		ALA		Åland Islands
- *		CAT		Catalonia
- *		COD		Congo (Brazzaville)		This country was known as Zaire
- *		IOM		Isle of Man				Chapman lists this as part of the UK -- it's not!!
- *		NFK		Norfolk Island
- *		PRI		Puerto Rico				Chapman lists this as a state of the USA
- *		RSS		South Sudan				Newly (Jul 2011) independent from Sudan
- *		SCG		Serbia and Montenegro	Chapman lists these separately
- *		TLS		Timor-Leste
- *		UMI		US Minor Outlying Islands
- *		VIR		US Virgin Islands		Chapman lists this as a state of the USA
- *
- * These Chapman country codes do not appear in the list following:
- *		UEL		United Empire Loyalist		This is NOT a country or region, it's
- *											a group of people
- *		UK		United Kingdom				This is the only two-letter country code,
- *											and GBR or one of its components should be
- *											used instead.
- *		SLK		Slovakia					This code, listed in the last source cited,
- *											should be SVK
- *		SLO		Slovenia					This code, listed in the last source cited,
- *											should be SVN
- *		SAM		South America				This code, listed in the last source cited,
- *											is not precise enough
- *		TMP		East Timor					Official name is TLS "Timor-Leste"
- *		HOL		Holland						Official name is NLD "Netherlands"
- *		ESM		Western Samoa				Official name is WSM "Samoa"
  *
  * @package PhpGedView
  * @subpackage Languages
@@ -77,6 +50,7 @@ $countries["BGR"]="Bulgaria";
 $countries["BHR"]="Bahrain";
 $countries["BHS"]="Bahamas";
 $countries["BIH"]="Bosnia and Herzegovina";
+$countries["BLM"]="Saint-Barthélemy";
 $countries["BLR"]="Belarus";
 $countries["BLZ"]="Belize";
 $countries["BMU"]="Bermuda";
@@ -137,6 +111,7 @@ $countries["FSM"]="Micronesia";
 $countries["GAB"]="Gabon";
 $countries["GBR"]="United Kingdom";
 $countries["GEO"]="Georgia";
+$countries["GGY"]="Guernsey";
 $countries["GHA"]="Ghana";
 $countries["GIB"]="Gibraltar";
 $countries["GIN"]="Guinea";
@@ -158,8 +133,8 @@ $countries["HRV"]="Croatia";
 $countries["HTI"]="Haiti";
 $countries["HUN"]="Hungary";
 $countries["IDN"]="Indonesia";
+$countries["IMN"]="Isle of Man";
 $countries["IND"]="India";
-$countries["IOM"]="Isle of Man";
 $countries["IOT"]="British Indian Ocean Territory";
 $countries["IRL"]="Ireland";
 $countries["IRN"]="Iran";
@@ -168,6 +143,7 @@ $countries["ISL"]="Iceland";
 $countries["ISR"]="Israel";
 $countries["ITA"]="Italy";
 $countries["JAM"]="Jamaica";
+$countries["JEY"]="Jersey";
 $countries["JOR"]="Jordan";
 $countries["JPN"]="Japan";
 $countries["KAZ"]="Kazakhstan";
@@ -190,6 +166,7 @@ $countries["LTU"]="Lithuania";
 $countries["LUX"]="Luxembourg";
 $countries["LVA"]="Latvia";
 $countries["MAC"]="Macau";
+$countries["MAF"]="Saint-Martin (French part)";
 $countries["MAR"]="Morocco";
 $countries["MCO"]="Monaco";
 $countries["MDA"]="Moldova";
@@ -201,9 +178,9 @@ $countries["MKD"]="Macedonia";
 $countries["MLI"]="Mali";
 $countries["MLT"]="Malta";
 $countries["MMR"]="Myanmar";
+$countries["MNE"]="Montenegro";
 $countries["MNG"]="Mongolia";
 $countries["MNP"]="Northern Mariana Islands";
-$countries["MNT"]="Montenegro";
 $countries["MOZ"]="Mozambique";
 $countries["MRT"]="Mauritania";
 $countries["MSR"]="Montserrat";
@@ -243,8 +220,7 @@ $countries["PSE"]="Occupied Palestinian Territory";
 $countries["PYF"]="French Polynesia";
 $countries["QAT"]="Qatar";
 $countries["REU"]="Réunion";
-$countries["ROM"]="Romania";
-$countries["RSS"]="South Sudan";
+$countries["ROU"]="Romania";
 $countries["RUS"]="Russia";
 $countries["RWA"]="Rwanda";
 $countries["SAU"]="Saudi Arabia";
@@ -253,7 +229,6 @@ $countries["SCT"]="Scotland";
 $countries["SDN"]="Sudan";
 $countries["SEA"]="At Sea";
 $countries["SEN"]="Senegal";
-$countries["SER"]="Serbia";
 $countries["SGP"]="Singapore";
 $countries["SGS"]="South Georgia and the South Sandwich Islands";
 $countries["SHN"]="Saint Helena";
@@ -265,6 +240,8 @@ $countries["SLV"]="El Salvador";
 $countries["SMR"]="San Marino";
 $countries["SOM"]="Somalia";
 $countries["SPM"]="Saint Pierre and Miquelon";
+$countries["SRB"]="Serbia";
+$countries["SSD"]="South Sudan";
 $countries["STP"]="São Tomé and Príncipe";
 $countries["SUN"]="USSR";
 $countries["SUR"]="Suriname";
@@ -313,7 +290,6 @@ $countries["ZAF"]="South Africa";
 $countries["ZAR"]="Zaire";
 $countries["ZMB"]="Zambia";
 $countries["ZWE"]="Zimbabwe";
-$countries["???"]="Unknown";
 
 /*
  * The following table lists alternate names for various Chapman codes.

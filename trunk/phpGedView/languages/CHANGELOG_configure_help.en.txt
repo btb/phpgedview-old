@@ -39,6 +39,20 @@ Additional codes, to help Translators, follow the date as follows:
 
 The above list of codes may be amended as new situations arise.
 
+VERSION 4.3.1
+
+?$pgv_lang["whatever"]								dd Monthname, year		Change codes and comments
+----------------------------------------------------------------------------------------
++$pgv_lang["GEONAMES_KEY"]							16 Jan 2018				A
++$pgv_lang["GEONAMES_KEY_help"]						16 Jan 2018				A
++$pgv_lang["GEONAMES_BIAS"]							16 Jan 2018				A
++$pgv_lang["GEONAMES_BIAS_help"]					16 Jan 2018				A
++$pgv_lang["GEONAMES_BIAS_no_preference"]			16 Jan 2018				A
+*$pgv_lang["GEOCODE_KEY"]							16 Jan 2018				w
+*$pgv_lang["GEOCODE_KEY_help"]						16 Jan 2018				W
+-$pgv_lang["USE_GEONAMES"]							16 Jan 2018				D
+-$pgv_lang["USE_GEONAMES_help"]						16 Jan 2018				D
+
 VERSION 4.3.0
 
 ?$pgv_lang["whatever"]								dd Monthname, year		Change codes and comments

@@ -3,7 +3,7 @@
 * Returns data for autocompletion
 *
 * phpGedView: Genealogy Viewer
-* Copyright (C) 2002 to 2016  PGV Development Team.  All rights reserved.
+* Copyright (C) 2002 to 2018  PGV Development Team.  All rights reserved.
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -498,16 +498,33 @@ function autocomplete_NAME($FILTER) {
 * @return Array of string City, County, State/Province, Country
 */
 function autocomplete_PLAC($FILTER, $OPTION) {
-	global $USE_GEONAMES, $GEOCODE_KEY, $lang_short_cut, $LANGUAGE;
+	global $GEONAMES_KEY, $GEONAMES_BIAS, $GEOCODE_KEY, $lang_short_cut, $LANGUAGE;
 
 	$data=get_autocomplete_PLAC($FILTER);
 
 	//-- no match => perform a geoNames query if enabled
-	if (empty($data) && $USE_GEONAMES) {
+	if (empty($data) && !empty($GEONAMES_KEY)) {
+		$bias = '';
+		if (!empty($GEONAMES_BIAS)) $bias = '&countryBias='.$GEONAMES_BIAS ;
 		$url = "http://ws.geonames.org/searchJSON".
-					"?name_startsWith=".urlencode($FILTER).
+					'?username='.$GEONAMES_KEY.
+					'&name_startsWith='.urlencode($FILTER).
+					$bias.				// Country Bias (if applicable)
 					"&lang=".$lang_short_cut[$LANGUAGE].
-					"&fcode=CMTY&fcode=ADM4&fcode=PPL&fcode=PPLA&fcode=PPLC".
+					'&fcode=PPL'. 		// Feature: populated place
+					'&fcode=PPLH'. 		// Feature: historical populated place
+					'&fcode=PPLQ'. 		// Feature: abandoned populated place
+					'&fcode=PPLW'. 		// Feature: destroyed populated place
+					'&fcode=LCTY'. 		// Feature: locality
+					'&fcode=PPLL'. 		// Feature: populated locality
+					'&fcode=PPLF'. 		// Feature: farm village
+					'&fcode=FRM'. 		// Feature: farm
+					'&fcode=FRMQ'. 		// Feature: abandoned farm
+					'&fcode=FRMS'. 		// Feature: farms
+					'&fcode=FRMT'. 		// Feature: farmstead
+					'&fcode=HMSD'. 		// Feature: homestead (specific to Australia & New Zealand)
+					'&fcode=STLMT'. 	// Feature: Israeli settlement
+					'&fcode=CMTY'.		// Feature: cemetery
 					"&style=full";
 		// try to use curl when file_get_contents not allowed
 		if (function_exists('curl_init')) {

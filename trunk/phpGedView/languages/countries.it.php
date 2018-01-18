@@ -19,9 +19,9 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @author Marco Renini
  * @package PhpGedView
  * @subpackage Languages
+ * @author Marco Renini
  * @version $Id$
 */
 
@@ -48,8 +48,8 @@ $countries["ATF"]="Territori francesi meridionali";
 $countries["ATG"]="Antigua e Barbuda";
 $countries["AUS"]="Australia";
 $countries["AUT"]="Austria";
-$countries["AZR"]="Azzorre";
 $countries["AZE"]="Azerbaigian";
+$countries["AZR"]="Azzorre";
 $countries["BDI"]="Burundi";
 $countries["BEL"]="Belgio";
 $countries["BEN"]="Benin";
@@ -59,6 +59,7 @@ $countries["BGR"]="Bulgaria";
 $countries["BHR"]="Bahrein";
 $countries["BHS"]="Bahamas";
 $countries["BIH"]="Bosnia-Erzegovina";
+$countries["BLM"]="Saint-Barthélemy";
 $countries["BLR"]="Bielorussia";
 $countries["BLZ"]="Belize";
 $countries["BMU"]="Bermuda";
@@ -119,6 +120,7 @@ $countries["FSM"]="Micronesia";
 $countries["GAB"]="Gabon";
 $countries["GBR"]="Regno Unito";
 $countries["GEO"]="Georgia";
+$countries["GGY"]="Guernsey";
 $countries["GHA"]="Ghana";
 $countries["GIB"]="Gibilterra";
 $countries["GIN"]="Guinea";
@@ -140,8 +142,8 @@ $countries["HRV"]="Croazia";
 $countries["HTI"]="Haiti";
 $countries["HUN"]="Ungheria";
 $countries["IDN"]="Indonesia";
+$countries["IMN"]="Isola di Man";
 $countries["IND"]="India";
-$countries["IOM"]="Isola di Man";
 $countries["IOT"]="Territori Britannici dell'Oceano Indiano";
 $countries["IRL"]="Irlanda";
 $countries["IRN"]="Iran";
@@ -150,6 +152,7 @@ $countries["ISL"]="Islanda";
 $countries["ISR"]="Israele";
 $countries["ITA"]="Italia";
 $countries["JAM"]="Giamaica";
+$countries["JEY"]="Jersey";
 $countries["JOR"]="Giordania";
 $countries["JPN"]="Giappone";
 $countries["KAZ"]="Kazakistan";
@@ -172,6 +175,7 @@ $countries["LTU"]="Lituania";
 $countries["LUX"]="Lussemburgo";
 $countries["LVA"]="Lettonia";
 $countries["MAC"]="Macau";
+$countries["MAF"]="Saint-Martin";
 $countries["MAR"]="Marocco";
 $countries["MCO"]="Monaco";
 $countries["MDA"]="Moldavia";
@@ -183,9 +187,9 @@ $countries["MKD"]="Macedonia";
 $countries["MLI"]="Mali";
 $countries["MLT"]="Malta";
 $countries["MMR"]="Myanmar";
+$countries["MNE"]="Montenegro";
 $countries["MNG"]="Mongolia";
 $countries["MNP"]="Isole Marianne Settentrionali";
-$countries["MNT"]="Montenegro";
 $countries["MOZ"]="Mozambico";
 $countries["MRT"]="Mauritania";
 $countries["MSR"]="Montserrat";
@@ -225,7 +229,7 @@ $countries["PSE"]="Territorio palestinese occupato";
 $countries["PYF"]="Polinesia francese";
 $countries["QAT"]="Qatar";
 $countries["REU"]="Riunione";
-$countries["ROM"]="Romania";
+$countries["ROU"]="Romania";
 $countries["RUS"]="Russia";
 $countries["RWA"]="Ruanda";
 $countries["SAU"]="Arabia Saudita";
@@ -234,7 +238,6 @@ $countries["SCT"]="Scozia";
 $countries["SDN"]="Sudan";
 $countries["SEA"]="In mare";
 $countries["SEN"]="Senegal";
-$countries["SER"]="Serbia";
 $countries["SGP"]="Singapore";
 $countries["SGS"]="Georgia del Sud e isole Sandwich del Sud";
 $countries["SHN"]="Sant'Elena";
@@ -246,6 +249,8 @@ $countries["SLV"]="El Salvador";
 $countries["SMR"]="San Marino";
 $countries["SOM"]="Somalia";
 $countries["SPM"]="Saint Pierre e Miquelon";
+$countries["SRB"]="Serbia";
+$countries["SSD"]="Sudan del Sud";
 $countries["STP"]="São Tomé e Príncipe";
 $countries["SUN"]="URSS";
 $countries["SUR"]="Suriname";

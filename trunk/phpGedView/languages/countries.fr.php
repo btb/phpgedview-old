@@ -1,9 +1,9 @@
 <?php
 /**
- * French Language file for PhpGedView.
+ * Arabic texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2009  PGV Development Team
+ * Copyright (C) 2002 to 2018  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,10 +23,12 @@
  * @subpackage Languages
  * @version $Id$
  */
+
 if (!defined('PGV_PHPGEDVIEW')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
+
 $countries["ABW"]                       ="Aruba";
 $countries["ACA"]                       ="Acadie";
 $countries["AFG"]                       ="Afghanistan";
@@ -45,8 +47,8 @@ $countries["ATF"]                       ="Terres australes et antarctiques fran�
 $countries["ATG"]                       ="Antigua-et-Barbuda";
 $countries["AUS"]                       ="Australie";
 $countries["AUT"]                       ="Autriche";
-$countries["AZR"]                       ="Açores";
 $countries["AZE"]                       ="Azerbaïdjan";
+$countries["AZR"]                       ="Açores";
 $countries["BDI"]                       ="Burundi";
 $countries["BEL"]                       ="Belgique";
 $countries["BEN"]                       ="Bénin";
@@ -56,6 +58,7 @@ $countries["BGR"]                       ="Bulgarie";
 $countries["BHR"]                       ="Bahreïn";
 $countries["BHS"]                       ="Bahamas";
 $countries["BIH"]                       ="Bosnie-Herzégovine";
+$countries["BLM"]						="Saint-Barthélemy";
 $countries["BLR"]                       ="Bélarus";
 $countries["BLZ"]                       ="Belize";
 $countries["BMU"]                       ="Bermudes";
@@ -116,6 +119,7 @@ $countries["FSM"]                       ="Micronésie (États fédérés de)";
 $countries["GAB"]                       ="Gabon";
 $countries["GBR"]                       ="Royaume-Uni de Grande-Bretagne et d'Irlande du Nord";
 $countries["GEO"]                       ="Géorgie";
+$countries["GGY"]						="Guernsey";
 $countries["GHA"]                       ="Ghana";
 $countries["GIB"]                       ="Gibraltar";
 $countries["GIN"]                       ="Guinée";
@@ -137,8 +141,8 @@ $countries["HRV"]                       ="Croatie";
 $countries["HTI"]                       ="Haïti";
 $countries["HUN"]                       ="Hongrie";
 $countries["IDN"]                       ="Indonésie";
+$countries["IMN"]                       ="Île de Man";
 $countries["IND"]                       ="Inde";
-$countries["IOM"]                       ="Île de Man";
 $countries["IOT"]                       ="Territoire britannique de l'océan Indien";
 $countries["IRL"]                       ="Irlande";
 $countries["IRN"]                       ="Iran (République islamique d')";
@@ -147,6 +151,7 @@ $countries["ISL"]                       ="Islande";
 $countries["ISR"]                       ="Israël";
 $countries["ITA"]                       ="Italie";
 $countries["JAM"]                       ="Jamaïque";
+$countries["JEY"]						="Jersey";
 $countries["JOR"]                       ="Jordanie";
 $countries["JPN"]                       ="Japon";
 $countries["KAZ"]                       ="Kazakhstan";
@@ -169,6 +174,7 @@ $countries["LTU"]                       ="Lituanie";
 $countries["LUX"]                       ="Luxembourg";
 $countries["LVA"]                       ="Lettonie";
 $countries["MAC"]                       ="Macao région administrative spéciale de Chine";
+$countries["MAF"]						="Saint-Martin";
 $countries["MAR"]                       ="Maroc";
 $countries["MCO"]                       ="Monaco";
 $countries["MDA"]                       ="République de Moldova";
@@ -180,9 +186,9 @@ $countries["MKD"]                       ="Ex-République yougoslave de Macédoin
 $countries["MLI"]                       ="Mali";
 $countries["MLT"]                       ="Malte";
 $countries["MMR"]                       ="Myanmar";
+$countries["MNE"]                       ="Montenegro";
 $countries["MNG"]                       ="Mongolie";
 $countries["MNP"]                       ="Îles Mariannes septentrionales";
-$countries["MNT"]                       ="Montenegro";
 $countries["MOZ"]                       ="Mozambique";
 $countries["MRT"]                       ="Mauritanie";
 $countries["MSR"]                       ="Montserrat";
@@ -222,7 +228,7 @@ $countries["PSE"]                       ="Territoire palestinien occupé";
 $countries["PYF"]                       ="Polynésie française";
 $countries["QAT"]                       ="Qatar";
 $countries["REU"]                       ="Réunion";
-$countries["ROM"]                       ="Roumanie";
+$countries["ROU"]                       ="Roumanie";
 $countries["RUS"]                       ="Fédération de Russie";
 $countries["RWA"]                       ="Rwanda";
 $countries["SAU"]                       ="Arabie saoudite";
@@ -231,7 +237,6 @@ $countries["SCT"]                       ="Ecosse";
 $countries["SDN"]                       ="Soudan";
 $countries["SEA"]                       ="en mer";
 $countries["SEN"]                       ="Sénégal";
-$countries["SER"]                       ="Serbie";
 $countries["SGP"]                       ="Singapour";
 $countries["SGS"]                       ="Géorgie du Sud et les Îles Sandwich du Sud";
 $countries["SHN"]                       ="Sainte-Hélène";
@@ -243,6 +248,8 @@ $countries["SLV"]                       ="El Salvador";
 $countries["SMR"]                       ="Saint-Marin";
 $countries["SOM"]                       ="Somalie";
 $countries["SPM"]                       ="Saint-Pierre-et-Miquelon";
+$countries["SRB"]                       ="Serbie";
+$countries["SSD"]						="Sud-Soudan";
 $countries["STP"]                       ="São Tomé-et-Príncipe";
 $countries["SUN"]                       ="URRS";
 $countries["SUR"]                       ="Suriname";
@@ -292,6 +299,9 @@ $countries["ZAR"]                       ="Zaïre";
 $countries["ZMB"]                       ="Zambie";
 $countries["ZWE"]                       ="Zimbabwe";
 $countries["???"]                       ="inconnu";
+
+
+
 $altCountryNames["COD"]                 ="Zaïre";
 $altCountryNames["DEU"]                 ="East Germany; West Germany; GDR; FRG";
 $altCountryNames["FLK"]                 ="Malouines";

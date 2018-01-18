@@ -3,7 +3,7 @@
  * Arabic texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2015  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2018  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -29,7 +29,6 @@ if (!defined('PGV_PHPGEDVIEW')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
-
 
 $countries["ABW"]="أروبا";
 $countries["ACA"]="Acadia";
@@ -60,6 +59,7 @@ $countries["BGR"]="بلغاريا";
 $countries["BHR"]="البحرين";
 $countries["BHS"]="الباهاماس";
 $countries["BIH"]="البوسنة و الهرسك";
+$countries["BLM"]="Saint-Barthélemy";
 $countries["BLR"]="روسيا البيضاء";
 $countries["BLZ"]="بيليز";
 $countries["BMU"]="جزر برمود";
@@ -120,6 +120,7 @@ $countries["FSM"]="ولايات ميكرونيسيا المتحدة";
 $countries["GAB"]="الغابون";
 $countries["GBR"]="المملكة المتحدة";
 $countries["GEO"]="جيورجيا";
+$countries["GGY"]="Guernsey";
 $countries["GHA"]="غانا";
 $countries["GIB"]="Gibraltar";
 $countries["GIN"]="غينيا";
@@ -141,8 +142,8 @@ $countries["HRV"]="كرواتيا";
 $countries["HTI"]="هايتي";
 $countries["HUN"]="المجر";
 $countries["IDN"]="أندونيسيا";
+$countries["IMN"]="Isle of Man";
 $countries["IND"]="الهند";
-$countries["IOM"]="Isle of Man";
 $countries["IOT"]="British Indian Ocean Territory";
 $countries["IRL"]="جمهورية أيرلندا";
 $countries["IRN"]="إيران";
@@ -151,6 +152,7 @@ $countries["ISL"]="آيسلندا";
 $countries["ISR"]="إسرائيل";
 $countries["ITA"]="إيطاليا";
 $countries["JAM"]="جمايكا";
+$countries["JEY"]="Jersey";
 $countries["JOR"]="الأردن";
 $countries["JPN"]="اليابان";
 $countries["KAZ"]="كازاخستان";
@@ -173,6 +175,7 @@ $countries["LTU"]="لتوانيا";
 $countries["LUX"]="لوكسمبورغ";
 $countries["LVA"]="لاتفيا";
 $countries["MAC"]="ماكاو";
+$countries["MAF"]="Saint-Martin";
 $countries["MAR"]="المغرب";
 $countries["MCO"]="موناكو";
 $countries["MDA"]="مولدافيا";
@@ -184,9 +187,9 @@ $countries["MKD"]="جمهورية مقدونيا";
 $countries["MLI"]="مالي";
 $countries["MLT"]="مالطا";
 $countries["MMR"]="ميانمار";
+$countries["MNE"]="الجبل الأسو";
 $countries["MNG"]="منغوليا";
 $countries["MNP"]="Northern Mariana Islands";
-$countries["MNT"]="الجبل الأسو";
 $countries["MOZ"]="موزمبيق";
 $countries["MRT"]="موريتانيا";
 $countries["MSR"]="مونتسيرات";
@@ -226,8 +229,7 @@ $countries["PSE"]="Occupied Palestinian Territory";
 $countries["PYF"]="بولينيزيا الفرنسية";
 $countries["QAT"]="قطر";
 $countries["REU"]="ريونيون";
-$countries["ROM"]="رومانيا";
-$countries["RSS"]="جنوب السودان";
+$countries["ROU"]="رومانيا";
 $countries["RUS"]="روسيا";
 $countries["RWA"]="رواندا";
 $countries["SAU"]="المملكة العربية السعودية";
@@ -236,7 +238,6 @@ $countries["SCT"]="Scotland";
 $countries["SDN"]="Sudan";
 $countries["SEA"]="At Sea";
 $countries["SEN"]="السنغال";
-$countries["SER"]="جمهورية صربيا";
 $countries["SGP"]="سنغافورة";
 $countries["SGS"]="South Georgia and the South Sandwich Islands";
 $countries["SHN"]="Saint Helena";
@@ -248,6 +249,8 @@ $countries["SLV"]="إلسلفادور";
 $countries["SMR"]="سان مارينو";
 $countries["SOM"]="الصومال";
 $countries["SPM"]="Saint Pierre and Miquelon";
+$countries["SRB"]="جمهورية صربيا";
+$countries["SSD"]="جنوب السودان";
 $countries["STP"]="ساو تومي وبرينسيبي";
 $countries["SUN"]="USSR";
 $countries["SUR"]="سورينام";

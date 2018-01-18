@@ -1,8 +1,24 @@
 <?php
 /**
- * @see http://unstats.un.org/unsd/methods/m49/m49alpha.htm
- * @see http://www.foreignword.com/countries/  for a comprehensive list, with translations
- * @see http://de.wikipedia.org/wiki/ISO-3166-1-Kodierliste for german translations
+ * German texts
+ *
+ * phpGedView: Genealogy Viewer
+ * Copyright (C) 2002 to 2018  PGV Development Team.  All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ *
  * @package PhpGedView
  * @subpackage Languages
  * @version $Id$
@@ -31,8 +47,8 @@ $countries["ATF"]="Französische Gebiete im südlichen Indischen Ozean";
 $countries["ATG"]="Antigua und Barbuda";
 $countries["AUS"]="Australien";
 $countries["AUT"]="Österreich";
-$countries["AZR"]="Azoren";
 $countries["AZE"]="Aserbaidschan";
+$countries["AZR"]="Azoren";
 $countries["BDI"]="Burundi";
 $countries["BEL"]="Belgien";
 $countries["BEN"]="Benin";
@@ -42,6 +58,7 @@ $countries["BGR"]="Bulgarien";
 $countries["BHR"]="Bahrain";
 $countries["BHS"]="Bahamas";
 $countries["BIH"]="Bosnien und Herzegowina";
+$countries["BLM"]="Saint-Barthélemy";
 $countries["BLR"]="Belarus";
 $countries["BLZ"]="Belize";
 $countries["BMU"]="Bermuda";
@@ -102,6 +119,7 @@ $countries["FSM"]="Mikronesien";
 $countries["GAB"]="Gabun";
 $countries["GBR"]="Vereinigtes Königreich";
 $countries["GEO"]="Georgien";
+$countries["GGY"]="Guernsey";
 $countries["GHA"]="Ghana";
 $countries["GIB"]="Gibraltar";
 $countries["GIN"]="Guinea";
@@ -112,7 +130,6 @@ $countries["GNQ"]="Äquatorialguinea";
 $countries["GRC"]="Griechenland";
 $countries["GRD"]="Grenada";
 $countries["GRL"]="Grönland";
-$countries["SGS"]="Südgeorgien und Südliche Sandwichinseln";
 $countries["GTM"]="Guatemala";
 $countries["GUF"]="Französisch-Guayana";
 $countries["GUM"]="Guam";
@@ -124,8 +141,8 @@ $countries["HRV"]="Kroatien";
 $countries["HTI"]="Haiti";
 $countries["HUN"]="Ungarn";
 $countries["IDN"]="Indonesien";
+$countries["IMN"]="Insel Man";
 $countries["IND"]="Indien";
-$countries["IOM"]="Insel Man";
 $countries["IOT"]="Britisches Territorium im Indischen Ozean";
 $countries["IRL"]="Irland";
 $countries["IRN"]="Iran";
@@ -134,6 +151,7 @@ $countries["ISL"]="Island";
 $countries["ISR"]="Israel";
 $countries["ITA"]="Italien";
 $countries["JAM"]="Jamaika";
+$countries["JEY"]="Jersey";
 $countries["JOR"]="Jordanien";
 $countries["JPN"]="Japan";
 $countries["KAZ"]="Kasachstan";
@@ -156,6 +174,7 @@ $countries["LTU"]="Litauen";
 $countries["LUX"]="Luxemburg";
 $countries["LVA"]="Lettland";
 $countries["MAC"]="Macao";
+$countries["MAF"]="Saint-Martin";
 $countries["MAR"]="Marokko";
 $countries["MCO"]="Monaco";
 $countries["MDA"]="Moldawien";
@@ -167,9 +186,9 @@ $countries["MKD"]="Mazedonien";
 $countries["MLI"]="Mali";
 $countries["MLT"]="Malta";
 $countries["MMR"]="Myanmar (Burma)";
+$countries["MNE"]="Montenegro";
 $countries["MNG"]="Mongolei";
 $countries["MNP"]="Nördliche Marianen";
-$countries["MNT"]="Montenegro";
 $countries["MOZ"]="Mosambik";
 $countries["MRT"]="Mauretanien";
 $countries["MSR"]="Montserrat";
@@ -209,8 +228,7 @@ $countries["PSE"]="Palästinensische Autonomiegebiete";
 $countries["PYF"]="Französisch-Polynesien";
 $countries["QAT"]="Katar";
 $countries["REU"]="Réunion";
-$countries["ROM"]="Rumänien";
-$countries["RSS"]="Süd Sudan";
+$countries["ROU"]="Rumänien";
 $countries["RUS"]="Rußland";
 $countries["RWA"]="Ruanda";
 $countries["SAU"]="Saudi-Arabien";
@@ -219,8 +237,8 @@ $countries["SCT"]="Schottland";
 $countries["SDN"]="Sudan";
 $countries["SEA"]="Auf See";
 $countries["SEN"]="Senegal";
-$countries["SER"]="Serbien";
 $countries["SGP"]="Singapur";
+$countries["SGS"]="Südgeorgien und Südliche Sandwichinseln";
 $countries["SHN"]="St. Helena";
 $countries["SIC"]="Sizilien";
 $countries["SJM"]="Svalbard und Jan Mayeninseln";
@@ -230,6 +248,8 @@ $countries["SLV"]="El Salvador";
 $countries["SMR"]="San Marino";
 $countries["SOM"]="Somalia";
 $countries["SPM"]="St. Pierre und Miquelon";
+$countries["SRB"]="Serbien";
+$countries["SSD"]="Süd Sudan";
 $countries["STP"]="São Tomé und Príncipe";
 $countries["SUN"]="UdSSR";
 $countries["SUR"]="Suriname";

@@ -1,9 +1,9 @@
-<?php
+﻿<?php
 /**
- * Turkish Language file for PhpGedView.
+ * Arabic texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2018  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,47 +20,10 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  * @package PhpGedView
+ * @subpackage Languages
  * @author Kurt Norgaz
  * @author Adem GENÇ uzayuydu@gmail.com http://www.muttafi.com
  * @version $Id$
- *
- * see http://unstats.un.org/unsd/methods/m49/m49alpha.htm
- * see http://www.foreignword.com/countries/  for a comprehensive list, with translations
- * see http://susning.nu/Landskod  (list #7) for another list, taken from ISO standards
- * see http://helpdesk.rootsweb.com/codes for a comprehensive list of Chapman codes.
- * see http://www.rootsweb.com/~wlsgfhs/ChapmanCodes.htm for another list of Chapman codes
- *
- * The list that follows is the list of Chapman country codes, with additions from the
- * other sources mentioned above.
- *
- * These codes do not appear in the two Chapman lists cited:
- *		ALA		Åland Islands
- *		CAT		Catalonia
- *		COD		Congo (Brazzaville)		This country was known as Zaire
- *		IOM		Isle of Man				Chapman lists this as part of the UK -- it's not!!
- *		NFK		Norfolk Island
- *		PRI		Puerto Rico				Chapman lists this as a state of the USA
- *		RSS		South Sudan				Newly (Jul 2011) independent from Sudan
- *		SCG		Serbia and Montenegro	Chapman lists these separately
- *		TLS		Timor-Leste
- *		UMI		US Minor Outlying Islands
- *		VIR		US Virgin Islands		Chapman lists this as a state of the USA
- *
- * These Chapman country codes do not appear in the list following:
- *		UEL		United Empire Loyalist		This is NOT a country or region, it's
- *											a group of people
- *		UK		United Kingdom				This is the only two-letter country code,
- *											and GBR or one of its components should be
- *											used instead.
- *		SLK		Slovakia					This code, listed in the last source cited,
- *											should be SVK
- *		SLO		Slovenia					This code, listed in the last source cited,
- *											should be SVN
- *		SAM		South America				This code, listed in the last source cited,
- *											is not precise enough
- *		TMP		East Timor					Official name is TLS "Timor-Leste"
- *		HOL		Holland						Official name is NLD "Netherlands"
- *		ESM		Western Samoa				Official name is WSM "Samoa"
  *
  */
 
@@ -98,6 +61,7 @@ $countries["BGR"]="Bulgaristan";
 $countries["BHR"]="Bahreyn";
 $countries["BHS"]="Bahamalar";
 $countries["BIH"]="Bosna-Hersek";
+$countries["BLM"]="Saint-Barthélemy";
 $countries["BLR"]="Beyaz Rusya";
 $countries["BLZ"]="Belize";
 $countries["BMU"]="Bermuda";
@@ -158,6 +122,7 @@ $countries["FSM"]="Mikronezya";
 $countries["GAB"]="Gabon";
 $countries["GBR"]="İngiltere";
 $countries["GEO"]="Gürcistan";
+$countries["GGY"]="Guernsey";
 $countries["GHA"]="Gana";
 $countries["GIB"]="Cebelitarık";
 $countries["GIN"]="Gine";
@@ -179,8 +144,8 @@ $countries["HRV"]="Hırvatistan";
 $countries["HTI"]="Haiti";
 $countries["HUN"]="Macaristan";
 $countries["IDN"]="Endonezya";
+$countries["IMN"]="Man Adası";
 $countries["IND"]="Hindistan";
-$countries["IOM"]="Man Adası";
 $countries["IOT"]="İngiliz Hindistan Okyanus Toprakları";
 $countries["IRL"]="İrlanda";
 $countries["IRN"]="İran";
@@ -189,6 +154,7 @@ $countries["ISL"]="İzlanda";
 $countries["ISR"]="Israil";
 $countries["ITA"]="İtalya";
 $countries["JAM"]="Jamaika";
+$countries["JEY"]="Jersey";
 $countries["JOR"]="Ürdün";
 $countries["JPN"]="Japonya";
 $countries["KAZ"]="Kazakistan";
@@ -211,6 +177,7 @@ $countries["LTU"]="Litvanya";
 $countries["LUX"]="Lüksemburg";
 $countries["LVA"]="Letonya";
 $countries["MAC"]="Makao";
+$countries["MAF"]="Saint-Martin";
 $countries["MAR"]="Fas";
 $countries["MCO"]="Monaco";
 $countries["MDA"]="Moldovya";
@@ -222,9 +189,9 @@ $countries["MKD"]="Makedonya";
 $countries["MLI"]="Mali";
 $countries["MLT"]="Malta";
 $countries["MMR"]="Myanmar";
+$countries["MNE"]="Karadağ";
 $countries["MNG"]="Moğolistan";
 $countries["MNP"]="Mariyan Adaları";
-$countries["MNT"]="Karadağ";
 $countries["MOZ"]="Mozambik";
 $countries["MRT"]="Moritanya";
 $countries["MSR"]="Montserrat";
@@ -264,8 +231,7 @@ $countries["PSE"]="Filistin";
 $countries["PYF"]="Fransız Polenazyası";
 $countries["QAT"]="Katar";
 $countries["REU"]="Reunyon";
-$countries["ROM"]="Romanya";
-$countries["RSS"]="Güney Sudan";
+$countries["ROU"]="Romanya";
 $countries["RUS"]="Rusya Federasyonu";
 $countries["RWA"]="Ruanda";
 $countries["SAU"]="Suudi Arabistan";
@@ -274,7 +240,6 @@ $countries["SCT"]="Iskoçya";
 $countries["SDN"]="Sudan";
 $countries["SEA"]="Denizde";
 $countries["SEN"]="Senegal";
-$countries["SER"]="Sırbistan";
 $countries["SGP"]="Singapur";
 $countries["SGS"]="Güney Gürcistan ve Güney Sandviç Adaları";
 $countries["SHN"]="Saint Helena";
@@ -286,6 +251,8 @@ $countries["SLV"]="El Salvador";
 $countries["SMR"]="San Marino";
 $countries["SOM"]="Somali";
 $countries["SPM"]="Saint Piyer ve Mikelon";
+$countries["SRB"]="Sırbistan";
+$countries["SSD"]="Güney Sudan";
 $countries["STP"]="Sao Tome ve Prinsip";
 $countries["SUN"]="SSCB";
 $countries["SUR"]="Surinam";
@@ -336,27 +303,6 @@ $countries["ZMB"]="Zambia";
 $countries["ZWE"]="Zimbabve";
 $countries["???"]="Bilinmeyen";
 
-/*
- * The following table lists alternate names for various Chapman codes.
- * It will be used when country names have to be converted to Chapman codes.
- * You do not have to list all the possibilities in all page languages.  This
- * will be done automatically by the country-to-Chapman conversion routine.
- *
- * Because the list, and its contents, are specific to each language, the
- * Translator Tool won't let you work on the list directly.  The list will
- * have to be updated and amended manually.
- *
- * Suppose Chapman code "XYZ" represents the same country, and that country
- * had the names "Name1", "Name2", "Name3" in its history.  It is now known
- * as "Current name".  You can list the various names like this:
- *
- * $countries["XYZ"]="Current name";
- * $altCountryNames["XYZ"]="Name1; Name2; Name3";
- *
- * The Chapman-to-country conversion will always use the $countries list of
- * the current page language, no matter what the original country name was.
- *
- */
 $altCountryNames["DEU"]="ADC; Alman Demokratik Cumhuriyeti; FAC; Federal Almanya Cumhuriyeti";
 $altCountryNames["FLK"]="Malvinas";
 $altCountryNames["GBR"]="Büyük Britanya";

@@ -40,6 +40,26 @@ Additional codes, to help Translators, follow the date as follows:
 The above list of codes may be amended as new situations arise.
 
 
+VERSION 4.3.1
+
+?$countries["whatever"]								dd Monthname, year		Change codes and comments
+----------------------------------------------------------------------------------------
++$countries["GGY"]									16 Jan 2018				A	Found in the ISO 3166 list
++$countries["BLM"]									16 Jan 2018				A	Found in the ISO 3166 list
++$countries["MAF"]									16 Jan 2018				A	Found in the ISO 3166 list
++$countries["JEY"]									16 Jan 2018				A	Found in the ISO 3166 list
++$countries["SRB"]									16 Jan 2018				R	SER --> SRB to conform to ISO 3166
+-$countries["SER"]									16 Jan 2018				R
++$countries["ROU"]									16 Jan 2018				R	ROM --> ROU to conform to ISO 3166
+-$countries["ROM"]									16 Jan 2018				R
++$countries["MNE"]									16 Jan 2018				R	MNT --> MNE to conform to ISO 3166
+-$countries["MNT"]									16 Jan 2018				R
++$countries["IMN"]									16 Jan 2018				R	IOM --> IMN to conform to ISO 3166
+-$countries["IOM"]									16 Jan 2018				R
++$countries["SSD"]									16 Jan 2018				R	RSS --> SSD to conform to ISO 3166
+-$countries["RSS"]									16 Jan 2018				R
+
+
 VERSION 4.3.0
 
 ?$countries["whatever"]								dd Monthname, year		Change codes and comments
