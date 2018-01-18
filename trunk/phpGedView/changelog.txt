@@ -9,6 +9,7 @@
 =====================================================================
 
 Version 4.3.1
+ - Fixed: E-mail to multiple users from Useradmin page fails with "Not welcome here" error (canajun2eh)
  - Changed: Updated LDS Temple codes (canajun2eh)
  - Fixed: GEDCOMs edited by PhpGedView contain "URL" tags instead of "WWW" tags (canajun2eh)
  - Fixed: Missing LDS Temple Code for LDS-related events in Close Relatives Report (canajun2eh)
