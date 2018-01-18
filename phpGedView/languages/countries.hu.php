@@ -1,42 +1,27 @@
 <?php
 /**
- * see http://unstats.un.org/unsd/methods/m49/m49alpha.htm
- * see http://www.foreignword.com/countries/  for a comprehensive list, with translations
- * see http://susning.nu/Landskod  (list #7) for another list, taken from ISO standards
- * see http://helpdesk.rootsweb.com/codes for a comprehensive list of Chapman codes.
- * see http://www.rootsweb.com/~wlsgfhs/ChapmanCodes.htm for another list of Chapman codes
+ * Hungarian texts
  *
- * The list that follows is the list of Chapman country codes, with additions from the
- * other sources mentioned above.
+ * phpGedView: Genealogy Viewer
+ * Copyright (C) 2002 to 2018  PGV Development Team.  All rights reserved.
  *
- * These codes do not appear in the two Chapman lists cited:
- *		ALA		Åland Islands
- *		COD		Congo (Brazzaville)		This country was known as Zaire
- *		NFK		Norfolk Island
- *		PRI		Puerto Rico				Chapman lists this as a state of the USA
- *		SCG		Serbia and Montenegro	Chapman lists these separately
- *		TLS		Timor-Leste
- *		UMI		US Minor Outlying Islands
- *		VIR		US Virgin Islands		Chapman lists this as a state of the USA
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
  *
- * These Chapman country codes do not appear in the list following:
- *		UEL		United Empire Loyalist		This is NOT a country or region, it's
- *											a group of people
- *		UK		United Kingdom				This is the only two-letter country code,
- *											and GBR or one of its components should be
- *											used instead.
- *		SLK		Slovakia					This code, listed in the last source cited,
- *											should be SVK
- *		SLO		Slovenia					This code, listed in the last source cited,
- *											should be SVN
- *		SAM		South America				This code, listed in the last source cited,
- *											is not precise enough
- *		TMP		East Timor					Official name is TLS "Timor-Leste"
- *		HOL		Holland						Official name is NLD "Netherlands"
- *		ESM		Western Samoa				Official name is WSM "Samoa"
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  * @package PhpGedView
  * @subpackage Languages
+ * @version $Id$
  */
 
 if (!defined('PGV_PHPGEDVIEW')) {
@@ -62,8 +47,8 @@ $countries["ATF"]="Francia Déli Területek";
 $countries["ATG"]="Antigua és Barbuda";
 $countries["AUS"]="Ausztrália";
 $countries["AUT"]="Ausztria";
-	$countries["AZR"]="Azores";
 $countries["AZE"]="Azerbajdzsán";
+$countries["AZR"]="Azori-szigetek";
 $countries["BDI"]="Burundi";
 $countries["BEL"]="Belgium";
 $countries["BEN"]="Benin";
@@ -73,6 +58,7 @@ $countries["BGR"]="Bulgária";
 $countries["BHR"]="Bahrein";
 $countries["BHS"]="Bahama-szigetek";
 $countries["BIH"]="Bosznia-Hercegovina";
+$countries["BLM"]="Saint-Barthélemy";
 $countries["BLR"]="Belorusszia";
 $countries["BLZ"]="Belize";
 $countries["BMU"]="Bermuda";
@@ -83,13 +69,13 @@ $countries["BRN"]="Brunei Darussalam";
 $countries["BTN"]="Bhután";
 $countries["BVT"]="Bouvet-sziget";
 $countries["BWA"]="Botswana";
-	$countries["BWI"]="British West Indies";
+$countries["BWI"]="Brit Nyugat-India";
 $countries["CAF"]="Közép-Afrikai Köztársaság";
 $countries["CAN"]="Kanada";
-	$countries["CAP"]="Cape Colony";
+$countries["CAP"]="Cape Colony";
 $countries["CCK"]="Kókusz-szigetek";
 $countries["CHE"]="Svájc";
-	$countries["CHI"]="Channel Islands";
+$countries["CHI"]="Channel Islands";
 $countries["CHL"]="Chile";
 $countries["CHN"]="Kína";
 $countries["CIV"]="Côte d'Ivoire";
@@ -124,7 +110,7 @@ $countries["EST"]="Észtország";
 $countries["ETH"]="Etiópia";
 $countries["FIN"]="Finnország";
 $countries["FJI"]="Fidzsi";
-	$countries["FLD"]="Flanders";
+$countries["FLD"]="Flanders";
 $countries["FLK"]="Falkland-szigetek";
 $countries["FRA"]="Franciaország";
 $countries["FRO"]="Feröer-szigetek";
@@ -132,6 +118,7 @@ $countries["FSM"]="Mikronéziai Szövetségi Államok";
 $countries["GAB"]="Gabon";
 $countries["GBR"]="Egyesült Királyság";
 $countries["GEO"]="Georgia";
+$countries["GGY"]="Guernsey";
 $countries["GHA"]="Ghána";
 $countries["GIB"]="Gibraltár";
 $countries["GIN"]="Guinea";
@@ -154,6 +141,7 @@ $countries["HTI"]="Haiti";
 $countries["HUN"]="Magyarország";
 $countries["IDN"]="Indonézia";
 $countries["IND"]="India";
+$countries["IOM"]="Man-sziget";
 $countries["IOT"]="Brit Indiai-óceáni Terület";
 $countries["IRL"]="Írország";
 $countries["IRN"]="Irán";
@@ -162,6 +150,7 @@ $countries["ISL"]="Izland";
 $countries["ISR"]="Izrael";
 $countries["ITA"]="Olaszország";
 $countries["JAM"]="Jamaica";
+$countries["JEY"]="Jersey";
 $countries["JOR"]="Jordánia";
 $countries["JPN"]="Japán";
 $countries["KAZ"]="Kazahsztán";
@@ -184,20 +173,21 @@ $countries["LTU"]="Észtország";
 $countries["LUX"]="Luxemburg";
 $countries["LVA"]="Litvánia";
 $countries["MAC"]="Makaó";
+$countries["MAF"]="Saint-Martin";
 $countries["MAR"]="Marokkó";
 $countries["MCO"]="Monaco";
 $countries["MDA"]="Moldva";
 $countries["MDG"]="Madagaszkár";
-	$countries["MDV"]="Maldives";
+$countries["MDV"]="Maldív-szigetek";
 $countries["MEX"]="Mexikó";
 $countries["MHL"]="Marshall-szigetek";
 $countries["MKD"]="Macedónia";
 $countries["MLI"]="Mali";
 $countries["MLT"]="Málta";
 $countries["MMR"]="Myanmar";
+$countries["MNE"]="Montenegró";
 $countries["MNG"]="Mongólia";
 $countries["MNP"]="Észak-Mariana-szigetek";
-	$countries["MNT"]="Montenegro";
 $countries["MOZ"]="Mozambik";
 $countries["MRT"]="Mauritánia";
 $countries["MSR"]="Montserrat";
@@ -233,20 +223,19 @@ $countries["PRI"]="Puerto Rico";
 $countries["PRK"]="Koreai Népi Demokratikus Köztársaság";
 $countries["PRT"]="Portugália";
 $countries["PRY"]="Paraguay";
-	$countries["PSE"]="Occupied Palestinian Territory";
+$countries["PSE"]="Megszállt palesztin terület";
 $countries["PYF"]="Francia Polinézia";
 $countries["QAT"]="Katar";
 $countries["REU"]="Reunion";
-$countries["ROM"]="Románia";
+$countries["ROU"]="Románia";
 $countries["RUS"]="Orosz Federáció";
 $countries["RWA"]="Ruanda";
 $countries["SAU"]="Szaúd-Arábia";
-	$countries["SCG"]="Serbia and Montenegro";
+$countries["SCG"]="Szerbia és Montenegró";
 $countries["SCT"]="Skócia";
 $countries["SDN"]="Szudán";
 $countries["SEA"]="Tengeren";
 $countries["SEN"]="Szenegál";
-$countries["SER"]="Szerbia";
 $countries["SGP"]="Szingapúr";
 $countries["SGS"]="Dél-Georgia és a Dél-Sandwich-szigetek";
 $countries["SHN"]="Szent Ilona";
@@ -258,6 +247,8 @@ $countries["SLV"]="El Salvador";
 $countries["SMR"]="San Marino";
 $countries["SOM"]="Szomália";
 $countries["SPM"]="St. Pierre és Miquelon";
+$countries["SRB"]="Szerbia";
+$countries["SSD"]="Dél-Szudán";
 $countries["STP"]="Sao Tome és Principe";
 $countries["SUN"]="U.S.S.R. (Soviet Union)";
 $countries["SUR"]="Suriname";
@@ -276,7 +267,7 @@ $countries["TKL"]="Tokelau";
 $countries["TKM"]="Türkmenisztán";
 $countries["TLS"]="Kelet-Timor";
 $countries["TON"]="Tonga";
-	$countries["TRN"]="Transylvania";
+$countries["TRN"]="Erdély";
 $countries["TTO"]="Trinidad és Tobago";
 $countries["TUN"]="Tunézia";
 $countries["TUR"]="Törökország";
@@ -298,7 +289,7 @@ $countries["VNM"]="Vietnám";
 $countries["VUT"]="Vanuatu";
 $countries["WAF"]="Nyugat Africa";
 $countries["WLF"]="Wallis és Futuna";
-	$countries["WLS"]="Wales";
+$countries["WLS"]="Wales";
 $countries["WSM"]="Szamoa";
 $countries["YEM"]="Jemen";
 $countries["YUG"]="Jugoszlávia";
@@ -312,13 +303,4 @@ $altCountryNames["CCK"]="Keeling-szigetek";
 $altCountryNames["CIV"]="Elefántcsontpart";
 $altCountryNames["FLK"]="Malvin-szigetek";
 
-$countries["TRN"]="Erdély";
-$countries["AZR"]="Azori-szigetek";
-$countries["MDV"]="Maldív-szigetek";
-$countries["MNT"]="Montenegró";
-$countries["BWI"]="Brit Nyugat-India";
-$countries["WLS"]="Wales";
-$countries["SCG"]="Szerbia és Montenegró";
-$countries["PSE"]="Megszállt palesztin terület";
-$countries["WLS"]="Wales";
 ?>

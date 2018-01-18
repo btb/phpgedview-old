@@ -3,7 +3,7 @@
  * UI for online updating of the GEDCOM config file.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2016  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2018  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -88,6 +88,31 @@ function GetGEDFromZIP($zipfile, $extract=true) {
 	}
 	return $zipfile;
 }
+
+/**
+ * Get the list of country names to be shown in the GeoNames Country Bias pick list
+ *
+ * The country name list will be in localized alphabetical order.  Sorting will occur according
+ * to the sort rules established for the currently active language.
+ */
+function getCountryNames() {
+	global $GEONAMES_COUNTRY_CODES, $countries;
+
+	loadLangFile("pgv_country");	// Get the localized country names
+	$countryNames = array();
+	foreach ($GEONAMES_COUNTRY_CODES as $key => $value) {
+		$countryNames[$key] = $countries[$value];		// Get the localized country name corresponding to the 2-character ISO code
+	}
+
+	$firstEntry = array('US' => $countryNames['US']);	// Always put USA at the top of the list
+	unset($countryNames['US']);							//   and remove USA from the list of names to be sorted
+	uasort($countryNames, 'stringsort');				// Arrange the remaining localized country names into localized alphabetical order
+	$countryNames = array_merge($firstEntry, $countryNames);
+
+	unset ($GLOBALS['countries'], $GLOBALS['altCountryNames']);		// These lists aren't needed any more
+	return $countryNames;
+}
+
 
 loadLangFile("pgv_confighelp, pgv_help");
 
@@ -292,7 +317,8 @@ if ($action=="update") {
 	$configtext = preg_replace('/\$ABBREVIATE_CHART_LABELS\s*=\s*.*;/', "\$ABBREVIATE_CHART_LABELS = ".$boolarray[$_POST["NEW_ABBREVIATE_CHART_LABELS"]].";", $configtext);
 	$configtext = preg_replace('/\$ADVANCED_NAME_FACTS\s*=\s*.*;/', "\$ADVANCED_NAME_FACTS = \"".$_POST["NEW_ADVANCED_NAME_FACTS"]."\";", $configtext);
 	$configtext = preg_replace('/\$ADVANCED_PLAC_FACTS\s*=\s*.*;/', "\$ADVANCED_PLAC_FACTS = \"".$_POST["NEW_ADVANCED_PLAC_FACTS"]."\";", $configtext);
-	$configtext = preg_replace('/\$USE_GEONAMES\s*=\s*.*;/', "\$USE_GEONAMES = ".$boolarray[$_POST["NEW_USE_GEONAMES"]].";", $configtext);
+	$configtext = preg_replace('/\$GEONAMES_KEY\s*=\s*.*;/', "\$GEONAMES_KEY = \"".$_POST["NEW_GEONAMES_KEY"]."\";", $configtext);
+	$configtext = preg_replace('/\$GEONAMES_BIAS\s*=\s*.*;/', "\$GEONAMES_BIAS = \"".$_POST["NEW_GEONAMES_BIAS"]."\";", $configtext);
 	$configtext = preg_replace('/\$GEOCODE_KEY\s*=\s*.*;/', "\$GEOCODE_KEY = \"".$_POST["NEW_GEOCODE_KEY"]."\";", $configtext);
 	$configtext = preg_replace('/\$ALLOW_EDIT_GEDCOM\s*=\s*.*;/', "\$ALLOW_EDIT_GEDCOM = ".$boolarray[$_POST["NEW_ALLOW_EDIT_GEDCOM"]].";", $configtext);
 	$configtext = preg_replace('/\$ALLOW_THEME_DROPDOWN\s*=\s*.*;/', "\$ALLOW_THEME_DROPDOWN = ".$boolarray[$_POST["NEW_ALLOW_THEME_DROPDOWN"]].";", $configtext);
@@ -1812,6 +1838,33 @@ print "&nbsp;<a href=\"javascript: ".$pgv_lang["editopt_conf"]."\" onclick=\"exp
 		</td>
 	</tr>
 	<tr>
+		<td class="descriptionbox wrap width20"><?php print_help_link("GEONAMES_KEY_help", "qm", "GEONAMES_KEY"); print $pgv_lang["GEONAMES_KEY"]; ?></td>
+		<td class="optionbox">
+			<input type="text" name="NEW_GEONAMES_KEY" value="<?php print $GEONAMES_KEY; ?>" size="40" dir="ltr" tabindex="<?php $i++; print $i; ?>" onfocus="getHelp('GEONAMES_KEY_help');" /></td>
+		</td>
+	</tr>
+	<tr>
+		<td class="descriptionbox wrap width20"><?php print_help_link("GEONAMES_BIAS_help", "qm", "GEONAMES_BIAS"); print $pgv_lang["GEONAMES_BIAS"]; ?></td>
+		<td class="optionbox">
+			<select name="NEW_GEONAMES_BIAS" size="10" tabindex="<?php $i++; print $i; ?>" onfocus="getHelp('GEONAMES_BIAS_help');">
+				<option value=""><?php print $pgv_lang["GEONAMES_BIAS_no_preference"]; ?></option>
+				<?php
+					foreach (getCountryNames() as $countryCode => $countryName) {
+						print "<option value=\"".$countryCode."\"";
+						if ($countryCode == $GEONAMES_BIAS) print " selected=\"selected\"";
+						print ">".$countryName."</option>\n";
+					}
+				?>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td class="descriptionbox wrap width20"><?php print_help_link("GEOCODE_KEY_help", "qm", "GEOCODE_KEY"); print $pgv_lang["GEOCODE_KEY"]; ?></td>
+		<td class="optionbox">
+			<input type="text" name="NEW_GEOCODE_KEY" value="<?php print $GEOCODE_KEY; ?>" size="40" dir="ltr" tabindex="<?php $i++; print $i; ?>" onfocus="getHelp('GEOCODE_KEY_help');" /></td>
+		</td>
+	</tr>
+	<tr>
 		<td class="descriptionbox wrap width20"><?php print_help_link("INDI_FACTS_ADD_help", "qm", "INDI_FACTS_ADD"); print $pgv_lang["INDI_FACTS_ADD"]; ?></td>
 		<td class="optionbox"><input type="text" name="NEW_INDI_FACTS_ADD" value="<?php print $INDI_FACTS_ADD; ?>" size="80" dir="ltr" tabindex="<?php $i++; print $i; ?>" onfocus="getHelp('INDI_FACTS_ADD_help');" /></td>
 	</tr>
@@ -1929,21 +1982,6 @@ print "&nbsp;<a href=\"javascript: ".$pgv_lang["editopt_conf"]."\" onclick=\"exp
 	<tr>
 		<td class="descriptionbox wrap width20"><?php print_help_link("ADVANCED_PLAC_FACTS_help", "qm", "ADVANCED_PLAC_FACTS"); print $pgv_lang["ADVANCED_PLAC_FACTS"]; ?></td>
 		<td class="optionbox"><input type="text" name="NEW_ADVANCED_PLAC_FACTS" value="<?php print $ADVANCED_PLAC_FACTS; ?>" size="40" dir="ltr" tabindex="<?php $i++; print $i; ?>" onfocus="getHelp('ADVANCED_PLAC_FACTS_help');" /></td>
-	</tr>
-	<tr>
-		<td class="descriptionbox wrap width20"><?php print_help_link("USE_GEONAMES_help", "qm", "USE_GEONAMES"); print $pgv_lang["USE_GEONAMES"]; ?></td>
-		<td class="optionbox">
-			<select name="NEW_USE_GEONAMES" tabindex="<?php $i++; print $i; ?>" onfocus="getHelp('USE_GEONAMES_help');">
-				<option value="yes" <?php if ($USE_GEONAMES) print "selected=\"selected\""; ?>><?php print $pgv_lang["yes"]; ?></option>
-				<option value="no" <?php if (!$USE_GEONAMES) print "selected=\"selected\""; ?>><?php print $pgv_lang["no"]; ?></option>
-			</select>
-		</td>
-	</tr>
-	<tr>
-		<td class="descriptionbox wrap width20"><?php print_help_link("GEOCODE_KEY_help", "qm", "GEOCODE_KEY"); print $pgv_lang["GEOCODE_KEY"]; ?></td>
-		<td class="optionbox">
-			<input type="text" name="NEW_GEOCODE_KEY" value="<?php print $GEOCODE_KEY; ?>" size="40" dir="ltr" tabindex="<?php $i++; print $i; ?>" onfocus="getHelp('GEOCODE_KEY_help');" /></td>
-		</td>
 	</tr>
 
 	<tr>
