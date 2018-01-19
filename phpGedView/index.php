@@ -4,7 +4,7 @@
  * to keep bookmarks, see a list of upcoming events, etc.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2016  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2018  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,6 +26,12 @@
  */
 
 define('PGV_SCRIPT_NAME', 'index.php');
+
+if (!file_exists('./config.php')) {
+		header('Location: install.php');	// config.php file is missing -- this must be a new install
+		exit;
+}
+
 require './config.php';
 require_once PGV_ROOT.'includes/index_cache.php';
 require_once PGV_ROOT.'includes/functions/functions_print_facts.php';  //--needed for the expand url function in some of the blocks

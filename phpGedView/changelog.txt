@@ -9,6 +9,7 @@
 =====================================================================
 
 Version 4.3.1
+ - Fixed: New install does not redirect to install.php when file config.php is missing (canajun2eh)
  - Changed: implement additional geonames.org feature codes (canajun2eh)
  - Fixed: geonames.org database now requires a userid (canajun2eh)
  - Fixed: E-mail to multiple users from Useradmin page fails with "Not welcome here" error (canajun2eh)
