@@ -40,6 +40,14 @@ Additional codes, to help Translators, follow the date as follows:
 The above list of codes may be amended as new situations arise.
 
 
+VERSION 4.3.1
+
+?$pgv_lang["whatever"]								dd Monthname, year		Change codes and comments
+----------------------------------------------------------------------------------------
++$pgv_lang["medialist_current_dir"]					22 Jan 2018				A
++$pgv_lang["medialist_unlinked"]					22 Jan 2018				A
+
+
 VERSION 4.3.0
 
 ?$pgv_lang["whatever"]								dd Monthname, year		Change codes and comments

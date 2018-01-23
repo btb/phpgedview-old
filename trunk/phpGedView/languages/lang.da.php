@@ -3,7 +3,7 @@
  * Danish Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2018  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -1175,7 +1175,7 @@ $pgv_lang["message_invalid_to"]		= "Ugyldig modtageradresse: &lt#email#&gt";
 $pgv_lang["reset"]				= "Nulstil";
 $pgv_lang["site_default"]		= "Standard på hjemmesiden";
 $pgv_lang["mygedview_desc"]		= "Dette er <em>Mine Sider</em>, hvor du kan vælge egne <em>favoritter</em>, få en påmindelse om <em>begivenheder</em> og <em>samarbejde med andre brugere</em>.";
-$pgv_lang["no_messages"]		= "Der er ingen bye beskeder til dig.";
+$pgv_lang["no_messages"]		= "Du har ingen nye beskeder.";
 $pgv_lang["clicking_ok"]		= "Ved at klikke på OK, åbnes der et nyt vindue, hvor du kan kontakte #user[fullname]#";
 $pgv_lang["favorites"]				= "Favoritter";
 $pgv_lang["my_favorites"]		= "Mine Favoritter";
