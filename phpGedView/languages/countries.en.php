@@ -166,7 +166,7 @@ $countries["LTU"]="Lithuania";
 $countries["LUX"]="Luxembourg";
 $countries["LVA"]="Latvia";
 $countries["MAC"]="Macau";
-$countries["MAF"]="Saint-Martin (French part)";
+$countries["MAF"]="Saint-Martin";
 $countries["MAR"]="Morocco";
 $countries["MCO"]="Monaco";
 $countries["MDA"]="Moldova";
@@ -290,6 +290,7 @@ $countries["ZAF"]="South Africa";
 $countries["ZAR"]="Zaire";
 $countries["ZMB"]="Zambia";
 $countries["ZWE"]="Zimbabwe";
+$countries["???"]="Unknown";
 
 /*
  * The following table lists alternate names for various Chapman codes.

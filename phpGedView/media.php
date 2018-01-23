@@ -3,7 +3,7 @@
  * Popup window that will allow a user to search for a media
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2012  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2018  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -207,10 +207,11 @@ if (!$ALLOW_EDIT_GEDCOM) {
 // global var used by recursive functions
 $starttime = time();
 
-// Set initial session-wide defaults for Sort sequence, Thumbnail option, and Filter text
+// Set initial session-wide defaults for Sort sequence, Thumbnail option, Unlinked Media option, and Filter text
 if (!isset($_SESSION['MMsortby'])) {
 	$_SESSION['MMsortby'] = 'title';
 	$_SESSION['MMshowthumb'] = '1';
+	$_SESSION['MMshowonlyunlinkedmedia'] = '0';
 	$_SESSION['MMfilter'] = '';
 }
 
@@ -235,6 +236,12 @@ if (isset($_POST['sortby'])) {
 	$sortby = safe_POST('sortby', 'file', 'title');
 	$_SESSION['MMsortby'] = $sortby;
 } else $sortby = $_SESSION['MMsortby'];
+
+if (isset($_POST['showonlyunlinkedmedia'])) {
+	$showonlyunlinkedmedia = safe_POST('showonlyunlinkedmedia', '1', '0');
+	$_SESSION['MMshowonlyunlinkedmedia'] = $showonlyunlinkedmedia;
+} else $showonlyunlinkedmedia = $_SESSION['MMshowonlyunlinkedmedia'];
+
 if (isset($_POST['showthumb'])) {
 	$showthumb = safe_POST('showthumb', '1', '0');
 	$_SESSION['MMshowthumb'] = $showthumb;
@@ -798,6 +805,7 @@ if (check_media_structure()) {
 ?>
 
 <form name="managemedia" id="managemedia" method="post" onsubmit="return checknames(this);" action="media.php">
+	<input type="hidden" name="showonlyunlinkedmedia" value="<?php print $showonlyunlinkedmedia; ?>" />
 	<input type="hidden" name="showthumb" value="<?php print $showthumb; ?>" />
 	<input type="hidden" name="thumbdir" value="<?php print $thumbdir; ?>" />
 	<input type="hidden" name="level" value="<?php print $level; ?>" />
@@ -821,20 +829,33 @@ if (check_media_structure()) {
 	<td class="descriptionbox wrap width25" <?php print $legendAlign;?>><?php print_help_link("upload_media_help", "qm", "upload_media"); print $pgv_lang["upload_media"]; ?></td>
 	<td class="optionbox wrap"><?php print "<a href=\"#\" onclick=\"expand_layer('uploadmedia');\">".$pgv_lang["upload_media"]."</a>"; ?></td></tr>
 
-	<!-- // NOTE: Row 2 left: Show thumbnails -->
-	<tr><td class="descriptionbox wrap width25" <?php print $legendAlign;?>><?php print_help_link("show_thumb_help", "qm", "show_thumbnail"); ?><?php print $pgv_lang["show_thumbnail"]; ?></td>
+	<!-- // NOTE: Row 2 left: Show thumbnails, Filter to only unlinked media -->
+	<tr><td class="descriptionbox wrap width25" <?php print $legendAlign;?>><?php print_help_link("show_thumb_help", "qm", "show_thumbnail"); ?><?php print $pgv_lang["show_thumbnail"]; ?><br /><?php print_help_link("medialist_unlinked_help", "qm", "medialist_unlinked"); ?><?php print $pgv_lang["medialist_unlinked"]; ?></td>
 	<td class="optionbox wrap">
 		<input type="checkbox" value="<?php
 		if ($showthumb) echo "1\" checked=\"checked\" onclick=\"document.managemedia.showthumb.value='0';";
-		else echo "0\" onclick=\"document.managemedia.showthumb.value='1';";?>"/>
+		else echo "0\" onclick=\"document.managemedia.showthumb.value='1';";?>"/><br />
+		<input type="checkbox" value="<?php
+		if ($showonlyunlinkedmedia) echo "1\" checked=\"checked\" onclick=\"document.managemedia.showonlyunlinkedmedia.value='0';";
+		else echo "0\" onclick=\"document.managemedia.showonlyunlinkedmedia.value='1';";?>"/>
 	</td>
 
 	<!-- // NOTE: Row 2 right: Add media -->
-	<td class="descriptionbox wrap width25" <?php print $legendAlign;?>><?php print_help_link("add_media_help", "qm"); ?><?php print $pgv_lang["add_media_lbl"]; ?></td>
+	<td class="descriptionbox wrap width25" <?php print $legendAlign?>><?php print_help_link("add_media_help", "qm"); ?><?php print $pgv_lang["add_media_lbl"]; ?></td>
 	<td class="optionbox wrap"><a href="javascript: <?php echo $pgv_lang["add_media_lbl"]; ?>" onclick="window.open('addmedia.php?action=showmediaform&linktoid=new', '_blank', 'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1'); return false;"> <?php echo $pgv_lang["add_media"]; ?></a></td></tr>
 
 	<!-- // NOTE: Row 3 left: Filter options -->
-	<tr><td class="descriptionbox wrap width25" <?php print $legendAlign;?>><?php print_help_link("simple_filter_help", "qm", "filter"); print $pgv_lang["filter"];?></td>
+	<tr><td class="descriptionbox wrap width25" <?php print $legendAlign?>>
+		<?php
+			if ($MEDIA_DIRECTORY_LEVELS > 0) {
+				$text = $pgv_lang["medialist_current_dir"];
+				print_help_link("medialist_current_dir_help", "qm", "{$text}");
+				echo $text, '<br />';
+			}
+			print_help_link("simple_filter_help", "qm", "filter");
+			echo $pgv_lang["filter"];
+		?>
+	</td>
 	<td class="optionbox wrap">
 		<?php
 			// Directory pick list
@@ -854,7 +875,8 @@ if (check_media_structure()) {
 			} else print "<input name=\"directory\" type=\"hidden\" value=\"ALL\" />";
 		// Text field for filter
 		?>
-		<input type="text" name="filter" value="<?php if($filter) print $filter;?>" /><br /><input type="submit" name="search" value="<?php print $pgv_lang["filter"];?>" onclick="this.form.subclick.value=this.name" />&nbsp;&nbsp;&nbsp;<input type="submit" name="all" value="<?php print $pgv_lang["display_all"]; ?>" onclick="this.form.subclick.value=this.name" /></td>
+		<input type="text" name="filter" value="<?php if($filter) print $filter;?>" />
+	</td>
 
 	<!-- // NOTE: Row 3 right: Generate missing thumbnails -->
 	<?php
@@ -864,6 +886,18 @@ if (check_media_structure()) {
 		?>
 	<td class="descriptionbox wrap width25" <?php print $legendAlign;?>><?php print_help_link("gen_missing_thumbs_help", "qm"); ?><?php print $pgv_lang["gen_missing_thumbs_lbl"]; ?></td>
 	<td class="optionbox wrap"><a href="<?php print encode_url($tempURL);?>"><?php print $pgv_lang["gen_missing_thumbs"];?></a></td></tr>
+
+	<!-- // NOTE: Row 4 left: Update -->
+	<tr><td class="descriptionbox wrap width25" <?php print $legendAlign;?>>&nbsp;</td>
+	<td class="optionbox wrap">
+		<input type="submit" name="search" value="<?php print $pgv_lang["filter"];?>" onclick="this.form.subclick.value=this.name" />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type="submit" name="all" value="<?php print $pgv_lang["display_all"]; ?>" onclick="this.form.subclick.value=this.name" />
+	</td>
+	<td class="descriptionbox wrap width25" <?php print $legendAlign;?>>&nbsp;</td>
+	<td class="optionbox wrap">&nbsp;</td>
+	</tr>
+
 	</table>
 </form>
 <?php
@@ -1001,6 +1035,7 @@ if (check_media_structure()) {
 				$printDone = false;
 				foreach ($sortedMediaList as $indexval => $media) {
 					while (true) {
+						if ($showonlyunlinkedmedia && $media["LINKED"]) break;
 						if (!filterMedia($media, $filter, $httpFilter)) break;
 						$isExternal = isFileExternal($media["FILE"]);
 						if ($passCount==1 && !$isExternal) break;
