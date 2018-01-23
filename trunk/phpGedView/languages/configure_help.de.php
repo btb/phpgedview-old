@@ -3,7 +3,7 @@
  * German Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2016  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2018  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -505,13 +505,6 @@ $pgv_lang["SHOW_DEAD_PEOPLE_help"]		= "~#pgv_lang[SHOW_DEAD_PEOPLE]#~<br /><br /
 $pgv_lang["select_privacyfile_button"]	= "Datenschutzdatei wählen";
 $pgv_lang["PRIVACY_BY_YEAR"]			= "Datenschutz mittels Alter eines Ereignisses begrenzen";
 $pgv_lang["PRIVACY_BY_YEAR_help"]		= "~#pgv_lang[PRIVACY_BY_YEAR]#~<br /><br />Wenn Sie den Datenschutz mittels des Alters eines Ereignisses begrenzen, werden Details von Personen gezeigt oder verborgen in Abhängigkeit davon, wie alt die Person zum Zeitpunkt des Ereignisses war, unabhängig davon, ob die Person noch lebt oder inzwischen verstorben ist. Verwenden Sie diese Einstellung in Verbindung mit »Alter, ab dem angenommen wird, dass eine Person verstorben ist«. Wenn Sie z.B. den Alters-Wert auf 100 einstellen und die eben genannte Option auf <b>#pgv_lang[yes]#</b>, werden alle Personen, gleich ob sie lebend oder verstorben sind, die vor weniger als 100 Jahren geboren wurden, als privat behandelt. Personen, die vor weniger als 85 Jahren geheiratet haben und Personen, die vor weniger als 75 Jahren verstorben sind, werden ebenfalls als privat behandelt. Beachten Sie bitte, dass diese Option den Seitenaufbau etwas verlangsamt.<br />";
-
-// Google Translate
-$pgv_lang["google_translate"]			= "Google&reg; Übersetzungstool";
-$pgv_lang["commit"]						= "Übernehmen";
-$pgv_lang["commit_google"]				= "Alle Google&reg; Übersetzungen übernehmen";
-$pgv_lang["commit_google_help"]			= "~#pgv_lang[commit_google]#~<br /><br />Wenn Sie dieses Link klicken, werden alle gespeicherten Übersetzungen, die mit Hilfe des Google&reg; Übersetzungstools bearbeitet wurden, in die Sprachdatei übernommen.<br /><br />Wenn viele gespeicherte Übersetzungen vorhanden sind, können Sie den Verlauf des Übernehmens beobachten.<br /><br />";
-$pgv_lang["google_translate_help"]		= "~#pgv_lang[google_translate]#~<br /><br />Das Google&reg; Übersetzungstool kann benutzt werden, um dem Übersetzer nützliche Hinweise zu geben.  Es ist <b>nicht</b> beabsichtigt, dass solche Hinweise die Arbeit einer Person, die beide Sprachen vollkommen versteht, ersetzen.  Sie sollten auch berücksichtigen, dass das Google&reg; Übersetzungstool nicht immer eine Übersetzung machen kann, und dass diese kaum fehlerfrei ist.<br /><br />Wenn der Text schon übersetzt ist, ist das Link zum Google&reg; Übersetzungstool nicht vorhanden.<br /><br />Für jeden Text, den Sie mit Hilfe des Google&reg; Übersetzungstools bearbeiten möchten, klicken Sie das <b>#pgv_lang[google_translate]#</b> Link.  Nachdem die Seite neu gezeigt ist, können Sie die Fehler im automatisch übersetzten Text korrigieren. <b>Es besteht grundsätzlich keine Garantie dass diese automatische Übersetzung fehlerfrei ist.</b> Sie müssen bestimmt besondere Zeichen wie #, <, >, / und auch HTML-Tags und Verweise zu anderen Sprach oder Globalen Variablen korrigieren so dass das Resultat dem ursprünglichen Text entspricht. Bitte beachten Sie, dass das Google&reg; Übersetzungstool dem Text hinter jedem HTML-Tag ein Leerzeichen hinzufügt.  Diese hinzugefügte Leerzeichen müssen bestimmt entfernt werden.<br /><br />Wenn Sie mit dem Resultat befriedigt sind, müssen Sie <b>#pgv_lang[commit]#</b> klicken, um es sofort in die Datenbank zu übernehmen.  Wenn Sie nicht <b>#pgv_lang[commit]#</b> klicken, wird der Text gespeichert bis Sie das <b>#pgv_lang[commit_google]#</b> Link unter allen Texten klicken.  Dann werden alle gespeicherten Texte zusammen in die Sprachdatei übernommen.<br /><br />";
 
 //-- language edit utility
 $pgv_lang["lang_edit_help"]				= "~#pgv_lang[lang_edit]#~<br /><br />Auf dieser Seite können Sie Ihre Sprachdateien verwalten.<br /><br />Sie können Sprachdateien übersetzen, vergleichen und exportieren. Außerdem können Sie wählen, welche Sprachen vom Programm unterstützt werden.<br /><br />Sie können die folgenden Optionen und Tools benutzen:";

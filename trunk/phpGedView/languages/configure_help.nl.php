@@ -3,7 +3,7 @@
  * Dutch Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2018  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -33,7 +33,7 @@ if (!defined('PGV_PHPGEDVIEW')) {
 
 $pgv_lang["SHOW_LIST_PLACES"]				= "Toon Plaatsen nivo's op lijsten";
 $pgv_lang["SHOW_LIST_PLACES_help"]			= "~#pgv_lang[SHOW_LIST_PLACES]#~<br /><br />Hier bepaalt u hoeveel van de Plaatsen Informatie wordt getoond, in de Plaatsen velden, op lijsten.<br /><br />Indien de waarde op <b>9</b> wordt gezet, wordt alle Plaats Informatie getoond.<br />Als de waarde op <b>0</b> (nul) wordt gezet, worden Plaatsen geheel verborgen.<br />Ingesteld op <b>1</b>, wordt het bovenste nivo getoond. Dat is, normaal gesproken, het land.<br />Wordt hier <b>2</b> ingevuld, dan worden de twee hoogste nivo's getoond.  Het tweede nivo, onder het land, is meestal een provincie (NL), staat of territorium, enz.<br />";
-                                    	
+
 $pgv_lang["new_gedcom_title"]				= "Genealogie van [#GEDCOMFILE#]";
 $pgv_lang["keep_media_help"]				= "~#pgv_lang[keep_media]#~<br /><br />Moeten bestaande media links in de database behouden blijven, als een vervangend GEDCOM bestand is ge-upload?<br />De optie <b>Nee</b> zal alle bestaande media links uit de database verwijderen. De optie <b>Ja</b> zal de bestaande links behouden.<br /><br />Deze optie is handig als u uw GEDCOM van PhpGedView naar een off-line GEDCOM onderhouds programma exporteert, dat niet goed de ingesloten media verwijzingen afhandelt, en dan later de gewijzigde GEDCOM weer in  PhpGedView importeert.  Onder zulke omstandigheden kunnen de media verwijzingen in de GEDOM, die u exporteerde naar uw off-line Gedcom programma, ontregeld raken of verdwijnen. U zou dan, na het opnieuw importeren van de GEDCOM in PhpGedView, alle media opnieuw moeten linken aan de juiste Personen, Gezinnen en Bronnen.<br /><br />De <b>Ja</b> optie vertelt PhpGedView om alle bestaande media links te behouden, zodat u deze niet opnieuw hoeft te maken na het her-importeren van de gewijzigde GEDCOM. Dit vereist wel dat u  de ID-nummers van Personen, Gezinnen en Bronnen <b>niet</b> mag wijzigen in het off-line programma! <br /><br /><i>Family Tree Maker</i> is een van de diverse off-line programma's dat <u>niet</u> goed kan omgaan met media object verwijzingen binnen de GEDCOM.  <i>Legacy</i>, onder vele anderen, gaat <u>wel</u> goed om met deze verwijzingen.<br />";
 $pgv_lang["USE_MEDIA_VIEWER"]				= "Gebruik Media Viewer";
@@ -491,13 +491,6 @@ $pgv_lang["SHOW_DEAD_PEOPLE_help"]			= "~#pgv_lang[SHOW_DEAD_PEOPLE]#~<br /><br 
 $pgv_lang["select_privacyfile_button"]		= "Geselecteerd privacybestand";
 $pgv_lang["PRIVACY_BY_YEAR"]				= "Beperk privacy door de ouderdom van de gebeurtenis.";
 $pgv_lang["PRIVACY_BY_YEAR_help"]			= "~#pgv_lang[PRIVACY_BY_YEAR]#~<br /><br />De optie <b>#pgv_lang[PRIVACY_BY_YEAR]#</b> verbergt de details van personen, gebaseerd op hoe oud ze waren ten tijde van een gebeurtenis en onafhankelijk van of ze zijn overleden of niet. Gebruik deze optie in combinatie met de optie \"Leeftijd waarboven iemand geacht wordt overleden te zijn\".<br /><br />Bijvoorbeeld: als u deze optie aanzet en de waarde op 100 jaar instelt, worden alle personen die minder dan 100 jaar geleden zijn geboren, verborgen. Personen die minder dan 85 jaar geleden zijn gehuwd en personen die minder dan 75 jaar geleden overleden zijn worden eveneens verborgen.<br /><br />Let op: deze optie verlaagt de prestaties van PhpGedView enigszins.";
-
-// Google Translate
-$pgv_lang["google_translate"]				= "Google&reg; Vertalen";
-$pgv_lang["commit"]							= "Uitvoeren";
-$pgv_lang["commit_google"]					= "Alle door Google&reg; Vertalen wijzigingen doorvoeren";
-$pgv_lang["commit_google_help"]				= "~#pgv_lang[commit_google]#~<br /><br />Als u op deze link klikt, worden alle verzamelde vertalingen, door het Google&reg; Vertalen systeem, die nog niet zijn opgeslagen, nu in een keer opgeslagen.<br /><br />De aanwijzer toont de voortgang van het verwerken en opslaan.<br /><br />";
-$pgv_lang["google_translate_help"]			= "~#pgv_lang[google_translate]#~<br /><br />Deze tool gebruikt Google&reg; Vertalen om de vertaler hints te geven. Het is <b>niet</b> bedoeld om vertalingen te vervangen, die zijn uitgevoerd door een persoon die bron- en doel talen volledig begrijpt.<br />Denkt u er aan dat de Google&reg; Vertaal hulp niet betrouwbaar is en ook niet altijd een vertaling kan uitvoeren.<br /><br />Indien een tekst al is vertaald, zal er geeen link zijn naar Google&reg; Vertalen.<br /><br />Voor elke tekst, waarbij u de Google&reg; Vertaal hulp wilt gebruiken, klikt u op de <b>#pgv_lang[google_translate]#</b> link.  Nadat de pagina is herladen, moet u controleren op foute vertalingen en deze zelf corrigeren.<br /><b>Er is geen garantie dat de Google&reg; vertaling correct zal zijn.</b><br />Speciale karakters zoals: #, <, >, / en HTML tags zult u handmatig moeten corrigeren. Evenals referenties naar andere taal- of globale variabelen in de vertaalde tekst, zodat het resultaat overeenkomt met de orginele, onvertaalde, tekst.<br />Opmerking:   Google&reg; Vertalen plaats een spatie na elke HTML tag.  U moet beslist deze extra spaties verwijderen.<br /><br />Als u tevreden bent met het resultaat, klikt u  op <b>#pgv_lang[commit]#</b>, om het resultaat op te slaan.<br />Als u niet op <b>#pgv_lang[commit]#</b> klikt, worden de wijzigingen verzameld totdat u op de <b>#pgv_lang[commit_google]#</b> link, onderaan de pagina, klikt om alle gewijzigde tekst in een keer op te slaan.<br /><br />";
 
 //-- language edit utility
 $pgv_lang["lang_edit_help"]					= "~#pgv_lang[translator_tools]#~<br /><br />Deze pagina is bedoeld om te worden gebruikt door vertalers.<br />U kunt taalbestanden vertalen, vergelijken en exporteren.  Er is tevens een optie om vertalers te helpen vaststellen wat de oorsprong is van de tekst, die door PhpGedView wordt getoond.<br /><br />U kunt de volgende opties en hulpprogramma's gebruiken:<br />";

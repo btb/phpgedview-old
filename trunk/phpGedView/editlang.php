@@ -3,7 +3,7 @@
  * Display a diff between two language files to help in translating.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2018  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -41,7 +41,6 @@ $file_type             =safe_GET('file_type');
 $language1             =safe_GET('language1', array_keys($language_settings), 'english');
 $language2             =safe_GET('language2', array_keys($language_settings), $LANGUAGE);
 $hide_translated       =safe_GET_bool('hide_translated');
-$commitTranslationsLink=safe_GET_bool('commitTranslationsLink');
 $execute               =safe_GET_bool('execute');
 
 $lang_shortcut = $language_settings[$language2]["lang_short_cut"];
@@ -92,10 +91,6 @@ foreach ($pgv_language as $key=>$value) {
 	$Sorted_Langs[$key] = $pgv_lang[$d_LangName];
 }
 asort($Sorted_Langs);
-
-// Add in the required code to perform a google translation
-echo "<script type='text/javascript' src='http://www.google.com/jsapi'></script>";
-echo "<script type='text/javascript' src='js/translate.js'></script>";
 
 /* Language File Edit Mask */
 
@@ -339,15 +334,14 @@ case "edit" :
 					echo $dummy_output;
 					echo $dummy_output_02;
 					if (!$found) {
-						$commitTranslationsLink = true;
 						$translatedDiv = "tr_{$ls01}";
 						$untranslatedPanel = "{$translatedDiv}_pre";
 						$translatedPanel = "{$translatedDiv}_post";
 						$translatedText = mask_all($english_language_array[$ls01][1]);
 
 						echo "<div style=\"display: inline;\" id=\"{$untranslatedPanel}\">";
-						print_help_link("google_translate_help", "qm");
-						echo "<a href=\"javascript:;\" onclick=\"translate('{$lang1}', '{$lang2}', {$ls01});\">{$pgv_lang["google_translate"]}</a> - ";
+//						print_help_link("google_translate_help", "qm");
+//						echo "<a href=\"javascript:;\" onclick=\"translate('{$lang1}', '{$lang2}', {$ls01});\">{$pgv_lang["google_translate"]}</a> - ";
 						echo "<a style=\"color: #FF0000\" href=\"javascript:;\" onclick=\"return helpPopup00('", encode_url("ls01={$ls01}&ls02=".(0 - intval($lastfound) - 1)."&language2={$language2}&file_type={$file_type}&".session_name()."=".session_id()."&anchor=a1_{$ls01}"), "');\">";
 						echo "<i>";
 						if ($translatedText == "") {
@@ -358,27 +352,11 @@ case "edit" :
 						echo "</i></a>";
 						echo "</div>";
 
-						echo "<div style=\"display: none;\" id=\"{$translatedPanel}\">";
-						print_help_link("google_translate_help", "qm");
-						echo "  <a href=\"javascript:;\" onclick=\"revertTranslation({$ls01});\">", $pgv_lang["cancel"], "</a> ";
-						echo "  <a href=\"javascript:;\" onclick=\"commitTranslation('{$language2}', '{$file_type}', {$ls01});\">{$pgv_lang["commit"]}</a>";
-						echo "  <span style=\"color: purple;\" id=\"{$translatedDiv}\">{$translatedText}</span>";
-						echo "</div>";
 					}
 					echo "</td>";
 					echo "</tr>";
 				}
 			}
-		}
-		if ($commitTranslationsLink) {
-			echo "<tr><td colspan=\"2\"><div style=\"text-align: right;\">";
-			echo "<div style=\"display: inline;\" id=\"commitTranslationsLink\">";
-			print_help_link("commit_google_help", "qm");
-			echo "<a href=\"javascript:;\" onclick=\"commitTranslations('{$language2}', '{$file_type}', 'commitTranslationsLink', 'commit_progress')\">{$pgv_lang["commit_google"]}</a></div></div>";
-			echo "<div style=\"border: 1px solid #000066; width: 200px; float: right;\" id=\"commit_progress\">";
-			echo "<div style=\"width: 0%; background-color: #84BEFF;\" id=\"commit_progress_indicator\">&nbsp;</div>";
-			echo "</div>";
-			echo "</td></tr>";
 		}
 		echo "</table>";
 	}

@@ -9,6 +9,7 @@
 =====================================================================
 
 Version 4.3.1
+ - Changed: Remove Google Translate interface from language file editor (canajun2eh)
  - Added: Manage Multimedia filter to restrict view to show only unlinked media (David Smart)
  - Fixed: New install does not redirect to install.php when file config.php is missing (canajun2eh)
  - Changed: implement additional geonames.org feature codes (canajun2eh)

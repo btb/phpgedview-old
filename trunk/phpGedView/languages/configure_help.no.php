@@ -3,7 +3,7 @@
  * Norwegian texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2018  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -490,13 +490,6 @@ $pgv_lang["SHOW_DEAD_PEOPLE_help"]		= "~Vis døde personer~<br /><br />Setter ni
 $pgv_lang["select_privacyfile_button"]	= "Velg personvern-fil";
 $pgv_lang["PRIVACY_BY_YEAR"]			= "Begrens personvern utfra dato i hendelse";
 $pgv_lang["PRIVACY_BY_YEAR_help"]		= "Innstillingen for <i>Begrens personvern utfra dato i hendelse</i> vil skjule faktaopplysninger til personer basert på hvor gammel de var da hendelsen skjedde uavhengig av om de lever eller er døde.  Bruk denne  sammen med innstillingen \"#pgv_lang[MAX_ALIVE_AGE]#\".<br /><br />Eksempel: Dersom du setter alderen til å være 100 og aktiverer denne innstilling ved å angi \"Ja\", så vil alle personer, levende eller døde, som er født mindre enn for 100 år siden, bli vist som Privat.<br />Personer som ble gift mindre enn for 85 år siden, og personer som døde for mindre enn 75 år siden, vil også bli vist som Privat.<br /><br /><b>NB!</b>  <i>Vær oppmerksom på at dersom du aktiviserer denne innstillingen, så vil tiden det tar å vise en side øke noe.</i>";
-
-// Google Translate
-$pgv_lang["google_translate"]	= "Google&reg; Oversetter";
-$pgv_lang["commit"]				= "Bruk";
-$pgv_lang["commit_google"]		= "Bruk Google&reg; oversatte endringer";
-$pgv_lang["commit_google_help"]	= "~#pgv_lang[commit_google]#~<br /><br />Når du klikker på denne lenken, vil alle akkumulerte oversettelser som er gjennomført med Google&reg; Oversetter-systemer som ikke allerede er lagret bli lagret.<br /><br />Indikatoren viser framdriften på lagreprosessen.<br /><br />";
-$pgv_lang["google_translate_help"]	= "~#pgv_lang[google_translate]#~<br /><br />Dette verktøyet bruker Google&reg; Oversetter som en hjelp for oversetteren.  Den er <b>ikke</b> ment å erstatte oversetelser gjort av en person som fult ut forstår kilden and mål-språket.    Vær også oppmerksom på at Google&reg; oversetterverktøy verken er til å stole på eller alltid i stand til å utføre en oversettelse.<br /><br />Når en språktekst ellere er oversatt, vil det ikke være noen lenke til Google&reg; Oversetter.<br /><br />For hver tekst du ønsker å bruke Google&reg; Oversetter på, må du klikke <b>#pgv_lang[google_translate]#</b> lenken.  Etter at siden er lastet på nytt, bør du korrigere feiloversettelser for hånd. <b>Det er ingen garanti for at Google&reg; Oversetter er korrekt.</b> Du må korrigere spesialtegn som #, <, >, / og HTML-tagger og likeledes referanser til andre språk- eller globale variable i den oversatte teksten så resultatet matcher den originale uoversatte teksten.  Merk at Google&reg; Oversetter vil legge til et mellomrom etter hver HTML-tag.  Du må absolutt fjerne disse ekstra mellomrommene.<br /><br />Når du er fornøyd med resultatet, klikk <b>#pgv_lang[commit]#</b> for å lagre resultatet.  Hvis du ikke klikker <b>#pgv_lang[commit]#</b>, vil endringen blir akkumulert til du kilkker <b>#pgv_lang[commit_google]#</b> lenken på bunnen av siden for å effektuere alle lagrede tekster på en gang.<br /><br />";
 
 //-- language edit utility
 $pgv_lang["lang_edit_help"]			= "~#pgv_lang[translator_tools]#~<br /><br />Denne siden er først og fremst for oversettere.  Her kan du oversette, sammenligne og eksportere språkfiler.  Det er også et valg for å hjelpe oversettere for å sjekke tekst som PhpGedView lager.";

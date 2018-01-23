@@ -3,7 +3,7 @@
  * Spanish language file for PhpGedView
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2018  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -492,13 +492,6 @@ $pgv_lang["SHOW_DEAD_PEOPLE_help"]		= "~#pgv_lang[SHOW_DEAD_PEOPLE]#~<br /><br /
 $pgv_lang["select_privacyfile_button"]		= "Seleccione el archivo de privacidad";
 $pgv_lang["PRIVACY_BY_YEAR"]		= "Limitar privacidad por antigüedad del evento";
 $pgv_lang["PRIVACY_BY_YEAR_help"]	= "~#pgv_lang[PRIVACY_BY_YEAR]#~<br /><br />El ajuste <b>#pgv_lang[PRIVACY_BY_YEAR]#</b> permite ocultar detalles de personas en función de su edad a la fecha de ciertos eventos independientemente de si están vivos o si han fallecido.<br /><br />Utilice este ajuste junto con el ajuste <b>#pgv_lang[MAX_ALIVE_AGE]#</b>.  Por ejemplo, si fijó la edad a 100 y esta opción a <b>Sí</b>, todas las personas, vivas o no, nacidas hace menos de 100 años quedarán marcadas como privadas.  Personas casadas hace menos de 85 años y personas fallecidas hace menos de 75 años quedarán marcadas como privadas también.  Tome nota, por favor, de que el uso de esta opción ralentizará algo el funcionamiento de su sitio.<br />";
-
-// Google Translate
-$pgv_lang["google_translate"]	= "Traductor de Google&reg;";
-$pgv_lang["commit"]				= "Guardar";
-$pgv_lang["commit_google"]		= "Guardar los cambios traducidos por Google&reg;";
-$pgv_lang["commit_google_help"]	= "~#pgv_lang[commit_google]#~<br /><br />Al hacer clic en este vínculo, se guardarán todos las traducciones acumuladas realizadas mediante el sistema de traducción de Google que no se hayan guardado aún.<br /><br />El indicador muestra el progreso de la operación de Guardar.<br /><br />";
-$pgv_lang["google_translate_help"]	= "~#pgv_lang[google_translate]#~<br /><br />Esta herramienta utiliza #pgv_lang[google_translate]# para ayudar al traductor.  <b>No</b> está pensado para reemplazar las traducciones realizadas por una persona que conoce bien los idiomas origen y destino.    Tenga en cuenta que la herramienta de traducción de Google&reg; ni es fiable ni podrá en todos los casos realizar una traducción.<br /><br />Si un texto ya ha sido traducido, no habrá vínculo a #pgv_lang[google_translate]#.<br /><br />En cada texto en que desse usar la herramienta #pgv_lang[google_translate]#, haga clic en el vínculo <b>#pgv_lang[google_translate]#</b>.  Después de que se recargue la página, conviene que corrija a mano las traducciones incorrectas.  <b>No hay garantía de que la traducción realizada por #pgv_lang[google_translate]# sea correcta.</b> Tendrá que corregir los caracteres especiales como #, <, >, / y las etiquetas HTML así como las referencias a otras variables de idioma o globales en el texto traducido de manera que el resultado se corresponda con el texto sin traducir.  Tenga en cuenta que #pgv_lang[google_translate]# añadirá un espacio detrás de cada etiqueta HTML.  Tendrá que eliminar estos espacios adicionales.<br /><br />Cuando esté satisfecho con el resultado, haga clic en <b>#pgv_lang[commit]#</b> para guardar el resultado.  Si no hace clic en <b>#pgv_lang[commit]#</b>, los cambios se acumularán hasta que haga clic en el vínculo <b>#pgv_lang[commit_google]#</b> en la parte inferior de la página para guardar todos los cambios de una vez.<br /><br />";
 
 //-- language edit utility
 $pgv_lang["lang_edit_help"]			= "~#pgv_lang[translator_tools]#~<br /><br />Esta página está destinada a su uso por los traductores.  Puede traducir, comparar y exportar archivos de idioma.  También hay una opción para ayudar a los traductores a determinar el origen de un texto mostrado por PhpGedView.<br /><br />Puede utilizar las siguientes opciones y utilidades:<br />";

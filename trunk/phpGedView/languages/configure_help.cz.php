@@ -3,7 +3,7 @@
  * Czech Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2012  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2018  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -502,13 +502,6 @@ $pgv_lang["SHOW_DEAD_PEOPLE_help"]		= "~#pgv_lang[SHOW_DEAD_PEOPLES]#~<br /><br 
 $pgv_lang["select_privacyfile_button"]		= "Vybrat soubor privátnosti";
 $pgv_lang["PRIVACY_BY_YEAR"]		= "Nastavit privátnost podle stáří události";
 $pgv_lang["PRIVACY_BY_YEAR_help"]	= "~#pgv_lang[PRIVACY_BY_YEAR]#~<br /><br />Nastavení privátnost podle věku způsobí, že budou skryty údaje o osobách podle toho, před jakou dobou k nim došlo, nezávisle na tom, jestli je daná osoba dosud naživu, nebo ne. Tato vlastnost souvisí s nastavením \"Věk, od kterého je možné osobu považovat za mrtvou\". Například, když nastavíte zmíněnou položku věku na 100 a tuto volbu nastavíte na \"Ano\", pak informace o všech osobách narozených před méně než 100 lety (živých i mrtvých) budou označeny za soukromé. Vemte prosím na vědomí, že tato volba poněkud zpomalí načítání stránek.";
-
-// Google Translate
-##$pgv_lang["google_translate"]	= "Google&reg; Translate";
-##$pgv_lang["commit"]				= "Commit";
-##$pgv_lang["commit_google"]		= "Commit Google&reg; translated changes";
-##$pgv_lang["commit_google_help"]	= "~#pgv_lang[commit_google]#~<br /><br />When you click this link, all accumulated translations performed through the Google&reg; Translation system that have not already been saved will be saved.<br /><br />The indicator shows the progress of the Save operation.<br /><br />";
-##$pgv_lang["google_translate_help"]	= "~#pgv_lang[google_translate]#~<br /><br />This tool uses Google&reg; Translate to provide hints to the translator.  It is <b>not</b> intended to replace translations done by a person who fully understands the source and the target languages.    Please be aware also that the Google&reg; translate tool is neither reliable nor always able to perform a translation.<br /><br />When a language text has already been translated, there will be no link to Google&reg; Translate.<br /><br />For each text where you want to use the Google&reg; Translate tool, you click the <b>#pgv_lang[google_translate]#</b> link.  After the page is reloaded, you should correct the mistranslated entries by hand. <b>There is no guarantee that the Google&reg; translation will be correct.</b> You will need to correct special characters such as #, <, >, / and HTML tags as well as references to other language or global variables in the translated text so that the result matches the original untranslated text.  Note that Google&reg; Translate will add a space after each HTML tag.  You will definitely need to remove these extra spaces.<br /><br />When you are satisfied with the result, click <b>#pgv_lang[commit]#</b> to allow that result to be saved.  If you do not click <b>#pgv_lang[commit]#</b>, the changes will be accumulated until you click the <b>#pgv_lang[commit_google]#</b> link at the bottom of the page to commit all saved texts at once.<br /><br />";
 
 //-- language edit utility
 $pgv_lang["lang_edit_help"]			= "~#pgv_lang[translator_tools]#~<br /><br />Tato stránka slouží k administraci vašich jazykových souborů.<br />Jazykové soubory můžete překládat, porovnávat a exportovat.<br />Dále můžete konfigurovat jazyky programem podporované.<br /><br />Můžete používat následující volby a pomůcky:";
