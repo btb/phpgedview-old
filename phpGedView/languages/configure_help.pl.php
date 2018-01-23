@@ -3,7 +3,7 @@
  * Polish texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2018  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -369,13 +369,6 @@ $pgv_lang["SHOW_DEAD_PEOPLE_help"]		= "~#pgv_lang[SHOW_DEAD_PEOPLE]#~<br /><br /
 $pgv_lang["select_privacyfile_button"]		= "Wybierz plik prywatności";
 $pgv_lang["PRIVACY_BY_YEAR"]		= "Ogranicz prywatność wiekiem w momencie wydarzenia";
 $pgv_lang["PRIVACY_BY_YEAR_help"]	= "~#pgv_lang[PRIVACY_BY_YEAR]#~<br /><br />To ustawienie umożliwia ukrycie szczegółów osób stosując kryterium ich wieku w momencie zajścia określonego wydarzenia, niezależnie od tego, czy są to osoby żyjące, czy zmarłe.<br /><br />Używaj tego ustawienia w połączeniu z ustawieniem <b>#pgv_lang[MAX_ALIVE_AGE]#</b>. Na przykład jeśli ustawisz ten wiek na 100 i wybierzesz <b>Tak</b>, wszystkie osoby, żyjące lub nie, urodzone później, niż 100 lat temu, zostaną ukryte. Osoby, które pobrały się mniej niż 85 lat temu i osoby, które zmarły mniej niż 75 lat temu również zostaną ukryte. Pamiętaj, że zastosowanie tej opcji może spowolnić działanie systemu.<br /><br />Ustawia parametr \$PRIVACY_BY_YEAR w pliku <i><u>xxx</u>.GED_priv.php</i>.<br />";
-
-// Google Translate
-$pgv_lang["google_translate"]	= "Tłumacz z Google";
-$pgv_lang["google_translate_help"]	= "~Google Translate API - dodatek do narzędzi tłumacza~<br /><br />Ten dodatek przyśpiesza proces tłumaczenia poprzez dawanie tłumaczowi wskazówek odnośnie tłumaczonego tekstu. Nie powinien być traktowany jako narzędzie do kompletnego tłumaczenia.<br /><br />Tłumaczenie składa się z dwóch procesów. Pierwszym jest wybranie tłumaczonej zmiennej i kliknięciu odnośnika <b>#pgv_lang[google_translate]#</b>, a następnie <b>#pgv_lang[commit]#</b> by zatwierdzić daną zmienną lub <b>#pgv_lang[commit_google]#</b> do zatwierdzenia wszystkich zmian i odświeżenia strony. Następnie można poprawić błędy ręcznie. Narzędzie to powinno przyśpieszyć tłumaczenie.<b><br /><br />Nie jest zagwarantowany poprawny zapis tłumaczeń w pliku!</b><br />Narzędzie nie jest zalecane do kompletnego tłumaczenia tekstów zawierających znaki spacjalne (np. #, <, >, /) lub odwołania do innych zmiennych. Nie potrafi także przetłumaczyć niektórych tekstów.<br /><br />Więcej informacji na temat narzędzia Tłumacz Google można znaleźć na stronie: <a href=http://www.google.com/intl/pl/help/faq_translation.html>Tłumacz Google — Najczęściej zadawane pytania</a>.<br /><br />";
-$pgv_lang["commit"]				= "Zatwierdź";
-$pgv_lang["commit_google"]		= "Zatwierdź zmiany w tłumaczeniu z Google";
-$pgv_lang["commit_google_help"]	= "~#pgv_lang[commit_google]#~<br /><br />Kliknięcie tego odnośnika spowoduje zapisanie wszystkich tłumaczeń przeprowadzonych za pomocą narzędzia Tłumacz Google do edytowanego pliku. Poniżej znajduje się pasek postępu zapisywania tłumaczeń do pliku.<br /><br />";
 
 //-- language edit utility
 $pgv_lang["lang_edit_help"]		= "~#pgv_lang[translator_tools]#~<br /><br />Ta strona jest przeznaczona dla tłumaczy. Możesz tłumaczyć, porównywać i eksportować pliki językowe. Istnieje także możliwość określenia pochodzenia tekstu, wypisywanego przez PhpGedView.<br /><br />Masz do dyspozycji następujące opcje i narzędzia:<br />";

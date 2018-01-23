@@ -43,6 +43,11 @@ VERSION 4.3.1
 
 ?$pgv_lang["whatever"]								dd Monthname, year		Change codes and comments
 ----------------------------------------------------------------------------------------
+-$pgv_lang["google_translate"]						23 Jan 2018				D
+-$pgv_lang["commit"]								23 Jan 2018				D
+-$pgv_lang["commit_google"]							23 Jan 2018				D
+-$pgv_lang["commit_google_help"]					23 Jan 2018				D
+-$pgv_lang["google_translate_help"]					23 Jan 2018				D
 +$pgv_lang["GEONAMES_KEY"]							16 Jan 2018				A
 +$pgv_lang["GEONAMES_KEY_help"]						16 Jan 2018				A
 +$pgv_lang["GEONAMES_BIAS"]							16 Jan 2018				A

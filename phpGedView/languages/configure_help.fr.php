@@ -3,7 +3,7 @@
  * French Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2018  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -406,11 +406,6 @@ $pgv_lang["SHOW_DEAD_PEOPLE_help"]      = "Niveau de confidentialité pour toute
 $pgv_lang["select_privacyfile_button"]  = "Choix d'un fichier de Confidentialité";
 $pgv_lang["PRIVACY_BY_YEAR"]            = "Restriction par ancienneté d'événement";
 $pgv_lang["PRIVACY_BY_YEAR_help"]       = "L'option #pgv_lang[PRIVACY_BY_YEAR]# permet de masquer les détails pour les individus selon l'âge qu'ils avaient à un événement donné, qu'ils soient décédés depuis ou pas.<br /><br />Si l'âge maximum est défini à 100 ans, on peut ainsi masquer toutes les personnes, vivantes ou non, nées depuis moins de 100 ans, mariées depuis moins de 85 ans, ou décédées depuis moins de 75 ans.<br /><br />Avertissement : cette option peut ralentir fortement les temps de réponse.<br />";
-// Google Translate
-$pgv_lang["google_translate"]           = "Traduction Google ";
-$pgv_lang["commit"]                     = "Accepter";
-$pgv_lang["commit_google"]              = "Accepter les traductions proposées par Google";
-$pgv_lang["commit_google_help"]         = "~ # pgv_lang [commit_google] # ~ <br /> <br /> En cliquant sur ce lien, vous sauvegardez toutes les traductions proposées par Google. L'indicateur de progression de l'écriture des traductions est affiché ci-dessous. <br /> <br />";
 //-- language edit utility
 $pgv_lang["edit_langdiff"]              = "Éditer le contenu des fichiers de traduction";
 $pgv_lang["bom_check"]                  = "Utilitaire de suppression du BOM";

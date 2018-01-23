@@ -3,7 +3,7 @@
  * Slovenian Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2018  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -289,11 +289,6 @@ $pgv_lang["CHECK_MARRIAGE_RELATIONS"]		= "Preveri poročne povezave";
 $pgv_lang["SHOW_DEAD_PEOPLE"]			= "Pokaži mrtve osebe";
 $pgv_lang["select_privacyfile_button"]		= "Izberi datoteko zasebnosti";
 $pgv_lang["PRIVACY_BY_YEAR"]			= "Omeji zasebnost s starostjo dogodka";
-
-// Google Translate
-$pgv_lang["google_translate"]			= "Google&reg; prevajanje";
-$pgv_lang["commit"]				= "Pošlji";
-$pgv_lang["commit_google"]			= "Sprejmi Google&reg; prevod";
 
 //-- language edit utility
 $pgv_lang["edit_langdiff"]			= "Uredi in nastavi jezikovne datoteke";

@@ -3,7 +3,7 @@
  * Hungarian texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2018  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -475,7 +475,6 @@ $pgv_lang["SHOW_SOURCES_help"]		= "~#pgv_lang[SHOW_SOURCES]#~<br /><br />Beáll�
 $pgv_lang["GEDCOM_DEFAULT_TAB"]			= "Alapoldal mutatása a személyek oldalán";
 $pgv_lang["GEDCOM_DEFAULT_TAB_help"]	= "~#pgv_lang[GEDCOM_DEFAULT_TAB]#~<br /><br />Ez az opció beállítja hogy melyik oldalt mutassa automatikusan amikor a személyek adatai oldalát látogatják.";
 $pgv_lang["index_gedcom_news_adm_help"]		= "A GEDCOM Hírek blokkja lehetővé teszi <b>HTML-kódok</b> használatát.<br />Kérjük, ügyeljen a nyitó- és záróelemek következetes használatára. <br />Ez esetben szükséges lehet a HTML-nyelv megfelelő szintű ismerete. <br /><br />Ez a program emellett <b>stíluslapokat (CSS)</b> is használ, mely az asztaltémáknak megfelelően eltérő.<br />Ön természetesen ezeket a stílusdefiníciókat is használhatja.<br /><br />Ha bővebb információra van szüksége, a PhpGedView weboldalán bemutatunk néhány példát, hogyan használjon stíluslap-elemeket a GEDCOM Hírek blokkjában.<br />";
-$pgv_lang["google_translate"]	= "Google&reg; Fordítás";
 $pgv_lang["file_to_edit_help"]			= "~#pgv_lang[file_to_edit]#~<br /><br />#pgv_lang[lang_file_descriptions]#";
 $pgv_lang["lang_filenames_help"]		= "~#pgv_lang[lang_filenames]#~<br /><br />#pgv_lang[lang_file_descriptions]#";
 ?>

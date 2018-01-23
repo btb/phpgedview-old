@@ -3,7 +3,7 @@
  * Turkish Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2018  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -459,9 +459,6 @@ $pgv_lang["um_bu_help"] = "";
 $pgv_lang["more_help_advice"]			= "<br /><b>Daha çok yardım</b><br />Daha çok yardım sayfada bölümleri tıklatarak mevcutlar<b>?</b> .<br />";
 $pgv_lang["bad_host_user_pass"]		= "PhpGedView veritabanı sunucuyla bağlantı kuramadı. Sunucu, kullanıcı adı, ve şifre doğru olduğundan emin olmak için kontrol ediniz.";
 $pgv_lang["gedcom_title"]			= "#pgv_lang[ged_title]#";
-$pgv_lang["google_translate"]	= "Googleden&reg; Tercüme Yap";
-$pgv_lang["commit_google"]		= "Tercümeleri Googleden&reg; tercümesi yap";
-$pgv_lang["commit"]				= "Onayla";
 $pgv_lang["bom_check_help"]		= "~#pgv_lang[bom_check]#~<br /><br />#pgv_lang[bom_check_desc]#<br />";
 $pgv_lang["lang_debug_help"]	= "~#pgv_lang[lang_debug]#~<br /><br />#pgv_lang[lang_debug_desc]#<br />";
 $pgv_lang["edit_lang_utility_help"]	= "~#pgv_lang[edit_lang_utility]#~<br /><br />#pgv_lang[edit_lang_utility_desc]#<br />";
