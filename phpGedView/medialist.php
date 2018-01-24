@@ -3,7 +3,7 @@
  * Displays a list of the multimedia objects
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2018  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -50,6 +50,8 @@ if ($_SESSION['medialist_ged'] != PGV_GEDCOM) {
 if (!isset($_SESSION['medialist'])) $search = "yes";
 
 $currentdironly = (isset($_REQUEST['subdirs']) && $_REQUEST['subdirs']=="on") ? false : true;
+$unlinkedonly = isset($_REQUEST['unlinked']) && $_REQUEST['unlinked']=="on";
+
 print_header($pgv_lang["multi_title"]);
 
 if ($ENABLE_AUTOCOMPLETE) require PGV_ROOT.'js/autocomplete.js.htm';
@@ -83,27 +85,20 @@ if ($search == "yes") {
 	$showExternal = ($folder == $MEDIA_DIRECTORY) ? true : false;
 	$medialist=get_medialist($currentdironly, $folder, true, false, $showExternal);
 
+	//-- remove all linked objects if we're looking for unlinked only
 	//-- remove all private media objects
 	foreach($medialist as $key => $media) {
-			echo " ";
+		echo " ";
 
-			// Display when user has Edit rights or when object belongs to current GEDCOM
-			$disp = PGV_USER_CAN_EDIT || $media["GEDFILE"]==PGV_GED_ID;
-			// Display when Media objects aren't restricted by global privacy
-			$disp &= displayDetailsById($media["XREF"], "OBJE");
-			// Display when this Media object isn't restricted
-			$disp &= !FactViewRestricted($media["XREF"], $media["GEDCOM"]);
-			/** -- already included in the displayDetailsById() function
-		if ($disp) {
-				$links = $media["LINKS"];
-				//-- make sure that only media with links are shown
-			if (count($links) != 0) {
-						foreach($links as $id=>$type) {
-							$disp &= displayDetailsById($id, $type);
-						}
-				}
-		}
-		*/
+		// Display when user has Edit rights or when object belongs to current GEDCOM
+		$disp = PGV_USER_CAN_EDIT || $media["GEDFILE"]==PGV_GED_ID;
+		// Display when Media objects aren't restricted by global privacy
+		$disp &= displayDetailsById($media["XREF"], "OBJE");
+		// Display when this Media object isn't restricted
+		$disp &= !FactViewRestricted($media["XREF"], $media["GEDCOM"]);
+
+		if ($unlinkedonly && $media["LINKED"]) $disp = false;
+
 		if (!$disp) unset($medialist[$key]);
 	}
 	usort($medialist, "mediasort"); // Reset numbering of medialist array
@@ -142,7 +137,17 @@ if ($search == "yes") {
 	</td></tr>
 
 	<!-- // NOTE: Row 2 left: Filter options -->
-	<tr><td class="descriptionbox wrap width25" <?php echo $legendAlign;?>><?php print_help_link("simple_filter_help", "qm", "filter"); echo $pgv_lang["filter"];?></td>
+	<tr><td class="descriptionbox wrap width25" <?php echo $legendAlign;?>>
+		<?php
+			if ($MEDIA_DIRECTORY_LEVELS > 0) {
+				$text = $pgv_lang["medialist_current_dir"];
+				print_help_link("medialist_current_dir_help", "qm", "{$text}");
+				echo $text, '<br />';
+			}
+			print_help_link("simple_filter_help", "qm", "filter");
+			echo $pgv_lang["filter"];
+		?>
+	</td>
 	<td class="optionbox wrap width25">
 		<?php
 		// Directory pick list
@@ -169,11 +174,27 @@ if ($search == "yes") {
 		<input type="submit" value="<?php echo $pgv_lang["apply_filter"];?>" />
 	</td>
 
-	<!-- // NOTE: Row 2 right: Recursive directory list -->
+	<!-- // NOTE: Row 2 right: Unlinked only option and Recursive directory list -->
 	<?php if ($MEDIA_DIRECTORY_LEVELS > 0) { ?>
-	<td class="descriptionbox wrap width25" <?php echo $legendAlign;?>><?php print_help_link("medialist_recursive_help", "qm", "medialist_recursive"); echo $pgv_lang["medialist_recursive"];?></td>
+	<td class="descriptionbox wrap width25" <?php echo $legendAlign;?>>
+		<?php
+			print_help_link("medialist_unlinked_help", "qm", "medialist_unlinked");
+			echo $pgv_lang["medialist_unlinked"], '<br />';
+			print_help_link("medialist_recursive_help", "qm", "medialist_recursive");
+			echo $pgv_lang["medialist_recursive"];
+		?>
+	</td>
 	<td class="optionbox wrap width25">
-		<input type="checkbox" id="subdirs" name="subdirs" <?php if (!$currentdironly) { ?>checked="checked"<?php } ?> />
+		<input type="checkbox" id="unlinked" name="unlinked"
+		<?php
+			if ($unlinkedonly) echo 'checked="checked"';
+		?>
+		/><br />
+		<input type="checkbox" id="subdirs" name="subdirs"
+		<?php
+			if (!$currentdironly) echo 'checked="checked"';
+		?>
+		/>
 	</td></tr>
 	<?php } else { ?>
 	<td class="descriptionbox wrap width25" <?php echo $legendAlign;?>>&nbsp;</td>

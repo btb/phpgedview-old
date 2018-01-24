@@ -44,6 +44,7 @@ VERSION 4.3.1
 
 ?$pgv_lang["whatever"]								dd Monthname, year		Change codes and comments
 ----------------------------------------------------------------------------------------
+*$pgv_lang["medialist_current_dir_help"]			24 Jan 2018				w
 +$pgv_lang["medialist_current_dir_help"]			23 Jan 2018				A
 +$pgv_lang["medialist_unlinked_help"]				23 Jan 2018				A
 *$pgv_lang["edit_URL_help"]							12 Jan 2018				w
