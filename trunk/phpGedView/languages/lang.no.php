@@ -3,7 +3,7 @@
  * Norwegian texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2018  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -572,8 +572,10 @@ $pgv_lang["view_person"]		= "Vis person";
 $pgv_lang["view_family"]		= "Vis familie";
 $pgv_lang["view_source"]		= "Vis kilde";
 $pgv_lang["view_object"]		= "Vis objekt";
-$pgv_lang["prev"]				= "&lt; Forrige";
-$pgv_lang["next"]				= "Neste &gt;";
+$pgv_lang["first_page"]				= "Første side";
+$pgv_lang["previous_page"]			= "Forrige side";
+$pgv_lang["next_page"]				= "Neste side";
+$pgv_lang["last_page"]				= "Siste side";
 $pgv_lang["next_image"]				="Neste bilde";
 $pgv_lang["file_not_found"]		= "Fant ikke filen.";
 $pgv_lang["medialist_show"]		= "Vis ";

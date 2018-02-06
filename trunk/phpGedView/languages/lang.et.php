@@ -1,9 +1,9 @@
-﻿<?php
+<?php
 /**
  * Estonian texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2006 to 2017  PGV Development Team
+ * Copyright (C) 2006 to 2018  PGV Development Team
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -414,8 +414,10 @@ $pgv_lang["view_person"]		= "Vaata isikut";
 $pgv_lang["view_family"]		= "Vaata perekonda";
 $pgv_lang["view_source"]		= "Vaata allikat";
 $pgv_lang["view_object"]		= "Vaata objekti";
-$pgv_lang["prev"]			= "&lt; Eelmine";
-$pgv_lang["next"]			= "Järgmine &gt;";
+$pgv_lang["first_page"]				= "Esimene lehekülg";
+$pgv_lang["previous_page"]			= "Eelmine leht";
+$pgv_lang["next_page"]				= "Järgmine leht";
+$pgv_lang["last_page"]				= "Viimane lehekülg";
 $pgv_lang["file_not_found"] 		= "Faili ei leitud.";
 $pgv_lang["medialist_show"] 		= "Näita";
 $pgv_lang["per_page"]		= "media objects per page";

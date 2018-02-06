@@ -3,7 +3,7 @@
  * Russian Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2018  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -601,8 +601,10 @@ $pgv_lang["view_person"]		= "Смотреть сведения о лице";
 $pgv_lang["view_family"]		= "Смотреть сведения о семье";
 $pgv_lang["view_source"]		= "Смотреть источник";
 $pgv_lang["view_object"]		= "Посмотреть объекты";
-$pgv_lang["prev"]			= "< предыдущий";
-$pgv_lang["next"]			= "следующий >";
+$pgv_lang["first_page"]				= "Первая страница";
+$pgv_lang["previous_page"]			= "Предыдущая страница";
+$pgv_lang["next_page"]				= "Следущая страница";
+$pgv_lang["last_page"]				= "Последняя страница";
 $pgv_lang["next_image"]			= "Следующая картинка";
 $pgv_lang["file_not_found"]		= "Файл не найден.";
 $pgv_lang["medialist_show"] 		= "Показать";

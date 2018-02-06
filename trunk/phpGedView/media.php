@@ -217,7 +217,7 @@ if (!isset($_SESSION['MMsortby'])) {
 
 // TODO Determine source and validation requirements for these variables
 $filename=decrypt(safe_REQUEST($_REQUEST, 'filename'));
-$directory=safe_REQUEST($_REQUEST, 'directory', PGV_REGEX_NOSCRIPT, $MEDIA_DIRECTORY);
+$directory=safe_REQUEST($_REQUEST, 'directory');
 $movetodir=safe_REQUEST($_REQUEST, 'movetodir');
 $movefile=safe_REQUEST($_REQUEST, 'movefile');
 $action=safe_REQUEST($_REQUEST, 'action', PGV_REGEX_ALPHA, 'filter');
@@ -250,6 +250,14 @@ if (isset($_POST['filter'])) {
 	$filter = safe_POST('filter', PGV_REGEX_NOSCRIPT);
 	$_SESSION['MMfilter'] = $filter;
 } else $filter = $_SESSION['MMfilter'];
+
+$currentdir = true;		// default to looking at subdirectories too
+if (empty($directory)) {
+	$directory = $MEDIA_DIRECTORY;
+	$currentdir = false;
+} elseif ($directory == $MEDIA_DIRECTORY) {
+	if ($MEDIA_DIRECTORY_LEVELS > 0) $currentdir = false;		// except for the /media directory when there are subdirectories
+} elseif ($directory == 'ALL') $directory = $MEDIA_DIRECTORY;	// choose "ALL" to look at everything
 
 //-- prevent script from accessing an area outside of the media directory
 //-- and keep level consistency
@@ -866,6 +874,7 @@ if (check_media_structure()) {
 			if ($MEDIA_DIRECTORY_LEVELS > 0) {
 				$folders = get_media_folders();
 				print "<span dir=\"ltr\"><select name=\"directory\">\n";
+				echo '<option value="ALL">', $pgv_lang["all"], '</option>', "\n";
 				foreach($folders as $f) {
 					print "<option value=\"".$f."\"";
 					if ($directory==$f) print " selected=\"selected\"";
@@ -905,9 +914,7 @@ if (check_media_structure()) {
 	if (!empty($savedOutput)) print $savedOutput;		// Print everything we have saved up
 
 	if ($action == "filter") {
-		if (empty($directory)) $directory = $MEDIA_DIRECTORY;
-		$medialist = get_medialist(true, $directory);
-// Get the list of media items
+		$medialist = get_medialist($currentdir, $directory);	// Get the list of media items
 /**
  * This is the default action for the page
  *

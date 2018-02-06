@@ -28,29 +28,32 @@ define('PGV_SCRIPT_NAME', 'medialist.php');
 require './config.php';
 require_once PGV_ROOT.'includes/functions/functions_print_facts.php';
 
-loadLangFile("lightbox:lang");
+if (PGV_USE_LIGHTBOX) loadLangFile("lightbox:lang");
 
 // $LB_SS_SPEED = "5";
 $level = safe_GET("level", "", "0");
 $action = safe_GET('action');
 $filter = safe_GET('filter');
 $filter = stripLRMRLM($filter);
-$search = safe_GET('search');
+$subdirs = safe_GET('subdirs', 'on', 'off');
+$unlinked = safe_GET('unlinked', 'on', 'off');
+$search = safe_GET('search', 'no', 'yes');
 $sortby = safe_GET('sortby', 'file', 'title');
 $max = safe_GET('max', array('10', '20', '30', '40', '50', '75', '100', '125', '150', '200'), '20');
 $folder = safe_GET('folder');
-if (empty($folder)) $folder = $MEDIA_DIRECTORY;
-
-if (empty($_SESSION['medialist_ged'])) $_SESSION['medialist_ged'] = PGV_GEDCOM;
-if ($_SESSION['medialist_ged'] != PGV_GEDCOM) {
-	$_SESSION['medialist_ged'] = PGV_GEDCOM;
-	unset($_SESSION['medialist']);
+if (empty($folder)) {
+	$folder = 'ALL';
+	$search = 'yes';
 }
 
-if (!isset($_SESSION['medialist'])) $search = "yes";
+if (empty($_SESSION['medialist_ged']) || $_SESSION['medialist_ged'] != PGV_GEDCOM) {
+	$_SESSION['medialist_ged'] = PGV_GEDCOM;
+	unset ($_SESSION['medialist'], $_SESSION['mediafolder']);
+	$search = 'yes';
+}
 
-$currentdironly = (isset($_REQUEST['subdirs']) && $_REQUEST['subdirs']=="on") ? false : true;
-$unlinkedonly = isset($_REQUEST['unlinked']) && $_REQUEST['unlinked']=="on";
+if (empty($_SESSION['medialist'])) $search = 'yes';
+
 
 print_header($pgv_lang["multi_title"]);
 
@@ -71,37 +74,64 @@ if (PGV_USE_LIGHTBOX) {
 	}
 }
 
+if ($search == 'yes') {
+	$currentdirOnly = $subdirs != 'on';
+	$unlinkedOnly = $unlinked == 'on';
+	$_SESSION['subdirs'] = $currentdirOnly;
+	$_SESSION['unlinked'] = $unlinkedOnly;
+	$hiddenItems = 0;
 
-//-- automatically generate an image
-if (PGV_USER_IS_ADMIN && $action=="generate" && !empty($file) && !empty($thumb)) {
-	generate_thumbnail($file, $thumb);
-}
-if ($search == "yes") {
-	if ($folder == "ALL") {
-		$folder = $MEDIA_DIRECTORY;
-		$currentdironly = false;
+	if ($folder == 'ALL') {
+		$currentdirOnly = false;
+		unset($_SESSION['medialist'], $_SESSION['mediafolder']);	// Force re-build of media list
 	}
-	// show external links only if looking at top level directory
-	$showExternal = ($folder == $MEDIA_DIRECTORY) ? true : false;
-	$medialist=get_medialist($currentdironly, $folder, true, false, $showExternal);
+
+	if (empty($_SESSION['mediasubdirs']) || $_SESSION['mediasubdirs'] != $currentdirOnly) {
+		$_SESSION['mediasubdirs'] = $currentdirOnly;
+		unset($_SESSION['medialist'], $_SESSION['mediafolder']);	// Force re-build of media list
+	}
+
+	if (empty($_SESSION['mediaunlinked']) || $_SESSION['mediaunlinked'] != $unlinkedOnly) {
+		$_SESSION['mediaunlinked'] = $unlinkedOnly;
+	}
+
+	$showExternal = $folder == 'ALL';	// Show external links only if looking at all directories
+
+	if (empty($_SESSION['medialist']) || empty($_SESSION['mediafolder']) || $_SESSION['mediafolder'] != $folder) {
+		$medialist=get_medialist($currentdirOnly, $folder, false, false, $showExternal);
+		$_SESSION['medialist'] = $medialist;	// Save this for future use
+		$_SESSION['mediafolder'] = $folder;		//   and remember which directory we looked at
+	} else {
+		$medialist = $_SESSION['medialist'];	// Same directory: re-use original list (in case filtering was done)
+	}
 
 	//-- remove all linked objects if we're looking for unlinked only
 	//-- remove all private media objects
 	foreach($medialist as $key => $media) {
-		echo " ";
+		echo " ";		// Not sure why this is necessary
 
-		// Display when user has Edit rights or when object belongs to current GEDCOM
-		$disp = PGV_USER_CAN_EDIT || $media["GEDFILE"]==PGV_GED_ID;
+		// Display when object does not belong to any GEDCOM or when it belongs to current GEDCOM
+		$disp = empty($media["GEDFILE"]) || $media["GEDFILE"]==PGV_GED_ID;
 		// Display when Media objects aren't restricted by global privacy
 		$disp &= displayDetailsById($media["XREF"], "OBJE");
 		// Display when this Media object isn't restricted
 		$disp &= !FactViewRestricted($media["XREF"], $media["GEDCOM"]);
 
-		if ($unlinkedonly && $media["LINKED"]) $disp = false;
+		if ($unlinkedOnly && $media["LINKED"]) $disp = false;
 
-		if (!$disp) unset($medialist[$key]);
+		if (!$disp) {
+			unset($medialist[$key]);
+			$hiddenItems ++;
+		}
 	}
 	usort($medialist, "mediasort"); // Reset numbering of medialist array
+	$_SESSION['mediasortedlist'] = $medialist;	// Save this list -- we'll need it later
+	$_SESSION['mediahidden'] = $hiddenItems;
+} else {
+	$medialist = $_SESSION['mediasortedlist'];
+	$hiddenItems = $_SESSION['mediahidden'];
+	$currentdirOnly = $_SESSION['subdirs'];
+	$unlinkedOnly = $_SESSION['unlinked'];
 }
 
 // A form for filtering the media items
@@ -109,7 +139,7 @@ if ($search == "yes") {
 <form action="medialist.php" method="get">
 	<input type="hidden" name="action" value="filter" />
 	<input type="hidden" name="search" value="yes" />
-	<table class="list-table center width75 <?php echo $TEXT_DIRECTION; ?>">
+	<table class="list_table center width75 <?php echo $TEXT_DIRECTION; ?>">
 	<?php
 	if ($TEXT_DIRECTION=='ltr') $legendAlign = 'align="right"';
 	else $legendAlign = 'align="left"';
@@ -156,15 +186,13 @@ if ($search == "yes") {
 				if (!empty($_SESSION['upload_folder'])) $folder = $_SESSION['upload_folder'];
 				else $folder = "ALL";
 			}
-			$folders = array_merge(array("ALL"), get_media_folders());
+			$folderList = get_media_folders();
 			echo "<span dir=\"ltr\"><select name=\"folder\">\n";
-			foreach($folders as $f) {
-				echo "<option value=\"", $f, "\"";
-				if ($folder==$f) echo " selected=\"selected\"";
-				echo ">";
-				if ($f=="ALL") echo $pgv_lang["all"];
-				else echo $f;
-				echo "</option>\n";
+			echo '<option value="ALL">', $pgv_lang["all"], '</option>', "\n";
+			foreach($folderList as $f) {
+				echo '<option value="', $f, '"';
+				if ($folder==$f) echo ' selected="selected"';
+				echo '>', $f, '</option>', "\n";
 			}
 			echo "</select></span><br />";
 		} else echo "<input name=\"folder\" type=\"hidden\" value=\"ALL\" />";
@@ -175,33 +203,34 @@ if ($search == "yes") {
 	</td>
 
 	<!-- // NOTE: Row 2 right: Unlinked only option and Recursive directory list -->
-	<?php if ($MEDIA_DIRECTORY_LEVELS > 0) { ?>
 	<td class="descriptionbox wrap width25" <?php echo $legendAlign;?>>
 		<?php
-			print_help_link("medialist_unlinked_help", "qm", "medialist_unlinked");
-			echo $pgv_lang["medialist_unlinked"], '<br />';
-			print_help_link("medialist_recursive_help", "qm", "medialist_recursive");
-			echo $pgv_lang["medialist_recursive"];
+			if (PGV_USER_CAN_EDIT) {
+				print_help_link("medialist_unlinked_help", "qm", "medialist_unlinked");
+				echo $pgv_lang["medialist_unlinked"];
+			}
+			if ($MEDIA_DIRECTORY_LEVELS > 0) {
+				if (PGV_USER_CAN_EDIT) echo '<br />';
+				print_help_link("medialist_recursive_help", "qm", "medialist_recursive");
+				echo $pgv_lang["medialist_recursive"];
+			}
 		?>
 	</td>
 	<td class="optionbox wrap width25">
-		<input type="checkbox" id="unlinked" name="unlinked"
 		<?php
-			if ($unlinkedonly) echo 'checked="checked"';
+			if (PGV_USER_CAN_EDIT) {
+				echo '<input type="checkbox" id="unlinked" name="unlinked"';
+				if ($unlinkedOnly) echo 'checked="checked"';
+				echo '>';
+			}
+			if ($MEDIA_DIRECTORY_LEVELS > 0) {
+				if (PGV_USER_CAN_EDIT) echo '<br />';
+				echo '<input type="checkbox" id="subdirs" name="subdirs"';
+				if (!$currentdirOnly) echo 'checked="checked"';
+				echo '>';
+			}
 		?>
-		/><br />
-		<input type="checkbox" id="subdirs" name="subdirs"
-		<?php
-			if (!$currentdironly) echo 'checked="checked"';
-		?>
-		/>
 	</td></tr>
-	<?php } else { ?>
-	<td class="descriptionbox wrap width25" <?php echo $legendAlign;?>>&nbsp;</td>
-	<td class="optionbox wrap">
-		&nbsp;
-	</td></tr>
-	<?php } ?>
 
 	</table>
 </form>
@@ -210,15 +239,14 @@ if ($search == "yes") {
 if ($action=="filter") {
 	if (strlen($filter) > 1) {
 		foreach($medialist as $key => $media) {
-			if (!filterMedia($media, $filter, "http")) unset($medialist[$key]);
+			if (!filterMedia($media, $filter, "http")) {
+				unset($medialist[$key]);
+				$hiddenItems ++;
+			}
 		}
+		$_SESSION['mediahidden'] = $hiddenItems;
 	}
 	usort($medialist, "mediasort"); // Reset numbering of medialist array
-}
-if ($search=="yes") {
-	$_SESSION["medialist"] = $medialist;
-} else {
-	$medialist = $_SESSION["medialist"];
 }
 
 // Sort the media list according to the user's wishes
@@ -234,7 +262,7 @@ if (isset($_GET["max"])) $max = $_GET["max"];
 $count = $max;
 if ($start+$count > $ct) $count = $ct-$start;
 
-echo "\n\t<div align=\"center\">", $pgv_lang["media_found"], " ", $ct, " <br /><br />";
+echo "\n\t", '<div align="center">', $pgv_lang["media_found"], ' : ', $ct, '&nbsp;&nbsp;&nbsp;&nbsp;', $pgv_lang["hidden"], ' : ', $hiddenItems, '<br /><br />';
 if ($ct>0) {
 
 	$currentPage = ((int) ($start / $max)) + 1;
@@ -244,50 +272,48 @@ if ($ct>0) {
 	$IconRDarrow = "<img src=\"".$PGV_IMAGE_DIR."/".$PGV_IMAGES["rdarrow"]["other"]."\" width=\"20\" height=\"20\" border=\"0\" alt=\"\" />";
 	$IconLDarrow = "<img src=\"".$PGV_IMAGE_DIR."/".$PGV_IMAGES["ldarrow"]["other"]."\" width=\"20\" height=\"20\" border=\"0\" alt=\"\" />";
 
-	print"\n\t<table class=\"list_table\">\n";
+	// Print page back, page number, page forward controls
 
-	// echo page back, page number, page forward controls
-	echo "\n<tr><td colspan=\"2\">\n";
-	echo "\n\t<table class=\"list_table width100\">\n";
+	echo "\n\t<table class=\"list_table center width75\">\n";
 	echo "\n<tr>\n";
-	echo "<td class=\"width30\" align=\"", $TEXT_DIRECTION == "ltr"?"left":"right", "\">";
+	echo "<td class='width30' align='", $TEXT_DIRECTION == "ltr"?"left":"right", "'>";
 	if ($TEXT_DIRECTION=="ltr") {
 		if ($ct>$max) {
 			if ($currentPage > 1) {
-				echo "<a href=\"", encode_url("medialist.php?folder={$folder}&filter={$filter}&sortby={$sortby}&search=no&start=0&max={$max}"), "\">", $IconLDarrow, "</a>\n";
+				echo "<a href='", encode_url("medialist.php?folder={$folder}&filter={$filter}&sortby={$sortby}&search=no&start=0&max={$max}"), "' title='", $pgv_lang["first_page"], "'>", $IconLDarrow, "</a>\n";
 			}
 			if ($start>0) {
 				$newstart = $start-$max;
 				if ($start<0) $start = 0;
-				echo "<a href=\"", encode_url("medialist.php?folder={$folder}&filter={$filter}&sortby={$sortby}&search=no&start={$newstart}&max={$max}"), "\">", $IconLarrow, "</a>\n";
+				echo "<a href='", encode_url("medialist.php?folder={$folder}&filter={$filter}&sortby={$sortby}&search=no&start={$newstart}&max={$max}"), "' title='", $pgv_lang["previous_page"], "'>", $IconLarrow, "</a>\n";
 			}
 		}
 	} else {
 		if ($ct>$max) {
 			if ($currentPage < $lastPage) {
 				$lastStart = ((int) ($ct / $max)) * $max;
-				echo "<a href=\"", encode_url("medialist.php?folder={$folder}&filter={$filter}&sortby={$sortby}&search=no&start={$lastStart}&max={$max}"), "\">", $IconRDarrow, "</a>\n";
+				echo "<a href='", encode_url("medialist.php?folder={$folder}&filter={$filter}&sortby={$sortby}&search=no&start={$lastStart}&max={$max}"), "' title='", $pgv_lang["last_page"], "'>", $IconRDarrow, "</a>\n";
 			}
 			if ($start+$max < $ct) {
 				$newstart = $start+$count;
 				if ($start<0) $start = 0;
-				echo "<a href=\"", encode_url("medialist.php?folder={$folder}&filter={$filter}&sortby={$sortby}&search=no&start={$newstart}&max={$max}"), "\">", $IconRarrow, "</a>\n";
+				echo "<a href='", encode_url("medialist.php?folder={$folder}&filter={$filter}&sortby={$sortby}&search=no&start={$newstart}&max={$max}"), "' title='", $pgv_lang["next_page"], "'>", $IconRarrow, "</a>\n";
 			}
 		}
 	}
 	echo "</td>";
-	echo "<td align=\"center\">", print_text("page_x_of_y", 0, 1), "</td>";
+	echo "<td align=\"center\">", print_text("page_x_of_y", 0, 1), '</td>';
 	echo "<td class=\"width30\" align=\"", $TEXT_DIRECTION == "ltr"?"right":"left", "\">";
 	if ($TEXT_DIRECTION=="ltr") {
 		if ($ct>$max) {
 			if ($start+$max < $ct) {
 				$newstart = $start+$count;
 				if ($start<0) $start = 0;
-				echo "<a href=\"", encode_url("medialist.php?folder={$folder}&filter={$filter}&sortby={$sortby}&search=no&start={$newstart}&max={$max}"), "\">", $IconRarrow, "</a>\n";
+				echo "<a href='", encode_url("medialist.php?folder={$folder}&filter={$filter}&sortby={$sortby}&search=no&start={$newstart}&max={$max}"), "' title='", $pgv_lang["next_page"], "'>", $IconRarrow, "</a>\n";
 			}
 			if ($currentPage < $lastPage) {
 				$lastStart = ((int) ($ct / $max)) * $max;
-				echo "<a href=\"", encode_url("medialist.php?folder={$folder}&filter={$filter}&sortby={$sortby}&search=no&start={$lastStart}&max={$max}"), "\">", $IconRDarrow, "</a>\n";
+				echo "<a href='", encode_url("medialist.php?folder={$folder}&filter={$filter}&sortby={$sortby}&search=no&start={$lastStart}&max={$max}"), "' title='", $pgv_lang["last_page"], "'>", $IconRDarrow, "</a>\n";
 			}
 		}
 	} else {
@@ -295,18 +321,21 @@ if ($ct>0) {
 			if ($start>0) {
 				$newstart = $start-$max;
 				if ($start<0) $start = 0;
-				echo "<a href=\"", encode_url("medialist.php?folder={$folder}&filter={$filter}&sortby={$sortby}&search=no&start={$newstart}&max={$max}"), "\">", $IconLarrow, "</a>\n";
+				echo "<a href='", encode_url("medialist.php?folder={$folder}&filter={$filter}&sortby={$sortby}&search=no&start={$newstart}&max={$max}"), "' title='", $pgv_lang["previous_page"], "'>", $IconLarrow, "</a>\n";
 			}
 			if ($currentPage > 1) {
 				$lastStart = ((int) ($ct / $max)) * $max;
-				echo "<a href=\"", encode_url("medialist.php?folder={$folder}&filter={$filter}&sortby={$sortby}&search=no&start=0&max={$max}"), "\">", $IconLDarrow, "</a>\n";
+				echo "<a href='", encode_url("medialist.php?folder={$folder}&filter={$filter}&sortby={$sortby}&search=no&start=0&max={$max}"), "' title='", $pgv_lang["first_page"], "'>", $IconLDarrow, "</a>\n";
 			}
 		}
 	}
 	echo "</td>";
-	echo "</tr>\n</table></td></tr>";
+	echo "</tr>\n</table><br />";
 
-	// -- echo the array
+	// -- Print the array of media items
+
+	echo "\n\t<table class=\"list_table center width100\">\n";
+
 	echo "\n<tr>\n";
 
 	for ($i=0; $i<$count; $i++) {
@@ -316,10 +345,8 @@ if ($ct>0) {
 		$imgwidth = $imgsize[0]+40;
 		$imgheight = $imgsize[1]+150;
 		$name = trim($media["TITL"]);
-//		$name1 = addslashes($media["TITL"]);
-		$showFile = PGV_USER_CAN_EDIT;
+		$showFileName = PGV_USER_CAN_EDIT;
 		if ($name=="") {
-			//$showFile = false;
 			if ($isExternal) $name = "URL";
 			else $name = basename($media["FILE"]);
 		}
@@ -345,7 +372,7 @@ if ($ct>0) {
 		echo "</td>\n\t\t", '<td class="list_value_wrap" style="border: none;" width="100%">';
 
 		if (PGV_USE_LIGHTBOX) {
-			if (PGV_USER_CAN_EDIT) {
+			if (PGV_USER_CAN_EDIT && !empty($media["XREF"])) {
 
 				if ($LB_ML_THUMB_LINKS != "none") {
 					echo "<table border=0><tr>";
@@ -392,27 +419,28 @@ if ($ct>0) {
 			}
 		}
 
-		echo "<a href=\"mediaviewer.php?mid=", $media["XREF"], "\">";
+		if (!empty($media["XREF"])) echo "<a href=\"mediaviewer.php?mid=", $media["XREF"], "\">";
 
 		if (begRTLText($name) && $TEXT_DIRECTION=="ltr") {
-			if ($SHOW_ID_NUMBERS) {
+			if ($SHOW_ID_NUMBERS && !empty($media["XREF"])) {
 				echo "(", $media["XREF"], ")&nbsp;&nbsp;&nbsp;";
 			}
 			echo "<b>", PrintReady($name), "</b>";
 		} else {
 			echo "<b>", PrintReady($name), "</b>";
-			if ($SHOW_ID_NUMBERS) {
+			if ($SHOW_ID_NUMBERS && !empty($media["XREF"])) {
 				echo "&nbsp;&nbsp;&nbsp;";
 				if ($TEXT_DIRECTION=="rtl") echo getRLM();
 				echo "(", $media["XREF"], ")";
 				if ($TEXT_DIRECTION=="rtl") echo getRLM();
 			}
 		}
-		if ($showFile) {
+		if ($showFileName) {
 			if ($isExternal) echo "<br /><sub>URL</sub>";
 			else echo "<br /><sub><span dir=\"ltr\">", PrintReady($media["FILE"]), "</span></sub>";
 		}
-		echo "</a><br />";
+		if (!empty($media["XREF"])) echo '</a>';
+		echo '<br />';
 
 		if (!$isExternal && !$media["EXISTS"]) {
 			echo "<br /><span class=\"error\">", $pgv_lang["file_not_found"], " <span dir=\"ltr\">", PrintReady($media["FILE"]), "</span></span>";
@@ -436,61 +464,61 @@ if ($ct>0) {
 			}
 		}
 
-			echo "<div style=\"white-space: normal; width: 95%;\">";
-			print_fact_sources($media["GEDCOM"], $media["LEVEL"]+1);
-			print_fact_notes($media["GEDCOM"], $media["LEVEL"]+1);
-			echo "</div>";
+		echo "<div style=\"white-space: normal; width: 95%;\">";
+		print_fact_sources($media["GEDCOM"], $media["LEVEL"]+1);
+		print_fact_notes($media["GEDCOM"], $media["LEVEL"]+1);
+		echo "</div>";
 
 		PrintMediaLinks($media["LINKS"], "small");
 
-			echo "</td></tr></table>\n";
-			echo "</td>";
-			if ($i%2 == 1 && $i < ($count-1)) echo "\n\t\t</tr>\n\t\t<tr>";
+		echo "</td></tr></table>\n";
+		echo "</td>";
+		if ($i%2 == 1 && $i < ($count-1)) echo "\n\t\t</tr>\n\t\t<tr>";
 	}
-	echo "\n\t\t</tr>";
+	echo "\n\t\t</tr></table>";
 
-	// echo page back, page number, page forward controls
-	echo "\n<tr><td colspan=\"2\">\n";
-	print"\n\t<table class=\"list_table width100\">\n";
+	// Print page back, page number, page forward controls
+
+	echo "\n\t<br /><table class=\"list_table center width75\">\n";
 	echo "\n<tr>\n";
 	echo "<td class=\"width30\" align=\"", $TEXT_DIRECTION == "ltr"?"left":"right", "\">";
 	if ($TEXT_DIRECTION=="ltr") {
 		if ($ct>$max) {
 			if ($currentPage > 1) {
-				echo "<a href=\"", encode_url("medialist.php?folder={$folder}&filter={$filter}&sortby={$sortby}&search=no&start=0&max={$max}"), "\">", $IconLDarrow, "</a>\n";
+				echo "<a href='", encode_url("medialist.php?folder={$folder}&filter={$filter}&sortby={$sortby}&search=no&start=0&max={$max}"), "' title='", $pgv_lang["first_page"], "'>", $IconLDarrow, "</a>\n";
 			}
 			if ($start>0) {
 				$newstart = $start-$max;
 				if ($start<0) $start = 0;
-				echo "<a href=\"", encode_url("medialist.php?folder={$folder}&filter={$filter}&sortby={$sortby}&search=no&start={$newstart}&max={$max}"), "\">", $IconLarrow, "</a>\n";
+				echo "<a href='", encode_url("medialist.php?folder={$folder}&filter={$filter}&sortby={$sortby}&search=no&start={$newstart}&max={$max}"), "' title='", $pgv_lang["previous_page"], "'>", $IconLarrow, "</a>\n";
 			}
 		}
 	} else {
 		if ($ct>$max) {
 			if ($currentPage < $lastPage) {
 				$lastStart = ((int) ($ct / $max)) * $max;
-				echo "<a href=\"", encode_url("medialist.php?folder={$folder}&filter={$filter}&sortby={$sortby}&search=no&start={$lastStart}&max={$max}"), "\">", $IconRDarrow, "</a>\n";
+				echo "<a href='", encode_url("medialist.php?folder={$folder}&filter={$filter}&sortby={$sortby}&search=no&start={$lastStart}&max={$max}"), "' title='", $pgv_lang["last_page"], "'>", $IconRDarrow, "</a>\n";
 			}
 			if ($start+$max < $ct) {
 				$newstart = $start+$count;
 				if ($start<0) $start = 0;
-				echo "<a href=\"", encode_url("medialist.php?folder={$folder}&filter={$filter}&sortby={$sortby}&search=no&start={$newstart}&max={$max}"), "\">", $IconRarrow, "</a>\n";
+				echo "<a href='", encode_url("medialist.php?folder={$folder}&filter={$filter}&sortby={$sortby}&search=no&start={$newstart}&max={$max}"), "' title='", $pgv_lang["next_page"], "'>", $IconRarrow, "</a>\n";
 			}
 		}
 	}
 	echo "</td>";
-	echo "<td align=\"center\">", print_text("page_x_of_y", 0, 1), "</td>";
+	echo "<td align=\"center\">", print_text("page_x_of_y", 0, 1), '</td>';
 	echo "<td class=\"width30\" align=\"", $TEXT_DIRECTION == "ltr"?"right":"left", "\">";
 	if ($TEXT_DIRECTION=="ltr") {
 		if ($ct>$max) {
 			if ($start+$max < $ct) {
 				$newstart = $start+$count;
 				if ($start<0) $start = 0;
-				echo "<a href=\"", encode_url("medialist.php?folder={$folder}&filter={$filter}&sortby={$sortby}&search=no&start={$newstart}&max={$max}"), "\">", $IconRarrow, "</a>\n";
+				echo "<a href='", encode_url("medialist.php?folder={$folder}&filter={$filter}&sortby={$sortby}&search=no&start={$newstart}&max={$max}"), "' title='", $pgv_lang["next_page"], "'>", $IconRarrow, "</a>\n";
 			}
 			if ($currentPage < $lastPage) {
 				$lastStart = ((int) ($ct / $max)) * $max;
-				echo "<a href=\"", encode_url("medialist.php?folder={$folder}&filter={$filter}&sortby={$sortby}&search=no&start={$lastStart}&max={$max}"), "\">", $IconRDarrow, "</a>\n";
+				echo "<a href='", encode_url("medialist.php?folder={$folder}&filter={$filter}&sortby={$sortby}&search=no&start={$lastStart}&max={$max}"), "' title='", $pgv_lang["last_page"], "'>", $IconRDarrow, "</a>\n";
 			}
 		}
 	} else {
@@ -498,16 +526,15 @@ if ($ct>0) {
 			if ($start>0) {
 				$newstart = $start-$max;
 				if ($start<0) $start = 0;
-				echo "<a href=\"", encode_url("medialist.php?folder={$folder}&filter={$filter}&sortby={$sortby}&search=no&start={$newstart}&max={$max}"), "\">", $IconLarrow, "</a>\n";
+				echo "<a href='", encode_url("medialist.php?folder={$folder}&filter={$filter}&sortby={$sortby}&search=no&start={$newstart}&max={$max}"), "' title='", $pgv_lang["previous_page"], "'>", $IconLarrow, "</a>\n";
 			}
 			if ($currentPage > 1) {
 				$lastStart = ((int) ($ct / $max)) * $max;
-				echo "<a href=\"", encode_url("medialist.php?folder={$folder}&filter={$filter}&sortby={$sortby}&search=no&start=0&max={$max}"), "\">", $IconLDarrow, "</a>\n";
+				echo "<a href='", encode_url("medialist.php?folder={$folder}&filter={$filter}&sortby={$sortby}&search=no&start=0&max={$max}"), "' title='", $pgv_lang["first_page"], "'>", $IconLDarrow, "</a>\n";
 			}
 		}
 	}
-	echo "</td>";
-	echo "</tr>\n</table></td></tr>";
+	echo "</td></tr>";
 	echo "</table><br />";
 }
 echo "\n</div>\n";

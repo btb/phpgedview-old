@@ -3,7 +3,7 @@
  * Swedish Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2017  PGV Development Team
+ * Copyright (C) 2002 to 2018  PGV Development Team
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -282,8 +282,10 @@ $pgv_lang["view_person"]		= "Visa person";
 $pgv_lang["view_family"]		= "Visa familj";
 $pgv_lang["view_source"]		= "Visa källa";
 $pgv_lang["view_object"]			= "Visa objekt";
-$pgv_lang["prev"]				= "< Föregående";
-$pgv_lang["next"]				= "Nästa >";
+$pgv_lang["first_page"]				= "Första sidan";
+$pgv_lang["previous_page"]			= "Föregående sida";
+$pgv_lang["next_page"]				= "Nästa sida";
+$pgv_lang["last_page"]				= "Sista sidan";
 $pgv_lang["next_image"]				= "Nästa bild";
 $pgv_lang["file_not_found"]		= "Filen kunde inte hittas.";
 $pgv_lang["medialist_show"]     = "Visa";

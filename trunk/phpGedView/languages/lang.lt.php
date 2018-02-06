@@ -3,7 +3,7 @@
  * Lithuanian Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2018  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -249,8 +249,10 @@ $pgv_lang["view_family"]			= "Informacija apie šeima";
 $pgv_lang["titles_found"]			= "Antraštes";
 $pgv_lang["delete_directory"]		= "Ištrinti kataloga";
 $pgv_lang["view_source"]			= "Informacija apie šaltini";
-$pgv_lang["prev"]					= "< Ankstesnis";
-$pgv_lang["next"]					= "Sekantis >";
+$pgv_lang["first_page"]				= "Pirmas puslapis";
+$pgv_lang["previous_page"]			= "Ankstesnis puslapis";
+$pgv_lang["next_page"]				= "Kitas puslapis";
+$pgv_lang["last_page"]				= "Paskutinis puslapis";
 $pgv_lang["search_type"]			= "Paieškos tipas";
 $pgv_lang["search_options"]			= "Paieškos parametrai";
 $pgv_lang["per_page"]				= "media objektu viename puslapyje";

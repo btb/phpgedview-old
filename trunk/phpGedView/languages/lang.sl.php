@@ -3,7 +3,7 @@
  * Slovenian texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2018  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -602,8 +602,10 @@ $pgv_lang["view_person"]		= "Poglej osebo";
 $pgv_lang["view_family"]		= "Poglej družino";
 $pgv_lang["view_source"]		= "Poglej vir";
 $pgv_lang["view_object"]		= "Poglej predmet";
-$pgv_lang["prev"]			= "&lt; nazaj";
-$pgv_lang["next"]			= "naprej &gt;";
+$pgv_lang["first_page"]				= "Prva stran";
+$pgv_lang["previous_page"]			= "Prejšnja stran";
+$pgv_lang["next_page"]				= "Naslednja stran";
+$pgv_lang["last_page"]				= "Zadnja stran";
 $pgv_lang["next_image"]			= "naslednja fotografija";
 $pgv_lang["file_not_found"] 		= "Datoteka ni najdena.";
 $pgv_lang["medialist_show"] 		= "Pokaži";

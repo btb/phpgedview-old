@@ -3,7 +3,7 @@
  * Finnish Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2017  PGV Development Team
+ * Copyright (C) 2002 to 2018  PGV Development Team
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -527,8 +527,10 @@ $pgv_lang["view_person"]		= "Katso henkilöä";
 $pgv_lang["view_family"]		= "Katso perhettä";
 $pgv_lang["view_source"]		= "Katso lähdettä";
 $pgv_lang["view_object"]		= "Katso kohdetta";
-$pgv_lang["prev"]			= "&lt; Edellinen";
-$pgv_lang["next"]			= "Seuraava &gt;";
+$pgv_lang["first_page"]				= "Ensimmäinen sivu";
+$pgv_lang["previous_page"]			= "Edellinen sivu";
+$pgv_lang["next_page"]				= "Seuraava sivu";
+$pgv_lang["last_page"]				= "Viimeinen sivu";
 $pgv_lang["next_image"]		= "Seuraava";
 $pgv_lang["file_not_found"]		= "Tiedostoa ei löydy.";
 $pgv_lang["medialist_show"]     	= "Näytä";

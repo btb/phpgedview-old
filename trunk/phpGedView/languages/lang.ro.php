@@ -3,7 +3,7 @@
  * Romanian texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2017  PGV Development Team
+ * Copyright (C) 2002 to 2018  PGV Development Team
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -540,8 +540,10 @@ $pgv_lang["view_person"]			= "Vizualizează persoană";
 $pgv_lang["view_family"]			= "Vizualizează familie";
 $pgv_lang["view_source"]			= "Vizualizează sursă";
 $pgv_lang["view_object"]			= "Vizualizează obiect";
-$pgv_lang["prev"]					= "&lt; Anterior";
-$pgv_lang["next"]					= "Următor &gt;";
+$pgv_lang["first_page"]				= "Prima pagina";
+$pgv_lang["previous_page"]			= "Pagina anterioară";
+$pgv_lang["next_page"]				= "Pagina următoare";
+$pgv_lang["last_page"]				= "Ultima pagina";
 $pgv_lang["next_image"]				= "Următoarea imagine";
 $pgv_lang["file_not_found"] 		= "Fişierul nu a fost găsit.";
 $pgv_lang["medialist_show"] 		= "Arată";

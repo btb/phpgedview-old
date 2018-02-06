@@ -3,7 +3,7 @@
  * Indonesian texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2018  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -565,7 +565,10 @@ $pgv_lang["view_person"]				= "Tampilkan Orang";
 $pgv_lang["view_family"]				= "Tampilkan Keluarga";
 $pgv_lang["view_source"]				= "Tampilkan Sumber";
 $pgv_lang["view_object"]				= "Tampilkan Objek";
-$pgv_lang["prev"]					= "&lt; Sebelumnya";
+$pgv_lang["first_page"]				= "Halaman pertama";
+$pgv_lang["previous_page"]			= "Halaman sebelumnya";
+$pgv_lang["next_page"]				= "Halaman selanjutnya";
+$pgv_lang["last_page"]				= "Halaman terakhir";
 $pgv_lang["next"]					= "Selanjutnya &gt;";
 $pgv_lang["next_image"]					= "Gambar selanjutnya";
 $pgv_lang["file_not_found"] 				= "Berkas tidak ditemukan.";
