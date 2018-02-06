@@ -3,7 +3,7 @@
  * Serbian Language file for PhpGedView.
  *
  * PhpGedView: Genealogy Viewer
- * Copyright (C) 2009 to 2017  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2009 to 2018  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -592,13 +592,15 @@ $pgv_lang["individuals"]			= "Pojedinci";
 //-- MEDIALIST FILE MESSAGES
 ##$pgv_lang["external_objects"]		= "External objects";
 ##$pgv_lang["multi_title"]			= "MultiMedia Objects";
-##$pgv_lang["media_found"]			= "Media Objects found";
+$pgv_lang["media_found"]			= "Pronađeni su medijski objekti";
 $pgv_lang["view_person"]			= "Pogledaj upis osobe";
 $pgv_lang["view_family"]			= "Pogledaj upis porodice";
 $pgv_lang["view_source"]			= "Pogledaj izvor";
-$pgv_lang["view_object"]			= "View Object";
-##$pgv_lang["prev"]					= "&lt; Previous";
-##$pgv_lang["next"]					= "Next &gt;";
+$pgv_lang["view_object"]			= "Viev Objekt";
+$pgv_lang["first_page"]				= "Prva strana";
+$pgv_lang["previous_page"]			= "Prethodna strana";
+$pgv_lang["next_page"]				= "Sledeća strana";
+$pgv_lang["last_page"]				= "Poslednja strana";
 $pgv_lang["next_image"]				= "Sledeća slika";
 ##$pgv_lang["file_not_found"] 		= "File not found.";
 ##$pgv_lang["medialist_show"] 		= "Show";

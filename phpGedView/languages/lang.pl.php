@@ -3,7 +3,7 @@
  * Polish texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2017  PGV Development Team. All rights reserved.
+ * Copyright (C) 2002 to 2018  PGV Development Team. All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -597,8 +597,10 @@ $pgv_lang["view_person"]			= "Zobacz osobę";
 $pgv_lang["view_family"]			= "Zobacz rodzinę";
 $pgv_lang["view_source"]			= "Zobacz źródło";
 $pgv_lang["view_object"]			= "Zobacz obiekt";
-$pgv_lang["prev"]					= "< poprzednia";
-$pgv_lang["next"]					= "następna >";
+$pgv_lang["first_page"]				= "Pierwsza strona";
+$pgv_lang["previous_page"]			= "Poprzednia strona";
+$pgv_lang["next_page"]				= "Następna strona";
+$pgv_lang["last_page"]				= "Ostatnia strona";
 $pgv_lang["next_image"]				= "następny obraz";
 $pgv_lang["file_not_found"]			= "Nie znaleziono pliku:";
 $pgv_lang["medialist_show"] 		= "Pokaż";

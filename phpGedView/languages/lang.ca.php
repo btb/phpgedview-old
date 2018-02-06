@@ -3,7 +3,7 @@
  * Catalan texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2018  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -523,8 +523,10 @@ $pgv_lang["view_person"]		= "Mostra la persona:";
 $pgv_lang["view_family"]            = "Mostra la família";
 $pgv_lang["view_source"]		= "Mostra la font";
 $pgv_lang["view_object"]		= "Mostra l'objecte";
-$pgv_lang["prev"]				= "&lt; Anterior";
-$pgv_lang["next"]                   = "Següent &gt;";
+$pgv_lang["first_page"]				= "Primera pàgina";
+$pgv_lang["previous_page"]			= "Pàgina anterior";
+$pgv_lang["next_page"]				= "Pàgina següent";
+$pgv_lang["last_page"]				= "Darrera pàgina";
 $pgv_lang["next_image"]			= "Següent imatge";
 $pgv_lang["file_not_found"]		= "Fitxer inexistent";
 $pgv_lang["medialist_show"] 		= "Veure-ho ";

@@ -3,7 +3,7 @@
  * Chinese Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2018  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -245,8 +245,10 @@ $pgv_lang["view_person"]		= "看个人";
 $pgv_lang["view_family"]		= "看家庭";
 $pgv_lang["view_source"]		= "看來源";
 $pgv_lang["view_object"]			= "看项目";
-$pgv_lang["prev"]			= "上一个";
-$pgv_lang["next"]			= "下一个";
+$pgv_lang["first_page"]				= "第一页";
+$pgv_lang["previous_page"]			= "上一页";
+$pgv_lang["next_page"]				= "下一页";
+$pgv_lang["last_page"]				= "最后一页";
 $pgv_lang["next_image"]				= "下个图片";
 $pgv_lang["file_not_found"]		= "文件沒被查找。";
 $pgv_lang["medialist_show"] 		= "显示";

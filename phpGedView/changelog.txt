@@ -9,6 +9,8 @@
 =====================================================================
 
 Version 4.3.1
+ - Fixed: Medialist page forward/back controls not always in same position on page (canajun2eh)
+ - Fixed: Medialist not showing files that don't have a media ID (canajun2eh)
  - Added: Medialist filter to restrict view to show only unlinked media (canajun2eh)
  - Fixed: Googlemap Place Check - click on yellow marker sets zoom to NaN (David Smart)
  - Changed: Remove Google Translate interface from language file editor (canajun2eh)

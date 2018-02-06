@@ -3,7 +3,7 @@
  * Hungarian texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2018  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -270,8 +270,10 @@ $pgv_lang["view_person"]					= "Személy megjelenítése";
 $pgv_lang["view_family"]					= "Család megjelenítése";
 $pgv_lang["view_source"]					= "Forrás megjelenítése";
 $pgv_lang["view_object"]					= "Elem megjelenítése";
-$pgv_lang["prev"]						= "&lt; Előző";
-$pgv_lang["next"]						= "Következő &gt;";
+$pgv_lang["first_page"]				= "Első oldal";
+$pgv_lang["previous_page"]			= "Előző oldal";
+$pgv_lang["next_page"]				= "Következő oldal";
+$pgv_lang["last_page"]				= "Utolsó oldal";
 $pgv_lang["file_not_found"]					= "Az állomány nem található.";
 $pgv_lang["medialist_show"]             			= "Mutat";
 $pgv_lang["per_page"]                   			= "/oldal";

@@ -3,7 +3,7 @@
  * Slovak Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2017  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2018  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -309,8 +309,10 @@ $pgv_lang["view_person"]		= "Zobraziť osobu";
 $pgv_lang["view_family"]		= "Zobraziť rodinu";
 $pgv_lang["view_source"]		= "Zobraziť zdroj";
 $pgv_lang["view_object"]		= "Zobraziť objekt";
-$pgv_lang["prev"]			= "< Predchádzajúci";
-$pgv_lang["next"]			= "Nasledujúci >";
+$pgv_lang["first_page"]				= "Prvá strana";
+$pgv_lang["previous_page"]			= "Predchádzajúca strana";
+$pgv_lang["next_page"]				= "Ďalšia strana";
+$pgv_lang["last_page"]				= "Posledná strana";
 $pgv_lang["next_image"]			= "Nasledujúci obrázok";
 $pgv_lang["file_not_found"]		= "Súbor nebol nájdený.";
 $pgv_lang["medialist_show"] 		= "Zobraziť";
