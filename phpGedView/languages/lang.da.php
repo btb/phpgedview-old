@@ -1051,6 +1051,7 @@ $pgv_lang["on_this_day"]			= "I dag ...";
 $pgv_lang["in_this_month"]		= "I denne måned...";
 $pgv_lang["in_this_year"]		= "I dette år...";
 $pgv_lang["year_anniversary"]	= "#year_var#. årsdag";
+##$pgv_lang["year_yahrzeit"]			= "#yahrzeit_date#, #yahrzeit# yahrzeit of #event_date#";
 $pgv_lang["today"]				= "I dag";
 $pgv_lang["day"]				= "Dag:";
 $pgv_lang["month"]				= "Måned:";

@@ -1196,6 +1196,7 @@ $pgv_lang["on_this_day"]			= "On This Day ...";
 $pgv_lang["in_this_month"]			= "In This Month ...";
 $pgv_lang["in_this_year"]			= "In This Year ...";
 $pgv_lang["year_anniversary"]		= "#year_var# year anniversary";
+$pgv_lang["year_yahrzeit"]			= "#yahrzeit_date#, #yahrzeit# yahrzeit of #event_date#";
 $pgv_lang["today"]					= "Today";
 $pgv_lang["day"]					= "Day:";
 $pgv_lang["month"]					= "Month:";

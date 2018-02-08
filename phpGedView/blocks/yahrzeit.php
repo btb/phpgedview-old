@@ -5,7 +5,7 @@
  * This block will print a list of upcoming yahrzeit (hebrew death anniversaries)
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2008 to 2017  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2008 to 2018  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -46,9 +46,10 @@ $PGV_BLOCKS['print_yahrzeit']['config']   =array(
 
 // this block prints a list of upcoming yahrzeit events of people in your gedcom
 function print_yahrzeit($block=true, $config='', $side, $index) {
-	global $pgv_lang, $factarray, $SHOW_ID_NUMBERS, $ctype, $TEXT_DIRECTION;
+	global $pgv_lang, $factarray, $ctype, $TEXT_DIRECTION;
+	global $lang_short_cut, $LANGUAGE;
 	global $PGV_IMAGE_DIR, $PGV_IMAGES, $PGV_BLOCKS;
-	global $DAYS_TO_SHOW_LIMIT, $SHOW_MARRIED_NAMES, $SERVER_URL;
+	global $DAYS_TO_SHOW_LIMIT, $SERVER_URL;
 
 	$block=true; // Always restrict this block's height
 
@@ -65,8 +66,8 @@ function print_yahrzeit($block=true, $config='', $side, $index) {
 	$startjd=server_jd();
 	$endjd  =$startjd+max(min($config['days'], 1), $DAYS_TO_SHOW_LIMIT)-1;
 
-	if (!PGV_USER_ID) $allowDownload = "no";
-	else $allowDownload = $config['allowDownload'];
+	if (!PGV_USER_ID) $allowDownload = false;
+	else $allowDownload = ($config['allowDownload']=='yes');
 
 	$id="yahrzeit";
 	$title = print_help_link('yahrzeit_help', 'qm','',false,true);
@@ -133,15 +134,31 @@ function print_yahrzeit($block=true, $config='', $side, $index) {
 
 	switch ($config['infoStyle']) {
 	case "style1": // List style
+		$func = 'ordinal_suffix_'.$lang_short_cut[$LANGUAGE];
 		foreach ($yahrzeiten as $yahrzeit)
 			if ($yahrzeit['jd']>=$startjd && $yahrzeit['jd']<$startjd+$config['days']) {
 				$count ++;
-				$eventList .= "D{$yahrzeit['id']}',";		// Yahrzeiten are death anniversaries
+				$eventList .= "D{$yahrzeit['id']},";		// Yahrzeiten are death anniversaries
+				$anniversary = $yahrzeit['anniv'];
+				if (function_exists($func)) $anniversary .= $func($anniversary);	// Create ordinal suffix if we know how to do it
+
+				$today=new JewishDate($yahrzeit['jd']);
+				$td=new GedcomDate($today->Format('@ A O E'));
+
 				$ind=person::GetInstance($yahrzeit['id']);
-				$content .= "<a href=\"".encode_url($ind->getLinkUrl())."\" class=\"list_item name2\">".PrintReady($ind->getFullName())."</a>".$ind->getSexImage();
+				$url = $ind->getLinkUrl();
+				$content .= "<a href=\"".encode_url($url)."\" class=\"list_item name2\">".PrintReady($ind->getListName())."</a>".$ind->getSexImage();
+				$addname=$ind->getAddName();
+				if ($addname) {
+					$content .= "<br /><a href=\"".encode_url($url)."\" class=\"list_item name2\">".PrintReady($addname)."</a>";
+				}
+
 				$content .= "<div class=\"indent\">";
-				$content .= $yahrzeit['date']->Display(true);
-				$content .= ', '.str_replace("#year_var#", $yahrzeit['anniv'], $pgv_lang["year_anniversary"]);
+				$text = $pgv_lang["year_yahrzeit"];
+				$text = str_replace('#yahrzeit_date#', $td->Display(true, NULL, array('gregorian')), $text);	// Current date, in Jewish and Gregorian formats
+				$text = str_replace('#yahrzeit#', $anniversary, $text);		// Ordinal form of actual Yahrzeit
+				$text = str_replace('#event_date#', $yahrzeit['date']->Display(true, NULL, array()), $text);	// Event date
+				$content .= $text;
 				$content .= "</div>";
 			}
 		$content .= $pgv_lang["total_names"].": ".$count;
@@ -151,8 +168,8 @@ function print_yahrzeit($block=true, $config='', $side, $index) {
 		if ($allowDownload && $count!=0) {
 			global $whichFile;
 			$whichFile = PGV_PHPGEDVIEW.'.ics';
-			$title = print_text("download_file", 0, 1);
-			$content .= "<br /><a href=\"".encode_url("ical.php?events={$eventList}")."\"><img src=\"images/ical.png\" border=\"0\" alt=\"".$title."\" title=\"".$title."\" /></a>";
+			$linkTitle = print_text("download_file", 0, 2);
+			$content .= "<br /><a href=\"".encode_url("ical.php?events={$eventList}")."\"><img src=\"images/ical.png\" border=\"0\" alt=\"".$linkTitle."\" title=\"".$linkTitle."\" /></a>";
 		}
 		break;
 	case "style2": // Table style
@@ -163,22 +180,22 @@ function print_yahrzeit($block=true, $config='', $side, $index) {
 		$content .= "<tr>";
 		$content .= "<th class=\"list_label\">{$factarray['NAME']}</th>";
 		$content .= "<th style=\"display:none\">GIVN</th>";
-		$content .= "<th class=\"list_label\">{$factarray['DATE']}</th>";
-		$content .= "<th class=\"list_label\"><img src=\"./images/reminder.gif\" alt=\"{$pgv_lang['anniversary']}\" title=\"{$pgv_lang['anniversary']}\" border=\"0\" /></th>";
 		$content .= "<th class=\"list_label\">{$factarray['_YART']}</th>";
+		$content .= "<th class=\"list_label\"><img src=\"./images/reminder.gif\" alt=\"{$pgv_lang['anniversary']}\" title=\"{$pgv_lang['anniversary']}\" border=\"0\" /></th>";
+		$content .= "<th class=\"list_label\">{$factarray['DATE']}</th>";
 		$content .= "</tr>";
 
 		foreach ($yahrzeiten as $yahrzeit) {
 			if ($yahrzeit['jd']>=$startjd && $yahrzeit['jd']<$startjd+$config['days']) {
 				$count ++;
-				$eventList .= "D{$yahrzeit['id']}',";		// Yahrzeiten are death anniversaries
+				$eventList .= "D{$yahrzeit['id']},";		// Yahrzeiten are death anniversaries
 				$ind=person::GetInstance($yahrzeit['id']);
 				$content .= "<tr>";
 				// Record name(s)
-				$name=$ind->getFullName();
+				$name=$ind->getListName();
 				$url=$ind->getLinkUrl();
 				$content .= "<td class=\"list_value_wrap\" align=\"".get_align($name)."\">";
-				$content .= "<a href=\"".encode_url($ind->getLinkUrl())."\" class=\"list_item name2\" dir=\"".$TEXT_DIRECTION."\">".PrintReady($name)."</a>";
+				$content .= "<a href=\"".encode_url($url)."\" class=\"list_item name2\" dir=\"".$TEXT_DIRECTION."\">".PrintReady($name)."</a>";
 				$content .= $ind->getSexImage();
 				$addname=$ind->getAddName();
 				if ($addname) {
@@ -195,10 +212,10 @@ function print_yahrzeit($block=true, $config='', $side, $index) {
 				$today=new JewishDate($yahrzeit['jd']);
 				$td=new GedcomDate($today->Format('@ A O E'));
 
-				// death/yahrzeit event date
+				// upcoming yahrzeit dates
 				$content .= "<td class=\"list_value_wrap\">";
-				$content .= "<a name='{$yahrzeit['jd']}'>".$yahrzeit['date']->Display(true, NULL, array())."</a>";
-				$content .= "</td>";
+				$content .= "<a href=\"".$url."\" class=\"list_item url\">".$td->Display(true, NULL, array('gregorian'))."</a>"; // hCalendar:url
+				$content .= "&nbsp;</td>";
 
 				// Anniversary
 				$content .= "<td class=\"list_value_wrap rela\">";
@@ -209,10 +226,10 @@ function print_yahrzeit($block=true, $config='', $side, $index) {
 					$content .= "<a name=\"{$anniv}\">{$anniv}</a>";
 				}
 
-				// upcomming yahrzeit dates
+				// death/yahrzeit event date
 				$content .= "<td class=\"list_value_wrap\">";
-				$content .= "<a href=\"".$url."\" class=\"list_item url\">".$td->Display(true, NULL, array('gregorian'))."</a>"; // hCalendar:url
-				$content .= "&nbsp;</td>";
+				$content .= "<a name='{$yahrzeit['jd']}'>".$yahrzeit['date']->Display(true, NULL, array())."</a>";
+				$content .= "</td>";
 
 				$content .= "</tr>";
 			}
@@ -232,8 +249,8 @@ function print_yahrzeit($block=true, $config='', $side, $index) {
 		if ($allowDownload && $count!=0) {
 			global $whichFile;
 			$whichFile = PGV_PHPGEDVIEW.'.ics';
-			$title = print_text("download_file", 0, 1);
-			$content .= "<br /><a href=\"".encode_url("ical.php?events={$eventList}")."\"><img src=\"images/ical.png\" border=\"0\" alt=\"".$title."\" title=\"".$title."\" /></a>";
+			$linkTitle = print_text("download_file", 0, 2);
+			$content .= "<br /><a href=\"".encode_url("ical.php?events={$eventList}")."\"><img src=\"images/ical.png\" border=\"0\" alt=\"".$linkTitle."\" title=\"".$linkTitle."\" /></a>";
 		}
 		$content .= '</td><td>&nbsp;</td><td>&nbsp;</td></tr>';
 		$content .= '</table>';
@@ -254,7 +271,7 @@ function print_yahrzeit_config($config) {
 	if (empty($config)) $config=$PGV_BLOCKS["print_yahrzeit"]["config"];
 
 	if (empty($config['infoStyle'    ])) $config['infoStyle'    ]='style2';
-	if (empty($config['allowDownload'])) $config['allowDownload']='yes';
+	if (empty($config['allowDownload'])) $config['allowDownload']='no';
 	if (empty($config['days'         ])) $config['days'         ]=$DAYS_TO_SHOW_LIMIT;
 
 	if ($config['days']<1                  ) $config['days']=1;
