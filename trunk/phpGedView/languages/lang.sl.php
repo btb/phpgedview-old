@@ -1219,7 +1219,7 @@ $pgv_lang["viewmonth"]				= "Pokaži mesec";
 $pgv_lang["viewyear"]				= "Pokaži leto";
 $pgv_lang["all_people"] 			= "vsi ljudje";
 $pgv_lang["living_only"]			= "živeči";
-$pgv_lang["recent_events"]			= "polpretekla zgodovina (&lt; 100 let);lt; 100 let)";
+$pgv_lang["recent_events"]			= "polpretekla zgodovina (&lt; 100 let)";
 $pgv_lang["day_not_set"]			= "Dan ni določen";
 
 //-- user self registration module
@@ -1338,8 +1338,8 @@ $pgv_lang["message_deleted"]			= "Sporočilo je zbrisano";
 $pgv_lang["message_sent"]			= "Sporočilo je bilo poslano #TO_USER#";
 $pgv_lang["message_failed"]			= "Sporočilo ni bilo mogoče poslati";
 $pgv_lang["message_error"]			= "Napaka PHPMailer: ";
-$pgv_lang["message_invalid_from"]		= "Neveljaven naslov pošiljatelja: &lt#email#&gt";
-$pgv_lang["message_invalid_to"]			= "Neveljaven naslov prejemnika: &lt#email#&gt";
+$pgv_lang["message_invalid_from"]		= "Neveljaven naslov pošiljatelja: &lt;#email#&gt;";
+$pgv_lang["message_invalid_to"]			= "Neveljaven naslov prejemnika: &lt;#email#&gt;";
 $pgv_lang["reset"]				= "Ponastavi";
 $pgv_lang["site_default"]			= "Privzete vrednosti";
 $pgv_lang["mygedview_desc"] 			= "Ta stran omogoča hranjenje zaznamkov priljubljenih oseb, sledenje bližnjih dogodkov in sodelovanje z drugimi uporabniki.";
