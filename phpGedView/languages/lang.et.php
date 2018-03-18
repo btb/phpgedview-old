@@ -3,7 +3,7 @@
  * Estonian texts
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2006 to 2018  PGV Development Team
+ * Copyright (C) 2002 to 2018  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -825,8 +825,8 @@ $pgv_lang["message_deleted"]		= "Sõnum kustutatud";
 $pgv_lang["message_sent"]		= "Sõnum saadetakse #TO_USER#";
 $pgv_lang["message_failed"]		= "Sõnumit ei saa saata";
 $pgv_lang["message_error"]		= "PHPMailer viga: ";
-$pgv_lang["message_invalid_from"]	= "Kehtetu saatja aadress: &lt#email#&gt";
-$pgv_lang["message_invalid_to"]		= "Vale saaja aadress: &lt#email#&gt";
+$pgv_lang["message_invalid_from"]	= "Kehtetu saatja aadress: &lt;#email#&gt;";
+$pgv_lang["message_invalid_to"]		= "Vale saaja aadress: &lt;#email#&gt;";
 $pgv_lang["reset"]			= "Taasta";
 $pgv_lang["site_default"]		= "Veebilehe vaikimisi teema";
 $pgv_lang["mygedview_desc"] 		= "Minu GedView lehekülg võimaldab seada järjehoidjaid tähtsamatele inimestele, jälgida saabuvaid sündmusi ja teha koostööd teiste PhpGedView kasutajatega.";

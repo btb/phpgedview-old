@@ -44,6 +44,8 @@ VERSION 4.3.1
 
 ?$pgv_lang["whatever"]								dd Monthname, year		Change codes and comments
 ----------------------------------------------------------------------------------------
+*$pgv_lang["message_invalid_from"]					18 Mar 2018				f	add missing semi-colon on 2 HTML entities
+*$pgv_lang["message_invalid_to"]  					18 Mar 2018				f	add missing semi-colon on 2 HTML entities
 +$pgv_lang["year_yahrzeit"]							08 Feb 2018				A
 +$pgv_lang["first_page"]							05 Feb 2018				A
 +$pgv_lang["previous_page"]							05 Feb 2018				A

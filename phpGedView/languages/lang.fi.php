@@ -3,7 +3,7 @@
  * Finnish Language file for PhpGedView.
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2002 to 2018  PGV Development Team
+ * Copyright (C) 2002 to 2018  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -1167,8 +1167,8 @@ $pgv_lang["message_deleted"]		= "Viesti pyyhitty";
 $pgv_lang["message_sent"]		= "Viesti lähetettiin osoitteeseen #TO_USER#";
 $pgv_lang["message_failed"]		= "Viestiä ei voitu lähettää";
 $pgv_lang["message_error"]		= "PHPMailer virhe: ";
-$pgv_lang["message_invalid_from"]	= "Virheellinen lähettäjän osoite: &lt#email#&gt";
-$pgv_lang["message_invalid_to"]		= "Virheellinen vastaanottajan osoite: &lt#email#&gt";
+$pgv_lang["message_invalid_from"]	= "Virheellinen lähettäjän osoite: &lt;#email#&gt;";
+$pgv_lang["message_invalid_to"]		= "Virheellinen vastaanottajan osoite: &lt;#email#&gt;";
 $pgv_lang["reset"]			= "Palauta";
 $pgv_lang["site_default"]		= "Sivuston oletusarvo";
 $pgv_lang["mygedview_desc"]	= "OmaGedView-sivusi antaa mahdollisuuden pitää luetteloa suosikkihenkilöistäsi, tarkastella tulevia merkkipäiviä ja olla yhteistyössä muiden PhpGedView-käyttäjien kanssa.";
