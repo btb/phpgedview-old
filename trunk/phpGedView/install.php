@@ -3,7 +3,7 @@
  * Installation and Configuration
  *
  * phpGedView: Genealogy Viewer
- * Copyright (C) 2008 to 2017  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2008 to 2018  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -437,14 +437,14 @@ $errormsg = "";
 		<input type="hidden" name="step" value="<?php print $step;?>" />
 		<?php {?>
 			<div style="float: right; display: none" id="next_display">
-			<input type="submit" id="next_button" name="next" value="<?php print $pgv_lang['next'];?>" />
+			<input type="submit" id="next_button" name="next" value="<?php print $pgv_lang['next_page'];?>" />
 			<script type="text/javascript">
 			</script>
 			</div>
 		<?php } ?>
 		<?php if ($step>1) {?>
 			<div style="float: left;">
-			<input type="submit" name="prev" value="<?php print $pgv_lang['prev'];?>" />
+			<input type="submit" name="prev" value="<?php print $pgv_lang['previous_page'];?>" />
 			</div>
 		<?php } ?>
 		<br /><br />
