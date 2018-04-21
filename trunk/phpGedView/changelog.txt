@@ -9,6 +9,7 @@
 =====================================================================
 
 Version 4.3.1
+ - Fixed: Legitimate UAs incorrectly tagged as undesirable when they contain "Internet" (canajun2eh)
  - Fixed: References to undefined variables in install.php (canajun2eh)
  - Fixed: Various problems with the Yahrzeiten block (canajun2eh)
  - Fixed: Medialist page forward/back controls not always in same position on page (canajun2eh)
