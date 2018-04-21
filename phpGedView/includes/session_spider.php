@@ -179,7 +179,7 @@ $worms = array(
 	'KaloogaBot',		// Image search engines have no business searching a Genealogy site
 	'DBLBot',
 	'TurnitinBot',		// Plagiarism detectors have no business searching a Genealogy site
-	'(Microsoft)|(Internet)|(Explorer)'		// Internet Explorer self-identifies with "MSIE"
+	'(Microsoft)|(Explorer)'		// Internet Explorer self-identifies with "MSIE"
 	);
 
 //-- Recursively call the html_entity_decode() function so that things like &amp;gt;,
